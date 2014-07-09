@@ -9,7 +9,7 @@ def get_mopath(pofile):
     # Function to determine right locale path for a .po file
     lang = os.path.basename(pofile)[:-3] # len('.po') == 3
     modir = os.path.join('locale', lang, 'LC_MESSAGES') # e.g. locale/fr/LC_MESSAGES/
-    mofile = os.path.join(modir, 'devede.mo') # e.g. locale/fr/LC_MESSAGES/devede.mo
+    mofile = os.path.join(modir, 'devede_ng.mo') # e.g. locale/fr/LC_MESSAGES/devede_ng.mo
     return modir, mofile
 
 def get_data_files():
@@ -27,7 +27,8 @@ def get_data_files():
     for pofile in [f for f in os.listdir('po') if f.endswith('.po')]:
         pofile = os.path.join('po', pofile) # po/fr.po
         modir, mofile = get_mopath(pofile)
-        target = os.path.join('share', modir) # share/locale/fr/LC_MESSAGES/
+        # translations must be always in /usr/share because Gtk.builder only search there
+        target = os.path.join('/usr','share', modir) # share/locale/fr/LC_MESSAGES/
         data_files.append((target, [mofile]))
 
     return data_files

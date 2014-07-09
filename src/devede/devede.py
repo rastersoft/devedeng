@@ -13,11 +13,19 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import devede.convert
+import devede.main_window
+from gi.repository import Gtk
 
+# This is the first call made, where we initializate everything
 
-def main(argv):
+def main(argv,paths):
     
-    devede.convert.test()
+    global _
+
+    Gtk.init(argv)
+
+    ventana = devede.main_window.choose_disk(paths)
+    Gtk.main()

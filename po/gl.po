@@ -1066,8 +1066,8 @@ msgid "0.0%"
 msgstr "0.0%"
 
 #: ../interface/wmain.ui.h:28
-msgid " Media size: "
-msgstr " Tamaño do disco: "
+msgid " Media size:"
+msgstr " Tamaño do disco:"
 
 #: ../interface/wmain.ui.h:29
 msgid "<b>Disc usage</b>"
