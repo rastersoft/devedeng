@@ -1,0 +1,1486 @@
+# translation of DEVEDE.
+# Copyright (C) 2007 THE DEVEDE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the DEVEDE package.
+# <>, 2007.
+# , fuzzy
+#  <>, 2008.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DeVeDe 3.12.2 (win32)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-20 12:55+0200\n"
+"PO-Revision-Date: 2010-01-25 09:08+0300\n"
+"Last-Translator: Stamatis H. Stamatellos <ydatografida@gmail.com>\n"
+"Language-Team: Ydatografida <ydatografida@gmail.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Greek\n"
+"X-Poedit-Country: GREECE\n"
+
+#: ../devede_bincue.py:39
+msgid "Creating BIN/CUE files"
+msgstr "Δημιουργία BIN/CUE αρχείων"
+
+#: ../devede_bincue.py:56
+msgid ""
+"Failed to create the BIN/CUE files\n"
+"Maybe you ran out of disk space"
+msgstr ""
+"Αποτυχία δημιουργίας BIN/CUE αρχείων\n"
+"Πιθανόν δεν έχετε αρκετό χώρο στο δίσκο"
+
+#: ../devede_bincue.py:77
+msgid "Creating ISO file"
+msgstr "Δημιουργία ISO αρχείων"
+
+#: ../devede_bincue.py:82
+msgid ""
+"Failed to create the ISO image\n"
+"Maybe you ran out of disk space"
+msgstr ""
+"Αποτυχία δημιουργίας ISO αρχείων\n"
+"Πιθανόν δεν έχετε αρκετό χώρο στο δίσκο"
+
+#: ../devede_convert.py:147
+#, python-format
+msgid ""
+"Insuficient free space. To create this disc\n"
+"%(total)d MBytes are needed, but only %(free)d MBytes are available."
+msgstr ""
+"Ανεπαρκής ελεύθερος χώρος. Γιά τη δημιουργία δίσκου\n"
+"%(total)d MBytes απαιτούνται, αλλά μόνο %(free)d MBytes είναι διαθέσιμα."
+
+#: ../devede_convert.py:275 ../devede_subtitles.py:75
+#: ../devede_subtitles.py:92 ../devede_xml_menu.py:138
+#: ../devede_xml_menu.py:489 ../devede_xml_menu.py:497
+#: ../devede_xml_menu.py:501 ../devede_xml_menu.py:505
+msgid ""
+"Failed to write to the destination directory.\n"
+"Check that you have privileges and free space there."
+msgstr ""
+"Αποτυχία εγγραφής στο κατάλογο προορισμού.\n"
+"Ελέγξτε άν έχετε τα απαραίτιτα δικαιώματα και αρκετό ελεύθερο χώρο."
+
+#: ../devede_convert.py:376
+#, python-format
+msgid ""
+"The file or folder\n"
+"\n"
+"%(folder)s\n"
+"\n"
+"already exists. If you continue, it will be deleted."
+msgstr ""
+"Το αρχείο ή ο φάκελος\n"
+"\n"
+"%(folder)s\n"
+"\n"
+"υπάρχει ήδη. Αν συνεχίσετε, αυτό θα διαγράφει."
+
+#: ../devede_convert.py:472
+msgid "Unknown error"
+msgstr "Άγνωστο σφάλμα"
+
+#: ../devede_dvd.py:36
+msgid "Creating DVD tree structure"
+msgstr "Δημιουργία δομής DVD"
+
+#: ../devede_dvd.py:42
+msgid ""
+"Failed to create the DVD tree\n"
+"Maybe you ran out of disk space"
+msgstr ""
+"Αποτυχία δημιουργίας της δομης του DVD\n"
+"Πιθανόν δεν έχετε αρκετό ελεύθερο χώρο στο δίσκο."
+
+#: ../devede_dvdmenu.py:228 ../devede_loadsave.py:212
+msgid "The menu soundtrack seems damaged. Using the default silent soundtrack."
+msgstr ""
+"Το αρχείο soundtrack του μένού υπέστη ζημιά. Θα χρησιμοποιήσει βουβό μενού."
+
+#: ../devede_dvdmenu.py:402 ../devede_xml_menu.py:493
+msgid ""
+"Can't find the menu background.\n"
+"Check the menu options."
+msgstr ""
+"Αποτυχία εύρεσης του υποβάθρου μενού.\n"
+"Ελέξτε τις ρυθμίσεις μενού."
+
+#: ../devede_loadsave.py:78
+msgid "Can't open the file."
+msgstr "Αδυναμία ανοίγματος αρχείου."
+
+#: ../devede_loadsave.py:85 ../devede_loadsave.py:90
+msgid "That file doesn't contain a disc structure."
+msgstr "Αυτό το αρχείο δεν περιέχει δομή δίσκου."
+
+#: ../devede_loadsave.py:99
+msgid "That file doesn't contain a DeVeDe structure."
+msgstr "Αυτό το αρχείο δεν περιέχει δομή DeVeDe."
+
+#: ../devede_loadsave.py:165
+msgid ""
+"Can't find the following movie files. Please, add them and try to load the "
+"disc structure again.\n"
+msgstr ""
+"Αδυναμία εύρεσης των παρακάτω αρχείων ταινίας. Παρακαλώ, προσθέστε τα και "
+"προσπαθήστε να επαναδημιουργήσετε τη δομή του δίσκου.\n"
+
+#: ../devede_loadsave.py:175
+msgid ""
+"Can't find the menu background. I'll open the disc structure anyway with the "
+"default menu background, so don't forget to fix it before creating the disc."
+msgstr ""
+"Αδυναμία εύρεσης εικόνας φόντου για το μενού. Παρόλα αυτά θα η δομή δίσκου "
+"θα χρησιμοποιήσει τη προεπιλεγμένη εικόνα φόντου για το μενού, οπότε μην "
+"ξεχάσετε να το επιδιορθώσετε πριν τη δημιουργία δίσκου."
+
+#: ../devede_loadsave.py:190
+msgid ""
+"Can't find the menu soundtrack file. I'll open the disc structure anyway "
+"with a silent soundtrack, so don't forget to fix it before creating the disc."
+msgstr ""
+"Αδυναμία εύρεσης αρχείου soundtrack για το μενού. Παρόλα αυτά η δομή δίσκου "
+"θα χρησιμοποιήσει βουβό μενού, οπότε μην ξεχάσετε να το επιδιορθώσετε πριν "
+"τη δημιουργία δίσκου."
+
+#: ../devede_loadsave.py:282
+msgid "No filename"
+msgstr "Χωρίς όνομα αρχείου"
+
+#: ../devede_loadsave.py:334
+msgid "Can't save the file."
+msgstr "Αδυναμία αποθήκευσης αρχείου."
+
+#: ../devede_main.py:345
+msgid ""
+"Too many videos for this disc size.\n"
+"Please, select a bigger disc type or remove some videos."
+msgstr ""
+"Πάρα πολλά αρχεία βίντεο για το συγκεκριμένο μέγεθος δίσκου.\n"
+"Παρακαλώ, επιλέξτε δίσκο μεγαλύτερης χωρητικότητας ή αφαιρέστε μερικά αρχεία "
+"βίντεο."
+
+#: ../devede_main.py:406
+msgid ""
+"Some files weren't video files.\n"
+"None added."
+msgstr ""
+"Κάποια από τα αρχεία δεν είναι αρχεία βίντεο.\n"
+"Τίποτε δεν προστέθηκε."
+
+#: ../devede_main.py:455
+#, python-format
+msgid ""
+"Your project contains %(X)d movie files, but the maximum is %(MAX)d. Please, "
+"remove some files and try again."
+msgstr ""
+"Το έργο σας περιέχει %(X)d αρχεία ταινίας, όμως το μέγιστο είναι %(MAX)d. "
+"Παρακαλώ, αφαίρέστε ορισμένα αρχεία και προσπαθήστε ξανά."
+
+#: ../devede_main.py:892
+msgid "no chapters"
+msgstr "δεν υπάρχουν κεφάλαια"
+
+#: ../devede_main.py:952
+msgid "Unsaved disc structure"
+msgstr "Μη αποθηκευμένη δομή δίσκου"
+
+#: ../devede_main.py:1020
+#, python-format
+msgid "Title %(X)d"
+msgstr "Τίτλος %(X)d"
+
+#: ../devede_newfiles.py:486
+msgid "Subtitle"
+msgstr "Υπότιτλοι "
+
+#: ../devede_newfiles.py:489
+msgid "Codepage"
+msgstr "Κωδικοποίηση χαρακτήρων"
+
+#: ../devede_newfiles.py:492
+msgid "Language"
+msgstr "Γλώσσα"
+
+#: ../devede_newfiles.py:566
+msgid "Video files"
+msgstr "Αρχεία βίντεο"
+
+#: ../devede_newfiles.py:573
+msgid "All files"
+msgstr "Όλα τα αρχεία"
+
+#. it's not a video file
+#. it's not a multimedia file
+#: ../devede_newfiles.py:920
+msgid "File doesn't seem to be a video file."
+msgstr "Το εν λόγω αρχείο δεν είναι αρχείο βίντεο."
+
+#: ../devede_newfiles.py:922
+msgid "File seems to be an audio file."
+msgstr "Το εν λόγω αρχείο δεν είναι αρχείο ήχου."
+
+#: ../devede_newfiles.py:1045
+msgid "Please, add only one file each time."
+msgstr "Παρακαλώ, προσθέστε μόνο ένα αρχείο κάθε φορά."
+
+#: ../devede_newfiles.py:1058
+msgid "Please, add a movie file before adding subtitles."
+msgstr ""
+"Παρακαλώ, προσθέστε το αρχείο της ταινίας πρίν από τη προσθήκη των υπότιτλων."
+
+#: ../devede_subtitles.py:61
+msgid "Adding subtitles to"
+msgstr "Προσθήκη υπότιτλων σε"
+
+#: ../devede_subtitles.py:186 ../devede_subtitles.py:197
+msgid ""
+"Conversion failed.\n"
+"It seems a bug of SPUMUX."
+msgstr ""
+"Η μετατροπή απέτυχε.\n"
+"Πιθανό σφάλμα του SPUMUX."
+
+#: ../devede_video_convert.py:90
+msgid ""
+"File copy failed\n"
+"Maybe you ran out of disk space?"
+msgstr ""
+"Απέτυχε η αντιγραφή αρχείου\n"
+"Πιθανόν δεν έχετε επαρκή ελεύθερο χώρο."
+
+#: ../devede_video_convert.py:92
+msgid "Copying the file"
+msgstr "Αντιγραφή αρχείου"
+
+#: ../devede_video_convert.py:94 ../devede_video_convert.py:124
+msgid "Creating preview"
+msgstr "Δημιουργία προεπισκόπισης"
+
+#: ../devede_video_convert.py:121
+#, python-format
+msgid ""
+"Converting files from title %(title_number)s (pass %(pass_number)s)\n"
+"\n"
+"%(file_name)s"
+msgstr ""
+"Μετατροπή αρχείων από τίτλο %(title_number)s (pass %(pass_number)s)\n"
+"\n"
+"%(file_name)s"
+
+#: ../devede_video_convert.py:534
+msgid ""
+"Conversion failed.\n"
+"It seems a bug of Mencoder."
+msgstr ""
+"Η μετατροπή απέτυχε.\n"
+"Πιθανό σφάλμα του Mencoder."
+
+#: ../devede_video_convert.py:536
+msgid "Also check the extra params passed to Mencoder for syntax errors."
+msgstr ""
+"Επίσης, ελέγξτε για συντακτικά λάθη στις πρόσθετες παραμέτρους που "
+"διαβιβάστηκαν από το Mencoder."
+
+#: ../devede_video_convert.py:569
+msgid ""
+"Conversion failed\n"
+"Maybe you ran out of disk space?"
+msgstr ""
+"Η μετατροπή απέτυχε\n"
+"Πιθανόν δεν έχετε επαρκή ελεύθερο χώρο."
+
+#: ../devede_xml_menu.py:42
+msgid "Failed to create the menues."
+msgstr "Απέτυχε η δημιουργία των μενού."
+
+#: ../devede_xml_menu.py:118 ../devede_xml_menu.py:509
+msgid "Menu generation failed."
+msgstr "Απέτυχε η δημιουργία μενού."
+
+#: ../devede_xml_menu.py:125 ../devede_xml_menu.py:518
+msgid ""
+"Can't add the buttons to the menus.\n"
+"It seems a bug of SPUMUX."
+msgstr ""
+"Αδυναμία προσθήκης πλήκτρων επιλογής στα μενού.\n"
+"Πιθανό λάθος στο SPUMUX."
+
+#: ../devede_xml_menu.py:484
+#, python-format
+msgid "Creating menu %(menu_number)d"
+msgstr "Δημιουργία μενού %(menu_number)d"
+
+#: ../interface/wno_mp3lame.ui.h:1
+msgid ""
+"Your FFMPEG version is compiled\n"
+"without MP3LAME support, so\n"
+"Devede can't create DivX.\n"
+"\n"
+"Recompile your FFMPEG code, or\n"
+"install a version with MP3LAME\n"
+"support."
+msgstr ""
+
+#: ../interface/use_ffmpeg.ui.h:1
+msgid ""
+"This version of Devede allows to use FFMPEG instead\n"
+"of Mencoder for movie conversion. This code is still\n"
+"EXPERIMENTAL, but quite complete.\n"
+"\n"
+"If you see glitches in the video when using FFMPEG, try\n"
+"to disable the multicore support before filling a bug.\n"
+"\n"
+"To test this mode, active it in Edit->Preferences"
+msgstr ""
+
+#: ../interface/use_ffmpeg.ui.h:9
+msgid "Don't show this message at startup again"
+msgstr ""
+
+#: ../interface/settings.ui.h:1
+msgid "Erase temporary files"
+msgstr "Διαγραφή προσωρινών αρχείων"
+
+#: ../interface/settings.ui.h:2
+msgid "Use optimizations for multicore CPUs"
+msgstr "Βελτιστοποίηση λειτουργίας για χρήση σε πολυπύρηνους επεξεργαστές"
+
+#: ../interface/settings.ui.h:3
+msgid "Don't use hyperthreading"
+msgstr ""
+
+#: ../interface/settings.ui.h:4
+msgid "Use FFMPEG instead of Mencoder for videos"
+msgstr ""
+
+#: ../interface/settings.ui.h:5
+msgid "Use FFMPEG instead of Mencoder for menu"
+msgstr ""
+
+#: ../interface/settings.ui.h:6
+msgid "<b>Options</b>"
+msgstr "<b>Ρυθμίσεις</b>"
+
+#: ../interface/settings.ui.h:7
+msgid "Temporary files folder:"
+msgstr "Φάκελος προσωρινών αρχείων:"
+
+#: ../interface/settings.ui.h:8
+msgid "Folder for temporary file"
+msgstr "Φάκελος για το προσωρινό αρχείο"
+
+#: ../interface/settings.ui.h:9
+#, fuzzy
+msgid "<b>Folders</b>"
+msgstr "<b>Αρχεία</b>"
+
+#: ../interface/settings.ui.h:10
+msgid ""
+"AC3_FIXED workaround to fix discs without sound when using Mencoder beta"
+msgstr ""
+
+#: ../interface/settings.ui.h:11
+#, fuzzy
+msgid "<b>Workarounds</b>"
+msgstr "<b>Περιστροφή</b>"
+
+#: ../interface/add_subtitle2.ui.h:1 ../interface/add_subtitle.ui.h:2
+msgid "File: "
+msgstr "Αρχείο: "
+
+#: ../interface/add_subtitle2.ui.h:2 ../interface/add_subtitle.ui.h:4
+msgid "Clear"
+msgstr "Καθαρός"
+
+#: ../interface/add_subtitle2.ui.h:3 ../interface/add_subtitle.ui.h:6
+msgid "Encoding: "
+msgstr "Κωδικοποίηση:"
+
+#: ../interface/add_subtitle2.ui.h:4 ../interface/add_subtitle.ui.h:5
+msgid "Language: "
+msgstr "Γλώσσα: "
+
+#: ../interface/add_subtitle2.ui.h:5 ../interface/add_subtitle.ui.h:7
+msgid "Put subtitles upper"
+msgstr "Τοποθέτηση υπότιτλων από πάνω"
+
+#: ../interface/add_subtitle.ui.h:1
+msgid "Add subtitles"
+msgstr "Προσθήκη υπότιτλων "
+
+#: ../interface/add_subtitle.ui.h:3
+msgid "Choose a file"
+msgstr "Επιλογή αρχείου"
+
+#: ../interface/waborted_dialog.ui.h:1
+msgid "Aborted. There can be temporary files at the destination directory."
+msgstr "Διεκόπη. Τα προσωρινά αρχεία ίσως παραμένουν στο φάκελο προορισμού."
+
+#: ../interface/wcancel_dialog.ui.h:1
+msgid "Exit DeVeDe"
+msgstr "Έξοδος από DeVeDe"
+
+#: ../interface/wcancel_dialog.ui.h:2
+msgid "Abort the current DVD and exit?"
+msgstr "Διακοπη των εργασιων δημιουργίας δίσκου και έξοδος;"
+
+#: ../interface/wcancel_job_dialog.ui.h:1
+msgid "Cancel job?"
+msgstr "Ακύρωση έργου;"
+
+#: ../interface/wdel_chapter_dialog.ui.h:1
+msgid "Delete chapter"
+msgstr "Διαγραφή κεφαλαίου"
+
+#: ../interface/wdel_chapter_dialog.ui.h:2
+msgid ""
+"You chose to delete this chapter and\n"
+"reorder the other ones:"
+msgstr ""
+"Επιλέξατε τη διαγραφή αυτού του κεφαλαίου και\n"
+"αναδιοργάνωση του άλλου:"
+
+#: ../interface/wdel_chapter_dialog.ui.h:4
+#: ../interface/wdel_title_dialog.ui.h:4
+msgid "Proceed?"
+msgstr "Να συνεχίσω;"
+
+#: ../interface/wdel_subtitle.ui.h:1
+msgid "Delete subtitle"
+msgstr "Διαγραφή υπότιτλων"
+
+#: ../interface/wdel_subtitle.ui.h:2
+msgid "Remove the selected subtitle file?"
+msgstr "Να αφαιρεθεί το επιλεγμένο αρχείο υποτίτλων;"
+
+#: ../interface/wdel_title_dialog.ui.h:1
+msgid "Delete title"
+msgstr "Διαγραφή τίτλου"
+
+#: ../interface/wdel_title_dialog.ui.h:2
+msgid ""
+"You chose to delete this title and\n"
+"reorder the other ones:"
+msgstr ""
+"Επιλέγετε τη διαγραφή αυτού του τίτλου και\n"
+"αναδιοργάνωση του άλλου:"
+
+#: ../interface/wdisk_type.ui.h:1
+msgid "Disc type selection"
+msgstr "Επιλογή του τύπου δίσκου"
+
+#: ../interface/wdisk_type.ui.h:2
+msgid "<b>Choose the disc type you want to create with DeVeDe</b>"
+msgstr ""
+"<b>Επιλέξτε τον τύπο του δίσκου που θέλετε να δημιουργήσετε με το DeVeDe</b>"
+
+#: ../interface/wdisk_type.ui.h:3
+msgid ""
+"<b>Video DVD</b>\n"
+"Creates a video DVD suitable for all DVD home players"
+msgstr ""
+"<b>Video DVD</b>\n"
+"Δημιουργία video DVD, συμβατού με όλους τους οικιακούς αναπαραγωγείς"
+
+#: ../interface/wdisk_type.ui.h:5
+msgid ""
+"<b>VideoCD</b>\n"
+"Creates a VideoCD, with a picture quality equivalent to VHS"
+msgstr ""
+"<b>VideoCD</b>\n"
+"Δημιουργία VideoCD, με ποιότητα εικόνας ισοδύναμης με VHS"
+
+#: ../interface/wdisk_type.ui.h:7
+msgid ""
+"<b>Super VideoCD</b>\n"
+"Creates a VideoCD with better picture quality"
+msgstr ""
+"<b>Super VideoCD</b>\n"
+"Δημιουργία VideoCD, με τη μέγιστη δυνατή ποιότητα εικόνας"
+
+#: ../interface/wdisk_type.ui.h:9
+msgid ""
+"<b>China VideoDisc</b>\n"
+"Another kind of Super VideoCD"
+msgstr ""
+"<b>China VideoDisc</b>\n"
+"Μία άλλη μορφή Super VideoCD"
+
+#: ../interface/wdisk_type.ui.h:11
+msgid ""
+"<b>DivX / MPEG-4</b>\n"
+"Creates files compliant with DivX home players"
+msgstr ""
+"<b>DivX / MPEG-4</b>\n"
+"Δημιουργία αρχείων συμβατών με οικιακό αναπαραγωγέα πολυμέσων DivX "
+
+#: ../interface/wempty_titles_dialog.ui.h:1
+msgid ""
+"Your DVD structure contains empty titles.\n"
+"Continue anyway?"
+msgstr ""
+"Η δομή του DVD σας περιέχει κενούς τίτλους.\n"
+"Παρόλα αυτά να συνεχιστει;"
+
+#. Means: "Burn the ISO image in a CD/DVD"
+#: ../interface/wend_dialog.ui.h:2
+msgctxt "Means: "
+msgid "Burn"
+msgstr ""
+
+#: ../interface/wend_dialog.ui.h:3
+msgid "Job done!"
+msgstr "Το έργο ολοκληρώθηκε!"
+
+#: ../interface/werase_dialog.ui.h:1
+msgid "Delete current disc structure?"
+msgstr "Διαγραφή της τρέχουσας δομής δίσκου;"
+
+#: ../interface/werase_dialog.ui.h:2
+msgid "Delete the current disc structure and start again?"
+msgstr "Διαγραφή της τρέχουσας δομής δίσκου και ξεκίνημα από την αρχή;"
+
+#: ../interface/werror_dialog.ui.h:1 ../interface/wprograms.ui.h:1
+msgid "Error"
+msgstr "Σφάλμα"
+
+#: ../interface/wfile.ui.h:1
+msgid "File properties"
+msgstr "Ιδιότητες αρχείου"
+
+#: ../interface/wfile.ui.h:2
+msgid "<b>File</b>"
+msgstr "<b>Αρχείο</b>"
+
+#: ../interface/wfile.ui.h:3 ../interface/wmain.ui.h:15
+msgid "Frames per second: "
+msgstr "Καρέ ανά δευτερόλεπτο: "
+
+#: ../interface/wfile.ui.h:4
+msgid "Original length (seconds): "
+msgstr "Αρχικό μήκος (δευτερόλεπτα): "
+
+#: ../interface/wfile.ui.h:5
+msgid "Original audio rate (Kbits/sec):"
+msgstr "Αρχικός ρυθμός ήχου (Kbits/sec):"
+
+#: ../interface/wfile.ui.h:6
+msgid "Original video rate (Kbits/sec):"
+msgstr "Αρχικός ρυθμός βίντεο (Kbits/sec):"
+
+#: ../interface/wfile.ui.h:7 ../interface/wmain.ui.h:20
+msgid "Original size (pixels): "
+msgstr "Αρχικό μέγεθος (εικονοστοιχεία): "
+
+#: ../interface/wfile.ui.h:8 ../interface/wmain.ui.h:16
+msgid "Final size (pixels):"
+msgstr "Τελικό μέγεθος (εικονοστοιχεία):"
+
+#: ../interface/wfile.ui.h:9
+msgid "Estimated final length (MBytes): "
+msgstr "Εκτιμώμενο τελικό μέγεθος (MBytes):"
+
+#: ../interface/wfile.ui.h:10 ../interface/wmain.ui.h:24
+msgid "<b>File info</b>"
+msgstr "<b>Πληροφορίες αρχείου</b>"
+
+#: ../interface/wfile.ui.h:11
+msgid "PAL/SECAM"
+msgstr "PAL/SECAM"
+
+#: ../interface/wfile.ui.h:12 ../interface/wmain.ui.h:31
+msgid "NTSC"
+msgstr "NTSC"
+
+#: ../interface/wfile.ui.h:13
+msgid "<b>Video format</b>"
+msgstr "<b>Μορφή βίντεο</b>"
+
+#: ../interface/wfile.ui.h:14
+msgid "Audio track: "
+msgstr "Κομμάτι ήχου: "
+
+#: ../interface/wfile.ui.h:15
+msgid "This video file has no audio tracks."
+msgstr "Το βίντεο αυτό δεν περιέχει κανένα κομμάτι ήχου"
+
+#: ../interface/wfile.ui.h:16
+msgid "<b>Audio tracks</b>"
+msgstr "<b>Κομμάτια ήχου</b>"
+
+#: ../interface/wfile.ui.h:17
+msgid "Reset"
+msgstr "Επαναφορά"
+
+#: ../interface/wfile.ui.h:19
+#, no-c-format
+msgid "Resets the volume to 100%"
+msgstr "Επαναφορά έντασης σε 100%"
+
+#: ../interface/wfile.ui.h:21
+#, no-c-format
+msgid "<b>Volume (%)</b>"
+msgstr "<b>Ένταση</b>"
+
+#: ../interface/wfile.ui.h:22
+msgid "Store full length"
+msgstr "Αποθήκευση πλήρους μεγέθους"
+
+#: ../interface/wfile.ui.h:23
+msgid "Store the first half"
+msgstr "Αποθήκευση πρώτου μισού"
+
+#: ../interface/wfile.ui.h:24
+msgid "Store the second half"
+msgstr "Αποθήκευση δεύτερου μισού"
+
+#: ../interface/wfile.ui.h:25
+msgid "<b>File split</b>"
+msgstr "<b>Τεμαχισμός αρχείου</b>"
+
+#: ../interface/wfile.ui.h:26
+msgid "Font size:"
+msgstr "Μέγεθος γραμμάτοσειράς: "
+
+#: ../interface/wfile.ui.h:27
+msgid "Force subtitles"
+msgstr "Ενίσχυση υπότιτλων "
+
+#: ../interface/wfile.ui.h:28
+msgid "DivX format doesn't support subtitles. Please, read the FAQ."
+msgstr ""
+"Η μορφή DivX δεν υποστηρίζει υπότιτλους. Παρακαλώ, διαβάστε την τεκμηρίωση."
+
+#: ../interface/wfile.ui.h:29
+msgid "<b>Subtitles</b>"
+msgstr "<b>Υπότιτλοι</b>"
+
+#: ../interface/wfile.ui.h:30
+msgid "<b>Video rate (Kbits/sec)</b>"
+msgstr "<b>Ρυθμός βίντεο (Kbits/sec)</b>"
+
+#: ../interface/wfile.ui.h:31
+msgid "<b>Audio rate (Kbits/sec)</b>"
+msgstr "<b>Ρυθμός ροής ήχου (Kbits/sec)</b>"
+
+#: ../interface/wfile.ui.h:32
+msgid "Split the file in chapters (for easy seeking)"
+msgstr "Τεμαχισμός αρχείου σε κεφάλαια (για εύκολη θέαση)"
+
+#: ../interface/wfile.ui.h:33
+msgid "Size (in minutes) for each chapter: "
+msgstr "Μέγεθος κάθε κεφαλαίου (σε λεπτά): "
+
+#: ../interface/wfile.ui.h:34
+msgid "<b>Division in chapters</b>"
+msgstr "<b>Διαίρεση σε κεφάλαια</b>"
+
+#: ../interface/wfile.ui.h:35
+msgid "General"
+msgstr "Γενικές"
+
+#: ../interface/wfile.ui.h:36
+msgid "352x240"
+msgstr "352x240"
+
+#: ../interface/wfile.ui.h:37
+msgid "Default"
+msgstr "Προεπιλογή"
+
+#: ../interface/wfile.ui.h:38
+msgid "352x480"
+msgstr "352x480"
+
+#: ../interface/wfile.ui.h:39
+msgid "480x480"
+msgstr "480x480"
+
+#: ../interface/wfile.ui.h:40
+msgid "720x480"
+msgstr "720x480"
+
+#: ../interface/wfile.ui.h:41
+msgid "704x480"
+msgstr "704x480"
+
+#: ../interface/wfile.ui.h:42
+msgid "1920x1080"
+msgstr "1920x1080"
+
+#: ../interface/wfile.ui.h:43
+msgid "1280x720"
+msgstr "1280x720"
+
+#: ../interface/wfile.ui.h:44
+msgid "160x128"
+msgstr "160x128"
+
+#: ../interface/wfile.ui.h:45
+msgid "<b>Final size</b>"
+msgstr "<b>Τελικό μέγεθος</b>"
+
+#: ../interface/wfile.ui.h:46
+msgid "4:3"
+msgstr "4:3"
+
+#: ../interface/wfile.ui.h:47
+msgid "16:9"
+msgstr "16:9"
+
+#: ../interface/wfile.ui.h:48
+msgid "<b>Aspect ratio</b>"
+msgstr "<b>Λόγος θέασης</b>"
+
+#: ../interface/wfile.ui.h:49
+msgid "Video format"
+msgstr "Μορφοποίηση βίντεο"
+
+#: ../interface/wfile.ui.h:50
+msgid "No rotation"
+msgstr "Χωρίς περιστροφή"
+
+#: ../interface/wfile.ui.h:51
+msgid "Rotate 180 degrees"
+msgstr "Περιστροφή 180 μοιρών"
+
+#: ../interface/wfile.ui.h:52
+msgid "Rotate 90 degrees clockwise"
+msgstr "Περιστροφή 90 μοιρών προς τα δεξιά"
+
+#: ../interface/wfile.ui.h:53
+msgid "Rotate 90 degrees counter-clockwise"
+msgstr "Περιστροφή 90 μοιρών προς τ' αριστερά"
+
+#: ../interface/wfile.ui.h:54
+msgid "<b>Rotation</b>"
+msgstr "<b>Περιστροφή</b>"
+
+#: ../interface/wfile.ui.h:55
+msgid "Horizontal mirror"
+msgstr "Οριζόντιος κατοπτρισμός"
+
+#: ../interface/wfile.ui.h:56
+msgid "Vertical mirror"
+msgstr "Κάθετος κατοπρισμός"
+
+#: ../interface/wfile.ui.h:57
+msgid "<b>Mirror</b>"
+msgstr "<b>Κατοπτρισμός</b>"
+
+#: ../interface/wfile.ui.h:58
+msgid "Swap fields"
+msgstr "Ανταλλαγή πεδίων"
+
+#: ../interface/wfile.ui.h:59
+msgid "<b>Field order</b>"
+msgstr "<b>Σειρά πεδίου</b>"
+
+#: ../interface/wfile.ui.h:60
+msgid "Add black bars"
+msgstr "Προσθήκη μαύρων λορίδων"
+
+#: ../interface/wfile.ui.h:61
+msgid "Scale picture"
+msgstr "Κλιμάκωση εικόνας"
+
+#: ../interface/wfile.ui.h:62
+msgid "<b>Scaling mode</b>"
+msgstr "<b>Κατάσταση κλιμάκωσης</b>"
+
+#: ../interface/wfile.ui.h:63
+msgid "Video options"
+msgstr "Επιλογές βίντεο"
+
+#: ../interface/wfile.ui.h:64
+msgid "Use MBCMP (faster)"
+msgstr "Χρήση του MBCMP (συντομότερο)"
+
+#: ../interface/wfile.ui.h:65
+msgid "Select MBD mode which needs the fewest bits"
+msgstr "Επιλογή λειτουργίας ΜΒD που απαιτεί τα λιγότερα bits"
+
+#: ../interface/wfile.ui.h:66
+msgid "Select the MBD mode which has the best rate distortion (better quality)"
+msgstr ""
+"Επιλογή λειτουργίας ΜΒD με καλύτερη παραμόρφωση ρυθμού (καλύτερη ποιότητα)"
+
+#: ../interface/wfile.ui.h:67
+msgid "Use Trellis Searched Quantization (better quality, slower conversion)"
+msgstr ""
+"Χρήση του Trellis Searched Quantization (καλύτερη ποιότητα, αργή μετατροπή)"
+
+#: ../interface/wfile.ui.h:68
+#, fuzzy
+msgid "<b>MacroBlock decision algorithm and Trellis searched quantization</b>"
+msgstr "<b>Αλγόριθμος MacroBlock decision</b>"
+
+#: ../interface/wfile.ui.h:69
+msgid "Use dual pass encoding (better quality, much slower conversion)"
+msgstr "Κωδικοποίηση σε δύο περάσματα(καλύτερη ποιότητα, αργή μετατροπή)"
+
+#: ../interface/wfile.ui.h:70
+msgid "Turbo 1st pass"
+msgstr "Ενισχυμένο 1ο πέρασμα"
+
+#: ../interface/wfile.ui.h:71
+msgid "<b>Two pass encoding</b>"
+msgstr "<b>Κωδικοποίηση δύο σταδίων</b>"
+
+#: ../interface/wfile.ui.h:72
+msgid "Median deinterlacing filter"
+msgstr "Μεσαίο φίλτρο απόπλεξης"
+
+#: ../interface/wfile.ui.h:73
+msgid "Don't deinterlace"
+msgstr "Να μη γίνει απόπλεξη"
+
+#: ../interface/wfile.ui.h:74
+msgid "YADIF deinterlacing filter"
+msgstr "YADIF φίλτρο απόπλεξης"
+
+#: ../interface/wfile.ui.h:75
+msgid "FFMpeg deinterlacing filter"
+msgstr "FFMpeg φίλτρο απόπλεξης"
+
+#: ../interface/wfile.ui.h:76
+msgid "Linear blend"
+msgstr "Γραμμική απόπλεξη"
+
+#: ../interface/wfile.ui.h:77
+msgid "Lowpass5 deinterlacing filter"
+msgstr "Lowpass5 φίλτρο απόπλεξης"
+
+#: ../interface/wfile.ui.h:78
+msgid "<b>Deinterlacing</b>"
+msgstr "<b>Απόπλεξη</b>"
+
+#: ../interface/wfile.ui.h:79
+msgid "Quality"
+msgstr "Ποιότητα"
+
+#: ../interface/wfile.ui.h:80
+msgid "Audio delay (in seconds):"
+msgstr "Καθυστέρηση ήχου (σε δευτερολεπτα):"
+
+#: ../interface/wfile.ui.h:81
+msgid "Create DVD with 5.1 channel sound"
+msgstr "Δημιουργία DVD μέ ήχο 5.1 καναλιών"
+
+#: ../interface/wfile.ui.h:82
+msgid ""
+"This file already has AC3 sound (copy audio data instead of recompress it)"
+msgstr ""
+"Αυτό το αρχείο περιέχει ήδη AC3 ήχο (αντιγραφή των αρχείων ήχου και όχι "
+"επανασυμπίεση τους)"
+
+#: ../interface/wfile.ui.h:83
+msgid "<b>Audio</b>"
+msgstr "<b>Ήχος</b>"
+
+#: ../interface/wfile.ui.h:84
+msgid "Audio"
+msgstr "Ήχος"
+
+#: ../interface/wfile.ui.h:85
+msgid "This file is already a DVD/xCD-suitable MPEG-PS file"
+msgstr "Αυτό το αρχείο είναι ήδη DVD/xCD-προσαρμόσιμο MPEG-PS αρχείο."
+
+#: ../interface/wfile.ui.h:86
+msgid "Repack audio and video without reencoding (useful for VOB files)"
+msgstr ""
+"Πακετάρισμα ήχου και εικόνας χωρίς επανακωδικοποίηση (χρήσιμο για VOB αρχεία)"
+
+#: ../interface/wfile.ui.h:87
+msgid "Use a GOP of 12 frames (improves compatibility)"
+msgstr "Χρήση του GOP των 12 καρέ (βελτίωση συμβατότητας)"
+
+#: ../interface/wfile.ui.h:88
+msgid "<b>Special</b>"
+msgstr "<b>Ειδικές</b>"
+
+#: ../interface/wfile.ui.h:89
+msgid "Main (-X -Y)"
+msgstr "Κύριες (-X -Y)"
+
+#: ../interface/wfile.ui.h:90
+msgid "-VF (X,Y)"
+msgstr "-VF (X,Y)"
+
+#: ../interface/wfile.ui.h:91
+msgid "-LAVCOPTS (X:Y)"
+msgstr "-LAVCOPTS (X:Y)"
+
+#: ../interface/wfile.ui.h:92
+msgid "-LAMEOPTS (X:Y)"
+msgstr "-LAMEOPTS (X:Y)"
+
+#: ../interface/wfile.ui.h:93
+#, fuzzy
+msgid "<b>Extra parameters for coder</b>"
+msgstr "<b>Πρόσθετες παράμετροι για το Mencoder</b>"
+
+#: ../interface/wfile.ui.h:94
+msgid "Misc"
+msgstr "Πρόσθετες"
+
+#: ../interface/wfile.ui.h:95 ../interface/wmain.ui.h:41
+msgid "Advanced options"
+msgstr "Εξειδικευμένες ρυθμίσεις"
+
+#: ../interface/wfile.ui.h:96 ../interface/wmain.ui.h:13
+msgid "Preview"
+msgstr "Προεπισκόπιση"
+
+#: ../interface/wfolder_dialog.ui.h:1
+msgid ""
+"Choose the folder where DeVeDe will create the DVD image and a name for it. "
+"Don't use a folder in a VFAT/FAT32 drive. Characters /, | and \\ are not "
+"allowed and will be replaced by underscores."
+msgstr ""
+"Επιλέξτε το φάκελο όπου DeVeDe θα δημιουργήσει το εικονικό αρχείο DVD και "
+"όνομα για το αρχείο αυτό. Μη χρησιμοποιήσετε φακέλους με σύστημα αρχείων "
+"VFAT/FAT32.Αποφεύγετε ειδικούς χαρακτήρες /, | και \\ που θα αντικαθίστανται "
+"με underscores."
+
+#: ../interface/wfolder_dialog.ui.h:2
+#, fuzzy
+msgid "Choose a folder"
+msgstr "Επιλογή αρχείου"
+
+#: ../interface/wfolder_dialog.ui.h:3
+msgid "Shutdown computer when disc is done"
+msgstr ""
+
+#: ../interface/wloadconfig.ui.h:1
+msgid "Load a disc structure"
+msgstr "Φόρτωση δομής δίσκου"
+
+#: ../interface/wloosecurrent.ui.h:1
+msgid "Warning: you already have a disc structure"
+msgstr "Προειδοποίηση: Έχετε ήδη τη δομή του δίσκου"
+
+#: ../interface/wloosecurrent.ui.h:2
+msgid ""
+"If you load a disc structure you will loose your current structure (unless "
+"you saved it). Continue?"
+msgstr ""
+"Αν φορτώσετε τη δομή του δίσκου, θα χαθεί η τρέχουσα δομή (εκτός αν "
+"αποθηκευτεί). Θα συνεχίσετε;"
+
+#: ../interface/wmain.ui.h:1
+msgid "185 MB CD"
+msgstr "185 MB CD"
+
+#: ../interface/wmain.ui.h:2
+msgid "650 MB CD"
+msgstr "650 MB CD"
+
+#: ../interface/wmain.ui.h:3
+msgid "700 MB CD"
+msgstr "700 MB CD"
+
+#: ../interface/wmain.ui.h:4
+msgid "1.4 GB DVD"
+msgstr "1.4 GB DVD"
+
+#: ../interface/wmain.ui.h:5
+msgid "4.7 GB DVD"
+msgstr "4.7 GB DVD"
+
+#: ../interface/wmain.ui.h:6
+msgid "8.5 GB DVD"
+msgstr "8.5 GB DVD"
+
+#: ../interface/wmain.ui.h:7
+msgid "DeVeDe"
+msgstr "DeVeDe"
+
+#: ../interface/wmain.ui.h:8
+msgid "_File"
+msgstr "_Αρχείο"
+
+#: ../interface/wmain.ui.h:9
+msgid "_Edit"
+msgstr ""
+
+#: ../interface/wmain.ui.h:10
+msgid "_Preferences"
+msgstr ""
+
+#: ../interface/wmain.ui.h:11
+msgid "_Help"
+msgstr "_Βοήθεια"
+
+#: ../interface/wmain.ui.h:12
+msgid "<b>Titles</b>"
+msgstr "<b>Τίτλοι</b>"
+
+#: ../interface/wmain.ui.h:14
+msgid "<b>Files</b>"
+msgstr "<b>Αρχεία</b>"
+
+#: ../interface/wmain.ui.h:17
+msgid "Length (seconds): "
+msgstr "Μέγεθος (δευτερόλεπτα): "
+
+#: ../interface/wmain.ui.h:18
+msgid "Video rate (Kbits/sec): "
+msgstr "Ρυθμός βίντεο (Kbits/sec):"
+
+#: ../interface/wmain.ui.h:19
+msgid "Audio rate (Kbits/sec): "
+msgstr "Ρυθμός ήχου (Kbits/sec):"
+
+#: ../interface/wmain.ui.h:21
+msgid "Estimated length (MBytes): "
+msgstr "Εκτιμώμενο μέγεθος (MBytes):"
+
+#: ../interface/wmain.ui.h:22
+msgid "Output aspect ratio:"
+msgstr "Λόγος πλάτους/ύψος εξόδου:"
+
+#: ../interface/wmain.ui.h:23
+msgid "Size of chapters:"
+msgstr "Μέγεθος κεφαλαίων:"
+
+#: ../interface/wmain.ui.h:25
+msgid "Adjust disc usage"
+msgstr "Προσαρμογή δίσκου"
+
+#: ../interface/wmain.ui.h:27
+#, no-c-format
+msgid "0.0%"
+msgstr "0.0%"
+
+#: ../interface/wmain.ui.h:28
+msgid " Media size: "
+msgstr " Μέγεθος μέσου: "
+
+#: ../interface/wmain.ui.h:29
+msgid "<b>Disc usage</b>"
+msgstr "<b>Χρήση δίσκου</b>"
+
+#: ../interface/wmain.ui.h:30
+msgid "PAL"
+msgstr "PAL"
+
+#: ../interface/wmain.ui.h:32
+msgid "<b>Default format</b>"
+msgstr "<b>Προεπιλεγμένη μορφή</b>"
+
+#: ../interface/wmain.ui.h:33
+#, fuzzy
+msgid "Create a menu with the titles"
+msgstr "Προσθήκη των μενού με τίτλους"
+
+#: ../interface/wmain.ui.h:34
+msgid "Menu options"
+msgstr "Επιλογές μενού"
+
+#: ../interface/wmain.ui.h:35 ../interface/wmenu_properties.ui.h:31
+msgid "Preview menu"
+msgstr "Προεπισκόπιση μενού"
+
+#: ../interface/wmain.ui.h:36
+msgid "<b>Menus</b>"
+msgstr "<b>Μενού</b>"
+
+#: ../interface/wmain.ui.h:37
+msgid "Only convert film files to compliant MPEG files"
+msgstr "Μετατροπή μόνο των αρχείων της ταινίας σε αρχεία MPEG"
+
+#: ../interface/wmain.ui.h:38
+msgid "Create disc structure"
+msgstr "Δημιουργία δομής δίσκου"
+
+#: ../interface/wmain.ui.h:39
+msgid "Create an ISO or BIN/CUE image, ready to burn to a disc"
+msgstr "Δημιουργία εικόνων ISO ή BIN/CUE, για εγγραφή σε δίσκο"
+
+#: ../interface/wmain.ui.h:40
+msgid "<b>Action</b>"
+msgstr "<b>Ενέργεια</b>"
+
+#: ../interface/wmenu_preview_ntsc.ui.h:1
+#: ../interface/wmenu_preview_pal.ui.h:1
+msgid "Menu preview"
+msgstr "Προεπισκόπιση μενού"
+
+#: ../interface/wmenu_properties.ui.h:1
+msgid "Shadow color: "
+msgstr "Χρώμα σκιών:"
+
+#: ../interface/wmenu_properties.ui.h:2
+msgid "Text color: "
+msgstr "Χρώμα κειμένου:"
+
+#: ../interface/wmenu_properties.ui.h:3
+msgid "Text: "
+msgstr "Κείμενο:"
+
+#: ../interface/wmenu_properties.ui.h:4
+msgid "Font: "
+msgstr "Γραμματοσειρά: "
+
+#: ../interface/wmenu_properties.ui.h:5
+msgid "<b>Menu title</b>"
+msgstr "<b>Τίτλος μενού</b>"
+
+#: ../interface/wmenu_properties.ui.h:6
+msgid "Select a picture to be used as background for disc's menu"
+msgstr "Επιλογή εικόνας γιά φόντο του μενού δίσκου"
+
+#: ../interface/wmenu_properties.ui.h:7
+msgid "Set default background"
+msgstr "Εφαρμογή προεπιλεγμένου φόντου"
+
+#: ../interface/wmenu_properties.ui.h:8
+msgid "<b>Menu background (only PNG)</b>"
+msgstr "<b>Εικόνα φόντου για το μενού (μόνο εικόνες PNG)</b>"
+
+#: ../interface/wmenu_properties.ui.h:9
+msgid "Choose a music file"
+msgstr "Επιλογή αρχείου μουσικής"
+
+#: ../interface/wmenu_properties.ui.h:10
+msgid "Set menus without sound"
+msgstr "Εφαρμογή βουβού μενού"
+
+#: ../interface/wmenu_properties.ui.h:11
+msgid "<b>Menu music</b>"
+msgstr "<b>Μουσική για το μενού</b>"
+
+#: ../interface/wmenu_properties.ui.h:12
+#, fuzzy
+msgid "<b>Horizontal</b>"
+msgstr "<b>Οριζόντια στοίχιση</b>"
+
+#: ../interface/wmenu_properties.ui.h:13
+#, fuzzy
+msgid "<b>Vertical</b>"
+msgstr "<b>Ειδικές</b>"
+
+#: ../interface/wmenu_properties.ui.h:14
+msgid "Top"
+msgstr "Κορυφή"
+
+#: ../interface/wmenu_properties.ui.h:15
+msgid "Middle"
+msgstr "Μέση"
+
+#: ../interface/wmenu_properties.ui.h:16
+msgid "Bottom"
+msgstr "Πυθμένα"
+
+#: ../interface/wmenu_properties.ui.h:17
+msgid "Left"
+msgstr "Αριστερά"
+
+#: ../interface/wmenu_properties.ui.h:18
+msgid "Center"
+msgstr "Κέντρο"
+
+#: ../interface/wmenu_properties.ui.h:19
+msgid "Right"
+msgstr "Δεξιά"
+
+#: ../interface/wmenu_properties.ui.h:21
+#, fuzzy, no-c-format
+msgid "<b>Margins (%)</b>"
+msgstr "<b>Μενού</b>"
+
+#: ../interface/wmenu_properties.ui.h:22
+msgid "<b>Menu position</b>"
+msgstr "<b>Θέση μενού</b>"
+
+#: ../interface/wmenu_properties.ui.h:23
+msgid "Color for unselected titles: "
+msgstr "Χρώμα αποεπιλεγμένων τίτλων: "
+
+#: ../interface/wmenu_properties.ui.h:24
+msgid "Color for shadows: "
+msgstr "Χρώμα σκιών: "
+
+#: ../interface/wmenu_properties.ui.h:25
+msgid "Color for selected title: "
+msgstr "Χρώμα επιλεγμένου τίτλου:"
+
+#: ../interface/wmenu_properties.ui.h:26
+msgid "Background color for titles: "
+msgstr "Χρώμα φόντου τίτλων:"
+
+#: ../interface/wmenu_properties.ui.h:27
+msgid "<b>Menu font and colors</b>"
+msgstr "<b>Γραμματοσειρά και χρώματα μενού</b>"
+
+#: ../interface/wmenu_properties.ui.h:28
+msgid "Show menu at disc startup"
+msgstr "Προβολή μενού κατά την εκκίνηση δίσκου"
+
+#: ../interface/wmenu_properties.ui.h:29
+msgid "Jump to the first title at startup"
+msgstr "Μετάβαση στον πρώτο τίτλο κατά την εκκίνηση"
+
+#: ../interface/wmenu_properties.ui.h:30
+msgid "<b>Disc startup options</b>"
+msgstr "<b>Επιλογές εκκίνησης δίσκου</b>"
+
+#: ../interface/wnofonts.ui.h:1
+msgid "Can't find the font for subtitles. Aborting."
+msgstr "Αδυναμία εύρεσης γραμματοσειράς για τους υπότιτλους. Απόρριψη."
+
+#: ../interface/wpreviewagain_dialog.ui.h:1
+msgid "Replay the preview again?"
+msgstr "Επανάληψη αναπαραγωγής προεπισκόπισης;"
+
+#: ../interface/wpreview_dialog.ui.h:1
+msgid "<b>Preview video</b>"
+msgstr "<b>Προεπισκόπηση βίντεο</b>"
+
+#: ../interface/wpreview_dialog.ui.h:2
+msgid ""
+"DeVeDe will create a preview with the selected parameters, so you will be "
+"able to check video quality, audio sync and so on."
+msgstr ""
+"Το  DeVeDe θα δημιουργήσει προβολή με τις επιλεγμένες παραμέτρους, έτσι θα "
+"είστε σε θέση να ελέγξετε και να ρυθμίσετε την τηλεοπτική ποιότητα, τον "
+"ήχου, τον συγχρονισμό και τα λοιπά στοιχεία του βίντεο."
+
+#: ../interface/wpreview_dialog.ui.h:3
+msgid "Preview length:"
+msgstr "Προεπισκόπιση μεγέθους:"
+
+#: ../interface/wprograms.ui.h:2
+msgid "Can't find the following programs:"
+msgstr "Δεν μπορούν να βρεθούν τα εξής προγράμματα:"
+
+#: ../interface/wprograms.ui.h:3
+msgid ""
+"DeVeDe needs them in order to work. If you want to use DeVeDe, you must "
+"install all of them."
+msgstr ""
+"Απαιτούνται για τη λειτουργία του DeVeDe. Αν θέλετε να χρησιμοποιείτε το "
+"DeVeDe, πρέπει να τα εγκαταστήσετε όλα."
+
+#: ../interface/wprogress.ui.h:1
+msgid "Creating..."
+msgstr "Δημιουργία..."
+
+#: ../interface/wsaveconfig.ui.h:1
+msgid "Save current disc structure"
+msgstr "Αποθήκευση τρέχουσας δομής δίσκου"
+
+#: ../interface/wtitle_properties_dialog.ui.h:1
+msgid "Title properties"
+msgstr "Ιδιότιτες τίτλου"
+
+#: ../interface/wtitle_properties_dialog.ui.h:2
+msgid "<b>Title's name</b>"
+msgstr "<b>Όνομα τίτλου</b>"
+
+#: ../interface/wtitle_properties_dialog.ui.h:3
+msgid "Stop reproduction/show disc menu"
+msgstr "Διακοπή αναπαραγωγής/προβολή μενού δίσκου"
+
+#: ../interface/wtitle_properties_dialog.ui.h:4
+msgid "Play the first title"
+msgstr "Αναπαραγωγή του πρώτου τίτλου"
+
+#: ../interface/wtitle_properties_dialog.ui.h:5
+msgid "Play the previous title"
+msgstr "Αναπαραγωγή του προηγούμενου τίτλου"
+
+#: ../interface/wtitle_properties_dialog.ui.h:6
+msgid "Play this title again (loop)"
+msgstr "Επανάληψη αναπαραγωγής τίτλου (βρόχος)"
+
+#: ../interface/wtitle_properties_dialog.ui.h:7
+msgid "Play the next title"
+msgstr "Αναπαραγωγή του επόμενου τίτλου"
+
+#: ../interface/wtitle_properties_dialog.ui.h:8
+msgid "Play the last title"
+msgstr "Αναπαραγωγή του τελευταίου τίτλου"
+
+#: ../interface/wtitle_properties_dialog.ui.h:9
+msgid "<b>Action to perform when this title ends</b>"
+msgstr "<b>Επιλογή ενέργειας μετά την ολοκλήρωση του τίτλου</b>"
+
+#: ../interface/wwarning_dialog.ui.h:1
+msgid "Warning"
+msgstr "Προειδοποίηση"
+
+#~ msgid "<b>Vertical alignment</b>"
+#~ msgstr "<b>Κάθετη στοίχιση</b>"
+
+#~ msgid "Converting files from title"
+#~ msgstr "Μετατροπή αρχείων από τίτλο"
+
+#~ msgid "gtk-cancel"
+#~ msgstr "gtk-cancel"
+
+#~ msgid "gtk-ok"
+#~ msgstr "gtk-ok"
+
+#~ msgid "<b>Trellis searched quantization</b>"
+#~ msgstr "<b>Trellis searched quantization</b>"
+
+#~ msgid "gtk-no"
+#~ msgstr "gtk-no"
+
+#~ msgid "gtk-yes"
+#~ msgstr "gtk-yes"
+
+#~ msgid "gtk-add"
+#~ msgstr "gtk-add"
+
+#~ msgid "gtk-help"
+#~ msgstr "gtk-help"
+
+#~ msgid "gtk-remove"
+#~ msgstr "gtk-remove"
+
+#~ msgid "gtk-go-back"
+#~ msgstr "gtk-go-back"
+
+#~ msgid "gtk-go-forward"
+#~ msgstr "gtk-go-forward"
+
+#~ msgid "gtk-open"
+#~ msgstr "gtk-open"
+
+#~ msgid ""
+#~ "Uses multiple threads with Mencoder, allowing a faster compression "
+#~ "process. But requires Mencoder 1.0 RC2 or later."
+#~ msgstr ""
+#~ "Η χρήση του Mencoder σε πολυπύρηνους επεξεργαστές επιτρέπει την επίσπευση "
+#~ "της διαδικασίας συμπίεσης. Αλλά απαιτεί το Mencoder 1.0 RC2 ή νεότερο."
+
+#~ msgid "gtk-about"
+#~ msgstr "gtk-about"
+
+#~ msgid "gtk-go-down"
+#~ msgstr "gtk-go-down"
+
+#~ msgid "gtk-go-up"
+#~ msgstr "gtk-go-up"
+
+#~ msgid "gtk-new"
+#~ msgstr "gtk-new"
+
+#~ msgid "gtk-properties"
+#~ msgstr "gtk-properties"
+
+#~ msgid "gtk-quit"
+#~ msgstr "gtk-quit"
+
+#~ msgid "gtk-save"
+#~ msgstr "gtk-save"
+
+#~ msgid "gtk-save-as"
+#~ msgstr "gtk-save-as"
+
+#~ msgid "Super VideoCD"
+#~ msgstr "Super VideoCD"
+
+#~ msgid "Video DVD"
+#~ msgstr "Video DVD"
+
+#, fuzzy
+#~ msgid "VideoCD"
+#~ msgstr "Video DVD"
+
+#~ msgid ""
+#~ "<b>Preview video</b>\n"
+#~ "\n"
+#~ "DeVeDe will create a preview with the selected parameters, so you will be "
+#~ "able to check video quality, audio sync and so on.\n"
+#~ "\n"
+#~ "Choose how many seconds of film you want to convert to create the "
+#~ "preview, and the directory where you want to store the temporary file "
+#~ "(default is /var/tmp)."
+#~ msgstr ""
+#~ "<b>Προεπισκόπιση βίντεο</b>\n"
+#~ "\n"
+#~ "DeVeDe·θα δημιουργήσει προεπισκόπιση με επιλεγμένες παραμέτρους, έτσι "
+#~ "ώστε να μπορείτε να ελέγξετε την ποιότητα του βίντεο,συγχρονισμό ήχου κ.τ."
+#~ "λ.\n"
+#~ "\n"
+#~ "Επιλέξτε τα δευτερόλεπτα εργου που θέλετε να μετατραπούν σε "
+#~ "προεπισκόπηση, και τη διαδρομή όπου θα τοποθετηθούν τα προσωρινά αρχεία "
+#~ "(προεπιλ. είναι /var/tmp)."
+
+#~ msgid ""
+#~ "A CD with video in MPEG-1 format, with quality equivalent to VHS. Stores "
+#~ "up to 80 minutes in a 80-minutes CD-R. Playable in all DVD players."
+#~ msgstr ""
+#~ "CD με βίντεο μορφής MPEG-1, με ποιότητα ανάλογη του VHS. Αποθηκεύει πάνω "
+#~ "από 80 λεπτά έργου σε CD των 80 λεπτών. Παίζει σε όλα τα DVD players."
+
+#~ msgid ""
+#~ "A CD with video in MPEG-2 format and a resolution of 352x480 (or 352x576 "
+#~ "in PAL). Playable in most of DVD players."
+#~ msgstr ""
+#~ "CD με βίντεο μορφής MPEG-2 και ανάλυσης των 352x480 (ή 352x576 σε ·PAL)."
+#~ "Παίζει σε περισσότερα DVD players."
+
+#~ msgid ""
+#~ "A CD with video in MPEG-2 format and a resolution of 480x480 pixels "
+#~ "(480x576 in PAL). Playable in nearly all DVD players."
+#~ msgstr ""
+#~ "CD με βίντεο μορφής MPEG-2 και ανάλυσης των 480x480 ιχνοστοιχείων "
+#~ "(480x576 σε PAL). Παίζει σχεδόν σε όλα τα DVD·players."
+
+#~ msgid "A classic Video DVD, playable in all DVD players."
+#~ msgstr "Κλασσικό Video DVD, που παίζει σε όλα τα DVD players."
+
+#~ msgid "Output video format:"
+#~ msgstr "Μορφή βίντεο εξόδου"
+
+#~ msgid "There was an error while importing the file:"
+#~ msgstr "Προέκυψε σφάλμα κατά την εισαγωγή αρχείου"
+
+#~ msgid "Menu properties"
+#~ msgstr "Ιδιότητες μενού"
+
+#~ msgid "Video (1)"
+#~ msgstr "Video (1)"
+
+#~ msgid "Video (2)"
+#~ msgstr "Video (2)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Failed to write IMAGE to the destination directory.\n"
+#~ "Check that you have privileges and free space there."
+#~ msgstr ""
+#~ "Αποτυχία εγγραφής στο κατάλογο προορισμού.\n"
+#~ "Ελέγξτε άν έχετε τα απαραίτιτα δικαιώματα και αρκετό ελεύθερο χώρο."
+
+#, fuzzy
+#~ msgid ""
+#~ "Failed to write HIGHLIGHTto the destination directory.\n"
+#~ "Check that you have privileges and free space there."
+#~ msgstr ""
+#~ "Αποτυχία εγγραφής στο κατάλογο προορισμού.\n"
+#~ "Ελέγξτε άν έχετε τα απαραίτιτα δικαιώματα και αρκετό ελεύθερο χώρο."
+
+#, fuzzy
+#~ msgid ""
+#~ "Failed to write SELECT to the destination directory.\n"
+#~ "Check that you have privileges and free space there."
+#~ msgstr ""
+#~ "Αποτυχία εγγραφής στο κατάλογο προορισμού.\n"
+#~ "Ελέγξτε άν έχετε τα απαραίτιτα δικαιώματα και αρκετό ελεύθερο χώρο."
+
+#~ msgid ""
+#~ "Can't reduce menu colors.\n"
+#~ "Check that you have ImageMagic's Convert installed"
+#~ msgstr ""
+#~ "Αδυναμία μείωσης χρωμάτων μενού.\n"
+#~ "Ελέγξτε ότι έχετε εγκατεστημένη τη μετατροπή ImageMagic "

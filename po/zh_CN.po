@@ -1,0 +1,1355 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: DeVeDe 3.12\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-20 12:55+0200\n"
+"PO-Revision-Date: 2009-11-20 12:34+0100\n"
+"Last-Translator: 大宝 <michaelbond01@163.com>\n"
+"Language-Team:  <>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: China\n"
+
+#: ../devede_bincue.py:39
+msgid "Creating BIN/CUE files"
+msgstr "建立 BIN/CUE 镜像中"
+
+#: ../devede_bincue.py:56
+msgid ""
+"Failed to create the BIN/CUE files\n"
+"Maybe you ran out of disk space"
+msgstr ""
+"建立 BIN/CUE 文件失败\n"
+"貌似是因为磁盘空间不足"
+
+#: ../devede_bincue.py:77
+msgid "Creating ISO file"
+msgstr "建立 ISO 镜像中"
+
+#: ../devede_bincue.py:82
+msgid ""
+"Failed to create the ISO image\n"
+"Maybe you ran out of disk space"
+msgstr ""
+"建立 ISO 文件失败\n"
+"貌似是因为磁盘空间不足"
+
+#: ../devede_convert.py:147
+#, python-format
+msgid ""
+"Insuficient free space. To create this disc\n"
+"%(total)d MBytes are needed, but only %(free)d MBytes are available."
+msgstr ""
+"可用空间不足。\n"
+"要建立此光盘需要 %(total)d MB，但当前可用空间只有 %(free)d MB。"
+
+#: ../devede_convert.py:275 ../devede_subtitles.py:75
+#: ../devede_subtitles.py:92 ../devede_xml_menu.py:138
+#: ../devede_xml_menu.py:489 ../devede_xml_menu.py:497
+#: ../devede_xml_menu.py:501 ../devede_xml_menu.py:505
+msgid ""
+"Failed to write to the destination directory.\n"
+"Check that you have privileges and free space there."
+msgstr ""
+"写入目标目录失败。\n"
+"请检查你的权限和磁盘可用空间。"
+
+#: ../devede_convert.py:376
+#, python-format
+msgid ""
+"The file or folder\n"
+"\n"
+"%(folder)s\n"
+"\n"
+"already exists. If you continue, it will be deleted."
+msgstr ""
+"文件或文件夹\n"
+"\n"
+"%(folder)s\n"
+"\n"
+"已经存在。如果你要继续，其将被强行删除。"
+
+#: ../devede_convert.py:472
+msgid "Unknown error"
+msgstr "不知道哪出问题了"
+
+#: ../devede_dvd.py:36
+msgid "Creating DVD tree structure"
+msgstr "建立 DVD 文件结构中"
+
+#: ../devede_dvd.py:42
+msgid ""
+"Failed to create the DVD tree\n"
+"Maybe you ran out of disk space"
+msgstr ""
+"建立 DVD 文件结构失败\n"
+"貌似是因为磁盘空间不足"
+
+#: ../devede_dvdmenu.py:228 ../devede_loadsave.py:212
+msgid "The menu soundtrack seems damaged. Using the default silent soundtrack."
+msgstr "菜单的音频文件似乎已损坏，使用默认的静音模式。"
+
+#: ../devede_dvdmenu.py:402 ../devede_xml_menu.py:493
+msgid ""
+"Can't find the menu background.\n"
+"Check the menu options."
+msgstr ""
+"找不到菜单背景，\n"
+"请检查菜单选项。"
+
+#: ../devede_loadsave.py:78
+msgid "Can't open the file."
+msgstr "未能打开文件。"
+
+#: ../devede_loadsave.py:85 ../devede_loadsave.py:90
+msgid "That file doesn't contain a disc structure."
+msgstr "此文件不包含光盘文件结构。"
+
+#: ../devede_loadsave.py:99
+msgid "That file doesn't contain a DeVeDe structure."
+msgstr "此文件不包含 DeVeDe 文件。"
+
+#: ../devede_loadsave.py:165
+msgid ""
+"Can't find the following movie files. Please, add them and try to load the "
+"disc structure again.\n"
+msgstr "找不到下列影片文件，请尝试重新加载。\n"
+
+#: ../devede_loadsave.py:175
+msgid ""
+"Can't find the menu background. I'll open the disc structure anyway with the "
+"default menu background, so don't forget to fix it before creating the disc."
+msgstr ""
+"找不到菜单背景图片，系统将用默认图片打开此光盘文件请在正式建立光盘前修正此问"
+"题。"
+
+#: ../devede_loadsave.py:190
+msgid ""
+"Can't find the menu soundtrack file. I'll open the disc structure anyway "
+"with a silent soundtrack, so don't forget to fix it before creating the disc."
+msgstr ""
+"找不到菜单音频文件，将用静音模式打开此光盘文件请在正式建立光盘前修正此问题。"
+
+#: ../devede_loadsave.py:282
+msgid "No filename"
+msgstr "无文件名"
+
+#: ../devede_loadsave.py:334
+msgid "Can't save the file."
+msgstr "未能保存文件。"
+
+#: ../devede_main.py:345
+msgid ""
+"Too many videos for this disc size.\n"
+"Please, select a bigger disc type or remove some videos."
+msgstr ""
+"影片太多超出光盘大小限制。\n"
+"请换更大的光盘类型或删减一些影片。"
+
+#: ../devede_main.py:406
+msgid ""
+"Some files weren't video files.\n"
+"None added."
+msgstr ""
+"有些文件不是影像文件。\n"
+"未能加入。"
+
+#: ../devede_main.py:455
+#, python-format
+msgid ""
+"Your project contains %(X)d movie files, but the maximum is %(MAX)d. Please, "
+"remove some files and try again."
+msgstr ""
+"你的项目含有 %(X)d 个影片文件，但最大限制为 %(MAX)d 个影片文件。请删除一些影"
+"片后再试一次。"
+
+#: ../devede_main.py:892
+msgid "no chapters"
+msgstr "无章节"
+
+#: ../devede_main.py:952
+msgid "Unsaved disc structure"
+msgstr "未保存的光盘文件"
+
+#: ../devede_main.py:1020
+#, python-format
+msgid "Title %(X)d"
+msgstr "标题 %(X)d"
+
+#: ../devede_newfiles.py:486
+msgid "Subtitle"
+msgstr "字幕"
+
+#: ../devede_newfiles.py:489
+msgid "Codepage"
+msgstr "代码"
+
+#: ../devede_newfiles.py:492
+msgid "Language"
+msgstr "语言"
+
+#: ../devede_newfiles.py:566
+msgid "Video files"
+msgstr "影片文件"
+
+#: ../devede_newfiles.py:573
+msgid "All files"
+msgstr "所有文件"
+
+#. it's not a video file
+#. it's not a multimedia file
+#: ../devede_newfiles.py:920
+msgid "File doesn't seem to be a video file."
+msgstr "目标文件貌似不是影像文件。"
+
+#: ../devede_newfiles.py:922
+msgid "File seems to be an audio file."
+msgstr "目标文件貌似是一个音频文件。"
+
+#: ../devede_newfiles.py:1045
+msgid "Please, add only one file each time."
+msgstr "每次只能加入一个文件。"
+
+#: ../devede_newfiles.py:1058
+msgid "Please, add a movie file before adding subtitles."
+msgstr "请在加入字幕前先添加影片文件。"
+
+#: ../devede_subtitles.py:61
+msgid "Adding subtitles to"
+msgstr "加入字幕到 "
+
+#: ../devede_subtitles.py:186 ../devede_subtitles.py:197
+msgid ""
+"Conversion failed.\n"
+"It seems a bug of SPUMUX."
+msgstr ""
+"转文件失败，\n"
+"貌似是 SPUMUX 的存在错误。"
+
+#: ../devede_video_convert.py:90
+msgid ""
+"File copy failed\n"
+"Maybe you ran out of disk space?"
+msgstr ""
+"文件复制失败\n"
+"貌似是磁盘空间不足"
+
+#: ../devede_video_convert.py:92
+msgid "Copying the file"
+msgstr "复制文件中"
+
+#: ../devede_video_convert.py:94 ../devede_video_convert.py:124
+msgid "Creating preview"
+msgstr "正在创建预览文件"
+
+#: ../devede_video_convert.py:121
+#, python-format
+msgid ""
+"Converting files from title %(title_number)s (pass %(pass_number)s)\n"
+"\n"
+"%(file_name)s"
+msgstr ""
+
+#: ../devede_video_convert.py:534
+msgid ""
+"Conversion failed.\n"
+"It seems a bug of Mencoder."
+msgstr ""
+"转文件失败。\n"
+"貌似是 Mencoder 的存在错误。"
+
+#: ../devede_video_convert.py:536
+msgid "Also check the extra params passed to Mencoder for syntax errors."
+msgstr "请同时检查附加到 Mencoder 的参数是否存在语法错误。"
+
+#: ../devede_video_convert.py:569
+msgid ""
+"Conversion failed\n"
+"Maybe you ran out of disk space?"
+msgstr ""
+"转换文件失败\n"
+"貌似是磁盘可用空间不足。"
+
+#: ../devede_xml_menu.py:42
+msgid "Failed to create the menues."
+msgstr "建立菜单失败。"
+
+#: ../devede_xml_menu.py:118 ../devede_xml_menu.py:509
+msgid "Menu generation failed."
+msgstr "生成菜单失败。"
+
+#: ../devede_xml_menu.py:125 ../devede_xml_menu.py:518
+msgid ""
+"Can't add the buttons to the menus.\n"
+"It seems a bug of SPUMUX."
+msgstr ""
+"无法在菜单中添加按钮，\n"
+"貌似是 SPUMUX 的程序错误。"
+
+#: ../devede_xml_menu.py:484
+#, python-format
+msgid "Creating menu %(menu_number)d"
+msgstr "建立菜单 %(menu_number)d 中"
+
+#: ../interface/wno_mp3lame.ui.h:1
+msgid ""
+"Your FFMPEG version is compiled\n"
+"without MP3LAME support, so\n"
+"Devede can't create DivX.\n"
+"\n"
+"Recompile your FFMPEG code, or\n"
+"install a version with MP3LAME\n"
+"support."
+msgstr ""
+
+#: ../interface/use_ffmpeg.ui.h:1
+msgid ""
+"This version of Devede allows to use FFMPEG instead\n"
+"of Mencoder for movie conversion. This code is still\n"
+"EXPERIMENTAL, but quite complete.\n"
+"\n"
+"If you see glitches in the video when using FFMPEG, try\n"
+"to disable the multicore support before filling a bug.\n"
+"\n"
+"To test this mode, active it in Edit->Preferences"
+msgstr ""
+
+#: ../interface/use_ffmpeg.ui.h:9
+msgid "Don't show this message at startup again"
+msgstr ""
+
+#: ../interface/settings.ui.h:1
+msgid "Erase temporary files"
+msgstr "自动清除临时文件"
+
+#: ../interface/settings.ui.h:2
+msgid "Use optimizations for multicore CPUs"
+msgstr "为多核 CPU 提供优化"
+
+#: ../interface/settings.ui.h:3
+msgid "Don't use hyperthreading"
+msgstr ""
+
+#: ../interface/settings.ui.h:4
+msgid "Use FFMPEG instead of Mencoder for videos"
+msgstr ""
+
+#: ../interface/settings.ui.h:5
+msgid "Use FFMPEG instead of Mencoder for menu"
+msgstr ""
+
+#: ../interface/settings.ui.h:6
+msgid "<b>Options</b>"
+msgstr "<b>选项</b>"
+
+#: ../interface/settings.ui.h:7
+msgid "Temporary files folder:"
+msgstr "存放临时文件的位置:"
+
+#: ../interface/settings.ui.h:8
+msgid "Folder for temporary file"
+msgstr "临时文件夹"
+
+#: ../interface/settings.ui.h:9
+#, fuzzy
+msgid "<b>Folders</b>"
+msgstr "<b>文件</b>"
+
+#: ../interface/settings.ui.h:10
+msgid ""
+"AC3_FIXED workaround to fix discs without sound when using Mencoder beta"
+msgstr ""
+
+#: ../interface/settings.ui.h:11
+#, fuzzy
+msgid "<b>Workarounds</b>"
+msgstr "<b>旋转画面</b>"
+
+#: ../interface/add_subtitle2.ui.h:1 ../interface/add_subtitle.ui.h:2
+msgid "File: "
+msgstr "文件:"
+
+#: ../interface/add_subtitle2.ui.h:2 ../interface/add_subtitle.ui.h:4
+msgid "Clear"
+msgstr "清除"
+
+#: ../interface/add_subtitle2.ui.h:3 ../interface/add_subtitle.ui.h:6
+msgid "Encoding: "
+msgstr "编码:"
+
+#: ../interface/add_subtitle2.ui.h:4 ../interface/add_subtitle.ui.h:5
+msgid "Language: "
+msgstr "语言:"
+
+#: ../interface/add_subtitle2.ui.h:5 ../interface/add_subtitle.ui.h:7
+msgid "Put subtitles upper"
+msgstr "将字幕放在上方"
+
+#: ../interface/add_subtitle.ui.h:1
+msgid "Add subtitles"
+msgstr "加入字幕"
+
+#: ../interface/add_subtitle.ui.h:3
+msgid "Choose a file"
+msgstr "请选择文件"
+
+#: ../interface/waborted_dialog.ui.h:1
+msgid "Aborted. There can be temporary files at the destination directory."
+msgstr "工作已终止，但在目标目录内可能会残留些临时文件，请手工清除。"
+
+#: ../interface/wcancel_dialog.ui.h:1
+msgid "Exit DeVeDe"
+msgstr "退出 DeVeDe"
+
+#: ../interface/wcancel_dialog.ui.h:2
+msgid "Abort the current DVD and exit?"
+msgstr "终止当前的工作并离开？"
+
+#: ../interface/wcancel_job_dialog.ui.h:1
+msgid "Cancel job?"
+msgstr "取消当前工作？"
+
+#: ../interface/wdel_chapter_dialog.ui.h:1
+msgid "Delete chapter"
+msgstr "删除章节"
+
+#: ../interface/wdel_chapter_dialog.ui.h:2
+msgid ""
+"You chose to delete this chapter and\n"
+"reorder the other ones:"
+msgstr ""
+"你选择删除此章节\n"
+"这同时会重排其他章节:"
+
+#: ../interface/wdel_chapter_dialog.ui.h:4
+#: ../interface/wdel_title_dialog.ui.h:4
+msgid "Proceed?"
+msgstr "继续？"
+
+#: ../interface/wdel_subtitle.ui.h:1
+msgid "Delete subtitle"
+msgstr "删除字幕"
+
+#: ../interface/wdel_subtitle.ui.h:2
+msgid "Remove the selected subtitle file?"
+msgstr "移除所选的字幕文件？"
+
+#: ../interface/wdel_title_dialog.ui.h:1
+msgid "Delete title"
+msgstr "删除标题"
+
+#: ../interface/wdel_title_dialog.ui.h:2
+msgid ""
+"You chose to delete this title and\n"
+"reorder the other ones:"
+msgstr ""
+"你选择删除此标题\n"
+"这同时会重排其他标题:"
+
+#: ../interface/wdisk_type.ui.h:1
+msgid "Disc type selection"
+msgstr "选择光盘类型"
+
+#: ../interface/wdisk_type.ui.h:2
+msgid "<b>Choose the disc type you want to create with DeVeDe</b>"
+msgstr "<b>请选择一种你想通过 DeVeDe 创建的光盘格式</b>"
+
+#: ../interface/wdisk_type.ui.h:3
+msgid ""
+"<b>Video DVD</b>\n"
+"Creates a video DVD suitable for all DVD home players"
+msgstr ""
+"<b>DVD</b>\n"
+"适合普通家用播放设备进行播放的视频 DVD"
+
+#: ../interface/wdisk_type.ui.h:5
+msgid ""
+"<b>VideoCD</b>\n"
+"Creates a VideoCD, with a picture quality equivalent to VHS"
+msgstr ""
+"<b>VCD</b>\n"
+"画质与普通家用录像机录制的影片相同"
+
+#: ../interface/wdisk_type.ui.h:7
+msgid ""
+"<b>Super VideoCD</b>\n"
+"Creates a VideoCD with better picture quality"
+msgstr ""
+"<b>SVCD</b>\n"
+"超高画质的 VCD"
+
+#: ../interface/wdisk_type.ui.h:9
+msgid ""
+"<b>China VideoDisc</b>\n"
+"Another kind of Super VideoCD"
+msgstr ""
+"<b>CVD</b>\n"
+"其它类型的非标准 SVCD"
+
+#: ../interface/wdisk_type.ui.h:11
+msgid ""
+"<b>DivX / MPEG-4</b>\n"
+"Creates files compliant with DivX home players"
+msgstr ""
+"<b>DivX / MPEG-4</b>\n"
+"AVI 格式的视频文件"
+
+#: ../interface/wempty_titles_dialog.ui.h:1
+msgid ""
+"Your DVD structure contains empty titles.\n"
+"Continue anyway?"
+msgstr ""
+"你的 DVD 文件含空白标题。\n"
+"真的要继续吗？"
+
+#. Means: "Burn the ISO image in a CD/DVD"
+#: ../interface/wend_dialog.ui.h:2
+msgctxt "Means: "
+msgid "Burn"
+msgstr ""
+
+#: ../interface/wend_dialog.ui.h:3
+msgid "Job done!"
+msgstr "完成啦！"
+
+#: ../interface/werase_dialog.ui.h:1
+msgid "Delete current disc structure?"
+msgstr "删除当前的光盘文件结构？"
+
+#: ../interface/werase_dialog.ui.h:2
+msgid "Delete the current disc structure and start again?"
+msgstr "删除目前的光盘文件结构且重新开始？"
+
+#: ../interface/werror_dialog.ui.h:1 ../interface/wprograms.ui.h:1
+msgid "Error"
+msgstr "错误"
+
+#: ../interface/wfile.ui.h:1
+msgid "File properties"
+msgstr "文件属性"
+
+#: ../interface/wfile.ui.h:2
+msgid "<b>File</b>"
+msgstr "<b>文件</b>"
+
+#: ../interface/wfile.ui.h:3 ../interface/wmain.ui.h:15
+msgid "Frames per second: "
+msgstr "帧/每秒: "
+
+#: ../interface/wfile.ui.h:4
+msgid "Original length (seconds): "
+msgstr "原始长度 (秒): "
+
+#: ../interface/wfile.ui.h:5
+msgid "Original audio rate (Kbits/sec):"
+msgstr "原始音频采样率 (Kb/秒): "
+
+#: ../interface/wfile.ui.h:6
+msgid "Original video rate (Kbits/sec):"
+msgstr "原始视频采样率 (Kb/秒): "
+
+#: ../interface/wfile.ui.h:7 ../interface/wmain.ui.h:20
+msgid "Original size (pixels): "
+msgstr "原始大小 (像素): "
+
+#: ../interface/wfile.ui.h:8 ../interface/wmain.ui.h:16
+msgid "Final size (pixels):"
+msgstr "最终大小 (像素): "
+
+#: ../interface/wfile.ui.h:9
+msgid "Estimated final length (MBytes): "
+msgstr "预计最终长度 (MB): "
+
+#: ../interface/wfile.ui.h:10 ../interface/wmain.ui.h:24
+msgid "<b>File info</b>"
+msgstr "<b>文件信息</b>"
+
+#: ../interface/wfile.ui.h:11
+msgid "PAL/SECAM"
+msgstr "PAL/SECAM"
+
+#: ../interface/wfile.ui.h:12 ../interface/wmain.ui.h:31
+msgid "NTSC"
+msgstr "NTSC"
+
+#: ../interface/wfile.ui.h:13
+msgid "<b>Video format</b>"
+msgstr "<b>影片格式</b>"
+
+#: ../interface/wfile.ui.h:14
+msgid "Audio track: "
+msgstr "音轨:"
+
+#: ../interface/wfile.ui.h:15
+msgid "This video file has no audio tracks."
+msgstr "此影片文件未包含任何音轨。"
+
+#: ../interface/wfile.ui.h:16
+msgid "<b>Audio tracks</b>"
+msgstr "<b>音轨</b>"
+
+#: ../interface/wfile.ui.h:17
+msgid "Reset"
+msgstr ""
+
+#: ../interface/wfile.ui.h:19
+#, no-c-format
+msgid "Resets the volume to 100%"
+msgstr ""
+
+#: ../interface/wfile.ui.h:21
+#, fuzzy, no-c-format
+msgid "<b>Volume (%)</b>"
+msgstr "<b>文件</b>"
+
+#: ../interface/wfile.ui.h:22
+msgid "Store full length"
+msgstr "保存整段影片"
+
+#: ../interface/wfile.ui.h:23
+msgid "Store the first half"
+msgstr "保存前半段影片"
+
+#: ../interface/wfile.ui.h:24
+msgid "Store the second half"
+msgstr "保存后半段影片"
+
+#: ../interface/wfile.ui.h:25
+msgid "<b>File split</b>"
+msgstr "<b>文件分割</b>"
+
+#: ../interface/wfile.ui.h:26
+#, fuzzy
+msgid "Font size:"
+msgstr "字体:"
+
+#: ../interface/wfile.ui.h:27
+#, fuzzy
+msgid "Force subtitles"
+msgstr "加入字幕"
+
+#: ../interface/wfile.ui.h:28
+msgid "DivX format doesn't support subtitles. Please, read the FAQ."
+msgstr "DivX 格式不支持添加字幕，请阅读 FAQ。"
+
+#: ../interface/wfile.ui.h:29
+msgid "<b>Subtitles</b>"
+msgstr "<b>字幕</b>"
+
+#: ../interface/wfile.ui.h:30
+msgid "<b>Video rate (Kbits/sec)</b>"
+msgstr "<b>视频采样率 (Kb/秒)</b>"
+
+#: ../interface/wfile.ui.h:31
+msgid "<b>Audio rate (Kbits/sec)</b>"
+msgstr "<b>音频取样率 (Kb/秒)</b>"
+
+#: ../interface/wfile.ui.h:32
+msgid "Split the file in chapters (for easy seeking)"
+msgstr "分割文件为数个章节 (更易检索)"
+
+#: ../interface/wfile.ui.h:33
+msgid "Size (in minutes) for each chapter: "
+msgstr "每个章节的大小 (分钟): "
+
+#: ../interface/wfile.ui.h:34
+msgid "<b>Division in chapters</b>"
+msgstr "<b>章节分配</b>"
+
+#: ../interface/wfile.ui.h:35
+msgid "General"
+msgstr "常规"
+
+#: ../interface/wfile.ui.h:36
+msgid "352x240"
+msgstr "352x240"
+
+#: ../interface/wfile.ui.h:37
+msgid "Default"
+msgstr "默认"
+
+#: ../interface/wfile.ui.h:38
+msgid "352x480"
+msgstr "352x480"
+
+#: ../interface/wfile.ui.h:39
+msgid "480x480"
+msgstr "480x480"
+
+#: ../interface/wfile.ui.h:40
+msgid "720x480"
+msgstr "720x480"
+
+#: ../interface/wfile.ui.h:41
+msgid "704x480"
+msgstr "704x480"
+
+#: ../interface/wfile.ui.h:42
+msgid "1920x1080"
+msgstr "1920x1080"
+
+#: ../interface/wfile.ui.h:43
+msgid "1280x720"
+msgstr "1280x720"
+
+#: ../interface/wfile.ui.h:44
+msgid "160x128"
+msgstr "160x128"
+
+#: ../interface/wfile.ui.h:45
+msgid "<b>Final size</b>"
+msgstr "<b>最终大小</b>"
+
+#: ../interface/wfile.ui.h:46
+msgid "4:3"
+msgstr "4:3"
+
+#: ../interface/wfile.ui.h:47
+msgid "16:9"
+msgstr "16:9"
+
+#: ../interface/wfile.ui.h:48
+msgid "<b>Aspect ratio</b>"
+msgstr "<b>缩放比率</b>"
+
+#: ../interface/wfile.ui.h:49
+msgid "Video format"
+msgstr "影片选项"
+
+#: ../interface/wfile.ui.h:50
+msgid "No rotation"
+msgstr "不旋转"
+
+#: ../interface/wfile.ui.h:51
+msgid "Rotate 180 degrees"
+msgstr "旋转 180 度"
+
+#: ../interface/wfile.ui.h:52
+msgid "Rotate 90 degrees clockwise"
+msgstr "顺时针旋转 90 度"
+
+#: ../interface/wfile.ui.h:53
+msgid "Rotate 90 degrees counter-clockwise"
+msgstr "逆时针旋转 90 度"
+
+#: ../interface/wfile.ui.h:54
+msgid "<b>Rotation</b>"
+msgstr "<b>旋转画面</b>"
+
+#: ../interface/wfile.ui.h:55
+msgid "Horizontal mirror"
+msgstr "水平翻转"
+
+#: ../interface/wfile.ui.h:56
+msgid "Vertical mirror"
+msgstr "垂直翻转"
+
+#: ../interface/wfile.ui.h:57
+msgid "<b>Mirror</b>"
+msgstr "<b>镜像</b>"
+
+#: ../interface/wfile.ui.h:58
+msgid "Swap fields"
+msgstr ""
+
+#: ../interface/wfile.ui.h:59
+#, fuzzy
+msgid "<b>Field order</b>"
+msgstr "<b>文件</b>"
+
+#: ../interface/wfile.ui.h:60
+msgid "Add black bars"
+msgstr "加入上下黑边"
+
+#: ../interface/wfile.ui.h:61
+msgid "Scale picture"
+msgstr "拉伸填充"
+
+#: ../interface/wfile.ui.h:62
+msgid "<b>Scaling mode</b>"
+msgstr "<b>缩放比例</b>"
+
+#: ../interface/wfile.ui.h:63
+msgid "Video options"
+msgstr "视频选项"
+
+#: ../interface/wfile.ui.h:64
+msgid "Use MBCMP (faster)"
+msgstr "使用 MBCMP (快速)"
+
+#: ../interface/wfile.ui.h:65
+msgid "Select MBD mode which needs the fewest bits"
+msgstr "选择最高压缩率的 MBD 模式"
+
+#: ../interface/wfile.ui.h:66
+msgid "Select the MBD mode which has the best rate distortion (better quality)"
+msgstr "选择最小失真比的 MBD 模式 (画质更好)"
+
+#: ../interface/wfile.ui.h:67
+msgid "Use Trellis Searched Quantization (better quality, slower conversion)"
+msgstr "使用检索格式标准化 (品质较好，但转换速度慢)"
+
+#: ../interface/wfile.ui.h:68
+#, fuzzy
+msgid "<b>MacroBlock decision algorithm and Trellis searched quantization</b>"
+msgstr "<b>大区块决定算法</b>"
+
+#: ../interface/wfile.ui.h:69
+#, fuzzy
+msgid "Use dual pass encoding (better quality, much slower conversion)"
+msgstr "使用检索格式标准化 (品质较好，但转换速度慢)"
+
+#: ../interface/wfile.ui.h:70
+msgid "Turbo 1st pass"
+msgstr ""
+
+#: ../interface/wfile.ui.h:71
+msgid "<b>Two pass encoding</b>"
+msgstr ""
+
+#: ../interface/wfile.ui.h:72
+msgid "Median deinterlacing filter"
+msgstr "Median 反交错滤镜 "
+
+#: ../interface/wfile.ui.h:73
+msgid "Don't deinterlace"
+msgstr "放弃反交错 "
+
+#: ../interface/wfile.ui.h:74
+msgid "YADIF deinterlacing filter"
+msgstr "YADIF 反交错滤镜"
+
+#: ../interface/wfile.ui.h:75
+msgid "FFMpeg deinterlacing filter"
+msgstr "FFMpeg 反交错滤镜 "
+
+#: ../interface/wfile.ui.h:76
+msgid "Linear blend"
+msgstr "线性混合"
+
+#: ../interface/wfile.ui.h:77
+msgid "Lowpass5 deinterlacing filter"
+msgstr "Lowpass5 反交错滤镜"
+
+#: ../interface/wfile.ui.h:78
+msgid "<b>Deinterlacing</b>"
+msgstr "<b>反交错</b>"
+
+#: ../interface/wfile.ui.h:79
+msgid "Quality"
+msgstr "画质选项"
+
+#: ../interface/wfile.ui.h:80
+msgid "Audio delay (in seconds):"
+msgstr "音频延迟 (秒): "
+
+#: ../interface/wfile.ui.h:81
+msgid "Create DVD with 5.1 channel sound"
+msgstr "建立 5.1 声道"
+
+#: ../interface/wfile.ui.h:82
+msgid ""
+"This file already has AC3 sound (copy audio data instead of recompress it)"
+msgstr "此文件已经是 AC3 音频格式 (直接复制音频文件，不用再次转换)"
+
+#: ../interface/wfile.ui.h:83
+msgid "<b>Audio</b>"
+msgstr "<b>音频</b>"
+
+#: ../interface/wfile.ui.h:84
+msgid "Audio"
+msgstr "音频"
+
+#: ../interface/wfile.ui.h:85
+msgid "This file is already a DVD/xCD-suitable MPEG-PS file"
+msgstr "此文件已经是 DVD/xCD 相容的 MPEG-PS 文件"
+
+#: ../interface/wfile.ui.h:86
+msgid "Repack audio and video without reencoding (useful for VOB files)"
+msgstr ""
+
+#: ../interface/wfile.ui.h:87
+msgid "Use a GOP of 12 frames (improves compatibility)"
+msgstr "将 GOP 设为 12 帧 (增加相容性)"
+
+#: ../interface/wfile.ui.h:88
+msgid "<b>Special</b>"
+msgstr "<b>特殊设定</b>"
+
+#: ../interface/wfile.ui.h:89
+msgid "Main (-X -Y)"
+msgstr "Main (-X -Y)"
+
+#: ../interface/wfile.ui.h:90
+msgid "-VF (X,Y)"
+msgstr "-VF (X,Y)"
+
+#: ../interface/wfile.ui.h:91
+msgid "-LAVCOPTS (X:Y)"
+msgstr "-LAVCOPTS (X:Y)"
+
+#: ../interface/wfile.ui.h:92
+msgid "-LAMEOPTS (X:Y)"
+msgstr "-LAMEOPTS (X:Y)"
+
+#: ../interface/wfile.ui.h:93
+#, fuzzy
+msgid "<b>Extra parameters for coder</b>"
+msgstr "<b>Mencoder 的附加参数</b>"
+
+#: ../interface/wfile.ui.h:94
+msgid "Misc"
+msgstr "其他"
+
+#: ../interface/wfile.ui.h:95 ../interface/wmain.ui.h:41
+msgid "Advanced options"
+msgstr "高级选项"
+
+#: ../interface/wfile.ui.h:96 ../interface/wmain.ui.h:13
+msgid "Preview"
+msgstr "预览"
+
+#: ../interface/wfolder_dialog.ui.h:1
+#, fuzzy
+msgid ""
+"Choose the folder where DeVeDe will create the DVD image and a name for it. "
+"Don't use a folder in a VFAT/FAT32 drive. Characters /, | and \\ are not "
+"allowed and will be replaced by underscores."
+msgstr ""
+"请选择要建立 DVD 镜像文件的文件夹并为其命名。\n"
+"注意：不可选择 VFAT/FAT32 格式的磁盘分区作为或存放文件夹。"
+
+#: ../interface/wfolder_dialog.ui.h:2
+#, fuzzy
+msgid "Choose a folder"
+msgstr "请选择文件"
+
+#: ../interface/wfolder_dialog.ui.h:3
+msgid "Shutdown computer when disc is done"
+msgstr ""
+
+#: ../interface/wloadconfig.ui.h:1
+msgid "Load a disc structure"
+msgstr "载入光盘文件"
+
+#: ../interface/wloosecurrent.ui.h:1
+msgid "Warning: you already have a disc structure"
+msgstr "警告: 你已经有一份光盘文件"
+
+#: ../interface/wloosecurrent.ui.h:2
+msgid ""
+"If you load a disc structure you will loose your current structure (unless "
+"you saved it). Continue?"
+msgstr ""
+"如果你载入其他的光盘文件则你当前的文件会全部丢失 (除非你将其保存)。要继续吗？"
+
+#: ../interface/wmain.ui.h:1
+msgid "185 MB CD"
+msgstr "185 MB CD"
+
+#: ../interface/wmain.ui.h:2
+msgid "650 MB CD"
+msgstr "650 MB CD"
+
+#: ../interface/wmain.ui.h:3
+msgid "700 MB CD"
+msgstr "700 MB CD"
+
+#: ../interface/wmain.ui.h:4
+msgid "1.4 GB DVD"
+msgstr "1.4 GB DVD"
+
+#: ../interface/wmain.ui.h:5
+msgid "4.7 GB DVD"
+msgstr "4.7 GB DVD"
+
+#: ../interface/wmain.ui.h:6
+msgid "8.5 GB DVD"
+msgstr "8.5 GB DVD"
+
+#: ../interface/wmain.ui.h:7
+msgid "DeVeDe"
+msgstr "DeVeDe"
+
+#: ../interface/wmain.ui.h:8
+msgid "_File"
+msgstr "文件(_F)"
+
+#: ../interface/wmain.ui.h:9
+msgid "_Edit"
+msgstr ""
+
+#: ../interface/wmain.ui.h:10
+msgid "_Preferences"
+msgstr ""
+
+#: ../interface/wmain.ui.h:11
+msgid "_Help"
+msgstr "帮助(_H)"
+
+#: ../interface/wmain.ui.h:12
+msgid "<b>Titles</b>"
+msgstr "<b>标题</b>"
+
+#: ../interface/wmain.ui.h:14
+msgid "<b>Files</b>"
+msgstr "<b>文件</b>"
+
+#: ../interface/wmain.ui.h:17
+msgid "Length (seconds): "
+msgstr "长度 (秒):"
+
+#: ../interface/wmain.ui.h:18
+msgid "Video rate (Kbits/sec): "
+msgstr "视频采样率 (Kb/秒): "
+
+#: ../interface/wmain.ui.h:19
+msgid "Audio rate (Kbits/sec): "
+msgstr "音频采样率 (Kb/秒): "
+
+#: ../interface/wmain.ui.h:21
+msgid "Estimated length (MBytes): "
+msgstr "预计长度 (MB): "
+
+#: ../interface/wmain.ui.h:22
+msgid "Output aspect ratio:"
+msgstr "输出长宽比: "
+
+#: ../interface/wmain.ui.h:23
+msgid "Size of chapters:"
+msgstr "每章节大小:"
+
+#: ../interface/wmain.ui.h:25
+msgid "Adjust disc usage"
+msgstr "适应光盘容量"
+
+#: ../interface/wmain.ui.h:27
+#, no-c-format
+msgid "0.0%"
+msgstr "0.0%"
+
+#: ../interface/wmain.ui.h:28
+msgid " Media size: "
+msgstr "容量大小:"
+
+#: ../interface/wmain.ui.h:29
+msgid "<b>Disc usage</b>"
+msgstr "<b>磁盘用量</b>"
+
+#: ../interface/wmain.ui.h:30
+msgid "PAL"
+msgstr "PAL"
+
+#: ../interface/wmain.ui.h:32
+msgid "<b>Default format</b>"
+msgstr "<b>默认格式</b>"
+
+#: ../interface/wmain.ui.h:33
+msgid "Create a menu with the titles"
+msgstr ""
+
+#: ../interface/wmain.ui.h:34
+msgid "Menu options"
+msgstr "菜单选项"
+
+#: ../interface/wmain.ui.h:35 ../interface/wmenu_properties.ui.h:31
+msgid "Preview menu"
+msgstr "预览菜单"
+
+#: ../interface/wmain.ui.h:36
+msgid "<b>Menus</b>"
+msgstr "<b>菜单</b>"
+
+#: ../interface/wmain.ui.h:37
+msgid "Only convert film files to compliant MPEG files"
+msgstr "只转换影片文件为相容的 MPEG 文件"
+
+#: ../interface/wmain.ui.h:38
+msgid "Create disc structure"
+msgstr "建立光盘文件结构"
+
+#: ../interface/wmain.ui.h:39
+msgid "Create an ISO or BIN/CUE image, ready to burn to a disc"
+msgstr "建立 ISO 或 BIN/CUE 镜像，其可以很方便地刻录成物理光盘"
+
+#: ../interface/wmain.ui.h:40
+msgid "<b>Action</b>"
+msgstr "<b>动作</b>"
+
+#: ../interface/wmenu_preview_ntsc.ui.h:1
+#: ../interface/wmenu_preview_pal.ui.h:1
+msgid "Menu preview"
+msgstr "菜单预览"
+
+#: ../interface/wmenu_properties.ui.h:1
+msgid "Shadow color: "
+msgstr "阴影颜色:"
+
+#: ../interface/wmenu_properties.ui.h:2
+msgid "Text color: "
+msgstr "文字颜色:"
+
+#: ../interface/wmenu_properties.ui.h:3
+msgid "Text: "
+msgstr "文字:"
+
+#: ../interface/wmenu_properties.ui.h:4
+msgid "Font: "
+msgstr "字体:"
+
+#: ../interface/wmenu_properties.ui.h:5
+msgid "<b>Menu title</b>"
+msgstr "<b>菜单标题</b>"
+
+#: ../interface/wmenu_properties.ui.h:6
+msgid "Select a picture to be used as background for disc's menu"
+msgstr "选择要用于菜单背景的图片"
+
+#: ../interface/wmenu_properties.ui.h:7
+msgid "Set default background"
+msgstr "使用默认图片"
+
+#: ../interface/wmenu_properties.ui.h:8
+msgid "<b>Menu background (only PNG)</b>"
+msgstr "<b>菜单背景 (仅限 PNG 图片)</b>"
+
+#: ../interface/wmenu_properties.ui.h:9
+#, fuzzy
+msgid "Choose a music file"
+msgstr "请选择文件"
+
+#: ../interface/wmenu_properties.ui.h:10
+msgid "Set menus without sound"
+msgstr "使用静音菜单"
+
+#: ../interface/wmenu_properties.ui.h:11
+msgid "<b>Menu music</b>"
+msgstr "<b>菜单音乐</b>"
+
+#: ../interface/wmenu_properties.ui.h:12
+#, fuzzy
+msgid "<b>Horizontal</b>"
+msgstr "<b>水平对齐</b>"
+
+#: ../interface/wmenu_properties.ui.h:13
+#, fuzzy
+msgid "<b>Vertical</b>"
+msgstr "<b>特殊设定</b>"
+
+#: ../interface/wmenu_properties.ui.h:14
+msgid "Top"
+msgstr "顶端"
+
+#: ../interface/wmenu_properties.ui.h:15
+msgid "Middle"
+msgstr "置中"
+
+#: ../interface/wmenu_properties.ui.h:16
+msgid "Bottom"
+msgstr "底部 "
+
+#: ../interface/wmenu_properties.ui.h:17
+msgid "Left"
+msgstr "靠左"
+
+#: ../interface/wmenu_properties.ui.h:18
+msgid "Center"
+msgstr "置中"
+
+#: ../interface/wmenu_properties.ui.h:19
+msgid "Right"
+msgstr "靠右"
+
+#: ../interface/wmenu_properties.ui.h:21
+#, fuzzy, no-c-format
+msgid "<b>Margins (%)</b>"
+msgstr "<b>菜单</b>"
+
+#: ../interface/wmenu_properties.ui.h:22
+msgid "<b>Menu position</b>"
+msgstr "<b>菜单位置</b>"
+
+#: ../interface/wmenu_properties.ui.h:23
+msgid "Color for unselected titles: "
+msgstr "未选标题颜色:"
+
+#: ../interface/wmenu_properties.ui.h:24
+msgid "Color for shadows: "
+msgstr "阴影颜色:"
+
+#: ../interface/wmenu_properties.ui.h:25
+msgid "Color for selected title: "
+msgstr "选中标题颜色:"
+
+#: ../interface/wmenu_properties.ui.h:26
+msgid "Background color for titles: "
+msgstr "标题的背景色:"
+
+#: ../interface/wmenu_properties.ui.h:27
+msgid "<b>Menu font and colors</b>"
+msgstr "<b>菜单字体及颜色</b>"
+
+#: ../interface/wmenu_properties.ui.h:28
+msgid "Show menu at disc startup"
+msgstr "打开光盘时显示菜单"
+
+#: ../interface/wmenu_properties.ui.h:29
+msgid "Jump to the first title at startup"
+msgstr "自动跳转到第一个标题"
+
+#: ../interface/wmenu_properties.ui.h:30
+msgid "<b>Disc startup options</b>"
+msgstr "<b>光盘打开选项</b>"
+
+#: ../interface/wnofonts.ui.h:1
+msgid "Can't find the font for subtitles. Aborting."
+msgstr ""
+
+#: ../interface/wpreviewagain_dialog.ui.h:1
+msgid "Replay the preview again?"
+msgstr "再次预览？"
+
+#: ../interface/wpreview_dialog.ui.h:1
+msgid "<b>Preview video</b>"
+msgstr "<b>预览影片</b>"
+
+#: ../interface/wpreview_dialog.ui.h:2
+msgid ""
+"DeVeDe will create a preview with the selected parameters, so you will be "
+"able to check video quality, audio sync and so on."
+msgstr "DeVeDe 会建立所选段落的预览影片，以便察看影片画质、音画是否同步等。"
+
+#: ../interface/wpreview_dialog.ui.h:3
+msgid "Preview length:"
+msgstr "想要预览的长度:"
+
+#: ../interface/wprograms.ui.h:2
+msgid "Can't find the following programs:"
+msgstr "找不到下列程序:"
+
+#: ../interface/wprograms.ui.h:3
+msgid ""
+"DeVeDe needs them in order to work. If you want to use DeVeDe, you must "
+"install all of them."
+msgstr "DeVeDe 需要下列组件支持，如果你想使用 DeVeDe，必须先安装它们。"
+
+#: ../interface/wprogress.ui.h:1
+msgid "Creating..."
+msgstr "正在创建预览文件..."
+
+#: ../interface/wsaveconfig.ui.h:1
+msgid "Save current disc structure"
+msgstr "保存当前的光盘文件"
+
+#: ../interface/wtitle_properties_dialog.ui.h:1
+msgid "Title properties"
+msgstr "标题属性"
+
+#: ../interface/wtitle_properties_dialog.ui.h:2
+msgid "<b>Title's name</b>"
+msgstr "<b>标题名称</b>"
+
+#: ../interface/wtitle_properties_dialog.ui.h:3
+msgid "Stop reproduction/show disc menu"
+msgstr "停止播放/显示菜单"
+
+#: ../interface/wtitle_properties_dialog.ui.h:4
+msgid "Play the first title"
+msgstr "播放第一段标题"
+
+#: ../interface/wtitle_properties_dialog.ui.h:5
+msgid "Play the previous title"
+msgstr "播放上一段标题"
+
+#: ../interface/wtitle_properties_dialog.ui.h:6
+msgid "Play this title again (loop)"
+msgstr "重复播放本标题 (循环)"
+
+#: ../interface/wtitle_properties_dialog.ui.h:7
+msgid "Play the next title"
+msgstr "播放下一段标题"
+
+#: ../interface/wtitle_properties_dialog.ui.h:8
+msgid "Play the last title"
+msgstr "播放最后一段标题"
+
+#: ../interface/wtitle_properties_dialog.ui.h:9
+msgid "<b>Action to perform when this title ends</b>"
+msgstr "<b>当此标题播放结束后要执行的动作</b>"
+
+#: ../interface/wwarning_dialog.ui.h:1
+msgid "Warning"
+msgstr "警告"
+
+#~ msgid "<b>Vertical alignment</b>"
+#~ msgstr "<b>垂直对齐</b>"
+
+#~ msgid "Converting files from title"
+#~ msgstr "转换文件中: 标题"
+
+#~ msgid "gtk-cancel"
+#~ msgstr "gtk-cancel"
+
+#~ msgid "gtk-ok"
+#~ msgstr "gtk-ok"
+
+#~ msgid "<b>Trellis searched quantization</b>"
+#~ msgstr "<b>检索格式标准化</b>"
+
+#~ msgid ""
+#~ "Uses multiple threads with Mencoder, allowing a faster compression "
+#~ "process. But requires Mencoder 1.0 RC2 or later."
+#~ msgstr ""
+#~ "启用 Mencoder 多线程模式可以加快压缩速度。但是需要 Mencoder 1.0 RC2 以上版"
+#~ "本。"
+
+#~ msgid "gtk-about"
+#~ msgstr "gtk-about"
+
+#~ msgid "gtk-add"
+#~ msgstr "gtk-add"
+
+#~ msgid "gtk-go-back"
+#~ msgstr "gtk-go-back"
+
+#~ msgid "gtk-go-down"
+#~ msgstr "gtk-go-down"
+
+#~ msgid "gtk-go-forward"
+#~ msgstr "gtk-go-forward"
+
+#~ msgid "gtk-go-up"
+#~ msgstr "gtk-go-up"
+
+#~ msgid "gtk-help"
+#~ msgstr "gtk-help"
+
+#~ msgid "gtk-new"
+#~ msgstr "gtk-new"
+
+#~ msgid "gtk-no"
+#~ msgstr "gtk-no"
+
+#~ msgid "gtk-open"
+#~ msgstr "gtk-open"
+
+#~ msgid "gtk-properties"
+#~ msgstr "gtk-properties"
+
+#~ msgid "gtk-quit"
+#~ msgstr "gtk-quit"
+
+#~ msgid "gtk-remove"
+#~ msgstr "gtk-remove"
+
+#~ msgid "gtk-save"
+#~ msgstr "gtk-save"
+
+#~ msgid "gtk-save-as"
+#~ msgstr "gtk-save-as"
+
+#~ msgid "gtk-yes"
+#~ msgstr "gtk-yes"

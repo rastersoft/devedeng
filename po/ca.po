@@ -1,0 +1,1379 @@
+# translation of ca.po to catala
+# Catalan translation of DeVeDe.
+# Copyright (C) 2006 THE DeVeDe'S Raster Software Vigo
+# This file is distributed under the same license as the DeVeDe package.
+#
+# Joan Farrerons <jfarrerons@economistes.com>, 2007, 2008, 2009, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: ca\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-20 12:55+0200\n"
+"PO-Revision-Date: 2010-01-26 21:49+0100\n"
+"Last-Translator: Joan Farrerons <jfarrerons@economistes.com>\n"
+"Language-Team: catala <ca@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplural=2; plural= (n!=1);\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: ../devede_bincue.py:39
+msgid "Creating BIN/CUE files"
+msgstr "S'estan creant els fitxers BIN/CUE"
+
+#: ../devede_bincue.py:56
+msgid ""
+"Failed to create the BIN/CUE files\n"
+"Maybe you ran out of disk space"
+msgstr ""
+"Ha fallat la creació de la imatge BIN/CUE.\n"
+"Comproveu que teniu prou espai lliure."
+
+#: ../devede_bincue.py:77
+msgid "Creating ISO file"
+msgstr "S'està creant la imatge ISO"
+
+#: ../devede_bincue.py:82
+msgid ""
+"Failed to create the ISO image\n"
+"Maybe you ran out of disk space"
+msgstr ""
+"Ha fallat la creació de la imatge ISO.\n"
+"Comproveu que teniu prou espai lliure."
+
+#: ../devede_convert.py:147
+#, python-format
+msgid ""
+"Insuficient free space. To create this disc\n"
+"%(total)d MBytes are needed, but only %(free)d MBytes are available."
+msgstr ""
+"No hi ha prou espai lliure. Per crear aquest disc\n"
+"necessiteu %(total)d MBytes, però només hi ha %(free)d MBytes disponibles."
+
+#: ../devede_convert.py:275 ../devede_subtitles.py:75
+#: ../devede_subtitles.py:92 ../devede_xml_menu.py:138
+#: ../devede_xml_menu.py:489 ../devede_xml_menu.py:497
+#: ../devede_xml_menu.py:501 ../devede_xml_menu.py:505
+msgid ""
+"Failed to write to the destination directory.\n"
+"Check that you have privileges and free space there."
+msgstr ""
+"S'ha produït un error en intentar escriure en el directori de destinació.\n"
+"Comproveu que hi teniu permisos i espai lliure."
+
+#: ../devede_convert.py:376
+#, python-format
+msgid ""
+"The file or folder\n"
+"\n"
+"%(folder)s\n"
+"\n"
+"already exists. If you continue, it will be deleted."
+msgstr ""
+"El fitxer o la carpeta\n"
+"\n"
+"%(folder)s\n"
+"\n"
+"ja existeix. Si continueu s'esborrarà."
+
+#: ../devede_convert.py:472
+msgid "Unknown error"
+msgstr "S'ha produït un error desconegut"
+
+#: ../devede_dvd.py:36
+msgid "Creating DVD tree structure"
+msgstr "S'està generant l'estructura del DVD"
+
+#: ../devede_dvd.py:42
+msgid ""
+"Failed to create the DVD tree\n"
+"Maybe you ran out of disk space"
+msgstr ""
+"Ha fallat la creació de l'estructura del DVD.\n"
+"Comproveu que teniu prou espai lliure."
+
+#: ../devede_dvdmenu.py:228 ../devede_loadsave.py:212
+msgid "The menu soundtrack seems damaged. Using the default silent soundtrack."
+msgstr ""
+"La pista de so del menú sembla danyada. S'utilitza la pista silenciosa "
+"predeterminada."
+
+#: ../devede_dvdmenu.py:402 ../devede_xml_menu.py:493
+msgid ""
+"Can't find the menu background.\n"
+"Check the menu options."
+msgstr ""
+"No es troba el fons del menú.\n"
+"Comproveu-ne les opcions."
+
+#: ../devede_loadsave.py:78
+msgid "Can't open the file."
+msgstr "No es pot obrir el fitxer."
+
+#: ../devede_loadsave.py:85 ../devede_loadsave.py:90
+msgid "That file doesn't contain a disc structure."
+msgstr "Aquest fitxer no conté una estructura de disc."
+
+#: ../devede_loadsave.py:99
+msgid "That file doesn't contain a DeVeDe structure."
+msgstr "Aquest fitxer no conté una estructura de DeVeDe."
+
+#: ../devede_loadsave.py:165
+msgid ""
+"Can't find the following movie files. Please, add them and try to load the "
+"disc structure again.\n"
+msgstr ""
+"No es troben els següents fitxers de pel·lícula. Afegiu-los i proveu de "
+"carregar l'estructura de disc un altre cop.\n"
+
+#: ../devede_loadsave.py:175
+msgid ""
+"Can't find the menu background. I'll open the disc structure anyway with the "
+"default menu background, so don't forget to fix it before creating the disc."
+msgstr ""
+"No es troba el fons del menú. Obriré de totes formes l'estructura de disc "
+"amb el fons de menú predeterminat, però no oblideu d'esmenar aquest problema "
+"abans de crear el disc."
+
+#: ../devede_loadsave.py:190
+msgid ""
+"Can't find the menu soundtrack file. I'll open the disc structure anyway "
+"with a silent soundtrack, so don't forget to fix it before creating the disc."
+msgstr ""
+"No es troba la pista de so del menú. Obriré de totes formes l'estructura del "
+"disc amb una pista silenciosa, però no oblideu d'esmenar aquest problema "
+"abans de crear el disc."
+
+#: ../devede_loadsave.py:282
+msgid "No filename"
+msgstr "Manca el nom del fitxer"
+
+#: ../devede_loadsave.py:334
+msgid "Can't save the file."
+msgstr "No es pot desar el fitxer."
+
+#: ../devede_main.py:345
+msgid ""
+"Too many videos for this disc size.\n"
+"Please, select a bigger disc type or remove some videos."
+msgstr ""
+"Hi ha massa vídeos per a aquesta mida de disc.\n"
+"Escolliu un disc més gran o suprimiu alguns vídeos."
+
+#: ../devede_main.py:406
+msgid ""
+"Some files weren't video files.\n"
+"None added."
+msgstr ""
+"Alguns fitxers no eren de vídeo.\n"
+"No se n'ha afegit cap."
+
+#: ../devede_main.py:455
+#, python-format
+msgid ""
+"Your project contains %(X)d movie files, but the maximum is %(MAX)d. Please, "
+"remove some files and try again."
+msgstr ""
+"El projecte conté %(X)d fitxers de pel·lícula, però el màxim és %(MAX)d. "
+"Suprimiu alguns fitxers i torneu-ho a provar."
+
+#: ../devede_main.py:892
+msgid "no chapters"
+msgstr "sense capítols"
+
+#: ../devede_main.py:952
+msgid "Unsaved disc structure"
+msgstr "L'estructura del disc no s'ha desat"
+
+#: ../devede_main.py:1020
+#, python-format
+msgid "Title %(X)d"
+msgstr "Títol %(X)d"
+
+#: ../devede_newfiles.py:486
+msgid "Subtitle"
+msgstr "Subtítol"
+
+#: ../devede_newfiles.py:489
+msgid "Codepage"
+msgstr "Pàgina de codis"
+
+#: ../devede_newfiles.py:492
+msgid "Language"
+msgstr "Idioma"
+
+#: ../devede_newfiles.py:566
+msgid "Video files"
+msgstr "Fitxers de vídeo"
+
+#: ../devede_newfiles.py:573
+msgid "All files"
+msgstr "Tots els fitxers"
+
+#. it's not a video file
+#. it's not a multimedia file
+#: ../devede_newfiles.py:920
+msgid "File doesn't seem to be a video file."
+msgstr "No sembla pas que el fitxer sigui de vídeo."
+
+#: ../devede_newfiles.py:922
+msgid "File seems to be an audio file."
+msgstr "Sembla que el fitxer sigui d'àudio."
+
+#: ../devede_newfiles.py:1045
+msgid "Please, add only one file each time."
+msgstr "Afegiu un sol fitxer cada vegada."
+
+#: ../devede_newfiles.py:1058
+msgid "Please, add a movie file before adding subtitles."
+msgstr "Afegiu un fitxer de pel·lícula abans d'afegir subtítols."
+
+#: ../devede_subtitles.py:61
+msgid "Adding subtitles to"
+msgstr "S'estan afegint els subtítols de"
+
+#: ../devede_subtitles.py:186 ../devede_subtitles.py:197
+msgid ""
+"Conversion failed.\n"
+"It seems a bug of SPUMUX."
+msgstr ""
+"Ha fallat la conversió.\n"
+"Sembla un problema de l'SPUMUX."
+
+#: ../devede_video_convert.py:90
+msgid ""
+"File copy failed\n"
+"Maybe you ran out of disk space?"
+msgstr ""
+"Ha fallat còpia del fitxer.\n"
+"Comproveu que teniu prou espai lliure."
+
+#: ../devede_video_convert.py:92
+msgid "Copying the file"
+msgstr "S'està copiant el fitxer"
+
+#: ../devede_video_convert.py:94 ../devede_video_convert.py:124
+msgid "Creating preview"
+msgstr "S'està creant la vista prèvia"
+
+#: ../devede_video_convert.py:121
+#, python-format
+msgid ""
+"Converting files from title %(title_number)s (pass %(pass_number)s)\n"
+"\n"
+"%(file_name)s"
+msgstr ""
+"S'estan convertint els fitxers del títol %(title_number)s (passada "
+"%(pass_number)s)\n"
+"\n"
+"%(file_name)s"
+
+#: ../devede_video_convert.py:534
+msgid ""
+"Conversion failed.\n"
+"It seems a bug of Mencoder."
+msgstr ""
+"Ha fallat la conversió.\n"
+"Sembla que sigui un problema del Mencoder."
+
+#: ../devede_video_convert.py:536
+msgid "Also check the extra params passed to Mencoder for syntax errors."
+msgstr ""
+"Comproveu també els errors de sintaxi en els parametres addicionals passats "
+"al Mencoder."
+
+#: ../devede_video_convert.py:569
+msgid ""
+"Conversion failed\n"
+"Maybe you ran out of disk space?"
+msgstr ""
+"Ha fallat la conversió.\n"
+"Comproveu que teniu prou espai lliure."
+
+#: ../devede_xml_menu.py:42
+msgid "Failed to create the menues."
+msgstr "Ha fallat la creació dels menús."
+
+#: ../devede_xml_menu.py:118 ../devede_xml_menu.py:509
+msgid "Menu generation failed."
+msgstr "Ha fallat la generació del menú."
+
+#: ../devede_xml_menu.py:125 ../devede_xml_menu.py:518
+msgid ""
+"Can't add the buttons to the menus.\n"
+"It seems a bug of SPUMUX."
+msgstr ""
+"No es poden afegir els botons als menús.\n"
+"Sembla un defecte de l'SPUMUX."
+
+#: ../devede_xml_menu.py:484
+#, python-format
+msgid "Creating menu %(menu_number)d"
+msgstr "S'està creant el menú %(menu_number)d"
+
+#: ../interface/wno_mp3lame.ui.h:1
+msgid ""
+"Your FFMPEG version is compiled\n"
+"without MP3LAME support, so\n"
+"Devede can't create DivX.\n"
+"\n"
+"Recompile your FFMPEG code, or\n"
+"install a version with MP3LAME\n"
+"support."
+msgstr ""
+
+#: ../interface/use_ffmpeg.ui.h:1
+msgid ""
+"This version of Devede allows to use FFMPEG instead\n"
+"of Mencoder for movie conversion. This code is still\n"
+"EXPERIMENTAL, but quite complete.\n"
+"\n"
+"If you see glitches in the video when using FFMPEG, try\n"
+"to disable the multicore support before filling a bug.\n"
+"\n"
+"To test this mode, active it in Edit->Preferences"
+msgstr ""
+
+#: ../interface/use_ffmpeg.ui.h:9
+msgid "Don't show this message at startup again"
+msgstr ""
+
+#: ../interface/settings.ui.h:1
+msgid "Erase temporary files"
+msgstr "Esborra els fitxers temporals"
+
+#: ../interface/settings.ui.h:2
+msgid "Use optimizations for multicore CPUs"
+msgstr "Usa optimitzacions per a CPUs multicore"
+
+#: ../interface/settings.ui.h:3
+msgid "Don't use hyperthreading"
+msgstr ""
+
+#: ../interface/settings.ui.h:4
+msgid "Use FFMPEG instead of Mencoder for videos"
+msgstr ""
+
+#: ../interface/settings.ui.h:5
+msgid "Use FFMPEG instead of Mencoder for menu"
+msgstr ""
+
+#: ../interface/settings.ui.h:6
+msgid "<b>Options</b>"
+msgstr "<b>Opcions</b>"
+
+#: ../interface/settings.ui.h:7
+msgid "Temporary files folder:"
+msgstr "Carpeta per als fitxers temporals: "
+
+#: ../interface/settings.ui.h:8
+msgid "Folder for temporary file"
+msgstr "Carpeta per al fitxer temporal"
+
+#: ../interface/settings.ui.h:9
+#, fuzzy
+msgid "<b>Folders</b>"
+msgstr "<b>Fitxers</b>"
+
+#: ../interface/settings.ui.h:10
+msgid ""
+"AC3_FIXED workaround to fix discs without sound when using Mencoder beta"
+msgstr ""
+
+#: ../interface/settings.ui.h:11
+#, fuzzy
+msgid "<b>Workarounds</b>"
+msgstr "<b>Rotació</b>"
+
+#: ../interface/add_subtitle2.ui.h:1 ../interface/add_subtitle.ui.h:2
+msgid "File: "
+msgstr "Fitxer: "
+
+#: ../interface/add_subtitle2.ui.h:2 ../interface/add_subtitle.ui.h:4
+msgid "Clear"
+msgstr "Esborra"
+
+#: ../interface/add_subtitle2.ui.h:3 ../interface/add_subtitle.ui.h:6
+msgid "Encoding: "
+msgstr "Codificació: "
+
+#: ../interface/add_subtitle2.ui.h:4 ../interface/add_subtitle.ui.h:5
+msgid "Language: "
+msgstr "Idioma: "
+
+#: ../interface/add_subtitle2.ui.h:5 ../interface/add_subtitle.ui.h:7
+msgid "Put subtitles upper"
+msgstr "Col·loca els subtítols més amunt"
+
+#: ../interface/add_subtitle.ui.h:1
+msgid "Add subtitles"
+msgstr "Afegeix subtítols"
+
+#: ../interface/add_subtitle.ui.h:3
+msgid "Choose a file"
+msgstr "Escolliu un fitxer"
+
+#: ../interface/waborted_dialog.ui.h:1
+msgid "Aborted. There can be temporary files at the destination directory."
+msgstr ""
+"S'ha cancel·lat. Pot ser que quedin fitxers temporals en el directori de "
+"destinació."
+
+#: ../interface/wcancel_dialog.ui.h:1
+msgid "Exit DeVeDe"
+msgstr "Surt del DeVeDe"
+
+#: ../interface/wcancel_dialog.ui.h:2
+msgid "Abort the current DVD and exit?"
+msgstr "Voleu interrompre el DVD i sortir?"
+
+#: ../interface/wcancel_job_dialog.ui.h:1
+msgid "Cancel job?"
+msgstr "Voleu cancel·lar la tasca?"
+
+#: ../interface/wdel_chapter_dialog.ui.h:1
+msgid "Delete chapter"
+msgstr "Esborra el capítol"
+
+#: ../interface/wdel_chapter_dialog.ui.h:2
+msgid ""
+"You chose to delete this chapter and\n"
+"reorder the other ones:"
+msgstr ""
+"S'esborrarà aquest capítol i\n"
+"es reordenarà la resta: "
+
+#: ../interface/wdel_chapter_dialog.ui.h:4
+#: ../interface/wdel_title_dialog.ui.h:4
+msgid "Proceed?"
+msgstr "Voleu continuar?"
+
+#: ../interface/wdel_subtitle.ui.h:1
+msgid "Delete subtitle"
+msgstr "Esborra els subtítols"
+
+#: ../interface/wdel_subtitle.ui.h:2
+msgid "Remove the selected subtitle file?"
+msgstr "Voleu suprimir el fitxer de subtítols seleccionat?"
+
+#: ../interface/wdel_title_dialog.ui.h:1
+msgid "Delete title"
+msgstr "Esborra el títol"
+
+#: ../interface/wdel_title_dialog.ui.h:2
+msgid ""
+"You chose to delete this title and\n"
+"reorder the other ones:"
+msgstr ""
+"S'esborrarà aquest títol i\n"
+"es reordenarà la resta: "
+
+#: ../interface/wdisk_type.ui.h:1
+msgid "Disc type selection"
+msgstr "Selecció del tipus de disc"
+
+#: ../interface/wdisk_type.ui.h:2
+msgid "<b>Choose the disc type you want to create with DeVeDe</b>"
+msgstr "<b>Escolliu el tipus de disc que voleu crear amb el DeVeDe</b>"
+
+#: ../interface/wdisk_type.ui.h:3
+msgid ""
+"<b>Video DVD</b>\n"
+"Creates a video DVD suitable for all DVD home players"
+msgstr ""
+"<b>Video DVD</b>\n"
+"Crea un DVD de vídeo adient per a tots els reproductors domèstics de DVD"
+
+#: ../interface/wdisk_type.ui.h:5
+msgid ""
+"<b>VideoCD</b>\n"
+"Creates a VideoCD, with a picture quality equivalent to VHS"
+msgstr ""
+"<b>VideoCD</b>\n"
+"Crea un VideoCD, amb una qualitat d'imatge equivalent al VHS"
+
+#: ../interface/wdisk_type.ui.h:7
+msgid ""
+"<b>Super VideoCD</b>\n"
+"Creates a VideoCD with better picture quality"
+msgstr ""
+"<b>Super VideoCD</b>\n"
+"Crea un VideoCD amb millor qualitat d'imatge"
+
+#: ../interface/wdisk_type.ui.h:9
+msgid ""
+"<b>China VideoDisc</b>\n"
+"Another kind of Super VideoCD"
+msgstr ""
+"<b>China VideoDisc</b>\n"
+"Un altre tipus de Super VideoCD"
+
+#: ../interface/wdisk_type.ui.h:11
+msgid ""
+"<b>DivX / MPEG-4</b>\n"
+"Creates files compliant with DivX home players"
+msgstr ""
+"<b>DivX / MPEG-4</b>\n"
+"Crea fitxers adients per a reproductors domèstics de DivX"
+
+#: ../interface/wempty_titles_dialog.ui.h:1
+msgid ""
+"Your DVD structure contains empty titles.\n"
+"Continue anyway?"
+msgstr ""
+"L'estructura del DVD té títols buits.\n"
+"Voleu continuar igualment?"
+
+#. Means: "Burn the ISO image in a CD/DVD"
+#: ../interface/wend_dialog.ui.h:2
+msgctxt "Means: "
+msgid "Burn"
+msgstr ""
+
+#: ../interface/wend_dialog.ui.h:3
+msgid "Job done!"
+msgstr "La tasca s'ha acabat!"
+
+#: ../interface/werase_dialog.ui.h:1
+msgid "Delete current disc structure?"
+msgstr "Voleu esborrar l'estructura actual del disc?"
+
+#: ../interface/werase_dialog.ui.h:2
+msgid "Delete the current disc structure and start again?"
+msgstr "Voleu esborrar l'estructura actual del disc i tornar a començar?"
+
+#: ../interface/werror_dialog.ui.h:1 ../interface/wprograms.ui.h:1
+msgid "Error"
+msgstr "S'ha produït un error"
+
+#: ../interface/wfile.ui.h:1
+msgid "File properties"
+msgstr "Propietats del fitxer"
+
+#: ../interface/wfile.ui.h:2
+msgid "<b>File</b>"
+msgstr "<b>Fitxer</b>"
+
+#: ../interface/wfile.ui.h:3 ../interface/wmain.ui.h:15
+msgid "Frames per second: "
+msgstr "Fotogrames per segon: "
+
+#: ../interface/wfile.ui.h:4
+msgid "Original length (seconds): "
+msgstr "Llargària original (segons): "
+
+#: ../interface/wfile.ui.h:5
+msgid "Original audio rate (Kbits/sec):"
+msgstr "Taxa original de l'àudio (Kbits/seg): "
+
+#: ../interface/wfile.ui.h:6
+msgid "Original video rate (Kbits/sec):"
+msgstr "Taxa original del vídeo (Kbits/seg): "
+
+#: ../interface/wfile.ui.h:7 ../interface/wmain.ui.h:20
+msgid "Original size (pixels): "
+msgstr "Mida original (píxels): "
+
+#: ../interface/wfile.ui.h:8 ../interface/wmain.ui.h:16
+msgid "Final size (pixels):"
+msgstr "Mida final (píxels): "
+
+#: ../interface/wfile.ui.h:9
+msgid "Estimated final length (MBytes): "
+msgstr "Mida final estimada (MBytes): "
+
+#: ../interface/wfile.ui.h:10 ../interface/wmain.ui.h:24
+msgid "<b>File info</b>"
+msgstr "<b>Informació del fitxer</b>"
+
+#: ../interface/wfile.ui.h:11
+msgid "PAL/SECAM"
+msgstr "PAL/SECAM"
+
+#: ../interface/wfile.ui.h:12 ../interface/wmain.ui.h:31
+msgid "NTSC"
+msgstr "NTSC"
+
+#: ../interface/wfile.ui.h:13
+msgid "<b>Video format</b>"
+msgstr "<b>Format del vídeo</b>"
+
+#: ../interface/wfile.ui.h:14
+msgid "Audio track: "
+msgstr "Pista d'àudio: "
+
+#: ../interface/wfile.ui.h:15
+msgid "This video file has no audio tracks."
+msgstr "Aquest fitxer de vídeo no té pistes d'àudio"
+
+#: ../interface/wfile.ui.h:16
+msgid "<b>Audio tracks</b>"
+msgstr "<b>Pistes àudio</b>"
+
+#: ../interface/wfile.ui.h:17
+msgid "Reset"
+msgstr "Reinicialitza"
+
+#: ../interface/wfile.ui.h:19
+#, no-c-format
+msgid "Resets the volume to 100%"
+msgstr "Reinicialitza el volum al 100%"
+
+#: ../interface/wfile.ui.h:21
+#, no-c-format
+msgid "<b>Volume (%)</b>"
+msgstr "<b>Volum (%)</b>"
+
+#: ../interface/wfile.ui.h:22
+msgid "Store full length"
+msgstr "Desa tot el vídeo"
+
+#: ../interface/wfile.ui.h:23
+msgid "Store the first half"
+msgstr "Desa la primera meitat"
+
+#: ../interface/wfile.ui.h:24
+msgid "Store the second half"
+msgstr "Desa la segona meitat"
+
+#: ../interface/wfile.ui.h:25
+msgid "<b>File split</b>"
+msgstr "<b>Divisió del fitxer</b>"
+
+#: ../interface/wfile.ui.h:26
+msgid "Font size:"
+msgstr "Mida de la lletra: "
+
+#: ../interface/wfile.ui.h:27
+msgid "Force subtitles"
+msgstr "Força els subtítols"
+
+#: ../interface/wfile.ui.h:28
+msgid "DivX format doesn't support subtitles. Please, read the FAQ."
+msgstr "El format DivX no permet subtítols. Si us plau, llegiu les PMF (FAQ)."
+
+#: ../interface/wfile.ui.h:29
+msgid "<b>Subtitles</b>"
+msgstr "<b>Subtítols</b>"
+
+#: ../interface/wfile.ui.h:30
+msgid "<b>Video rate (Kbits/sec)</b>"
+msgstr "<b>Taxa del vídeo (Kbits/seg)</b>"
+
+#: ../interface/wfile.ui.h:31
+msgid "<b>Audio rate (Kbits/sec)</b>"
+msgstr "<b>Taxa de l'àudio (Kbits/seg)</b>"
+
+#: ../interface/wfile.ui.h:32
+msgid "Split the file in chapters (for easy seeking)"
+msgstr "Divideix el fitxer en capítols (per facilitar la cerca)"
+
+#: ../interface/wfile.ui.h:33
+msgid "Size (in minutes) for each chapter: "
+msgstr "Mida (en minuts) per a cada capítol: "
+
+#: ../interface/wfile.ui.h:34
+msgid "<b>Division in chapters</b>"
+msgstr "<b>Divisió en capítols</b>"
+
+#: ../interface/wfile.ui.h:35
+msgid "General"
+msgstr "Generals"
+
+#: ../interface/wfile.ui.h:36
+msgid "352x240"
+msgstr "352x240"
+
+#: ../interface/wfile.ui.h:37
+msgid "Default"
+msgstr "Valors predeterminats"
+
+#: ../interface/wfile.ui.h:38
+msgid "352x480"
+msgstr "352x480"
+
+#: ../interface/wfile.ui.h:39
+msgid "480x480"
+msgstr "480x480"
+
+#: ../interface/wfile.ui.h:40
+msgid "720x480"
+msgstr "720x480"
+
+#: ../interface/wfile.ui.h:41
+msgid "704x480"
+msgstr "704x480"
+
+#: ../interface/wfile.ui.h:42
+msgid "1920x1080"
+msgstr "1920x1080"
+
+#: ../interface/wfile.ui.h:43
+msgid "1280x720"
+msgstr "1280x720"
+
+#: ../interface/wfile.ui.h:44
+msgid "160x128"
+msgstr "160x128"
+
+#: ../interface/wfile.ui.h:45
+msgid "<b>Final size</b>"
+msgstr "<b>Mida final</b>"
+
+#: ../interface/wfile.ui.h:46
+msgid "4:3"
+msgstr "4:3"
+
+#: ../interface/wfile.ui.h:47
+msgid "16:9"
+msgstr "16:9"
+
+#: ../interface/wfile.ui.h:48
+msgid "<b>Aspect ratio</b>"
+msgstr "<b>Relació d'aspecte</b>"
+
+#: ../interface/wfile.ui.h:49
+msgid "Video format"
+msgstr "Format del vídeo"
+
+#: ../interface/wfile.ui.h:50
+msgid "No rotation"
+msgstr "Sense rotació"
+
+#: ../interface/wfile.ui.h:51
+msgid "Rotate 180 degrees"
+msgstr "Rotació de 180 graus"
+
+#: ../interface/wfile.ui.h:52
+msgid "Rotate 90 degrees clockwise"
+msgstr "Rotació horària de 90 graus"
+
+#: ../interface/wfile.ui.h:53
+msgid "Rotate 90 degrees counter-clockwise"
+msgstr "Rotació antihorària de 90 graus"
+
+#: ../interface/wfile.ui.h:54
+msgid "<b>Rotation</b>"
+msgstr "<b>Rotació</b>"
+
+#: ../interface/wfile.ui.h:55
+msgid "Horizontal mirror"
+msgstr "Mirall horitzontal"
+
+#: ../interface/wfile.ui.h:56
+msgid "Vertical mirror"
+msgstr "Mirall vertical"
+
+#: ../interface/wfile.ui.h:57
+msgid "<b>Mirror</b>"
+msgstr "<b>Mirall</b>"
+
+#: ../interface/wfile.ui.h:58
+msgid "Swap fields"
+msgstr "Permuta els camps"
+
+#: ../interface/wfile.ui.h:59
+msgid "<b>Field order</b>"
+msgstr "<b>Ordre dels camps</b>"
+
+#: ../interface/wfile.ui.h:60
+msgid "Add black bars"
+msgstr "Afegeix vores negres"
+
+#: ../interface/wfile.ui.h:61
+msgid "Scale picture"
+msgstr "Escala la imatge"
+
+#: ../interface/wfile.ui.h:62
+msgid "<b>Scaling mode</b>"
+msgstr "<b>Tipus d'escalat</b>"
+
+#: ../interface/wfile.ui.h:63
+msgid "Video options"
+msgstr "Opcions del vídeo"
+
+#: ../interface/wfile.ui.h:64
+msgid "Use MBCMP (faster)"
+msgstr "Usa el mode MBCMP (més ràpid)"
+
+#: ../interface/wfile.ui.h:65
+msgid "Select MBD mode which needs the fewest bits"
+msgstr "Usa el mode MBD que necessiti menys bits"
+
+#: ../interface/wfile.ui.h:66
+msgid "Select the MBD mode which has the best rate distortion (better quality)"
+msgstr ""
+"Usa el mode MBD que ofereixi la millor relació de distorsió (millor qualitat)"
+
+#: ../interface/wfile.ui.h:67
+msgid "Use Trellis Searched Quantization (better quality, slower conversion)"
+msgstr ""
+"Usa la quantific. per cerca de Trellis (millor qualitat, conversió més lenta)"
+
+#: ../interface/wfile.ui.h:68
+msgid "<b>MacroBlock decision algorithm and Trellis searched quantization</b>"
+msgstr "<b>Algorisme per a macroblocs i quantificació per cerca de Trellis</b>"
+
+#: ../interface/wfile.ui.h:69
+msgid "Use dual pass encoding (better quality, much slower conversion)"
+msgstr ""
+"Usa la codificació en dues passades (millor qualitat, conversió molt més "
+"lenta)"
+
+#: ../interface/wfile.ui.h:70
+msgid "Turbo 1st pass"
+msgstr "Primera passada turbo"
+
+#: ../interface/wfile.ui.h:71
+msgid "<b>Two pass encoding</b>"
+msgstr "<b>Codificació en dues passades</b>"
+
+#: ../interface/wfile.ui.h:72
+msgid "Median deinterlacing filter"
+msgstr "Filtre de desentrellaçat per mediana"
+
+#: ../interface/wfile.ui.h:73
+msgid "Don't deinterlace"
+msgstr "No desentrellacis"
+
+#: ../interface/wfile.ui.h:74
+msgid "YADIF deinterlacing filter"
+msgstr "Filtre de desentrellaçat YADIF"
+
+#: ../interface/wfile.ui.h:75
+msgid "FFMpeg deinterlacing filter"
+msgstr "Filtre de desentrellaçat FFMpeg"
+
+#: ../interface/wfile.ui.h:76
+msgid "Linear blend"
+msgstr "Mescla lineal"
+
+#: ../interface/wfile.ui.h:77
+msgid "Lowpass5 deinterlacing filter"
+msgstr "Filtre de desentrellaçat Lowpass5"
+
+#: ../interface/wfile.ui.h:78
+msgid "<b>Deinterlacing</b>"
+msgstr "<b>Desentrellaçat</b>"
+
+#: ../interface/wfile.ui.h:79
+msgid "Quality"
+msgstr "Qualitat"
+
+#: ../interface/wfile.ui.h:80
+msgid "Audio delay (in seconds):"
+msgstr "Retard de so (en segons): "
+
+#: ../interface/wfile.ui.h:81
+msgid "Create DVD with 5.1 channel sound"
+msgstr "Crea un DVD amb 5.1 canals de so"
+
+#: ../interface/wfile.ui.h:82
+msgid ""
+"This file already has AC3 sound (copy audio data instead of recompress it)"
+msgstr ""
+"Aquest fitxer ja conté so AC3 (copia l'àudio en comptes de recomprimir-lo)"
+
+#: ../interface/wfile.ui.h:83
+msgid "<b>Audio</b>"
+msgstr "<b>Àudio</b>"
+
+#: ../interface/wfile.ui.h:84
+msgid "Audio"
+msgstr "Àudio"
+
+#: ../interface/wfile.ui.h:85
+msgid "This file is already a DVD/xCD-suitable MPEG-PS file"
+msgstr "Aquest fitxer ja està en un format MPEG-PS adient per a discos DVD/xCD"
+
+#: ../interface/wfile.ui.h:86
+msgid "Repack audio and video without reencoding (useful for VOB files)"
+msgstr "Reempaqueta àudio i vídeo sense recodificar (útil per a fitxers VOB)"
+
+#: ../interface/wfile.ui.h:87
+msgid "Use a GOP of 12 frames (improves compatibility)"
+msgstr "Usa un GOP de 12 quadres (millora la compatibilitat) "
+
+#: ../interface/wfile.ui.h:88
+msgid "<b>Special</b>"
+msgstr "<b>Especial</b>"
+
+#: ../interface/wfile.ui.h:89
+msgid "Main (-X -Y)"
+msgstr "Main (-X -Y)"
+
+#: ../interface/wfile.ui.h:90
+msgid "-VF (X,Y)"
+msgstr "-VF (X,Y)"
+
+#: ../interface/wfile.ui.h:91
+msgid "-LAVCOPTS (X:Y)"
+msgstr "-LAVCOPTS (X:Y)"
+
+#: ../interface/wfile.ui.h:92
+msgid "-LAMEOPTS (X:Y)"
+msgstr "-LAMEOPTS (X:Y)"
+
+#: ../interface/wfile.ui.h:93
+#, fuzzy
+msgid "<b>Extra parameters for coder</b>"
+msgstr "<b>Paràmetres addicionals per al Mencoder</b>"
+
+#: ../interface/wfile.ui.h:94
+msgid "Misc"
+msgstr "Diverses"
+
+#: ../interface/wfile.ui.h:95 ../interface/wmain.ui.h:41
+msgid "Advanced options"
+msgstr "Opcions avançades"
+
+#: ../interface/wfile.ui.h:96 ../interface/wmain.ui.h:13
+msgid "Preview"
+msgstr "Vista prèvia"
+
+#: ../interface/wfolder_dialog.ui.h:1
+msgid ""
+"Choose the folder where DeVeDe will create the DVD image and a name for it. "
+"Don't use a folder in a VFAT/FAT32 drive. Characters /, | and \\ are not "
+"allowed and will be replaced by underscores."
+msgstr ""
+"Escolliu la carpeta en què el DeVeDe crearà la imatge del DVD, així com un "
+"nom per a aquesta. No useu una carpeta situada en una unitat VFAT/FAT32. Els "
+"caràcters /, | i \\ no es permeten i se substituiran per subratllats."
+
+#: ../interface/wfolder_dialog.ui.h:2
+msgid "Choose a folder"
+msgstr "Escolliu una carpeta"
+
+#: ../interface/wfolder_dialog.ui.h:3
+msgid "Shutdown computer when disc is done"
+msgstr ""
+
+#: ../interface/wloadconfig.ui.h:1
+msgid "Load a disc structure"
+msgstr "Carrega una estructura de disc"
+
+#: ../interface/wloosecurrent.ui.h:1
+msgid "Warning: you already have a disc structure"
+msgstr "Atenció: ja teniu una estructura de disc"
+
+#: ../interface/wloosecurrent.ui.h:2
+msgid ""
+"If you load a disc structure you will loose your current structure (unless "
+"you saved it). Continue?"
+msgstr ""
+"Si carregueu una estructura de disc perdreu l'estructura actual (llevat que "
+"la deseu). Voleu continuar?"
+
+#: ../interface/wmain.ui.h:1
+msgid "185 MB CD"
+msgstr "CD 185 MB"
+
+#: ../interface/wmain.ui.h:2
+msgid "650 MB CD"
+msgstr "CD 650 MB"
+
+#: ../interface/wmain.ui.h:3
+msgid "700 MB CD"
+msgstr "CD 700 MB"
+
+#: ../interface/wmain.ui.h:4
+msgid "1.4 GB DVD"
+msgstr "DVD 1.4 GB"
+
+#: ../interface/wmain.ui.h:5
+msgid "4.7 GB DVD"
+msgstr "DVD 4.7 GB"
+
+#: ../interface/wmain.ui.h:6
+msgid "8.5 GB DVD"
+msgstr "DVD 8.5 GB"
+
+#: ../interface/wmain.ui.h:7
+msgid "DeVeDe"
+msgstr "DeVeDe"
+
+#: ../interface/wmain.ui.h:8
+msgid "_File"
+msgstr "_Fitxer"
+
+#: ../interface/wmain.ui.h:9
+msgid "_Edit"
+msgstr ""
+
+#: ../interface/wmain.ui.h:10
+msgid "_Preferences"
+msgstr ""
+
+#: ../interface/wmain.ui.h:11
+msgid "_Help"
+msgstr "_Ajuda"
+
+#: ../interface/wmain.ui.h:12
+msgid "<b>Titles</b>"
+msgstr "<b>Títols</b>"
+
+#: ../interface/wmain.ui.h:14
+msgid "<b>Files</b>"
+msgstr "<b>Fitxers</b>"
+
+#: ../interface/wmain.ui.h:17
+msgid "Length (seconds): "
+msgstr "Llargària (segons): "
+
+#: ../interface/wmain.ui.h:18
+msgid "Video rate (Kbits/sec): "
+msgstr "Taxa de vídeo (Kbits/seg): "
+
+#: ../interface/wmain.ui.h:19
+msgid "Audio rate (Kbits/sec): "
+msgstr "Taxa d'àudio (Kbits/seg): "
+
+#: ../interface/wmain.ui.h:21
+msgid "Estimated length (MBytes): "
+msgstr "Mida estimada (MBytes): "
+
+#: ../interface/wmain.ui.h:22
+msgid "Output aspect ratio:"
+msgstr "Relació d'aspecte (sortida): "
+
+#: ../interface/wmain.ui.h:23
+msgid "Size of chapters:"
+msgstr "Mida dels capítols: "
+
+#: ../interface/wmain.ui.h:25
+msgid "Adjust disc usage"
+msgstr "Ajusta l'ús del disc"
+
+#: ../interface/wmain.ui.h:27
+#, no-c-format
+msgid "0.0%"
+msgstr "0.0%"
+
+#: ../interface/wmain.ui.h:28
+msgid " Media size: "
+msgstr " Mida del medi: "
+
+#: ../interface/wmain.ui.h:29
+msgid "<b>Disc usage</b>"
+msgstr "<b>Ocupació del disc</b>"
+
+#: ../interface/wmain.ui.h:30
+msgid "PAL"
+msgstr "PAL"
+
+#: ../interface/wmain.ui.h:32
+msgid "<b>Default format</b>"
+msgstr "<b>Format per omissió</b>"
+
+#: ../interface/wmain.ui.h:33
+msgid "Create a menu with the titles"
+msgstr "Crea un menú amb els títols"
+
+#: ../interface/wmain.ui.h:34
+msgid "Menu options"
+msgstr "Opcions del menú"
+
+#: ../interface/wmain.ui.h:35 ../interface/wmenu_properties.ui.h:31
+msgid "Preview menu"
+msgstr "Vista prèvia del menú"
+
+#: ../interface/wmain.ui.h:36
+msgid "<b>Menus</b>"
+msgstr "<b>Menús</b>"
+
+#: ../interface/wmain.ui.h:37
+msgid "Only convert film files to compliant MPEG files"
+msgstr "Únicament crea fitxers MPEG a partir dels fitxers de pel·lícula"
+
+#: ../interface/wmain.ui.h:38
+msgid "Create disc structure"
+msgstr "Crea l'estructura del disc"
+
+#: ../interface/wmain.ui.h:39
+msgid "Create an ISO or BIN/CUE image, ready to burn to a disc"
+msgstr "Crea una imatge ISO o BIN/CUE, preparada per gravar en un disc"
+
+#: ../interface/wmain.ui.h:40
+msgid "<b>Action</b>"
+msgstr "<b>Acció</b>"
+
+#: ../interface/wmenu_preview_ntsc.ui.h:1
+#: ../interface/wmenu_preview_pal.ui.h:1
+msgid "Menu preview"
+msgstr "Vista prèvia del menú"
+
+#: ../interface/wmenu_properties.ui.h:1
+msgid "Shadow color: "
+msgstr "Color de l'ombra: "
+
+#: ../interface/wmenu_properties.ui.h:2
+msgid "Text color: "
+msgstr "Color del text: "
+
+#: ../interface/wmenu_properties.ui.h:3
+msgid "Text: "
+msgstr "Text: "
+
+#: ../interface/wmenu_properties.ui.h:4
+msgid "Font: "
+msgstr "Lletra: "
+
+#: ../interface/wmenu_properties.ui.h:5
+msgid "<b>Menu title</b>"
+msgstr "<b>Títol del menú</b>"
+
+#: ../interface/wmenu_properties.ui.h:6
+msgid "Select a picture to be used as background for disc's menu"
+msgstr "Escolliu una imatge per usar-la com a fons del menú del disc"
+
+#: ../interface/wmenu_properties.ui.h:7
+msgid "Set default background"
+msgstr "Fons predeterminat"
+
+#: ../interface/wmenu_properties.ui.h:8
+msgid "<b>Menu background (only PNG)</b>"
+msgstr "<b>Fons del menú (només PNG)</b>"
+
+#: ../interface/wmenu_properties.ui.h:9
+msgid "Choose a music file"
+msgstr "Escolliu un fitxer de música"
+
+#: ../interface/wmenu_properties.ui.h:10
+msgid "Set menus without sound"
+msgstr "Configura el menú sense so"
+
+#: ../interface/wmenu_properties.ui.h:11
+msgid "<b>Menu music</b>"
+msgstr "<b>Música del menú</b>"
+
+#: ../interface/wmenu_properties.ui.h:12
+#, fuzzy
+msgid "<b>Horizontal</b>"
+msgstr "<b>Alineació horitzontal</b>"
+
+#: ../interface/wmenu_properties.ui.h:13
+#, fuzzy
+msgid "<b>Vertical</b>"
+msgstr "<b>Especial</b>"
+
+#: ../interface/wmenu_properties.ui.h:14
+msgid "Top"
+msgstr "A dalt"
+
+#: ../interface/wmenu_properties.ui.h:15
+msgid "Middle"
+msgstr "Al mig"
+
+#: ../interface/wmenu_properties.ui.h:16
+msgid "Bottom"
+msgstr "A baix"
+
+#: ../interface/wmenu_properties.ui.h:17
+msgid "Left"
+msgstr "Esquerra"
+
+#: ../interface/wmenu_properties.ui.h:18
+msgid "Center"
+msgstr "Centre"
+
+#: ../interface/wmenu_properties.ui.h:19
+msgid "Right"
+msgstr "Dreta"
+
+#: ../interface/wmenu_properties.ui.h:21
+#, fuzzy, no-c-format
+msgid "<b>Margins (%)</b>"
+msgstr "<b>Menús</b>"
+
+#: ../interface/wmenu_properties.ui.h:22
+msgid "<b>Menu position</b>"
+msgstr "<b>Posició del menú</b>"
+
+#: ../interface/wmenu_properties.ui.h:23
+msgid "Color for unselected titles: "
+msgstr "Color per als títols no seleccionats: "
+
+#: ../interface/wmenu_properties.ui.h:24
+msgid "Color for shadows: "
+msgstr "Color per a les ombres: "
+
+#: ../interface/wmenu_properties.ui.h:25
+msgid "Color for selected title: "
+msgstr "Color per al títol seleccionat: "
+
+#: ../interface/wmenu_properties.ui.h:26
+msgid "Background color for titles: "
+msgstr "Color de fons per al títols: "
+
+#: ../interface/wmenu_properties.ui.h:27
+msgid "<b>Menu font and colors</b>"
+msgstr "<b>Colors i lletra del menú</b>"
+
+#: ../interface/wmenu_properties.ui.h:28
+msgid "Show menu at disc startup"
+msgstr "Mostra el menú en iniciar"
+
+#: ../interface/wmenu_properties.ui.h:29
+msgid "Jump to the first title at startup"
+msgstr "Salta al primer títol en iniciar"
+
+#: ../interface/wmenu_properties.ui.h:30
+msgid "<b>Disc startup options</b>"
+msgstr "<b>Opcions en iniciar la reproducció</b>"
+
+#: ../interface/wnofonts.ui.h:1
+msgid "Can't find the font for subtitles. Aborting."
+msgstr "No es troba la lletra per als subtítols. S'està cancel·lant."
+
+#: ../interface/wpreviewagain_dialog.ui.h:1
+msgid "Replay the preview again?"
+msgstr "Voleu repetir la previsualització?"
+
+#: ../interface/wpreview_dialog.ui.h:1
+msgid "<b>Preview video</b>"
+msgstr "<b>Vista prèvia del vídeo</b>"
+
+#: ../interface/wpreview_dialog.ui.h:2
+msgid ""
+"DeVeDe will create a preview with the selected parameters, so you will be "
+"able to check video quality, audio sync and so on."
+msgstr ""
+"El DeVeDe crearà una vista prèvia amb els paràmetres seleccionats per tal "
+"que pugueu comprovar la qualitat del vídeo, la sincronització del so, etc."
+
+#: ../interface/wpreview_dialog.ui.h:3
+msgid "Preview length:"
+msgstr "Durada de la vista prèvia:"
+
+#: ../interface/wprograms.ui.h:2
+msgid "Can't find the following programs:"
+msgstr "No es troben els programes: "
+
+#: ../interface/wprograms.ui.h:3
+msgid ""
+"DeVeDe needs them in order to work. If you want to use DeVeDe, you must "
+"install all of them."
+msgstr ""
+"El DeVeDe els necessita per funcionar. Si voleu utilitzar el DeVeDe haureu "
+"d'instal·lar-los tots."
+
+#: ../interface/wprogress.ui.h:1
+msgid "Creating..."
+msgstr "S'està creant..."
+
+#: ../interface/wsaveconfig.ui.h:1
+msgid "Save current disc structure"
+msgstr "Desa l'estructura actual del disc"
+
+#: ../interface/wtitle_properties_dialog.ui.h:1
+msgid "Title properties"
+msgstr "Propietats del títol"
+
+#: ../interface/wtitle_properties_dialog.ui.h:2
+msgid "<b>Title's name</b>"
+msgstr "<b>Nom del títol</b>"
+
+#: ../interface/wtitle_properties_dialog.ui.h:3
+msgid "Stop reproduction/show disc menu"
+msgstr "Atura la reproducció / mostra el menú del disc"
+
+#: ../interface/wtitle_properties_dialog.ui.h:4
+msgid "Play the first title"
+msgstr "Reprodueix el primer títol"
+
+#: ../interface/wtitle_properties_dialog.ui.h:5
+msgid "Play the previous title"
+msgstr "Reprodueix el títol anterior"
+
+#: ../interface/wtitle_properties_dialog.ui.h:6
+msgid "Play this title again (loop)"
+msgstr "Torna a reproduir aquest títol "
+
+#: ../interface/wtitle_properties_dialog.ui.h:7
+msgid "Play the next title"
+msgstr "Reprodueix el títol següent"
+
+#: ../interface/wtitle_properties_dialog.ui.h:8
+msgid "Play the last title"
+msgstr "Reprodueix el darrer títol"
+
+#: ../interface/wtitle_properties_dialog.ui.h:9
+msgid "<b>Action to perform when this title ends</b>"
+msgstr "<b>Acció a realitzar en acabar aquest títol</b>"
+
+#: ../interface/wwarning_dialog.ui.h:1
+msgid "Warning"
+msgstr "Avís"
+
+#~ msgid "<b>Vertical alignment</b>"
+#~ msgstr "<b>Alineació vertical</b>"
+
+#~ msgid "Converting files from title"
+#~ msgstr "S'estan convertint els fitxers del títol"
+
+#~ msgid "gtk-cancel"
+#~ msgstr "gtk-cancel"
+
+#~ msgid "gtk-ok"
+#~ msgstr "gtk-ok"
+
+#~ msgid "<b>Trellis searched quantization</b>"
+#~ msgstr "<b>Quantificació per cerca de Trellis</b>"
+
+#~ msgid "gtk-no"
+#~ msgstr "gtk-no"
+
+#~ msgid "gtk-yes"
+#~ msgstr "gtk-yes"
+
+#~ msgid "gtk-add"
+#~ msgstr "gtk-add"
+
+#~ msgid "gtk-help"
+#~ msgstr "gtk-help"
+
+#~ msgid "gtk-remove"
+#~ msgstr "gtk-remove"
+
+#~ msgid "gtk-go-back"
+#~ msgstr "gtk-go-back"
+
+#~ msgid "gtk-go-forward"
+#~ msgstr "gtk-go-forward"
+
+#~ msgid "gtk-open"
+#~ msgstr "gtk-open"
+
+#~ msgid ""
+#~ "Uses multiple threads with Mencoder, allowing a faster compression "
+#~ "process. But requires Mencoder 1.0 RC2 or later."
+#~ msgstr ""
+#~ "Usa diversos fils amb el Mencoder, permetent un proceś de compressió més "
+#~ "ràpid. Però requereix el Mencoder 1.0 RC2 o més recent."
+
+#~ msgid "gtk-about"
+#~ msgstr "gtk-about"
+
+#~ msgid "gtk-go-down"
+#~ msgstr "gtk-go-down"
+
+#~ msgid "gtk-go-up"
+#~ msgstr "gtk-go-up"
+
+#~ msgid "gtk-new"
+#~ msgstr "gtk-new"
+
+#~ msgid "gtk-properties"
+#~ msgstr "gtk-properties"
+
+#~ msgid "gtk-quit"
+#~ msgstr "gtk-quit"
+
+#~ msgid "gtk-save"
+#~ msgstr "gtk-save"
+
+#~ msgid "gtk-save-as"
+#~ msgstr "gtk-save-as"

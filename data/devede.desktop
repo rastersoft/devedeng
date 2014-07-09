@@ -1,0 +1,20 @@
+[Desktop Entry]
+X-MultipleArgs=false
+Type=Application
+Name=DeVeDe
+GenericName=DVD/CD Video Creator
+X-GNOME-FullName=DeVeDe DVD/CD Video Creator
+X-GNOME-FullName[ca]=DeVeDe creador de CD/DVDs de vídeo
+X-GNOME-FullName[es]=DeVeDe creador de CD/DVDs de vídeo
+X-GNOME-FullName[gl]=DeVeDe creador de CD/DVDs de vídeo
+X-GNOME-FullName[pl]=DeVeDe tworzenie wideo na CD/DVD
+X-GNOME-FullName[it]=DeVeDe creatore di video CD/DVD
+Comment=Allows to create video CDs and DVDs, suitable to be reproduced in home DVD players
+Comment[ca]=Permet crear CDs i DVDs de vídeo, que poden reproduir-se en reproductors domèstics
+Comment[es]=Permite crear video CDs y DVDs, que pueden reproducirse en reproductores domésticos
+Comment[gl]=Permite crear video CDs e DVDs, que poden reproducirse en reproductores domésticos
+Comment[pl]=Pozwala stworzyć wideo na płytach CD lub DVD, do otwarzania w domowych odtwarzaczach DVD
+TryExec=devede
+Exec=devede
+Categories=AudioVideo;
+Icon=devede

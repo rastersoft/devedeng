@@ -1,0 +1,1536 @@
+# Swedish translation for DeVeDe.
+# Copyright (C) 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
+# This file is distributed under the same license as the devede package.
+# Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: devede\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-20 12:55+0200\n"
+"PO-Revision-Date: 2010-01-25 00:11+0100\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../devede_bincue.py:39
+msgid "Creating BIN/CUE files"
+msgstr "Skapar BIN/CUE-filer"
+
+#: ../devede_bincue.py:56
+msgid ""
+"Failed to create the BIN/CUE files\n"
+"Maybe you ran out of disk space"
+msgstr ""
+"Misslyckades med att skapa BIN/CUE-filer\n"
+"Kanske har du slut på diskutrymme"
+
+#: ../devede_bincue.py:77
+msgid "Creating ISO file"
+msgstr "Skapar ISO-fil"
+
+#: ../devede_bincue.py:82
+msgid ""
+"Failed to create the ISO image\n"
+"Maybe you ran out of disk space"
+msgstr ""
+"Misslyckades med att skapa ISO-avbilden\n"
+"Kanske har du slut på diskutrymme"
+
+#: ../devede_convert.py:147
+#, python-format
+msgid ""
+"Insuficient free space. To create this disc\n"
+"%(total)d MBytes are needed, but only %(free)d MBytes are available."
+msgstr ""
+"Otillräckligt med ledigt utrymme. För att skapa den här skivan\n"
+"behövs %(total)d MByte, men endast %(free)d MByte finns."
+
+#: ../devede_convert.py:275 ../devede_subtitles.py:75
+#: ../devede_subtitles.py:92 ../devede_xml_menu.py:138
+#: ../devede_xml_menu.py:489 ../devede_xml_menu.py:497
+#: ../devede_xml_menu.py:501 ../devede_xml_menu.py:505
+msgid ""
+"Failed to write to the destination directory.\n"
+"Check that you have privileges and free space there."
+msgstr ""
+"Misslyckades med att skriva till målkatalogen.\n"
+"Kontrollera att du har behörighet och ledigt utrymme."
+
+#: ../devede_convert.py:376
+#, python-format
+msgid ""
+"The file or folder\n"
+"\n"
+"%(folder)s\n"
+"\n"
+"already exists. If you continue, it will be deleted."
+msgstr ""
+"Filen eller mappen\n"
+"\n"
+"%(folder)s\n"
+"\n"
+"finns redan. Om du forsätter kommer den att tas bort."
+
+#: ../devede_convert.py:472
+msgid "Unknown error"
+msgstr "Okänt fel"
+
+#: ../devede_dvd.py:36
+msgid "Creating DVD tree structure"
+msgstr "Skapar dvd-trädstruktur"
+
+#: ../devede_dvd.py:42
+msgid ""
+"Failed to create the DVD tree\n"
+"Maybe you ran out of disk space"
+msgstr ""
+"Misslyckades med att skapa DVD-trädet\n"
+"Kanske har du slut på diskutrymme"
+
+#: ../devede_dvdmenu.py:228 ../devede_loadsave.py:212
+msgid "The menu soundtrack seems damaged. Using the default silent soundtrack."
+msgstr "Menyn ljudspår verkar skadat. Använder standardljudspåret (tystnad)."
+
+#: ../devede_dvdmenu.py:402 ../devede_xml_menu.py:493
+msgid ""
+"Can't find the menu background.\n"
+"Check the menu options."
+msgstr ""
+"Kan inte hitta menybakgrunden.\n"
+"Kontrollera menyalternativen."
+
+#: ../devede_loadsave.py:78
+msgid "Can't open the file."
+msgstr "Kan inte öppna filen."
+
+#: ../devede_loadsave.py:85 ../devede_loadsave.py:90
+msgid "That file doesn't contain a disc structure."
+msgstr "Den filen innehåller inte en skivstruktur."
+
+#: ../devede_loadsave.py:99
+msgid "That file doesn't contain a DeVeDe structure."
+msgstr "Den filen innehåller inte en DeVeDe-struktur."
+
+#: ../devede_loadsave.py:165
+msgid ""
+"Can't find the following movie files. Please, add them and try to load the "
+"disc structure again.\n"
+msgstr ""
+"Kan inte hitta följande filmfiler. Lägg till dem och prova att läsa in "
+"skivstrukturen igen.\n"
+
+#: ../devede_loadsave.py:175
+msgid ""
+"Can't find the menu background. I'll open the disc structure anyway with the "
+"default menu background, so don't forget to fix it before creating the disc."
+msgstr ""
+"Kan inte hitta menybakgrunden. Jag kommer att öppna skivstrukturen ändå med "
+"standardmenybakgrunden så glöm inte att rätta till den innan du skapar "
+"skivan."
+
+#: ../devede_loadsave.py:190
+msgid ""
+"Can't find the menu soundtrack file. I'll open the disc structure anyway "
+"with a silent soundtrack, so don't forget to fix it before creating the disc."
+msgstr ""
+"Kan inte hitta ljudspårsfilen för menyn. Jag kommer att öppna skivstrukturen "
+"ändå med ett tyst ljudspår så glöm inte att rätta till den innan du skapar "
+"skivan."
+
+#: ../devede_loadsave.py:282
+msgid "No filename"
+msgstr "Inget filnamn"
+
+#: ../devede_loadsave.py:334
+msgid "Can't save the file."
+msgstr "Kan inte spara filen."
+
+#: ../devede_main.py:345
+msgid ""
+"Too many videos for this disc size.\n"
+"Please, select a bigger disc type or remove some videos."
+msgstr ""
+"För många videor för denna diskstorlek.\n"
+"Välj en större disktyp eller ta bort några videor."
+
+#: ../devede_main.py:406
+msgid ""
+"Some files weren't video files.\n"
+"None added."
+msgstr ""
+"Några av filerna var inte videofiler.\n"
+"Inga lades till."
+
+#: ../devede_main.py:455
+#, python-format
+msgid ""
+"Your project contains %(X)d movie files, but the maximum is %(MAX)d. Please, "
+"remove some files and try again."
+msgstr ""
+"Ditt projekt innehåller %(X)d filmfiler men maximalt antal är %(MAX)d. Ta "
+"bort några filer och försök igen."
+
+#: ../devede_main.py:892
+msgid "no chapters"
+msgstr "inga kapitel"
+
+#: ../devede_main.py:952
+msgid "Unsaved disc structure"
+msgstr "Osparad skivstruktur"
+
+#: ../devede_main.py:1020
+#, python-format
+msgid "Title %(X)d"
+msgstr "Titel %(X)d"
+
+#: ../devede_newfiles.py:486
+msgid "Subtitle"
+msgstr "Undertext"
+
+#: ../devede_newfiles.py:489
+msgid "Codepage"
+msgstr "Codepage"
+
+#: ../devede_newfiles.py:492
+msgid "Language"
+msgstr "Språk"
+
+#: ../devede_newfiles.py:566
+msgid "Video files"
+msgstr "Videofiler"
+
+#: ../devede_newfiles.py:573
+msgid "All files"
+msgstr "Alla filer"
+
+#. it's not a video file
+#. it's not a multimedia file
+#: ../devede_newfiles.py:920
+msgid "File doesn't seem to be a video file."
+msgstr "Filen verkar inte vara en videofil."
+
+#: ../devede_newfiles.py:922
+msgid "File seems to be an audio file."
+msgstr "Filen verkar vara en ljudfil."
+
+#: ../devede_newfiles.py:1045
+msgid "Please, add only one file each time."
+msgstr "Lägg endast till en fil åt gången."
+
+#: ../devede_newfiles.py:1058
+msgid "Please, add a movie file before adding subtitles."
+msgstr "Lägg till en videofil innan du lägger till undertexter."
+
+#: ../devede_subtitles.py:61
+msgid "Adding subtitles to"
+msgstr "Lägger till undertexter till"
+
+#: ../devede_subtitles.py:186 ../devede_subtitles.py:197
+msgid ""
+"Conversion failed.\n"
+"It seems a bug of SPUMUX."
+msgstr ""
+"Konvertering misslyckades.\n"
+"Det verkar finnas ett fel i SPUMUX."
+
+#: ../devede_video_convert.py:90
+msgid ""
+"File copy failed\n"
+"Maybe you ran out of disk space?"
+msgstr ""
+"Filkopieringen misslyckades\n"
+"Du har kanske slut på diskutrymme?"
+
+#: ../devede_video_convert.py:92
+msgid "Copying the file"
+msgstr "Kopierar filen"
+
+#: ../devede_video_convert.py:94 ../devede_video_convert.py:124
+msgid "Creating preview"
+msgstr "Skapar förhandsvisning"
+
+#: ../devede_video_convert.py:121
+#, python-format
+msgid ""
+"Converting files from title %(title_number)s (pass %(pass_number)s)\n"
+"\n"
+"%(file_name)s"
+msgstr ""
+"Konverterar filer från titeln %(title_number)s (pass %(pass_number)s)\n"
+"\n"
+"%(file_name)s"
+
+#: ../devede_video_convert.py:534
+msgid ""
+"Conversion failed.\n"
+"It seems a bug of Mencoder."
+msgstr ""
+"Konvertering misslyckades.\n"
+"Det verkar finnas ett fel i Mencoder."
+
+#: ../devede_video_convert.py:536
+msgid "Also check the extra params passed to Mencoder for syntax errors."
+msgstr ""
+"Kontrollera även de extra parametrarna som skickas till Mencoder för "
+"syntaxfel."
+
+#: ../devede_video_convert.py:569
+msgid ""
+"Conversion failed\n"
+"Maybe you ran out of disk space?"
+msgstr ""
+"Konvertering misslyckades\n"
+"Kanske har du slut på diskutrymme?"
+
+#: ../devede_xml_menu.py:42
+msgid "Failed to create the menues."
+msgstr "Misslyckades med att skapa menyerna."
+
+#: ../devede_xml_menu.py:118 ../devede_xml_menu.py:509
+msgid "Menu generation failed."
+msgstr "Menygenerering misslyckades."
+
+#: ../devede_xml_menu.py:125 ../devede_xml_menu.py:518
+msgid ""
+"Can't add the buttons to the menus.\n"
+"It seems a bug of SPUMUX."
+msgstr ""
+"Kan inte lägga till knapparna i menyerna.\n"
+"Det verkar finnas ett fel i SPUMUX."
+
+#: ../devede_xml_menu.py:484
+#, python-format
+msgid "Creating menu %(menu_number)d"
+msgstr "Skapar meny %(menu_number)d"
+
+#: ../interface/wno_mp3lame.ui.h:1
+msgid ""
+"Your FFMPEG version is compiled\n"
+"without MP3LAME support, so\n"
+"Devede can't create DivX.\n"
+"\n"
+"Recompile your FFMPEG code, or\n"
+"install a version with MP3LAME\n"
+"support."
+msgstr ""
+
+#: ../interface/use_ffmpeg.ui.h:1
+msgid ""
+"This version of Devede allows to use FFMPEG instead\n"
+"of Mencoder for movie conversion. This code is still\n"
+"EXPERIMENTAL, but quite complete.\n"
+"\n"
+"If you see glitches in the video when using FFMPEG, try\n"
+"to disable the multicore support before filling a bug.\n"
+"\n"
+"To test this mode, active it in Edit->Preferences"
+msgstr ""
+
+#: ../interface/use_ffmpeg.ui.h:9
+msgid "Don't show this message at startup again"
+msgstr ""
+
+#: ../interface/settings.ui.h:1
+msgid "Erase temporary files"
+msgstr "Radera temporärfiler"
+
+#: ../interface/settings.ui.h:2
+msgid "Use optimizations for multicore CPUs"
+msgstr "Använd optimeringar för flerkärniga processorer"
+
+#: ../interface/settings.ui.h:3
+msgid "Don't use hyperthreading"
+msgstr ""
+
+#: ../interface/settings.ui.h:4
+msgid "Use FFMPEG instead of Mencoder for videos"
+msgstr ""
+
+#: ../interface/settings.ui.h:5
+msgid "Use FFMPEG instead of Mencoder for menu"
+msgstr ""
+
+#: ../interface/settings.ui.h:6
+msgid "<b>Options</b>"
+msgstr "<b>Alternativ</b>"
+
+#: ../interface/settings.ui.h:7
+msgid "Temporary files folder:"
+msgstr "Mapp för temporärfiler:"
+
+#: ../interface/settings.ui.h:8
+msgid "Folder for temporary file"
+msgstr "Mapp för temporärfil"
+
+#: ../interface/settings.ui.h:9
+#, fuzzy
+msgid "<b>Folders</b>"
+msgstr "<b>Filer</b>"
+
+#: ../interface/settings.ui.h:10
+msgid ""
+"AC3_FIXED workaround to fix discs without sound when using Mencoder beta"
+msgstr ""
+
+#: ../interface/settings.ui.h:11
+#, fuzzy
+msgid "<b>Workarounds</b>"
+msgstr "<b>Rotation</b>"
+
+#: ../interface/add_subtitle2.ui.h:1 ../interface/add_subtitle.ui.h:2
+msgid "File: "
+msgstr "Fil: "
+
+#: ../interface/add_subtitle2.ui.h:2 ../interface/add_subtitle.ui.h:4
+msgid "Clear"
+msgstr "Töm"
+
+#: ../interface/add_subtitle2.ui.h:3 ../interface/add_subtitle.ui.h:6
+msgid "Encoding: "
+msgstr "Kodning: "
+
+#: ../interface/add_subtitle2.ui.h:4 ../interface/add_subtitle.ui.h:5
+msgid "Language: "
+msgstr "Språk: "
+
+#: ../interface/add_subtitle2.ui.h:5 ../interface/add_subtitle.ui.h:7
+msgid "Put subtitles upper"
+msgstr "Lägg undertexter i överkant"
+
+#: ../interface/add_subtitle.ui.h:1
+msgid "Add subtitles"
+msgstr "Lägg till undertexter"
+
+#: ../interface/add_subtitle.ui.h:3
+msgid "Choose a file"
+msgstr "Välj en fil"
+
+#: ../interface/waborted_dialog.ui.h:1
+msgid "Aborted. There can be temporary files at the destination directory."
+msgstr "Avbruten. Det kan finnas temporärfiler i målkatalogen."
+
+#: ../interface/wcancel_dialog.ui.h:1
+msgid "Exit DeVeDe"
+msgstr "Avsluta DeVeDe"
+
+#: ../interface/wcancel_dialog.ui.h:2
+msgid "Abort the current DVD and exit?"
+msgstr "Avbryt aktuell DVD och avsluta?"
+
+#: ../interface/wcancel_job_dialog.ui.h:1
+msgid "Cancel job?"
+msgstr "Avbryt jobbet?"
+
+#: ../interface/wdel_chapter_dialog.ui.h:1
+msgid "Delete chapter"
+msgstr "Ta bort kapitel"
+
+#: ../interface/wdel_chapter_dialog.ui.h:2
+msgid ""
+"You chose to delete this chapter and\n"
+"reorder the other ones:"
+msgstr ""
+"Du valde att ta bort det här kapitlet\n"
+"och numrera om de andra:"
+
+#: ../interface/wdel_chapter_dialog.ui.h:4
+#: ../interface/wdel_title_dialog.ui.h:4
+msgid "Proceed?"
+msgstr "Fortsätt?"
+
+#: ../interface/wdel_subtitle.ui.h:1
+msgid "Delete subtitle"
+msgstr "Ta bort undertext"
+
+#: ../interface/wdel_subtitle.ui.h:2
+msgid "Remove the selected subtitle file?"
+msgstr "Ta bort markerad undertextfil?"
+
+#: ../interface/wdel_title_dialog.ui.h:1
+msgid "Delete title"
+msgstr "Ta bort titel"
+
+#: ../interface/wdel_title_dialog.ui.h:2
+msgid ""
+"You chose to delete this title and\n"
+"reorder the other ones:"
+msgstr ""
+"Du har valt att ta bort den här titeln\n"
+"och numrera om de andra:"
+
+#: ../interface/wdisk_type.ui.h:1
+msgid "Disc type selection"
+msgstr "Val av disktyp"
+
+#: ../interface/wdisk_type.ui.h:2
+msgid "<b>Choose the disc type you want to create with DeVeDe</b>"
+msgstr "<b>Välj den sorts skiva som du vill skapa med DeVeDe</b>"
+
+#: ../interface/wdisk_type.ui.h:3
+msgid ""
+"<b>Video DVD</b>\n"
+"Creates a video DVD suitable for all DVD home players"
+msgstr ""
+"<b>Video-dvd</b>\n"
+"Skapar en video-dvd lämplig för alla dvd-spelare"
+
+#: ../interface/wdisk_type.ui.h:5
+msgid ""
+"<b>VideoCD</b>\n"
+"Creates a VideoCD, with a picture quality equivalent to VHS"
+msgstr ""
+"<b>VideoCD</b>\n"
+"Skapar en VideoCD med en bildkvalitet motsvarande VHS"
+
+#: ../interface/wdisk_type.ui.h:7
+msgid ""
+"<b>Super VideoCD</b>\n"
+"Creates a VideoCD with better picture quality"
+msgstr ""
+"<b>Super VideoCD</b>\n"
+"Skapar en VideoCD med bättre bildkvalitet"
+
+#: ../interface/wdisk_type.ui.h:9
+msgid ""
+"<b>China VideoDisc</b>\n"
+"Another kind of Super VideoCD"
+msgstr ""
+"<b>China VideoDisc</b>\n"
+"En annan typ av Super VideoCD"
+
+#: ../interface/wdisk_type.ui.h:11
+msgid ""
+"<b>DivX / MPEG-4</b>\n"
+"Creates files compliant with DivX home players"
+msgstr ""
+"<b>DivX / MPEG-4</b>\n"
+"Skapar filer som fungerar med fristående DivX-spelare"
+
+#: ../interface/wempty_titles_dialog.ui.h:1
+msgid ""
+"Your DVD structure contains empty titles.\n"
+"Continue anyway?"
+msgstr ""
+"Din DVD-struktur innehåller tomma titlar.\n"
+"Fortsätt ändå?"
+
+#. Means: "Burn the ISO image in a CD/DVD"
+#: ../interface/wend_dialog.ui.h:2
+msgctxt "Means: "
+msgid "Burn"
+msgstr ""
+
+#: ../interface/wend_dialog.ui.h:3
+msgid "Job done!"
+msgstr "Jobbet är klart!"
+
+#: ../interface/werase_dialog.ui.h:1
+msgid "Delete current disc structure?"
+msgstr "Ta bort den aktuella skivstrukturen?"
+
+#: ../interface/werase_dialog.ui.h:2
+msgid "Delete the current disc structure and start again?"
+msgstr "Ta bort den aktuella skivstrukturen och börja om?"
+
+#: ../interface/werror_dialog.ui.h:1 ../interface/wprograms.ui.h:1
+msgid "Error"
+msgstr "Fel"
+
+#: ../interface/wfile.ui.h:1
+msgid "File properties"
+msgstr "Filegenskaper"
+
+#: ../interface/wfile.ui.h:2
+msgid "<b>File</b>"
+msgstr "<b>Fil</b>"
+
+#: ../interface/wfile.ui.h:3 ../interface/wmain.ui.h:15
+msgid "Frames per second: "
+msgstr "Bildrutor per sekund: "
+
+#: ../interface/wfile.ui.h:4
+msgid "Original length (seconds): "
+msgstr "Ursprunglig längd (sekunder): "
+
+#: ../interface/wfile.ui.h:5
+msgid "Original audio rate (Kbits/sec):"
+msgstr "Ursprunglig ljudfrekvens (kbit/s):"
+
+#: ../interface/wfile.ui.h:6
+msgid "Original video rate (Kbits/sec):"
+msgstr "Ursprunglig videofrekvens (kbit/s):"
+
+#: ../interface/wfile.ui.h:7 ../interface/wmain.ui.h:20
+msgid "Original size (pixels): "
+msgstr "Ursprunglig storlek (bildpunkter): "
+
+#: ../interface/wfile.ui.h:8 ../interface/wmain.ui.h:16
+msgid "Final size (pixels):"
+msgstr "Slutgiltig storlek (bildpunkter):"
+
+#: ../interface/wfile.ui.h:9
+msgid "Estimated final length (MBytes): "
+msgstr "Uppskattad slutlig längd (MByte): "
+
+#: ../interface/wfile.ui.h:10 ../interface/wmain.ui.h:24
+msgid "<b>File info</b>"
+msgstr "<b>Filinformation</b>"
+
+#: ../interface/wfile.ui.h:11
+msgid "PAL/SECAM"
+msgstr "PAL/SECAM"
+
+#: ../interface/wfile.ui.h:12 ../interface/wmain.ui.h:31
+msgid "NTSC"
+msgstr "NTSC"
+
+#: ../interface/wfile.ui.h:13
+msgid "<b>Video format</b>"
+msgstr "<b>Videoformat</b>"
+
+#: ../interface/wfile.ui.h:14
+msgid "Audio track: "
+msgstr "Ljudspår: "
+
+#: ../interface/wfile.ui.h:15
+msgid "This video file has no audio tracks."
+msgstr "Denna videofil har inga ljudspår."
+
+#: ../interface/wfile.ui.h:16
+msgid "<b>Audio tracks</b>"
+msgstr "<b>Ljudspår</b>"
+
+#: ../interface/wfile.ui.h:17
+msgid "Reset"
+msgstr "Återställ"
+
+#: ../interface/wfile.ui.h:19
+#, no-c-format
+msgid "Resets the volume to 100%"
+msgstr "Återställer volymen till 100%"
+
+#: ../interface/wfile.ui.h:21
+#, no-c-format
+msgid "<b>Volume (%)</b>"
+msgstr "<b>Volym (%)</b>"
+
+#: ../interface/wfile.ui.h:22
+msgid "Store full length"
+msgstr "Lagra fullständig längd"
+
+#: ../interface/wfile.ui.h:23
+msgid "Store the first half"
+msgstr "Lagra första hälften"
+
+#: ../interface/wfile.ui.h:24
+msgid "Store the second half"
+msgstr "Lagra andra hälften"
+
+#: ../interface/wfile.ui.h:25
+msgid "<b>File split</b>"
+msgstr "<b>Filuppdelning</b>"
+
+#: ../interface/wfile.ui.h:26
+msgid "Font size:"
+msgstr "Typsnittsstorlek:"
+
+#: ../interface/wfile.ui.h:27
+msgid "Force subtitles"
+msgstr "Tvinga undertexter"
+
+#: ../interface/wfile.ui.h:28
+msgid "DivX format doesn't support subtitles. Please, read the FAQ."
+msgstr ""
+"DivX-formatet saknar stöd för undertexter. Läs mer i Frågor och svar (FAQ)."
+
+#: ../interface/wfile.ui.h:29
+msgid "<b>Subtitles</b>"
+msgstr "<b>Undertexter</b>"
+
+#: ../interface/wfile.ui.h:30
+msgid "<b>Video rate (Kbits/sec)</b>"
+msgstr "<b>Videofrekvens (kbit/s)</b>"
+
+#: ../interface/wfile.ui.h:31
+msgid "<b>Audio rate (Kbits/sec)</b>"
+msgstr "<b>Ljudfrekvens (kbit/s)</b>"
+
+#: ../interface/wfile.ui.h:32
+msgid "Split the file in chapters (for easy seeking)"
+msgstr "Dela upp filen i kapitel (för enklare sökning)"
+
+#: ../interface/wfile.ui.h:33
+msgid "Size (in minutes) for each chapter: "
+msgstr "Storlek (i minuter) för varje kapitel: "
+
+#: ../interface/wfile.ui.h:34
+msgid "<b>Division in chapters</b>"
+msgstr "<b>Indelning i kapitel</b>"
+
+#: ../interface/wfile.ui.h:35
+msgid "General"
+msgstr "Allmänt"
+
+#: ../interface/wfile.ui.h:36
+msgid "352x240"
+msgstr "352x240"
+
+#: ../interface/wfile.ui.h:37
+msgid "Default"
+msgstr "Standard"
+
+#: ../interface/wfile.ui.h:38
+msgid "352x480"
+msgstr "352x480"
+
+#: ../interface/wfile.ui.h:39
+msgid "480x480"
+msgstr "480x480"
+
+#: ../interface/wfile.ui.h:40
+msgid "720x480"
+msgstr "720x480"
+
+#: ../interface/wfile.ui.h:41
+msgid "704x480"
+msgstr "704x480"
+
+#: ../interface/wfile.ui.h:42
+msgid "1920x1080"
+msgstr "1920x1080"
+
+#: ../interface/wfile.ui.h:43
+msgid "1280x720"
+msgstr "1280x720"
+
+#: ../interface/wfile.ui.h:44
+msgid "160x128"
+msgstr "160x128"
+
+#: ../interface/wfile.ui.h:45
+msgid "<b>Final size</b>"
+msgstr "<b>Slutgiltig storlek</b>"
+
+#: ../interface/wfile.ui.h:46
+msgid "4:3"
+msgstr "4:3"
+
+#: ../interface/wfile.ui.h:47
+msgid "16:9"
+msgstr "16:9"
+
+#: ../interface/wfile.ui.h:48
+msgid "<b>Aspect ratio</b>"
+msgstr "<b>Bildförhållande</b>"
+
+#: ../interface/wfile.ui.h:49
+msgid "Video format"
+msgstr "Videoformat"
+
+#: ../interface/wfile.ui.h:50
+msgid "No rotation"
+msgstr "Ingen rotering"
+
+#: ../interface/wfile.ui.h:51
+msgid "Rotate 180 degrees"
+msgstr "Rotera 180 grader"
+
+#: ../interface/wfile.ui.h:52
+msgid "Rotate 90 degrees clockwise"
+msgstr "Rotera 90 grader medsols"
+
+#: ../interface/wfile.ui.h:53
+msgid "Rotate 90 degrees counter-clockwise"
+msgstr "Rotera 90 grader motsols"
+
+#: ../interface/wfile.ui.h:54
+msgid "<b>Rotation</b>"
+msgstr "<b>Rotation</b>"
+
+#: ../interface/wfile.ui.h:55
+msgid "Horizontal mirror"
+msgstr "Horisontell spegel"
+
+#: ../interface/wfile.ui.h:56
+msgid "Vertical mirror"
+msgstr "Vertikal spegel"
+
+#: ../interface/wfile.ui.h:57
+msgid "<b>Mirror</b>"
+msgstr "<b>Spegel</b>"
+
+#: ../interface/wfile.ui.h:58
+msgid "Swap fields"
+msgstr "Växla fält"
+
+#: ../interface/wfile.ui.h:59
+msgid "<b>Field order</b>"
+msgstr "<b>Fältordning</b>"
+
+#: ../interface/wfile.ui.h:60
+msgid "Add black bars"
+msgstr "Lägg till sorgkanter"
+
+#: ../interface/wfile.ui.h:61
+msgid "Scale picture"
+msgstr "Skala bild"
+
+#: ../interface/wfile.ui.h:62
+msgid "<b>Scaling mode</b>"
+msgstr "<b>Skalningsläge</b>"
+
+#: ../interface/wfile.ui.h:63
+msgid "Video options"
+msgstr "Videoinställningar"
+
+#: ../interface/wfile.ui.h:64
+msgid "Use MBCMP (faster)"
+msgstr "Använd MBCMP (snabbare)"
+
+#: ../interface/wfile.ui.h:65
+msgid "Select MBD mode which needs the fewest bits"
+msgstr "Välj MBD-läget som behöver minst antal bitar"
+
+#: ../interface/wfile.ui.h:66
+msgid "Select the MBD mode which has the best rate distortion (better quality)"
+msgstr "Välj MBD-läget som har bästa distortionsfrekvensen (bättre kvalitet)"
+
+#: ../interface/wfile.ui.h:67
+msgid "Use Trellis Searched Quantization (better quality, slower conversion)"
+msgstr ""
+"Använd Trellis Searched Quantization (bättre kvalitet, långsammare "
+"konvertering)"
+
+#: ../interface/wfile.ui.h:68
+msgid "<b>MacroBlock decision algorithm and Trellis searched quantization</b>"
+msgstr "<b>MacroBlock Decision-algoritm och Trellis-kvantisering</b>"
+
+#: ../interface/wfile.ui.h:69
+msgid "Use dual pass encoding (better quality, much slower conversion)"
+msgstr ""
+"Använd dual pass-kodning (bättre kvalitet, mycket långsammare konvertering)"
+
+#: ../interface/wfile.ui.h:70
+msgid "Turbo 1st pass"
+msgstr "Turbo första pass"
+
+#: ../interface/wfile.ui.h:71
+msgid "<b>Two pass encoding</b>"
+msgstr "<b>Två pass-kodning</b>"
+
+#: ../interface/wfile.ui.h:72
+msgid "Median deinterlacing filter"
+msgstr "Median-avflätningsfilter"
+
+#: ../interface/wfile.ui.h:73
+msgid "Don't deinterlace"
+msgstr "Avfläta inte"
+
+#: ../interface/wfile.ui.h:74
+msgid "YADIF deinterlacing filter"
+msgstr "YADIF-avflätningsfilter"
+
+#: ../interface/wfile.ui.h:75
+msgid "FFMpeg deinterlacing filter"
+msgstr "FFMpeg-avflätningsfilter"
+
+#: ../interface/wfile.ui.h:76
+msgid "Linear blend"
+msgstr "Linjär blandning"
+
+#: ../interface/wfile.ui.h:77
+msgid "Lowpass5 deinterlacing filter"
+msgstr "Lowpass5-avflätningsfilter"
+
+#: ../interface/wfile.ui.h:78
+msgid "<b>Deinterlacing</b>"
+msgstr "<b>Avflätning</b>"
+
+#: ../interface/wfile.ui.h:79
+msgid "Quality"
+msgstr "Kvalitet"
+
+#: ../interface/wfile.ui.h:80
+msgid "Audio delay (in seconds):"
+msgstr "Ljudfördröjning (i sekunder):"
+
+#: ../interface/wfile.ui.h:81
+msgid "Create DVD with 5.1 channel sound"
+msgstr "Skapa dvd med 5.1-ljud"
+
+#: ../interface/wfile.ui.h:82
+msgid ""
+"This file already has AC3 sound (copy audio data instead of recompress it)"
+msgstr ""
+"Denna fil har redan AC3-ljud (kopiera ljuddata istället för att omkomprimera "
+"det)"
+
+#: ../interface/wfile.ui.h:83
+msgid "<b>Audio</b>"
+msgstr "<b>Ljud</b>"
+
+#: ../interface/wfile.ui.h:84
+msgid "Audio"
+msgstr "Ljud"
+
+#: ../interface/wfile.ui.h:85
+msgid "This file is already a DVD/xCD-suitable MPEG-PS file"
+msgstr "Den här filen är redan en DVD/xCD-lämplig MPEG-PS-fil"
+
+#: ../interface/wfile.ui.h:86
+msgid "Repack audio and video without reencoding (useful for VOB files)"
+msgstr "Packa om ljud och video utan att koda om (användbart för VOB-filer)"
+
+#: ../interface/wfile.ui.h:87
+msgid "Use a GOP of 12 frames (improves compatibility)"
+msgstr "Använd en GOP på 12 bildrutor (öka kompatibiliteten)"
+
+#: ../interface/wfile.ui.h:88
+msgid "<b>Special</b>"
+msgstr "<b>Special</b>"
+
+#: ../interface/wfile.ui.h:89
+msgid "Main (-X -Y)"
+msgstr "Huvud (-X -Y)"
+
+#: ../interface/wfile.ui.h:90
+msgid "-VF (X,Y)"
+msgstr "-VF (X,Y)"
+
+#: ../interface/wfile.ui.h:91
+msgid "-LAVCOPTS (X:Y)"
+msgstr "-LAVCOPTS (X:Y)"
+
+#: ../interface/wfile.ui.h:92
+msgid "-LAMEOPTS (X:Y)"
+msgstr "-LAMEOPTS (X:Y)"
+
+#: ../interface/wfile.ui.h:93
+#, fuzzy
+msgid "<b>Extra parameters for coder</b>"
+msgstr "<b>Extra parametrar för Mencoder</b>"
+
+#: ../interface/wfile.ui.h:94
+msgid "Misc"
+msgstr "Diverse"
+
+#: ../interface/wfile.ui.h:95 ../interface/wmain.ui.h:41
+msgid "Advanced options"
+msgstr "Avancerade inställningar"
+
+#: ../interface/wfile.ui.h:96 ../interface/wmain.ui.h:13
+msgid "Preview"
+msgstr "Förhandsvisa"
+
+#: ../interface/wfolder_dialog.ui.h:1
+msgid ""
+"Choose the folder where DeVeDe will create the DVD image and a name for it. "
+"Don't use a folder in a VFAT/FAT32 drive. Characters /, | and \\ are not "
+"allowed and will be replaced by underscores."
+msgstr ""
+"Välj mappen där DeVeDe ska skapa dvd-avbilden och ett namn för den. Använd "
+"inte en mapp på en VFAT/FAT32-enhet. Tecknen /, | och \\ tillåts inte och "
+"kommer att ersättas med understreck."
+
+#: ../interface/wfolder_dialog.ui.h:2
+msgid "Choose a folder"
+msgstr "Välj en mapp"
+
+#: ../interface/wfolder_dialog.ui.h:3
+msgid "Shutdown computer when disc is done"
+msgstr ""
+
+#: ../interface/wloadconfig.ui.h:1
+msgid "Load a disc structure"
+msgstr "Läs in en skivstruktur"
+
+#: ../interface/wloosecurrent.ui.h:1
+msgid "Warning: you already have a disc structure"
+msgstr "Varning: du har redan en skivstruktur"
+
+#: ../interface/wloosecurrent.ui.h:2
+msgid ""
+"If you load a disc structure you will loose your current structure (unless "
+"you saved it). Continue?"
+msgstr ""
+"Om du läser in en skivstruktur kommer du att förlora din aktuella struktur "
+"(såvida du inte sparar den först). Fortsätt?"
+
+#: ../interface/wmain.ui.h:1
+msgid "185 MB CD"
+msgstr "185 MB CD"
+
+#: ../interface/wmain.ui.h:2
+msgid "650 MB CD"
+msgstr "650 MB CD"
+
+#: ../interface/wmain.ui.h:3
+msgid "700 MB CD"
+msgstr "700 MB CD"
+
+#: ../interface/wmain.ui.h:4
+msgid "1.4 GB DVD"
+msgstr "1,4 GB DVD"
+
+#: ../interface/wmain.ui.h:5
+msgid "4.7 GB DVD"
+msgstr "4,7 GB DVD"
+
+#: ../interface/wmain.ui.h:6
+msgid "8.5 GB DVD"
+msgstr "8,5 GB DVD"
+
+#: ../interface/wmain.ui.h:7
+msgid "DeVeDe"
+msgstr "DeVeDe"
+
+#: ../interface/wmain.ui.h:8
+msgid "_File"
+msgstr "_Arkiv"
+
+#: ../interface/wmain.ui.h:9
+msgid "_Edit"
+msgstr ""
+
+#: ../interface/wmain.ui.h:10
+msgid "_Preferences"
+msgstr ""
+
+#: ../interface/wmain.ui.h:11
+msgid "_Help"
+msgstr "_Hjälp"
+
+#: ../interface/wmain.ui.h:12
+msgid "<b>Titles</b>"
+msgstr "<b>Titlar</b>"
+
+#: ../interface/wmain.ui.h:14
+msgid "<b>Files</b>"
+msgstr "<b>Filer</b>"
+
+#: ../interface/wmain.ui.h:17
+msgid "Length (seconds): "
+msgstr "Längd (sekunder): "
+
+#: ../interface/wmain.ui.h:18
+msgid "Video rate (Kbits/sec): "
+msgstr "Videofrekvens (kbit/s): "
+
+#: ../interface/wmain.ui.h:19
+msgid "Audio rate (Kbits/sec): "
+msgstr "Ljudfrekvens (kbit/s): "
+
+#: ../interface/wmain.ui.h:21
+msgid "Estimated length (MBytes): "
+msgstr "Uppskattad längd (MByte): "
+
+#: ../interface/wmain.ui.h:22
+msgid "Output aspect ratio:"
+msgstr "Bildförhållande på utdata:"
+
+#: ../interface/wmain.ui.h:23
+msgid "Size of chapters:"
+msgstr "Storlek på kapitel:"
+
+#: ../interface/wmain.ui.h:25
+msgid "Adjust disc usage"
+msgstr "Justera diskanvändning"
+
+#: ../interface/wmain.ui.h:27
+#, no-c-format
+msgid "0.0%"
+msgstr "0.0%"
+
+#: ../interface/wmain.ui.h:28
+msgid " Media size: "
+msgstr " Mediastorlek: "
+
+#: ../interface/wmain.ui.h:29
+msgid "<b>Disc usage</b>"
+msgstr "<b>Skivanvändning</b>"
+
+#: ../interface/wmain.ui.h:30
+msgid "PAL"
+msgstr "PAL"
+
+#: ../interface/wmain.ui.h:32
+msgid "<b>Default format</b>"
+msgstr "<b>Standardformat</b>"
+
+#: ../interface/wmain.ui.h:33
+msgid "Create a menu with the titles"
+msgstr "Skapa en meny med titlarna"
+
+#: ../interface/wmain.ui.h:34
+msgid "Menu options"
+msgstr "Menyalternativ"
+
+#: ../interface/wmain.ui.h:35 ../interface/wmenu_properties.ui.h:31
+msgid "Preview menu"
+msgstr "Förhandsvisa meny"
+
+#: ../interface/wmain.ui.h:36
+msgid "<b>Menus</b>"
+msgstr "<b>Menyer</b>"
+
+#: ../interface/wmain.ui.h:37
+msgid "Only convert film files to compliant MPEG files"
+msgstr "Konvertera endast filmfiler till standardiserade MPEG-filer"
+
+#: ../interface/wmain.ui.h:38
+msgid "Create disc structure"
+msgstr "Skapa skivstruktur"
+
+#: ../interface/wmain.ui.h:39
+msgid "Create an ISO or BIN/CUE image, ready to burn to a disc"
+msgstr "Skapa en ISO eller BIN/CUE-avbild, klar att bränna till en skiva"
+
+#: ../interface/wmain.ui.h:40
+msgid "<b>Action</b>"
+msgstr "<b>Åtgärd</b>"
+
+#: ../interface/wmenu_preview_ntsc.ui.h:1
+#: ../interface/wmenu_preview_pal.ui.h:1
+msgid "Menu preview"
+msgstr "Förhandsvisning av meny"
+
+#: ../interface/wmenu_properties.ui.h:1
+msgid "Shadow color: "
+msgstr "Skuggfärg: "
+
+#: ../interface/wmenu_properties.ui.h:2
+msgid "Text color: "
+msgstr "Textfärg: "
+
+#: ../interface/wmenu_properties.ui.h:3
+msgid "Text: "
+msgstr "Text: "
+
+#: ../interface/wmenu_properties.ui.h:4
+msgid "Font: "
+msgstr "Typsnitt: "
+
+#: ../interface/wmenu_properties.ui.h:5
+msgid "<b>Menu title</b>"
+msgstr "<b>Menytitel</b>"
+
+#: ../interface/wmenu_properties.ui.h:6
+msgid "Select a picture to be used as background for disc's menu"
+msgstr "Välj en bild att använda som bakgrund för skivans meny"
+
+#: ../interface/wmenu_properties.ui.h:7
+msgid "Set default background"
+msgstr "Ställ in standardbakgrund"
+
+#: ../interface/wmenu_properties.ui.h:8
+msgid "<b>Menu background (only PNG)</b>"
+msgstr "<b>Menybakgrund (endast PNG)</b>"
+
+#: ../interface/wmenu_properties.ui.h:9
+msgid "Choose a music file"
+msgstr "Välj en musikfil"
+
+#: ../interface/wmenu_properties.ui.h:10
+msgid "Set menus without sound"
+msgstr "Ange menyer utan ljud"
+
+#: ../interface/wmenu_properties.ui.h:11
+msgid "<b>Menu music</b>"
+msgstr "<b>Menymusik</b>"
+
+#: ../interface/wmenu_properties.ui.h:12
+#, fuzzy
+msgid "<b>Horizontal</b>"
+msgstr "<b>Horisontell justering</b>"
+
+#: ../interface/wmenu_properties.ui.h:13
+#, fuzzy
+msgid "<b>Vertical</b>"
+msgstr "<b>Special</b>"
+
+#: ../interface/wmenu_properties.ui.h:14
+msgid "Top"
+msgstr "Överst"
+
+#: ../interface/wmenu_properties.ui.h:15
+msgid "Middle"
+msgstr "Mitten"
+
+#: ../interface/wmenu_properties.ui.h:16
+msgid "Bottom"
+msgstr "Nederst"
+
+#: ../interface/wmenu_properties.ui.h:17
+msgid "Left"
+msgstr "Vänster"
+
+#: ../interface/wmenu_properties.ui.h:18
+msgid "Center"
+msgstr "Centrera"
+
+#: ../interface/wmenu_properties.ui.h:19
+msgid "Right"
+msgstr "Höger"
+
+#: ../interface/wmenu_properties.ui.h:21
+#, fuzzy, no-c-format
+msgid "<b>Margins (%)</b>"
+msgstr "<b>Menyer</b>"
+
+#: ../interface/wmenu_properties.ui.h:22
+msgid "<b>Menu position</b>"
+msgstr "<b>Menyposition</b>"
+
+#: ../interface/wmenu_properties.ui.h:23
+msgid "Color for unselected titles: "
+msgstr "Färg för avmarkerade titlar:"
+
+#: ../interface/wmenu_properties.ui.h:24
+msgid "Color for shadows: "
+msgstr "Färg för skuggor: "
+
+#: ../interface/wmenu_properties.ui.h:25
+msgid "Color for selected title: "
+msgstr "Färg för markerad titel:"
+
+#: ../interface/wmenu_properties.ui.h:26
+msgid "Background color for titles: "
+msgstr "Bakgrundsfärg för titlar:"
+
+#: ../interface/wmenu_properties.ui.h:27
+msgid "<b>Menu font and colors</b>"
+msgstr "<b>Menyfärger och -typsnitt</b>"
+
+#: ../interface/wmenu_properties.ui.h:28
+msgid "Show menu at disc startup"
+msgstr "Visa meny vid uppstart av skiva"
+
+#: ../interface/wmenu_properties.ui.h:29
+msgid "Jump to the first title at startup"
+msgstr "Hoppa till första titeln vid uppstart"
+
+#: ../interface/wmenu_properties.ui.h:30
+msgid "<b>Disc startup options</b>"
+msgstr "<b>Uppstartsalternativ för skiva</b>"
+
+#: ../interface/wnofonts.ui.h:1
+msgid "Can't find the font for subtitles. Aborting."
+msgstr "Kan inte hitta typsnittet för undertexter. Avbryter."
+
+#: ../interface/wpreviewagain_dialog.ui.h:1
+msgid "Replay the preview again?"
+msgstr "Spela upp förhandsvisningen igen?"
+
+#: ../interface/wpreview_dialog.ui.h:1
+msgid "<b>Preview video</b>"
+msgstr "<b>Förhandsgranska video</b>"
+
+#: ../interface/wpreview_dialog.ui.h:2
+msgid ""
+"DeVeDe will create a preview with the selected parameters, so you will be "
+"able to check video quality, audio sync and so on."
+msgstr ""
+"DeVeDe kommer att skapa en förhandsvisning med de valda parametrarna så att "
+"du kan kontrollera videokvaliteten, ljudsynkronisering och så vidare."
+
+#: ../interface/wpreview_dialog.ui.h:3
+msgid "Preview length:"
+msgstr "Förhandsvisningslängd:"
+
+#: ../interface/wprograms.ui.h:2
+msgid "Can't find the following programs:"
+msgstr "Kan inte hitta följande program:"
+
+#: ../interface/wprograms.ui.h:3
+msgid ""
+"DeVeDe needs them in order to work. If you want to use DeVeDe, you must "
+"install all of them."
+msgstr ""
+"DeVeDe behöver dem för att fungera. Om du vill använda DeVeDe måste du "
+"installera dem alla."
+
+#: ../interface/wprogress.ui.h:1
+msgid "Creating..."
+msgstr "Skapar..."
+
+#: ../interface/wsaveconfig.ui.h:1
+msgid "Save current disc structure"
+msgstr "Spara den aktuella skivstrukturen"
+
+#: ../interface/wtitle_properties_dialog.ui.h:1
+msgid "Title properties"
+msgstr "Titelegenskaper"
+
+#: ../interface/wtitle_properties_dialog.ui.h:2
+msgid "<b>Title's name</b>"
+msgstr "<b>Titelns namn</b>"
+
+#: ../interface/wtitle_properties_dialog.ui.h:3
+msgid "Stop reproduction/show disc menu"
+msgstr "Stoppa reproduktion/visa skivmeny"
+
+#: ../interface/wtitle_properties_dialog.ui.h:4
+msgid "Play the first title"
+msgstr "Spela upp första titeln"
+
+#: ../interface/wtitle_properties_dialog.ui.h:5
+msgid "Play the previous title"
+msgstr "Spela upp föregående titel"
+
+#: ../interface/wtitle_properties_dialog.ui.h:6
+msgid "Play this title again (loop)"
+msgstr "Spela upp den här titeln igen (upprepa)"
+
+#: ../interface/wtitle_properties_dialog.ui.h:7
+msgid "Play the next title"
+msgstr "Spela upp nästa titel"
+
+#: ../interface/wtitle_properties_dialog.ui.h:8
+msgid "Play the last title"
+msgstr "Spela upp sista titeln"
+
+#: ../interface/wtitle_properties_dialog.ui.h:9
+msgid "<b>Action to perform when this title ends</b>"
+msgstr "<b>Åtgärd att genomföra när den här titeln slutar</b>"
+
+#: ../interface/wwarning_dialog.ui.h:1
+msgid "Warning"
+msgstr "Varning"
+
+#~ msgid "<b>Vertical alignment</b>"
+#~ msgstr "<b>Vertikal justering</b>"
+
+#~ msgid "Converting files from title"
+#~ msgstr "Konverterar filer från titeln"
+
+#~ msgid "gtk-cancel"
+#~ msgstr "Avbryt"
+
+#~ msgid "gtk-ok"
+#~ msgstr "OK"
+
+#~ msgid "<b>Trellis searched quantization</b>"
+#~ msgstr "<b>Trellis searched quantization</b>"
+
+#~ msgid "gtk-no"
+#~ msgstr "Nej"
+
+#~ msgid "gtk-yes"
+#~ msgstr "Ja"
+
+#~ msgid "gtk-add"
+#~ msgstr "Lägg till"
+
+#~ msgid "gtk-help"
+#~ msgstr "Hjälp"
+
+#~ msgid "gtk-remove"
+#~ msgstr "Ta bort"
+
+#~ msgid "gtk-go-back"
+#~ msgstr "Bakåt"
+
+#~ msgid "gtk-go-forward"
+#~ msgstr "Framåt"
+
+#~ msgid "gtk-open"
+#~ msgstr "Öppna"
+
+#~ msgid ""
+#~ "Uses multiple threads with Mencoder, allowing a faster compression "
+#~ "process. But requires Mencoder 1.0 RC2 or later."
+#~ msgstr ""
+#~ "Använder multipla trådar med Mencoder, vilket ger en snabbare "
+#~ "komprimeringsprocess. Dock kräver det Mencoder 1.0 RC2 eller senare."
+
+#~ msgid "gtk-about"
+#~ msgstr "Om"
+
+#~ msgid "gtk-go-down"
+#~ msgstr "Nedåt"
+
+#~ msgid "gtk-go-up"
+#~ msgstr "Uppåt"
+
+#~ msgid "gtk-new"
+#~ msgstr "Ny"
+
+#~ msgid "gtk-properties"
+#~ msgstr "Egenskaper"
+
+#~ msgid "gtk-quit"
+#~ msgstr "Avsluta"
+
+#~ msgid "gtk-save"
+#~ msgstr "Spara"
+
+#~ msgid "gtk-save-as"
+#~ msgstr "Spara som"
+
+#~ msgid "CVD"
+#~ msgstr "CVD"
+
+#~ msgid "DIVX / MPEG-4 ASP"
+#~ msgstr "DIVX / MPEG-4 ASP"
+
+#~ msgid "Super VideoCD"
+#~ msgstr "Super VideoCD"
+
+#~ msgid "Video DVD"
+#~ msgstr "Video DVD"
+
+#~ msgid "VideoCD"
+#~ msgstr "VideoCD"
+
+#~ msgid ""
+#~ "<b>Preview video</b>\n"
+#~ "\n"
+#~ "DeVeDe will create a preview with the selected parameters, so you will be "
+#~ "able to check video quality, audio sync and so on.\n"
+#~ "\n"
+#~ "Choose how many seconds of film you want to convert to create the "
+#~ "preview, and the directory where you want to store the temporary file "
+#~ "(default is /var/tmp)."
+#~ msgstr ""
+#~ "<b>Förhandsvisa video</b>\n"
+#~ "\n"
+#~ "DeVeDe kommer att skapa en förhandsvisning med de valda parametrarna, så "
+#~ "att du kan kontrollera videokvaliteten, ljudsynkronisering och så "
+#~ "vidare.\n"
+#~ "\n"
+#~ "Välj hur många sekunders film du vill konvertera för att skapa "
+#~ "förhandsvisningen, och den katalog där du vill lagra den temporära filen "
+#~ "(standard är /var/tmp)."
+
+#~ msgid ""
+#~ "A CD with video in MPEG-1 format, with quality equivalent to VHS. Stores "
+#~ "up to 80 minutes in a 80-minutes CD-R. Playable in all DVD players."
+#~ msgstr ""
+#~ "En CD med video i formatet MPEG-1, med en kvalitet jämförbar med VHS. "
+#~ "Lagrar upp till 80 minuter på en 80-minuters CD-R. Spelbar i alla DVD-"
+#~ "spelare."
+
+#~ msgid ""
+#~ "A CD with video in MPEG-2 format and a resolution of 352x480 (or 352x576 "
+#~ "in PAL). Playable in most of DVD players."
+#~ msgstr ""
+#~ "En CD med video i formatet MPEG-2 och en upplösning på 352x480 (eller "
+#~ "352x576 i PAL). Spelbar i de flesta DVD-spelare."
+
+#~ msgid ""
+#~ "A CD with video in MPEG-2 format and a resolution of 480x480 pixels "
+#~ "(480x576 in PAL). Playable in nearly all DVD players."
+#~ msgstr ""
+#~ "En CD med video i formatet MPEG-2 och en upplösning på 480x480 "
+#~ "bildpunkter (480x576 i PAL). Spelbar i nästan alla DVD-spelare."
+
+#~ msgid "A classic Video DVD, playable in all DVD players."
+#~ msgstr "En klassisk Video DVD, spelbar i alla DVD-spelare."
+
+#~ msgid "Output video format:"
+#~ msgstr "Videoformat på utdata:"
+
+#~ msgid "There was an error while importing the file:"
+#~ msgstr "Det inträffade ett fel vid importering av filen:"
+
+#~ msgid "Audio options"
+#~ msgstr "Ljudinställningar"
+
+#~ msgid "Menu properties"
+#~ msgstr "Menyegenskaper"
+
+#~ msgid "Video (1)"
+#~ msgstr "Video (1)"
+
+#~ msgid "Video (2)"
+#~ msgstr "Video (2)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Failed to write IMAGE to the destination directory.\n"
+#~ "Check that you have privileges and free space there."
+#~ msgstr ""
+#~ "Misslyckades med att skriva till målkatalogen.\n"
+#~ "Kontrollera att du har behörighet och ledigt utrymme."
+
+#, fuzzy
+#~ msgid ""
+#~ "Failed to write HIGHLIGHTto the destination directory.\n"
+#~ "Check that you have privileges and free space there."
+#~ msgstr ""
+#~ "Misslyckades med att skriva till målkatalogen.\n"
+#~ "Kontrollera att du har behörighet och ledigt utrymme."
+
+#, fuzzy
+#~ msgid ""
+#~ "Failed to write SELECT to the destination directory.\n"
+#~ "Check that you have privileges and free space there."
+#~ msgstr ""
+#~ "Misslyckades med att skriva till målkatalogen.\n"
+#~ "Kontrollera att du har behörighet och ledigt utrymme."
+
+#~ msgid ""
+#~ "Can't reduce menu colors.\n"
+#~ "Check that you have ImageMagic's Convert installed"
+#~ msgstr ""
+#~ "Kan inte minska antalet menyfärger.\n"
+#~ "Kontrollera att du har installerat ImageMagics Convert"
+
+#, fuzzy
+#~ msgid "<b>Menu appearance</b>"
+#~ msgstr "<b>Menyformat</b>"
+
+#~ msgid "<b>File with subtitles</b>"
+#~ msgstr "<b>Fil med undertexter</b>"
+
+#~ msgid "Choose the disc to create"
+#~ msgstr "Välj skiva att skapa"
+
+#~ msgid "Use 16:9 aspect ratio for output"
+#~ msgstr "Använd bildförhållandet 16:9 på utdata"
+
+#~ msgid "Choose a file with a movie"
+#~ msgstr "Välj en fil med en film"
+
+#~ msgid "That file contains a structure for a different kind of disc"
+#~ msgstr "Den filen innehåller en struktur för en annan sorts skiva"
+
+#~ msgid "Please, open DeVeDe again with the right disc type"
+#~ msgstr "Öppna DeVeDe igen med den korrekta skivtypen"
+
+#~ msgid "Elapsed time: "
+#~ msgstr "Åtgången tid: "
+
+#~ msgid "Aborted"
+#~ msgstr "Avbruten"
+
+#~ msgid "Create a preview"
+#~ msgstr "Skapa en förhandsvisning"
+
+#~ msgid "DeVeDe: Cancel job?"
+#~ msgstr "DeVeDe: Avbryt jobbet?"
+
+#~ msgid "Destination folder"
+#~ msgstr "Målmapp"
+
+#~ msgid "Done"
+#~ msgstr "Klar"
+
+#~ msgid "Replay preview"
+#~ msgstr "Spela upp förhandsvisning"
+
+#~ msgid "Warning: empty titles"
+#~ msgstr "Varning: tomma titlar"
+
+#~ msgid "total"
+#~ msgstr "totalt"
+
+#~ msgid "2006 Raster Software Vigo"
+#~ msgstr "2006 Raster Software Vigo"
+
+#~ msgid "translator-credits"
+#~ msgstr "Daniel Nylander <po@danielnylander.se>"
