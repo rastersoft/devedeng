@@ -385,7 +385,7 @@ msgstr "<b>Opzioni</b>"
 
 #: ../interface/settings.ui.h:7
 msgid "Temporary files folder:"
-msgstr "Cartella per i file temporanei: "
+msgstr "Cartella per i file temporanei:"
 
 #: ../interface/settings.ui.h:8
 msgid "Folder for temporary file"
@@ -406,20 +406,20 @@ msgid "<b>Workarounds</b>"
 msgstr "<b>Alternative</b>"
 
 #: ../interface/add_subtitle2.ui.h:1 ../interface/add_subtitle.ui.h:2
-msgid "File: "
-msgstr "File: "
+msgid "File:"
+msgstr "File:"
 
 #: ../interface/add_subtitle2.ui.h:2 ../interface/add_subtitle.ui.h:4
 msgid "Clear"
 msgstr "Cancella"
 
 #: ../interface/add_subtitle2.ui.h:3 ../interface/add_subtitle.ui.h:6
-msgid "Encoding: "
-msgstr "Codifica: "
+msgid "Encoding:"
+msgstr "Codifica:"
 
 #: ../interface/add_subtitle2.ui.h:4 ../interface/add_subtitle.ui.h:5
-msgid "Language: "
-msgstr "Lingua: "
+msgid "Language:"
+msgstr "Lingua:"
 
 #: ../interface/add_subtitle2.ui.h:5 ../interface/add_subtitle.ui.h:7
 msgid "Put subtitles upper"
@@ -547,7 +547,7 @@ msgstr ""
 #. Means: "Burn the ISO image in a CD/DVD"
 #: ../interface/wend_dialog.ui.h:2
 #, fuzzy
-msgctxt "Means: "
+msgctxt "Means:"
 msgid "Burn"
 msgstr "Masterizza"
 
@@ -576,12 +576,12 @@ msgid "<b>File</b>"
 msgstr "<b>File</b>"
 
 #: ../interface/wfile.ui.h:3 ../interface/wmain.ui.h:15
-msgid "Frames per second: "
-msgstr "Fotogrammi al secondo: "
+msgid "Frames per second:"
+msgstr "Fotogrammi al secondo:"
 
 #: ../interface/wfile.ui.h:4
-msgid "Original length (seconds): "
-msgstr "Durata originale (secondi): "
+msgid "Original length (seconds):"
+msgstr "Durata originale (secondi):"
 
 #: ../interface/wfile.ui.h:5
 msgid "Original audio rate (Kbits/sec):"
@@ -592,16 +592,16 @@ msgid "Original video rate (Kbits/sec):"
 msgstr "Campionamento video originale (Kbit/sec):"
 
 #: ../interface/wfile.ui.h:7 ../interface/wmain.ui.h:20
-msgid "Original size (pixels): "
-msgstr "Dimensioni originali (pixel): "
+msgid "Original size (pixels):"
+msgstr "Dimensioni originali (pixel):"
 
 #: ../interface/wfile.ui.h:8 ../interface/wmain.ui.h:16
 msgid "Final size (pixels):"
 msgstr "Dimensioni finali (pixel):"
 
 #: ../interface/wfile.ui.h:9
-msgid "Estimated final length (MBytes): "
-msgstr "Lunghezza finale stimata (MBytes): "
+msgid "Estimated final length (MBytes):"
+msgstr "Lunghezza finale stimata (MBytes):"
 
 #: ../interface/wfile.ui.h:10 ../interface/wmain.ui.h:24
 msgid "<b>File info</b>"
@@ -620,8 +620,8 @@ msgid "<b>Video format</b>"
 msgstr "<b>Formato video</b>"
 
 #: ../interface/wfile.ui.h:14
-msgid "Audio track: "
-msgstr "Traccia audio: "
+msgid "Audio track:"
+msgstr "Traccia audio:"
 
 #: ../interface/wfile.ui.h:15
 msgid "This video file has no audio tracks."
@@ -663,7 +663,7 @@ msgstr "<b>Taglio del file</b>"
 
 #: ../interface/wfile.ui.h:26
 msgid "Font size:"
-msgstr "Corpo carattere: "
+msgstr "Corpo carattere:"
 
 #: ../interface/wfile.ui.h:27
 msgid "Force subtitles"
@@ -691,8 +691,8 @@ msgid "Split the file in chapters (for easy seeking)"
 msgstr "Taglia il file in capitoli (per una ricerca più semplice)"
 
 #: ../interface/wfile.ui.h:33
-msgid "Size (in minutes) for each chapter: "
-msgstr "Durata (in minuti) per ogni capitolo: "
+msgid "Size (in minutes) for each chapter:"
+msgstr "Durata (in minuti) per ogni capitolo:"
 
 #: ../interface/wfile.ui.h:34
 msgid "<b>Division in chapters</b>"
@@ -1041,20 +1041,20 @@ msgid "<b>Files</b>"
 msgstr "<b>File</b>"
 
 #: ../interface/wmain.ui.h:17
-msgid "Length (seconds): "
-msgstr "Durata (secondi): "
+msgid "Length (seconds):"
+msgstr "Durata (secondi):"
 
 #: ../interface/wmain.ui.h:18
-msgid "Video rate (Kbits/sec): "
-msgstr "Campionamento video (Kbits/sec): "
+msgid "Video rate (Kbits/sec):"
+msgstr "Campionamento video (Kbits/sec):"
 
 #: ../interface/wmain.ui.h:19
-msgid "Audio rate (Kbits/sec): "
-msgstr "Campionamento audio (Kbit/sec): "
+msgid "Audio rate (Kbits/sec):"
+msgstr "Campionamento audio (Kbit/sec):"
 
 #: ../interface/wmain.ui.h:21
-msgid "Estimated length (MBytes): "
-msgstr "Lughezza finale (MBytes): "
+msgid "Estimated length (MBytes):"
+msgstr "Lughezza finale (MBytes):"
 
 #: ../interface/wmain.ui.h:22
 msgid "Output aspect ratio:"
@@ -1074,8 +1074,8 @@ msgid "0.0%"
 msgstr "0.0%"
 
 #: ../interface/wmain.ui.h:28
-msgid " Media size: "
-msgstr " Dimensione disco: "
+msgid " Media size:"
+msgstr " Dimensione disco:"
 
 #: ../interface/wmain.ui.h:29
 msgid "<b>Disc usage</b>"
@@ -1127,20 +1127,20 @@ msgid "Menu preview"
 msgstr "Anteprima menu"
 
 #: ../interface/wmenu_properties.ui.h:1
-msgid "Shadow color: "
-msgstr "Colore ombra: "
+msgid "Shadow color:"
+msgstr "Colore ombra:"
 
 #: ../interface/wmenu_properties.ui.h:2
-msgid "Text color: "
-msgstr "Colore testo: "
+msgid "Text color:"
+msgstr "Colore testo:"
 
 #: ../interface/wmenu_properties.ui.h:3
-msgid "Text: "
-msgstr "Testo: "
+msgid "Text:"
+msgstr "Testo:"
 
 #: ../interface/wmenu_properties.ui.h:4
-msgid "Font: "
-msgstr "Font: "
+msgid "Font:"
+msgstr "Font:"
 
 #: ../interface/wmenu_properties.ui.h:5
 msgid "<b>Menu title</b>"
@@ -1214,20 +1214,20 @@ msgid "<b>Menu position</b>"
 msgstr "<b>Posizione del menu</b>"
 
 #: ../interface/wmenu_properties.ui.h:23
-msgid "Color for unselected titles: "
-msgstr "Colore per i titoli non selezionati: "
+msgid "Color for unselected titles:"
+msgstr "Colore per i titoli non selezionati:"
 
 #: ../interface/wmenu_properties.ui.h:24
-msgid "Color for shadows: "
-msgstr "Colore per le ombre: "
+msgid "Color for shadows:"
+msgstr "Colore per le ombre:"
 
 #: ../interface/wmenu_properties.ui.h:25
-msgid "Color for selected title: "
-msgstr "Colore per il titolo selezionato: "
+msgid "Color for selected title:"
+msgstr "Colore per il titolo selezionato:"
 
 #: ../interface/wmenu_properties.ui.h:26
-msgid "Background color for titles: "
-msgstr "Colore di sfondo per i titoli: "
+msgid "Background color for titles:"
+msgstr "Colore di sfondo per i titoli:"
 
 #: ../interface/wmenu_properties.ui.h:27
 msgid "<b>Menu font and colors</b>"

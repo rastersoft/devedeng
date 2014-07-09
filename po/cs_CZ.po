@@ -384,20 +384,20 @@ msgid "<b>Workarounds</b>"
 msgstr "<b>Rotace</b>"
 
 #: ../interface/add_subtitle2.ui.h:1 ../interface/add_subtitle.ui.h:2
-msgid "File: "
-msgstr "Soubor: "
+msgid "File:"
+msgstr "Soubor:"
 
 #: ../interface/add_subtitle2.ui.h:2 ../interface/add_subtitle.ui.h:4
 msgid "Clear"
 msgstr "Vyčistit"
 
 #: ../interface/add_subtitle2.ui.h:3 ../interface/add_subtitle.ui.h:6
-msgid "Encoding: "
-msgstr "Kódování: "
+msgid "Encoding:"
+msgstr "Kódování:"
 
 #: ../interface/add_subtitle2.ui.h:4 ../interface/add_subtitle.ui.h:5
-msgid "Language: "
-msgstr "Jazyk: "
+msgid "Language:"
+msgstr "Jazyk:"
 
 #: ../interface/add_subtitle2.ui.h:5 ../interface/add_subtitle.ui.h:7
 msgid "Put subtitles upper"
@@ -522,7 +522,7 @@ msgstr ""
 
 #. Means: "Burn the ISO image in a CD/DVD"
 #: ../interface/wend_dialog.ui.h:2
-msgctxt "Means: "
+msgctxt "Means:"
 msgid "Burn"
 msgstr ""
 
@@ -551,12 +551,12 @@ msgid "<b>File</b>"
 msgstr "<b>Soubor</b>"
 
 #: ../interface/wfile.ui.h:3 ../interface/wmain.ui.h:15
-msgid "Frames per second: "
-msgstr "Snímků za sekundu: "
+msgid "Frames per second:"
+msgstr "Snímků za sekundu:"
 
 #: ../interface/wfile.ui.h:4
-msgid "Original length (seconds): "
-msgstr "Původní délka (sekund): "
+msgid "Original length (seconds):"
+msgstr "Původní délka (sekund):"
 
 #: ../interface/wfile.ui.h:5
 msgid "Original audio rate (Kbits/sec):"
@@ -567,16 +567,16 @@ msgid "Original video rate (Kbits/sec):"
 msgstr "Původní datový tok videa (Kb/s):"
 
 #: ../interface/wfile.ui.h:7 ../interface/wmain.ui.h:20
-msgid "Original size (pixels): "
-msgstr "Původní velikost (pixelů): "
+msgid "Original size (pixels):"
+msgstr "Původní velikost (pixelů):"
 
 #: ../interface/wfile.ui.h:8 ../interface/wmain.ui.h:16
 msgid "Final size (pixels):"
 msgstr "Výsledná velikost (pixelů):"
 
 #: ../interface/wfile.ui.h:9
-msgid "Estimated final length (MBytes): "
-msgstr "Předpokládaná velikost výsledku (MB): "
+msgid "Estimated final length (MBytes):"
+msgstr "Předpokládaná velikost výsledku (MB):"
 
 #: ../interface/wfile.ui.h:10 ../interface/wmain.ui.h:24
 msgid "<b>File info</b>"
@@ -595,8 +595,8 @@ msgid "<b>Video format</b>"
 msgstr "<b>Formát videa</b>"
 
 #: ../interface/wfile.ui.h:14
-msgid "Audio track: "
-msgstr "Zvuková stopa: "
+msgid "Audio track:"
+msgstr "Zvuková stopa:"
 
 #: ../interface/wfile.ui.h:15
 msgid "This video file has no audio tracks."
@@ -665,8 +665,8 @@ msgid "Split the file in chapters (for easy seeking)"
 msgstr "Rozdělit soubor na kapitoly (pro snadný posun)"
 
 #: ../interface/wfile.ui.h:33
-msgid "Size (in minutes) for each chapter: "
-msgstr "Délka (v minutách) pro každou kapitolu: "
+msgid "Size (in minutes) for each chapter:"
+msgstr "Délka (v minutách) pro každou kapitolu:"
 
 #: ../interface/wfile.ui.h:34
 msgid "<b>Division in chapters</b>"
@@ -1012,20 +1012,20 @@ msgid "<b>Files</b>"
 msgstr "<b>Soubory</b>"
 
 #: ../interface/wmain.ui.h:17
-msgid "Length (seconds): "
-msgstr "Délka (sekund): "
+msgid "Length (seconds):"
+msgstr "Délka (sekund):"
 
 #: ../interface/wmain.ui.h:18
-msgid "Video rate (Kbits/sec): "
-msgstr "Datový tok obrazu (Kb/s): "
+msgid "Video rate (Kbits/sec):"
+msgstr "Datový tok obrazu (Kb/s):"
 
 #: ../interface/wmain.ui.h:19
-msgid "Audio rate (Kbits/sec): "
-msgstr "Datový tok zvuku (Kb/s): "
+msgid "Audio rate (Kbits/sec):"
+msgstr "Datový tok zvuku (Kb/s):"
 
 #: ../interface/wmain.ui.h:21
-msgid "Estimated length (MBytes): "
-msgstr "Předpokládaná velikost (MB): "
+msgid "Estimated length (MBytes):"
+msgstr "Předpokládaná velikost (MB):"
 
 #: ../interface/wmain.ui.h:22
 msgid "Output aspect ratio:"
@@ -1098,20 +1098,20 @@ msgid "Menu preview"
 msgstr "Náhled menu"
 
 #: ../interface/wmenu_properties.ui.h:1
-msgid "Shadow color: "
-msgstr "Barva stínu: "
+msgid "Shadow color:"
+msgstr "Barva stínu:"
 
 #: ../interface/wmenu_properties.ui.h:2
-msgid "Text color: "
-msgstr "Barva textu: "
+msgid "Text color:"
+msgstr "Barva textu:"
 
 #: ../interface/wmenu_properties.ui.h:3
-msgid "Text: "
-msgstr "Text: "
+msgid "Text:"
+msgstr "Text:"
 
 #: ../interface/wmenu_properties.ui.h:4
-msgid "Font: "
-msgstr "Písmo: "
+msgid "Font:"
+msgstr "Písmo:"
 
 #: ../interface/wmenu_properties.ui.h:5
 msgid "<b>Menu title</b>"
@@ -1185,20 +1185,20 @@ msgid "<b>Menu position</b>"
 msgstr "<b>Umístění menu</b>"
 
 #: ../interface/wmenu_properties.ui.h:23
-msgid "Color for unselected titles: "
-msgstr "Barva nevybraných titulů: "
+msgid "Color for unselected titles:"
+msgstr "Barva nevybraných titulů:"
 
 #: ../interface/wmenu_properties.ui.h:24
-msgid "Color for shadows: "
-msgstr "Barva stínování: "
+msgid "Color for shadows:"
+msgstr "Barva stínování:"
 
 #: ../interface/wmenu_properties.ui.h:25
-msgid "Color for selected title: "
-msgstr "Barva vybraného titulu: "
+msgid "Color for selected title:"
+msgstr "Barva vybraného titulu:"
 
 #: ../interface/wmenu_properties.ui.h:26
-msgid "Background color for titles: "
-msgstr "Barva pozadí titulků: "
+msgid "Background color for titles:"
+msgstr "Barva pozadí titulků:"
 
 #: ../interface/wmenu_properties.ui.h:27
 msgid "<b>Menu font and colors</b>"
@@ -1501,7 +1501,7 @@ msgstr "Varování"
 #~ msgid "Please, open DeVeDe again with the right disk type"
 #~ msgstr "Spusťte prosím DeVeDe znovu, se správnou strukturou disku"
 
-#~ msgid "Elapsed time: "
+#~ msgid "Elapsed time:"
 #~ msgstr "Předpokládaný čas:"
 
 #~ msgid "Aborted"

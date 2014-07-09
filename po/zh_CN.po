@@ -369,7 +369,7 @@ msgid "<b>Workarounds</b>"
 msgstr "<b>旋转画面</b>"
 
 #: ../interface/add_subtitle2.ui.h:1 ../interface/add_subtitle.ui.h:2
-msgid "File: "
+msgid "File:"
 msgstr "文件:"
 
 #: ../interface/add_subtitle2.ui.h:2 ../interface/add_subtitle.ui.h:4
@@ -377,11 +377,11 @@ msgid "Clear"
 msgstr "清除"
 
 #: ../interface/add_subtitle2.ui.h:3 ../interface/add_subtitle.ui.h:6
-msgid "Encoding: "
+msgid "Encoding:"
 msgstr "编码:"
 
 #: ../interface/add_subtitle2.ui.h:4 ../interface/add_subtitle.ui.h:5
-msgid "Language: "
+msgid "Language:"
 msgstr "语言:"
 
 #: ../interface/add_subtitle2.ui.h:5 ../interface/add_subtitle.ui.h:7
@@ -507,7 +507,7 @@ msgstr ""
 
 #. Means: "Burn the ISO image in a CD/DVD"
 #: ../interface/wend_dialog.ui.h:2
-msgctxt "Means: "
+msgctxt "Means:"
 msgid "Burn"
 msgstr ""
 
@@ -536,32 +536,32 @@ msgid "<b>File</b>"
 msgstr "<b>文件</b>"
 
 #: ../interface/wfile.ui.h:3 ../interface/wmain.ui.h:15
-msgid "Frames per second: "
-msgstr "帧/每秒: "
+msgid "Frames per second:"
+msgstr "帧/每秒:"
 
 #: ../interface/wfile.ui.h:4
-msgid "Original length (seconds): "
-msgstr "原始长度 (秒): "
+msgid "Original length (seconds):"
+msgstr "原始长度 (秒):"
 
 #: ../interface/wfile.ui.h:5
 msgid "Original audio rate (Kbits/sec):"
-msgstr "原始音频采样率 (Kb/秒): "
+msgstr "原始音频采样率 (Kb/秒):"
 
 #: ../interface/wfile.ui.h:6
 msgid "Original video rate (Kbits/sec):"
-msgstr "原始视频采样率 (Kb/秒): "
+msgstr "原始视频采样率 (Kb/秒):"
 
 #: ../interface/wfile.ui.h:7 ../interface/wmain.ui.h:20
-msgid "Original size (pixels): "
-msgstr "原始大小 (像素): "
+msgid "Original size (pixels):"
+msgstr "原始大小 (像素):"
 
 #: ../interface/wfile.ui.h:8 ../interface/wmain.ui.h:16
 msgid "Final size (pixels):"
-msgstr "最终大小 (像素): "
+msgstr "最终大小 (像素):"
 
 #: ../interface/wfile.ui.h:9
-msgid "Estimated final length (MBytes): "
-msgstr "预计最终长度 (MB): "
+msgid "Estimated final length (MBytes):"
+msgstr "预计最终长度 (MB):"
 
 #: ../interface/wfile.ui.h:10 ../interface/wmain.ui.h:24
 msgid "<b>File info</b>"
@@ -580,7 +580,7 @@ msgid "<b>Video format</b>"
 msgstr "<b>影片格式</b>"
 
 #: ../interface/wfile.ui.h:14
-msgid "Audio track: "
+msgid "Audio track:"
 msgstr "音轨:"
 
 #: ../interface/wfile.ui.h:15
@@ -652,8 +652,8 @@ msgid "Split the file in chapters (for easy seeking)"
 msgstr "分割文件为数个章节 (更易检索)"
 
 #: ../interface/wfile.ui.h:33
-msgid "Size (in minutes) for each chapter: "
-msgstr "每个章节的大小 (分钟): "
+msgid "Size (in minutes) for each chapter:"
+msgstr "每个章节的大小 (分钟):"
 
 #: ../interface/wfile.ui.h:34
 msgid "<b>Division in chapters</b>"
@@ -844,7 +844,7 @@ msgstr "画质选项"
 
 #: ../interface/wfile.ui.h:80
 msgid "Audio delay (in seconds):"
-msgstr "音频延迟 (秒): "
+msgstr "音频延迟 (秒):"
 
 #: ../interface/wfile.ui.h:81
 msgid "Create DVD with 5.1 channel sound"
@@ -999,24 +999,24 @@ msgid "<b>Files</b>"
 msgstr "<b>文件</b>"
 
 #: ../interface/wmain.ui.h:17
-msgid "Length (seconds): "
+msgid "Length (seconds):"
 msgstr "长度 (秒):"
 
 #: ../interface/wmain.ui.h:18
-msgid "Video rate (Kbits/sec): "
-msgstr "视频采样率 (Kb/秒): "
+msgid "Video rate (Kbits/sec):"
+msgstr "视频采样率 (Kb/秒):"
 
 #: ../interface/wmain.ui.h:19
-msgid "Audio rate (Kbits/sec): "
-msgstr "音频采样率 (Kb/秒): "
+msgid "Audio rate (Kbits/sec):"
+msgstr "音频采样率 (Kb/秒):"
 
 #: ../interface/wmain.ui.h:21
-msgid "Estimated length (MBytes): "
-msgstr "预计长度 (MB): "
+msgid "Estimated length (MBytes):"
+msgstr "预计长度 (MB):"
 
 #: ../interface/wmain.ui.h:22
 msgid "Output aspect ratio:"
-msgstr "输出长宽比: "
+msgstr "输出长宽比:"
 
 #: ../interface/wmain.ui.h:23
 msgid "Size of chapters:"
@@ -1032,7 +1032,7 @@ msgid "0.0%"
 msgstr "0.0%"
 
 #: ../interface/wmain.ui.h:28
-msgid " Media size: "
+msgid " Media size:"
 msgstr "容量大小:"
 
 #: ../interface/wmain.ui.h:29
@@ -1085,19 +1085,19 @@ msgid "Menu preview"
 msgstr "菜单预览"
 
 #: ../interface/wmenu_properties.ui.h:1
-msgid "Shadow color: "
+msgid "Shadow color:"
 msgstr "阴影颜色:"
 
 #: ../interface/wmenu_properties.ui.h:2
-msgid "Text color: "
+msgid "Text color:"
 msgstr "文字颜色:"
 
 #: ../interface/wmenu_properties.ui.h:3
-msgid "Text: "
+msgid "Text:"
 msgstr "文字:"
 
 #: ../interface/wmenu_properties.ui.h:4
-msgid "Font: "
+msgid "Font:"
 msgstr "字体:"
 
 #: ../interface/wmenu_properties.ui.h:5
@@ -1173,19 +1173,19 @@ msgid "<b>Menu position</b>"
 msgstr "<b>菜单位置</b>"
 
 #: ../interface/wmenu_properties.ui.h:23
-msgid "Color for unselected titles: "
+msgid "Color for unselected titles:"
 msgstr "未选标题颜色:"
 
 #: ../interface/wmenu_properties.ui.h:24
-msgid "Color for shadows: "
+msgid "Color for shadows:"
 msgstr "阴影颜色:"
 
 #: ../interface/wmenu_properties.ui.h:25
-msgid "Color for selected title: "
+msgid "Color for selected title:"
 msgstr "选中标题颜色:"
 
 #: ../interface/wmenu_properties.ui.h:26
-msgid "Background color for titles: "
+msgid "Background color for titles:"
 msgstr "标题的背景色:"
 
 #: ../interface/wmenu_properties.ui.h:27

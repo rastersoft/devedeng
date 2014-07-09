@@ -366,7 +366,7 @@ msgstr "<b>Opcions</b>"
 
 #: ../interface/settings.ui.h:7
 msgid "Temporary files folder:"
-msgstr "Carpeta per als fitxers temporals: "
+msgstr "Carpeta per als fitxers temporals:"
 
 #: ../interface/settings.ui.h:8
 msgid "Folder for temporary file"
@@ -388,20 +388,20 @@ msgid "<b>Workarounds</b>"
 msgstr "<b>Rotació</b>"
 
 #: ../interface/add_subtitle2.ui.h:1 ../interface/add_subtitle.ui.h:2
-msgid "File: "
-msgstr "Fitxer: "
+msgid "File:"
+msgstr "Fitxer:"
 
 #: ../interface/add_subtitle2.ui.h:2 ../interface/add_subtitle.ui.h:4
 msgid "Clear"
 msgstr "Esborra"
 
 #: ../interface/add_subtitle2.ui.h:3 ../interface/add_subtitle.ui.h:6
-msgid "Encoding: "
-msgstr "Codificació: "
+msgid "Encoding:"
+msgstr "Codificació:"
 
 #: ../interface/add_subtitle2.ui.h:4 ../interface/add_subtitle.ui.h:5
-msgid "Language: "
-msgstr "Idioma: "
+msgid "Language:"
+msgstr "Idioma:"
 
 #: ../interface/add_subtitle2.ui.h:5 ../interface/add_subtitle.ui.h:7
 msgid "Put subtitles upper"
@@ -443,7 +443,7 @@ msgid ""
 "reorder the other ones:"
 msgstr ""
 "S'esborrarà aquest capítol i\n"
-"es reordenarà la resta: "
+"es reordenarà la resta:"
 
 #: ../interface/wdel_chapter_dialog.ui.h:4
 #: ../interface/wdel_title_dialog.ui.h:4
@@ -468,7 +468,7 @@ msgid ""
 "reorder the other ones:"
 msgstr ""
 "S'esborrarà aquest títol i\n"
-"es reordenarà la resta: "
+"es reordenarà la resta:"
 
 #: ../interface/wdisk_type.ui.h:1
 msgid "Disc type selection"
@@ -528,7 +528,7 @@ msgstr ""
 
 #. Means: "Burn the ISO image in a CD/DVD"
 #: ../interface/wend_dialog.ui.h:2
-msgctxt "Means: "
+msgctxt "Means:"
 msgid "Burn"
 msgstr ""
 
@@ -557,32 +557,32 @@ msgid "<b>File</b>"
 msgstr "<b>Fitxer</b>"
 
 #: ../interface/wfile.ui.h:3 ../interface/wmain.ui.h:15
-msgid "Frames per second: "
-msgstr "Fotogrames per segon: "
+msgid "Frames per second:"
+msgstr "Fotogrames per segon:"
 
 #: ../interface/wfile.ui.h:4
-msgid "Original length (seconds): "
-msgstr "Llargària original (segons): "
+msgid "Original length (seconds):"
+msgstr "Llargària original (segons):"
 
 #: ../interface/wfile.ui.h:5
 msgid "Original audio rate (Kbits/sec):"
-msgstr "Taxa original de l'àudio (Kbits/seg): "
+msgstr "Taxa original de l'àudio (Kbits/seg):"
 
 #: ../interface/wfile.ui.h:6
 msgid "Original video rate (Kbits/sec):"
-msgstr "Taxa original del vídeo (Kbits/seg): "
+msgstr "Taxa original del vídeo (Kbits/seg):"
 
 #: ../interface/wfile.ui.h:7 ../interface/wmain.ui.h:20
-msgid "Original size (pixels): "
-msgstr "Mida original (píxels): "
+msgid "Original size (pixels):"
+msgstr "Mida original (píxels):"
 
 #: ../interface/wfile.ui.h:8 ../interface/wmain.ui.h:16
 msgid "Final size (pixels):"
-msgstr "Mida final (píxels): "
+msgstr "Mida final (píxels):"
 
 #: ../interface/wfile.ui.h:9
-msgid "Estimated final length (MBytes): "
-msgstr "Mida final estimada (MBytes): "
+msgid "Estimated final length (MBytes):"
+msgstr "Mida final estimada (MBytes):"
 
 #: ../interface/wfile.ui.h:10 ../interface/wmain.ui.h:24
 msgid "<b>File info</b>"
@@ -601,8 +601,8 @@ msgid "<b>Video format</b>"
 msgstr "<b>Format del vídeo</b>"
 
 #: ../interface/wfile.ui.h:14
-msgid "Audio track: "
-msgstr "Pista d'àudio: "
+msgid "Audio track:"
+msgstr "Pista d'àudio:"
 
 #: ../interface/wfile.ui.h:15
 msgid "This video file has no audio tracks."
@@ -644,7 +644,7 @@ msgstr "<b>Divisió del fitxer</b>"
 
 #: ../interface/wfile.ui.h:26
 msgid "Font size:"
-msgstr "Mida de la lletra: "
+msgstr "Mida de la lletra:"
 
 #: ../interface/wfile.ui.h:27
 msgid "Force subtitles"
@@ -671,8 +671,8 @@ msgid "Split the file in chapters (for easy seeking)"
 msgstr "Divideix el fitxer en capítols (per facilitar la cerca)"
 
 #: ../interface/wfile.ui.h:33
-msgid "Size (in minutes) for each chapter: "
-msgstr "Mida (en minuts) per a cada capítol: "
+msgid "Size (in minutes) for each chapter:"
+msgstr "Mida (en minuts) per a cada capítol:"
 
 #: ../interface/wfile.ui.h:34
 msgid "<b>Division in chapters</b>"
@@ -864,7 +864,7 @@ msgstr "Qualitat"
 
 #: ../interface/wfile.ui.h:80
 msgid "Audio delay (in seconds):"
-msgstr "Retard de so (en segons): "
+msgstr "Retard de so (en segons):"
 
 #: ../interface/wfile.ui.h:81
 msgid "Create DVD with 5.1 channel sound"
@@ -1020,28 +1020,28 @@ msgid "<b>Files</b>"
 msgstr "<b>Fitxers</b>"
 
 #: ../interface/wmain.ui.h:17
-msgid "Length (seconds): "
-msgstr "Llargària (segons): "
+msgid "Length (seconds):"
+msgstr "Llargària (segons):"
 
 #: ../interface/wmain.ui.h:18
-msgid "Video rate (Kbits/sec): "
-msgstr "Taxa de vídeo (Kbits/seg): "
+msgid "Video rate (Kbits/sec):"
+msgstr "Taxa de vídeo (Kbits/seg):"
 
 #: ../interface/wmain.ui.h:19
-msgid "Audio rate (Kbits/sec): "
-msgstr "Taxa d'àudio (Kbits/seg): "
+msgid "Audio rate (Kbits/sec):"
+msgstr "Taxa d'àudio (Kbits/seg):"
 
 #: ../interface/wmain.ui.h:21
-msgid "Estimated length (MBytes): "
-msgstr "Mida estimada (MBytes): "
+msgid "Estimated length (MBytes):"
+msgstr "Mida estimada (MBytes):"
 
 #: ../interface/wmain.ui.h:22
 msgid "Output aspect ratio:"
-msgstr "Relació d'aspecte (sortida): "
+msgstr "Relació d'aspecte (sortida):"
 
 #: ../interface/wmain.ui.h:23
 msgid "Size of chapters:"
-msgstr "Mida dels capítols: "
+msgstr "Mida dels capítols:"
 
 #: ../interface/wmain.ui.h:25
 msgid "Adjust disc usage"
@@ -1106,20 +1106,20 @@ msgid "Menu preview"
 msgstr "Vista prèvia del menú"
 
 #: ../interface/wmenu_properties.ui.h:1
-msgid "Shadow color: "
-msgstr "Color de l'ombra: "
+msgid "Shadow color:"
+msgstr "Color de l'ombra:"
 
 #: ../interface/wmenu_properties.ui.h:2
-msgid "Text color: "
-msgstr "Color del text: "
+msgid "Text color:"
+msgstr "Color del text:"
 
 #: ../interface/wmenu_properties.ui.h:3
-msgid "Text: "
-msgstr "Text: "
+msgid "Text:"
+msgstr "Text:"
 
 #: ../interface/wmenu_properties.ui.h:4
-msgid "Font: "
-msgstr "Lletra: "
+msgid "Font:"
+msgstr "Lletra:"
 
 #: ../interface/wmenu_properties.ui.h:5
 msgid "<b>Menu title</b>"
@@ -1193,20 +1193,20 @@ msgid "<b>Menu position</b>"
 msgstr "<b>Posició del menú</b>"
 
 #: ../interface/wmenu_properties.ui.h:23
-msgid "Color for unselected titles: "
-msgstr "Color per als títols no seleccionats: "
+msgid "Color for unselected titles:"
+msgstr "Color per als títols no seleccionats:"
 
 #: ../interface/wmenu_properties.ui.h:24
-msgid "Color for shadows: "
-msgstr "Color per a les ombres: "
+msgid "Color for shadows:"
+msgstr "Color per a les ombres:"
 
 #: ../interface/wmenu_properties.ui.h:25
-msgid "Color for selected title: "
-msgstr "Color per al títol seleccionat: "
+msgid "Color for selected title:"
+msgstr "Color per al títol seleccionat:"
 
 #: ../interface/wmenu_properties.ui.h:26
-msgid "Background color for titles: "
-msgstr "Color de fons per al títols: "
+msgid "Background color for titles:"
+msgstr "Color de fons per al títols:"
 
 #: ../interface/wmenu_properties.ui.h:27
 msgid "<b>Menu font and colors</b>"
@@ -1250,7 +1250,7 @@ msgstr "Durada de la vista prèvia:"
 
 #: ../interface/wprograms.ui.h:2
 msgid "Can't find the following programs:"
-msgstr "No es troben els programes: "
+msgstr "No es troben els programes:"
 
 #: ../interface/wprograms.ui.h:3
 msgid ""

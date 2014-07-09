@@ -131,7 +131,7 @@ msgid ""
 "default menu background, so don't forget to fix it before creating the disc."
 msgstr ""
 "Impossible de trouver le fond d'écran pour le menu. La structure de disque "
-"sera quand même ouverte, mais avec le fond d'écran de menu par défaut: "
+"sera quand même ouverte, mais avec le fond d'écran de menu par défaut:"
 "n'oubliez donc pas de le mettre à jour avant de créer le disque."
 
 #: ../devede_loadsave.py:190
@@ -384,20 +384,20 @@ msgid "<b>Workarounds</b>"
 msgstr "<b>Rotation</b>"
 
 #: ../interface/add_subtitle2.ui.h:1 ../interface/add_subtitle.ui.h:2
-msgid "File: "
-msgstr "Fichier : "
+msgid "File:"
+msgstr "Fichier :"
 
 #: ../interface/add_subtitle2.ui.h:2 ../interface/add_subtitle.ui.h:4
 msgid "Clear"
 msgstr "Effacer"
 
 #: ../interface/add_subtitle2.ui.h:3 ../interface/add_subtitle.ui.h:6
-msgid "Encoding: "
+msgid "Encoding:"
 msgstr "Encodage :"
 
 #: ../interface/add_subtitle2.ui.h:4 ../interface/add_subtitle.ui.h:5
-msgid "Language: "
-msgstr "Langue : "
+msgid "Language:"
+msgstr "Langue :"
 
 #: ../interface/add_subtitle2.ui.h:5 ../interface/add_subtitle.ui.h:7
 msgid "Put subtitles upper"
@@ -525,7 +525,7 @@ msgstr ""
 
 #. Means: "Burn the ISO image in a CD/DVD"
 #: ../interface/wend_dialog.ui.h:2
-msgctxt "Means: "
+msgctxt "Means:"
 msgid "Burn"
 msgstr ""
 
@@ -554,32 +554,32 @@ msgid "<b>File</b>"
 msgstr "<b>Fichier</b>"
 
 #: ../interface/wfile.ui.h:3 ../interface/wmain.ui.h:15
-msgid "Frames per second: "
-msgstr "Trames par seconde : "
+msgid "Frames per second:"
+msgstr "Trames par seconde :"
 
 #: ../interface/wfile.ui.h:4
-msgid "Original length (seconds): "
-msgstr "Longueur originale (secondes) : "
+msgid "Original length (seconds):"
+msgstr "Longueur originale (secondes) :"
 
 #: ../interface/wfile.ui.h:5
 msgid "Original audio rate (Kbits/sec):"
-msgstr "Taux de transfert audio original (Kbits/sec) : "
+msgstr "Taux de transfert audio original (Kbits/sec) :"
 
 #: ../interface/wfile.ui.h:6
 msgid "Original video rate (Kbits/sec):"
 msgstr "Taux de transfert vidéo original (Kbits/sec) :"
 
 #: ../interface/wfile.ui.h:7 ../interface/wmain.ui.h:20
-msgid "Original size (pixels): "
-msgstr "Taille originale (pixels) : "
+msgid "Original size (pixels):"
+msgstr "Taille originale (pixels) :"
 
 #: ../interface/wfile.ui.h:8 ../interface/wmain.ui.h:16
 msgid "Final size (pixels):"
 msgstr "Taille finale (pixels) :"
 
 #: ../interface/wfile.ui.h:9
-msgid "Estimated final length (MBytes): "
-msgstr "Estimation de la taille finale (Moctets) : "
+msgid "Estimated final length (MBytes):"
+msgstr "Estimation de la taille finale (Moctets) :"
 
 #: ../interface/wfile.ui.h:10 ../interface/wmain.ui.h:24
 msgid "<b>File info</b>"
@@ -598,8 +598,8 @@ msgid "<b>Video format</b>"
 msgstr "<b>Format vidéo</b>"
 
 #: ../interface/wfile.ui.h:14
-msgid "Audio track: "
-msgstr "Piste audio : "
+msgid "Audio track:"
+msgstr "Piste audio :"
 
 #: ../interface/wfile.ui.h:15
 msgid "This video file has no audio tracks."
@@ -668,8 +668,8 @@ msgid "Split the file in chapters (for easy seeking)"
 msgstr "Éclater le fichier en chapitres (pour recherche facile)"
 
 #: ../interface/wfile.ui.h:33
-msgid "Size (in minutes) for each chapter: "
-msgstr "Taille (en minutes) de chaque chapitre : "
+msgid "Size (in minutes) for each chapter:"
+msgstr "Taille (en minutes) de chaque chapitre :"
 
 #: ../interface/wfile.ui.h:34
 msgid "<b>Division in chapters</b>"
@@ -1022,20 +1022,20 @@ msgid "<b>Files</b>"
 msgstr "<b>Fichiers</b>"
 
 #: ../interface/wmain.ui.h:17
-msgid "Length (seconds): "
-msgstr "Longueur (secondes) : "
+msgid "Length (seconds):"
+msgstr "Longueur (secondes) :"
 
 #: ../interface/wmain.ui.h:18
-msgid "Video rate (Kbits/sec): "
-msgstr "Taux de transfert vidéo (Kbits/sec) : "
+msgid "Video rate (Kbits/sec):"
+msgstr "Taux de transfert vidéo (Kbits/sec) :"
 
 #: ../interface/wmain.ui.h:19
-msgid "Audio rate (Kbits/sec): "
-msgstr "Taux de transfert audio (Kbits/sec) : "
+msgid "Audio rate (Kbits/sec):"
+msgstr "Taux de transfert audio (Kbits/sec) :"
 
 #: ../interface/wmain.ui.h:21
-msgid "Estimated length (MBytes): "
-msgstr "Longueur estimée (Moctets) : "
+msgid "Estimated length (MBytes):"
+msgstr "Longueur estimée (Moctets) :"
 
 #: ../interface/wmain.ui.h:22
 msgid "Output aspect ratio:"
@@ -1108,20 +1108,20 @@ msgid "Menu preview"
 msgstr "Aperçu du menu"
 
 #: ../interface/wmenu_properties.ui.h:1
-msgid "Shadow color: "
-msgstr "Couleur de l'ombre : "
+msgid "Shadow color:"
+msgstr "Couleur de l'ombre :"
 
 #: ../interface/wmenu_properties.ui.h:2
-msgid "Text color: "
-msgstr "Couleur du texte : "
+msgid "Text color:"
+msgstr "Couleur du texte :"
 
 #: ../interface/wmenu_properties.ui.h:3
-msgid "Text: "
-msgstr "Texte : "
+msgid "Text:"
+msgstr "Texte :"
 
 #: ../interface/wmenu_properties.ui.h:4
-msgid "Font: "
-msgstr "Police : "
+msgid "Font:"
+msgstr "Police :"
 
 #: ../interface/wmenu_properties.ui.h:5
 msgid "<b>Menu title</b>"
@@ -1196,20 +1196,20 @@ msgid "<b>Menu position</b>"
 msgstr "<b>Position du menu</b>"
 
 #: ../interface/wmenu_properties.ui.h:23
-msgid "Color for unselected titles: "
-msgstr "Couleur des titres non-sélectionnés : "
+msgid "Color for unselected titles:"
+msgstr "Couleur des titres non-sélectionnés :"
 
 #: ../interface/wmenu_properties.ui.h:24
-msgid "Color for shadows: "
-msgstr "Couleur des ombres : "
+msgid "Color for shadows:"
+msgstr "Couleur des ombres :"
 
 #: ../interface/wmenu_properties.ui.h:25
-msgid "Color for selected title: "
-msgstr "Couleur du titre sélectionné : "
+msgid "Color for selected title:"
+msgstr "Couleur du titre sélectionné :"
 
 #: ../interface/wmenu_properties.ui.h:26
-msgid "Background color for titles: "
-msgstr "Couleur de fond des titres : "
+msgid "Background color for titles:"
+msgstr "Couleur de fond des titres :"
 
 #: ../interface/wmenu_properties.ui.h:27
 msgid "<b>Menu font and colors</b>"
@@ -1512,8 +1512,8 @@ msgstr "Attention"
 #~ msgid "Please, open DeVeDe again with the right disk type"
 #~ msgstr "SVP, redémarrez DeVeDe et indiquez-lui le bon type de disque"
 
-#~ msgid "Elapsed time: "
-#~ msgstr "Temps écoulé: "
+#~ msgid "Elapsed time:"
+#~ msgstr "Temps écoulé:"
 
 #~ msgid "Aborted"
 #~ msgstr "Abandon"

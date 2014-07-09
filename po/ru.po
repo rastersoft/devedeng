@@ -374,7 +374,7 @@ msgid "<b>Workarounds</b>"
 msgstr "<b>Вращение</b>"
 
 #: ../interface/add_subtitle2.ui.h:1 ../interface/add_subtitle.ui.h:2
-msgid "File: "
+msgid "File:"
 msgstr "Файл:"
 
 #: ../interface/add_subtitle2.ui.h:2 ../interface/add_subtitle.ui.h:4
@@ -382,11 +382,11 @@ msgid "Clear"
 msgstr "Очистит"
 
 #: ../interface/add_subtitle2.ui.h:3 ../interface/add_subtitle.ui.h:6
-msgid "Encoding: "
+msgid "Encoding:"
 msgstr "Кодировка:"
 
 #: ../interface/add_subtitle2.ui.h:4 ../interface/add_subtitle.ui.h:5
-msgid "Language: "
+msgid "Language:"
 msgstr "Язык:"
 
 #: ../interface/add_subtitle2.ui.h:5 ../interface/add_subtitle.ui.h:7
@@ -512,7 +512,7 @@ msgstr ""
 
 #. Means: "Burn the ISO image in a CD/DVD"
 #: ../interface/wend_dialog.ui.h:2
-msgctxt "Means: "
+msgctxt "Means:"
 msgid "Burn"
 msgstr ""
 
@@ -541,11 +541,11 @@ msgid "<b>File</b>"
 msgstr "<b>Файл</b>"
 
 #: ../interface/wfile.ui.h:3 ../interface/wmain.ui.h:15
-msgid "Frames per second: "
+msgid "Frames per second:"
 msgstr "Кадров в секунду:"
 
 #: ../interface/wfile.ui.h:4
-msgid "Original length (seconds): "
+msgid "Original length (seconds):"
 msgstr "Оригинальная длина (секунд):"
 
 #: ../interface/wfile.ui.h:5
@@ -557,7 +557,7 @@ msgid "Original video rate (Kbits/sec):"
 msgstr "Оригинальный видео поток (Kbits/sec):"
 
 #: ../interface/wfile.ui.h:7 ../interface/wmain.ui.h:20
-msgid "Original size (pixels): "
+msgid "Original size (pixels):"
 msgstr "Оригинальное разрешение (pixels):"
 
 #: ../interface/wfile.ui.h:8 ../interface/wmain.ui.h:16
@@ -565,7 +565,7 @@ msgid "Final size (pixels):"
 msgstr "Финальное разрешение (pixels):"
 
 #: ../interface/wfile.ui.h:9
-msgid "Estimated final length (MBytes): "
+msgid "Estimated final length (MBytes):"
 msgstr "Примерный финальный размер (MBytes):"
 
 #: ../interface/wfile.ui.h:10 ../interface/wmain.ui.h:24
@@ -585,7 +585,7 @@ msgid "<b>Video format</b>"
 msgstr "<b>Формат видео</b>"
 
 #: ../interface/wfile.ui.h:14
-msgid "Audio track: "
+msgid "Audio track:"
 msgstr "Звуковая дорожка:"
 
 #: ../interface/wfile.ui.h:15
@@ -657,7 +657,7 @@ msgid "Split the file in chapters (for easy seeking)"
 msgstr "Разбить файл на главы (для удобства поиска)"
 
 #: ../interface/wfile.ui.h:33
-msgid "Size (in minutes) for each chapter: "
+msgid "Size (in minutes) for each chapter:"
 msgstr "Длина (в минутах) для каждой главы"
 
 #: ../interface/wfile.ui.h:34
@@ -1010,19 +1010,19 @@ msgid "<b>Files</b>"
 msgstr "<b>Файлы</b>"
 
 #: ../interface/wmain.ui.h:17
-msgid "Length (seconds): "
+msgid "Length (seconds):"
 msgstr "Длина (секунд):"
 
 #: ../interface/wmain.ui.h:18
-msgid "Video rate (Kbits/sec): "
+msgid "Video rate (Kbits/sec):"
 msgstr "Видео поток (Kbits/sec):"
 
 #: ../interface/wmain.ui.h:19
-msgid "Audio rate (Kbits/sec): "
-msgstr "Звуковой поток (Kbits/sec): "
+msgid "Audio rate (Kbits/sec):"
+msgstr "Звуковой поток (Kbits/sec):"
 
 #: ../interface/wmain.ui.h:21
-msgid "Estimated length (MBytes): "
+msgid "Estimated length (MBytes):"
 msgstr "Выходной размер (MBytes):"
 
 #: ../interface/wmain.ui.h:22
@@ -1043,8 +1043,8 @@ msgid "0.0%"
 msgstr "0.0%"
 
 #: ../interface/wmain.ui.h:28
-msgid " Media size: "
-msgstr " Размер диска: "
+msgid " Media size:"
+msgstr " Размер диска:"
 
 #: ../interface/wmain.ui.h:29
 msgid "<b>Disc usage</b>"
@@ -1099,19 +1099,19 @@ msgid "Menu preview"
 msgstr "Просмотр меню"
 
 #: ../interface/wmenu_properties.ui.h:1
-msgid "Shadow color: "
-msgstr "Цвет тени: "
+msgid "Shadow color:"
+msgstr "Цвет тени:"
 
 #: ../interface/wmenu_properties.ui.h:2
-msgid "Text color: "
-msgstr "Цвет текста: "
+msgid "Text color:"
+msgstr "Цвет текста:"
 
 #: ../interface/wmenu_properties.ui.h:3
-msgid "Text: "
-msgstr "Текст: "
+msgid "Text:"
+msgstr "Текст:"
 
 #: ../interface/wmenu_properties.ui.h:4
-msgid "Font: "
+msgid "Font:"
 msgstr "Шрифт:"
 
 #: ../interface/wmenu_properties.ui.h:5
@@ -1187,19 +1187,19 @@ msgid "<b>Menu position</b>"
 msgstr "<b>Расположение меню</b>"
 
 #: ../interface/wmenu_properties.ui.h:23
-msgid "Color for unselected titles: "
+msgid "Color for unselected titles:"
 msgstr "Цвет неактивного заголовка:"
 
 #: ../interface/wmenu_properties.ui.h:24
-msgid "Color for shadows: "
+msgid "Color for shadows:"
 msgstr "Цвет тени"
 
 #: ../interface/wmenu_properties.ui.h:25
-msgid "Color for selected title: "
+msgid "Color for selected title:"
 msgstr "Цвет активного заголовка:"
 
 #: ../interface/wmenu_properties.ui.h:26
-msgid "Background color for titles: "
+msgid "Background color for titles:"
 msgstr "Цвет фона заголовков:"
 
 #: ../interface/wmenu_properties.ui.h:27

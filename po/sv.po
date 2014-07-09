@@ -382,20 +382,20 @@ msgid "<b>Workarounds</b>"
 msgstr "<b>Rotation</b>"
 
 #: ../interface/add_subtitle2.ui.h:1 ../interface/add_subtitle.ui.h:2
-msgid "File: "
-msgstr "Fil: "
+msgid "File:"
+msgstr "Fil:"
 
 #: ../interface/add_subtitle2.ui.h:2 ../interface/add_subtitle.ui.h:4
 msgid "Clear"
 msgstr "Töm"
 
 #: ../interface/add_subtitle2.ui.h:3 ../interface/add_subtitle.ui.h:6
-msgid "Encoding: "
-msgstr "Kodning: "
+msgid "Encoding:"
+msgstr "Kodning:"
 
 #: ../interface/add_subtitle2.ui.h:4 ../interface/add_subtitle.ui.h:5
-msgid "Language: "
-msgstr "Språk: "
+msgid "Language:"
+msgstr "Språk:"
 
 #: ../interface/add_subtitle2.ui.h:5 ../interface/add_subtitle.ui.h:7
 msgid "Put subtitles upper"
@@ -520,7 +520,7 @@ msgstr ""
 
 #. Means: "Burn the ISO image in a CD/DVD"
 #: ../interface/wend_dialog.ui.h:2
-msgctxt "Means: "
+msgctxt "Means:"
 msgid "Burn"
 msgstr ""
 
@@ -549,12 +549,12 @@ msgid "<b>File</b>"
 msgstr "<b>Fil</b>"
 
 #: ../interface/wfile.ui.h:3 ../interface/wmain.ui.h:15
-msgid "Frames per second: "
-msgstr "Bildrutor per sekund: "
+msgid "Frames per second:"
+msgstr "Bildrutor per sekund:"
 
 #: ../interface/wfile.ui.h:4
-msgid "Original length (seconds): "
-msgstr "Ursprunglig längd (sekunder): "
+msgid "Original length (seconds):"
+msgstr "Ursprunglig längd (sekunder):"
 
 #: ../interface/wfile.ui.h:5
 msgid "Original audio rate (Kbits/sec):"
@@ -565,16 +565,16 @@ msgid "Original video rate (Kbits/sec):"
 msgstr "Ursprunglig videofrekvens (kbit/s):"
 
 #: ../interface/wfile.ui.h:7 ../interface/wmain.ui.h:20
-msgid "Original size (pixels): "
-msgstr "Ursprunglig storlek (bildpunkter): "
+msgid "Original size (pixels):"
+msgstr "Ursprunglig storlek (bildpunkter):"
 
 #: ../interface/wfile.ui.h:8 ../interface/wmain.ui.h:16
 msgid "Final size (pixels):"
 msgstr "Slutgiltig storlek (bildpunkter):"
 
 #: ../interface/wfile.ui.h:9
-msgid "Estimated final length (MBytes): "
-msgstr "Uppskattad slutlig längd (MByte): "
+msgid "Estimated final length (MBytes):"
+msgstr "Uppskattad slutlig längd (MByte):"
 
 #: ../interface/wfile.ui.h:10 ../interface/wmain.ui.h:24
 msgid "<b>File info</b>"
@@ -593,8 +593,8 @@ msgid "<b>Video format</b>"
 msgstr "<b>Videoformat</b>"
 
 #: ../interface/wfile.ui.h:14
-msgid "Audio track: "
-msgstr "Ljudspår: "
+msgid "Audio track:"
+msgstr "Ljudspår:"
 
 #: ../interface/wfile.ui.h:15
 msgid "This video file has no audio tracks."
@@ -664,8 +664,8 @@ msgid "Split the file in chapters (for easy seeking)"
 msgstr "Dela upp filen i kapitel (för enklare sökning)"
 
 #: ../interface/wfile.ui.h:33
-msgid "Size (in minutes) for each chapter: "
-msgstr "Storlek (i minuter) för varje kapitel: "
+msgid "Size (in minutes) for each chapter:"
+msgstr "Storlek (i minuter) för varje kapitel:"
 
 #: ../interface/wfile.ui.h:34
 msgid "<b>Division in chapters</b>"
@@ -1013,20 +1013,20 @@ msgid "<b>Files</b>"
 msgstr "<b>Filer</b>"
 
 #: ../interface/wmain.ui.h:17
-msgid "Length (seconds): "
-msgstr "Längd (sekunder): "
+msgid "Length (seconds):"
+msgstr "Längd (sekunder):"
 
 #: ../interface/wmain.ui.h:18
-msgid "Video rate (Kbits/sec): "
-msgstr "Videofrekvens (kbit/s): "
+msgid "Video rate (Kbits/sec):"
+msgstr "Videofrekvens (kbit/s):"
 
 #: ../interface/wmain.ui.h:19
-msgid "Audio rate (Kbits/sec): "
-msgstr "Ljudfrekvens (kbit/s): "
+msgid "Audio rate (Kbits/sec):"
+msgstr "Ljudfrekvens (kbit/s):"
 
 #: ../interface/wmain.ui.h:21
-msgid "Estimated length (MBytes): "
-msgstr "Uppskattad längd (MByte): "
+msgid "Estimated length (MBytes):"
+msgstr "Uppskattad längd (MByte):"
 
 #: ../interface/wmain.ui.h:22
 msgid "Output aspect ratio:"
@@ -1046,8 +1046,8 @@ msgid "0.0%"
 msgstr "0.0%"
 
 #: ../interface/wmain.ui.h:28
-msgid " Media size: "
-msgstr " Mediastorlek: "
+msgid " Media size:"
+msgstr " Mediastorlek:"
 
 #: ../interface/wmain.ui.h:29
 msgid "<b>Disc usage</b>"
@@ -1099,20 +1099,20 @@ msgid "Menu preview"
 msgstr "Förhandsvisning av meny"
 
 #: ../interface/wmenu_properties.ui.h:1
-msgid "Shadow color: "
-msgstr "Skuggfärg: "
+msgid "Shadow color:"
+msgstr "Skuggfärg:"
 
 #: ../interface/wmenu_properties.ui.h:2
-msgid "Text color: "
-msgstr "Textfärg: "
+msgid "Text color:"
+msgstr "Textfärg:"
 
 #: ../interface/wmenu_properties.ui.h:3
-msgid "Text: "
-msgstr "Text: "
+msgid "Text:"
+msgstr "Text:"
 
 #: ../interface/wmenu_properties.ui.h:4
-msgid "Font: "
-msgstr "Typsnitt: "
+msgid "Font:"
+msgstr "Typsnitt:"
 
 #: ../interface/wmenu_properties.ui.h:5
 msgid "<b>Menu title</b>"
@@ -1186,19 +1186,19 @@ msgid "<b>Menu position</b>"
 msgstr "<b>Menyposition</b>"
 
 #: ../interface/wmenu_properties.ui.h:23
-msgid "Color for unselected titles: "
+msgid "Color for unselected titles:"
 msgstr "Färg för avmarkerade titlar:"
 
 #: ../interface/wmenu_properties.ui.h:24
-msgid "Color for shadows: "
-msgstr "Färg för skuggor: "
+msgid "Color for shadows:"
+msgstr "Färg för skuggor:"
 
 #: ../interface/wmenu_properties.ui.h:25
-msgid "Color for selected title: "
+msgid "Color for selected title:"
 msgstr "Färg för markerad titel:"
 
 #: ../interface/wmenu_properties.ui.h:26
-msgid "Background color for titles: "
+msgid "Background color for titles:"
 msgstr "Bakgrundsfärg för titlar:"
 
 #: ../interface/wmenu_properties.ui.h:27
@@ -1502,8 +1502,8 @@ msgstr "Varning"
 #~ msgid "Please, open DeVeDe again with the right disc type"
 #~ msgstr "Öppna DeVeDe igen med den korrekta skivtypen"
 
-#~ msgid "Elapsed time: "
-#~ msgstr "Åtgången tid: "
+#~ msgid "Elapsed time:"
+#~ msgstr "Åtgången tid:"
 
 #~ msgid "Aborted"
 #~ msgstr "Avbruten"

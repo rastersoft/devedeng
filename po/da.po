@@ -380,20 +380,20 @@ msgid "<b>Workarounds</b>"
 msgstr "<b>Rotation</b>"
 
 #: ../interface/add_subtitle2.ui.h:1 ../interface/add_subtitle.ui.h:2
-msgid "File: "
-msgstr "fil: "
+msgid "File:"
+msgstr "fil:"
 
 #: ../interface/add_subtitle2.ui.h:2 ../interface/add_subtitle.ui.h:4
 msgid "Clear"
 msgstr "Ryd"
 
 #: ../interface/add_subtitle2.ui.h:3 ../interface/add_subtitle.ui.h:6
-msgid "Encoding: "
-msgstr "Encoding: "
+msgid "Encoding:"
+msgstr "Encoding:"
 
 #: ../interface/add_subtitle2.ui.h:4 ../interface/add_subtitle.ui.h:5
-msgid "Language: "
-msgstr "Sprog: "
+msgid "Language:"
+msgstr "Sprog:"
 
 #: ../interface/add_subtitle2.ui.h:5 ../interface/add_subtitle.ui.h:7
 msgid "Put subtitles upper"
@@ -514,7 +514,7 @@ msgstr ""
 
 #. Means: "Burn the ISO image in a CD/DVD"
 #: ../interface/wend_dialog.ui.h:2
-msgctxt "Means: "
+msgctxt "Means:"
 msgid "Burn"
 msgstr ""
 
@@ -543,12 +543,12 @@ msgid "<b>File</b>"
 msgstr "<b>Fil</b>"
 
 #: ../interface/wfile.ui.h:3 ../interface/wmain.ui.h:15
-msgid "Frames per second: "
-msgstr "Frames pr. sekund: "
+msgid "Frames per second:"
+msgstr "Frames pr. sekund:"
 
 #: ../interface/wfile.ui.h:4
-msgid "Original length (seconds): "
-msgstr "Orginal længde (sekunder): "
+msgid "Original length (seconds):"
+msgstr "Orginal længde (sekunder):"
 
 #: ../interface/wfile.ui.h:5
 msgid "Original audio rate (Kbits/sec):"
@@ -559,16 +559,16 @@ msgid "Original video rate (Kbits/sec):"
 msgstr "Orginal video rate (KBits/sek):"
 
 #: ../interface/wfile.ui.h:7 ../interface/wmain.ui.h:20
-msgid "Original size (pixels): "
-msgstr "Orginal størrelse (pixels): "
+msgid "Original size (pixels):"
+msgstr "Orginal størrelse (pixels):"
 
 #: ../interface/wfile.ui.h:8 ../interface/wmain.ui.h:16
 msgid "Final size (pixels):"
-msgstr "Endelig størrelse (pixels): "
+msgstr "Endelig størrelse (pixels):"
 
 #: ../interface/wfile.ui.h:9
-msgid "Estimated final length (MBytes): "
-msgstr "Anslået total længde (MBytes): "
+msgid "Estimated final length (MBytes):"
+msgstr "Anslået total længde (MBytes):"
 
 #: ../interface/wfile.ui.h:10 ../interface/wmain.ui.h:24
 msgid "<b>File info</b>"
@@ -587,8 +587,8 @@ msgid "<b>Video format</b>"
 msgstr "<b>Video format</b>"
 
 #: ../interface/wfile.ui.h:14
-msgid "Audio track: "
-msgstr "Lyd spor: "
+msgid "Audio track:"
+msgstr "Lyd spor:"
 
 #: ../interface/wfile.ui.h:15
 msgid "This video file has no audio tracks."
@@ -630,7 +630,7 @@ msgstr "<b>Opdel fil</b>"
 
 #: ../interface/wfile.ui.h:26
 msgid "Font size:"
-msgstr "Skriftstørelse: "
+msgstr "Skriftstørelse:"
 
 #: ../interface/wfile.ui.h:27
 msgid "Force subtitles"
@@ -657,8 +657,8 @@ msgid "Split the file in chapters (for easy seeking)"
 msgstr "Opdel filen i kapitler (for nemmere søgning)"
 
 #: ../interface/wfile.ui.h:33
-msgid "Size (in minutes) for each chapter: "
-msgstr "Størrelse (i minutter) for hver kapittel: "
+msgid "Size (in minutes) for each chapter:"
+msgstr "Størrelse (i minutter) for hver kapittel:"
 
 #: ../interface/wfile.ui.h:34
 msgid "<b>Division in chapters</b>"
@@ -1007,20 +1007,20 @@ msgid "<b>Files</b>"
 msgstr "<b>Filer</b>"
 
 #: ../interface/wmain.ui.h:17
-msgid "Length (seconds): "
-msgstr "Længde (sekunder): "
+msgid "Length (seconds):"
+msgstr "Længde (sekunder):"
 
 #: ../interface/wmain.ui.h:18
-msgid "Video rate (Kbits/sec): "
-msgstr "Video rate (Kbits/sek): "
+msgid "Video rate (Kbits/sec):"
+msgstr "Video rate (Kbits/sek):"
 
 #: ../interface/wmain.ui.h:19
-msgid "Audio rate (Kbits/sec): "
-msgstr "Lyd rate (Kbits/sek): "
+msgid "Audio rate (Kbits/sec):"
+msgstr "Lyd rate (Kbits/sek):"
 
 #: ../interface/wmain.ui.h:21
-msgid "Estimated length (MBytes): "
-msgstr "Anslået længde (MBytes): "
+msgid "Estimated length (MBytes):"
+msgstr "Anslået længde (MBytes):"
 
 #: ../interface/wmain.ui.h:22
 msgid "Output aspect ratio:"
@@ -1095,20 +1095,20 @@ msgid "Menu preview"
 msgstr "Menu prævis"
 
 #: ../interface/wmenu_properties.ui.h:1
-msgid "Shadow color: "
-msgstr "Skygge farve: "
+msgid "Shadow color:"
+msgstr "Skygge farve:"
 
 #: ../interface/wmenu_properties.ui.h:2
-msgid "Text color: "
-msgstr "Tekst farve: "
+msgid "Text color:"
+msgstr "Tekst farve:"
 
 #: ../interface/wmenu_properties.ui.h:3
-msgid "Text: "
-msgstr "Tekst: "
+msgid "Text:"
+msgstr "Tekst:"
 
 #: ../interface/wmenu_properties.ui.h:4
-msgid "Font: "
-msgstr "Skrifttype: "
+msgid "Font:"
+msgstr "Skrifttype:"
 
 #: ../interface/wmenu_properties.ui.h:5
 msgid "<b>Menu title</b>"
@@ -1182,20 +1182,20 @@ msgid "<b>Menu position</b>"
 msgstr "<b>Menu position</b>"
 
 #: ../interface/wmenu_properties.ui.h:23
-msgid "Color for unselected titles: "
-msgstr "Farve for ikke valgte titler: "
+msgid "Color for unselected titles:"
+msgstr "Farve for ikke valgte titler:"
 
 #: ../interface/wmenu_properties.ui.h:24
-msgid "Color for shadows: "
-msgstr "Farve for skygger: "
+msgid "Color for shadows:"
+msgstr "Farve for skygger:"
 
 #: ../interface/wmenu_properties.ui.h:25
-msgid "Color for selected title: "
-msgstr "Farve for den valgte titel: "
+msgid "Color for selected title:"
+msgstr "Farve for den valgte titel:"
 
 #: ../interface/wmenu_properties.ui.h:26
-msgid "Background color for titles: "
-msgstr "Baggrundsfarve for titler: "
+msgid "Background color for titles:"
+msgstr "Baggrundsfarve for titler:"
 
 #: ../interface/wmenu_properties.ui.h:27
 msgid "<b>Menu font and colors</b>"

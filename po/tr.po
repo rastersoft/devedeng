@@ -385,7 +385,7 @@ msgid "<b>Workarounds</b>"
 msgstr "<b>Rotasyon</b>"
 
 #: ../interface/add_subtitle2.ui.h:1 ../interface/add_subtitle.ui.h:2
-msgid "File: "
+msgid "File:"
 msgstr "Dosya:"
 
 #: ../interface/add_subtitle2.ui.h:2 ../interface/add_subtitle.ui.h:4
@@ -393,11 +393,11 @@ msgid "Clear"
 msgstr "Temizle"
 
 #: ../interface/add_subtitle2.ui.h:3 ../interface/add_subtitle.ui.h:6
-msgid "Encoding: "
+msgid "Encoding:"
 msgstr "Kodlanıyor:"
 
 #: ../interface/add_subtitle2.ui.h:4 ../interface/add_subtitle.ui.h:5
-msgid "Language: "
+msgid "Language:"
 msgstr "Dil:"
 
 #: ../interface/add_subtitle2.ui.h:5 ../interface/add_subtitle.ui.h:7
@@ -523,7 +523,7 @@ msgstr ""
 
 #. Means: "Burn the ISO image in a CD/DVD"
 #: ../interface/wend_dialog.ui.h:2
-msgctxt "Means: "
+msgctxt "Means:"
 msgid "Burn"
 msgstr ""
 
@@ -552,11 +552,11 @@ msgid "<b>File</b>"
 msgstr "<b>Dosya</b>"
 
 #: ../interface/wfile.ui.h:3 ../interface/wmain.ui.h:15
-msgid "Frames per second: "
+msgid "Frames per second:"
 msgstr "Saniye başına kare sayısı:"
 
 #: ../interface/wfile.ui.h:4
-msgid "Original length (seconds): "
+msgid "Original length (seconds):"
 msgstr "Orijinal uzunluk (saniye):"
 
 #: ../interface/wfile.ui.h:5
@@ -568,7 +568,7 @@ msgid "Original video rate (Kbits/sec):"
 msgstr "Orijinal video hızı (Kbits/sn):"
 
 #: ../interface/wfile.ui.h:7 ../interface/wmain.ui.h:20
-msgid "Original size (pixels): "
+msgid "Original size (pixels):"
 msgstr "Orijinal boyut (piksel):"
 
 #: ../interface/wfile.ui.h:8 ../interface/wmain.ui.h:16
@@ -576,7 +576,7 @@ msgid "Final size (pixels):"
 msgstr "İşlem sonu boyutu (piksel):"
 
 #: ../interface/wfile.ui.h:9
-msgid "Estimated final length (MBytes): "
+msgid "Estimated final length (MBytes):"
 msgstr "Tahmini işlem sonu boyut (MBytes):"
 
 #: ../interface/wfile.ui.h:10 ../interface/wmain.ui.h:24
@@ -596,7 +596,7 @@ msgid "<b>Video format</b>"
 msgstr "<b>Video formatı</b>"
 
 #: ../interface/wfile.ui.h:14
-msgid "Audio track: "
+msgid "Audio track:"
 msgstr "Ses parçası:"
 
 #: ../interface/wfile.ui.h:15
@@ -667,7 +667,7 @@ msgid "Split the file in chapters (for easy seeking)"
 msgstr "Dosyayı bölümün içinde böl"
 
 #: ../interface/wfile.ui.h:33
-msgid "Size (in minutes) for each chapter: "
+msgid "Size (in minutes) for each chapter:"
 msgstr "Her bölüm için boyut (dakika):"
 
 #: ../interface/wfile.ui.h:34
@@ -1013,19 +1013,19 @@ msgid "<b>Files</b>"
 msgstr "<b>Dosyalar</b>"
 
 #: ../interface/wmain.ui.h:17
-msgid "Length (seconds): "
+msgid "Length (seconds):"
 msgstr "Uzunluk (saniye):"
 
 #: ../interface/wmain.ui.h:18
-msgid "Video rate (Kbits/sec): "
+msgid "Video rate (Kbits/sec):"
 msgstr "Video hızı (Kbits/sn):"
 
 #: ../interface/wmain.ui.h:19
-msgid "Audio rate (Kbits/sec): "
-msgstr "Ses hızı (Kbits/sn): "
+msgid "Audio rate (Kbits/sec):"
+msgstr "Ses hızı (Kbits/sn):"
 
 #: ../interface/wmain.ui.h:21
-msgid "Estimated length (MBytes): "
+msgid "Estimated length (MBytes):"
 msgstr "Tahmini boyut (MBytes):"
 
 #: ../interface/wmain.ui.h:22
@@ -1046,7 +1046,7 @@ msgid "0.0%"
 msgstr "0.0%"
 
 #: ../interface/wmain.ui.h:28
-msgid " Media size: "
+msgid " Media size:"
 msgstr "Medya boyutu:"
 
 #: ../interface/wmain.ui.h:29
@@ -1099,19 +1099,19 @@ msgid "Menu preview"
 msgstr "Menü önizleme"
 
 #: ../interface/wmenu_properties.ui.h:1
-msgid "Shadow color: "
+msgid "Shadow color:"
 msgstr "Gölge rengi:"
 
 #: ../interface/wmenu_properties.ui.h:2
-msgid "Text color: "
+msgid "Text color:"
 msgstr "Metin rengi:"
 
 #: ../interface/wmenu_properties.ui.h:3
-msgid "Text: "
+msgid "Text:"
 msgstr "Metin:"
 
 #: ../interface/wmenu_properties.ui.h:4
-msgid "Font: "
+msgid "Font:"
 msgstr "Yazı tipi:"
 
 #: ../interface/wmenu_properties.ui.h:5
@@ -1186,20 +1186,20 @@ msgid "<b>Menu position</b>"
 msgstr "<b>Menü yerleşimi</b>"
 
 #: ../interface/wmenu_properties.ui.h:23
-msgid "Color for unselected titles: "
+msgid "Color for unselected titles:"
 msgstr "Seçili olmayan başlıkların rengi:"
 
 #: ../interface/wmenu_properties.ui.h:24
-msgid "Color for shadows: "
-msgstr "Gölge rengi: "
+msgid "Color for shadows:"
+msgstr "Gölge rengi:"
 
 #: ../interface/wmenu_properties.ui.h:25
-msgid "Color for selected title: "
+msgid "Color for selected title:"
 msgstr "Seçili başlığı renklendir:"
 
 #: ../interface/wmenu_properties.ui.h:26
-msgid "Background color for titles: "
-msgstr "Başlıkların arkaplan rengi: "
+msgid "Background color for titles:"
+msgstr "Başlıkların arkaplan rengi:"
 
 #: ../interface/wmenu_properties.ui.h:27
 msgid "<b>Menu font and colors</b>"

@@ -398,7 +398,7 @@ msgid "<b>Workarounds</b>"
 msgstr "<b>Áthidaló megoldások</b>"
 
 #: ../interface/add_subtitle2.ui.h:1 ../interface/add_subtitle.ui.h:2
-msgid "File: "
+msgid "File:"
 msgstr "Fájl:"
 
 #: ../interface/add_subtitle2.ui.h:2 ../interface/add_subtitle.ui.h:4
@@ -406,11 +406,11 @@ msgid "Clear"
 msgstr "Törlés"
 
 #: ../interface/add_subtitle2.ui.h:3 ../interface/add_subtitle.ui.h:6
-msgid "Encoding: "
+msgid "Encoding:"
 msgstr "Kódolás:"
 
 #: ../interface/add_subtitle2.ui.h:4 ../interface/add_subtitle.ui.h:5
-msgid "Language: "
+msgid "Language:"
 msgstr "Nyelv:"
 
 #: ../interface/add_subtitle2.ui.h:5 ../interface/add_subtitle.ui.h:7
@@ -476,7 +476,7 @@ msgid ""
 "reorder the other ones:"
 msgstr ""
 "Kiválasztott cím törlése és\n"
-"egy új cím megadása: "
+"egy új cím megadása:"
 
 #: ../interface/wdisk_type.ui.h:1
 msgid "Disc type selection"
@@ -536,7 +536,7 @@ msgstr ""
 
 #. Means: "Burn the ISO image in a CD/DVD"
 #: ../interface/wend_dialog.ui.h:2
-msgctxt "Means: "
+msgctxt "Means:"
 msgid "Burn"
 msgstr "A lemez írása"
 
@@ -565,11 +565,11 @@ msgid "<b>File</b>"
 msgstr "<b>Fájl</b>"
 
 #: ../interface/wfile.ui.h:3 ../interface/wmain.ui.h:15
-msgid "Frames per second: "
+msgid "Frames per second:"
 msgstr "Képkocka másodpercenként:"
 
 #: ../interface/wfile.ui.h:4
-msgid "Original length (seconds): "
+msgid "Original length (seconds):"
 msgstr "Eredeti hossz (másodperc):"
 
 #: ../interface/wfile.ui.h:5
@@ -581,7 +581,7 @@ msgid "Original video rate (Kbits/sec):"
 msgstr "Eredeti videó sebesség (kbit/sec):"
 
 #: ../interface/wfile.ui.h:7 ../interface/wmain.ui.h:20
-msgid "Original size (pixels): "
+msgid "Original size (pixels):"
 msgstr "Eredeti méret (pixel):"
 
 #: ../interface/wfile.ui.h:8 ../interface/wmain.ui.h:16
@@ -589,7 +589,7 @@ msgid "Final size (pixels):"
 msgstr "Kész méret (pixelben):"
 
 #: ../interface/wfile.ui.h:9
-msgid "Estimated final length (MBytes): "
+msgid "Estimated final length (MBytes):"
 msgstr "Becsült végső hossz (MB):"
 
 #: ../interface/wfile.ui.h:10 ../interface/wmain.ui.h:24
@@ -609,7 +609,7 @@ msgid "<b>Video format</b>"
 msgstr "<b>Videó formátum</b>"
 
 #: ../interface/wfile.ui.h:14
-msgid "Audio track: "
+msgid "Audio track:"
 msgstr "Hangsáv:"
 
 #: ../interface/wfile.ui.h:15
@@ -679,7 +679,7 @@ msgid "Split the file in chapters (for easy seeking)"
 msgstr "A fejezetekben a fájl felosztása (könnyebb keresés)"
 
 #: ../interface/wfile.ui.h:33
-msgid "Size (in minutes) for each chapter: "
+msgid "Size (in minutes) for each chapter:"
 msgstr "Minden fejezet mérete (percben):"
 
 #: ../interface/wfile.ui.h:34
@@ -1024,19 +1024,19 @@ msgid "<b>Files</b>"
 msgstr "<b>Fájlok</b>"
 
 #: ../interface/wmain.ui.h:17
-msgid "Length (seconds): "
+msgid "Length (seconds):"
 msgstr "Hossz (másodperc):"
 
 #: ../interface/wmain.ui.h:18
-msgid "Video rate (Kbits/sec): "
+msgid "Video rate (Kbits/sec):"
 msgstr "Videó sebesség (kbit/sec):"
 
 #: ../interface/wmain.ui.h:19
-msgid "Audio rate (Kbits/sec): "
+msgid "Audio rate (Kbits/sec):"
 msgstr "Hang sebesség (kbit/sec):"
 
 #: ../interface/wmain.ui.h:21
-msgid "Estimated length (MBytes): "
+msgid "Estimated length (MBytes):"
 msgstr "Becsült hossz (MB):"
 
 #: ../interface/wmain.ui.h:22
@@ -1057,7 +1057,7 @@ msgid "0.0%"
 msgstr "0.0%"
 
 #: ../interface/wmain.ui.h:28
-msgid " Media size: "
+msgid " Media size:"
 msgstr "Média mérete:"
 
 #: ../interface/wmain.ui.h:29
@@ -1110,19 +1110,19 @@ msgid "Menu preview"
 msgstr "A menü előnézete"
 
 #: ../interface/wmenu_properties.ui.h:1
-msgid "Shadow color: "
+msgid "Shadow color:"
 msgstr "Árnyék színe:"
 
 #: ../interface/wmenu_properties.ui.h:2
-msgid "Text color: "
+msgid "Text color:"
 msgstr "A szöveg színe:"
 
 #: ../interface/wmenu_properties.ui.h:3
-msgid "Text: "
+msgid "Text:"
 msgstr "Szöveg:"
 
 #: ../interface/wmenu_properties.ui.h:4
-msgid "Font: "
+msgid "Font:"
 msgstr "Betűtípus:"
 
 #: ../interface/wmenu_properties.ui.h:5
@@ -1195,19 +1195,19 @@ msgid "<b>Menu position</b>"
 msgstr "<b>Menü helyzete</b>"
 
 #: ../interface/wmenu_properties.ui.h:23
-msgid "Color for unselected titles: "
+msgid "Color for unselected titles:"
 msgstr "A nem választott címek színe:"
 
 #: ../interface/wmenu_properties.ui.h:24
-msgid "Color for shadows: "
+msgid "Color for shadows:"
 msgstr "Az árnyék színe:"
 
 #: ../interface/wmenu_properties.ui.h:25
-msgid "Color for selected title: "
+msgid "Color for selected title:"
 msgstr "A választott cím színe:"
 
 #: ../interface/wmenu_properties.ui.h:26
-msgid "Background color for titles: "
+msgid "Background color for titles:"
 msgstr "A cím hátterének színe:"
 
 #: ../interface/wmenu_properties.ui.h:27
