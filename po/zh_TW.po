@@ -1022,7 +1022,7 @@ msgstr "0.0%"
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #: ../interface/wmain.ui.h:28
-msgid " Media size:"
+msgid "Media size:"
 msgstr " 容量大小:"
 
 #: ../interface/wmain.ui.h:29

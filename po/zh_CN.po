@@ -1032,7 +1032,7 @@ msgid "0.0%"
 msgstr "0.0%"
 
 #: ../interface/wmain.ui.h:28
-msgid " Media size:"
+msgid "Media size:"
 msgstr "容量大小:"
 
 #: ../interface/wmain.ui.h:29
