@@ -989,20 +989,20 @@ msgstr "DeVeDe"
 
 #: ../interface/wmain.ui.h:8
 msgid "_File"
-msgstr " Plik"
+msgstr "Plik"
 
 #: ../interface/wmain.ui.h:9
 #, fuzzy
 msgid "_Edit"
-msgstr " Edytuj"
+msgstr "Edytuj"
 
 #: ../interface/wmain.ui.h:10
 msgid "_Preferences"
-msgstr " Preferencje"
+msgstr "Preferencje"
 
 #: ../interface/wmain.ui.h:11
 msgid "_Help"
-msgstr " Pomoc"
+msgstr "Pomoc"
 
 #: ../interface/wmain.ui.h:12
 msgid "<b>Titles</b>"
@@ -1047,7 +1047,7 @@ msgstr "0.0%"
 
 #: ../interface/wmain.ui.h:28
 msgid "Media size:"
-msgstr " Rozmiar nośnika:"
+msgstr "Rozmiar nośnika:"
 
 #: ../interface/wmain.ui.h:29
 msgid "<b>Disc usage</b>"

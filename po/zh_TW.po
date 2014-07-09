@@ -1023,7 +1023,7 @@ msgstr "0.0%"
 # This file is distributed under the same license as the PACKAGE package.
 #: ../interface/wmain.ui.h:28
 msgid "Media size:"
-msgstr " 容量大小:"
+msgstr "容量大小:"
 
 #: ../interface/wmain.ui.h:29
 msgid "<b>Disc usage</b>"
