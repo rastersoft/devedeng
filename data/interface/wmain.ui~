@@ -2,9 +2,9 @@
 <!-- Generated with glade 3.16.1 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
-  <object class="GtkListStore" id="liststore1">
+  <object class="GtkListStore" id="disc_size_list">
     <columns>
-      <!-- column-name gchararray1 -->
+      <!-- column-name sizes -->
       <column type="gchararray"/>
     </columns>
     <data>
@@ -28,8 +28,27 @@
       </row>
     </data>
   </object>
-  <object class="GtkListStore" id="liststore2"/>
-  <object class="GtkWindow" id="wmain">
+  <object class="GtkListStore" id="liststore_files">
+    <columns>
+      <!-- column-name files -->
+      <column type="gchararray"/>
+      <!-- column-name files_element -->
+      <column type="GObject"/>
+      <!-- column-name files_pos -->
+      <column type="gint"/>
+    </columns>
+  </object>
+  <object class="GtkListStore" id="liststore_titles">
+    <columns>
+      <!-- column-name title -->
+      <column type="gchararray"/>
+      <!-- column-name title_element -->
+      <column type="GObject"/>
+      <!-- column-name title_pos -->
+      <column type="gint"/>
+    </columns>
+  </object>
+  <object class="GtkWindow" id="wmain_window">
     <property name="width_request">750</property>
     <property name="height_request">440</property>
     <property name="can_focus">False</property>
@@ -201,7 +220,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkFrame" id="frame4">
+              <object class="GtkFrame" id="frame_titles">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label_xalign">0</property>
@@ -222,14 +241,28 @@
                             <property name="can_focus">True</property>
                             <property name="shadow_type">in</property>
                             <child>
-                              <object class="GtkTreeView" id="treeview2">
+                              <object class="GtkTreeView" id="titles">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="model">liststore2</property>
-                                <property name="reorderable">True</property>
+                                <property name="model">liststore_titles</property>
+                                <property name="headers_visible">False</property>
+                                <property name="enable_search">False</property>
+                                <property name="show_expanders">False</property>
                                 <property name="enable_grid_lines">horizontal</property>
+                                <signal name="cursor-changed" handler="set_interface_status" swapped="no"/>
                                 <child internal-child="selection">
                                   <object class="GtkTreeSelection" id="treeview-selection"/>
+                                </child>
+                                <child>
+                                  <object class="GtkTreeViewColumn" id="treeviewcolumn1">
+                                    <property name="title" translatable="yes">Titles</property>
+                                    <child>
+                                      <object class="GtkCellRendererText" id="cellrenderertext2"/>
+                                      <attributes>
+                                        <attribute name="text">0</attribute>
+                                      </attributes>
+                                    </child>
+                                  </object>
                                 </child>
                               </object>
                             </child>
@@ -245,7 +278,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <child>
-                              <object class="GtkButton" id="button7">
+                              <object class="GtkButton" id="add_title">
                                 <property name="label">gtk-add</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -253,6 +286,7 @@
                                 <property name="use_stock">True</property>
                                 <property name="image_position">top</property>
                                 <property name="always_show_image">True</property>
+                                <signal name="clicked" handler="on_add_title_clicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -261,7 +295,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="button8">
+                              <object class="GtkButton" id="delete_title">
                                 <property name="label">gtk-remove</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -269,6 +303,7 @@
                                 <property name="use_stock">True</property>
                                 <property name="image_position">top</property>
                                 <property name="always_show_image">True</property>
+                                <signal name="clicked" handler="on_delete_title_clicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -277,7 +312,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="button9">
+                              <object class="GtkButton" id="down_title">
                                 <property name="label">gtk-go-down</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -285,6 +320,7 @@
                                 <property name="use_stock">True</property>
                                 <property name="image_position">top</property>
                                 <property name="always_show_image">True</property>
+                                <signal name="clicked" handler="on_down_title_clicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -293,7 +329,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="button10">
+                              <object class="GtkButton" id="up_title">
                                 <property name="label">gtk-go-up</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -301,6 +337,7 @@
                                 <property name="use_stock">True</property>
                                 <property name="image_position">top</property>
                                 <property name="always_show_image">True</property>
+                                <signal name="clicked" handler="on_up_title_clicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -309,7 +346,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="button11">
+                              <object class="GtkButton" id="properties_title">
                                 <property name="label">gtk-properties</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -372,11 +409,24 @@
                             <property name="can_focus">True</property>
                             <property name="shadow_type">in</property>
                             <child>
-                              <object class="GtkTreeView" id="treeview3">
+                              <object class="GtkTreeView" id="files">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
+                                <property name="model">liststore_files</property>
+                                <property name="headers_visible">False</property>
                                 <child internal-child="selection">
                                   <object class="GtkTreeSelection" id="treeview-selection2"/>
+                                </child>
+                                <child>
+                                  <object class="GtkTreeViewColumn" id="treeviewcolumn2">
+                                    <property name="title" translatable="yes">column</property>
+                                    <child>
+                                      <object class="GtkCellRendererText" id="cellrenderertext3"/>
+                                      <attributes>
+                                        <attribute name="text">0</attribute>
+                                      </attributes>
+                                    </child>
+                                  </object>
                                 </child>
                               </object>
                             </child>
@@ -392,7 +442,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <child>
-                              <object class="GtkButton" id="button12">
+                              <object class="GtkButton" id="add_chapter">
                                 <property name="label">gtk-add</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -408,7 +458,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="button13">
+                              <object class="GtkButton" id="delete_chapter">
                                 <property name="label">gtk-remove</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -424,7 +474,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="button14">
+                              <object class="GtkButton" id="down_chapter">
                                 <property name="label">gtk-go-down</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -440,7 +490,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="button15">
+                              <object class="GtkButton" id="up_chapter">
                                 <property name="label">gtk-go-up</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -456,7 +506,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="button16">
+                              <object class="GtkButton" id="properties_chapter">
                                 <property name="label">gtk-properties</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -472,13 +522,43 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="button17">
-                                <property name="label" translatable="yes">Preview</property>
+                              <object class="GtkButton" id="preview_chapter">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
                                 <property name="yalign">0.4699999988079071</property>
                                 <property name="image_position">top</property>
+                                <child>
+                                  <object class="GtkBox" id="box11">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="orientation">vertical</property>
+                                    <child>
+                                      <object class="GtkImage" id="image1">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="icon_name">video-display</property>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="label7">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="label" translatable="yes">Preview</property>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -554,12 +634,18 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkComboBox" id="combobox1">
+                          <object class="GtkComboBox" id="disc_size">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="model">liststore1</property>
+                            <property name="model">disc_size_list</property>
                             <property name="active">1</property>
                             <property name="id_column">0</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                              <attributes>
+                                <attribute name="text">0</attribute>
+                              </attributes>
+                            </child>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -568,7 +654,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkProgressBar" id="progressbar1">
+                          <object class="GtkProgressBar" id="disc_fill_level">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                           </object>
@@ -579,11 +665,12 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton" id="button1">
+                          <object class="GtkButton" id="adjust_disc_usage">
                             <property name="label" translatable="yes">Adjust disc usage</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <signal name="clicked" handler="on_adjust_disc_usage_clicked" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -638,7 +725,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkRadioButton" id="radiobutton1">
+                          <object class="GtkRadioButton" id="use_pal">
                             <property name="label" translatable="yes">PAL</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -646,7 +733,7 @@
                             <property name="xalign">0</property>
                             <property name="active">True</property>
                             <property name="draw_indicator">True</property>
-                            <property name="group">radiobutton2</property>
+                            <property name="group">use_ntsc</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -656,13 +743,12 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkRadioButton" id="radiobutton2">
+                          <object class="GtkRadioButton" id="use_ntsc">
                             <property name="label" translatable="yes">NTSC</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="xalign">0</property>
-                            <property name="active">True</property>
                             <property name="draw_indicator">True</property>
                           </object>
                           <packing>
@@ -707,7 +793,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkCheckButton" id="checkbutton1">
+                          <object class="GtkCheckButton" id="create_menu">
                             <property name="label" translatable="yes">Create a menu with the titles</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -823,7 +909,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button4">
+              <object class="GtkButton" id="create_disc">
                 <property name="label">gtk-go-forward</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>

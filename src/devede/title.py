@@ -15,17 +15,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import devede.convert
-import devede.main_window
-from gi.repository import Gtk
+from gi.repository import Gtk,GObject
 
-# This is the first call made, where we initializate everything
-
-def main(argv,paths):
+class title(GObject.GObject):
     
-    global _
-
-    Gtk.init(argv)
-
-    ventana = devede.main_window.choose_disk(paths)
-    Gtk.main()
+    counter = 0
+    
+    def __init__(self):
+        
+        GObject.GObject.__init__(self)
+        title.counter += 1
+        self.title_name = _("Title %(X)d") % {"X":title.counter}
+        self.chapters = Gtk.ListStore()
+    
+    def get_number_of_chapters(self):
+        
+        return len(self.chapters)
+    
+    def delete_title(self):
+        
+        print("Deleted title "+self.title_name)

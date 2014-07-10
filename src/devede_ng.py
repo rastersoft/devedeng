@@ -21,7 +21,9 @@ import sys
 import os
 import gettext
 import locale
-import devede.devede
+from gi.repository import Gtk
+
+import devede.project
 
 class config_paths:
     
@@ -74,4 +76,8 @@ gettext.install("devede_ng",localedir=paths.share_locale)
 
 _ = gettext.gettext
 
-devede.devede.main(sys.argv,paths)
+Gtk.init(sys.argv)
+
+mwindow = devede.project.devede_project(paths)
+mwindow.ask_type()
+Gtk.main()
