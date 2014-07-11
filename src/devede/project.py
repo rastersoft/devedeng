@@ -363,7 +363,13 @@ class devede_project:
         selection.mode = Gtk.SelectionMode.SINGLE
 
         self.wmain_window.show_all()
+    
+    def on_wmain_window_delete_event(self,b,e=None):
         
+        ask = devede.ask.ask_window(self.paths)
+        if (ask.run(_("Abort the current DVD and exit?"),_("Exit DeVeDe"))):
+            Gtk.main_quit()
+        return True
 
     def on_adjust_disc_usage_clicked(self,b):
 

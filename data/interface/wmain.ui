@@ -51,6 +51,7 @@
     <property name="title" translatable="yes">Devede</property>
     <property name="window_position">center</property>
     <property name="icon">devede.svg</property>
+    <signal name="delete-event" handler="on_wmain_window_delete_event" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
@@ -907,6 +908,7 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
+                <signal name="clicked" handler="on_wmain_window_delete_event" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
