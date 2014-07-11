@@ -15,32 +15,19 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from gi.repository import Gtk,GObject
+from gi.repository import GObject
 
-class title(GObject.GObject):
+class file(GObject.GObject):
     
-    counter = 0
-    
-    def __init__(self,file_treeview,original_liststore):
+    def __init__(self):
         
         GObject.GObject.__init__(self)
-        self.file_treeview = file_treeview
-        title.counter += 1
-        self.title_name = _("Title %(X)d") % {"X":title.counter}
-        columns = []
-        for iterator in range(0, original_liststore.get_n_columns()):
-            columns.append(original_liststore.get_column_type(iterator))
-        self.files = Gtk.ListStore()
-        self.files.set_column_types(columns)
+        self.counter2 = 0
     
-    def delete_title(self):
+    def delete_file(self):
         
-        print("Deleted title "+self.title_name)
+        print("Deleted file "+self.file_name)
     
-    def refresh(self):
+    def properties(self):
         
-        self.file_treeview.set_model(self.files)
-    
-    def add_file(self,new_file):
-        
-        self.files.append([new_file.file_name, new_file])
+        self.file_name = "Hola"

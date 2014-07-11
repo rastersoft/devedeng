@@ -34,8 +34,6 @@
       <column type="gchararray"/>
       <!-- column-name files_element -->
       <column type="GObject"/>
-      <!-- column-name files_pos -->
-      <column type="gint"/>
     </columns>
   </object>
   <object class="GtkListStore" id="liststore_titles">
@@ -50,7 +48,9 @@
     <property name="width_request">750</property>
     <property name="height_request">440</property>
     <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Devede</property>
     <property name="window_position">center</property>
+    <property name="icon">devede.svg</property>
     <child>
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
@@ -412,6 +412,7 @@
                                 <property name="can_focus">True</property>
                                 <property name="model">liststore_files</property>
                                 <property name="headers_visible">False</property>
+                                <signal name="cursor-changed" handler="set_interface_status" swapped="no"/>
                                 <child internal-child="selection">
                                   <object class="GtkTreeSelection" id="treeview-selection2"/>
                                 </child>
@@ -440,7 +441,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <child>
-                              <object class="GtkButton" id="add_chapter">
+                              <object class="GtkButton" id="add_file">
                                 <property name="label">gtk-add</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -448,6 +449,7 @@
                                 <property name="use_stock">True</property>
                                 <property name="image_position">top</property>
                                 <property name="always_show_image">True</property>
+                                <signal name="clicked" handler="on_add_file_clicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -456,7 +458,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="delete_chapter">
+                              <object class="GtkButton" id="delete_file">
                                 <property name="label">gtk-remove</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -464,6 +466,7 @@
                                 <property name="use_stock">True</property>
                                 <property name="image_position">top</property>
                                 <property name="always_show_image">True</property>
+                                <signal name="clicked" handler="on_delete_file_clicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -472,7 +475,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="down_chapter">
+                              <object class="GtkButton" id="down_file">
                                 <property name="label">gtk-go-down</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -488,7 +491,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="up_chapter">
+                              <object class="GtkButton" id="up_file">
                                 <property name="label">gtk-go-up</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -504,7 +507,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="properties_chapter">
+                              <object class="GtkButton" id="properties_file">
                                 <property name="label">gtk-properties</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -520,7 +523,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton" id="preview_chapter">
+                              <object class="GtkButton" id="preview_file">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>

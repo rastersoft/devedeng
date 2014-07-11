@@ -19,7 +19,8 @@ from gi.repository import Gtk
 import os
 
 import devede.title
-
+import devede.file
+import devede.ask
 
 class devede_project:
 
@@ -48,11 +49,11 @@ class devede_project:
         self.wup_title = None
         self.wdown_title = None
         self.wproperties_title = None
-        self.wadd_chapter = None
-        self.wdelete_chapter = None
-        self.wup_chapter = None
-        self.wdown_chapter = None
-        self.wproperties_chapter = None
+        self.wadd_file = None
+        self.wdelete_file = None
+        self.wup_file = None
+        self.wdown_file = None
+        self.wproperties_file = None
         self.wcreate_disc = None
         
         devede.title.counter = 0
@@ -128,10 +129,23 @@ class devede_project:
         
         self.get_current_title()
         
-        new_title = devede.title.title()
+        new_title = devede.title.title(self.wfiles,self.wliststore_files)
         self.wliststore_titles.append([new_title.title_name, new_title])
         self.set_interface_status(None)
 
+    def on_add_file_clicked(self,b):
+        
+        (element, position, model, treeiter) = self.get_current_title()
+        if (element == None):
+            return
+
+        new_file = devede.file.file()
+        new_file.properties()
+        
+        if (new_file.file_name != None):
+            element.add_file(new_file)
+            self.set_interface_status(None)
+        
 
     def on_delete_title_clicked(self,b):
         
@@ -139,9 +153,23 @@ class devede_project:
         if (element == None):
             return
         
-        element.delete_title()
-        model.remove(treeiter)
-        self.set_interface_status(None)
+        ask_w = devede.ask.ask_window(self.paths)
+        if (ask_w.run(_("The title <b>%(X)s</b> will be removed.") % {"X":element.title_name},_("Delete title"))):
+            element.delete_title()
+            model.remove(treeiter)
+            self.set_interface_status(None)
+
+    def on_delete_file_clicked(self,b):
+        
+        (element, position, model, treeiter) = self.get_current_file()
+        if (element == None):
+            return
+        
+        ask_w = devede.ask.ask_window(self.paths)
+        if (ask_w.run(_("The file <b>%(X)s</b> will be removed.") % {"X":element.file_name},_("Delete file"))):
+            element.delete_file()
+            model.remove(treeiter)
+            self.set_interface_status(None)
 
     def on_up_title_clicked(self,b):
         
@@ -179,38 +207,69 @@ class devede_project:
                 position += 1
             return ( (element, position, model, treeiter) )
         else:
-            return ( (None, -1, None, None) )
+            # If there is no selection, try to select the first one if exists
+            try:
+                first = self.wliststore_titles[0]
+                selection.select_iter(first.iter)
+                return ( (first.model[first.iter][1], 0, first.model, first.iter) )
+            except:
+                return ( (None, -1, None, None) )
+
+    def get_current_file(self):
+
+        """ returns the currently selected file """
+
+        selection = self.wfiles.get_selection()
+        model, treeiter = selection.get_selected()
         
+        if treeiter != None:
+            element = model[treeiter][1]
+            position = 0
+            for row in self.wfiles.get_model():
+                item = row.model[row.iter][1]
+                if element == item:
+                    break
+                position += 1
+            return ( (element, position, model, treeiter) )
+        else:
+            return ( (None, -1, None, None) )
+
 
 
     def set_interface_status(self,b):
-        
+
         self.wadd_title.set_sensitive(True)
         self.wdelete_title.set_sensitive(True)
         self.wup_title.set_sensitive(True)
         self.wdown_title.set_sensitive(True)
         self.wproperties_title.set_sensitive(True)
         
-        self.wadd_chapter.set_sensitive(True)
-        self.wdelete_chapter.set_sensitive(True)
-        self.wup_chapter.set_sensitive(True)
-        self.wdown_chapter.set_sensitive(True)
-        self.wproperties_chapter.set_sensitive(True)
+        self.wadd_file.set_sensitive(True)
+        self.wdelete_file.set_sensitive(True)
+        self.wup_file.set_sensitive(True)
+        self.wdown_file.set_sensitive(True)
+        self.wproperties_file.set_sensitive(True)
+        self.wpreview_file.set_sensitive(True)
         
         self.wcreate_disc.set_sensitive(True)
 
         (element, position, model, treeiter) = self.get_current_title()
+        
+        if (self.current_title != element):
+            self.current_title = element
+            element.refresh()
         
         if (element == None):
             self.wdelete_title.set_sensitive(False)
             self.wup_title.set_sensitive(False)
             self.wdown_title.set_sensitive(False)
             self.wproperties_title.set_sensitive(False)
-            self.wadd_chapter.set_sensitive(False)
-            self.wdelete_chapter.set_sensitive(False)
-            self.wup_chapter.set_sensitive(False)
-            self.wdown_chapter.set_sensitive(False)
-            self.wproperties_chapter.set_sensitive(False)
+            self.wadd_file.set_sensitive(False)
+            self.wdelete_file.set_sensitive(False)
+            self.wup_file.set_sensitive(False)
+            self.wdown_file.set_sensitive(False)
+            self.wproperties_file.set_sensitive(False)
+            self.wpreview_file.set_sensitive(False)
         else:
             ntitles = len(self.wliststore_titles)
             if (ntitles < 2):
@@ -219,17 +278,22 @@ class devede_project:
                 self.wup_title.set_sensitive(False)
             if (position == (ntitles-1)):
                 self.wdown_title.set_sensitive(False)
-
-        empty_disc = True
-        for row in self.wliststore_titles:
-            item = row.model[row.iter][1]
-            if item.get_number_of_chapters() > 0:
-                empty_disc = False
-                break
-
-        if (empty_disc):
-            self.wcreate_disc.set_sensitive(False)
-
+            
+        (element2, position2, model2, treeiter2) = self.get_current_file()
+        if (element2 == None):
+            self.wdelete_file.set_sensitive(False)
+            self.wup_file.set_sensitive(False)
+            self.wdown_file.set_sensitive(False)
+            self.wproperties_file.set_sensitive(False)
+            self.wpreview_file.set_sensitive(False)
+        else:
+            nfiles = len(self.wfiles.get_model())
+            if (nfiles < 1):
+                self.wdelete_file.set_sensitive(False)
+            if (position2 == 0):
+                self.wup_file.set_sensitive(False)
+            if (position2 == (nfiles-1)):
+                self.wdown_file.set_sensitive(False)
 
 
     def show_main_window(self):
@@ -237,6 +301,8 @@ class devede_project:
         if (self.wmain_window != None):
             self.wmain_window.present()
             return
+
+        self.current_title = None
 
         builder = Gtk.Builder()
         builder.set_translation_domain("devede_ng")
@@ -262,11 +328,12 @@ class devede_project:
         self.wup_title = builder.get_object("up_title")
         self.wdown_title = builder.get_object("down_title")
         self.wproperties_title = builder.get_object("properties_title")
-        self.wadd_chapter = builder.get_object("add_chapter")
-        self.wdelete_chapter = builder.get_object("delete_chapter")
-        self.wup_chapter = builder.get_object("up_chapter")
-        self.wdown_chapter = builder.get_object("down_chapter")
-        self.wproperties_chapter = builder.get_object("properties_chapter")
+        self.wadd_file = builder.get_object("add_file")
+        self.wdelete_file = builder.get_object("delete_file")
+        self.wup_file = builder.get_object("up_file")
+        self.wdown_file = builder.get_object("down_file")
+        self.wproperties_file = builder.get_object("properties_file")
+        self.wpreview_file = builder.get_object("preview_file")
         
         self.wcreate_disc = builder.get_object("create_disc")
         
