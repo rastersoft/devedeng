@@ -181,6 +181,16 @@ class devede_project:
         self.wliststore_titles.swap(last_element.iter,treeiter)
         self.set_interface_status(None)
         
+    def on_up_file_clicked(self,b):
+        
+        (element, position, model, treeiter) = self.get_current_file()
+        if (element == None) or (position == 0):
+            return
+        
+        last_element = self.wfiles.get_model()[position-1]
+        self.wfiles.get_model().swap(last_element.iter,treeiter)
+        self.set_interface_status(None)
+        
     def on_down_title_clicked(self,b):
         
         (element, position, model, treeiter) = self.get_current_title()
@@ -189,6 +199,16 @@ class devede_project:
         
         last_element = self.wliststore_titles[position+1]
         self.wliststore_titles.swap(last_element.iter,treeiter)
+        self.set_interface_status(None)
+
+    def on_down_file_clicked(self,b):
+        
+        (element, position, model, treeiter) = self.get_current_file()
+        if (element == None) or (position == (len(self.wfiles.get_model())-1)):
+            return
+        
+        last_element = self.wfiles.get_model()[position+1]
+        self.wfiles.get_model().swap(last_element.iter,treeiter)
         self.set_interface_status(None)
 
     def get_current_title(self):

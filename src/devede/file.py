@@ -30,4 +30,5 @@ class file(GObject.GObject):
     
     def properties(self):
         
-        self.file_name = "Hola"
+        self.file_name = "Hola"+str(self.counter2)
+        self.counter2 += 1

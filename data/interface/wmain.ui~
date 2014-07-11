@@ -466,6 +466,7 @@
                                 <property name="use_stock">True</property>
                                 <property name="image_position">top</property>
                                 <property name="always_show_image">True</property>
+                                <signal name="clicked" handler="on_delete_file_clicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -482,6 +483,7 @@
                                 <property name="use_stock">True</property>
                                 <property name="image_position">top</property>
                                 <property name="always_show_image">True</property>
+                                <signal name="clicked" handler="on_down_file_clicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -498,6 +500,7 @@
                                 <property name="use_stock">True</property>
                                 <property name="image_position">top</property>
                                 <property name="always_show_image">True</property>
+                                <signal name="clicked" handler="on_up_file_clicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
