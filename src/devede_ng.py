@@ -26,9 +26,9 @@ from gi.repository import Gtk
 import devede.project
 
 class config_paths:
-    
+
     def __init__(self,is_local):
-        
+
         if (is_local):
             # locales must be always at /usr/share/locale because Gtk.Builder always search there
             self.share_locale="/usr/share/locale"
@@ -44,8 +44,8 @@ class config_paths:
             self.pic_path="/usr/share/devede_ng"
             self.other_path="/usr/share/devede_ng"
             self.help_path="/usr/share/doc/devede_ng"
-            
-            
+
+
 
 paths = None
 
@@ -72,7 +72,7 @@ try:
 except locale.Error:
     pass
 gettext.textdomain('devede_ng')
-gettext.install("devede_ng",localedir=paths.share_locale)  
+gettext.install("devede_ng",localedir=paths.share_locale)
 
 _ = gettext.gettext
 

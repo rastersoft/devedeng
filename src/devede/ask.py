@@ -22,10 +22,10 @@ class ask_window:
 
     def __init__(self,paths):
 
-        self.paths = paths        
-    
+        self.paths = paths
+
     def run(self,text,title):
-        
+
         builder = Gtk.Builder()
         builder.set_translation_domain("devede_ng")
 

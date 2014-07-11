@@ -17,18 +17,23 @@
 
 from gi.repository import GObject
 
-class file(GObject.GObject):
-    
+class file_movie(GObject.GObject):
+
+    counter2 = 0
+
     def __init__(self):
-        
+
         GObject.GObject.__init__(self)
-        self.counter2 = 0
-    
+
+    def set_type(self,disc_type):
+
+        self.disc_type = disc_type
+
     def delete_file(self):
-        
+
         print("Deleted file "+self.file_name)
-    
+
     def properties(self):
-        
-        self.file_name = "Hola"+str(self.counter2)
-        self.counter2 += 1
+
+        self.file_name = "Hola"+str(file_movie.counter2)
+        file_movie.counter2 += 1

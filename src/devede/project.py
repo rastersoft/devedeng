@@ -19,7 +19,7 @@ from gi.repository import Gtk
 import os
 
 import devede.title
-import devede.file
+import devede.file_movie
 import devede.ask
 
 class devede_project:
@@ -28,10 +28,10 @@ class devede_project:
 
         self.paths = paths
         self.destroy_all()
-        
-        
+
+
     def destroy_all(self):
-        
+
         self.wask_window = None
         self.wmain_window = None
         self.wframe_titles = None
@@ -44,7 +44,7 @@ class devede_project:
         self.wuse_pal = None
         self.wuse_ntsc = None
         self.wcreate_menu = None
-        self.project_type = None
+        self.disc_type = None
         self.wdelete_title = None
         self.wup_title = None
         self.wdown_title = None
@@ -55,7 +55,7 @@ class devede_project:
         self.wdown_file = None
         self.wproperties_file = None
         self.wcreate_disc = None
-        
+
         devede.title.counter = 0
 
 
@@ -107,116 +107,29 @@ class devede_project:
         if (self.wask_window != None):
             self.wask_window.destroy()
         self.destroy_all()
-        
-        self.project_type = disc_type
+
+        self.disc_type = disc_type
         self.show_main_window()
-        
+
         # Set the default disc size
-        if (self.project_type == "dvd"):
+        if (self.disc_type == "dvd"):
             self.wdisc_size.set_active(1) # 4.7 GB DVD
             self.wframe_titles.show()
         else:
             self.wdisc_size.set_active(3) # 700 MB CD
             self.wframe_titles.hide()
-            
+
 
         # create a new title
         self.on_add_title_clicked(None)
 
-
-    def on_add_title_clicked(self,b):
-        """ Creates a new title and adds it to the current project """
-        
-        self.get_current_title()
-        
-        new_title = devede.title.title(self.wfiles,self.wliststore_files)
-        self.wliststore_titles.append([new_title.title_name, new_title])
-        self.set_interface_status(None)
-
-    def on_add_file_clicked(self,b):
-        
-        (element, position, model, treeiter) = self.get_current_title()
-        if (element == None):
-            return
-
-        new_file = devede.file.file()
-        new_file.properties()
-        
-        if (new_file.file_name != None):
-            element.add_file(new_file)
-            self.set_interface_status(None)
-        
-
-    def on_delete_title_clicked(self,b):
-        
-        (element, position, model, treeiter) = self.get_current_title()
-        if (element == None):
-            return
-        
-        ask_w = devede.ask.ask_window(self.paths)
-        if (ask_w.run(_("The title <b>%(X)s</b> will be removed.") % {"X":element.title_name},_("Delete title"))):
-            element.delete_title()
-            model.remove(treeiter)
-            self.set_interface_status(None)
-
-    def on_delete_file_clicked(self,b):
-        
-        (element, position, model, treeiter) = self.get_current_file()
-        if (element == None):
-            return
-        
-        ask_w = devede.ask.ask_window(self.paths)
-        if (ask_w.run(_("The file <b>%(X)s</b> will be removed.") % {"X":element.file_name},_("Delete file"))):
-            element.delete_file()
-            model.remove(treeiter)
-            self.set_interface_status(None)
-
-    def on_up_title_clicked(self,b):
-        
-        (element, position, model, treeiter) = self.get_current_title()
-        if (element == None) or (position == 0):
-            return
-        
-        last_element = self.wliststore_titles[position-1]
-        self.wliststore_titles.swap(last_element.iter,treeiter)
-        self.set_interface_status(None)
-        
-    def on_up_file_clicked(self,b):
-        
-        (element, position, model, treeiter) = self.get_current_file()
-        if (element == None) or (position == 0):
-            return
-        
-        last_element = self.wfiles.get_model()[position-1]
-        self.wfiles.get_model().swap(last_element.iter,treeiter)
-        self.set_interface_status(None)
-        
-    def on_down_title_clicked(self,b):
-        
-        (element, position, model, treeiter) = self.get_current_title()
-        if (element == None) or (position == (len(self.wliststore_titles)-1)):
-            return
-        
-        last_element = self.wliststore_titles[position+1]
-        self.wliststore_titles.swap(last_element.iter,treeiter)
-        self.set_interface_status(None)
-
-    def on_down_file_clicked(self,b):
-        
-        (element, position, model, treeiter) = self.get_current_file()
-        if (element == None) or (position == (len(self.wfiles.get_model())-1)):
-            return
-        
-        last_element = self.wfiles.get_model()[position+1]
-        self.wfiles.get_model().swap(last_element.iter,treeiter)
-        self.set_interface_status(None)
 
     def get_current_title(self):
         """ returns the currently selected title """
 
         selection = self.wtitles.get_selection()
         model, treeiter = selection.get_selected()
-        
+
         if treeiter != None:
             element = model[treeiter][1]
             position = 0
@@ -241,7 +154,7 @@ class devede_project:
 
         selection = self.wfiles.get_selection()
         model, treeiter = selection.get_selected()
-        
+
         if treeiter != None:
             element = model[treeiter][1]
             position = 0
@@ -263,22 +176,22 @@ class devede_project:
         self.wup_title.set_sensitive(True)
         self.wdown_title.set_sensitive(True)
         self.wproperties_title.set_sensitive(True)
-        
+
         self.wadd_file.set_sensitive(True)
         self.wdelete_file.set_sensitive(True)
         self.wup_file.set_sensitive(True)
         self.wdown_file.set_sensitive(True)
         self.wproperties_file.set_sensitive(True)
         self.wpreview_file.set_sensitive(True)
-        
+
         self.wcreate_disc.set_sensitive(True)
 
         (element, position, model, treeiter) = self.get_current_title()
-        
+
         if (self.current_title != element):
             self.current_title = element
             element.refresh()
-        
+
         if (element == None):
             self.wdelete_title.set_sensitive(False)
             self.wup_title.set_sensitive(False)
@@ -298,7 +211,7 @@ class devede_project:
                 self.wup_title.set_sensitive(False)
             if (position == (ntitles-1)):
                 self.wdown_title.set_sensitive(False)
-            
+
         (element2, position2, model2, treeiter2) = self.get_current_file()
         if (element2 == None):
             self.wdelete_file.set_sensitive(False)
@@ -342,7 +255,7 @@ class devede_project:
         self.wuse_ntsc = builder.get_object("use_ntsc")
         self.wcreate_menu = builder.get_object("create_menu")
         self.wframe_titles = builder.get_object("frame_titles")
-        
+
         self.wadd_title = builder.get_object("delete_title")
         self.wdelete_title = builder.get_object("delete_title")
         self.wup_title = builder.get_object("up_title")
@@ -354,22 +267,111 @@ class devede_project:
         self.wdown_file = builder.get_object("down_file")
         self.wproperties_file = builder.get_object("properties_file")
         self.wpreview_file = builder.get_object("preview_file")
-        
+
         self.wcreate_disc = builder.get_object("create_disc")
-        
+
         selection = self.wfiles.get_selection()
         selection.mode = Gtk.SelectionMode.SINGLE
         selection = self.wtitles.get_selection()
         selection.mode = Gtk.SelectionMode.SINGLE
 
         self.wmain_window.show_all()
-    
+
     def on_wmain_window_delete_event(self,b,e=None):
-        
+
         ask = devede.ask.ask_window(self.paths)
         if (ask.run(_("Abort the current DVD and exit?"),_("Exit DeVeDe"))):
             Gtk.main_quit()
         return True
+
+    def on_add_title_clicked(self,b):
+        """ Creates a new title and adds it to the current project """
+
+        self.get_current_title()
+
+        new_title = devede.title.title(self.wfiles,self.wliststore_files)
+        new_title.set_type(self.disc_type)
+        self.wliststore_titles.append([new_title.title_name, new_title])
+        self.set_interface_status(None)
+
+    def on_add_file_clicked(self,b):
+
+        (element, position, model, treeiter) = self.get_current_title()
+        if (element == None):
+            return
+
+        new_file = devede.file_movie.file_movie()
+        new_file.set_type(self.disc_type)
+        new_file.properties()
+
+        if (new_file.file_name != None):
+            element.add_file(new_file)
+            self.set_interface_status(None)
+
+
+    def on_delete_title_clicked(self,b):
+
+        (element, position, model, treeiter) = self.get_current_title()
+        if (element == None):
+            return
+
+        ask_w = devede.ask.ask_window(self.paths)
+        if (ask_w.run(_("The title <b>%(X)s</b> will be removed.") % {"X":element.title_name},_("Delete title"))):
+            element.delete_title()
+            model.remove(treeiter)
+            self.set_interface_status(None)
+
+    def on_delete_file_clicked(self,b):
+
+        (element, position, model, treeiter) = self.get_current_file()
+        if (element == None):
+            return
+
+        ask_w = devede.ask.ask_window(self.paths)
+        if (ask_w.run(_("The file <b>%(X)s</b> will be removed.") % {"X":element.file_name},_("Delete file"))):
+            element.delete_file()
+            model.remove(treeiter)
+            self.set_interface_status(None)
+
+    def on_up_title_clicked(self,b):
+
+        (element, position, model, treeiter) = self.get_current_title()
+        if (element == None) or (position == 0):
+            return
+
+        last_element = self.wliststore_titles[position-1]
+        self.wliststore_titles.swap(last_element.iter,treeiter)
+        self.set_interface_status(None)
+
+    def on_up_file_clicked(self,b):
+
+        (element, position, model, treeiter) = self.get_current_file()
+        if (element == None) or (position == 0):
+            return
+
+        last_element = self.wfiles.get_model()[position-1]
+        self.wfiles.get_model().swap(last_element.iter,treeiter)
+        self.set_interface_status(None)
+
+    def on_down_title_clicked(self,b):
+
+        (element, position, model, treeiter) = self.get_current_title()
+        if (element == None) or (position == (len(self.wliststore_titles)-1)):
+            return
+
+        last_element = self.wliststore_titles[position+1]
+        self.wliststore_titles.swap(last_element.iter,treeiter)
+        self.set_interface_status(None)
+
+    def on_down_file_clicked(self,b):
+
+        (element, position, model, treeiter) = self.get_current_file()
+        if (element == None) or (position == (len(self.wfiles.get_model())-1)):
+            return
+
+        last_element = self.wfiles.get_model()[position+1]
+        self.wfiles.get_model().swap(last_element.iter,treeiter)
+        self.set_interface_status(None)
 
     def on_adjust_disc_usage_clicked(self,b):
 

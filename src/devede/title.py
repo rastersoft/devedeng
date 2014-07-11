@@ -18,11 +18,11 @@
 from gi.repository import Gtk,GObject
 
 class title(GObject.GObject):
-    
+
     counter = 0
-    
+
     def __init__(self,file_treeview,original_liststore):
-        
+
         GObject.GObject.__init__(self)
         self.file_treeview = file_treeview
         title.counter += 1
@@ -32,15 +32,19 @@ class title(GObject.GObject):
             columns.append(original_liststore.get_column_type(iterator))
         self.files = Gtk.ListStore()
         self.files.set_column_types(columns)
-    
+
+    def set_type(self,disc_type):
+
+        self.disc_type = disc_type
+
     def delete_title(self):
-        
+
         print("Deleted title "+self.title_name)
-    
+
     def refresh(self):
-        
+
         self.file_treeview.set_model(self.files)
-    
+
     def add_file(self,new_file):
-        
+
         self.files.append([new_file.file_name, new_file])
