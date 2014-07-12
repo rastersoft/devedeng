@@ -21,6 +21,7 @@ import os
 import devede.title
 import devede.file_movie
 import devede.ask
+import devede.add_files
 
 class devede_project:
 
@@ -289,7 +290,7 @@ class devede_project:
 
         self.get_current_title()
 
-        new_title = devede.title.title(self.wfiles,self.wliststore_files)
+        new_title = devede.title.title(self.paths,self.wfiles,self.wliststore_files)
         new_title.set_type(self.disc_type)
         self.wliststore_titles.append([new_title.title_name, new_title])
         self.set_interface_status(None)
@@ -300,13 +301,24 @@ class devede_project:
         if (element == None):
             return
 
-        new_file = devede.file_movie.file_movie()
-        new_file.set_type(self.disc_type)
-        new_file.properties()
-
-        if (new_file.file_name != None):
-            element.add_file(new_file)
-            self.set_interface_status(None)
+        ask_files = devede.add_files.add_files(self.paths)
+        ask_files.set_type(self.disc_type)
+        if (ask_files.run()):
+            for efile in ask_files.files:
+                new_file = devede.file_movie.file_movie(self.paths,efile)
+                new_file.set_type(self.disc_type)
+                if (ask_files.add_to_current_title):
+                    element.add_file(new_file)
+                else:
+                    if (ask_files.use_filename_as_title):
+                        filename = os.path.splitext(os.path.basename(efile))[0]
+                        new_title = devede.title.title(self.paths,self.wfiles,self.wliststore_files,filename)
+                    else:
+                        new_title = devede.title.title(self.paths,self.wfiles,self.wliststore_files)
+                    new_title.set_type(self.disc_type)
+                    self.wliststore_titles.append([new_title.title_name, new_title])
+                    new_title.add_file(new_file)
+        self.set_interface_status(None)
 
 
     def on_delete_title_clicked(self,b):
@@ -372,6 +384,14 @@ class devede_project:
         last_element = self.wfiles.get_model()[position+1]
         self.wfiles.get_model().swap(last_element.iter,treeiter)
         self.set_interface_status(None)
+
+    def on_properties_title_clicked(self,b):
+        (element, position, model, treeiter) = self.get_current_title()
+        if (element == None) or (position == (len(self.wfiles.get_model())-1)):
+            return
+
+        element.properties()
+        self.wliststore_titles.set_value(treeiter,0,element.title_name)
 
     def on_adjust_disc_usage_clicked(self,b):
 

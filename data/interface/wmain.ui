@@ -353,6 +353,7 @@
                                 <property name="use_stock">True</property>
                                 <property name="image_position">top</property>
                                 <property name="always_show_image">True</property>
+                                <signal name="clicked" handler="on_properties_title_clicked" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
