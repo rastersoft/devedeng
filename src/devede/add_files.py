@@ -22,9 +22,9 @@ class add_files:
 
     last_path = None
 
-    def __init__(self,paths):
+    def __init__(self,config):
 
-        self.paths = paths
+        self.config = config
         self.show_title_options = True
 
     def set_type(self,disc_type):
@@ -37,9 +37,9 @@ class add_files:
     def run(self):
 
         builder = Gtk.Builder()
-        builder.set_translation_domain("devede_ng")
+        builder.set_translation_domain(self.config.gettext_domain)
 
-        builder.add_from_file(os.path.join(self.paths.glade,"wadd_files.ui"))
+        builder.add_from_file(os.path.join(self.config.glade,"wadd_files.ui"))
         builder.connect_signals(self)
         wadd_files = builder.get_object("add_files")
         self.wfile_chooser = builder.get_object("filechooserwidget1")

@@ -21,10 +21,10 @@ class file_movie(GObject.GObject):
 
     counter2 = 0
 
-    def __init__(self,paths,file_name):
+    def __init__(self,config,file_name):
 
         GObject.GObject.__init__(self)
-        self.paths = paths
+        self.config = config
         self.file_name = file_name
 
     def set_type(self,disc_type):

@@ -25,9 +25,9 @@ import devede.add_files
 
 class devede_project:
 
-    def __init__(self,paths):
+    def __init__(self,config):
 
-        self.paths = paths
+        self.config = config
         self.destroy_all()
 
 
@@ -68,9 +68,9 @@ class devede_project:
             return
 
         builder = Gtk.Builder()
-        builder.set_translation_domain("devede_ng")
+        builder.set_translation_domain(self.config.gettext_domain)
 
-        builder.add_from_file(os.path.join(self.paths.glade,"wselect_disk.ui"))
+        builder.add_from_file(os.path.join(self.config.glade,"wselect_disk.ui"))
         builder.connect_signals(self)
         self.wask_window = builder.get_object("wselect_disk")
         self.wask_window.show_all()
@@ -239,9 +239,9 @@ class devede_project:
         self.current_title = None
 
         builder = Gtk.Builder()
-        builder.set_translation_domain("devede_ng")
+        builder.set_translation_domain(self.config.gettext_domain)
 
-        builder.add_from_file(os.path.join(self.paths.glade,"wmain.ui"))
+        builder.add_from_file(os.path.join(self.config.glade,"wmain.ui"))
         builder.connect_signals(self)
 
         # Interface widgets
@@ -280,7 +280,7 @@ class devede_project:
 
     def on_wmain_window_delete_event(self,b,e=None):
 
-        ask = devede.ask.ask_window(self.paths)
+        ask = devede.ask.ask_window(self.config)
         if (ask.run(_("Abort the current DVD and exit?"),_("Exit DeVeDe"))):
             Gtk.main_quit()
         return True
@@ -290,7 +290,7 @@ class devede_project:
 
         self.get_current_title()
 
-        new_title = devede.title.title(self.paths,self.wfiles,self.wliststore_files)
+        new_title = devede.title.title(self.config,self.wfiles,self.wliststore_files)
         new_title.set_type(self.disc_type)
         self.wliststore_titles.append([new_title.title_name, new_title])
         self.set_interface_status(None)
@@ -301,20 +301,20 @@ class devede_project:
         if (element == None):
             return
 
-        ask_files = devede.add_files.add_files(self.paths)
+        ask_files = devede.add_files.add_files(self.config)
         ask_files.set_type(self.disc_type)
         if (ask_files.run()):
             for efile in ask_files.files:
-                new_file = devede.file_movie.file_movie(self.paths,efile)
+                new_file = devede.file_movie.file_movie(self.config,efile)
                 new_file.set_type(self.disc_type)
                 if (ask_files.add_to_current_title):
                     element.add_file(new_file)
                 else:
                     if (ask_files.use_filename_as_title):
                         filename = os.path.splitext(os.path.basename(efile))[0]
-                        new_title = devede.title.title(self.paths,self.wfiles,self.wliststore_files,filename)
+                        new_title = devede.title.title(self.config,self.wfiles,self.wliststore_files,filename)
                     else:
-                        new_title = devede.title.title(self.paths,self.wfiles,self.wliststore_files)
+                        new_title = devede.title.title(self.config,self.wfiles,self.wliststore_files)
                     new_title.set_type(self.disc_type)
                     self.wliststore_titles.append([new_title.title_name, new_title])
                     new_title.add_file(new_file)
@@ -327,7 +327,7 @@ class devede_project:
         if (element == None):
             return
 
-        ask_w = devede.ask.ask_window(self.paths)
+        ask_w = devede.ask.ask_window(self.config)
         if (ask_w.run(_("The title <b>%(X)s</b> will be removed.") % {"X":element.title_name},_("Delete title"))):
             element.delete_title()
             model.remove(treeiter)
@@ -339,7 +339,7 @@ class devede_project:
         if (element == None):
             return
 
-        ask_w = devede.ask.ask_window(self.paths)
+        ask_w = devede.ask.ask_window(self.config)
         if (ask_w.run(_("The file <b>%(X)s</b> will be removed.") % {"X":element.file_name},_("Delete file"))):
             element.delete_file()
             model.remove(treeiter)

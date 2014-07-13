@@ -22,10 +22,10 @@ class title(GObject.GObject):
 
     counter = 0
 
-    def __init__(self,paths,file_treeview,original_liststore,title_name = None):
+    def __init__(self,config,file_treeview,original_liststore,title_name = None):
 
         GObject.GObject.__init__(self)
-        self.paths = paths
+        self.config = config
         self.file_treeview = file_treeview
         if (title_name == None):
             title.counter += 1
@@ -46,9 +46,9 @@ class title(GObject.GObject):
     def properties(self):
 
         builder = Gtk.Builder()
-        builder.set_translation_domain("devede_ng")
+        builder.set_translation_domain(self.config.gettext_domain)
 
-        builder.add_from_file(os.path.join(self.paths.glade,"wtitle_properties.ui"))
+        builder.add_from_file(os.path.join(self.config.glade,"wtitle_properties.ui"))
         builder.connect_signals(self)
 
         # Interface widgets

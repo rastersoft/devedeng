@@ -18,66 +18,31 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import sys
-import os
 import gettext
 import locale
 from gi.repository import Gtk
 
 import devede.project
+import devede.configuration_data
 
-class config_paths:
+config_data = devede.configuration_data.configuration()
 
-    def __init__(self,is_local):
-
-        if (is_local):
-            # locales must be always at /usr/share/locale because Gtk.Builder always search there
-            self.share_locale="/usr/share/locale"
-            self.glade="/usr/local/share/devede_ng"
-            self.font_path="/usr/local/share/devede_ng"
-            self.pic_path="/usr/local/share/devede_ng"
-            self.other_path="/usr/local/share/devede_ng"
-            self.help_path="/usr/local/share/doc/devede_ng"
-        else:
-            self.share_locale="/usr/share/locale"
-            self.glade="/usr/share/devede_ng"
-            self.font_path="/usr/share/devede_ng"
-            self.pic_path="/usr/share/devede_ng"
-            self.other_path="/usr/share/devede_ng"
-            self.help_path="/usr/share/doc/devede_ng"
-
-
-
-paths = None
-
-try:
-    os.stat("/usr/share/devede_ng/wselect_disk.ui")
-    paths = config_paths(False)
-except:
-    pass
-
-if paths == None:
-    try:
-        os.stat("/usr/local/share/devede_ng/wselect_disk.ui")
-        paths = config_paths(True)
-    except:
-        pass
-
-if paths == None:
+if config_data.error:
     print ("Can't locate extra files. Aborting.")
     sys.exit(1)
 
-gettext.bindtextdomain('devede_ng',paths.share_locale)
+gettext.bindtextdomain(config_data.gettext_domain,config_data.share_locale)
 try:
     locale.setlocale(locale.LC_ALL,"")
 except locale.Error:
     pass
-gettext.textdomain('devede_ng')
-gettext.install("devede_ng",localedir=paths.share_locale)
+gettext.textdomain(config_data.gettext_domain)
+gettext.install(config_data.gettext_domain,localedir=config_data.share_locale)
 
 _ = gettext.gettext
 
 Gtk.init(sys.argv)
 
-mwindow = devede.project.devede_project(paths)
+mwindow = devede.project.devede_project(config_data)
 mwindow.ask_type()
 Gtk.main()

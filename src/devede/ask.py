@@ -20,16 +20,16 @@ import os
 
 class ask_window:
 
-    def __init__(self,paths):
+    def __init__(self,config):
 
-        self.paths = paths
+        self.config = config
 
     def run(self,text,title):
 
         builder = Gtk.Builder()
-        builder.set_translation_domain("devede_ng")
+        builder.set_translation_domain(self.config.gettext_domain)
 
-        builder.add_from_file(os.path.join(self.paths.glade,"wask.ui"))
+        builder.add_from_file(os.path.join(self.config.glade,"wask.ui"))
         builder.connect_signals(self)
         wask_window = builder.get_object("dialog_ask")
         wask_window.set_title(title)
