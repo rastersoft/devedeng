@@ -32,12 +32,42 @@ class file_movie(GObject.GObject):
         self.model = None
         self.treeiter = None
         self.builder = None
+        
+        self.video_rate = 0
+        self.audio_rate = 0
+        self.final_size = None
+        self.aspect_ratio = None
 
     def set_type(self,disc_type = None):
 
         if (disc_type != None):
             self.disc_type = disc_type
-        
+            if (disc_type == "dvd"):
+                self.video_rate = 5000
+                self.audio_rate = 224
+                self.final_size = "size_auto"
+                self.aspect_ratio = "aspect_auto"
+            elif (disc_type == "vcd"):
+                self.video_rate = 1152
+                self.audio_rate = 224
+                self.final_size = "size_352x288"
+                self.aspect_ratio = "aspect_classic"
+            elif (disc_type == "svcd"):
+                self.video_rate = 2000
+                self.audio_rate = 224
+                self.final_size = "size_480x576"
+                self.aspect_ratio = "aspect_classic"
+            elif (disc_type == "cvd"):
+                self.video_rate = 2000
+                self.audio_rate = 224
+                self.final_size = "size_352x576"
+                self.aspect_ratio = "aspect_classic"
+            elif (disc_type == "divx"):
+                self.video_rate = 5000
+                self.audio_rate = 224
+                self.final_size = "size_auto"
+                self.aspect_ratio = "aspect_auto"
+
 
     def delete_file(self):
 
@@ -67,8 +97,7 @@ class file_movie(GObject.GObject):
         self.wtitle.set_text(self.title_name)
     
     def on_button_accept_clicked(self,b):
-        
-        
+
         self.title_name = self.wtitle.get_text()
         self.model.set_value(self.treeiter,1,self.title_name)
         self.on_button_cancel_clicked(None)

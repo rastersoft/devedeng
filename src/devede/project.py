@@ -193,8 +193,16 @@ class devede_project:
         selection = self.wfiles.get_selection()
         selection.mode = Gtk.SelectionMode.SINGLE
 
+        if (self.config.PAL):
+            self.wuse_pal.set_active(True)
+        else:
+            self.wuse_ntsc.set_active(True)
         self.wmain_window.show_all()
         self.set_interface_status(None)
+
+    def on_use_pal_toggled(self,b):
+        
+        self.config.PAL = self.wuse_pal.get_active()
 
     def on_wmain_window_delete_event(self,b,e=None):
 
