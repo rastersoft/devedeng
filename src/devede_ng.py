@@ -25,7 +25,7 @@ from gi.repository import Gtk
 import devede.project
 import devede.configuration_data
 
-config_data = devede.configuration_data.configuration()
+config_data = devede.configuration_data.configuration.get_config()
 
 if config_data.error:
     print ("Can't locate extra files. Aborting.")
@@ -43,7 +43,7 @@ _ = gettext.gettext
 
 Gtk.init(sys.argv)
 
-mwindow = devede.project.devede_project(config_data)
+mwindow = devede.project.devede_project()
 mwindow.ask_type()
 Gtk.main()
 config_data.save_config()

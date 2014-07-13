@@ -17,12 +17,13 @@
 
 from gi.repository import Gtk
 import os
+import devede.configuration_data
 
 class ask_window:
 
-    def __init__(self,config):
+    def __init__(self):
 
-        self.config = config
+        self.config = devede.configuration_data.configuration.get_config()
 
     def run(self,text,title):
 

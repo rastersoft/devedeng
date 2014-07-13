@@ -21,6 +21,14 @@ import os
 
 class configuration:
 
+    current_configuration = None
+
+    @staticmethod
+    def get_config():
+        if configuration.current_configuration == None:
+            configuration.current_configuration = configuration()
+        return configuration.current_configuration
+
     def __init__(self):
 
         self.error = False

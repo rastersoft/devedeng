@@ -17,15 +17,16 @@
 
 from gi.repository import Gtk,GObject
 import os
+import devede.configuration_data
 
 class file_movie(GObject.GObject):
 
     counter2 = 0
 
-    def __init__(self,config,file_name):
+    def __init__(self,file_name):
 
         GObject.GObject.__init__(self)
-        self.config = config
+        self.config = devede.configuration_data.configuration.get_config()
         self.file_name = file_name
         self.title_name =  os.path.splitext(os.path.basename(file_name))[0]
         self.wfile_properties = None

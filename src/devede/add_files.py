@@ -17,14 +17,15 @@
 
 from gi.repository import Gtk
 import os
+import devede.configuration_data
 
 class add_files:
 
     last_path = None
 
-    def __init__(self,config):
+    def __init__(self):
 
-        self.config = config
+        self.config = devede.configuration_data.configuration.get_config()
         self.show_title_options = True
 
     def set_type(self,disc_type):

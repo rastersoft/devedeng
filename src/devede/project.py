@@ -24,9 +24,9 @@ import devede.add_files
 
 class devede_project:
 
-    def __init__(self,config):
+    def __init__(self):
 
-        self.config = config
+        self.config  = devede.configuration_data.configuration.get_config()
         self.destroy_all()
 
 
@@ -206,18 +206,18 @@ class devede_project:
 
     def on_wmain_window_delete_event(self,b,e=None):
 
-        ask = devede.ask.ask_window(self.config)
+        ask = devede.ask.ask_window()
         if (ask.run(_("Abort the current DVD and exit?"),_("Exit DeVeDe"))):
             Gtk.main_quit()
         return True
 
     def on_add_file_clicked(self,b):
 
-        ask_files = devede.add_files.add_files(self.config)
+        ask_files = devede.add_files.add_files()
         ask_files.set_type(self.disc_type)
         if (ask_files.run()):
             for efile in ask_files.files:
-                new_file = devede.file_movie.file_movie(self.config,efile)
+                new_file = devede.file_movie.file_movie(efile)
                 new_file.set_type(self.disc_type)
                 self.wliststore_files.append([new_file, new_file.title_name])
         self.set_interface_status(None)
@@ -229,7 +229,7 @@ class devede_project:
         if (element == None):
             return
 
-        ask_w = devede.ask.ask_window(self.config)
+        ask_w = devede.ask.ask_window()
         if (ask_w.run(_("The file <b>%(X)s</b> <i>(%(Y)s)</i> will be removed.") % {"X":element.title_name, "Y":element.file_name},_("Delete file"))):
             element.delete_file()
             model.remove(treeiter)
