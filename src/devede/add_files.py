@@ -45,29 +45,15 @@ class add_files:
         self.wfile_chooser = builder.get_object("filechooserwidget1")
         if (add_files.last_path != None):
             self.wfile_chooser.set_current_folder(add_files.last_path)
-        self.wadd_to_current_title = builder.get_object("add_to_current_title")
-        self.wadd_to_new_titles = builder.get_object("add_to_new_titles")
-        self.wuse_filename_as_title = builder.get_object("use_filename_as_title")
         self.wbutton_accept = builder.get_object("button_accept")
 
-        woptions = builder.get_object("frame_options")
-
         wadd_files.show_all()
-        if (self.show_title_options == False):
-            woptions.hide()
 
-        self.on_add_to_new_titles_toggled(None)
         retval = wadd_files.run()
         self.files = None
-        self.add_to_current_title = True
-        self.use_filename_as_title = False
 
         if (retval == 2):
-            self.add_to_current_title = self.wadd_to_current_title.get_active()
-            self.use_filename_as_title = self.wuse_filename_as_title.get_active()
             self.files = self.get_files()
-
-            print(self.files)
 
         add_files.last_path = self.wfile_chooser.get_current_folder()
         wadd_files.destroy()
@@ -93,7 +79,3 @@ class add_files:
             self.wbutton_accept.set_sensitive(False)
         else:
             self.wbutton_accept.set_sensitive(True)
-
-    def on_add_to_new_titles_toggled(self,b):
-
-        self.wuse_filename_as_title.set_sensitive(self.wadd_to_new_titles.get_active())

@@ -66,6 +66,8 @@
             <property name="use_markup">True</property>
             <property name="justify">center</property>
             <property name="wrap">True</property>
+            <property name="wrap_mode">word-char</property>
+            <property name="ellipsize">start</property>
           </object>
           <packing>
             <property name="expand">True</property>
