@@ -27,83 +27,62 @@ class devede_project:
     def __init__(self):
 
         self.config  = devede.configuration_data.configuration.get_config()
-        self.destroy_all()
 
+        self.disc_type = self.config.disc_type
 
-    def destroy_all(self):
-
-        self.wask_window = None
-        self.wmain_window = None
-        self.wdisc_size = None
-        self.wliststore_files = None
-        self.wfiles = None
-        self.wdisc_fill_level = None
-        self.wuse_pal = None
-        self.wuse_ntsc = None
-        self.wcreate_menu = None
-        self.disc_type = None
-        self.wadd_file = None
-        self.wdelete_file = None
-        self.wup_file = None
-        self.wdown_file = None
-        self.wproperties_file = None
-        self.wcreate_disc = None
-
-
-    def ask_type(self):
-        """ This method resets the project and asks the user what kind of project want to do """
-
-        if (self.wask_window != None):
-            self.wask_window.present()
-            return
+        self.current_title = None
 
         builder = Gtk.Builder()
         builder.set_translation_domain(self.config.gettext_domain)
 
-        builder.add_from_file(os.path.join(self.config.glade,"wselect_disk.ui"))
+        builder.add_from_file(os.path.join(self.config.glade,"wmain.ui"))
         builder.connect_signals(self)
-        self.wask_window = builder.get_object("wselect_disk")
-        self.wask_window.show_all()
 
-    def on_wselect_disk_delete_event(self,w,e):
-        Gtk.main_quit()
-        return False
+        # Interface widgets
+        self.wmain_window = builder.get_object("wmain_window")
+        self.wdisc_size = builder.get_object("disc_size")
+        self.wliststore_files = builder.get_object("liststore_files")
+        self.wfiles = builder.get_object("files")
+        self.wdisc_fill_level = builder.get_object("disc_fill_level")
+        self.wuse_pal = builder.get_object("use_pal")
+        self.wuse_ntsc = builder.get_object("use_ntsc")
+        self.wcreate_menu = builder.get_object("create_menu")
+        self.wframe_titles = builder.get_object("frame_titles")
 
-    def on_button_dvd_clicked(self,b):
+        self.wadd_file = builder.get_object("add_file")
+        self.wdelete_file = builder.get_object("delete_file")
+        self.wup_file = builder.get_object("up_file")
+        self.wdown_file = builder.get_object("down_file")
+        self.wproperties_file = builder.get_object("properties_file")
+        self.wpreview_file = builder.get_object("preview_file")
 
-        self.set_type("dvd")
+        self.wcreate_disc = builder.get_object("create_disc")
 
-    def on_button_vcd_clicked(self,b):
+        selection = self.wfiles.get_selection()
+        selection.mode = Gtk.SelectionMode.SINGLE
 
-        self.set_type("vcd")
+        if (self.config.PAL):
+            self.wuse_pal.set_active(True)
+        else:
+            self.wuse_ntsc.set_active(True)
 
-    def on_button_svcd_clicked(self,b):
-
-        self.set_type("svcd")
-
-    def on_button_cvd_clicked(self,b):
-
-        self.set_type("cvd")
-
-    def on_button_divx_clicked(self,b):
-
-        self.set_type("divx")
+        self.config.connect('disc_type',self.set_type)
+        if (self.disc_type != None):
+            self.set_type(None, self.disc_type)
 
 
-    def set_type(self,disc_type):
+    def set_type(self,obj=None,disc_type=None):
         """ this method sets the disk type to the specified one and adapts the interface
             in the main window to it. Also leaves everything ready to start creating a
             new disc """
 
-        if (self.wask_window != None):
-            self.wask_window.destroy()
-        self.destroy_all()
-
-        self.disc_type = disc_type
-        self.show_main_window()
+        if (disc_type != None):
+            self.disc_type = disc_type
+        self.wmain_window.show_all()
+        self.set_interface_status(None)
 
         # Set the default disc size
-        if (self.disc_type == "dvd"):
+        if (self.disc_type == "dvd") or (self.disc_type == "mkv"):
             self.wdisc_size.set_active(1) # 4.7 GB DVD
         else:
             self.wdisc_size.set_active(3) # 700 MB CD
@@ -156,52 +135,8 @@ class devede_project:
                 self.wdown_file.set_sensitive(False)
 
 
-    def show_main_window(self):
-
-        if (self.wmain_window != None):
-            self.wmain_window.present()
-            return
-
-        self.current_title = None
-
-        builder = Gtk.Builder()
-        builder.set_translation_domain(self.config.gettext_domain)
-
-        builder.add_from_file(os.path.join(self.config.glade,"wmain.ui"))
-        builder.connect_signals(self)
-
-        # Interface widgets
-        self.wmain_window = builder.get_object("wmain_window")
-        self.wdisc_size = builder.get_object("disc_size")
-        self.wliststore_files = builder.get_object("liststore_files")
-        self.wfiles = builder.get_object("files")
-        self.wdisc_fill_level = builder.get_object("disc_fill_level")
-        self.wuse_pal = builder.get_object("use_pal")
-        self.wuse_ntsc = builder.get_object("use_ntsc")
-        self.wcreate_menu = builder.get_object("create_menu")
-        self.wframe_titles = builder.get_object("frame_titles")
-
-        self.wadd_file = builder.get_object("add_file")
-        self.wdelete_file = builder.get_object("delete_file")
-        self.wup_file = builder.get_object("up_file")
-        self.wdown_file = builder.get_object("down_file")
-        self.wproperties_file = builder.get_object("properties_file")
-        self.wpreview_file = builder.get_object("preview_file")
-
-        self.wcreate_disc = builder.get_object("create_disc")
-
-        selection = self.wfiles.get_selection()
-        selection.mode = Gtk.SelectionMode.SINGLE
-
-        if (self.config.PAL):
-            self.wuse_pal.set_active(True)
-        else:
-            self.wuse_ntsc.set_active(True)
-        self.wmain_window.show_all()
-        self.set_interface_status(None)
-
     def on_use_pal_toggled(self,b):
-        
+
         self.config.PAL = self.wuse_pal.get_active()
 
     def on_wmain_window_delete_event(self,b,e=None):
@@ -211,14 +146,21 @@ class devede_project:
             Gtk.main_quit()
         return True
 
+    def title_changed(self,obj,new_title):
+
+        for item in self.wliststore_files:
+            element = item.model[item.iter][0]
+            if element == obj:
+                item.model.set_value(item.iter,1,new_title)
+
+
     def on_add_file_clicked(self,b):
 
         ask_files = devede.add_files.add_files()
-        ask_files.set_type(self.disc_type)
         if (ask_files.run()):
             for efile in ask_files.files:
                 new_file = devede.file_movie.file_movie(efile)
-                new_file.set_type(self.disc_type)
+                new_file.connect('title_changed',self.title_changed)
                 self.wliststore_files.append([new_file, new_file.title_name])
         self.set_interface_status(None)
 
@@ -259,8 +201,7 @@ class devede_project:
         (element, position, model, treeiter) = self.get_current_file()
         if (element == None):
             return
-
-        element.properties(model,treeiter)
+        element.properties()
 
     def on_adjust_disc_usage_clicked(self,b):
 

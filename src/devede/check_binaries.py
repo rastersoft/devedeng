@@ -17,34 +17,32 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import sys
-import gettext
-import locale
-from gi.repository import Gtk
+import subprocess
 
-import devede.project
 import devede.configuration_data
-import devede.choose_disc_type
 
-config_data = devede.configuration_data.configuration.get_config()
+class check_binaries:
 
-if config_data == None:
-    print ("Can't locate extra files. Aborting.")
-    sys.exit(1)
+    def __init__(self):
 
-gettext.bindtextdomain(config_data.gettext_domain,config_data.share_locale)
-try:
-    locale.setlocale(locale.LC_ALL,"")
-except locale.Error:
-    pass
-gettext.textdomain(config_data.gettext_domain)
-gettext.install(config_data.gettext_domain,localedir=config_data.share_locale)
+        self.config = devede.configuration_data.configuration.get_config()
 
-_ = gettext.gettext
+        self.check_mplayer()
+        self.check_mpv()
 
-Gtk.init(sys.argv)
 
-mwindow = devede.project.devede_project()
-ask_type = devede.choose_disc_type.choose_disc_type()
-Gtk.main()
-config_data.save_config()
+    def check_mplayer(self):
+
+        handle = subprocess.Popen(["mplayer","-v"])
+        if 0==handle.wait():
+            self.config.mplayer_available = True
+        else:
+            self.config.mplayer_available = False
+
+    def check_mpv(self):
+
+        handle = subprocess.Popen(["mpv","-v"])
+        if 0==handle.wait():
+            self.config.mpv_available = True
+        else:
+            self.config.mpv_available = False

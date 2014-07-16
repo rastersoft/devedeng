@@ -2,47 +2,56 @@
 <!-- Generated with glade 3.16.1 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
-  <object class="GtkAdjustment" id="adjustment_audio">
+  <object class="GtkAdjustment" id="audio_delay">
+    <property name="lower">-30</property>
+    <property name="upper">30</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="audio_rate">
     <property name="lower">128</property>
     <property name="upper">448</property>
     <property name="value">224</property>
     <property name="step_increment">32</property>
     <property name="page_increment">64</property>
   </object>
-  <object class="GtkAdjustment" id="adjustment_chapter_size">
+  <object class="GtkAdjustment" id="chapter_size">
     <property name="lower">1</property>
     <property name="upper">100</property>
     <property name="value">5</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkAdjustment" id="adjustment_delay">
-    <property name="lower">-30</property>
-    <property name="upper">30</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">10</property>
+  <object class="GtkListStore" id="liststore_subs">
+    <columns>
+      <!-- column-name Subtitles file -->
+      <column type="gchararray"/>
+      <!-- column-name Codepage -->
+      <column type="gchararray"/>
+      <!-- column-name Language -->
+      <column type="gchararray"/>
+    </columns>
   </object>
-  <object class="GtkAdjustment" id="adjustment_font">
+  <object class="GtkAdjustment" id="subt_font_size">
     <property name="lower">10</property>
     <property name="upper">50</property>
-    <property name="value">28</property>
+    <property name="value">10</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkAdjustment" id="adjustment_video">
+  <object class="GtkAdjustment" id="video_rate">
     <property name="lower">400</property>
     <property name="upper">8500</property>
     <property name="value">5000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">100</property>
   </object>
-  <object class="GtkAdjustment" id="adjustment_volume">
+  <object class="GtkAdjustment" id="volume">
     <property name="upper">300</property>
     <property name="value">100</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkListStore" id="liststore_subs"/>
   <object class="GtkWindow" id="file_properties">
     <property name="can_focus">False</property>
     <property name="modal">True</property>
@@ -77,7 +86,7 @@
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkEntry" id="entry_title">
+                          <object class="GtkEntry" id="title_name">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                           </object>
@@ -111,7 +120,7 @@
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkLabel" id="label_filename">
+                          <object class="GtkLabel" id="file_name">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="xalign">0</property>
@@ -198,7 +207,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label_original_size">
+                      <object class="GtkLabel" id="original_size">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="xalign">0</property>
@@ -239,7 +248,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label_original_length">
+                      <object class="GtkLabel" id="original_length">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="xalign">0</property>
@@ -266,7 +275,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label_original_videorate">
+                      <object class="GtkLabel" id="original_videorate">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="xalign">0</property>
@@ -279,7 +288,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label_original_audiorate">
+                      <object class="GtkLabel" id="original_audiorate">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="xalign">0</property>
@@ -321,7 +330,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label_aspect_ratio">
+                      <object class="GtkLabel" id="original_aspect_ratio">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="xalign">0</property>
@@ -334,7 +343,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label_fps">
+                      <object class="GtkLabel" id="original_fps">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="xalign">0</property>
@@ -377,7 +386,7 @@
                 <property name="can_focus">False</property>
                 <property name="left_padding">12</property>
                 <child>
-                  <object class="GtkNotebook" id="notebook1">
+                  <object class="GtkNotebook" id="notebook">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <child>
@@ -406,7 +415,7 @@
                                     <property name="can_focus">False</property>
                                     <property name="orientation">vertical</property>
                                     <child>
-                                      <object class="GtkRadioButton" id="radiobutton_pal">
+                                      <object class="GtkRadioButton" id="format_pal">
                                         <property name="label" translatable="yes">PAL/SECAM</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
@@ -422,14 +431,14 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkRadioButton" id="radiobutton_ntsc">
+                                      <object class="GtkRadioButton" id="format_ntsc">
                                         <property name="label" translatable="yes">NTSC</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">False</property>
                                         <property name="xalign">0</property>
                                         <property name="draw_indicator">True</property>
-                                        <property name="group">radiobutton_pal</property>
+                                        <property name="group">format_pal</property>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -477,11 +486,11 @@
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <child>
-                                      <object class="GtkScale" id="scale1">
+                                      <object class="GtkScale" id="scale_volume">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="orientation">vertical</property>
-                                        <property name="adjustment">adjustment_volume</property>
+                                        <property name="adjustment">volume</property>
                                         <property name="inverted">True</property>
                                         <property name="draw_value">False</property>
                                       </object>
@@ -493,12 +502,12 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkSpinButton" id="spinbutton1">
+                                      <object class="GtkSpinButton" id="spinbutton_volume">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="text" translatable="yes">300</property>
                                         <property name="input_purpose">number</property>
-                                        <property name="adjustment">adjustment_volume</property>
+                                        <property name="adjustment">volume</property>
                                         <property name="value">300</property>
                                       </object>
                                       <packing>
@@ -509,7 +518,7 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkButton" id="button5">
+                                      <object class="GtkButton" id="reset_volume">
                                         <property name="label" translatable="yes">Reset</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
@@ -543,7 +552,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkFrame" id="frame7">
+                          <object class="GtkFrame" id="frame_video_rate">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="margin_left">2</property>
@@ -558,10 +567,42 @@
                                 <property name="can_focus">False</property>
                                 <property name="left_padding">12</property>
                                 <child>
-                                  <object class="GtkSpinButton" id="spinbutton2">
+                                  <object class="GtkBox" id="box15">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="adjustment">adjustment_video</property>
+                                    <property name="can_focus">False</property>
+                                    <child>
+                                      <object class="GtkCheckButton" id="video_rate_automatic">
+                                        <property name="label" translatable="yes">Automatic</property>
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">False</property>
+                                        <property name="xalign">0</property>
+                                        <property name="draw_indicator">True</property>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkSpinButton" id="video_spinbutton">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="max_length">5</property>
+                                        <property name="width_chars">7</property>
+                                        <property name="text" translatable="yes">5000</property>
+                                        <property name="xalign">1</property>
+                                        <property name="adjustment">video_rate</property>
+                                        <property name="value">5000</property>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="padding">4</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
                                   </object>
                                 </child>
                               </object>
@@ -583,7 +624,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkFrame" id="frame8">
+                          <object class="GtkFrame" id="frame_audio_rate">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="margin_left">2</property>
@@ -598,10 +639,41 @@
                                 <property name="can_focus">False</property>
                                 <property name="left_padding">12</property>
                                 <child>
-                                  <object class="GtkSpinButton" id="spinbutton3">
+                                  <object class="GtkBox" id="box16">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="adjustment">adjustment_audio</property>
+                                    <property name="can_focus">False</property>
+                                    <child>
+                                      <object class="GtkCheckButton" id="audio_rate_automatic">
+                                        <property name="label" translatable="yes">Automatic</property>
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">False</property>
+                                        <property name="xalign">0</property>
+                                        <property name="draw_indicator">True</property>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkSpinButton" id="audio_spinbutton">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="width_chars">7</property>
+                                        <property name="text" translatable="yes">224</property>
+                                        <property name="xalign">1</property>
+                                        <property name="adjustment">audio_rate</property>
+                                        <property name="value">224</property>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="padding">4</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
                                   </object>
                                 </child>
                               </object>
@@ -623,7 +695,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkFrame" id="frame4">
+                          <object class="GtkFrame" id="frame_division_chapters">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="margin_left">2</property>
@@ -659,11 +731,11 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkSpinButton" id="chapter_size">
+                                      <object class="GtkSpinButton" id="chapter_size_spinbutton">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="text" translatable="yes">5</property>
-                                        <property name="adjustment">adjustment_chapter_size</property>
+                                        <property name="adjustment">chapter_size</property>
                                         <property name="climb_rate">1</property>
                                         <property name="value">5</property>
                                       </object>
@@ -733,12 +805,36 @@
                             <property name="vscrollbar_policy">always</property>
                             <property name="shadow_type">in</property>
                             <child>
-                              <object class="GtkTreeView" id="treeview1">
+                              <object class="GtkTreeView" id="treeview_subtitles">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="model">liststore_subs</property>
+                                <property name="headers_clickable">False</property>
+                                <property name="enable_search">False</property>
                                 <child internal-child="selection">
                                   <object class="GtkTreeSelection" id="treeview-selection1"/>
+                                </child>
+                                <child>
+                                  <object class="GtkTreeViewColumn" id="treeviewcolumn3">
+                                    <property name="title" translatable="yes">Language</property>
+                                    <child>
+                                      <object class="GtkCellRendererText" id="cellrenderertext3"/>
+                                      <attributes>
+                                        <attribute name="text">2</attribute>
+                                      </attributes>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkTreeViewColumn" id="treeviewcolumn1">
+                                    <property name="title" translatable="yes">Subtitle</property>
+                                    <child>
+                                      <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                                      <attributes>
+                                        <attribute name="text">0</attribute>
+                                      </attributes>
+                                    </child>
+                                  </object>
                                 </child>
                               </object>
                             </child>
@@ -766,10 +862,10 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkSpinButton" id="font_size">
+                              <object class="GtkSpinButton" id="font_size_spinbutton">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="adjustment">adjustment_font</property>
+                                <property name="adjustment">subt_font_size</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -798,7 +894,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="layout_style">end</property>
                                 <child>
-                                  <object class="GtkButton" id="button6">
+                                  <object class="GtkButton" id="button_add_subtitles">
                                     <property name="label">gtk-add</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
@@ -812,7 +908,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkButton" id="button7">
+                                  <object class="GtkButton" id="button_del_subtitles">
                                     <property name="label">gtk-delete</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
@@ -861,7 +957,7 @@
                         <property name="can_focus">False</property>
                         <property name="column_spacing">16</property>
                         <child>
-                          <object class="GtkFrame" id="frame9">
+                          <object class="GtkFrame" id="frame_final_size">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label_xalign">0</property>
@@ -872,162 +968,326 @@
                                 <property name="can_focus">False</property>
                                 <property name="left_padding">12</property>
                                 <child>
-                                  <object class="GtkGrid" id="grid7">
+                                  <object class="GtkBox" id="box17">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
+                                    <property name="orientation">vertical</property>
                                     <child>
-                                      <object class="GtkRadioButton" id="size_auto">
-                                        <property name="label" translatable="yes">Automatic</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">False</property>
-                                        <property name="xalign">0</property>
-                                        <property name="active">True</property>
-                                        <property name="draw_indicator">True</property>
-                                      </object>
-                                      <packing>
-                                        <property name="left_attach">0</property>
-                                        <property name="top_attach">0</property>
-                                        <property name="width">1</property>
-                                        <property name="height">1</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkRadioButton" id="size_1920x1080">
-                                        <property name="label" translatable="yes">1920x1080</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">False</property>
-                                        <property name="xalign">0</property>
-                                        <property name="active">True</property>
-                                        <property name="draw_indicator">True</property>
-                                        <property name="group">size_auto</property>
-                                      </object>
-                                      <packing>
-                                        <property name="left_attach">1</property>
-                                        <property name="top_attach">0</property>
-                                        <property name="width">1</property>
-                                        <property name="height">1</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkRadioButton" id="size_1280x720">
-                                        <property name="label" translatable="yes">1280x720</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">False</property>
-                                        <property name="xalign">0</property>
-                                        <property name="active">True</property>
-                                        <property name="draw_indicator">True</property>
-                                        <property name="group">size_auto</property>
-                                      </object>
-                                      <packing>
-                                        <property name="left_attach">2</property>
-                                        <property name="top_attach">0</property>
-                                        <property name="width">1</property>
-                                        <property name="height">1</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkRadioButton" id="size_720x576">
-                                        <property name="label" translatable="yes">720x576</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">False</property>
-                                        <property name="xalign">0</property>
-                                        <property name="active">True</property>
-                                        <property name="draw_indicator">True</property>
-                                        <property name="group">size_auto</property>
-                                      </object>
-                                      <packing>
-                                        <property name="left_attach">0</property>
-                                        <property name="top_attach">1</property>
-                                        <property name="width">1</property>
-                                        <property name="height">1</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkRadioButton" id="size_704x576">
-                                        <property name="label" translatable="yes">704x576</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">False</property>
-                                        <property name="xalign">0</property>
-                                        <property name="active">True</property>
-                                        <property name="draw_indicator">True</property>
-                                        <property name="group">size_auto</property>
-                                      </object>
-                                      <packing>
-                                        <property name="left_attach">1</property>
-                                        <property name="top_attach">1</property>
-                                        <property name="width">1</property>
-                                        <property name="height">1</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkRadioButton" id="size_480x576">
-                                        <property name="label" translatable="yes">480x576</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">False</property>
-                                        <property name="xalign">0</property>
-                                        <property name="active">True</property>
-                                        <property name="draw_indicator">True</property>
-                                        <property name="group">size_auto</property>
-                                      </object>
-                                      <packing>
-                                        <property name="left_attach">2</property>
-                                        <property name="top_attach">1</property>
-                                        <property name="width">1</property>
-                                        <property name="height">1</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkRadioButton" id="size_352x576">
-                                        <property name="label" translatable="yes">352x576</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">False</property>
-                                        <property name="xalign">0</property>
-                                        <property name="active">True</property>
-                                        <property name="draw_indicator">True</property>
-                                        <property name="group">size_auto</property>
-                                      </object>
-                                      <packing>
-                                        <property name="left_attach">0</property>
-                                        <property name="top_attach">2</property>
-                                        <property name="width">1</property>
-                                        <property name="height">1</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkRadioButton" id="size_352x288">
-                                        <property name="label" translatable="yes">352x288</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">False</property>
-                                        <property name="xalign">0</property>
-                                        <property name="active">True</property>
-                                        <property name="draw_indicator">True</property>
-                                        <property name="group">size_auto</property>
-                                      </object>
-                                      <packing>
-                                        <property name="left_attach">1</property>
-                                        <property name="top_attach">2</property>
-                                        <property name="width">1</property>
-                                        <property name="height">1</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkLabel" id="label39">
+                                      <object class="GtkGrid" id="size_ntsc">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_auto_ntsc">
+                                            <property name="label" translatable="yes">Automatic</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="active">True</property>
+                                            <property name="draw_indicator">True</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">0</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_1920x1080_ntsc">
+                                            <property name="label" translatable="yes">1920x1080</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">size_auto_ntsc</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">1</property>
+                                            <property name="top_attach">0</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_1280x720_ntsc">
+                                            <property name="label" translatable="yes">1280x720</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">size_auto_ntsc</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">2</property>
+                                            <property name="top_attach">0</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_720x480">
+                                            <property name="label" translatable="yes">720x480</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">size_auto_ntsc</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">1</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_704x480">
+                                            <property name="label" translatable="yes">704x480</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">size_auto_ntsc</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">1</property>
+                                            <property name="top_attach">1</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_480x480">
+                                            <property name="label" translatable="yes">480x480</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">size_auto_ntsc</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">2</property>
+                                            <property name="top_attach">1</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_352x480">
+                                            <property name="label" translatable="yes">352x480</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">size_auto_ntsc</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">2</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_352x240">
+                                            <property name="label" translatable="yes">352x240</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">size_auto_ntsc</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">1</property>
+                                            <property name="top_attach">2</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="label15">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">2</property>
+                                            <property name="top_attach">2</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
                                       </object>
                                       <packing>
-                                        <property name="left_attach">2</property>
-                                        <property name="top_attach">2</property>
-                                        <property name="width">1</property>
-                                        <property name="height">1</property>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkGrid" id="size_pal">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_auto">
+                                            <property name="label" translatable="yes">Automatic</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="active">True</property>
+                                            <property name="draw_indicator">True</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">0</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_1920x1080">
+                                            <property name="label" translatable="yes">1920x1080</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">size_auto</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">1</property>
+                                            <property name="top_attach">0</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_1280x720">
+                                            <property name="label" translatable="yes">1280x720</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">size_auto</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">2</property>
+                                            <property name="top_attach">0</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_720x576">
+                                            <property name="label" translatable="yes">720x576</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">size_auto</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">1</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_704x576">
+                                            <property name="label" translatable="yes">704x576</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">size_auto</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">1</property>
+                                            <property name="top_attach">1</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_480x576">
+                                            <property name="label" translatable="yes">480x576</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">size_auto</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">2</property>
+                                            <property name="top_attach">1</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_352x576">
+                                            <property name="label" translatable="yes">352x576</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">size_auto</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">0</property>
+                                            <property name="top_attach">2</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkRadioButton" id="size_352x288">
+                                            <property name="label" translatable="yes">352x288</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">False</property>
+                                            <property name="xalign">0</property>
+                                            <property name="draw_indicator">True</property>
+                                            <property name="group">size_auto</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">1</property>
+                                            <property name="top_attach">2</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel" id="label39">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left_attach">2</property>
+                                            <property name="top_attach">2</property>
+                                            <property name="width">1</property>
+                                            <property name="height">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">1</property>
                                       </packing>
                                     </child>
                                   </object>
@@ -1051,7 +1311,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkFrame" id="frame10">
+                          <object class="GtkFrame" id="frame_aspect_ratio">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="label_xalign">0</property>
@@ -1206,7 +1466,7 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkImage" id="image1">
+                                      <object class="GtkImage" id="add_black_bars_pic">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <property name="stock">gtk-missing-image</property>
@@ -1219,7 +1479,7 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkImage" id="image2">
+                                      <object class="GtkImage" id="scale_picture_pic">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <property name="stock">gtk-missing-image</property>
@@ -1232,7 +1492,7 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkImage" id="image3">
+                                      <object class="GtkImage" id="cut_picture_pic">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <property name="stock">gtk-missing-image</property>
@@ -1543,7 +1803,7 @@
                                     </child>
                                     <child>
                                       <object class="GtkRadioButton" id="deinterlace_yadif">
-                                        <property name="label" translatable="yes">TADIF deinterlacing filter</property>
+                                        <property name="label" translatable="yes">YADIF deinterlacing filter</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">False</property>
@@ -1626,10 +1886,10 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkSpinButton" id="spinbutton4">
+                                      <object class="GtkSpinButton" id="audio_delay_spinbutton">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
-                                        <property name="adjustment">adjustment_delay</property>
+                                        <property name="adjustment">audio_delay</property>
                                         <property name="digits">1</property>
                                       </object>
                                       <packing>
@@ -1720,7 +1980,7 @@
                                 <property name="can_focus">False</property>
                                 <property name="orientation">vertical</property>
                                 <child>
-                                  <object class="GtkRadioButton" id="stop">
+                                  <object class="GtkRadioButton" id="action_stop">
                                     <property name="label" translatable="yes">Stop reproduction/show disc menu</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
@@ -1736,14 +1996,14 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="play_first">
+                                  <object class="GtkRadioButton" id="action_play_first">
                                     <property name="label" translatable="yes">Play the first title</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
                                     <property name="xalign">0</property>
                                     <property name="draw_indicator">True</property>
-                                    <property name="group">stop</property>
+                                    <property name="group">action_stop</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -1752,14 +2012,14 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="play_previous">
+                                  <object class="GtkRadioButton" id="action_play_previous">
                                     <property name="label" translatable="yes">Play the previous title</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
                                     <property name="xalign">0</property>
                                     <property name="draw_indicator">True</property>
-                                    <property name="group">stop</property>
+                                    <property name="group">action_stop</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -1768,14 +2028,14 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="play_again">
+                                  <object class="GtkRadioButton" id="action_play_again">
                                     <property name="label" translatable="yes">Play this title again (loop)</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
                                     <property name="xalign">0</property>
                                     <property name="draw_indicator">True</property>
-                                    <property name="group">stop</property>
+                                    <property name="group">action_stop</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -1784,14 +2044,14 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="play_next">
+                                  <object class="GtkRadioButton" id="action_play_next">
                                     <property name="label" translatable="yes">Play the next title</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
                                     <property name="xalign">0</property>
                                     <property name="draw_indicator">True</property>
-                                    <property name="group">stop</property>
+                                    <property name="group">action_stop</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -1800,14 +2060,14 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="play_last">
+                                  <object class="GtkRadioButton" id="action_play_last">
                                     <property name="label" translatable="yes">Play the last title</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
                                     <property name="xalign">0</property>
                                     <property name="draw_indicator">True</property>
-                                    <property name="group">stop</property>
+                                    <property name="group">action_stop</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -1890,7 +2150,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkCheckButton" id="checkbutton3">
+                                  <object class="GtkCheckButton" id="gop12">
                                     <property name="label" translatable="yes">Use a GOP of 12 frames (improves compatibility)</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
@@ -1946,13 +2206,13 @@
             </child>
           </object>
           <packing>
-            <property name="expand">False</property>
+            <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">2</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button4">
+          <object class="GtkButton" id="button_preview">
             <property name="label" translatable="yes">Preview</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -2024,20 +2284,9 @@
       </object>
     </child>
   </object>
-  <object class="GtkRadioButton" id="size_176x120">
-    <property name="label" translatable="yes">160x120</property>
-    <property name="visible">True</property>
-    <property name="can_focus">True</property>
-    <property name="receives_default">False</property>
-    <property name="xalign">0</property>
-    <property name="yalign">0.52999997138977051</property>
-    <property name="active">True</property>
-    <property name="draw_indicator">True</property>
-    <property name="group">size_auto</property>
-  </object>
   <object class="GtkSizeGroup" id="sizegroup1">
     <widgets>
-      <widget name="notebook1"/>
+      <widget name="notebook"/>
     </widgets>
   </object>
 </interface>

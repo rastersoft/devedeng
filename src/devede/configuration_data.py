@@ -17,38 +17,45 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
+from gi.repository import GObject
 import os
 
-class configuration:
+class configuration(GObject.GObject):
 
     current_configuration = None
+    __gsignals__ = {'disc_type': (GObject.SIGNAL_RUN_FIRST, None,(str,))}
 
     @staticmethod
     def get_config():
         if configuration.current_configuration == None:
             configuration.current_configuration = configuration()
+            if (configuration.current_configuration.fill_config()):
+                configuration.current_configuration = None
         return configuration.current_configuration
 
-    def __init__(self):
+    def fill_config(self):
 
-        self.error = False
+        GObject.GObject.__init__(self)
+
         is_local = None
+        self.log = ""
+        self.disc_type = None
 
         try:
             os.stat("/usr/share/devede_ng/wselect_disk.ui")
             is_local = False
         except:
             pass
-        
+
         if is_local == None:
             try:
                 os.stat("/usr/local/share/devede_ng/wselect_disk.ui")
                 is_local = True
             except:
                 pass
-        
+
         if is_local == None:
-            self.error = True
+            return True
         else:
             if (is_local):
                 # locales must be always at /usr/share/locale because Gtk.Builder always search there
@@ -74,6 +81,11 @@ class configuration:
         self.final_folder = None
         self.sub_language = None
         self.sub_codepage = None
+        self.film_analizer = None
+        self.film_player = None
+        self.film_converter = None
+        self.menu_converter = None
+        self.subtitles_font_size = 28
 
         config_path = os.path.join(os.environ.get("HOME"),".devede")
         try:
@@ -87,29 +99,54 @@ class configuration:
                 if linea[:13]=="video_format:":
                     if linea[13:].strip() =="pal":
                         self.PAL=True
-                        continue
-                    if linea[13:].strip()=="ntsc":
+                    elif linea[13:].strip()=="ntsc":
                         self.PAL=False
-                        continue
+                    continue
                 if linea[:12]=="temp_folder:":
                     self.tmp_folder=linea[12:].strip()
+                    continue
                 if linea[:10]=="multicore:":
                     if linea[10:].strip()=="1":
                         self.multicore = False
                     else:
                         self.multicore = True
+                    continue
                 if linea[:13]=="final_folder:":
                     self.final_folder=linea[13:].strip()
+                    continue
                 if linea[:13]=="sub_language:":
                     self.sub_language=linea[13:].strip()
+                    continue
                 if linea[:13]=="sub_codepage:":
                     self.sub_codepage=linea[13:].strip()
+                    continue
+                if linea[:14]=="film_analizer:":
+                    self.film_analizer = linea[14:].strip()
+                    continue
+                if linea[:12]=="film_player:":
+                    self.film_player = linea[12:].strip()
+                    continue
+                if linea[:15]=="film_converter:":
+                    self.film_converter = linea[15:].strip()
+                    continue
+                if linea[:15]=="menu_converter:":
+                    self.menu_converter = linea[15:].strip()
+                    continue
+                if linea[:19]=="subtitle_font_size:":
+                    self.subtitles_font_size = int(linea[19:].strip())
             config_data.close()
         except:
             pass
-                 
+
+        return False
+
+    def set_disc_type(self,disc_type):
+
+        self.disc_type = disc_type
+        self.emit('disc_type',disc_type)
+
     def save_config(self):
-        
+
         config_path = os.path.join(os.environ.get("HOME"),".devede")
         try:
             config_data = open(config_path,"w")
@@ -131,6 +168,29 @@ class configuration:
                 config_data.write("sub_language:"+str(self.sub_language)+"\n")
             if (self.sub_codepage != None):
                 config_data.write("sub_codepage:"+str(self.sub_codepage)+"\n")
+            if (self.film_analizer != None):
+                config_data.write("film_analizer:"+str(self.film_analizer)+"\n")
+            if (self.film_player != None):
+                config_data.write("film_player:"+str(self.film_player)+"\n")
+            if (self.film_converter != None):
+                config_data.write("film_converter:"+str(self.film_converter)+"\n")
+            if (self.menu_converter != None):
+                config_data.write("menu_converter:"+str(self.menu_converter)+"\n")
+            config_data.write("subtitle_font_size:"+str(self.subtitles_font_size)+"\n")
             config_data.close()
         except:
             pass
+
+    def append_log(self,data,cr = True):
+
+        self.log+=data
+        if (cr):
+            self.log += "\n"
+
+    def clear_log(self):
+
+        self.log = ""
+
+    def get_log(self):
+
+        return self.log

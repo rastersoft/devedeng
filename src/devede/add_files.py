@@ -26,14 +26,6 @@ class add_files:
     def __init__(self):
 
         self.config = devede.configuration_data.configuration.get_config()
-        self.show_title_options = True
-
-    def set_type(self,disc_type):
-
-        if (disc_type == "dvd"):
-            self.show_title_options = True
-        else:
-            self.show_title_options = False
 
     def run(self):
 

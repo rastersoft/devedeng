@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Copyright 2014 (C) Raster Software Vigo (Sergio Costas)
 #
 # This file is part of DeVeDe-NG
@@ -15,5 +17,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-def test():
-    print("Test function2")
+import subprocess
+
+import devede.configuration_data
+
+class avconv_converter:
+    
+    def __init__(self):
+        
+        self.config = devede.configuration_data.configuration.get_config()
+
+                

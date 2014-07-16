@@ -17,34 +17,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import sys
-import gettext
-import locale
-from gi.repository import Gtk
+import subprocess
 
-import devede.project
 import devede.configuration_data
-import devede.choose_disc_type
 
-config_data = devede.configuration_data.configuration.get_config()
+class executor:
+    """ This class encapsulates everything needed for launching processes """
+    
+    def __init__(self):
+        
+        self.config = devede.configuration_data.configuration.get_config()
 
-if config_data == None:
-    print ("Can't locate extra files. Aborting.")
-    sys.exit(1)
-
-gettext.bindtextdomain(config_data.gettext_domain,config_data.share_locale)
-try:
-    locale.setlocale(locale.LC_ALL,"")
-except locale.Error:
-    pass
-gettext.textdomain(config_data.gettext_domain)
-gettext.install(config_data.gettext_domain,localedir=config_data.share_locale)
-
-_ = gettext.gettext
-
-Gtk.init(sys.argv)
-
-mwindow = devede.project.devede_project()
-ask_type = devede.choose_disc_type.choose_disc_type()
-Gtk.main()
-config_data.save_config()
+        
+        
