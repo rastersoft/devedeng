@@ -86,6 +86,8 @@ class configuration(GObject.GObject):
         self.film_converter = None
         self.menu_converter = None
         self.subtitles_font_size = 28
+        self.sub_language = None
+        self.sub_codepage = None
 
         config_path = os.path.join(os.environ.get("HOME"),".devede")
         try:
@@ -176,6 +178,10 @@ class configuration(GObject.GObject):
                 config_data.write("film_converter:"+str(self.film_converter)+"\n")
             if (self.menu_converter != None):
                 config_data.write("menu_converter:"+str(self.menu_converter)+"\n")
+            if (self.sub_codepage != None):
+                config_data.write("sub_codepage:"+str(self.sub_codepage)+"\n")
+            if (self.sub_language != None):
+                config_data.write("sub_language:"+str(self.sub_language)+"\n")
             config_data.write("subtitle_font_size:"+str(self.subtitles_font_size)+"\n")
             config_data.close()
         except:

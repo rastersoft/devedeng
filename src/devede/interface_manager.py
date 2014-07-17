@@ -278,6 +278,11 @@ class interface_manager(GObject.GObject):
         for element in self.interface_lists:
             exec('self.'+element+' = []')
             the_liststore = builder.get_object(element)
+            ncolumns = the_liststore.get_n_columns()
             for row in the_liststore:
-                exec('self.'+element+'.append(row.model[row.iter])')
+                final_row = []
+                for c in range(0,ncolumns):
+                    final_row.append(row.model[row.iter][c])
+                print (final_row)
+                exec('self.'+element+'.append(final_row)')
         

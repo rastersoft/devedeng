@@ -19,6 +19,8 @@ def get_data_files():
         (os.path.join('share', 'devede_ng'), glob("data/interface/*")),
         (os.path.join('share', 'devede_ng'), glob('data/pixmaps/*g')),
         (os.path.join('share', 'devede_ng'), ['data/devede.svg']),
+        (os.path.join('share', 'devede_ng'), ['data/codepages.lst']),
+        (os.path.join('share', 'devede_ng'), ['data/languages.lst']),
         (os.path.join('share', 'devede_ng'), ['data/devedesans.ttf']),
         (os.path.join('share', 'devede_ng', 'backgrounds'), glob('data/pixmaps/backgrounds/*')),
         (os.path.join('share', 'doc', 'devede_ng', 'html'), glob('docs/html/*'))

@@ -21,6 +21,7 @@ import os
 import devede.configuration_data
 import devede.interface_manager
 import devede.converter
+import devede.ask_subtitles
 
 class file_movie(devede.interface_manager.interface_manager):
 
@@ -180,6 +181,10 @@ class file_movie(devede.interface_manager.interface_manager):
         self.wframe_audio_rate = self.builder.get_object("frame_audio_rate")
         self.wframe_division_chapters = self.builder.get_object("frame_division_chapters")
 
+        # elements in page SUBTITLES
+        self.wsubtitles_list = self.builder.get_object("subtitles_list")
+        self.wdel_subtitles = self.builder.get_object("del_subtitles")
+
         # elements in page VIDEO OPTIONS
         self.wsize_1920x1080 = self.builder.get_object("size_1920x1080")
         self.wsize_1280x720 = self.builder.get_object("size_1280x720")
@@ -187,6 +192,10 @@ class file_movie(devede.interface_manager.interface_manager):
         self.wsize_1280x720_ntsc = self.builder.get_object("size_1280x720_ntsc")
         self.wframe_final_size = self.builder.get_object("frame_final_size")
         self.wframe_aspect_ratio = self.builder.get_object("frame_aspect_ratio")
+        self.waspect_classic = self.builder.get_object("aspect_classic")
+        self.wadd_black_bars_pic = self.builder.get_object("add_black_bars_pic")
+        self.wscale_picture_pic = self.builder.get_object("scale_picture_pic")
+        self.wcut_picture_pic = self.builder.get_object("cut_picture_pic")
 
         # elements in page AUDIO
         self.wsound5_1 = self.builder.get_object("sound5_1")
@@ -244,6 +253,19 @@ class file_movie(devede.interface_manager.interface_manager):
             self.wnotebook.remove_page(5)
 
         self.update_ui(self.builder)
+        self.on_aspect_classic_toggled(None)
+
+    def on_aspect_classic_toggled(self,b):
+        
+        status = self.waspect_classic.get_active()
+        if (status):
+            self.wadd_black_bars_pic.set_from_file(os.path.join(self.config.pic_path,"to_classic_blackbars.png"))
+            self.wcut_picture_pic.set_from_file(os.path.join(self.config.pic_path,"to_classic_cut.png"))
+            self.wscale_picture_pic.set_from_file(os.path.join(self.config.pic_path,"to_classic_scale.png"))
+        else:
+            self.wadd_black_bars_pic.set_from_file(os.path.join(self.config.pic_path,"to_wide_blackbars.png"))
+            self.wcut_picture_pic.set_from_file(os.path.join(self.config.pic_path,"to_wide_cut.png"))
+            self.wscale_picture_pic.set_from_file(os.path.join(self.config.pic_path,"to_wide_scale.png"))
 
     def on_button_accept_clicked(self,b):
 
@@ -256,3 +278,9 @@ class file_movie(devede.interface_manager.interface_manager):
         self.wfile_properties.destroy()
         self.wfile_properties = None
         self.builder = None
+
+    def on_add_subtitles_clicked(self,b):
+        
+        subt = devede.ask_subtitles.ask_subtitles()
+        if (subt.run()):
+            self.wsubtitles_list.append([subt.filename, subt.encoding, subt.language, subt.put_upper])
