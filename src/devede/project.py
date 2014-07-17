@@ -21,6 +21,7 @@ import os
 import devede.file_movie
 import devede.ask
 import devede.add_files
+import devede.message
 
 class devede_project:
 
@@ -156,12 +157,18 @@ class devede_project:
 
     def on_add_file_clicked(self,b):
 
+        error_list = []
         ask_files = devede.add_files.add_files()
         if (ask_files.run()):
             for efile in ask_files.files:
                 new_file = devede.file_movie.file_movie(efile)
-                new_file.connect('title_changed',self.title_changed)
-                self.wliststore_files.append([new_file, new_file.title_name])
+                if (new_file.error):
+                    error_list.append(os.path.basename(efile))
+                else:
+                    new_file.connect('title_changed',self.title_changed)
+                    self.wliststore_files.append([new_file, new_file.title_name])
+        if (len(error_list)!=0):
+            devede.message.message_window(_("The following files could not be added:"),_("Error while adding files"),error_list)
         self.set_interface_status(None)
 
 

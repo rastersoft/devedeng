@@ -24,14 +24,15 @@ class interface_manager(GObject.GObject):
 
     def __init__(self):
 
-        self.groups = {}
-        self.toggles = []
-        self.labels = []
-        self.text = []
-        self.show_hide = []
-        self.enable_disable = []
-        self.float_adjustments = []
-        self.integer_adjustments = []
+        self.interface_groups = {}
+        self.interface_toggles = []
+        self.interface_labels = []
+        self.interface_text = []
+        self.interface_show_hide = []
+        self.interface_enable_disable = []
+        self.interface_float_adjustments = []
+        self.interface_integer_adjustments = []
+        self.interface_lists = []
 
     def add_group(self,group_name,radiobutton_list,default_value):
         """ Adds a group of radiobuttons and creates an internal variable with
@@ -43,7 +44,7 @@ class interface_manager(GObject.GObject):
             exec('self.'+group_name+' = "'+str(default_value)+'"')
         else:
             exec('self.'+group_name+' = None')
-        self.groups[group_name] = radiobutton_list
+        self.interface_groups[group_name] = radiobutton_list
 
     def add_toggle(self,toggle_name,default_value):
         """ Adds an internal variable with the name toggle_name, linked to a widget
@@ -51,7 +52,7 @@ class interface_manager(GObject.GObject):
             The default value can be True of False """
 
         exec('self.'+toggle_name+' = '+str(default_value))
-        self.toggles.append(toggle_name)
+        self.interface_toggles.append(toggle_name)
 
     def add_text(self,text_name,default_value):
         """ Adds an internal variable with the name text_name, linked to an
@@ -62,7 +63,7 @@ class interface_manager(GObject.GObject):
             exec('self.'+text_name+' = "'+str(default_value)+'"')
         else:
             exec('self.'+text_name+' = None')
-        self.text.append(text_name)
+        self.interface_text.append(text_name)
 
     def add_label(self,text_name,default_value):
         """ Adds an internal variable with the name text_name, linked to an
@@ -71,7 +72,7 @@ class interface_manager(GObject.GObject):
             but is never updated from the UI if the user changes it """
 
         exec('self.'+text_name+' = default_value')
-        self.labels.append(text_name)
+        self.interface_labels.append(text_name)
 
     def add_integer_adjustment(self,adjustment_name,default_value):
         """ Adds an internal variable with the name text_name, linked to an
@@ -79,7 +80,7 @@ class interface_manager(GObject.GObject):
             The default value must be an integer """
 
         exec('self.'+adjustment_name+' = '+str(default_value))
-        self.integer_adjustments.append(adjustment_name)
+        self.interface_integer_adjustments.append(adjustment_name)
 
     def add_float_adjustment(self,adjustment_name,default_value):
         """ Adds an internal variable with the name text_name, linked to an
@@ -87,8 +88,12 @@ class interface_manager(GObject.GObject):
             The default value must be an float """
 
         exec('self.'+adjustment_name+' = '+str(default_value))
-        self.float_adjustments.append(adjustment_name)
+        self.interface_float_adjustments.append(adjustment_name)
 
+    def add_list(self,liststore_name):
+
+        exec('self.'+liststore_name+' = []')
+        self.interface_lists.append(liststore_name)
 
     def add_show_hide(self,element_name,to_show,to_hide):
         """ Adds an element that can be active or inactive, and two lists of elements.
@@ -97,7 +102,7 @@ class interface_manager(GObject.GObject):
             elements that will be visible when the element is inactive, and
             invisible when the element is active """
 
-        self.show_hide.append([element_name, to_show, to_hide])
+        self.interface_show_hide.append([element_name, to_show, to_hide])
 
     def add_enable_disable(self,element_name,to_enable,to_disable):
         """ Adds an element that can be active or inactive, and two lists of elements.
@@ -106,43 +111,50 @@ class interface_manager(GObject.GObject):
             elements that will be enabled when the element is inactive, and
             disabled when the element is active """
 
-        self.enable_disable.append([element_name, to_enable, to_disable])
+        self.interface_enable_disable.append([element_name, to_enable, to_disable])
 
     def update_ui(self,builder):
         """ Sets the value of the widgets in base of the internal variables """
 
-        for key in self.groups:
+        for key in self.interface_groups:
             obj = eval('self.'+key)
             builder.get_object(obj).set_active(True)
 
-        for element in self.toggles:
+        for element in self.interface_toggles:
             value = eval('self.'+element)
             builder.get_object(element).set_active(value)
 
-        for element in self.text:
+        for element in self.interface_text:
             value = eval('self.'+element)
             if (value != None):
                 builder.get_object(element).set_text(value)
             else:
                 builder.get_object(element).set_text("")
 
-        for element in self.labels:
+        for element in self.interface_labels:
             value = eval('self.'+element)
             if (value != None):
                 builder.get_object(element).set_text(str(value))
             else:
                 builder.get_object(element).set_text("")
 
-        for element in self.integer_adjustments:
+        for element in self.interface_integer_adjustments:
             value = eval('self.'+element)
             builder.get_object(element).set_value(float(value))
 
-        for element in self.float_adjustments:
+        for element in self.interface_float_adjustments:
             value = eval('self.'+element)
             builder.get_object(element).set_value(value)
 
-        self.show_hide_obj = {}
-        for element in self.show_hide:
+        for element in self.interface_lists:
+            obj = eval('self.'+element)
+            the_liststore = builder.get_object(element)
+            the_liststore.clear()
+            for item in obj:
+                the_liststore.append(item)
+
+        self.interface_show_hide_obj = {}
+        for element in self.interface_show_hide:
             obj = builder.get_object(element[0])
             to_show = []
             for e2 in element[1]:
@@ -150,12 +162,12 @@ class interface_manager(GObject.GObject):
             to_hide = []
             for e3 in element[2]:
                 to_hide.append(builder.get_object(e3))
-            self.show_hide_obj[obj] = [to_show, to_hide]
+            self.interface_show_hide_obj[obj] = [to_show, to_hide]
             obj.connect('toggled',self.toggled_element)
             self.toggled_element(obj)
 
-        self.enable_disable_obj = {}
-        for element in self.enable_disable:
+        self.interface_enable_disable_obj = {}
+        for element in self.interface_enable_disable:
             obj = builder.get_object(element[0])
             to_enable = []
             for e2 in element[1]:
@@ -163,7 +175,7 @@ class interface_manager(GObject.GObject):
             to_disable = []
             for e3 in element[2]:
                 to_disable.append(builder.get_object(e3))
-            self.enable_disable_obj[obj] = [to_enable, to_disable]
+            self.interface_enable_disable_obj[obj] = [to_enable, to_disable]
             obj.connect('toggled',self.toggled_element2)
             self.toggled_element2(obj)
 
@@ -171,9 +183,9 @@ class interface_manager(GObject.GObject):
         """ Wenever an element with 'hide' or 'show' needs is toggled, this callback is called """
 
         # First, show all items for each possible element
-        for key in self.show_hide_obj:
-            to_show = self.show_hide_obj[key][0]
-            to_hide = self.show_hide_obj[key][1]
+        for key in self.interface_show_hide_obj:
+            to_show = self.interface_show_hide_obj[key][0]
+            to_hide = self.interface_show_hide_obj[key][1]
 
             active = key.get_active()
 
@@ -188,9 +200,9 @@ class interface_manager(GObject.GObject):
         # And now, hide all items that must be hiden
         # This is done this way because this allows to have an item being hiden by
         # one widget, and being shown by another: in that case, it will be hiden always
-        for key in self.show_hide_obj:
-            to_show = self.show_hide_obj[key][0]
-            to_hide = self.show_hide_obj[key][1]
+        for key in self.interface_show_hide_obj:
+            to_show = self.interface_show_hide_obj[key][0]
+            to_hide = self.interface_show_hide_obj[key][1]
 
             active = key.get_active()
 
@@ -207,9 +219,9 @@ class interface_manager(GObject.GObject):
         """ Wenever an element with 'enable' or 'disable' needs is toggled, this callback is called """
 
         # First enable all items that must be enabled
-        for key in self.enable_disable_obj:
-            to_enable = self.enable_disable_obj[key][0]
-            to_disable = self.enable_disable_obj[key][1]
+        for key in self.interface_enable_disable_obj:
+            to_enable = self.interface_enable_disable_obj[key][0]
+            to_disable = self.interface_enable_disable_obj[key][1]
 
             active = key.get_active()
             if (active):
@@ -222,9 +234,9 @@ class interface_manager(GObject.GObject):
         # And now, disable all items that must be disabled
         # This is done this way because this allows to have an item being disabled by
         # one widget, and being enabled by another: in that case, it will be disabled always
-        for key in self.enable_disable_obj:
-            to_enable = self.enable_disable_obj[key][0]
-            to_disable = self.enable_disable_obj[key][1]
+        for key in self.interface_enable_disable_obj:
+            to_enable = self.interface_enable_disable_obj[key][0]
+            to_disable = self.interface_enable_disable_obj[key][1]
 
             active = key.get_active()
             if (not active):
@@ -237,30 +249,35 @@ class interface_manager(GObject.GObject):
     def store_ui(self,builder):
         """ Takes the values of the widgets and stores them in the internal variables """
 
-        for key in self.groups:
-            for element in self.groups[key]:
+        for key in self.interface_groups:
+            for element in self.interface_groups[key]:
                 obj = builder.get_object(element)
                 if obj.get_active():
                     exec('self.'+key+' = "'+element+'"')
                     break
 
-        for element in self.toggles:
+        for element in self.interface_toggles:
             obj = builder.get_object(element)
             if obj.get_active():
                 exec('self.'+element+' = True')
             else:
                 exec('self.'+element+' = False')
 
-        for element in self.text:
+        for element in self.interface_text:
             obj = builder.get_object(element)
             exec('self.'+element+' = obj.get_text()')
 
-        for element in self.integer_adjustments:
+        for element in self.interface_integer_adjustments:
             obj = builder.get_object(element)
             exec('self.'+element+' = int(obj.get_value())')
 
-        for element in self.float_adjustments:
+        for element in self.interface_float_adjustments:
             obj = builder.get_object(element)
             exec('self.'+element+' = obj.get_value()')
 
+        for element in self.interface_lists:
+            exec('self.'+element+' = []')
+            the_liststore = builder.get_object(element)
+            for row in the_liststore:
+                exec('self.'+element+'.append(row.model[row.iter])')
         

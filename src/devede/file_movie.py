@@ -84,6 +84,8 @@ class file_movie(devede.interface_manager.interface_manager):
         self.add_integer_adjustment("subt_font_size", 28)
         self.add_float_adjustment("audio_delay", 0.0)
 
+        self.add_list("subtitles_list")
+
         self.add_show_hide("format_pal", ["size_pal"], ["size_ntsc"])
 
         self.add_enable_disable("divide_in_chapters", ["chapter_size_spinbutton"], [])
@@ -104,20 +106,21 @@ class file_movie(devede.interface_manager.interface_manager):
         is_mpeg_ps_list.append("no_reencode_audio_video")
         is_mpeg_ps_list.append("font_size_spinbutton")
         is_mpeg_ps_list.append("force_subtitles")
-        is_mpeg_ps_list.append("button_add_subtitles")
-        is_mpeg_ps_list.append("button_del_subtitles")
+        is_mpeg_ps_list.append("add_subtitles")
+        is_mpeg_ps_list.append("del_subtitles")
         no_reencode_audio_video_list = common_elements[:]
         no_reencode_audio_video_list.append("is_mpeg_ps")
 
         self.add_enable_disable("is_mpeg_ps", [], is_mpeg_ps_list)
         self.add_enable_disable("no_reencode_audio_video", [], no_reencode_audio_video_list)
-        #self.add_enable_disable("", [], [])
 
+        cv = devede.converter.converter()
+        film_analizer = (cv.get_film_analizer())()
+        if (film_analizer.get_film_data(self)):
+            self.error = True
+        else:
+            self.error = False
 
-
-
-        #cv = devede.converter.converter()
-        #cv.get_film_data(self)
 
     def set_type(self,obj = None,disc_type = None):
 

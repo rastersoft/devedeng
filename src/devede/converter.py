@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import devede.configuration_data
-import devede.mpv_converter
+import devede.mplayer_detector
 
 class converter:
 
@@ -32,7 +32,7 @@ class converter:
     def __init__(self):
 
         self.config = devede.configuration_data.configuration.get_config()
-        self.c = [devede.mpv_converter.mpv_converter]
+        self.c = [devede.mplayer_detector.mplayer_detector]
 
         self.analizers = {}
         self.default_analizer = None
@@ -44,23 +44,22 @@ class converter:
         self.default_menuer = None
 
         for element in self.c:
-            e = element()
-            if (e.check_is_installed() == False):
+            if (element.check_is_installed() == False):
                 continue
-            name = e.display_name
-            if (e.supports_analize):
+            name = element.display_name
+            if (element.supports_analize):
                 self.analizers[name] = element
                 if (self.default_analizer == None):
                     self.default_analizer = element
-            if (e.supports_play):
+            if (element.supports_play):
                 self.players[name] = element
                 if (self.default_player == None):
                     self.default_player = element
-            if (e.supports_convert):
+            if (element.supports_convert):
                 self.converters[name] = element
                 if (self.default_converter == None):
                     self.default_converter = element
-            if (e.supports_menu):
+            if (element.supports_menu):
                 self.menuers[name] = element
                 if (self.default_menuer == None):
                     self.default_menuer = element
@@ -71,8 +70,7 @@ class converter:
             programs that covers the needs for that group; when not, it contains the programs valid
             to cover the needs for that group.
             The groups are, in this order: ANALIZERS, PLAYERS, CONVERTERS, MENUERS
-            (menuers are the programs that creates the mpeg files for menus)
-        """
+            (menuers are the programs that creates the mpeg files for menus) """
 
         if (self.default_analizer != None):
             analizers = None
