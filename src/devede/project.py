@@ -22,6 +22,7 @@ import devede.file_movie
 import devede.ask
 import devede.add_files
 import devede.message
+import devede.dvd_menu
 
 class devede_project:
 
@@ -30,6 +31,7 @@ class devede_project:
         self.config  = devede.configuration_data.configuration.get_config()
 
         self.disc_type = self.config.disc_type
+        self.menu = devede.dvd_menu.dvd_menu()
 
         self.current_title = None
 
@@ -47,8 +49,13 @@ class devede_project:
         self.wdisc_fill_level = builder.get_object("disc_fill_level")
         self.wuse_pal = builder.get_object("use_pal")
         self.wuse_ntsc = builder.get_object("use_ntsc")
-        self.wcreate_menu = builder.get_object("create_menu")
         self.wframe_titles = builder.get_object("frame_titles")
+
+        self.wframe_menu = builder.get_object("frame_menu")
+        self.wcreate_menu = builder.get_object("create_menu")
+        self.wmenu_options = builder.get_object("menu_options")
+        self.wpreview_menu = builder.get_object("preview_menu")
+
 
         self.wadd_file = builder.get_object("add_file")
         self.wdelete_file = builder.get_object("delete_file")
@@ -66,6 +73,8 @@ class devede_project:
             self.wuse_pal.set_active(True)
         else:
             self.wuse_ntsc.set_active(True)
+
+        self.wcreate_menu.set_active(True)
 
         self.config.connect('disc_type',self.set_type)
         if (self.disc_type != None):
@@ -87,6 +96,11 @@ class devede_project:
             self.wdisc_size.set_active(1) # 4.7 GB DVD
         else:
             self.wdisc_size.set_active(3) # 700 MB CD
+
+        if (self.disc_type == "dvd"):
+            self.wframe_menu.show_all()
+        else:
+            self.wframe_menu.hide()
 
 
     def get_current_file(self):
@@ -119,6 +133,12 @@ class devede_project:
         self.wproperties_file.set_sensitive(True)
         self.wpreview_file.set_sensitive(True)
 
+        self.config.PAL = self.wuse_pal.get_active()
+
+        status = self.wcreate_menu.get_active()
+        self.wmenu_options.set_sensitive(status)
+        self.wpreview_menu.set_sensitive(status)
+
         (element, position, model, treeiter) = self.get_current_file()
         if (element == None):
             self.wdelete_file.set_sensitive(False)
@@ -138,7 +158,9 @@ class devede_project:
 
     def on_use_pal_toggled(self,b):
 
-        self.config.PAL = self.wuse_pal.get_active()
+        self.set_interface_status(None)
+
+
 
     def on_wmain_window_delete_event(self,b,e=None):
 
@@ -210,8 +232,13 @@ class devede_project:
             return
         element.properties()
 
+    def on_create_menu_toggled(self,b):
+        self.set_interface_status(None)
+
     def on_adjust_disc_usage_clicked(self,b):
 
         pass
 
+    def on_menu_options_clicked(self,b):
 
+        self.menu.show_configuration()

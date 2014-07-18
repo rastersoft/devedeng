@@ -88,6 +88,7 @@ class configuration(GObject.GObject):
         self.subtitles_font_size = 28
         self.sub_language = None
         self.sub_codepage = None
+        self.menu_dynamic_preview = False
 
         config_path = os.path.join(os.environ.get("HOME"),".devede")
         try:
@@ -136,6 +137,11 @@ class configuration(GObject.GObject):
                     continue
                 if linea[:19]=="subtitle_font_size:":
                     self.subtitles_font_size = int(linea[19:].strip())
+                if linea[:21]=="menu_dynamic_preview:":
+                    if linea[21] == '0':
+                        self.menu_dynamic_preview = False
+                    else:
+                        self.menu_dynamic_preview = True
             config_data.close()
         except:
             pass
@@ -182,6 +188,11 @@ class configuration(GObject.GObject):
                 config_data.write("sub_codepage:"+str(self.sub_codepage)+"\n")
             if (self.sub_language != None):
                 config_data.write("sub_language:"+str(self.sub_language)+"\n")
+            config_data.write("menu_dynamic_preview:")
+            if (self.menu_dynamic_preview):
+                config_data.write("1\n")
+            else:
+                config_data.write("0\n")
             config_data.write("subtitle_font_size:"+str(self.subtitles_font_size)+"\n")
             config_data.close()
         except:

@@ -29,7 +29,6 @@ class file_movie(devede.interface_manager.interface_manager):
 
     def __init__(self,file_name):
 
-        GObject.GObject.__init__(self)
         devede.interface_manager.interface_manager.__init__(self)
 
         self.wfile_properties = None

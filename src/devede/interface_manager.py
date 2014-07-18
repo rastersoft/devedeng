@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from gi.repository import GObject
+from gi.repository import GObject,Gdk
 
 class interface_manager(GObject.GObject):
     """ This class allows to automatically generate variables for a GLADE interface,
@@ -24,6 +24,7 @@ class interface_manager(GObject.GObject):
 
     def __init__(self):
 
+        GObject.GObject.__init__(self)
         self.interface_groups = {}
         self.interface_toggles = []
         self.interface_labels = []
@@ -33,8 +34,9 @@ class interface_manager(GObject.GObject):
         self.interface_float_adjustments = []
         self.interface_integer_adjustments = []
         self.interface_lists = []
+        self.interface_colorbuttons = []
 
-    def add_group(self,group_name,radiobutton_list,default_value):
+    def add_group(self,group_name,radiobutton_list,default_value,callback = None):
         """ Adds a group of radiobuttons and creates an internal variable with
             the name group_name, setting it to default_value. The
             value for the variable will be the name of the active
@@ -44,17 +46,17 @@ class interface_manager(GObject.GObject):
             exec('self.'+group_name+' = "'+str(default_value)+'"')
         else:
             exec('self.'+group_name+' = None')
-        self.interface_groups[group_name] = radiobutton_list
+        self.interface_groups[group_name] = ( radiobutton_list, callback )
 
-    def add_toggle(self,toggle_name,default_value):
+    def add_toggle(self,toggle_name,default_value,callback = None):
         """ Adds an internal variable with the name toggle_name, linked to a widget
             element with the same name (must be or inherint from Gtk.ToogleButton).
             The default value can be True of False """
 
         exec('self.'+toggle_name+' = '+str(default_value))
-        self.interface_toggles.append(toggle_name)
+        self.interface_toggles.append( (toggle_name, callback) )
 
-    def add_text(self,text_name,default_value):
+    def add_text(self,text_name,default_value,callback = None):
         """ Adds an internal variable with the name text_name, linked to an
             element with the same name (must be a Gtk.TextEntry or a Gtk.Label).
             The default value can be a text or None """
@@ -63,7 +65,7 @@ class interface_manager(GObject.GObject):
             exec('self.'+text_name+' = "'+str(default_value)+'"')
         else:
             exec('self.'+text_name+' = None')
-        self.interface_text.append(text_name)
+        self.interface_text.append( (text_name, callback) )
 
     def add_label(self,text_name,default_value):
         """ Adds an internal variable with the name text_name, linked to an
@@ -74,26 +76,36 @@ class interface_manager(GObject.GObject):
         exec('self.'+text_name+' = default_value')
         self.interface_labels.append(text_name)
 
-    def add_integer_adjustment(self,adjustment_name,default_value):
+    def add_integer_adjustment(self,adjustment_name,default_value,callback = None):
         """ Adds an internal variable with the name text_name, linked to an
             element with the same name (must be a Gtk.Adjustment).
             The default value must be an integer """
 
         exec('self.'+adjustment_name+' = '+str(default_value))
-        self.interface_integer_adjustments.append(adjustment_name)
+        self.interface_integer_adjustments.append( (adjustment_name, callback) )
 
-    def add_float_adjustment(self,adjustment_name,default_value):
+    def add_float_adjustment(self,adjustment_name,default_value,callback = None):
         """ Adds an internal variable with the name text_name, linked to an
             element with the same name (must be a Gtk.Adjustment).
             The default value must be an float """
 
         exec('self.'+adjustment_name+' = '+str(default_value))
-        self.interface_float_adjustments.append(adjustment_name)
+        self.interface_float_adjustments.append( (adjustment_name, callback))
 
-    def add_list(self,liststore_name):
+    def add_list(self,liststore_name,callback = None):
+        """ Adds an internal variable with the name liststore_name, linked to
+            an element with the same name (must be a Gtk.ListStore). """
 
         exec('self.'+liststore_name+' = []')
-        self.interface_lists.append(liststore_name)
+        self.interface_lists.append( (liststore_name, callback ))
+
+    def add_colorbutton(self,colorbutton_name, default_value,callback = None):
+        """ Adds an internal variable with the name text_name, linked to an
+            element with the same name (must be a Gtk.ColorButton).
+            The default value must be a set with RGBA values """
+
+        exec('self.'+colorbutton_name+' = default_value')
+        self.interface_colorbuttons.append( (colorbutton_name, callback ))
 
     def add_show_hide(self,element_name,to_show,to_hide):
         """ Adds an element that can be active or inactive, and two lists of elements.
@@ -119,17 +131,30 @@ class interface_manager(GObject.GObject):
         for key in self.interface_groups:
             obj = eval('self.'+key)
             builder.get_object(obj).set_active(True)
+            callback = self.interface_groups[key][1]
+            if (callback != None):
+                for element in self.interface_groups[key][0]:
+                    obj = builder.get_object(element)
+                    obj.connect("toggled",callback)
 
         for element in self.interface_toggles:
-            value = eval('self.'+element)
-            builder.get_object(element).set_active(value)
+            value = eval('self.'+element[0])
+            obj = builder.get_object(element[0])
+            obj.set_active(value)
+            callback = element[1]
+            if (callback != None):
+                obj.connect("toggled",callback)
 
         for element in self.interface_text:
-            value = eval('self.'+element)
+            value = eval('self.'+element[0])
+            obj = builder.get_object(element[0])
             if (value != None):
-                builder.get_object(element).set_text(value)
+                obj.set_text(value)
             else:
-                builder.get_object(element).set_text("")
+                obj.set_text("")
+            callback = element[1]
+            if (callback != None):
+                obj.connect("changed",callback)
 
         for element in self.interface_labels:
             value = eval('self.'+element)
@@ -139,19 +164,43 @@ class interface_manager(GObject.GObject):
                 builder.get_object(element).set_text("")
 
         for element in self.interface_integer_adjustments:
-            value = eval('self.'+element)
-            builder.get_object(element).set_value(float(value))
+            value = eval('self.'+element[0])
+            obj = builder.get_object(element[0])
+            obj.set_value(float(value))
+            callback = element[1]
+            if (callback != None):
+                obj.connect("value_changed",callback)
 
         for element in self.interface_float_adjustments:
-            value = eval('self.'+element)
-            builder.get_object(element).set_value(value)
+            value = eval('self.'+element[0])
+            obj = builder.get_object(element[0])
+            obj.set_value(value)
+            callback = element[1]
+            if (callback != None):
+                obj.connect("value_changed",callback)
 
         for element in self.interface_lists:
-            obj = eval('self.'+element)
-            the_liststore = builder.get_object(element)
+            obj = eval('self.'+element[0])
+            the_liststore = builder.get_object(element[0])
             the_liststore.clear()
             for item in obj:
                 the_liststore.append(item)
+            callback = element[1]
+            if (callback != None):
+                the_liststore.connect("row_changed",callback)
+                the_liststore.connect("row_deleted",callback)
+                the_liststore.connect("row_inserted",callback)
+                the_liststore.connect("row_reordered",callback)
+
+        for element in self.interface_colorbuttons:
+            value = eval('self.'+element[0])
+            colorbtn = builder.get_object(element[0])
+            objcolor = Gdk.Color(int(value[0]*65535.0),int(value[1]*65535.0),int(value[2]*65535.0))
+            colorbtn.set_color(objcolor)
+            colorbtn.set_alpha(int(value[3]*65535.0))
+            callback = element[1]
+            if (callback != None):
+                colorbtn.connect("color_set",callback)
 
         self.interface_show_hide_obj = {}
         for element in self.interface_show_hide:
@@ -250,39 +299,46 @@ class interface_manager(GObject.GObject):
         """ Takes the values of the widgets and stores them in the internal variables """
 
         for key in self.interface_groups:
-            for element in self.interface_groups[key]:
+            for element in self.interface_groups[key][0]:
                 obj = builder.get_object(element)
                 if obj.get_active():
                     exec('self.'+key+' = "'+element+'"')
                     break
 
         for element in self.interface_toggles:
-            obj = builder.get_object(element)
+            obj = builder.get_object(element[0])
             if obj.get_active():
-                exec('self.'+element+' = True')
+                exec('self.'+element[0]+' = True')
             else:
-                exec('self.'+element+' = False')
+                exec('self.'+element[0]+' = False')
 
         for element in self.interface_text:
-            obj = builder.get_object(element)
-            exec('self.'+element+' = obj.get_text()')
+            obj = builder.get_object(element[0])
+            exec('self.'+element[0]+' = obj.get_text()')
 
         for element in self.interface_integer_adjustments:
-            obj = builder.get_object(element)
-            exec('self.'+element+' = int(obj.get_value())')
+            obj = builder.get_object(element[0])
+            exec('self.'+element[0]+' = int(obj.get_value())')
 
         for element in self.interface_float_adjustments:
-            obj = builder.get_object(element)
-            exec('self.'+element+' = obj.get_value()')
+            obj = builder.get_object(element[0])
+            exec('self.'+element[0]+' = obj.get_value()')
+
+        for element in self.interface_colorbuttons:
+
+            colorbtn = builder.get_object(element[0])
+            objcolor = colorbtn.get_color()
+            alpha = colorbtn.get_alpha()
+            exec('self.'+element[0]+' = ((float(objcolor.red))/65535.0, (float(objcolor.green))/65535.0, (float(objcolor.blue))/65535.0, (float(alpha))/65535.0)')
 
         for element in self.interface_lists:
-            exec('self.'+element+' = []')
-            the_liststore = builder.get_object(element)
+            exec('self.'+element[0]+' = []')
+            the_liststore = builder.get_object(element[0])
             ncolumns = the_liststore.get_n_columns()
             for row in the_liststore:
                 final_row = []
                 for c in range(0,ncolumns):
                     final_row.append(row.model[row.iter][c])
                 print (final_row)
-                exec('self.'+element+'.append(final_row)')
+                exec('self.'+element[0]+'.append(final_row)')
         
