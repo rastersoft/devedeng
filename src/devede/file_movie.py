@@ -183,6 +183,7 @@ class file_movie(devede.interface_manager.interface_manager):
 
         # elements in page SUBTITLES
         self.wsubtitles_list = self.builder.get_object("subtitles_list")
+        self.wtreview_subtitles = self.builder.get_object("treeview_subtitles")
         self.wdel_subtitles = self.builder.get_object("del_subtitles")
 
         # elements in page VIDEO OPTIONS
@@ -254,6 +255,7 @@ class file_movie(devede.interface_manager.interface_manager):
 
         self.update_ui(self.builder)
         self.on_aspect_classic_toggled(None)
+        self.on_treeview_subtitles_cursor_changed(None)
 
     def on_aspect_classic_toggled(self,b):
         
@@ -284,3 +286,27 @@ class file_movie(devede.interface_manager.interface_manager):
         subt = devede.ask_subtitles.ask_subtitles()
         if (subt.run()):
             self.wsubtitles_list.append([subt.filename, subt.encoding, subt.language, subt.put_upper])
+
+    def get_selected_subtitle(self):
+        
+        selection = self.wtreview_subtitles.get_selection()
+        model, treeiter = selection.get_selected()
+
+        if treeiter != None:
+            return ( (model, treeiter) )
+        else:
+            return ( (None, None) )
+
+    def on_del_subtitles_clicked(self,b):
+        
+        model, treeiter = self.get_selected_subtitle()
+        if (model != None):
+            model.remove(treeiter)
+
+    def on_treeview_subtitles_cursor_changed(self,b):
+        
+        model, treeiter = self.get_selected_subtitle()
+        if (model == None):
+            self.wdel_subtitles.set_sensitive(False)
+        else:
+            self.wdel_subtitles.set_sensitive(True)
