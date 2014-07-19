@@ -48,6 +48,12 @@ class dvd_menu(devede.interface_manager.interface_manager):
         
         self.add_group("at_startup", ["menu_show_at_startup", "play_first_title_at_startup"], "menu_show_at_startup")
         
+        self.add_fontbutton("title_font", "Sans 14", self.update_preview)
+        self.add_fontbutton("entry_font", "Sans 12", self.update_preview)
+        
+        self.add_filebutton("background_picture", None, self.update_preview)
+        self.add_filebutton("background_music", None, self.update_preview)
+        
     def update_preview(self,b=None):
         
         print("Cambiado algo")
@@ -82,4 +88,5 @@ class dvd_menu(devede.interface_manager.interface_manager):
     def on_accept_clicked(self,b):
 
         self.store_ui(self.builder)
+        print (self.entry_font)
         self.wmenu.destroy()

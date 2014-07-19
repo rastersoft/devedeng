@@ -35,6 +35,8 @@ class interface_manager(GObject.GObject):
         self.interface_integer_adjustments = []
         self.interface_lists = []
         self.interface_colorbuttons = []
+        self.interface_fontbuttons = []
+        self.interface_filebuttons = []
 
     def add_group(self,group_name,radiobutton_list,default_value,callback = None):
         """ Adds a group of radiobuttons and creates an internal variable with
@@ -106,6 +108,22 @@ class interface_manager(GObject.GObject):
 
         exec('self.'+colorbutton_name+' = default_value')
         self.interface_colorbuttons.append( (colorbutton_name, callback ))
+    
+    def add_fontbutton(self,fontbutton_name, default_value, callback = None):
+        """ Adds an internal variable with the name text_name, linked to an
+            element with the same name (must be a Gtk.FontButton).
+            The default value must be a string with the font values """
+        
+        exec('self.'+fontbutton_name+' = default_value')
+        self.interface_fontbuttons.append( (fontbutton_name, callback ))
+    
+    def add_filebutton(self,filebutton_name, default_value, callback = None):
+        """ Adds an internal variable with the name text_name, linked to an
+            element with the same name (must be a Gtk.FileButton).
+            The default value must be a string with the font values """
+        
+        exec('self.'+filebutton_name+' = default_value')
+        self.interface_filebuttons.append( (filebutton_name, callback ))
 
     def add_show_hide(self,element_name,to_show,to_hide):
         """ Adds an element that can be active or inactive, and two lists of elements.
@@ -194,13 +212,31 @@ class interface_manager(GObject.GObject):
 
         for element in self.interface_colorbuttons:
             value = eval('self.'+element[0])
-            colorbtn = builder.get_object(element[0])
+            obj = builder.get_object(element[0])
             objcolor = Gdk.Color(int(value[0]*65535.0),int(value[1]*65535.0),int(value[2]*65535.0))
-            colorbtn.set_color(objcolor)
-            colorbtn.set_alpha(int(value[3]*65535.0))
+            obj.set_color(objcolor)
+            obj.set_alpha(int(value[3]*65535.0))
             callback = element[1]
             if (callback != None):
-                colorbtn.connect("color_set",callback)
+                obj.connect("color_set",callback)
+
+        for element in self.interface_fontbuttons:
+            value = eval('self.'+element[0])
+            obj = builder.get_object(element[0])
+            if (value != None):
+                obj.set_font(value)
+            callback = element[1]
+            if (callback != None):
+                obj.connect("font_set",callback)
+
+        for element in self.interface_filebuttons:
+            value = eval('self.'+element[0])
+            obj = builder.get_object(element[0])
+            if (value != None):
+                obj.set_filename(value)
+            callback = element[1]
+            if (callback != None):
+                obj.connect("file_set",callback)
 
         self.interface_show_hide_obj = {}
         for element in self.interface_show_hide:
@@ -325,11 +361,18 @@ class interface_manager(GObject.GObject):
             exec('self.'+element[0]+' = obj.get_value()')
 
         for element in self.interface_colorbuttons:
-
-            colorbtn = builder.get_object(element[0])
-            objcolor = colorbtn.get_color()
-            alpha = colorbtn.get_alpha()
+            obj = builder.get_object(element[0])
+            objcolor = obj.get_color()
+            alpha = obj.get_alpha()
             exec('self.'+element[0]+' = ((float(objcolor.red))/65535.0, (float(objcolor.green))/65535.0, (float(objcolor.blue))/65535.0, (float(alpha))/65535.0)')
+
+        for element in self.interface_fontbuttons:
+            obj = builder.get_object(element[0])
+            exec('self.'+element[0]+' = obj.get_font()')
+
+        for element in self.interface_filebuttons:
+            obj = builder.get_object(element[0])
+            exec('self.'+element[0]+' = obj.get_filename()')
 
         for element in self.interface_lists:
             exec('self.'+element[0]+' = []')
