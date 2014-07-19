@@ -27,6 +27,9 @@ class dvd_menu(devede.interface_manager.interface_manager):
         devede.interface_manager.interface_manager.__init__(self)
         self.config = devede.configuration_data.configuration.get_config()
 
+        self.default_background = os.path.join(self.config.pic_path,"backgrounds","default_bg.png")
+        self.default_sound = os.path.join(self.config.pic_path,"silence.ogg")
+
         self.add_toggle("dynamic_preview", self.config.menu_dynamic_preview)
 
         self.add_colorbutton("title_color", (0,0,0,1), self.update_preview)
@@ -45,27 +48,42 @@ class dvd_menu(devede.interface_manager.interface_manager):
         self.add_float_adjustment("margin_top", 12.5, self.update_preview)
         self.add_float_adjustment("margin_right", 10.0, self.update_preview)
         self.add_float_adjustment("margin_bottom", 12.5, self.update_preview)
+        self.add_float_adjustment("title_position", 10.0, self.update_preview)
 
         self.add_group("at_startup", ["menu_show_at_startup", "play_first_title_at_startup"], "menu_show_at_startup")
 
         self.add_fontbutton("title_font", "Sans 14", self.update_preview)
         self.add_fontbutton("entry_font", "Sans 12", self.update_preview)
 
-        self.add_filebutton("background_picture", None, self.update_preview)
-        self.add_filebutton("background_music", None, self.update_preview)
+        self.add_filebutton("background_picture", self.default_background, self.update_preview)
+        self.add_filebutton("background_music", self.default_sound, self.update_preview)
+
 
     def update_preview(self,b=None):
 
         self.store_ui(self.builder)
 
+    def on_default_background_clicked(self,b):
+        
+        self.background_picture = self.default_background
+        self.update_ui(self.builder)
+    
+    def on_no_sound_clicked(self,b):
+        
+        self.background_music = self.default_sound
+        self.update_ui(self.builder)
 
     def on_dynamic_preview_toggled(self,b):
 
         self.config.menu_dynamic_preview = self.wdynamic_preview.get_active()
         if (self.config.menu_dynamic_preview):
             self.wframe_preview.show_all()
+            self.wframe_preview_controls.show_all()
+            self.wpreview_menu.set_sensitive(False)
         else:
             self.wframe_preview.hide()
+            self.wframe_preview_controls.hide()
+            self.wpreview_menu.set_sensitive(True)
 
 
     def show_configuration(self):
@@ -78,7 +96,9 @@ class dvd_menu(devede.interface_manager.interface_manager):
 
         self.wdynamic_preview = self.builder.get_object("dynamic_preview")
         self.wframe_preview = self.builder.get_object("frame_preview")
+        self.wframe_preview_controls = self.builder.get_object("frame_preview_controls")
         self.wmenu = self.builder.get_object("menu")
+        self.wpreview_menu = self.builder.get_object("preview_menu")
 
         self.wmenu.show_all()
 
@@ -95,3 +115,6 @@ class dvd_menu(devede.interface_manager.interface_manager):
 
         self.restore_ui()
         self.wmenu.destroy()
+    
+    def on_preview_menu_clicked(self,b):
+        pass
