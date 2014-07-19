@@ -108,20 +108,20 @@ class interface_manager(GObject.GObject):
 
         exec('self.'+colorbutton_name+' = default_value')
         self.interface_colorbuttons.append( (colorbutton_name, callback ))
-    
+
     def add_fontbutton(self,fontbutton_name, default_value, callback = None):
         """ Adds an internal variable with the name text_name, linked to an
             element with the same name (must be a Gtk.FontButton).
             The default value must be a string with the font values """
-        
+
         exec('self.'+fontbutton_name+' = default_value')
         self.interface_fontbuttons.append( (fontbutton_name, callback ))
-    
+
     def add_filebutton(self,filebutton_name, default_value, callback = None):
         """ Adds an internal variable with the name text_name, linked to an
             element with the same name (must be a Gtk.FileButton).
             The default value must be a string with the font values """
-        
+
         exec('self.'+filebutton_name+' = default_value')
         self.interface_filebuttons.append( (filebutton_name, callback ))
 
@@ -384,4 +384,47 @@ class interface_manager(GObject.GObject):
                     final_row.append(row.model[row.iter][c])
                 print (final_row)
                 exec('self.'+element[0]+'.append(final_row)')
-        
+
+    def save_ui(self):
+        """ Makes a copy of all the UI variables """
+
+        for element in self.interface_groups:
+            exec('self.'+element+'_backup = self.'+element)
+        for element in self.interface_toggles:
+            exec('self.'+element[0]+'_backup = self.'+element[0])
+        for element in self.interface_text:
+            exec('self.'+element[0]+'_backup = self.'+element[0])
+        for element in self.interface_integer_adjustments:
+            exec('self.'+element[0]+'_backup = self.'+element[0])
+        for element in self.interface_float_adjustments:
+            exec('self.'+element[0]+'_backup = self.'+element[0])
+        for element in self.interface_colorbuttons:
+            exec('self.'+element[0]+'_backup = self.'+element[0])
+        for element in self.interface_fontbuttons:
+            exec('self.'+element[0]+'_backup = self.'+element[0])
+        for element in self.interface_filebuttons:
+            exec('self.'+element[0]+'_backup = self.'+element[0])
+        for element in self.interface_lists:
+            exec('self.'+element[0]+'_backup = self.'+element[0])
+
+    def restore_ui(self):
+        """ Restores a copy of all the UI variables """
+
+        for element in self.interface_groups:
+            exec('self.'+element+' = self.'+element+'_backup')
+        for element in self.interface_toggles:
+            exec('self.'+element[0]+' = self.'+element[0]+'_backup')
+        for element in self.interface_text:
+            exec('self.'+element[0]+' = self.'+element[0]+'_backup')
+        for element in self.interface_integer_adjustments:
+            exec('self.'+element[0]+' = self.'+element[0]+'_backup')
+        for element in self.interface_float_adjustments:
+            exec('self.'+element[0]+' = self.'+element[0]+'_backup')
+        for element in self.interface_colorbuttons:
+            exec('self.'+element[0]+' = self.'+element[0]+'_backup')
+        for element in self.interface_fontbuttons:
+            exec('self.'+element[0]+' = self.'+element[0]+'_backup')
+        for element in self.interface_filebuttons:
+            exec('self.'+element[0]+' = self.'+element[0]+'_backup')
+        for element in self.interface_lists:
+            exec('self.'+element[0]+' = self.'+element[0]+'_backup')

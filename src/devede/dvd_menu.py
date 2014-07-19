@@ -35,31 +35,32 @@ class dvd_menu(devede.interface_manager.interface_manager):
         self.add_colorbutton("shadow_color", (0,0,0,0), self.update_preview)
         self.add_colorbutton("selected_color", (0,1,1,1), self.update_preview)
         self.add_colorbutton("background_color", (0,0,0,0.75), self.update_preview)
-        
+
         self.add_text("title_text", None, self.update_preview)
-        
+
         self.add_group("position_vertical", ["top", "middle", "bottom"], "middle", self.update_preview)
         self.add_group("position_horizontal", ["left", "center", "right"], "center", self.update_preview)
-        
+
         self.add_float_adjustment("margin_left", 10.0, self.update_preview)
         self.add_float_adjustment("margin_top", 12.5, self.update_preview)
         self.add_float_adjustment("margin_right", 10.0, self.update_preview)
         self.add_float_adjustment("margin_bottom", 12.5, self.update_preview)
-        
+
         self.add_group("at_startup", ["menu_show_at_startup", "play_first_title_at_startup"], "menu_show_at_startup")
-        
+
         self.add_fontbutton("title_font", "Sans 14", self.update_preview)
         self.add_fontbutton("entry_font", "Sans 12", self.update_preview)
-        
+
         self.add_filebutton("background_picture", None, self.update_preview)
         self.add_filebutton("background_music", None, self.update_preview)
-        
+
     def update_preview(self,b=None):
-        
-        print("Cambiado algo")
+
+        self.store_ui(self.builder)
+
 
     def on_dynamic_preview_toggled(self,b):
-        
+
         self.config.menu_dynamic_preview = self.wdynamic_preview.get_active()
         if (self.config.menu_dynamic_preview):
             self.wframe_preview.show_all()
@@ -82,11 +83,15 @@ class dvd_menu(devede.interface_manager.interface_manager):
         self.wmenu.show_all()
 
         self.update_ui(self.builder)
+        self.save_ui()
         self.on_dynamic_preview_toggled(None)
 
 
     def on_accept_clicked(self,b):
 
-        self.store_ui(self.builder)
-        print (self.entry_font)
+        self.wmenu.destroy()
+
+    def on_cancel_clicked(self,b):
+
+        self.restore_ui()
         self.wmenu.destroy()
