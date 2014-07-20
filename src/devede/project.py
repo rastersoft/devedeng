@@ -31,7 +31,7 @@ class devede_project:
         self.config  = devede.configuration_data.configuration.get_config()
 
         self.disc_type = self.config.disc_type
-        self.menu = devede.dvd_menu.dvd_menu()
+        self.menu = devede.dvd_menu.dvd_menu(self)
 
         self.current_title = None
 
@@ -54,7 +54,6 @@ class devede_project:
         self.wframe_menu = builder.get_object("frame_menu")
         self.wcreate_menu = builder.get_object("create_menu")
         self.wmenu_options = builder.get_object("menu_options")
-        self.wpreview_menu = builder.get_object("preview_menu")
 
 
         self.wadd_file = builder.get_object("add_file")
@@ -123,6 +122,14 @@ class devede_project:
             return ( (None, -1, None, None) )
 
 
+    def get_all_files(self):
+
+        retval = []
+
+        for row in self.wfiles.get_model():
+            retval.append(row.model[row.iter][0])
+        return retval
+
 
     def set_interface_status(self,b):
 
@@ -137,7 +144,6 @@ class devede_project:
 
         status = self.wcreate_menu.get_active()
         self.wmenu_options.set_sensitive(status)
-        self.wpreview_menu.set_sensitive(status)
 
         (element, position, model, treeiter) = self.get_current_file()
         if (element == None):

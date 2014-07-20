@@ -257,7 +257,7 @@ class file_movie(devede.interface_manager.interface_manager):
         self.on_treeview_subtitles_cursor_changed(None)
 
     def on_aspect_classic_toggled(self,b):
-        
+
         status = self.waspect_classic.get_active()
         if (status):
             self.wadd_black_bars_pic.set_from_file(os.path.join(self.config.pic_path,"to_classic_blackbars.png"))
@@ -281,13 +281,13 @@ class file_movie(devede.interface_manager.interface_manager):
         self.builder = None
 
     def on_add_subtitles_clicked(self,b):
-        
+
         subt = devede.ask_subtitles.ask_subtitles()
         if (subt.run()):
             self.wsubtitles_list.append([subt.filename, subt.encoding, subt.language, subt.put_upper])
 
     def get_selected_subtitle(self):
-        
+
         selection = self.wtreview_subtitles.get_selection()
         model, treeiter = selection.get_selected()
 
@@ -297,13 +297,13 @@ class file_movie(devede.interface_manager.interface_manager):
             return ( (None, None) )
 
     def on_del_subtitles_clicked(self,b):
-        
+
         model, treeiter = self.get_selected_subtitle()
         if (model != None):
             model.remove(treeiter)
 
     def on_treeview_subtitles_cursor_changed(self,b):
-        
+
         model, treeiter = self.get_selected_subtitle()
         if (model == None):
             self.wdel_subtitles.set_sensitive(False)
