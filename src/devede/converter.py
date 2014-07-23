@@ -17,6 +17,7 @@
 
 import devede.configuration_data
 import devede.mplayer_detector
+import devede.avconv_converter
 
 class converter:
 
@@ -32,7 +33,8 @@ class converter:
     def __init__(self):
 
         self.config = devede.configuration_data.configuration.get_config()
-        self.c = [devede.mplayer_detector.mplayer_detector]
+        # List of classes with conversion capabilities, in order of preference
+        self.c = [devede.mplayer_detector.mplayer_detector, devede.avconv_converter.avconv_converter]
 
         self.analizers = {}
         self.default_analizer = None
@@ -111,3 +113,11 @@ class converter:
             return self.default_analizer
         else:
             return self.analizers[self.config.film_analizer]
+
+    def get_menu_converter(self):
+        """ returns a class for the desired menu converter, or the most priviledged if the desired is not installed """
+
+        if (self.config.menu_converter == None) or (self.analizers.has_key(self.config.menu_converter) == False):
+            return self.default_menuer
+        else:
+            return self.menuers[self.config.menu_converter]

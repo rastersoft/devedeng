@@ -20,6 +20,7 @@ from gi.repository import Gtk,Gdk,GdkPixbuf
 import os
 import devede.configuration_data
 import devede.interface_manager
+import devede.message
 
 class dvd_menu(devede.interface_manager.interface_manager):
 
@@ -59,11 +60,27 @@ class dvd_menu(devede.interface_manager.interface_manager):
         self.add_fontbutton("entry_font", "Sans 18", self.update_preview)
 
         self.add_filebutton("background_picture", self.default_background, self.update_preview)
-        self.add_filebutton("background_music", self.default_sound, self.update_preview)
+        self.add_filebutton("background_music", self.default_sound, self.update_music)
 
         self.cached_menu_font = None
         self.cached_menu_size = 0
+        self.sound_length = 30
 
+
+    def update_music(self,b=None):
+
+        self.store_ui(self.builder)
+        cv = devede.converter.converter()
+        film_analizer = (cv.get_film_analizer())()
+        (video, audio, length) = film_analizer.analize_film_data(self.background_music,True)
+        if (video != 0):
+            devede.message.message_window(_("The selected file is a video, not an audio file"),_("Error"))
+            self.on_no_sound_clicked(None)
+        elif (audio == 0):
+            devede.message.message_window(_("The selected file is not an audio file"),_("Error"))
+            self.on_no_sound_clicked(None)
+        else:
+            self.sound_length = length
 
     def update_preview(self,b=None):
 
@@ -80,6 +97,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
     def on_no_sound_clicked(self,b):
 
         self.background_music = self.default_sound
+        self.sound_length = 30
         self.update_ui(self.builder)
 
 
@@ -116,10 +134,6 @@ class dvd_menu(devede.interface_manager.interface_manager):
 
         self.restore_ui()
         self.wmenu.destroy()
-
-
-    def on_preview_menu_clicked(self,b):
-        pass
 
 
     def get_font_params(self,font_name):
@@ -161,7 +175,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
         elif arrow_type == "menu_entry_selected":
             fgcolor = self.selected_color
         elif arrow_type == "menu_entry_activated":
-            fgcolor = ( 1.0 - self.selected_color[0], 1.0 - self.selected_color[1], 1.0 - self.selected_color[2] )
+            fgcolor = ( 1.0 - self.selected_color[0], 1.0 - self.selected_color[1], 1.0 - self.selected_color[2], self.selected_color[3])
         else:
             return
 
@@ -210,7 +224,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
             hard_borders = True
             font = self.entry_font
         elif text_type == "menu_entry_activated":
-            fgcolor = ( 1.0 - self.selected_color[0], 1.0 - self.selected_color[1], 1.0 - self.selected_color[2] )
+            fgcolor = ( 1.0 - self.selected_color[0], 1.0 - self.selected_color[1], 1.0 - self.selected_color[2], self.selected_color[3])
             bgcolor = None
             hard_borders = True
             font = self.entry_font
@@ -256,7 +270,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
         """ This method sets data that can't be changed from the dvd settings window.
             It must be called before painting a menu """
 
-        if self.config.PAL:
+        if self.project.pal:
             self.y=576.0
         else:
             self.y=480.0
@@ -270,6 +284,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
 
         self.sf = None
         self.current_shown_page = 0
+        self.wcurrent_page = None
 
 
     def paint_menu(self,paint_background, paint_selected, paint_activated, page_number):
@@ -325,7 +340,8 @@ class dvd_menu(devede.interface_manager.interface_manager):
         if (page_number >= self.pages) and (page_number > 0):
             page_number -= 1
 
-        self.wcurrent_page.set_text(_("Page %(X)d of %(Y)d") % {"X":page_number+1 , "Y":self.pages})
+        if self.wcurrent_page != None:
+            self.wcurrent_page.set_text(_("Page %(X)d of %(Y)d") % {"X":page_number+1 , "Y":self.pages})
         xl = left_margin_p
         xr = 720.0 - right_margin_p
         y = top_margin_p + entry_height/2.0
@@ -341,26 +357,26 @@ class dvd_menu(devede.interface_manager.interface_manager):
             y += entry_height
         if paint_arrows:
             if page_number == 0:
-                self.paint_base(xl, xr, y, 0)
                 if paint_background:
+                    self.paint_base(xl, xr, y, 0)
                     self.paint_arrow(xl, xr, y, "menu_entry", False)
                 if paint_selected:
                     self.paint_arrow(xl, xr, y, "menu_entry_selected", False)
                 if paint_activated:
                     self.paint_arrow(xl, xr, y, "menu_entry_activated", False)
             elif page_number == (self.pages - 1):
-                self.paint_base(xl, xr, y, 0)
                 if paint_background:
+                    self.paint_base(xl, xr, y, 0)
                     self.paint_arrow(xl, xr, y, "menu_entry", True)
                 if paint_selected:
                     self.paint_arrow(xl, xr, y, "menu_entry_selected", True)
                 if paint_activated:
                     self.paint_arrow(xl, xr, y, "menu_entry_activated", True)
             else:
-                self.paint_base(xl, xr, y, 1)
-                self.paint_base(xl, xr, y, 2)
                 med = (xl + xr) / 2.0
                 if paint_background:
+                    self.paint_base(xl, xr, y, 1)
+                    self.paint_base(xl, xr, y, 2)
                     self.paint_arrow(med, xr, y, "menu_entry", False)
                     self.paint_arrow(xl, med, y, "menu_entry", True)
                 if paint_selected:
@@ -411,9 +427,6 @@ class dvd_menu(devede.interface_manager.interface_manager):
         """ Callback to repaint the menu preview window when it
             sends the EXPOSE event """
 
-        if not self.config.menu_dynamic_preview:
-            return
-
         if (self.sf == None):
             self.paint_menu(True, self.wshow_as_selected.get_active(), False, self.current_shown_page)
             if (self.current_shown_page >= self.pages):
@@ -421,3 +434,36 @@ class dvd_menu(devede.interface_manager.interface_manager):
 
         cr.set_source_surface(self.sf)
         cr.paint()
+
+    def create_dvd_menus(self,base_path):
+
+        self.refresh_static_data()
+        cv = devede.converter.converter()
+        menu_folder = os.path.join(base_path,"menu")
+        try:
+            os.makedirs(menu_folder)
+        except:
+            pass
+        n_page = 0
+        self.pages = 1
+        processes = []
+        menu_converter = cv.get_menu_converter()
+        while n_page < self.pages:
+            self.sf = None
+            self.paint_menu(True, False, False, n_page)
+            self.sf.write_to_png(os.path.join(menu_folder,"menu_"+str(n_page)+"_bg.png"))
+            self.sf = None
+            self.paint_menu(False, False, False, n_page)
+            self.sf.write_to_png(os.path.join(menu_folder,"menu_"+str(n_page)+"_unselected_bg.png"))
+            self.sf = None
+            self.paint_menu(False, True, False, n_page)
+            self.sf.write_to_png(os.path.join(menu_folder,"menu_"+str(n_page)+"_selected_bg.png"))
+            self.sf = None
+            self.paint_menu(False, False, True, n_page)
+            self.sf.write_to_png(os.path.join(menu_folder,"menu_"+str(n_page)+"_active_bg.png"))
+            converter = menu_converter()
+            converter.create_mpg(n_page,self.background_music,self.sound_length,self.project.pal,menu_folder)
+            # add this process without dependencies
+            processes.append([converter, None])
+            n_page += 1
+        return processes

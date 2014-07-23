@@ -116,9 +116,21 @@ class file_movie(devede.interface_manager.interface_manager):
 
         cv = devede.converter.converter()
         film_analizer = (cv.get_film_analizer())()
-        if (film_analizer.get_film_data(self)):
+        if (film_analizer.get_film_data(self.file_name)):
             self.error = True
         else:
+            self.audio_list = film_analizer.audio_list
+            self.audio_streams = film_analizer.audio_streams
+            self.video_streams = film_analizer.video_streams
+            self.original_width = film_analizer.original_width
+            self.original_height = film_analizer.original_height
+            self.original_length = film_analizer.original_length
+            self.original_size = film_analizer.original_size
+            self.original_aspect_ratio = film_analizer.original_aspect_ratio
+            self.original_videorate = film_analizer.original_videorate
+            self.original_audiorate = film_analizer.original_audiorate
+            self.original_audiorate_uncompressed = film_analizer.original_audiorate_uncompressed
+            self.original_fps = film_analizer.original_fps
             self.error = False
 
 

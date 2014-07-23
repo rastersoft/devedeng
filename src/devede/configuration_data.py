@@ -33,6 +33,7 @@ class configuration(GObject.GObject):
                 configuration.current_configuration = None
         return configuration.current_configuration
 
+
     def fill_config(self):
 
         GObject.GObject.__init__(self)
@@ -78,7 +79,7 @@ class configuration(GObject.GObject):
         self.PAL = True
         self.tmp_folder = "/var/tmp"
         self.multicore = True
-        self.final_folder = None
+        self.final_folder = os.environ.get("HOME")
         self.sub_language = None
         self.sub_codepage = None
         self.film_analizer = None

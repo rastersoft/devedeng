@@ -23,6 +23,8 @@ import devede.ask
 import devede.add_files
 import devede.message
 import devede.dvd_menu
+import devede.create_disk_window
+import devede.runner
 
 class devede_project:
 
@@ -70,8 +72,10 @@ class devede_project:
 
         if (self.config.PAL):
             self.wuse_pal.set_active(True)
+            self.pal = True
         else:
             self.wuse_ntsc.set_active(True)
+            self.pal = False
 
         self.wcreate_menu.set_active(True)
 
@@ -140,10 +144,10 @@ class devede_project:
         self.wproperties_file.set_sensitive(True)
         self.wpreview_file.set_sensitive(True)
 
-        self.config.PAL = self.wuse_pal.get_active()
-
         status = self.wcreate_menu.get_active()
         self.wmenu_options.set_sensitive(status)
+
+        self.pal = self.wuse_pal.get_active()
 
         (element, position, model, treeiter) = self.get_current_file()
         if (element == None):
@@ -164,6 +168,7 @@ class devede_project:
 
     def on_use_pal_toggled(self,b):
 
+        self.config.PAL = self.wuse_pal.get_active()
         self.set_interface_status(None)
 
 
@@ -248,3 +253,15 @@ class devede_project:
     def on_menu_options_clicked(self,b):
 
         self.menu.show_configuration()
+
+    def on_create_disc_clicked(self,b):
+
+        data = devede.create_disk_window.create_disk_window()
+        if (not data.run()):
+            return
+
+        run_window = devede.runner.runner()
+
+        p = self.menu.create_dvd_menus(data.path)
+        run_window.add_processes(p)
+        run_window.run()
