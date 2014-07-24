@@ -49,6 +49,8 @@ class create_disk_window:
         self.shutdown = wshutdown.get_active()
         wcreate_window.destroy()
         if (retval == 1):
+            self.config.final_folder = self.path
+            self.config.save_config()
             return True
         else:
             return False

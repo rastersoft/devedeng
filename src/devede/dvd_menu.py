@@ -21,17 +21,17 @@ import os
 import devede.configuration_data
 import devede.interface_manager
 import devede.message
+import devede.mux_dvd_menu
 
 class dvd_menu(devede.interface_manager.interface_manager):
 
-    def __init__(self,project):
+    def __init__(self):
 
         self.entry_vertical_margin = 2.0
         self.entry_separation = 2.0
 
         devede.interface_manager.interface_manager.__init__(self)
         self.config = devede.configuration_data.configuration.get_config()
-        self.project = project
 
         self.default_background = os.path.join(self.config.pic_path,"backgrounds","default_bg.png")
         self.default_sound = os.path.join(self.config.pic_path,"silence.ogg")
@@ -101,10 +101,11 @@ class dvd_menu(devede.interface_manager.interface_manager):
         self.update_ui(self.builder)
 
 
-    def show_configuration(self):
+    def show_configuration(self, file_list):
 
         self.builder = Gtk.Builder()
         self.builder.set_translation_domain(self.config.gettext_domain)
+        self.file_list = file_list
 
         self.refresh_static_data()
 
@@ -270,14 +271,14 @@ class dvd_menu(devede.interface_manager.interface_manager):
         """ This method sets data that can't be changed from the dvd settings window.
             It must be called before painting a menu """
 
-        if self.project.pal:
+        if self.config.PAL:
             self.y=576.0
         else:
             self.y=480.0
 
         self.title_list = []
         counter = 0
-        for element in self.project.get_all_files():
+        for element in self.file_list:
             if element.show_in_menu:
                 self.title_list.append( (element, counter) )
             counter += 1
@@ -288,6 +289,8 @@ class dvd_menu(devede.interface_manager.interface_manager):
 
 
     def paint_menu(self,paint_background, paint_selected, paint_activated, page_number):
+
+        coordinates = []
 
         if self.sf == None:
             self.sf=cairo.ImageSurface(cairo.FORMAT_ARGB32,720,int(self.y))
@@ -316,9 +319,9 @@ class dvd_menu(devede.interface_manager.interface_manager):
             self.cr.restore()
             hmargin = self.title_horizontal * 720.0 / 100.0
             self.write_text(self.title_text, "title", 0 + hmargin, 720 + hmargin, self.title_vertical * self.y / 100.0, "center")
-        else:
-            self.cr.set_source_rgb(1.0,1.0,1.0)
-            self.cr.paint()
+#         else:
+#             self.cr.set_source_rgb(1.0,1.0,1.0)
+#             self.cr.paint()
 
         top_margin_p = self.y * self.margin_top / 100.0
         bottom_margin_p = self.y * self.margin_bottom / 100.0
@@ -345,7 +348,9 @@ class dvd_menu(devede.interface_manager.interface_manager):
         xl = left_margin_p
         xr = 720.0 - right_margin_p
         y = top_margin_p + entry_height/2.0
+        height = (self.cached_menu_size + self.entry_vertical_margin) / 2.0
         for entry in self.title_list[page_number*entries_per_page:(page_number+1)*entries_per_page]:
+            coordinates.append([xl, y-height, xr, y+height, "entry"])
             text = entry[0].title_name
             if paint_background:
                 self.paint_base(xl, xr, y, 0)
@@ -355,8 +360,10 @@ class dvd_menu(devede.interface_manager.interface_manager):
             if paint_activated:
                 self.write_text(text, "menu_entry_activated", xl, xr, y, self.position_horizontal)
             y += entry_height
+
         if paint_arrows:
             if page_number == 0:
+                coordinates.append([xl, y-height, xr, y+height, "right"])
                 if paint_background:
                     self.paint_base(xl, xr, y, 0)
                     self.paint_arrow(xl, xr, y, "menu_entry", False)
@@ -365,6 +372,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
                 if paint_activated:
                     self.paint_arrow(xl, xr, y, "menu_entry_activated", False)
             elif page_number == (self.pages - 1):
+                coordinates.append([xl, y-height, xr, y+height, "left"])
                 if paint_background:
                     self.paint_base(xl, xr, y, 0)
                     self.paint_arrow(xl, xr, y, "menu_entry", True)
@@ -374,6 +382,8 @@ class dvd_menu(devede.interface_manager.interface_manager):
                     self.paint_arrow(xl, xr, y, "menu_entry_activated", True)
             else:
                 med = (xl + xr) / 2.0
+                coordinates.append([xl, y-height, med, y+height, "left"])
+                coordinates.append([med, y-height, xr, y+height, "right"])
                 if paint_background:
                     self.paint_base(xl, xr, y, 1)
                     self.paint_base(xl, xr, y, 2)
@@ -385,6 +395,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
                 if paint_activated:
                     self.paint_arrow(med, xr, y, "menu_entry_activated", False)
                     self.paint_arrow(xl, med, y, "menu_entry_activated", True)
+        return coordinates
 
     def paint_base(self,xl, xr, y, type_b):
 
@@ -435,8 +446,74 @@ class dvd_menu(devede.interface_manager.interface_manager):
         cr.set_source_surface(self.sf)
         cr.paint()
 
-    def create_dvd_menus(self,base_path):
+    def create_menu_stream(self,path,n_page,coordinates):
 
+        """ Creates the menu XML file """
+
+        xml_file=open(os.path.join(path,"menu_"+str(n_page)+".xml"),"w")
+        xml_file.write('<subpictures>\n\t<stream>\n\t\t<spu force="yes" start="00:00:00.00"')# transparent="000000"')
+        xml_file.write(' image="'+os.path.join(path,"menu_"+str(n_page)+'_unselected_bg.png"'))
+        xml_file.write(' highlight="'+os.path.join(path,"menu_"+str(n_page)+'_selected_bg.png"'))
+        xml_file.write(' select="'+os.path.join(path,"menu_"+str(n_page)+'_active_bg.png"'))
+        xml_file.write(' >\n')
+        n_elements = 0
+        has_next = False
+        has_previous = False
+        for e in coordinates:
+            if (e[4] == "entry"):
+                n_elements += 1
+                continue
+            if (e[4] == "right"):
+                has_next = True
+                continue
+            if (e[4] == "left"):
+                has_previous = True
+                continue
+
+        counter = 0
+        for element in coordinates:
+            xl = int(element[0])
+            yt = int(element[1])
+            xr = int(element[2])
+            yb = int(element[3])
+            if (xl % 2) == 1:
+                xl += 1
+            if (yt % 2) == 1:
+                yt += 1
+            if (xr % 2) == 1:
+                xr -= 1
+            if (yb % 2) == 1:
+                yb -= 1
+            xml_file.write('\t\t\t<button name="boton'+str(n_page)+"x"+str(counter))
+            xml_file.write('" x0="'+str(xl)+'" y0="'+str(yt)+'" x1="'+str(xr)+'" y1="'+str(yb)+'"')
+            if counter > 0:
+                xml_file.write(' up="boton'+str(n_page)+"x")
+                if counter >= n_elements:
+                    xml_file.write(str(n_elements - 1))
+                else:
+                    xml_file.write(str(counter-1))
+                xml_file.write('"')
+
+            if (counter < (n_elements - 1)) or ((counter < n_elements) and (has_next or has_previous)):
+                xml_file.write(' down="boton'+str(n_page)+"x")
+                xml_file.write(str(counter+1))
+                xml_file.write('"')
+            if (element[4] == "left") and (has_next):
+                xml_file.write(' right="boton'+str(n_page)+'x'+str(counter+1)+'"')
+            if (element[4] == "right") and (has_previous):
+                xml_file.write(' left="boton'+str(n_page)+'x'+str(counter-1)+'"')
+            xml_file.write(' > </button>\n')
+            counter += 1
+        
+        xml_file.write("</spu>\n</stream>\n</subpictures>\n")
+        xml_file.close()
+        
+        return False
+
+
+    def create_dvd_menus(self, file_list, base_path):
+
+        self.file_list = file_list
         self.refresh_static_data()
         cv = devede.converter.converter()
         menu_folder = os.path.join(base_path,"menu")
@@ -450,7 +527,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
         menu_converter = cv.get_menu_converter()
         while n_page < self.pages:
             self.sf = None
-            self.paint_menu(True, False, False, n_page)
+            coordinates = self.paint_menu(True, False, False, n_page)
             self.sf.write_to_png(os.path.join(menu_folder,"menu_"+str(n_page)+"_bg.png"))
             self.sf = None
             self.paint_menu(False, False, False, n_page)
@@ -461,9 +538,14 @@ class dvd_menu(devede.interface_manager.interface_manager):
             self.sf = None
             self.paint_menu(False, False, True, n_page)
             self.sf.write_to_png(os.path.join(menu_folder,"menu_"+str(n_page)+"_active_bg.png"))
+            self.create_menu_stream(menu_folder, n_page, coordinates)
             converter = menu_converter()
-            converter.create_mpg(n_page,self.background_music,self.sound_length,self.project.pal,menu_folder)
+            converter.create_mpg(n_page,self.background_music,self.sound_length,self.config.PAL,menu_folder)
             # add this process without dependencies
             processes.append([converter, None])
+            muxer = devede.mux_dvd_menu.mux_dvd_menu()
+            muxer.create_mpg(n_page,menu_folder)
+            # the muxer process depends of the converter process
+            processes.append([muxer, [converter]])
             n_page += 1
         return processes

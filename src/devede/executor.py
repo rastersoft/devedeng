@@ -33,11 +33,14 @@ class executor(GObject.GObject):
         GObject.GObject.__init__(self)
 
         self.config = devede.configuration_data.configuration.get_config()
+        self.channel_stdin = None
         self.channel_stdout = None
         self.channel_stderr = None
         self.text = ""
         self.stdout_data = ""
         self.stderr_data = ""
+        self.stdin_file = None
+        self.stdout_file = None
 
     def run(self, progress_bar):
 
@@ -48,7 +51,7 @@ class executor(GObject.GObject):
         self.progress_bar[0].show_all()
 
     def remove_ansi(self,line):
-
+ 
         output=""
         while True:
             pos=line.find("\033[") # try with double-byte ESC
@@ -59,10 +62,10 @@ class executor(GObject.GObject):
             if pos==-1: # no ANSI characters; we ended
                 output+=line
                 break
-
+ 
             output+=line[:pos]
             line=line[pos+jump:]
-
+ 
             while True:
                 if len(line)==0:
                     break
@@ -76,23 +79,60 @@ class executor(GObject.GObject):
 
     def launch_process(self,command):
 
-        self.config.append_log("Launching:",False)
+        self.launch_command = "Launching:"
         for e in command:
-            self.config.append_log(e+" ")
+            self.launch_command += (e+" ")
 
-        self.handle = subprocess.Popen(command,stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+        if (self.stdin_file != None):
+            self.handle = subprocess.Popen(command,stdin = subprocess.PIPE, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            self.channel_stdin = GLib.IOChannel(self.handle.stdin.fileno())
+            self.channel_stdin.add_watch(GLib.IO_OUT | GLib.IO_HUP, self.read_stdin_from_file)
+            self.file_in = open(self.stdin_file,"rb")
+        else:
+            self.handle = subprocess.Popen(command,stdout = subprocess.PIPE, stderr = subprocess.PIPE)
         self.channel_stdout = GLib.IOChannel(self.handle.stdout.fileno())
         self.channel_stderr = GLib.IOChannel(self.handle.stderr.fileno())
-        self.channel_stdout.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stdout)
+        if (self.stdout_file != None):
+            self.channel_stdout.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stdout_to_file)
+            self.file_out = open(self.stdout_file,"wb")
+        else:
+            self.channel_stdout.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stdout)
         self.channel_stderr.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stderr)
         self.stdout_buf = ""
         self.stderr_buf = ""
+
+
+    def read_stdout_to_file(self,source,condition):
+
+        if (condition != GLib.IO_IN):
+            self.channel_stdout = None
+            if ((self.channel_stderr == None) and (self.channel_stdin == None)):
+                self.wait_end()
+            return False
+        else:
+            line_data = self.handle.stdout.read1(4096)
+            self.file_out.write(line_data)
+            return True
+
+    def read_stdin_from_file(self,source,condition):
+
+        line_data = self.file_in.read1(4096)
+        if (len(line_data) == 0):
+            self.channel_stdin = None
+            self.handle.stdin.close()
+            if ((self.channel_stderr == None) and (self.channel_stdout == None)):
+                self.wait_end()
+            return False
+        else:
+            self.handle.stdin.write(line_data)
+            return True
+
 
     def read_stdout(self,source,condition):
 
         if (condition != GLib.IO_IN):
             self.channel_stdout = None
-            if (self.channel_stderr == None):
+            if ((self.channel_stderr == None) and (self.channel_stdin == None)):
                 self.wait_end()
             return False
         else:
@@ -109,11 +149,12 @@ class executor(GObject.GObject):
                 self.process_stdout(final_data)
             return True
 
+
     def read_stderr(self,source,condition):
 
         if (condition != GLib.IO_IN):
             self.channel_stderr = None
-            if (self.channel_stdout == None):
+            if ((self.channel_stdout == None) and (self.channel_stdin == None)):
                 self.wait_end()
             return False
         else:
@@ -142,6 +183,7 @@ class executor(GObject.GObject):
     def wait_end(self):
 
         self.config.append_log(self.text)
+        self.config.append_log(self.launch_command)
         self.config.append_log(self.stdout_data)
         self.config.append_log(self.stderr_data)
         retval = self.handle.wait()

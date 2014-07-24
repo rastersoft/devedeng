@@ -33,7 +33,7 @@ class devede_project:
         self.config  = devede.configuration_data.configuration.get_config()
 
         self.disc_type = self.config.disc_type
-        self.menu = devede.dvd_menu.dvd_menu(self)
+        self.menu = devede.dvd_menu.dvd_menu()
 
         self.current_title = None
 
@@ -252,7 +252,7 @@ class devede_project:
 
     def on_menu_options_clicked(self,b):
 
-        self.menu.show_configuration()
+        self.menu.show_configuration(self.get_all_files())
 
     def on_create_disc_clicked(self,b):
 
@@ -262,6 +262,6 @@ class devede_project:
 
         run_window = devede.runner.runner()
 
-        p = self.menu.create_dvd_menus(data.path)
+        p = self.menu.create_dvd_menus(self.get_all_files(), data.path)
         run_window.add_processes(p)
         run_window.run()

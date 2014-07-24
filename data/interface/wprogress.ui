@@ -6,6 +6,7 @@
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Creating...</property>
     <property name="resizable">False</property>
+    <property name="modal">True</property>
     <property name="window_position">center</property>
     <property name="icon_name">devede.svg</property>
     <property name="deletable">False</property>
