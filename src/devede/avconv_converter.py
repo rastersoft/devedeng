@@ -59,17 +59,19 @@ class avconv_converter(devede.executor.executor):
             self.command_var.append("-vol")
             self.command_var.append(str((256*file_project.volume)/100))
         
-        if (file_project.audio_delay!=0.0) and (file_project.copy_sound==False) and (file_project.no_reencode_audio_video==False):
+        if (file_project.audio_delay != 0.0) and (file_project.copy_sound==False) and (file_project.no_reencode_audio_video==False):
             self.command_var.append("-itsoffset")
             self.command_var.append(str(file_project.audio_delay))
-            self.command_var.append("-i")
-            self.command_var.append(file_project.file_name)
-            self.command_var.append("-map")
-            self.command_var.append("1:0")
+
+        self.command_var.append("-i")
+        self.command_var.append(file_project.file_name)
+        self.command_var.append("-map")
+        self.command_var.append("1:0")
+        if (not file_project.copy_sound) and (not file_project.no_reencode_audio_video):
             for l in range (file_project.audio_streams):
                 self.command_var.append("-map")
                 self.command_var.append("0"+":"+str(l+1))
-        
+
         if (file_project.no_reencode_audio_video==False):
             cmd_line=""
             

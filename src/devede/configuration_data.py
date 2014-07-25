@@ -168,7 +168,7 @@ class configuration(GObject.GObject):
                 config_data.write("temp_folder:"+str(self.tmp_folder)+"\n")
             config_data.write("multicore:")
             if (self.multicore):
-                config_data.write("2\n")
+                config_data.write("0\n")
             else:
                 config_data.write("1\n")
             if (self.final_folder != None):
