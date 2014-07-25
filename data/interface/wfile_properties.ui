@@ -31,13 +31,13 @@
   </object>
   <object class="GtkListStore" id="subtitles_list">
     <columns>
-      <!-- column-name Subtitles file -->
+      <!-- column-name Subtitles -->
       <column type="gchararray"/>
       <!-- column-name Codepage -->
       <column type="gchararray"/>
       <!-- column-name Language -->
       <column type="gchararray"/>
-      <!-- column-name Put upper -->
+      <!-- column-name Put -->
       <column type="gboolean"/>
     </columns>
   </object>
@@ -1025,7 +1025,7 @@
                                               </packing>
                                             </child>
                                             <child>
-                                              <object class="GtkRadioButton" id="size_720x480">
+                                              <object class="GtkRadioButton" id="size_720x480_ntsc">
                                                 <property name="label" translatable="yes">720x480</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
@@ -1042,7 +1042,7 @@
                                               </packing>
                                             </child>
                                             <child>
-                                              <object class="GtkRadioButton" id="size_704x480">
+                                              <object class="GtkRadioButton" id="size_704x480_ntsc">
                                                 <property name="label" translatable="yes">704x480</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
@@ -1059,7 +1059,7 @@
                                               </packing>
                                             </child>
                                             <child>
-                                              <object class="GtkRadioButton" id="size_480x480">
+                                              <object class="GtkRadioButton" id="size_480x480_ntsc">
                                                 <property name="label" translatable="yes">480x480</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
@@ -1076,7 +1076,7 @@
                                               </packing>
                                             </child>
                                             <child>
-                                              <object class="GtkRadioButton" id="size_352x480">
+                                              <object class="GtkRadioButton" id="size_352x480_ntsc">
                                                 <property name="label" translatable="yes">352x480</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
@@ -1093,7 +1093,7 @@
                                               </packing>
                                             </child>
                                             <child>
-                                              <object class="GtkRadioButton" id="size_352x240">
+                                              <object class="GtkRadioButton" id="size_352x240_ntsc">
                                                 <property name="label" translatable="yes">352x240</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>

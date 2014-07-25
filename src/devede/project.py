@@ -177,6 +177,7 @@ class devede_project:
 
         ask = devede.ask.ask_window()
         if (ask.run(_("Abort the current DVD and exit?"),_("Exit DeVeDe"))):
+            print(self.config.get_log())
             Gtk.main_quit()
         return True
 
@@ -261,7 +262,17 @@ class devede_project:
             return
 
         run_window = devede.runner.runner()
-
-        p = self.menu.create_dvd_menus(self.get_all_files(), data.path)
+        file_movies = self.get_all_files()
+        p = self.menu.create_dvd_menus(file_movies, data.path)
         run_window.add_processes(p)
+        movie_folder = os.path.join(data.path,"movies")
+        try:
+            os.makedirs(movie_folder)
+        except:
+            pass
+        counter = 0
+        for movie in file_movies:
+            p = movie.do_conversion(os.path.join(movie_folder,"movie_"+str(counter)+".mpg"))
+            run_window.add_processes(p)
+            counter += 1
         run_window.run()

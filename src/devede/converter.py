@@ -44,6 +44,7 @@ class converter:
         self.default_converter = None
         self.menuers = {}
         self.default_menuer = None
+        self.discs = []
 
         for element in self.c:
             if (element.check_is_installed() == False):
@@ -61,6 +62,9 @@ class converter:
                 self.converters[name] = element
                 if (self.default_converter == None):
                     self.default_converter = element
+                for types in element.disc_types:
+                    if self.discs.count(types) == 0:
+                        self.discs.append(types)
             if (element.supports_menu):
                 self.menuers[name] = element
                 if (self.default_menuer == None):
@@ -121,3 +125,11 @@ class converter:
             return self.default_menuer
         else:
             return self.menuers[self.config.menu_converter]
+    
+    def get_disc_converter(self):
+        """ returns a class for the desired disc converter, or the most priviledged if the desired is not installed """
+
+        if (self.config.film_converter == None) or (self.analizers.has_key(self.config.film_converter) == False):
+            return self.default_converter
+        else:
+            return self.converters[self.config.film_converter]

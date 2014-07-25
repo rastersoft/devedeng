@@ -56,7 +56,7 @@ class runner(GObject.GObject):
             self.progress_bars.append([f, p, None])
             box.pack_start(f,True,True,0)
         box.set_orientation(Gtk.Orientation.VERTICAL)
-        self.total = 0
+        self.total_processes = 0
 
     def add_processes(self,processes):
         for p in processes:
@@ -94,7 +94,7 @@ class runner(GObject.GObject):
                 else:
                     self.progress_bars = []
                     break
-        self.wtotal.set_text(str(len(self.proc_list)-self.total)+"/"+str(self.total))
+        self.wtotal.set_text(str(self.total_processes - len(self.proc_list))+"/"+str(self.total_processes))
 
     def process_ended(self,process, retval):
 

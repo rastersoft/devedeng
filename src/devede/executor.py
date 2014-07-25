@@ -83,6 +83,8 @@ class executor(GObject.GObject):
         for e in command:
             self.launch_command += (e+" ")
 
+        print(self.launch_command)
+
         if (self.stdin_file != None):
             self.handle = subprocess.Popen(command,stdin = subprocess.PIPE, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
             self.channel_stdin = GLib.IOChannel(self.handle.stdin.fileno())

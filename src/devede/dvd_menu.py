@@ -540,7 +540,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
             self.sf.write_to_png(os.path.join(menu_folder,"menu_"+str(n_page)+"_active_bg.png"))
             self.create_menu_stream(menu_folder, n_page, coordinates)
             converter = menu_converter()
-            converter.create_mpg(n_page,self.background_music,self.sound_length,self.config.PAL,menu_folder)
+            converter.create_menu_mpeg(n_page,self.background_music,self.sound_length,self.config.PAL,menu_folder)
             # add this process without dependencies
             processes.append([converter, None])
             muxer = devede.mux_dvd_menu.mux_dvd_menu()

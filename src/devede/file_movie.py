@@ -66,7 +66,7 @@ class file_movie(devede.interface_manager.interface_manager):
             self.add_toggle("gop12", True)
 
         self.add_group("final_size_pal", ["size_auto", "size_1920x1080", "size_1280x720", "size_720x576", "size_704x576", "size_480x576","size_352x576", "size_352x288"], "size_auto")
-        self.add_group("final_size_ntsc", ["size_auto_ntsc", "size_1920x1080_ntsc", "size_1280x720_ntsc", "size_720x480", "size_704x480", "size_480x480","size_352x480", "size_352x240"], "size_auto_ntsc")
+        self.add_group("final_size_ntsc", ["size_auto_ntsc", "size_1920x1080_ntsc", "size_1280x720_ntsc", "size_720x480_ntsc", "size_704x480_ntsc", "size_480x480_ntsc","size_352x480_ntsc", "size_352x240_ntsc"], "size_auto_ntsc")
         self.add_group("aspect_ratio", ["aspect_auto", "aspect_classic", "aspect_wide"], "aspect_auto")
         self.add_group("scaling", ["add_black_bars", "scale_picture" ,"cut_picture"], "add_black_bars")
         self.add_group("rotation",["rotation_0","rotation_90","rotation_180","rotation_270"], "rotation_0")
@@ -97,7 +97,7 @@ class file_movie(devede.interface_manager.interface_manager):
 
         common_elements = ["gop12","video_rate_automatic","video_spinbutton","audio_rate_automatic","audio_spinbutton","format_pal","format_ntsc","spinbutton_volume","scale_volume","reset_volume",
                           "size_auto", "size_1920x1080", "size_1280x720", "size_720x576", "size_704x576", "size_480x576","size_352x576", "size_352x288",
-                          "size_auto_ntsc", "size_1920x1080_ntsc", "size_1280x720_ntsc", "size_720x480", "size_704x480", "size_480x480","size_352x480", "size_352x240",
+                          "size_auto_ntsc", "size_1920x1080_ntsc", "size_1280x720_ntsc", "size_720x480_ntsc", "size_704x480_ntsc", "size_480x480_ntsc","size_352x480_ntsc", "size_352x240_ntsc",
                           "aspect_auto","aspect_classic","aspect_wide","mirror_horizontal","mirror_vertical","add_black_bars","scale_picture","cut_picture",
                           "rotation_0","rotation_90","rotation_180","rotation_270","two_pass_encoding","deinterlace_none","deinterlace_ffmpeg","deinterlace_yadif",
                           "audio_delay_spinbutton","sound5_1","copy_sound"]
@@ -133,36 +133,146 @@ class file_movie(devede.interface_manager.interface_manager):
             self.original_fps = film_analizer.original_fps
             self.error = False
 
+        self.width_midle = -1
+        self.height_midle = -1
+        self.width_final = -1
+        self.height_final = -1
+        self.video_rate_final = self.video_rate
+        self.audio_rate_final = self.audio_rate
+        self.aspect_ratio_final = None
+
+    def get_max_resolution(self,rx,ry,aspect):
+        
+        tmpx = ry*aspect
+        tmpy = rx/aspect
+        if (tmpx > rx):
+            return tmpx,ry
+        else:
+            return rx,tmpy
+
+    def set_final_size_aspect(self):
+        
+        if self.format_pal:
+            final_size = self.final_size_pal
+        else:
+            final_size = self.final_size_ntsc[:-5] # remove the "_ntsc" from the string
+
+        # for divx or matroska, if the size and the aspect ratio is automatic, just don't change them
+        if ((self.disc_type == "divx") or (self.disc_type == "mkv")) and (final_size == "size_auto") and (self.aspect_ratio == "aspect_auto"):
+            self.width_midle = self.original_width
+            self.width_final = self.original_width
+            self.height_midle = self.original_height
+            self.height_final = self.original_height
+            self.aspect_ratio_final = self.original_aspect_ratio
+            return
+
+        # The steps are:
+        # - Decide the final aspect ratio
+        # - Calculate the midle size: the original video will be scaled to this size
+        # - Calculate the final size: the midle video will be cut to this size, or black bars will be added
+
+        aspect_wide = False
+        # first, decide the final aspect ratio
+        if (self.disc_type == "vcd") or (self.disc_type == "svcd") or (self.disc_type == "cvd"):
+            self.aspect_ratio_final = 4.0/3.0
+        else:
+            if (self.aspect_ratio == "aspect_auto"):
+                if (self.disc_type != "dvd"):
+                    self.aspect_ratio_final = self.original_aspect_ratio
+                else:
+                    if self.original_aspect_ratio >= 1.7:
+                        self.aspect_ratio_final = 16.0/9.0
+                        aspect_wide = True
+                    else:
+                        self.aspect_ratio_final = 4.0/3.0
+            elif (self.aspect_ratio == "aspect_classic"):
+                self.aspect_ratio_final = 4.0/3.0
+            else:
+                self.aspect_ratio_final = 16.0/9.0
+                aspect_wide = True
+
+        # now, the final resolution
+        if self.disc_type == "vcd":
+            self.width_final = 352
+            if (self.format_pal):
+                self.height_final = 288
+            else:
+                self.height_final = 240
+        else:
+            if final_size == "size_auto":
+                if self.disc_type == "svcd":
+                    self.width_final =480
+                    if (self.format_pal):
+                        self.height_final = 576
+                    else:
+                        self.height_final = 480
+                elif self.disc_type == "cvd":
+                    self.width_final =352
+                    if (self.format_pal):
+                        self.height_final = 288
+                    else:
+                        self.height_final = 240
+                elif self.disc_type == "dvd":
+                    if aspect_wide:
+                        self.width_final = 720
+                        if (self.format_pal):
+                            self.height_final = 576
+                        else:
+                            self.height_final = 480
+                    else:
+                        tx, ty = self.get_max_resolution(self.original_width,self.original_height,self.original_aspect_ratio)
+                        if (self.format_pal):
+                            th = 576
+                            th2 = 288
+                        else:
+                            th = 480
+                            th2 = 240
+                        if ( tx <= 352 ) and (ty <= th2):
+                            self.width_final = 352
+                            self.height_final = th2
+                        elif (tx <= 352) and (ty <= th):
+                            self.width_final = 352
+                            self.height_final = th
+                        elif (tx <= 704) and (ty <= th):
+                            self.width_final = 704
+                            self.height_final = th
+                        else:
+                            self.width_final = 720
+                            self.height_final = th
+                else:
+                    self.width_final , self.height_final = self.get_max_resolution(self.original_width,self.original_height,self.original_aspect_ratio)
+            else:
+                values = final_size[5:].split("x")
+                self.width_final = int(values[0])
+                self.height_final = int(values[1])
+
+        # finally, calculate the midle size
+        
+        if (self.rotation == "rotation_90") or (self.rotation == "rotation_270"):
+            midle_aspect_ratio = 1.0 / self.original_aspect_ratio
+        else:
+            midle_aspect_ratio = self.original_aspect_ratio
+        
+        if self.scaling == "scale_picture":
+            self.width_midle = self.width_final
+            self.height_midle = self.height_final
+        elif self.scaling == "add_black_bars":
+            if midle_aspect_ratio > self.aspect_ratio_final: # add horizontal black bars, at top and bottom
+                self.width_midle = self.width_final
+                self.height_midle = self.height_final * self.aspect_ratio_final / midle_aspect_ratio
+            else: # add vertical black bars, at left and right
+                self.width_midle = self.height_final * midle_aspect_ratio
+                self.height_midle = self.original_height
+        else: # cut picture
+            #if midle_aspect_ratio > self.aspect_ratio_final: # add horizontal black bars, at top and bottom
+            self.width_midle = self.width_final
+            self.height_midle = self.height_final # temporal option, until I do the calculations
+
 
     def set_type(self,obj = None,disc_type = None):
 
         if (disc_type != None):
             self.disc_type = disc_type
-
-        if (disc_type == "vcd"):
-            self.final_size_auto_width = 352
-            self.final_size_auto_height_pal = 288
-            self.final_size_auto_height_ntsc = 240
-            self.video_rate_auto_value = 1152
-            self.audio_rate_auto_value = 224
-        elif (disc_type == "svcd"):
-            self.final_size_auto_width = 480
-            self.final_size_auto_height_pal = 576
-            self.final_size_auto_height_ntsc = 480
-            self.video_rate_auto_value = -1
-            self.audio_rate_auto_value = -1
-        elif (disc_type == "cvd"):
-            self.final_size_auto_width = 352
-            self.final_size_auto_height_pal = 576
-            self.final_size_auto_height_ntsc = 480
-            self.video_rate_auto_value = -1
-            self.audio_rate_auto_value = -1
-        else: # dvd, divx and mkv
-            self.final_size_auto_width = -1
-            self.final_size_auto_height_pal = -1
-            self.final_size_auto_height_ntsc = -1
-            self.video_rate_auto_value = -1
-            self.audio_rate_auto_value = -1
 
 
     def delete_file(self):
@@ -321,3 +431,15 @@ class file_movie(devede.interface_manager.interface_manager):
             self.wdel_subtitles.set_sensitive(False)
         else:
             self.wdel_subtitles.set_sensitive(True)
+    
+    
+    def do_conversion(self, output_path, duration = 0):
+        
+        self.set_final_size_aspect()
+        p = []
+        cv = devede.converter.converter()
+        disc_converter = cv.get_disc_converter()
+        converter = disc_converter()
+        converter.convert_file(self,output_path,duration)
+        p.append([converter, None])
+        return p
