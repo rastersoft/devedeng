@@ -436,10 +436,8 @@ class file_movie(devede.interface_manager.interface_manager):
     def do_conversion(self, output_path, duration = 0):
         
         self.set_final_size_aspect()
-        p = []
         cv = devede.converter.converter()
         disc_converter = cv.get_disc_converter()
         converter = disc_converter()
         converter.convert_file(self,output_path,duration)
-        p.append([converter, None])
-        return p
+        return converter

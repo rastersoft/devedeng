@@ -58,10 +58,14 @@ class runner(GObject.GObject):
         box.set_orientation(Gtk.Orientation.VERTICAL)
         self.total_processes = 0
 
-    def add_processes(self,processes):
-        for p in processes:
-            p.append(None) # this will contain the progress bar being used by this process
-            self.proc_list.append(p)
+    def add_process(self,process):
+
+        if (self.proc_list.count(process) == 0):
+            self.proc_list.append(process)
+
+        for p in process.childs:
+            self.add_process(p)
+
         self.total_processes = len(self.proc_list)
 
 
@@ -83,11 +87,10 @@ class runner(GObject.GObject):
             # * the process object
             # * the list of dependencies, or None if there are no more dependencies
             # * the progress bar being used by this process
-            if (element[1] == None) and (element[2] == None):
-                self.progress_bars[0][2] = element[0]
-                element[0].connect("ended",self.process_ended)
-                element[0].run(self.progress_bars[0])
-                element[2] = self.progress_bars[0]
+            if (element.dependencies == None) and (element.progress_bar == None):
+                element.connect("ended",self.process_ended)
+                element.run(self.progress_bars[0])
+                element.progress_bar = self.progress_bars[0]
                 self.used_progress_bars.append(self.progress_bars[0])
                 if (len(self.progress_bars) > 1):
                     self.progress_bars = self.progress_bars[1:]
@@ -101,8 +104,7 @@ class runner(GObject.GObject):
         # move the progress bar used by this process to the list of available progress bars
         tmp = []
         for e in self.used_progress_bars:
-            if (e[2] == process):
-                e[2] = None
+            if (process.progress_bar == e):
                 self.progress_bars.append(e)
                 e[0].hide()
             else:
@@ -112,17 +114,9 @@ class runner(GObject.GObject):
         # remove this process from the list of processes, and remove it from the dependencies in other processes
         tmp = []
         for e in self.proc_list:
-            if (e[0] != process):
+            if (e != process):
                 tmp.append(e)
-                if (e[1] != None):
-                    tmp2 = []
-                    for dep in e[1]:
-                        if dep != process:
-                            tmp2.append(dep)
-                    if (len(tmp2) != 0):
-                        e[1] = tmp2
-                    else:
-                        e[1] = None
+                e.remove_dependency(process)
         self.proc_list = tmp
 
         # launch a new process

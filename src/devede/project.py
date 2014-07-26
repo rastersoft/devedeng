@@ -263,8 +263,9 @@ class devede_project:
 
         run_window = devede.runner.runner()
         file_movies = self.get_all_files()
-        p = self.menu.create_dvd_menus(file_movies, data.path)
-        run_window.add_processes(p)
+        processes = self.menu.create_dvd_menus(file_movies, data.path)
+        for p in processes:
+            run_window.add_process(p)
         movie_folder = os.path.join(data.path,"movies")
         try:
             os.makedirs(movie_folder)
@@ -273,6 +274,6 @@ class devede_project:
         counter = 0
         for movie in file_movies:
             p = movie.do_conversion(os.path.join(movie_folder,"movie_"+str(counter)+".mpg"))
-            run_window.add_processes(p)
+            run_window.add_process(p)
             counter += 1
         run_window.run()

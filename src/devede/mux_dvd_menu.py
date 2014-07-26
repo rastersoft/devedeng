@@ -39,7 +39,6 @@ class mux_dvd_menu(devede.executor.executor):
         self.stdin_file = os.path.join(output_path,"menu_"+str(n_page)+".mpg")
         self.stdout_file = os.path.join(output_path,"menu_"+str(n_page)+"B.mpg")
 
-
     def process_stderr(self,data):
 
         print("spumux: "+str(data))

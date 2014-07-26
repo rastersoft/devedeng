@@ -542,10 +542,6 @@ class dvd_menu(devede.interface_manager.interface_manager):
             converter = menu_converter()
             converter.create_menu_mpeg(n_page,self.background_music,self.sound_length,self.config.PAL,menu_folder)
             # add this process without dependencies
-            processes.append([converter, None])
-            muxer = devede.mux_dvd_menu.mux_dvd_menu()
-            muxer.create_mpg(n_page,menu_folder)
-            # the muxer process depends of the converter process
-            processes.append([muxer, [converter]])
+            processes.append(converter)
             n_page += 1
         return processes

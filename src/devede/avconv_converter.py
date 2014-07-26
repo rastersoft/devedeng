@@ -21,6 +21,7 @@ import subprocess
 import os
 import devede.configuration_data
 import devede.executor
+import devede.mux_dvd_menu
 
 class avconv_converter(devede.executor.executor):
 
@@ -302,6 +303,12 @@ class avconv_converter(devede.executor.executor):
         self.command_var.append(str(1+sound_length))
 
         self.command_var.append(os.path.join(output_path,"menu_"+str(n_page)+".mpg"))
+        
+        muxer = devede.mux_dvd_menu.mux_dvd_menu()
+        muxer.create_mpg(n_page,output_path)
+        # the muxer process depends of the converter process
+        muxer.add_dependency(self)
+        self.add_child_process(muxer)
 
     def process_stdout(self,data):
 

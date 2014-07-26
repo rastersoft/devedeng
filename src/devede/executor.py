@@ -41,6 +41,44 @@ class executor(GObject.GObject):
         self.stderr_data = ""
         self.stdin_file = None
         self.stdout_file = None
+        
+        self.dependencies = None
+        self.childs = []
+        self.progress_bar = None
+
+    def add_dependency(self, dep):
+        
+        if (self.dependencies == None):
+            self.dependencies = []
+        
+        if (self.dependencies.count(dep) == 0):
+            self.dependencies.append(dep)
+        
+        # the childs have the same dependencies than the parent process because, from outside, it is viewed as a single process
+        for child in self.childs:
+            child.add_dependency(dep)
+
+    def remove_dependency(self,process):
+        
+        if (self.dependencies != None):
+            tmp2 = []
+            for dep in self.dependencies:
+                if dep != process:
+                    tmp2.append(dep)
+            if (len(tmp2) != 0):
+                self.dependencies = tmp2
+            else:
+                self.dependencies = None
+
+    def add_child_process(self,child):
+        
+        # the childs have the same dependencies than the parent process because, from outside, it is viewed as a single process
+        if self.dependencies != None:
+            for dep in self.dependencies:
+                child.add_dependency(dep)
+        
+        if (self.childs.count(child) == 0):
+            self.childs.append(child)
 
     def run(self, progress_bar):
 
