@@ -83,10 +83,10 @@ class executor(GObject.GObject):
     def run(self, progress_bar):
 
         self.progress_bar = progress_bar
-        self.launch_process(self.command_var)
         self.progress_bar[0].set_label(self.text)
         self.progress_bar[1].set_fraction(0.0)
         self.progress_bar[0].show_all()
+        self.launch_process(self.command_var)
 
     def remove_ansi(self,line):
  
@@ -115,31 +115,50 @@ class executor(GObject.GObject):
         return output
 
 
-    def launch_process(self,command):
+    def launch_process(self,command,redirect_output = True):
 
-        self.launch_command = "Launching:"
+        self.launch_command = "\n\nLaunching:"
         for e in command:
-            self.launch_command += (e+" ")
+            self.launch_command += (" "+e)
+        self.launch_command += "\n"
 
-        print(self.launch_command)
+        try:
+            if (self.stdin_file != None):
+                self.handle = subprocess.Popen(command,stdin = subprocess.PIPE, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+                self.channel_stdin = GLib.IOChannel(self.handle.stdin.fileno())
+                self.channel_stdin.add_watch(GLib.IO_OUT | GLib.IO_HUP, self.read_stdin_from_file)
+                self.file_in = open(self.stdin_file,"rb")
+            else:
+                self.handle = subprocess.Popen(command,stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+        except Exception as error_launch:
+            self.stderr_data += str(error_launch)
+            self.wait_end()
+            return
 
-        if (self.stdin_file != None):
-            self.handle = subprocess.Popen(command,stdin = subprocess.PIPE, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-            self.channel_stdin = GLib.IOChannel(self.handle.stdin.fileno())
-            self.channel_stdin.add_watch(GLib.IO_OUT | GLib.IO_HUP, self.read_stdin_from_file)
-            self.file_in = open(self.stdin_file,"rb")
+        if (redirect_output):
+            self.stdout_buf = ""
+            self.stderr_buf = ""
+            self.channel_stdout = GLib.IOChannel(self.handle.stdout.fileno())
+            self.channel_stderr = GLib.IOChannel(self.handle.stderr.fileno())
+            if (self.stdout_file != None):
+                self.channel_stdout.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stdout_to_file)
+                self.file_out = open(self.stdout_file,"wb")
+            else:
+                self.channel_stdout.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stdout)
+            self.channel_stderr.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stderr)
         else:
-            self.handle = subprocess.Popen(command,stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-        self.channel_stdout = GLib.IOChannel(self.handle.stdout.fileno())
-        self.channel_stderr = GLib.IOChannel(self.handle.stderr.fileno())
-        if (self.stdout_file != None):
-            self.channel_stdout.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stdout_to_file)
-            self.file_out = open(self.stdout_file,"wb")
-        else:
-            self.channel_stdout.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stdout)
-        self.channel_stderr.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stderr)
-        self.stdout_buf = ""
-        self.stderr_buf = ""
+            (stdout_r, stderr_r) = self.handle.communicate()
+            self.config.append_log(self.launch_command)
+            try:
+                self.config.append_log(stdout_r.decode("utf-8"))
+            except:
+                self.config.append_log(stdout_r.decode("latin-1"))
+            try:
+                self.config.append_log(stderr_r.decode("utf-8"))
+            except:
+                self.config.append_log(stderr_r.decode("latin-1"))
+            return (stdout_r, stderr_r)
+        
 
 
     def read_stdout_to_file(self,source,condition):
@@ -176,7 +195,11 @@ class executor(GObject.GObject):
                 self.wait_end()
             return False
         else:
-            line_data = self.stdout_buf+(self.handle.stdout.read1(4096).decode("utf-8"))
+            read_data = self.handle.stdout.read1(4096)
+            try:
+                line_data = self.stdout_buf+(read_data.decode("utf-8"))
+            except:
+                line_data = self.stdout_buf+(read_data.decode("latin-1"))
             self.stdout_data += line_data
             data = (line_data).replace("\r","\n").split("\n")
             if (len(data) == 1):
@@ -198,7 +221,11 @@ class executor(GObject.GObject):
                 self.wait_end()
             return False
         else:
-            line_data = self.stderr_buf+(self.handle.stderr.read1(4096).decode("utf-8"))
+            read_data = self.handle.stderr.read1(4096)
+            try:
+                line_data = self.stderr_buf+(read_data.decode("utf-8"))
+            except:
+                line_data = self.stderr_buf+(read_data.decode("latin-1"))
             self.stderr_data += line_data
             data = (line_data).replace("\r","\n").split("\n")
             if (len(data) == 1):
@@ -226,5 +253,8 @@ class executor(GObject.GObject):
         self.config.append_log(self.launch_command)
         self.config.append_log(self.stdout_data)
         self.config.append_log(self.stderr_data)
-        retval = self.handle.wait()
+        if self.handle != None:
+            retval = self.handle.wait()
+        else:
+            retval = -1
         self.emit("ended",retval)

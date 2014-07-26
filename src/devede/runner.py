@@ -51,6 +51,7 @@ class runner(GObject.GObject):
             f = Gtk.Frame()
             p = Gtk.ProgressBar()
             p.set_orientation(Gtk.Orientation.HORIZONTAL)
+            p.set_show_text(True)
             f.add(p)
             # A frame, a progress bar, and the process running in that bar
             self.progress_bars.append([f, p, None])

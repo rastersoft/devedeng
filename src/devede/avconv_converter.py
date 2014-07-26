@@ -34,11 +34,14 @@ class avconv_converter(devede.executor.executor):
 
     @staticmethod
     def check_is_installed():
-        handle = subprocess.Popen(["avconv","-version"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-        (stdout, stderr) = handle.communicate()
-        if 0==handle.wait():
-            return True
-        else:
+        try:
+            handle = subprocess.Popen(["avconv","-version"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            (stdout, stderr) = handle.communicate()
+            if 0==handle.wait():
+                return True
+            else:
+                return False
+        except:
             return False
 
     def __init__(self):
@@ -312,7 +315,7 @@ class avconv_converter(devede.executor.executor):
 
     def process_stdout(self,data):
 
-        pass
+        return
 
     def process_stderr(self,data):
 
@@ -321,5 +324,6 @@ class avconv_converter(devede.executor.executor):
             pos+=5
             pos2 = data[0].find(" ",pos)
             if (pos2 != -1):
-                t = float(data[0][pos:pos2])
-                self.progress_bar[1].set_fraction(t / self.final_length)
+                t = float(data[0][pos:pos2]) / self.final_length
+                self.progress_bar[1].set_fraction(t)
+                self.progress_bar[1].set_text("%.1f%%" % (100.0 * t))

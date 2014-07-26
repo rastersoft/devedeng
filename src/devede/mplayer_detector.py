@@ -29,15 +29,19 @@ class mplayer_detector(devede.executor.executor):
 
     @staticmethod
     def check_is_installed():
-        handle = subprocess.Popen(["mplayer","-v"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-        (stdout, stderr) = handle.communicate()
-        if 0==handle.wait():
-            return True
-        else:
+        try:
+            handle = subprocess.Popen(["mplayer","-v"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            (stdout, stderr) = handle.communicate()
+            if 0==handle.wait():
+                return True
+            else:
+                return False
+        except:
             return False
 
     def __init__(self):
 
+        devede.executor.executor.__init__(self)
         self.config = devede.configuration_data.configuration.get_config()
 
     def get_film_data(self, file_name):
@@ -61,8 +65,7 @@ class mplayer_detector(devede.executor.executor):
 
         command_line = ["mplayer","-loop","1","-identify", "-vo", "null", "-ao", "null", "-frames", frames , file_name]
 
-        handle = subprocess.Popen(command_line, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-        (stdout, stderr) = handle.communicate()
+        (stdout, stderr) = self.launch_process(command_line, False)
 
         minimum_audio=-1
         self.audio_list=[]
@@ -75,8 +78,14 @@ class mplayer_detector(devede.executor.executor):
         self.original_audiorate = 0
         self.original_audiorate_uncompressed = 0
         self.original_fps = 0
+        self.original_aspect_ratio = 0
+        
+        try:
+            stdout2 = stdout.decode("utf-8")
+        except:
+            stdout2 = stdout.decode("latin1")
 
-        for line in str(stdout).split("\\n"):
+        for line in stdout2.split("\n"):
             line=self.remove_ansi(line)
             if line == "":
                 continue

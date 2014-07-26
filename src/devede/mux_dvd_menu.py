@@ -41,13 +41,4 @@ class mux_dvd_menu(devede.executor.executor):
 
     def process_stderr(self,data):
 
-        print("spumux: "+str(data))
         return
-
-        pos = data[0].find("time=")
-        if (pos != -1):
-            pos+=5
-            pos2 = data[0].find(" ",pos)
-            if (pos2 != -1):
-                t = float(data[0][pos:pos2])
-                self.progress_bar[1].set_fraction(t / self.sound_length)
