@@ -18,10 +18,15 @@
 from gi.repository import Gtk,GObject
 import os
 import devede.configuration_data
+import devede.error
 
 class runner(GObject.GObject):
 
+    __gsignals__ = {'done': (GObject.SIGNAL_RUN_FIRST, None,(int,))}
+
     def __init__(self):
+
+        GObject.GObject.__init__(self)
 
         self.config = devede.configuration_data.configuration.get_config()
         if (self.config.multicore):
@@ -81,7 +86,10 @@ class runner(GObject.GObject):
             if (line.startswith("processor")):
                 self.cores += 1
 
-    def run(self):
+    def run(self, clear_log = True):
+
+        if clear_log:
+            self.config.clear_log()
 
         for element in self.proc_list:
             # each element has three items:
@@ -100,7 +108,16 @@ class runner(GObject.GObject):
                     break
         self.wtotal.set_text(str(self.total_processes - len(self.proc_list))+"/"+str(self.total_processes))
 
+
     def process_ended(self,process, retval):
+
+        if retval != 0:
+            for element in self.proc_list:
+                element.cancel()
+            self.wprogress.destroy()
+            devede.error.error_window()
+            self.emit("done",1)
+            return
 
         # move the progress bar used by this process to the list of available progress bars
         tmp = []
@@ -122,6 +139,7 @@ class runner(GObject.GObject):
 
         # launch a new process
         if (len(self.proc_list) != 0):
-            self.run()
+            self.run(False)
         else:
             self.wprogress.destroy()
+            self.emit("done",0)

@@ -45,6 +45,7 @@ class executor(GObject.GObject):
         self.dependencies = None
         self.childs = []
         self.progress_bar = None
+        self.killed = False
 
     def add_dependency(self, dep):
         
@@ -131,6 +132,7 @@ class executor(GObject.GObject):
             else:
                 self.handle = subprocess.Popen(command,stdout = subprocess.PIPE, stderr = subprocess.PIPE)
         except Exception as error_launch:
+            self.handle = None
             self.stderr_data += str(error_launch)
             self.wait_end()
             return
@@ -148,6 +150,7 @@ class executor(GObject.GObject):
             self.channel_stderr.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stderr)
         else:
             (stdout_r, stderr_r) = self.handle.communicate()
+            self.handle = None
             self.config.append_log(self.launch_command)
             try:
                 self.config.append_log(stdout_r.decode("utf-8"))
@@ -158,7 +161,6 @@ class executor(GObject.GObject):
             except:
                 self.config.append_log(stderr_r.decode("latin-1"))
             return (stdout_r, stderr_r)
-        
 
 
     def read_stdout_to_file(self,source,condition):
@@ -244,17 +246,24 @@ class executor(GObject.GObject):
 
         if self.handle==None:
             return
+        self.killed = True
         os.kill(self.handle.pid,signal.SIGKILL)
 
 
     def wait_end(self):
 
-        self.config.append_log(self.text)
-        self.config.append_log(self.launch_command)
-        self.config.append_log(self.stdout_data)
-        self.config.append_log(self.stderr_data)
         if self.handle != None:
             retval = self.handle.wait()
+            self.handle = None
         else:
             retval = -1
+
+        if self.killed:
+            retval = 0
+        else:
+            self.config.append_log(self.text)
+            self.config.append_log(self.launch_command)
+            self.config.append_log(self.stdout_data)
+            self.config.append_log(self.stderr_data)
+
         self.emit("ended",retval)

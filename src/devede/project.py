@@ -177,7 +177,6 @@ class devede_project:
 
         ask = devede.ask.ask_window()
         if (ask.run(_("Abort the current DVD and exit?"),_("Exit DeVeDe"))):
-            print(self.config.get_log())
             Gtk.main_quit()
         return True
 
@@ -276,4 +275,10 @@ class devede_project:
             p = movie.do_conversion(os.path.join(movie_folder,"movie_"+str(counter)+".mpg"))
             run_window.add_process(p)
             counter += 1
+        run_window.connect("done",self.disc_done)
+        self.wmain_window.hide()
         run_window.run()
+    
+    def disc_done(self,object,value):
+        
+        self.wmain_window.show()
