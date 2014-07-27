@@ -53,7 +53,10 @@ class avconv_converter(devede.executor.executor):
         
         self.text = _("Converting %(X)s") % {"X" : file_project.title_name}
         
-        self.final_length = file_project.original_length
+        if (video_length == 0):
+            self.final_length = file_project.original_length
+        else:
+            self.final_length = video_length
         self.command_var=[]
         self.command_var.append("avconv")
         self.command_var.append("-i")

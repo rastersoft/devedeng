@@ -278,7 +278,14 @@ class devede_project:
         run_window.connect("done",self.disc_done)
         self.wmain_window.hide()
         run_window.run()
-    
+
     def disc_done(self,object,value):
-        
+
         self.wmain_window.show()
+
+    def on_preview_file_clicked(self,b):
+
+        (element, position, model, treeiter) = self.get_current_file()
+        if (element == None):
+            return
+        element.do_preview()

@@ -22,6 +22,7 @@ import devede.configuration_data
 import devede.interface_manager
 import devede.converter
 import devede.ask_subtitles
+import devede.preview
 
 class file_movie(devede.interface_manager.interface_manager):
 
@@ -42,8 +43,6 @@ class file_movie(devede.interface_manager.interface_manager):
         self.add_text("title_name", os.path.splitext(os.path.basename(file_name))[0])
         self.add_label("original_size",None)
         self.add_label("original_length",None)
-        self.add_label("original_videorate",None)
-        self.add_label("original_audiorate",None)
         self.add_label("original_aspect_ratio",None)
         self.add_label("original_fps",None)
 
@@ -441,3 +440,25 @@ class file_movie(devede.interface_manager.interface_manager):
         converter = disc_converter()
         converter.convert_file(self,output_path,duration)
         return converter
+
+    def on_button_preview_clicked(self,b):
+        self.do_preview()
+
+    def do_preview(self):
+
+        wpreview = devede.preview.preview_window()
+        if (wpreview.run() == False):
+            return
+
+        run_window = devede.runner.runner()
+        p = self.do_conversion(os.path.join(self.config.tmp_folder,"movie_preview.mpg"),wpreview.lvalue)
+        run_window.add_process(p)
+        run_window.connect("done",self.preview_done)
+        run_window.run()
+
+    def preview_done(self,o,retval):
+
+        if (retval == 0):
+            cv = devede.converter.converter()
+            disc_player = (cv.get_film_player())()
+            disc_player.play_film(os.path.join(self.config.tmp_folder,"movie_preview.mpg"))

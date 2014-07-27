@@ -60,7 +60,8 @@ class executor(GObject.GObject):
             child.add_dependency(dep)
 
     def remove_dependency(self,process):
-        
+        # dependencies are removed only in the parent because the running class have all the processes, parents and childs, and calls
+        # this method on all of them
         if (self.dependencies != None):
             tmp2 = []
             for dep in self.dependencies:

@@ -110,10 +110,7 @@ class configuration(GObject.GObject):
                     self.tmp_folder=linea[12:].strip()
                     continue
                 if linea[:10]=="multicore:":
-                    if linea[10:].strip()=="1":
-                        self.multicore = False
-                    else:
-                        self.multicore = True
+                    self.multicore = int(linea[10:].strip())
                     continue
                 if linea[:13]=="final_folder:":
                     self.final_folder=linea[13:].strip()
@@ -166,11 +163,7 @@ class configuration(GObject.GObject):
                 config_data.write("ntsc\n")
             if (self.tmp_folder != None):
                 config_data.write("temp_folder:"+str(self.tmp_folder)+"\n")
-            config_data.write("multicore:")
-            if (self.multicore):
-                config_data.write("0\n")
-            else:
-                config_data.write("1\n")
+            config_data.write("multicore:"+str(self.multicore))
             if (self.final_folder != None):
                 config_data.write("final_folder:"+str(self.final_folder)+"\n")
             if (self.sub_language != None):

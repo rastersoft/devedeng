@@ -44,6 +44,17 @@ class mplayer_detector(devede.executor.executor):
         devede.executor.executor.__init__(self)
         self.config = devede.configuration_data.configuration.get_config()
 
+    def play_film(self,file_name):
+
+        command_line = ["mplayer", file_name]
+        self.launch_process(command_line)
+
+    def process_stdout(self,data):
+        return
+
+    def process_stderr(self,data):
+        return
+
     def get_film_data(self, file_name):
         """ processes a file, refered by the FILE_MOVIE movie object, and fills its
             main data (resolution, FPS, length...) """
@@ -79,7 +90,7 @@ class mplayer_detector(devede.executor.executor):
         self.original_audiorate_uncompressed = 0
         self.original_fps = 0
         self.original_aspect_ratio = 0
-        
+
         try:
             stdout2 = stdout.decode("utf-8")
         except:

@@ -357,6 +357,7 @@
                             <property name="receives_default">True</property>
                             <property name="yalign">0.4699999988079071</property>
                             <property name="image_position">top</property>
+                            <signal name="clicked" handler="on_preview_file_clicked" swapped="no"/>
                             <child>
                               <object class="GtkBox" id="box11">
                                 <property name="visible">True</property>

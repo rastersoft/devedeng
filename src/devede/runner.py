@@ -29,10 +29,16 @@ class runner(GObject.GObject):
         GObject.GObject.__init__(self)
 
         self.config = devede.configuration_data.configuration.get_config()
-        if (self.config.multicore):
-            self.count_cores()
+        max_cores = self.count_cores()
+        if (self.config.multicore > 0):
+            if max_cores < self.config.multicore:
+                self.cores = max_cores
+            else:
+                self.cores = self.config.multicore
         else:
-            self.cores = 1
+            self.cores = max_cores - self.config.multicore
+            if (self.cores <= 0):
+                self.cores = 1
 
         self.proc_list = []
         self.running = 0
@@ -80,11 +86,12 @@ class runner(GObject.GObject):
 
     def count_cores(self):
 
-        self.cores = 0
+        cores = 0
         proc_file = open("/proc/cpuinfo","r")
         for line in proc_file:
             if (line.startswith("processor")):
-                self.cores += 1
+                cores += 1
+        return cores
 
     def run(self, clear_log = True):
 

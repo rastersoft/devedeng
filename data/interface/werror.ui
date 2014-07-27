@@ -5,7 +5,6 @@
   <object class="GtkTextBuffer" id="debug_buffer"/>
   <object class="GtkDialog" id="dialog_error">
     <property name="width_request">640</property>
-    <property name="height_request">240</property>
     <property name="can_focus">False</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
@@ -53,8 +52,9 @@
                 <property name="label" translatable="yes">There was an error while creating the disc.</property>
               </object>
               <packing>
-                <property name="expand">True</property>
+                <property name="expand">False</property>
                 <property name="fill">True</property>
+                <property name="padding">31</property>
                 <property name="position">0</property>
               </packing>
             </child>
@@ -70,7 +70,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkScrolledWindow" id="scrolledwindow1">
-                        <property name="height_request">200</property>
+                        <property name="height_request">240</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="shadow_type">in</property>

@@ -109,6 +109,13 @@ class converter:
 
         return ( analizers, players, converters, menuers )
 
+    def get_film_player(self):
+        """ returns a class for the desired film player, or the most priviledged if the desired is not installed """
+
+        if (self.config.film_player == None) or (self.players.has_key(self.config.film_player) == False):
+            return self.default_player
+        else:
+            return self.players[self.config.film_analizer]
 
     def get_film_analizer(self):
         """ returns a class for the desired film analizer, or the most priviledged if the desired is not installed """
