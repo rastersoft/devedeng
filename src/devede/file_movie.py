@@ -113,7 +113,7 @@ class file_movie(devede.interface_manager.interface_manager):
         self.add_enable_disable("is_mpeg_ps", [], is_mpeg_ps_list)
         self.add_enable_disable("no_reencode_audio_video", [], no_reencode_audio_video_list)
 
-        cv = devede.converter.converter()
+        cv = devede.converter.converter.get_converter()
         film_analizer = (cv.get_film_analizer())()
         if (film_analizer.get_film_data(self.file_name)):
             self.error = True
@@ -141,7 +141,7 @@ class file_movie(devede.interface_manager.interface_manager):
         self.aspect_ratio_final = None
 
     def get_max_resolution(self,rx,ry,aspect):
-        
+
         tmpx = ry*aspect
         tmpy = rx/aspect
         if (tmpx > rx):
@@ -150,7 +150,7 @@ class file_movie(devede.interface_manager.interface_manager):
             return rx,tmpy
 
     def set_final_size_aspect(self):
-        
+
         if self.format_pal:
             final_size = self.final_size_pal
         else:
@@ -246,12 +246,12 @@ class file_movie(devede.interface_manager.interface_manager):
                 self.height_final = int(values[1])
 
         # finally, calculate the midle size
-        
+
         if (self.rotation == "rotation_90") or (self.rotation == "rotation_270"):
             midle_aspect_ratio = 1.0 / self.original_aspect_ratio
         else:
             midle_aspect_ratio = self.original_aspect_ratio
-        
+
         if self.scaling == "scale_picture":
             self.width_midle = self.width_final
             self.height_midle = self.height_final
@@ -430,12 +430,12 @@ class file_movie(devede.interface_manager.interface_manager):
             self.wdel_subtitles.set_sensitive(False)
         else:
             self.wdel_subtitles.set_sensitive(True)
-    
-    
+
+
     def do_conversion(self, output_path, duration = 0):
-        
+
         self.set_final_size_aspect()
-        cv = devede.converter.converter()
+        cv = devede.converter.converter.get_converter()
         disc_converter = cv.get_disc_converter()
         converter = disc_converter()
         converter.convert_file(self,output_path,duration)
@@ -459,6 +459,6 @@ class file_movie(devede.interface_manager.interface_manager):
     def preview_done(self,o,retval):
 
         if (retval == 0):
-            cv = devede.converter.converter()
+            cv = devede.converter.converter.get_converter()
             disc_player = (cv.get_film_player())()
             disc_player.play_film(os.path.join(self.config.tmp_folder,"movie_preview.mpg"))

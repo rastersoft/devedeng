@@ -15,33 +15,42 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from gi.repository import Gtk,Gdk
-import os
+import subprocess
 import devede.configuration_data
+import devede.executor
 
-class error_window:
+class vlc_player(devede.executor.executor):
+
+    supports_analize = False
+    supports_play = True
+    supports_convert = False
+    supports_menu = False
+    display_name = "VLC"
+
+    @staticmethod
+    def check_is_installed():
+        try:
+            handle = subprocess.Popen(["vlc","-h"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            (stdout, stderr) = handle.communicate()
+            if 0==handle.wait():
+                return True
+            else:
+                return False
+        except:
+            return False
 
     def __init__(self):
 
+        devede.executor.executor.__init__(self)
         self.config = devede.configuration_data.configuration.get_config()
 
-        builder = Gtk.Builder()
-        builder.set_translation_domain(self.config.gettext_domain)
+    def play_film(self,file_name):
 
-        builder.add_from_file(os.path.join(self.config.glade,"werror.ui"))
-        builder.connect_signals(self)
-        werror_window = builder.get_object("dialog_error")
-        wdebug_buffer = builder.get_object("debug_buffer")
-        wdebug_buffer.insert_at_cursor(self.config.get_log())
+        command_line = ["vlc", file_name]
+        self.launch_process(command_line)
 
-        werror_window.show_all()
-        werror_window.run()
-        werror_window.destroy()
+    def process_stdout(self,data):
+        return
 
-
-    def on_copy_clicked(self,b):
-
-        clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
-        data =self.config.get_log()
-        clipboard.set_text(data,len(data))
+    def process_stderr(self,data):
         return

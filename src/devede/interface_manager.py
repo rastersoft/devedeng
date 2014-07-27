@@ -37,6 +37,7 @@ class interface_manager(GObject.GObject):
         self.interface_colorbuttons = []
         self.interface_fontbuttons = []
         self.interface_filebuttons = []
+        self.interface_comboboxes = []
 
     def add_group(self,group_name,radiobutton_list,default_value,callback = None):
         """ Adds a group of radiobuttons and creates an internal variable with
@@ -102,7 +103,7 @@ class interface_manager(GObject.GObject):
         self.interface_lists.append( (liststore_name, callback ))
 
     def add_colorbutton(self,colorbutton_name, default_value,callback = None):
-        """ Adds an internal variable with the name text_name, linked to an
+        """ Adds an internal variable with the name colorbutton_name, linked to an
             element with the same name (must be a Gtk.ColorButton).
             The default value must be a set with RGBA values """
 
@@ -110,7 +111,7 @@ class interface_manager(GObject.GObject):
         self.interface_colorbuttons.append( (colorbutton_name, callback ))
 
     def add_fontbutton(self,fontbutton_name, default_value, callback = None):
-        """ Adds an internal variable with the name text_name, linked to an
+        """ Adds an internal variable with the name fontbutton_name, linked to an
             element with the same name (must be a Gtk.FontButton).
             The default value must be a string with the font values """
 
@@ -118,12 +119,20 @@ class interface_manager(GObject.GObject):
         self.interface_fontbuttons.append( (fontbutton_name, callback ))
 
     def add_filebutton(self,filebutton_name, default_value, callback = None):
-        """ Adds an internal variable with the name text_name, linked to an
+        """ Adds an internal variable with the name filebutton_name, linked to an
             element with the same name (must be a Gtk.FileButton).
             The default value must be a string with the font values """
 
         exec('self.'+filebutton_name+' = default_value')
-        self.interface_filebuttons.append( (filebutton_name, callback ))
+        self.interface_filebuttons.append( (filebutton_name, callback ) )
+
+    def add_combobox(self,combobox_name,values,default_value,callback = None):
+        """ Adds an internal variable with the name combobox_name, linked to an
+            element with the same name (must be a Gtk.Combobox).
+            The default value must be an integer with the entry selected """
+
+        exec('self.'+combobox_name+' = default_value')
+        self.interface_comboboxes.append ( (combobox_name, values, callback) )
 
     def add_show_hide(self,element_name,to_show,to_hide):
         """ Adds an element that can be active or inactive, and two lists of elements.
@@ -238,6 +247,23 @@ class interface_manager(GObject.GObject):
             if (callback != None):
                 obj.connect("file_set",callback)
 
+        for element in self.interface_comboboxes:
+            obj = eval('self.'+element[0])
+            the_combo = builder.get_object(element[0])
+            the_list = the_combo.get_model()
+            the_list.clear()
+            counter = 0
+            dv = 0
+            for item in element[1]:
+                the_list.append([item])
+                if (item == obj):
+                    dv = counter
+                counter += 1
+            the_combo.set_active(dv)
+            callback = element[2]
+            if (callback != None):
+                the_liststore.connect("changed",callback)
+
         self.interface_show_hide_obj = {}
         for element in self.interface_show_hide:
             obj = builder.get_object(element[0])
@@ -257,9 +283,13 @@ class interface_manager(GObject.GObject):
             to_enable = []
             for e2 in element[1]:
                 to_enable.append(builder.get_object(e2))
+                if (builder.get_object(e2) == None):
+                    print("Error en "+str(e2))
             to_disable = []
             for e3 in element[2]:
                 to_disable.append(builder.get_object(e3))
+                if (builder.get_object(e3) == None):
+                    print("Error en "+str(e3))
             self.interface_enable_disable_obj[obj] = [to_enable, to_disable]
             obj.connect('toggled',self.toggled_element2)
             self.toggled_element2(obj)
@@ -385,6 +415,11 @@ class interface_manager(GObject.GObject):
                 print (final_row)
                 exec('self.'+element[0]+'.append(final_row)')
 
+        for element in self.interface_comboboxes:
+            obj = builder.get_object(element[0])
+            exec('self.'+element[0]+' = element[1][obj.get_active()]')
+
+
     def save_ui(self):
         """ Makes a copy of all the UI variables """
 
@@ -405,6 +440,8 @@ class interface_manager(GObject.GObject):
         for element in self.interface_filebuttons:
             exec('self.'+element[0]+'_backup = self.'+element[0])
         for element in self.interface_lists:
+            exec('self.'+element[0]+'_backup = self.'+element[0])
+        for element in self.interface_comboboxes:
             exec('self.'+element[0]+'_backup = self.'+element[0])
 
     def restore_ui(self):
@@ -427,4 +464,6 @@ class interface_manager(GObject.GObject):
         for element in self.interface_filebuttons:
             exec('self.'+element[0]+' = self.'+element[0]+'_backup')
         for element in self.interface_lists:
+            exec('self.'+element[0]+' = self.'+element[0]+'_backup')
+        for element in self.interface_comboboxes:
             exec('self.'+element[0]+' = self.'+element[0]+'_backup')

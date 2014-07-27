@@ -33,10 +33,16 @@ class configuration(GObject.GObject):
                 configuration.current_configuration = None
         return configuration.current_configuration
 
+    def __init__(self):
+        GObject.GObject.__init__(self)
 
     def fill_config(self):
 
-        GObject.GObject.__init__(self)
+        self.cores = 0
+        proc_file = open("/proc/cpuinfo","r")
+        for line in proc_file:
+            if (line.startswith("processor")):
+                self.cores += 1
 
         is_local = None
         self.log = ""
@@ -78,7 +84,7 @@ class configuration(GObject.GObject):
 
         self.PAL = True
         self.tmp_folder = "/var/tmp"
-        self.multicore = True
+        self.multicore = self.cores
         self.final_folder = os.environ.get("HOME")
         self.sub_language = None
         self.sub_codepage = None
@@ -89,7 +95,6 @@ class configuration(GObject.GObject):
         self.subtitles_font_size = 28
         self.sub_language = None
         self.sub_codepage = None
-        self.menu_dynamic_preview = False
 
         config_path = os.path.join(os.environ.get("HOME"),".devede")
         try:
@@ -135,11 +140,6 @@ class configuration(GObject.GObject):
                     continue
                 if linea[:19]=="subtitle_font_size:":
                     self.subtitles_font_size = int(linea[19:].strip())
-                if linea[:21]=="menu_dynamic_preview:":
-                    if linea[21] == '0':
-                        self.menu_dynamic_preview = False
-                    else:
-                        self.menu_dynamic_preview = True
             config_data.close()
         except:
             pass
@@ -163,7 +163,7 @@ class configuration(GObject.GObject):
                 config_data.write("ntsc\n")
             if (self.tmp_folder != None):
                 config_data.write("temp_folder:"+str(self.tmp_folder)+"\n")
-            config_data.write("multicore:"+str(self.multicore))
+            config_data.write("multicore:"+str(self.multicore)+"\n")
             if (self.final_folder != None):
                 config_data.write("final_folder:"+str(self.final_folder)+"\n")
             if (self.sub_language != None):
@@ -182,11 +182,6 @@ class configuration(GObject.GObject):
                 config_data.write("sub_codepage:"+str(self.sub_codepage)+"\n")
             if (self.sub_language != None):
                 config_data.write("sub_language:"+str(self.sub_language)+"\n")
-            config_data.write("menu_dynamic_preview:")
-            if (self.menu_dynamic_preview):
-                config_data.write("1\n")
-            else:
-                config_data.write("0\n")
             config_data.write("subtitle_font_size:"+str(self.subtitles_font_size)+"\n")
             config_data.close()
         except:

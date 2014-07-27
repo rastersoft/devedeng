@@ -41,20 +41,20 @@ class executor(GObject.GObject):
         self.stderr_data = ""
         self.stdin_file = None
         self.stdout_file = None
-        
+
         self.dependencies = None
         self.childs = []
         self.progress_bar = None
         self.killed = False
 
     def add_dependency(self, dep):
-        
+
         if (self.dependencies == None):
             self.dependencies = []
-        
+
         if (self.dependencies.count(dep) == 0):
             self.dependencies.append(dep)
-        
+
         # the childs have the same dependencies than the parent process because, from outside, it is viewed as a single process
         for child in self.childs:
             child.add_dependency(dep)
@@ -73,12 +73,12 @@ class executor(GObject.GObject):
                 self.dependencies = None
 
     def add_child_process(self,child):
-        
+
         # the childs have the same dependencies than the parent process because, from outside, it is viewed as a single process
         if self.dependencies != None:
             for dep in self.dependencies:
                 child.add_dependency(dep)
-        
+
         if (self.childs.count(child) == 0):
             self.childs.append(child)
 
@@ -91,7 +91,7 @@ class executor(GObject.GObject):
         self.launch_process(self.command_var)
 
     def remove_ansi(self,line):
- 
+
         output=""
         while True:
             pos=line.find("\033[") # try with double-byte ESC
@@ -102,10 +102,10 @@ class executor(GObject.GObject):
             if pos==-1: # no ANSI characters; we ended
                 output+=line
                 break
- 
+
             output+=line[:pos]
             line=line[pos+jump:]
- 
+
             while True:
                 if len(line)==0:
                     break

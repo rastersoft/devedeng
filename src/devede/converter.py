@@ -18,6 +18,7 @@
 import devede.configuration_data
 import devede.mplayer_detector
 import devede.avconv_converter
+import devede.vlc
 
 class converter:
 
@@ -26,7 +27,7 @@ class converter:
     @staticmethod
     def get_converter():
         if converter.current_converter == None:
-            converter.current_converter = converter.converter()
+            converter.current_converter = converter()
         return converter.current_converter
 
 
@@ -34,7 +35,7 @@ class converter:
 
         self.config = devede.configuration_data.configuration.get_config()
         # List of classes with conversion capabilities, in order of preference
-        self.c = [devede.mplayer_detector.mplayer_detector, devede.avconv_converter.avconv_converter]
+        self.c = [devede.vlc.vlc_player, devede.mplayer_detector.mplayer_detector, devede.avconv_converter.avconv_converter]
 
         self.analizers = {}
         self.default_analizer = None
@@ -70,6 +71,23 @@ class converter:
                 if (self.default_menuer == None):
                     self.default_menuer = element
 
+    def get_available_programs(self):
+
+        players = []
+        menuers = []
+        converters = []
+        analizers = []
+
+        for e in self.analizers:
+            analizers.append(e)
+        for e in self.players:
+            players.append(e)
+        for e in self.menuers:
+            menuers.append(e)
+        for e in self.converters:
+            converters.append(e)
+
+        return (analizers, players, menuers, converters)
 
     def get_needed_programs(self):
         """ returns a tupla with four lists. When a list is NONE, there are installed in the system
@@ -112,15 +130,15 @@ class converter:
     def get_film_player(self):
         """ returns a class for the desired film player, or the most priviledged if the desired is not installed """
 
-        if (self.config.film_player == None) or (self.players.has_key(self.config.film_player) == False):
+        if (self.config.film_player == None) or (self.config.film_player not in self.players):
             return self.default_player
         else:
-            return self.players[self.config.film_analizer]
+            return self.players[self.config.film_player]
 
     def get_film_analizer(self):
         """ returns a class for the desired film analizer, or the most priviledged if the desired is not installed """
 
-        if (self.config.film_analizer == None) or (self.analizers.has_key(self.config.film_analizer) == False):
+        if (self.config.film_analizer == None) or (self.config.film_analizer not in self.analizers):
             return self.default_analizer
         else:
             return self.analizers[self.config.film_analizer]
@@ -128,15 +146,15 @@ class converter:
     def get_menu_converter(self):
         """ returns a class for the desired menu converter, or the most priviledged if the desired is not installed """
 
-        if (self.config.menu_converter == None) or (self.analizers.has_key(self.config.menu_converter) == False):
+        if (self.config.menu_converter == None) or (self.config.menu_converter not in self.analizers):
             return self.default_menuer
         else:
             return self.menuers[self.config.menu_converter]
-    
+
     def get_disc_converter(self):
         """ returns a class for the desired disc converter, or the most priviledged if the desired is not installed """
 
-        if (self.config.film_converter == None) or (self.analizers.has_key(self.config.film_converter) == False):
+        if (self.config.film_converter == None) or (self.config.film_converter not in self.analizers):
             return self.default_converter
         else:
             return self.converters[self.config.film_converter]

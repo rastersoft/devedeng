@@ -70,7 +70,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
     def update_music(self,b=None):
 
         self.store_ui(self.builder)
-        cv = devede.converter.converter()
+        cv = devede.converter.converter.get_converter()
         film_analizer = (cv.get_film_analizer())()
         (video, audio, length) = film_analizer.analize_film_data(self.background_music,True)
         if (video != 0):
@@ -504,10 +504,10 @@ class dvd_menu(devede.interface_manager.interface_manager):
                 xml_file.write(' left="boton'+str(n_page)+'x'+str(counter-1)+'"')
             xml_file.write(' > </button>\n')
             counter += 1
-        
+
         xml_file.write("</spu>\n</stream>\n</subpictures>\n")
         xml_file.close()
-        
+
         return False
 
 
@@ -515,7 +515,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
 
         self.file_list = file_list
         self.refresh_static_data()
-        cv = devede.converter.converter()
+        cv = devede.converter.converter.get_converter()
         menu_folder = os.path.join(base_path,"menu")
         try:
             os.makedirs(menu_folder)

@@ -25,6 +25,7 @@ import devede.message
 import devede.dvd_menu
 import devede.create_disk_window
 import devede.runner
+import devede.settings
 
 class devede_project:
 
@@ -289,3 +290,7 @@ class devede_project:
         if (element == None):
             return
         element.do_preview()
+
+    def on_settings_activate(self,b):
+
+        w = devede.settings.settings_window()
