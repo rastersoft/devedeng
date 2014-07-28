@@ -248,6 +248,9 @@ class file_movie(devede.interface_manager.interface_manager):
                 self.width_final = int(values[0])
                 self.height_final = int(values[1])
 
+        self.width_final = int(self.width_final)
+        self.height_final = int(self.height_final)
+
         # finally, calculate the midle size
 
         if (self.rotation == "rotation_90") or (self.rotation == "rotation_270"):
@@ -256,20 +259,22 @@ class file_movie(devede.interface_manager.interface_manager):
             midle_aspect_ratio = self.original_aspect_ratio
 
         if self.scaling == "scale_picture":
-            self.width_midle = self.original_width
-            self.height_midle = self.original_height
+            self.width_midle = int(self.original_width)
+            self.height_midle = int(self.original_height)
         elif self.scaling == "add_black_bars":
             if midle_aspect_ratio > self.aspect_ratio_final: # add horizontal black bars, at top and bottom
-                self.width_midle = self.original_width
-                self.height_midle = self.original_height * midle_aspect_ratio / self.aspect_ratio_final
+                self.width_midle = int(self.original_width)
+                self.height_midle = int(self.original_height * midle_aspect_ratio / self.aspect_ratio_final)
             else: # add vertical black bars, at left and right
-                self.width_midle = self.original_width * self.aspect_ratio_final / midle_aspect_ratio
-                self.height_midle = self.original_height
+                self.width_midle = int(self.original_width * self.aspect_ratio_final / midle_aspect_ratio)
+                self.height_midle = int(self.original_height)
         else: # cut picture
-            #if midle_aspect_ratio > self.aspect_ratio_final: # add horizontal black bars, at top and bottom
-            self.width_midle = self.width_final
-            self.height_midle = self.height_final # temporal option, until I do the calculations
-
+            if midle_aspect_ratio > self.aspect_ratio_final:
+                self.width_midle = int(self.original_width * self.aspect_ratio_final / midle_aspect_ratio)
+                self.height_midle = int(self.original_height)
+            else:
+                self.width_midle = int(self.original_width)
+                self.height_midle = int(self.original_height * midle_aspect_ratio / self.aspect_ratio_final)
 
     def set_type(self,obj = None,disc_type = None):
 
@@ -377,6 +382,7 @@ class file_movie(devede.interface_manager.interface_manager):
             self.wframe_division_chapters.hide()
             self.wnotebook.remove_page(5)
 
+        self.save_ui()
         self.update_ui(self.builder)
         self.on_aspect_classic_toggled(None)
         self.on_treeview_subtitles_cursor_changed(None)
@@ -408,10 +414,13 @@ class file_movie(devede.interface_manager.interface_manager):
 
         self.store_ui(self.builder)
         self.emit('title_changed',self.title_name)
-        self.on_button_cancel_clicked(None)
+        self.wfile_properties.destroy()
+        self.wfile_properties = None
+        self.builder = None
 
     def on_button_cancel_clicked(self,b):
 
+        self.restore_ui()
         self.wfile_properties.destroy()
         self.wfile_properties = None
         self.builder = None
@@ -457,6 +466,7 @@ class file_movie(devede.interface_manager.interface_manager):
         return converter
 
     def on_button_preview_clicked(self,b):
+        self.store_ui(self.builder)
         self.do_preview()
 
     def do_preview(self):

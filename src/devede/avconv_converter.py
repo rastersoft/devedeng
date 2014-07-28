@@ -117,9 +117,12 @@ class avconv_converter(devede.executor.executor):
             if (file_project.width_midle != file_project.original_width) or (file_project.height_midle != file_project.original_height):
                 if (cmd_line!=""):
                     cmd_line+=",fifo,"
-                x = (file_project.width_midle - file_project.original_width) /2
-                y = (file_project.height_midle - file_project.original_height) /2
-                cmd_line+="pad="+str(file_project.width_midle)+":"+str(file_project.height_midle)+":"+str(x)+":"+str(y)+":0x000000"
+                x = int((file_project.width_midle - file_project.original_width) /2)
+                y = int((file_project.height_midle - file_project.original_height) /2)
+                if (x > 0) or (y > 0):
+                    cmd_line+="pad="+str(file_project.width_midle)+":"+str(file_project.height_midle)+":"+str(x)+":"+str(y)+":0x000000"
+                else:
+                    cmd_line+="crop="+str(file_project.width_midle)+":"+str(file_project.height_midle)+":"+str(x)+":"+str(y)
 
             if (file_project.width_final != file_project.width_midle) or (file_project.height_final != file_project.height_midle):
                 if (cmd_line!=""):
