@@ -92,6 +92,9 @@ class file_movie(devede.interface_manager.interface_manager):
         self.add_enable_disable("audio_rate_automatic", [], ["audio_spinbutton"])
         self.add_enable_disable("sound5_1", ["copy_sound"], [])
 
+        if (self.disc_type == "dvd"):
+            self.add_enable_disable("aspect_wide", [], ["size_704x576", "size_480x576","size_352x576", "size_352x288","size_704x480_ntsc", "size_480x480_ntsc","size_352x480_ntsc", "size_352x240_ntsc"])
+
         self.add_enable_disable("copy_sound", [], ["audio_delay_spinbutton","audio_rate_automatic","audio_spinbutton","spinbutton_volume","scale_volume","reset_volume"])
 
         common_elements = ["gop12","video_rate_automatic","video_spinbutton","audio_rate_automatic","audio_spinbutton","format_pal","format_ntsc","spinbutton_volume","scale_volume","reset_volume",
@@ -167,8 +170,8 @@ class file_movie(devede.interface_manager.interface_manager):
 
         # The steps are:
         # - Decide the final aspect ratio
-        # - Calculate the midle size: the original video will be scaled to this size
-        # - Calculate the final size: the midle video will be cut to this size, or black bars will be added
+        # - Calculate the midle size: the original video will be cut to this size, or black bars will be added
+        # - Calculate the final size: the midle video will be scaled to this size
 
         aspect_wide = False
         # first, decide the final aspect ratio
@@ -253,14 +256,14 @@ class file_movie(devede.interface_manager.interface_manager):
             midle_aspect_ratio = self.original_aspect_ratio
 
         if self.scaling == "scale_picture":
-            self.width_midle = self.width_final
-            self.height_midle = self.height_final
+            self.width_midle = self.original_width
+            self.height_midle = self.original_height
         elif self.scaling == "add_black_bars":
             if midle_aspect_ratio > self.aspect_ratio_final: # add horizontal black bars, at top and bottom
-                self.width_midle = self.width_final
-                self.height_midle = self.height_final * self.aspect_ratio_final / midle_aspect_ratio
+                self.width_midle = self.original_width
+                self.height_midle = self.original_height * midle_aspect_ratio / self.aspect_ratio_final
             else: # add vertical black bars, at left and right
-                self.width_midle = self.height_final * midle_aspect_ratio
+                self.width_midle = self.original_width * self.aspect_ratio_final / midle_aspect_ratio
                 self.height_midle = self.original_height
         else: # cut picture
             #if midle_aspect_ratio > self.aspect_ratio_final: # add horizontal black bars, at top and bottom
@@ -314,6 +317,7 @@ class file_movie(devede.interface_manager.interface_manager):
         self.wframe_final_size = self.builder.get_object("frame_final_size")
         self.wframe_aspect_ratio = self.builder.get_object("frame_aspect_ratio")
         self.waspect_classic = self.builder.get_object("aspect_classic")
+        self.waspect_wide = self.builder.get_object("aspect_wide")
         self.wadd_black_bars_pic = self.builder.get_object("add_black_bars_pic")
         self.wscale_picture_pic = self.builder.get_object("scale_picture_pic")
         self.wcut_picture_pic = self.builder.get_object("cut_picture_pic")
@@ -379,8 +383,19 @@ class file_movie(devede.interface_manager.interface_manager):
 
     def on_aspect_classic_toggled(self,b):
 
-        status = self.waspect_classic.get_active()
-        if (status):
+
+        status1 = self.waspect_classic.get_active()
+        status2 = self.waspect_wide.get_active()
+        if (status1):
+            final_aspect = 4.0/3.0
+        elif (status2):
+            final_aspect = 16.0/9.0
+        else:
+            if self.original_aspect_ratio >= 1.7:
+                final_aspect = 16.0/9.0
+            else:
+                final_aspect = 4.0/3.0
+        if (final_aspect < self.original_aspect_ratio):
             self.wadd_black_bars_pic.set_from_file(os.path.join(self.config.pic_path,"to_classic_blackbars.png"))
             self.wcut_picture_pic.set_from_file(os.path.join(self.config.pic_path,"to_classic_cut.png"))
             self.wscale_picture_pic.set_from_file(os.path.join(self.config.pic_path,"to_classic_scale.png"))

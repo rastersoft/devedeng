@@ -114,10 +114,17 @@ class avconv_converter(devede.executor.executor):
                     cmd_line+=",fifo,"
                 cmd_line+="hflip"
             
-#             if addbars and ((resx_inter!=resx_original) or (resy_inter!=resy_original)) and (default_res==False):
-#                 if (cmd_line!=""):
-#                     cmd_line+=",fifo,"
-#                 cmd_line+="scale="+str(resx_inter)+":"+str(resy_inter)+",fifo,pad="+str(resx_final)+":"+str(resy_final)+":"+str(addx)+":"+str(addy)+":0x000000"
+            if (file_project.width_midle != file_project.original_width) or (file_project.height_midle != file_project.original_height):
+                if (cmd_line!=""):
+                    cmd_line+=",fifo,"
+                x = (file_project.width_midle - file_project.original_width) /2
+                y = (file_project.height_midle - file_project.original_height) /2
+                cmd_line+="pad="+str(file_project.width_midle)+":"+str(file_project.height_midle)+":"+str(x)+":"+str(y)+":0x000000"
+
+            if (file_project.width_final != file_project.width_midle) or (file_project.height_final != file_project.height_midle):
+                if (cmd_line!=""):
+                    cmd_line+=",fifo,"
+                cmd_line+="scale="+str(file_project.width_final)+":"+str(file_project.height_final)
             
             if cmd_line!="":
                 self.command_var.append("-vf")
@@ -235,6 +242,9 @@ class avconv_converter(devede.executor.executor):
         #if (isvob==False) and (default_res==False):
         #    self.command_var.append("-ofps")
         #    self.command_var.append(str_final_framerate)
+
+        self.command_var.append("-aspect")
+        self.command_var.append(str(file_project.aspect_ratio_final))
 
         if self.config.disc_type=="divx":
             self.command_var.append("-vtag")
