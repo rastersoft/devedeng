@@ -138,7 +138,21 @@ class avconv_converter(devede.executor.executor):
 
         vcd=False
         
-        if (self.config.disc_type!="divx"):
+        if (self.config.disc_type == "divx"):
+            self.command_var.append("-vcodec")
+            self.command_var.append("mpeg4")
+            self.command_var.append("-acodec")
+            self.command_var.append("libmp3lame")
+            self.command_var.append("-f")
+            self.command_var.append("avi")
+        elif (self.config.disc_type == "mkv"):
+            self.command_var.append("-vcodec")
+            self.command_var.append("h264")
+            self.command_var.append("-acodec")
+            self.command_var.append("libmp3lame")
+            self.command_var.append("-f")
+            self.command_var.append("matroska")
+        else:
             self.command_var.append("-target")
             if (self.config.disc_type=="dvd"):
                 if not file_project.format_pal:
@@ -166,13 +180,6 @@ class avconv_converter(devede.executor.executor):
                     self.command_var.append("ntsc-svcd")
                 else:
                     self.command_var.append("pal-svcd")
-        else: # DivX
-            self.command_var.append("-vcodec")
-            self.command_var.append("mpeg4")
-            self.command_var.append("-acodec")
-            self.command_var.append("libmp3lame")
-            self.command_var.append("-f")
-            self.command_var.append("avi")
         
         if  (not file_project.no_reencode_audio_video):
             self.command_var.append("-sn") # no subtitles
@@ -195,21 +202,18 @@ class avconv_converter(devede.executor.executor):
         
         if (vcd==False):
             if not file_project.format_pal:
-                if (file_project.original_fps==24) and ((self.config.disc_type=="dvd") or (self.config.disc_type=="divx")):
-                    str_final_framerate="24000/1001"
+                if (file_project.original_fps==24) and ((self.config.disc_type=="dvd")):
                     keyintv=15
-                    telecine=True
                 else:
-                    str_final_framerate="30000/1001"
                     keyintv=18
             else:
-                str_final_framerate="25"
                 keyintv=15
+
             if not file_project.gop12:
                 self.command_var.append("-g")
                 self.command_var.append(str(keyintv))
 
-        if (self.config.disc_type=="divx"):
+        if (self.config.disc_type=="divx") or (self.config.disc_type=="mkv"):
             self.command_var.append("-g")
             self.command_var.append("300")
         elif file_project.gop12 and (file_project.no_reencode_audio_video==False):
@@ -224,27 +228,12 @@ class avconv_converter(devede.executor.executor):
         if video_length != 0:
             self.command_var.append("-t")
             self.command_var.append(str(video_length))
-#         else:
-#             if videofile["cutting"]==1: # first half only
-#                 self.command_var.append("-t")
-#                 self.command_var.append(str(videofile["olength"]/2))
-#             elif videofile["cutting"]==2: # second half only
-#                 self.command_var.append("-ss")
-#                 self.command_var.append(str((videofile["olength"]/2)-5)) # start 5 seconds before
-
-        #if (audiodelay!=0.0) and (copy_audio==False) and (isvob==False):
-        #    self.command_var.append("-delay")
-        #    self.command_var.append(str(audiodelay))
 
         self.command_var.append("-ac")
-        if (file_project.sound5_1) and ((self.config.disc_type=="dvd") or (self.config.disc_type=="divx")):
+        if (file_project.sound5_1) and ((self.config.disc_type=="dvd") or (self.config.disc_type=="divx") or (self.config.disc_type=="mkv")):
             self.command_var.append("6")
         else:
             self.command_var.append("2")
-
-        #if (isvob==False) and (default_res==False):
-        #    self.command_var.append("-ofps")
-        #    self.command_var.append(str_final_framerate)
 
         self.command_var.append("-aspect")
         self.command_var.append(str(file_project.aspect_ratio_final))
