@@ -263,9 +263,10 @@ class devede_project:
 
         run_window = devede.runner.runner()
         file_movies = self.get_all_files()
-        processes = self.menu.create_dvd_menus(file_movies, data.path)
-        for p in processes:
-            run_window.add_process(p)
+        if (self.wcreate_menu.get_active()):
+            processes = self.menu.create_dvd_menus(file_movies, data.path)
+            for p in processes:
+                run_window.add_process(p)
         movie_folder = os.path.join(data.path,"movies")
         try:
             os.makedirs(movie_folder)
