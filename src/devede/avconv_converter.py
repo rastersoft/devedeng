@@ -50,9 +50,9 @@ class avconv_converter(devede.executor.executor):
         self.config = devede.configuration_data.configuration.get_config()
 
     def convert_file(self,file_project,output_file,video_length):
-        
+
         self.text = _("Converting %(X)s") % {"X" : file_project.title_name}
-        
+
         if (video_length == 0):
             self.final_length = file_project.original_length
         else:
@@ -61,11 +61,11 @@ class avconv_converter(devede.executor.executor):
         self.command_var.append("avconv")
         self.command_var.append("-i")
         self.command_var.append(file_project.file_name)
-        
+
         if (file_project.volume!=100):
             self.command_var.append("-vol")
             self.command_var.append(str((256*file_project.volume)/100))
-        
+
         if (file_project.audio_delay != 0.0) and (file_project.copy_sound==False) and (file_project.no_reencode_audio_video==False):
             self.command_var.append("-itsoffset")
             self.command_var.append(str(file_project.audio_delay))
@@ -81,13 +81,13 @@ class avconv_converter(devede.executor.executor):
 
         if (file_project.no_reencode_audio_video==False):
             cmd_line=""
-            
+
             if file_project.deinterlace=="deinterlace_yadif":
                 cmd_line+="yadif"
-            
+
             vflip=False
             hflip=False
-    
+
             if (file_project.rotation=="rotation_90"):
                 if (cmd_line!=""):
                     cmd_line+=",fifo,"
@@ -99,12 +99,12 @@ class avconv_converter(devede.executor.executor):
             elif (file_project.rotation=="rotation_180"):
                 vflip=True
                 hflip=True
-            
+
             if (file_project.mirror_vertical):
                 vflip=not vflip
             if (file_project.mirror_horizontal):
                 hflip=not hflip
-    
+
             if (vflip):
                 if (cmd_line!=""):
                     cmd_line+=",fifo,"
@@ -113,7 +113,7 @@ class avconv_converter(devede.executor.executor):
                 if (cmd_line!=""):
                     cmd_line+=",fifo,"
                 cmd_line+="hflip"
-            
+
             if (file_project.width_midle != file_project.original_width) or (file_project.height_midle != file_project.original_height):
                 if (cmd_line!=""):
                     cmd_line+=",fifo,"
@@ -128,16 +128,16 @@ class avconv_converter(devede.executor.executor):
                 if (cmd_line!=""):
                     cmd_line+=",fifo,"
                 cmd_line+="scale="+str(file_project.width_final)+":"+str(file_project.height_final)
-            
+
             if cmd_line!="":
                 self.command_var.append("-vf")
                 self.command_var.append(cmd_line)
-            
-        
+
+
         self.command_var.append("-y")
 
         vcd=False
-        
+
         if (self.config.disc_type == "divx"):
             self.command_var.append("-vcodec")
             self.command_var.append("mpeg4")
@@ -180,7 +180,7 @@ class avconv_converter(devede.executor.executor):
                     self.command_var.append("ntsc-svcd")
                 else:
                     self.command_var.append("pal-svcd")
-        
+
         if  (not file_project.no_reencode_audio_video):
             self.command_var.append("-sn") # no subtitles
 
@@ -199,7 +199,7 @@ class avconv_converter(devede.executor.executor):
         if file_project.no_reencode_audio_video:
             self.command_var.append("-vcodec")
             self.command_var.append("copy")
-        
+
         if (vcd==False):
             if not file_project.format_pal:
                 if (file_project.original_fps==24) and ((self.config.disc_type=="dvd")):
@@ -219,12 +219,12 @@ class avconv_converter(devede.executor.executor):
         elif file_project.gop12 and (file_project.no_reencode_audio_video==False):
             self.command_var.append("-g")
             self.command_var.append("12")
-        
+
         self.command_var.append("-bf")
         self.command_var.append("2")
         self.command_var.append("-strict")
         self.command_var.append("1")
-        
+
         if video_length != 0:
             self.command_var.append("-t")
             self.command_var.append(str(video_length))
@@ -244,26 +244,26 @@ class avconv_converter(devede.executor.executor):
 
         if (file_project.deinterlace == "deinterlace_ffmpeg") and (file_project.no_reencode_audio_video==False):
             self.command_var.append("-deinterlace")
-        
+
         if (file_project.no_reencode_audio_video==False) and (vcd==False):
             self.command_var.append("-s")
             self.command_var.append(str(file_project.width_final)+"x"+str(file_project.height_final))
-        
+
         self.command_var.append("-trellis")
         self.command_var.append("1")
-        
+
         self.command_var.append("-mbd")
         self.command_var.append("2")
-        
+
         if (vcd == False) and (file_project.no_reencode_audio_video == False):
             self.command_var.append("-b:a")
             self.command_var.append(str(file_project.audio_rate_final)+"k")
-        
+
             self.command_var.append("-b:v")
             self.command_var.append(str(file_project.video_rate_final)+"k")
 
         self.command_var.append(output_file)
-        
+
 
 
     def create_menu_mpeg(self,n_page,background_music,sound_length,pal,output_path):
@@ -310,13 +310,16 @@ class avconv_converter(devede.executor.executor):
         self.command_var.append("-t")
         self.command_var.append(str(1+sound_length))
 
-        self.command_var.append(os.path.join(output_path,"menu_"+str(n_page)+".mpg"))
-        
+        movie_path = os.path.join(output_path,"menu_"+str(n_page)+".mpg")
+        self.command_var.append(movie_path)
+
         muxer = devede.mux_dvd_menu.mux_dvd_menu()
-        muxer.create_mpg(n_page,output_path)
+        final_path = muxer.create_mpg(n_page,output_path,movie_path)
         # the muxer process depends of the converter process
         muxer.add_dependency(self)
         self.add_child_process(muxer)
+
+        return (final_path)
 
     def process_stdout(self,data):
 

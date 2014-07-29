@@ -46,6 +46,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
         self.add_text("title_text", None, self.update_preview)
 
         self.add_group("position_horizontal", ["left", "center", "right"], "center", self.update_preview)
+        self.add_group("at_startup", ["menu_show_at_startup", "play_first_title_at_startup"], "menu_show_at_startup")
 
         self.add_float_adjustment("margin_left", 10.0, self.update_preview)
         self.add_float_adjustment("margin_top", 12.5, self.update_preview)
@@ -54,10 +55,8 @@ class dvd_menu(devede.interface_manager.interface_manager):
         self.add_float_adjustment("title_horizontal", 0.0, self.update_preview)
         self.add_float_adjustment("title_vertical", 10.0, self.update_preview)
 
-        self.add_group("at_startup", ["menu_show_at_startup", "play_first_title_at_startup"], "menu_show_at_startup")
-
         self.add_fontbutton("title_font", "Sans 28", self.update_preview)
-        self.add_fontbutton("entry_font", "Sans 18", self.update_preview)
+        self.add_fontbutton("entry_font", "Sans 28", self.update_preview)
 
         self.add_filebutton("background_picture", self.default_background, self.update_preview)
         self.add_filebutton("background_music", self.default_sound, self.update_music)
@@ -129,6 +128,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
 
     def on_accept_clicked(self,b):
 
+        self.store_ui(self.builder)
         self.wmenu.destroy()
 
     def on_cancel_clicked(self,b):
@@ -450,7 +450,13 @@ class dvd_menu(devede.interface_manager.interface_manager):
 
         """ Creates the menu XML file """
 
-        xml_file=open(os.path.join(path,"menu_"+str(n_page)+".xml"),"w")
+        file_name = os.path.join(path,"menu_"+str(n_page)+".xml")
+        entry_data = {}
+        entry_data["chapters"] = []
+        entry_data["right"] = None
+        entry_data["left"] = None
+
+        xml_file=open(file_name,"w")
         xml_file.write('<subpictures>\n\t<stream>\n\t\t<spu force="yes" start="00:00:00.00"')# transparent="000000"')
         xml_file.write(' image="'+os.path.join(path,"menu_"+str(n_page)+'_unselected_bg.png"'))
         xml_file.write(' highlight="'+os.path.join(path,"menu_"+str(n_page)+'_selected_bg.png"'))
@@ -459,6 +465,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
         n_elements = 0
         has_next = False
         has_previous = False
+
         for e in coordinates:
             if (e[4] == "entry"):
                 n_elements += 1
@@ -484,6 +491,14 @@ class dvd_menu(devede.interface_manager.interface_manager):
                 xr -= 1
             if (yb % 2) == 1:
                 yb -= 1
+
+            if (element[4] == "left"):
+                entry_data["left"] = "boton"+str(n_page)+"x"+str(counter)
+            elif (element[4] == "right"):
+                entry_data["right"] = "boton"+str(n_page)+"x"+str(counter)
+            else:
+                entry_data["chapters"].append("boton"+str(n_page)+"x"+str(counter))
+
             xml_file.write('\t\t\t<button name="boton'+str(n_page)+"x"+str(counter))
             xml_file.write('" x0="'+str(xl)+'" y0="'+str(yt)+'" x1="'+str(xr)+'" y1="'+str(yb)+'"')
             if counter > 0:
@@ -508,7 +523,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
         xml_file.write("</spu>\n</stream>\n</subpictures>\n")
         xml_file.close()
 
-        return False
+        return entry_data
 
 
     def create_dvd_menus(self, file_list, base_path):
@@ -524,6 +539,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
         n_page = 0
         self.pages = 1
         processes = []
+        menu_entries = []
         menu_converter = cv.get_menu_converter()
         while n_page < self.pages:
             self.sf = None
@@ -538,10 +554,13 @@ class dvd_menu(devede.interface_manager.interface_manager):
             self.sf = None
             self.paint_menu(False, False, True, n_page)
             self.sf.write_to_png(os.path.join(menu_folder,"menu_"+str(n_page)+"_active_bg.png"))
-            self.create_menu_stream(menu_folder, n_page, coordinates)
+            entry_data = self.create_menu_stream(menu_folder, n_page, coordinates)
             converter = menu_converter()
-            converter.create_menu_mpeg(n_page,self.background_music,self.sound_length,self.config.PAL,menu_folder)
+            final_path = converter.create_menu_mpeg(n_page,self.background_music,self.sound_length,self.config.PAL,menu_folder)
+            entry_data["filename"] = final_path
+            menu_entries.append(entry_data)
             # add this process without dependencies
             processes.append(converter)
             n_page += 1
-        return processes
+
+        return processes,menu_entries

@@ -283,13 +283,9 @@ class interface_manager(GObject.GObject):
             to_enable = []
             for e2 in element[1]:
                 to_enable.append(builder.get_object(e2))
-                if (builder.get_object(e2) == None):
-                    print("Error en "+str(e2))
             to_disable = []
             for e3 in element[2]:
                 to_disable.append(builder.get_object(e3))
-                if (builder.get_object(e3) == None):
-                    print("Error en "+str(e3))
             self.interface_enable_disable_obj[obj] = [to_enable, to_disable]
             obj.connect('toggled',self.toggled_element2)
             self.toggled_element2(obj)
@@ -412,7 +408,6 @@ class interface_manager(GObject.GObject):
                 final_row = []
                 for c in range(0,ncolumns):
                     final_row.append(row.model[row.iter][c])
-                print (final_row)
                 exec('self.'+element[0]+'.append(final_row)')
 
         for element in self.interface_comboboxes:

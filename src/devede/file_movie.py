@@ -70,7 +70,7 @@ class file_movie(devede.interface_manager.interface_manager):
         self.add_group("scaling", ["add_black_bars", "scale_picture" ,"cut_picture"], "add_black_bars")
         self.add_group("rotation",["rotation_0","rotation_90","rotation_180","rotation_270"], "rotation_0")
         self.add_group("deinterlace", ["deinterlace_none", "deinterlace_ffmpeg", "deinterlace_yadif"], "deinterlace_none")
-        self.add_group("actions", ["action_stop","action_play_first","action__play_previous","action_play_again","action_play_next","action_play_last"], "action_stop")
+        self.add_group("actions", ["action_stop","action_play_first","action_play_previous","action_play_again","action_play_next","action_play_last"], "action_stop")
 
         self.add_integer_adjustment("volume", 100)
         if (self.disc_type == "dvd"):
@@ -82,6 +82,7 @@ class file_movie(devede.interface_manager.interface_manager):
         self.add_integer_adjustment("audio_rate", 224)
         self.add_integer_adjustment("subt_font_size", 28)
         self.add_float_adjustment("audio_delay", 0.0)
+        self.add_integer_adjustment("chapter_size", 5)
 
         self.add_list("subtitles_list")
 
@@ -142,6 +143,8 @@ class file_movie(devede.interface_manager.interface_manager):
         self.video_rate_final = self.video_rate
         self.audio_rate_final = self.audio_rate
         self.aspect_ratio_final = None
+        self.converted_filename = None
+
 
     def get_max_resolution(self,rx,ry,aspect):
 
@@ -458,6 +461,7 @@ class file_movie(devede.interface_manager.interface_manager):
 
     def do_conversion(self, output_path, duration = 0):
 
+        self.converted_filename = output_path
         self.set_final_size_aspect()
         cv = devede.converter.converter.get_converter()
         disc_converter = cv.get_disc_converter()
