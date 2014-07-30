@@ -23,6 +23,7 @@ import devede.interface_manager
 import devede.converter
 import devede.ask_subtitles
 import devede.preview
+import devede.file_copy
 
 class file_movie(devede.interface_manager.interface_manager):
 
@@ -462,11 +463,14 @@ class file_movie(devede.interface_manager.interface_manager):
     def do_conversion(self, output_path, duration = 0):
 
         self.converted_filename = output_path
-        self.set_final_size_aspect()
-        cv = devede.converter.converter.get_converter()
-        disc_converter = cv.get_disc_converter()
-        converter = disc_converter()
-        converter.convert_file(self,output_path,duration)
+        if self.is_mpeg_ps:
+            converter = devede.file_copy.file_copy(self.file_name,output_path)
+        else:
+            self.set_final_size_aspect()
+            cv = devede.converter.converter.get_converter()
+            disc_converter = cv.get_disc_converter()
+            converter = disc_converter()
+            converter.convert_file(self,output_path,duration)
         return converter
 
     def on_button_preview_clicked(self,b):

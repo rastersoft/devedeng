@@ -46,6 +46,10 @@ class executor(GObject.GObject):
         self.childs = []
         self.progress_bar = None
         self.killed = False
+        self.pulse_mode = False
+        self.use_pulse_mode = False
+        self.pulse_text = None
+
 
     def add_dependency(self, dep):
 
@@ -89,6 +93,8 @@ class executor(GObject.GObject):
         self.progress_bar[1].set_fraction(0.0)
         self.progress_bar[0].show_all()
         self.launch_process(self.command_var)
+        if self.use_pulse_mode != self.pulse_mode:
+            self.set_pulse_mode(self.use_pulse_mode)
 
     def remove_ansi(self,line):
 
@@ -123,6 +129,8 @@ class executor(GObject.GObject):
         for e in command:
             self.launch_command += (" "+e)
         self.launch_command += "\n"
+        self.config.append_log(self.text)
+        self.config.append_log(self.launch_command)
 
         try:
             if (self.stdin_file != None):
@@ -162,6 +170,31 @@ class executor(GObject.GObject):
             except:
                 self.config.append_log(stderr_r.decode("latin-1"))
             return (stdout_r, stderr_r)
+
+
+    def set_pulse_mode(self,pulse_mode):
+
+        if pulse_mode == self.pulse_mode:
+            return
+
+        self.pulse_mode = pulse_mode
+
+        if pulse_mode:
+            self.timer_pulse = GLib.timeout_add(250, self.run_pulse)
+        else:
+            GLib.source_remove(self.timer_pulse)
+
+    def run_pulse(self,v = None):
+
+        if self.progress_bar == None:
+            return
+
+        if self.pulse_text == None:
+            self.progress_bar[1].set_text("")
+        else:
+            self.progress_bar[1].set_text(self.pulse_text)
+        self.progress_bar[1].pulse()
+        return True
 
 
     def read_stdout_to_file(self,source,condition):
@@ -259,11 +292,11 @@ class executor(GObject.GObject):
         else:
             retval = -1
 
+        self.set_pulse_mode(False)
+
         if self.killed:
             retval = 0
         else:
-            self.config.append_log(self.text)
-            self.config.append_log(self.launch_command)
             self.config.append_log(self.stdout_data)
             self.config.append_log(self.stderr_data)
 
