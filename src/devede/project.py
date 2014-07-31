@@ -27,6 +27,7 @@ import devede.create_disk_window
 import devede.runner
 import devede.settings
 import devede.dvdauthor_converter
+import devede.mkisofs
 
 class devede_project:
 
@@ -298,6 +299,10 @@ class devede_project:
             for element in final_dependencies:
                 dvdauthor.add_dependency(element)
             run_window.add_process(dvdauthor)
+            isocreator = devede.mkisofs.mkisofs()
+            isocreator.create_iso(data.path, data.name)
+            isocreator.add_dependency(dvdauthor)
+            run_window.add_process(isocreator)
 
         run_window.connect("done",self.disc_done)
         self.wmain_window.hide()

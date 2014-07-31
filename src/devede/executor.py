@@ -49,9 +49,18 @@ class executor(GObject.GObject):
         self.pulse_mode = False
         self.use_pulse_mode = False
         self.pulse_text = None
+        self.handle = None
 
 
     def add_dependency(self, dep):
+
+        self.add_dependency2(dep)
+
+        for child in dep.childs:
+            self.add_dependency2(child)
+
+
+    def add_dependency2(self, dep):
 
         if (self.dependencies == None):
             self.dependencies = []

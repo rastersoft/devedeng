@@ -158,6 +158,14 @@ class file_movie(devede.interface_manager.interface_manager):
 
     def set_final_size_aspect(self):
 
+        if self.is_mpeg_ps:
+            self.width_midle = self.original_width
+            self.width_final = self.original_width
+            self.height_midle = self.original_height
+            self.height_final = self.original_height
+            self.aspect_ratio_final = self.original_aspect_ratio
+            return
+
         if self.format_pal:
             final_size = self.final_size_pal
         else:
