@@ -17,6 +17,7 @@
 
 from gi.repository import Gtk
 import os
+import time
 
 import devede.file_movie
 import devede.ask
@@ -28,6 +29,7 @@ import devede.runner
 import devede.settings
 import devede.dvdauthor_converter
 import devede.mkisofs
+import devede.end_job
 
 class devede_project:
 
@@ -306,10 +308,15 @@ class devede_project:
 
         run_window.connect("done",self.disc_done)
         self.wmain_window.hide()
+        self.time_start = time.time()
         run_window.run()
 
 
     def disc_done(self,object,value):
+
+        if value == 0:
+            ended = devede.end_job.end_window()
+            ended.run(time.time() - self.time_start)
 
         self.wmain_window.show()
 

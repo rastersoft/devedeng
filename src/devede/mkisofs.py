@@ -32,7 +32,7 @@ class mkisofs(devede.executor.executor):
 
         filesystem_path = os.path.join(path,name)
         final_path = os.path.join(path,name+".iso")
-        
+
         self.command_var=[]
         self.command_var.append("mkisofs")
         self.command_var.append("-dvd-video")
@@ -53,7 +53,7 @@ class mkisofs(devede.executor.executor):
 
         if (data[0].find("% done") == -1):
             return
-        
+
         l = data[0].split("%")
         p = float(l[0])
         self.progress_bar[1].set_fraction(p)

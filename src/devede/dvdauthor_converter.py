@@ -51,7 +51,7 @@ class dvdauthor_converter(devede.executor.executor):
         return
 
     def process_stderr(self,data):
-        if data != None:
+        if (data != None) and (data[0] != ""):
             self.progress_bar[1].set_text(data[0])
         return
 

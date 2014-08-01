@@ -114,7 +114,7 @@ class runner(GObject.GObject):
                 element.cancel()
             self.wprogress.destroy()
             devede.error.error_window()
-            self.emit("done",1)
+            self.emit("done",1) # there was an error
             return
 
         # move the progress bar used by this process to the list of available progress bars
@@ -140,4 +140,4 @@ class runner(GObject.GObject):
             self.run(False)
         else:
             self.wprogress.destroy()
-            self.emit("done",0)
+            self.emit("done",0) # no error
