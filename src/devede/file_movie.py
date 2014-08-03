@@ -135,16 +135,48 @@ class file_movie(devede.interface_manager.interface_manager):
             self.original_audiorate = film_analizer.original_audiorate
             self.original_audiorate_uncompressed = film_analizer.original_audiorate_uncompressed
             self.original_fps = film_analizer.original_fps
+            self.original_file_size = film_analizer.original_file_size
             self.error = False
 
         self.width_midle = -1
         self.height_midle = -1
         self.width_final = -1
         self.height_final = -1
+        self.video_rate_auto = self.video_rate
+        self.audio_rate_auto = self.audio_rate
         self.video_rate_final = self.video_rate
         self.audio_rate_final = self.audio_rate
         self.aspect_ratio_final = None
         self.converted_filename = None
+
+
+    def get_estimated_size(self):
+        """ Returns the estimated final file size, in kBytes, based on the final audio and video rate, and the subtitles """
+
+        self.set_final_rates()
+        self.set_final_size_aspect()
+
+        if self.is_mpeg_ps:
+            estimated_size = self.original_file_size / 1000
+            #fixed_size = True
+            #sub_rate = 0
+        else:
+            #fixed_size = False
+            # let's asume 8kbps for each subtitle
+            sub_rate = 8 * len(self.subtitles_list)
+            estimated_size = ((self.video_rate_final + self.audio_rate_final + sub_rate) * self.original_length) / 8
+
+        #fixed_video = 0
+        #fixed_audio = 0
+
+#         if self.no_reencode_audio_video:
+#             fixed_video = self.original_videorate
+#             fixed_audio = self.original_audiorate
+#
+#         if self.copy_sound:
+#             fixed_audio = self.original_audiorate
+
+        return estimated_size
 
 
     def get_max_resolution(self,rx,ry,aspect):
@@ -155,6 +187,27 @@ class file_movie(devede.interface_manager.interface_manager):
             return tmpx,ry
         else:
             return rx,tmpy
+
+
+    def set_final_rates(self):
+
+        if self.is_mpeg_ps or self.no_reencode_audio_video:
+            self.video_rate_final = self.original_videorate
+            self.audio_rate_final = self.original_audiorate
+        else:
+            if self.video_rate_automatic:
+                self.video_rate_final = self.video_rate_auto
+            else:
+                self.video_rate_final = self.video_rate
+
+            if self.copy_sound:
+                self.audio_rate_final = self.original_audiorate
+            else:
+                if self.audio_rate_automatic:
+                    self.audio_rate_final = self.audio_rate_auto
+                else:
+                    self.audio_rate_final = self.audio_rate
+
 
     def set_final_size_aspect(self):
 
@@ -422,13 +475,17 @@ class file_movie(devede.interface_manager.interface_manager):
             self.wcut_picture_pic.set_from_file(os.path.join(self.config.pic_path,"to_wide_cut.png"))
             self.wscale_picture_pic.set_from_file(os.path.join(self.config.pic_path,"to_wide_scale.png"))
 
+
     def on_button_accept_clicked(self,b):
 
         self.store_ui(self.builder)
+        self.set_final_rates()
+        self.set_final_size_aspect()
         self.emit('title_changed',self.title_name)
         self.wfile_properties.destroy()
         self.wfile_properties = None
         self.builder = None
+
 
     def on_button_cancel_clicked(self,b):
 
@@ -437,11 +494,13 @@ class file_movie(devede.interface_manager.interface_manager):
         self.wfile_properties = None
         self.builder = None
 
+
     def on_add_subtitles_clicked(self,b):
 
         subt = devede.ask_subtitles.ask_subtitles()
         if (subt.run()):
             self.wsubtitles_list.append([subt.filename, subt.encoding, subt.language, subt.put_upper])
+
 
     def get_selected_subtitle(self):
 
@@ -453,11 +512,13 @@ class file_movie(devede.interface_manager.interface_manager):
         else:
             return ( (None, None) )
 
+
     def on_del_subtitles_clicked(self,b):
 
         model, treeiter = self.get_selected_subtitle()
         if (model != None):
             model.remove(treeiter)
+
 
     def on_treeview_subtitles_cursor_changed(self,b):
 
@@ -475,15 +536,19 @@ class file_movie(devede.interface_manager.interface_manager):
             converter = devede.file_copy.file_copy(self.file_name,output_path)
         else:
             self.set_final_size_aspect()
+            self.set_final_rates()
+
             cv = devede.converter.converter.get_converter()
             disc_converter = cv.get_disc_converter()
             converter = disc_converter()
             converter.convert_file(self,output_path,duration)
         return converter
 
+
     def on_button_preview_clicked(self,b):
         self.store_ui(self.builder)
         self.do_preview()
+
 
     def do_preview(self):
 
@@ -496,6 +561,7 @@ class file_movie(devede.interface_manager.interface_manager):
         run_window.add_process(p)
         run_window.connect("done",self.preview_done)
         run_window.run()
+
 
     def preview_done(self,o,retval):
 

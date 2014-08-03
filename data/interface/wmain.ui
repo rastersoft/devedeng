@@ -429,6 +429,7 @@
                             <property name="model">disc_size_list</property>
                             <property name="active">1</property>
                             <property name="id_column">0</property>
+                            <signal name="changed" handler="on_disc_size_changed" swapped="no"/>
                             <child>
                               <object class="GtkCellRendererText" id="cellrenderertext1"/>
                               <attributes>

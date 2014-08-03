@@ -266,7 +266,7 @@ class avconv_converter(devede.executor.executor):
 
 
 
-    def create_menu_mpeg(self,n_page,background_music,sound_length,pal,output_path):
+    def create_menu_mpeg(self,n_page,background_music,sound_length,pal,video_rate, audio_rate,output_path):
 
         self.n_page = n_page
         self.final_length = float(sound_length)
@@ -301,9 +301,9 @@ class avconv_converter(devede.executor.executor):
         self.command_var.append("-g")
         self.command_var.append("12")
         self.command_var.append("-b:v")
-        self.command_var.append("2500k")
+        self.command_var.append(str(video_rate)+"k")
         self.command_var.append("-b:a")
-        self.command_var.append("192k")
+        self.command_var.append(str(audio_rate)+"k")
         self.command_var.append("-aspect")
         self.command_var.append("4:3")
 

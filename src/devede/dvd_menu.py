@@ -64,6 +64,14 @@ class dvd_menu(devede.interface_manager.interface_manager):
         self.cached_menu_font = None
         self.cached_menu_size = 0
         self.sound_length = 30
+        self.video_rate = 2500
+        self.audio_rate = 224
+
+
+    def get_estimated_size(self):
+
+        estimated_size = ((self.video_rate + self.audio_rate) * self.sound_length) / 8
+        return estimated_size
 
 
     def update_music(self,b=None):
@@ -556,7 +564,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
             self.sf.write_to_png(os.path.join(menu_folder,"menu_"+str(n_page)+"_active_bg.png"))
             entry_data = self.create_menu_stream(menu_folder, n_page, coordinates)
             converter = menu_converter()
-            final_path = converter.create_menu_mpeg(n_page,self.background_music,self.sound_length,self.config.PAL,menu_folder)
+            final_path = converter.create_menu_mpeg(n_page,self.background_music,self.sound_length,self.config.PAL,self.video_rate,self.audio_rate,menu_folder)
             entry_data["filename"] = final_path
             menu_entries.append(entry_data)
             # add this process without dependencies

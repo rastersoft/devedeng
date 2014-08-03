@@ -18,6 +18,7 @@
 import subprocess
 import devede.configuration_data
 import devede.executor
+import os
 
 class mplayer_detector(devede.executor.executor):
 
@@ -59,6 +60,7 @@ class mplayer_detector(devede.executor.executor):
         """ processes a file, refered by the FILE_MOVIE movie object, and fills its
             main data (resolution, FPS, length...) """
 
+        self.original_file_size = os.path.getsize(file_name)
         (video, audio, length) = self.analize_film_data(file_name, True)
 
         if (video != 0):

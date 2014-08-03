@@ -30,6 +30,7 @@ import devede.settings
 import devede.dvdauthor_converter
 import devede.mkisofs
 import devede.end_job
+import devede.vcdimager_converter
 
 class devede_project:
 
@@ -191,6 +192,7 @@ class devede_project:
             element = item.model[item.iter][0]
             if element == obj:
                 item.model.set_value(item.iter,1,new_title)
+        self.refresh_disc_usage()
 
 
     def on_add_file_clicked(self,b):
@@ -208,6 +210,7 @@ class devede_project:
         if (len(error_list)!=0):
             devede.message.message_window(_("The following files could not be added:"),_("Error while adding files"),error_list)
         self.set_interface_status(None)
+        self.refresh_disc_usage()
 
 
     def on_delete_file_clicked(self,b):
@@ -242,22 +245,102 @@ class devede_project:
         self.wfiles.get_model().swap(last_element.iter,treeiter)
         self.set_interface_status(None)
 
+
     def on_properties_file_clicked(self,b):
         (element, position, model, treeiter) = self.get_current_file()
         if (element == None):
             return
         element.properties()
 
+
     def on_create_menu_toggled(self,b):
         self.set_interface_status(None)
+        self.refresh_disc_usage()
+
 
     def on_adjust_disc_usage_clicked(self,b):
 
         pass
 
+
     def on_menu_options_clicked(self,b):
 
         self.menu.show_configuration(self.get_all_files())
+
+
+    def get_dvd_size(self):
+
+        """ Returns the size for the currently selected disk type, and the minimum and maximum
+            videorate for the current video disk """
+
+        active = self.wdisc_size.get_active()
+
+        # here we choose the size in Mbytes for the media
+        if 5==active:
+            size=170.0
+        elif 4==active:
+            size=700.0
+        elif 3==active:
+            size=750.0
+        elif 2==active:
+            size=1100.0
+        elif 1==active:
+            size=4200.0
+        else:
+            size=8000.0
+
+        if self.disc_type=="vcd":
+            minvrate=1152
+            maxvrate=1152
+        elif (self.disc_type == "svcd") or (self.disc_type == "cvd"):
+            minvrate=400
+            maxvrate=2300
+        elif (self.disc_type == "dvd"):
+            minvrate=400
+            maxvrate=8500
+        elif (self.disc_type == "divx") or (self.disc_type == "mkv"):
+            minvrate=300
+            maxvrate=6000
+        else:
+            minvrate = 0
+            maxvrate = 8000
+
+        size*=0.90 # a safe margin of 10% to ensure that it never will be bigger
+                     # (it's important to have in mind the space needed by disk structures like
+                     # directories, file entries, and so on)
+
+        return size,minvrate,maxvrate
+
+
+    def refresh_disc_usage(self):
+
+        used = 0.0
+
+        for f in self.get_all_files():
+            estimated_size = f.get_estimated_size()
+            used += float(estimated_size)
+
+        if self.wcreate_menu.get_active():
+            used += float(self.menu.get_estimated_size())
+
+        used /= 1000.0
+
+        disc_size,minvrate,maxvrate = self.get_dvd_size()
+
+        if used > disc_size:
+            self.wdisc_fill_level.set_fraction(1.0)
+            addv=1
+        else:
+            self.wdisc_fill_level.set_fraction(used / disc_size)
+            addv=0
+        self.wdisc_fill_level.set_text(str(addv+int((used / disc_size)*100))+"%")
+        self.wdisc_fill_level.set_show_text(True)
+
+
+    def on_disc_size_changed(self,c):
+
+        self.refresh_disc_usage()
+
 
     def on_create_disc_clicked(self,b):
 
@@ -270,7 +353,7 @@ class devede_project:
 
         final_dependencies = []
 
-        if (self.wcreate_menu.get_active()):
+        if (self.disc_type == "dvd") and (self.wcreate_menu.get_active()):
             processes,menu_entries = self.menu.create_dvd_menus(file_movies, data.path)
             for p in processes:
                 run_window.add_process(p)
@@ -305,6 +388,12 @@ class devede_project:
             isocreator.create_iso(data.path, data.name)
             isocreator.add_dependency(dvdauthor)
             run_window.add_process(isocreator)
+        elif (self.disc_type == "vcd") or (self.disc_type == "svcd") or (self.disc_type == "cvd"):
+            vcdcreator = devede.vcdimager_converter.vcdimager_converter()
+            vcdcreator.create_cd_project(data.path, data.name, file_movies)
+            for element in final_dependencies:
+                vcdcreator.add_dependency(element)
+            run_window.add_process(vcdcreator)
 
         run_window.connect("done",self.disc_done)
         self.wmain_window.hide()
