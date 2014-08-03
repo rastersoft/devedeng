@@ -260,7 +260,32 @@ class devede_project:
 
     def on_adjust_disc_usage_clicked(self,b):
 
-        pass
+        total_resolution = 0
+        fixed_size = 0
+        to_adjust = []
+        for f in self.get_all_files():
+            estimated_size, videorate_fixed_size, audio_rate, sub_rate, width, height, time_length = f.get_size_data()
+            if videorate_fixed_size:
+                fixed_size += estimated_size
+            else:
+                fixed_size += ((audio_rate + sub_rate) * time_length) / 8
+                # 76800 = 320x240, which is the smallest resolution
+                surface = ((width * height) / 76800.0) * time_length
+                to_adjust.append( (f, surface, time_length) )
+                total_resolution += surface
+
+        if (self.disc_type == "dvd") and (self.wcreate_menu.get_active()):
+            fixed_size += self.menu.get_estimated_size()
+
+        if (total_resolution != 0):
+            remaining_disc_size = ((1000 * self.get_dvd_size()[0]) - fixed_size) * 8 # in kbits
+            for l in to_adjust:
+                f = l[0]
+                surface = l[1]
+                length = l[2]
+                f.set_auto_video_rate((remaining_disc_size * surface) / (total_resolution * length))
+
+        self.refresh_disc_usage()
 
 
     def on_menu_options_clicked(self,b):
@@ -305,9 +330,9 @@ class devede_project:
             minvrate = 0
             maxvrate = 8000
 
-        size*=0.90 # a safe margin of 10% to ensure that it never will be bigger
-                     # (it's important to have in mind the space needed by disk structures like
-                     # directories, file entries, and so on)
+        size*=0.90  # a safe margin of 10% to ensure that it never will be bigger
+                    # (it's important to have in mind the space needed by disk structures like
+                    # directories, file entries, and so on)
 
         return size,minvrate,maxvrate
 

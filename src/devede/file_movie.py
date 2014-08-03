@@ -80,6 +80,7 @@ class file_movie(devede.interface_manager.interface_manager):
             self.add_integer_adjustment("video_rate", 1152)
         else:
             self.add_integer_adjustment("video_rate", 2000)
+
         self.add_integer_adjustment("audio_rate", 224)
         self.add_integer_adjustment("subt_font_size", 28)
         self.add_float_adjustment("audio_delay", 0.0)
@@ -158,25 +159,32 @@ class file_movie(devede.interface_manager.interface_manager):
 
         if self.is_mpeg_ps:
             estimated_size = self.original_file_size / 1000
-            #fixed_size = True
-            #sub_rate = 0
         else:
-            #fixed_size = False
             # let's asume 8kbps for each subtitle
             sub_rate = 8 * len(self.subtitles_list)
             estimated_size = ((self.video_rate_final + self.audio_rate_final + sub_rate) * self.original_length) / 8
 
-        #fixed_video = 0
-        #fixed_audio = 0
-
-#         if self.no_reencode_audio_video:
-#             fixed_video = self.original_videorate
-#             fixed_audio = self.original_audiorate
-#
-#         if self.copy_sound:
-#             fixed_audio = self.original_audiorate
 
         return estimated_size
+
+
+    def get_size_data(self):
+
+        estimated_size = self.get_estimated_size()
+        if self.is_mpeg_ps or self.no_reencode_audio_video:
+            videorate_fixed_size = True
+        else:
+            videorate_fixed_size = False
+
+        # let's asume 8kbps for each subtitle
+        sub_rate = 8 * len(self.subtitles_list)
+
+        return estimated_size, videorate_fixed_size, self.audio_rate_final, sub_rate, self.width_final, self.height_final, self.original_length
+
+
+    def set_auto_video_rate(self, new_video_rate):
+
+        self.video_rate_auto = new_video_rate
 
 
     def get_max_resolution(self,rx,ry,aspect):
@@ -190,6 +198,16 @@ class file_movie(devede.interface_manager.interface_manager):
 
 
     def set_final_rates(self):
+
+        if (self.disc_type == "divx") or (self.disc_type == "mkv"):
+            self.audio_rate_auto = 192
+        elif (self.disc_type == "vcd") or (self.disc_type == "svcd") or (self.disc_type == "cvd"):
+            self.audio_rate_auto = 224
+        else: # dvd
+            if self.sound5_1:
+                self.audio_rate_auto = 384
+            else:
+                self.audio_rate_auto = 224
 
         if self.is_mpeg_ps or self.no_reencode_audio_video:
             self.video_rate_final = self.original_videorate
@@ -276,9 +294,9 @@ class file_movie(devede.interface_manager.interface_manager):
                 elif self.disc_type == "cvd":
                     self.width_final =352
                     if (self.format_pal):
-                        self.height_final = 288
+                        self.height_final = 576
                     else:
-                        self.height_final = 240
+                        self.height_final = 480
                 elif self.disc_type == "dvd":
                     if aspect_wide:
                         self.width_final = 720
@@ -372,7 +390,13 @@ class file_movie(devede.interface_manager.interface_manager):
         # elements in page GENERAL
         self.wframe_video_rate = self.builder.get_object("frame_video_rate")
         self.wframe_audio_rate = self.builder.get_object("frame_audio_rate")
+        self.waudio_rate = self.builder.get_object("audio_rate")
         self.wframe_division_chapters = self.builder.get_object("frame_division_chapters")
+
+        if (self.disc_type == "dvd") or (self.disc_type == "divx") or (self.disc_type == "mkv"):
+            self.waudio_rate.set_upper(448.0)
+        else:
+            self.waudio_rate.set_upper(384.0)
 
         # elements in page SUBTITLES
         self.wsubtitles_list = self.builder.get_object("subtitles_list")
