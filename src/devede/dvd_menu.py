@@ -134,7 +134,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
         file_filter_pictures=Gtk.FileFilter()
         file_filter_pictures.set_name(_("Picture files"))
 
-        file_filter_pictures.add_mime_type("image/png")
+        file_filter_pictures.add_mime_type("image/*")
 
         file_filter_all=Gtk.FileFilter()
         file_filter_all.set_name(_("All files"))
