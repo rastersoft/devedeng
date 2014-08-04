@@ -164,7 +164,7 @@ class converter:
     def get_menu_converter(self):
         """ returns a class for the desired menu converter, or the most priviledged if the desired is not installed """
 
-        if (self.config.menu_converter == None) or (self.config.menu_converter not in self.analizers):
+        if (self.config.menu_converter == None) or (self.config.menu_converter not in self.menuers):
             return self.default_menuer
         else:
             return self.menuers[self.config.menu_converter]
@@ -172,10 +172,18 @@ class converter:
     def get_disc_converter(self):
         """ returns a class for the desired disc converter, or the most priviledged if the desired is not installed """
 
-        if (self.config.film_converter == None) or (self.config.film_converter not in self.analizers):
-            return self.default_converter
-        else:
-            return self.converters[self.config.film_converter]
+        # if there is a film converter chosen by the user, and it is installed in the system
+        if (self.config.film_converter != None) and (self.config.film_converter in self.converters):
+            # and that converter supports the current disc type
+            if self.converters[self.config.film_converter].disc_types.count(self.config.disc_type) != 0:
+                # return that converter
+                return self.converters[self.config.film_converter]
+        # if not, return the first available converter that supports the current disc type
+        for converter in self.converters:
+            if converter.disc_types.count(self.config.disc_type) != 0:
+                return converter
+        return None
+            
 
     def get_burner(self):
         """ returns a class for the desired burner, or the most priviledged if the desired is not installed """

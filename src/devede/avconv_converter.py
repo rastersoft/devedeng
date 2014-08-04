@@ -31,14 +31,67 @@ class avconv_converter(devede.executor.executor):
     supports_menu = True
     supports_burn = False
     display_name = "AVCONV"
-    disc_types = ["dvd","vcd","svcd","cvd","divx","mkv"]
+    disc_types = []
 
     @staticmethod
     def check_is_installed():
         try:
-            handle = subprocess.Popen(["avconv","-version"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            handle = subprocess.Popen(["avconv","-codecs"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
             (stdout, stderr) = handle.communicate()
             if 0==handle.wait():
+                mp2 = False
+                mp3 = False
+                ac3 = False
+                mpeg1 = False
+                mpeg2 = False
+                divx = False
+                h264 = False
+                for line in stdout.decode("latin-1").split("\n"):
+                    parts = line.split(" ")
+                    if len(parts) < 2:
+                        continue
+                    if len(parts[0]) != 6:
+                        continue
+                    capabilities = parts[0]
+                    codec = parts[1]
+
+                    if capabilities[1] != 'E':
+                        continue
+
+                    if (codec == "mpeg1video"):
+                        mpeg1 = True
+                        continue
+                    if (codec == "mpeg2video"):
+                        mpeg2 = True
+                        continue
+                    if (codec == "mp2"):
+                        mp2 = True
+                        continue
+                    if (codec == "mp3"):
+                        mp3 = True
+                        continue
+                    if (codec == "ac3"):
+                        ac3 = True
+                        continue
+                    if (codec == "h264") or (codec == "H264"):
+                        h264 = True
+                        continue
+                    if (codec == "mpeg4"):
+                        divx = True
+                        continue
+
+                if (mpeg1 and mp2):
+                    devede.avconv_converter.avconv_converter.disc_types.append("vcd")
+                if (mpeg2 and mp2):
+                    devede.avconv_converter.avconv_converter.disc_types.append("svcd")
+                    devede.avconv_converter.avconv_converter.disc_types.append("cvd")
+                if (mpeg2 and mp2 and ac3):
+                    devede.avconv_converter.avconv_converter.disc_types.append("dvd")
+                if (divx and mp3):
+                    devede.avconv_converter.avconv_converter.disc_types.append("divx")
+                if (h264 and mp3):
+                    devede.avconv_converter.avconv_converter.disc_types.append("mkv")
+
                 return True
             else:
                 return False
