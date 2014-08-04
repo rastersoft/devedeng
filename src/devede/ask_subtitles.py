@@ -71,10 +71,27 @@ class ask_subtitles:
             wlist_languages.append([element])
             counter += 1
         languages.close()
-
         
         wencoding.set_active(enc_selection)
         wlanguage.set_active(lang_selection)
+
+        file_filter_videos=Gtk.FileFilter()
+        file_filter_videos.set_name(_("Subtitle files"))
+
+        file_filter_videos.add_pattern("*.sub")
+        file_filter_videos.add_pattern("*.srt")
+        file_filter_videos.add_pattern("*.ssa")
+        file_filter_videos.add_pattern("*.smi")
+        file_filter_videos.add_pattern("*.rt")
+        file_filter_videos.add_pattern("*.txt")
+        file_filter_videos.add_pattern("*.aqt")
+
+        file_filter_all=Gtk.FileFilter()
+        file_filter_all.set_name(_("All files"))
+        file_filter_all.add_pattern("*")
+
+        self.wfilename.add_filter(file_filter_videos)
+        self.wfilename.add_filter(file_filter_all)
 
         wask_window.show_all()
         self.on_subtitle_file_set(None)

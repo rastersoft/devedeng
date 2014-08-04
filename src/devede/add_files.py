@@ -40,6 +40,18 @@ class add_files:
             self.wfile_chooser.set_current_folder(add_files.last_path)
         self.wbutton_accept = builder.get_object("button_accept")
 
+        file_filter_videos=Gtk.FileFilter()
+        file_filter_videos.set_name(_("Video files"))
+        file_filter_videos.add_mime_type("video/*")
+        file_filter_videos.add_pattern("*.rmvb")
+
+        file_filter_all=Gtk.FileFilter()
+        file_filter_all.set_name(_("All files"))
+        file_filter_all.add_pattern("*")
+
+        self.wfile_chooser.add_filter(file_filter_videos)
+        self.wfile_chooser.add_filter(file_filter_all)
+
         wadd_files.show_all()
 
         retval = wadd_files.run()
