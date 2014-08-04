@@ -127,6 +127,34 @@ class dvd_menu(devede.interface_manager.interface_manager):
         self.wcurrent_page = self.builder.get_object("current_page")
         self.wshow_as_selected = self.builder.get_object("show_as_selected")
         self.wshow_as_selected.connect("toggled",self.update_preview)
+
+        self.wbackground_picture = self.builder.get_object("background_picture")
+        self.wbackground_music = self.builder.get_object("background_music")
+
+        file_filter_pictures=Gtk.FileFilter()
+        file_filter_pictures.set_name(_("Picture files"))
+
+        file_filter_pictures.add_mime_type("image/png")
+
+        file_filter_all=Gtk.FileFilter()
+        file_filter_all.set_name(_("All files"))
+        file_filter_all.add_pattern("*")
+
+        self.wbackground_picture.add_filter(file_filter_pictures)
+        self.wbackground_picture.add_filter(file_filter_all)
+
+        file_filter_music=Gtk.FileFilter()
+        file_filter_music.set_name(_("Sound files"))
+
+        file_filter_music.add_mime_type("audio/*")
+
+        file_filter_all=Gtk.FileFilter()
+        file_filter_all.set_name(_("All files"))
+        file_filter_all.add_pattern("*")
+
+        self.wbackground_music.add_filter(file_filter_music)
+        self.wbackground_music.add_filter(file_filter_all)
+
         self.wmenu.show_all()
 
         self.pages = 0
