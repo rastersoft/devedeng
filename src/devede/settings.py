@@ -72,23 +72,25 @@ class settings_window(devede.interface_manager.interface_manager):
 
         self.add_combobox("analizer", analizers,self.config.film_analizer)
         self.add_combobox("player", players,self.config.film_player)
-        self.add_combobox("converter", converters,self.config.film_converter)
+        self.add_combobox("converter", converters,self.config.film_converter,self.set_data_converter)
         self.add_combobox("menuer", menuers,self.config.menu_converter)
         self.add_combobox("burner", burners, self.config.burner)
 
-        builder = Gtk.Builder()
-        builder.set_translation_domain(self.config.gettext_domain)
+        self.builder = Gtk.Builder()
+        self.builder.set_translation_domain(self.config.gettext_domain)
 
-        builder.add_from_file(os.path.join(self.config.glade,"wsettings.ui"))
-        builder.connect_signals(self)
-        wsettings_window = builder.get_object("settings")
-
+        self.builder.add_from_file(os.path.join(self.config.glade,"wsettings.ui"))
+        self.builder.connect_signals(self)
+        wsettings_window = self.builder.get_object("settings")
+        self.wconverter = self.builder.get_object("converter")
+        self.wtypes = self.builder.get_object("disc_types_supported")
 
         wsettings_window.show_all()
-        self.update_ui(builder)
+        self.update_ui(self.builder)
+        self.set_data_converter(None)
 
         retval = wsettings_window.run()
-        self.store_ui(builder)
+        self.store_ui(self.builder)
         wsettings_window.destroy()
 
         if retval == 1:
@@ -100,3 +102,18 @@ class settings_window(devede.interface_manager.interface_manager):
             self.config.menu_converter = self.menuer
             self.config.burner = self.burner
             self.config.save_config()
+
+    def set_data_converter(self,b):
+
+        self.store_ui(self.builder)
+        cv = devede.converter.converter.get_converter()
+        cv2 = cv.get_disc_converter_by_name(self.converter)
+        data = ""
+        for t in cv2.disc_types:
+            if data != "":
+                data += ", "
+            data += t
+        if data != "":
+            self.wtypes.set_text(data)
+        else:
+            self.wtypes.set_text(_("No discs supported"))

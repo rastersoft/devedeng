@@ -47,7 +47,6 @@ Gtk.init(sys.argv)
 
 mwindow = devede.project.devede_project()
 ask_type = devede.choose_disc_type.choose_disc_type()
-# this allows to check the availability of all the programs needed for Devede
-devede.converter.converter.get_converter()
+
 Gtk.main()
 config_data.save_config()

@@ -80,6 +80,28 @@ class converter:
                 if (self.default_burner == None):
                     self.default_burner = element
 
+    def get_supported_programs(self):
+
+        analizers = []
+        players = []
+        converters = []
+        menuers = []
+        burners = []
+
+        for element in self.c:
+            if (element.supports_analize):
+                analizers.append(element)
+            if (element.supports_play):
+                players.append(element)
+            if (element.supports_convert):
+                converters.append(element)
+            if (element.supports_menu):
+                menuers.append(element)
+            if (element.supports_burn):
+                burners.append(element)
+
+        return (analizers, players, menuers, converters, burners)
+
     def get_available_programs(self):
 
         players = []
@@ -183,7 +205,11 @@ class converter:
             if converter.disc_types.count(self.config.disc_type) != 0:
                 return converter
         return None
-            
+
+    def get_disc_converter_by_name(self,name):
+        if name in self.converters:
+            return self.converters[name]
+        return None
 
     def get_burner(self):
         """ returns a class for the desired burner, or the most priviledged if the desired is not installed """
