@@ -33,6 +33,7 @@ import devede.mkisofs
 import devede.end_job
 import devede.vcdimager_converter
 import devede.shutdown
+import devede.about
 
 class devede_project:
 
@@ -480,3 +481,7 @@ class devede_project:
     def on_settings_activate(self,b):
 
         w = devede.settings.settings_window()
+
+    def on_about_activate(self,b):
+
+        w = devede.about.about_window()

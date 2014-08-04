@@ -77,7 +77,7 @@ class mplayer_detector(devede.executor.executor):
         if (check_audio):
             frames = "0"
         else:
-            frames = "1"
+            frames = "5"
 
         command_line = ["mplayer","-loop","1","-identify", "-vo", "null", "-ao", "null", "-frames", frames , file_name]
 
