@@ -24,6 +24,8 @@ import devede.converter
 import devede.ask_subtitles
 import devede.preview
 import devede.file_copy
+import devede.rename_file
+import devede.subtitles_mux
 
 class file_movie(devede.interface_manager.interface_manager):
 
@@ -566,6 +568,33 @@ class file_movie(devede.interface_manager.interface_manager):
             disc_converter = cv.get_disc_converter()
             converter = disc_converter()
             converter.convert_file(self,output_path,duration)
+
+        if len(self.subtitles_list) != 0:
+            last_process = converter
+            if duration == 0:
+                duration2 = self.original_length
+            else:
+                duration2 = duration
+            for subt in self.subtitles_list:
+                renamer = devede.rename_file.rename_file()
+                renamer.rename(output_path, output_path+".tmp")
+                renamer.add_dependency(last_process)
+                converter.add_child_process(renamer)
+                subt_file = subt[0]
+                subt_codepage = subt[1]
+                subt_lang = subt[2]
+                subt_upper = subt[3]
+                if self.aspect_ratio_final >= 1.7:
+                    final_aspect = "16:9"
+                else:
+                    final_aspect = "4:3"
+                subt_mux = devede.subtitles_mux.subtitles_mux()
+                subt_mux.multiplex_subtitles( output_path+".tmp", output_path, subt_file, subt_codepage, subt_lang, subt_upper,
+                                                              self.subt_font_size,self.format_pal,self.force_subtitles, final_aspect, duration2)
+                subt_mux.add_dependency(renamer)
+                converter.add_child_process(subt_mux)
+                last_process = subt_mux
+
         return converter
 
 

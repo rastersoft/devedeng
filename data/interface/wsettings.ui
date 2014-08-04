@@ -8,6 +8,12 @@
       <column type="gchararray"/>
     </columns>
   </object>
+  <object class="GtkListStore" id="burner_store">
+    <columns>
+      <!-- column-name backend -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
   <object class="GtkListStore" id="converter_store">
     <columns>
       <!-- column-name backend -->
@@ -339,6 +345,40 @@
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="top_attach">3</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="label9">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="margin_right">4</property>
+                            <property name="xalign">1</property>
+                            <property name="label" translatable="yes">Burn ISOs:</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">4</property>
+                            <property name="width">1</property>
+                            <property name="height">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBox" id="burner">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="model">burner_store</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="cellrenderertext6"/>
+                              <attributes>
+                                <attribute name="text">0</attribute>
+                              </attributes>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">4</property>
                             <property name="width">1</property>
                             <property name="height">1</property>
                           </packing>

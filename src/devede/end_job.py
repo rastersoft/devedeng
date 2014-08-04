@@ -25,7 +25,7 @@ class end_window:
 
         self.config = devede.configuration_data.configuration.get_config()
 
-    def run(self,time_used):
+    def run(self,time_used, do_burn):
 
         builder = Gtk.Builder()
         builder.set_translation_domain(self.config.gettext_domain)
@@ -33,6 +33,7 @@ class end_window:
         builder.add_from_file(os.path.join(self.config.glade,"wdone.ui"))
         builder.connect_signals(self)
         werror_window = builder.get_object("done")
+        wburn = builder.get_object("button_burn")
         wdebug_buffer = builder.get_object("debug_buffer")
         wdebug_buffer.insert_at_cursor(self.config.get_log())
         wtime = builder.get_object("label_time")
@@ -52,6 +53,12 @@ class end_window:
         wtime.set_text(time_used_str)
 
         werror_window.show_all()
+
+        if do_burn:
+            wburn.show()
+        else:
+            wburn.hide()
+
         retval = werror_window.run()
         werror_window.destroy()
         if retval == 1:

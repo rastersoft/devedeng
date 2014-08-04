@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Copyright 2014 (C) Raster Software Vigo (Sergio Costas)
 #
 # This file is part of DeVeDe-NG
@@ -26,6 +28,7 @@ class mplayer_detector(devede.executor.executor):
     supports_play = True
     supports_convert = False
     supports_menu = False
+    supports_burn = False
     display_name = "MPLAYER"
 
     @staticmethod

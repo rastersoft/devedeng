@@ -95,6 +95,7 @@ class configuration(GObject.GObject):
         self.subtitles_font_size = 28
         self.sub_language = None
         self.sub_codepage = None
+        self.burner = None
 
         config_path = os.path.join(os.environ.get("HOME"),".devede")
         try:
@@ -140,6 +141,8 @@ class configuration(GObject.GObject):
                     continue
                 if linea[:19]=="subtitle_font_size:":
                     self.subtitles_font_size = int(linea[19:].strip())
+                if linea[:7]=="burner:":
+                    self.burner = int(linea[7:].strip())
             config_data.close()
         except:
             pass

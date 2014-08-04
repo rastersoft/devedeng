@@ -21,32 +21,26 @@ import os
 import devede.configuration_data
 import devede.executor
 
-class file_copy(devede.executor.executor):
+class rename_file(devede.executor.executor):
 
-    def __init__(self,input_path, output_path):
+    def __init__(self):
 
         devede.executor.executor.__init__(self)
         self.config = devede.configuration_data.configuration.get_config()
 
-        self.text = _("Copying file %(X)s") % {"X": os.path.basename(input_path)}
+    def rename(self,file_path_input, file_path_output):
+
+        self.text = _("Renaming %(L)s to %(X)s") % {"X": os.path.basename(file_path_output), "L": os.path.basename(file_path_input)}
 
         self.command_var=[]
-        self.command_var.append("copy_files_verbose.py")
-        self.command_var.append(input_path)
-        self.command_var.append(output_path)
-
+        self.command_var.append("mv")
+        self.command_var.append("-f")
+        self.command_var.append(file_path_input)
+        self.command_var.append(file_path_output)
+        self.use_pulse_mode = True
 
     def process_stdout(self,data):
 
-        if (data == None) or (len(data) == 0):
-            return
-        if (data[0].startswith("Copied ")):
-            pos = data[0].find("%")
-            if (pos == -1):
-                return
-            p = float(data[0][7:pos])
-            self.progress_bar[1].set_fraction(p/ 100.0)
-            self.progress_bar[1].set_text("%.1f%%" % (p))
         return
 
     def process_stderr(self,data):

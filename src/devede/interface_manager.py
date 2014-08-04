@@ -255,6 +255,7 @@ class interface_manager(GObject.GObject):
             counter = 0
             dv = 0
             for item in element[1]:
+                print (item)
                 the_list.append([item])
                 if (item == obj):
                     dv = counter

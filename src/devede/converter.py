@@ -19,6 +19,8 @@ import devede.configuration_data
 import devede.mplayer_detector
 import devede.avconv_converter
 import devede.vlc
+import devede.brasero
+import devede.k3b
 
 class converter:
 
@@ -35,7 +37,8 @@ class converter:
 
         self.config = devede.configuration_data.configuration.get_config()
         # List of classes with conversion capabilities, in order of preference
-        self.c = [devede.vlc.vlc_player, devede.mplayer_detector.mplayer_detector, devede.avconv_converter.avconv_converter]
+        self.c = [devede.vlc.vlc_player, devede.mplayer_detector.mplayer_detector, devede.avconv_converter.avconv_converter,
+                  devede.brasero.brasero, devede.k3b.k3b]
 
         self.analizers = {}
         self.default_analizer = None
@@ -45,6 +48,8 @@ class converter:
         self.default_converter = None
         self.menuers = {}
         self.default_menuer = None
+        self.burners = {}
+        self.default_burner = None
         self.discs = []
 
         for element in self.c:
@@ -70,6 +75,10 @@ class converter:
                 self.menuers[name] = element
                 if (self.default_menuer == None):
                     self.default_menuer = element
+            if (element.supports_burn):
+                self.burners[name] = element
+                if (self.default_burner == None):
+                    self.default_burner = element
 
     def get_available_programs(self):
 
@@ -77,6 +86,7 @@ class converter:
         menuers = []
         converters = []
         analizers = []
+        burners = []
 
         for e in self.analizers:
             analizers.append(e)
@@ -86,14 +96,16 @@ class converter:
             menuers.append(e)
         for e in self.converters:
             converters.append(e)
+        for e in self.burners:
+            burners.append(e)
 
-        return (analizers, players, menuers, converters)
+        return (analizers, players, menuers, converters, burners)
 
     def get_needed_programs(self):
         """ returns a tupla with four lists. When a list is NONE, there are installed in the system
             programs that covers the needs for that group; when not, it contains the programs valid
             to cover the needs for that group.
-            The groups are, in this order: ANALIZERS, PLAYERS, CONVERTERS, MENUERS
+            The groups are, in this order: ANALIZERS, PLAYERS, CONVERTERS, MENUERS, BURNERS
             (menuers are the programs that creates the mpeg files for menus) """
 
         if (self.default_analizer != None):
@@ -112,6 +124,10 @@ class converter:
             menuers = None
         else:
             menuers = []
+        if (self.default_burner != None):
+            burners = None
+        else:
+            burners = []
 
         for element in self.c:
             e = element()
@@ -124,8 +140,10 @@ class converter:
                 converters.append(name)
             if (e.supports_menu) and (menuers != None):
                 menuers.append(name)
+            if (e.supports_burn) and (burners != None):
+                burners.append(name)
 
-        return ( analizers, players, converters, menuers )
+        return ( analizers, players, converters, menuers, burners )
 
     def get_film_player(self):
         """ returns a class for the desired film player, or the most priviledged if the desired is not installed """
@@ -158,3 +176,11 @@ class converter:
             return self.default_converter
         else:
             return self.converters[self.config.film_converter]
+
+    def get_burner(self):
+        """ returns a class for the desired burner, or the most priviledged if the desired is not installed """
+
+        if (self.config.burner == None) or (self.config.burner not in self.burners):
+            return self.default_burner
+        else:
+            return self.burners[self.config.burner]

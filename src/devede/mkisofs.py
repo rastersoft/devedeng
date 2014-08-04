@@ -56,7 +56,7 @@ class mkisofs(devede.executor.executor):
 
         l = data[0].split("%")
         p = float(l[0])
-        self.progress_bar[1].set_fraction(p)
+        self.progress_bar[1].set_fraction(p/100.0)
         self.progress_bar[1].set_text("%.1f%%" % (p))
 
         return

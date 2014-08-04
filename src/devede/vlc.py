@@ -25,6 +25,7 @@ class vlc_player(devede.executor.executor):
     supports_play = True
     supports_convert = False
     supports_menu = False
+    supports_burn = False
     display_name = "VLC"
 
     @staticmethod
@@ -46,7 +47,7 @@ class vlc_player(devede.executor.executor):
 
     def play_film(self,file_name):
 
-        command_line = ["vlc", file_name]
+        command_line = ["vlc", "--play-and-exit",file_name]
         self.launch_process(command_line)
 
     def process_stdout(self,data):

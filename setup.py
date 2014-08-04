@@ -103,5 +103,5 @@ setup(
     # In this case, 'data_file' will be installed into '<sys.prefix>/my_data'
     #data_files=[('share/devedeng/ui', ['ui/test.ui'])],
     data_files = get_data_files(),
-    scripts=['src/devede_ng.py'],
+    scripts=['src/devede_ng.py', 'src/copy_files_verbose.py'],
 )

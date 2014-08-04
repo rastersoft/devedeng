@@ -413,12 +413,16 @@ class devede_project:
             isocreator.create_iso(data.path, data.name)
             isocreator.add_dependency(dvdauthor)
             run_window.add_process(isocreator)
+            self.disc_image_name = os.path.join(data.path,data.name+".iso")
         elif (self.disc_type == "vcd") or (self.disc_type == "svcd") or (self.disc_type == "cvd"):
             vcdcreator = devede.vcdimager_converter.vcdimager_converter()
             vcdcreator.create_cd_project(data.path, data.name, file_movies)
             for element in final_dependencies:
                 vcdcreator.add_dependency(element)
             run_window.add_process(vcdcreator)
+            self.disc_image_name = os.path.join(data.path,data.name+".cue")
+        else:
+            self.disc_image_name = None
 
         run_window.connect("done",self.disc_done)
         self.wmain_window.hide()
@@ -430,7 +434,23 @@ class devede_project:
 
         if value == 0:
             ended = devede.end_job.end_window()
-            ended.run(time.time() - self.time_start)
+            if self.disc_image_name == None:
+                do_burn = False
+            else:
+                do_burn = True
+            if (ended.run(time.time() - self.time_start, do_burn)):
+                cv = devede.converter.converter.get_converter()
+                burner = cv.get_burner()()
+                burner.burn(self.disc_image_name)
+                run_window = devede.runner.runner(False)
+                run_window.add_process(burner)
+                run_window.connect("done", self.disc_done2)
+                run_window.run()
+                return
+
+        self.wmain_window.show()
+
+    def disc_done2(self,object, value):
 
         self.wmain_window.show()
 

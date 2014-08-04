@@ -19,12 +19,13 @@ from gi.repository import Gtk,GObject
 import os
 import devede.configuration_data
 import devede.error
+import devede.ask
 
 class runner(GObject.GObject):
 
     __gsignals__ = {'done': (GObject.SIGNAL_RUN_FIRST, None,(int,))}
 
-    def __init__(self):
+    def __init__(self, show_window = True):
 
         GObject.GObject.__init__(self)
 
@@ -49,7 +50,8 @@ class runner(GObject.GObject):
         self.builder.add_from_file(os.path.join(self.config.glade,"wprogress.ui"))
         self.builder.connect_signals(self)
         self.wprogress = self.builder.get_object("progress")
-        self.wprogress.show_all()
+        if show_window:
+            self.wprogress.show_all()
         self.wtotal = self.builder.get_object("progress_total")
 
         progress_frame = self.builder.get_object("progress_frame")
@@ -69,6 +71,8 @@ class runner(GObject.GObject):
             box.pack_start(f,True,True,0)
         box.set_orientation(Gtk.Orientation.VERTICAL)
         self.total_processes = 0
+        self.error = False
+
 
     def add_process(self,process):
 
@@ -82,7 +86,16 @@ class runner(GObject.GObject):
 
 
     def on_cancel_clicked(self,b):
-        pass
+
+        ask_w = devede.ask.ask_window()
+        retval = ask_w.run(_("Cancel the current job?"),_("Cancel the current job?"))
+        if retval:
+            self.error = True
+            for element in self.proc_list:
+                element.cancel()
+            self.wprogress.destroy()
+            self.emit("done",1) # there was an error
+            return
 
     def run(self, clear_log = True):
 
@@ -105,11 +118,16 @@ class runner(GObject.GObject):
                     self.progress_bars = []
                     break
         self.wtotal.set_text(str(self.total_processes - len(self.proc_list))+"/"+str(self.total_processes))
+        self.wtotal.set_fraction((float(self.total_processes - len(self.proc_list)))/(float(self.total_processes)))
 
 
     def process_ended(self,process, retval):
 
+        if self.error:
+            return
+
         if retval != 0:
+            self.error = True
             for element in self.proc_list:
                 element.cancel()
             self.wprogress.destroy()

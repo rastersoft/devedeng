@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 # Copyright 2014 (C) Raster Software Vigo (Sergio Costas)
 #
 # This file is part of DeVeDe-NG
@@ -17,38 +15,42 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import os
+import subprocess
 import devede.configuration_data
 import devede.executor
 
-class file_copy(devede.executor.executor):
+class k3b(devede.executor.executor):
 
-    def __init__(self,input_path, output_path):
+    supports_analize = False
+    supports_play = False
+    supports_convert = False
+    supports_menu = False
+    supports_burn = True
+    display_name = "K3B"
+
+    @staticmethod
+    def check_is_installed():
+        try:
+            handle = subprocess.Popen(["k3b","--help"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            (stdout, stderr) = handle.communicate()
+            if 0==handle.wait():
+                return True
+            else:
+                return False
+        except:
+            return False
+
+    def __init__(self):
 
         devede.executor.executor.__init__(self)
         self.config = devede.configuration_data.configuration.get_config()
 
-        self.text = _("Copying file %(X)s") % {"X": os.path.basename(input_path)}
+    def burn(self,file_name):
 
-        self.command_var=[]
-        self.command_var.append("copy_files_verbose.py")
-        self.command_var.append(input_path)
-        self.command_var.append(output_path)
-
+        self.command_var = ["k3b", file_name]
 
     def process_stdout(self,data):
-
-        if (data == None) or (len(data) == 0):
-            return
-        if (data[0].startswith("Copied ")):
-            pos = data[0].find("%")
-            if (pos == -1):
-                return
-            p = float(data[0][7:pos])
-            self.progress_bar[1].set_fraction(p/ 100.0)
-            self.progress_bar[1].set_text("%.1f%%" % (p))
         return
 
     def process_stderr(self,data):
-
         return

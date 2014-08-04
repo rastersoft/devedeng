@@ -56,15 +56,6 @@ class dvdauthor_converter(devede.executor.executor):
         return
 
 
-    def expand_xml(self,text):
-
-        text=text.replace('&','&amp;')
-        text=text.replace('<','&lt;')
-        text=text.replace('>','&gt;')
-        text=text.replace('"','&quot;')
-        text=text.replace("'",'&apos;')
-        return text
-
     def create_dvdauthor_xml(self,movie_folder, file_movies, menu_entries, start_with_menu):
 
         xmlpath = os.path.join(movie_folder,"xml_data")

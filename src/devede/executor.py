@@ -52,6 +52,7 @@ class executor(GObject.GObject):
         self.handle = None
 
 
+
     def add_dependency(self, dep):
 
         self.add_dependency2(dep)
@@ -134,12 +135,15 @@ class executor(GObject.GObject):
 
     def launch_process(self,command,redirect_output = True):
 
-        self.launch_command = "\n\nLaunching:"
-        for e in command:
-            self.launch_command += (" "+e)
-        self.launch_command += "\n"
+        if command != None:
+            self.launch_command = "\n\nLaunching:"
+            for e in command:
+                self.launch_command += (" "+e)
+            self.launch_command += "\n"
+
         self.config.append_log(self.text)
-        self.config.append_log(self.launch_command)
+        if command != None:
+            self.config.append_log(self.launch_command)
 
         try:
             if (self.stdin_file != None):
@@ -193,14 +197,13 @@ class executor(GObject.GObject):
         else:
             GLib.source_remove(self.timer_pulse)
 
+
     def run_pulse(self,v = None):
 
         if self.progress_bar == None:
             return
 
-        if self.pulse_text == None:
-            self.progress_bar[1].set_text("")
-        else:
+        if self.pulse_text != None:
             self.progress_bar[1].set_text(self.pulse_text)
         self.progress_bar[1].pulse()
         return True
@@ -310,3 +313,13 @@ class executor(GObject.GObject):
             self.config.append_log(self.stderr_data)
 
         self.emit("ended",retval)
+
+
+    def expand_xml(self,text):
+
+        text=text.replace('&','&amp;')
+        text=text.replace('<','&lt;')
+        text=text.replace('>','&gt;')
+        text=text.replace('"','&quot;')
+        text=text.replace("'",'&apos;')
+        return text

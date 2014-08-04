@@ -18,6 +18,7 @@
 from gi.repository import Gtk
 import os
 import devede.configuration_data
+import devede.add_files
 
 class ask_subtitles:
 
@@ -39,7 +40,10 @@ class ask_subtitles:
         wlist_languages = builder.get_object("list_languages")
         wencoding = builder.get_object("encoding_l")
         wlanguage = builder.get_object("language_l")
-        
+
+        if (devede.add_files.add_files.last_path != None):
+            self.wfilename.set_current_folder(devede.add_files.add_files.last_path)
+
         lang_selection = 0
         enc_selection = 0
 
