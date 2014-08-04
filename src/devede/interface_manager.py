@@ -262,7 +262,7 @@ class interface_manager(GObject.GObject):
             the_combo.set_active(dv)
             callback = element[2]
             if (callback != None):
-                the_liststore.connect("changed",callback)
+                the_combo.connect("changed",callback)
 
         self.interface_show_hide_obj = {}
         for element in self.interface_show_hide:
