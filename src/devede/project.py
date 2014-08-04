@@ -18,6 +18,7 @@
 from gi.repository import Gtk
 import os
 import time
+import shutil
 
 import devede.file_movie
 import devede.ask
@@ -31,6 +32,7 @@ import devede.dvdauthor_converter
 import devede.mkisofs
 import devede.end_job
 import devede.vcdimager_converter
+import devede.shutdown
 
 class devede_project:
 
@@ -373,6 +375,16 @@ class devede_project:
         if (not data.run()):
             return
 
+        if os.path.exists(data.path):
+            ask_w = devede.ask.ask_window()
+            retval = ask_w.run(_("The selected folder already exists. If you continue, it will be deleted. Continue?"),_("Delete folder"))
+            if retval:
+                shutil.rmtree(data.path,True)
+            else:
+                return
+
+        self.shutdown = data.shutdown
+
         run_window = devede.runner.runner()
         file_movies = self.get_all_files()
 
@@ -431,6 +443,10 @@ class devede_project:
 
 
     def disc_done(self,object,value):
+
+        if self.shutdown:
+            Gtk.main_quit()
+            devede.shutdown.shutdown()
 
         if value == 0:
             ended = devede.end_job.end_window()
