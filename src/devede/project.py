@@ -77,7 +77,7 @@ class devede_project:
         self.wcreate_disc = builder.get_object("create_disc")
 
         selection = self.wfiles.get_selection()
-        selection.mode = Gtk.SelectionMode.SINGLE
+        selection.set_mode(Gtk.SelectionMode.BROWSE)
 
         if (self.config.PAL):
             self.wuse_pal.set_active(True)
@@ -179,7 +179,6 @@ class devede_project:
 
         self.config.PAL = self.wuse_pal.get_active()
         self.set_interface_status(None)
-
 
 
     def on_wmain_window_delete_event(self,b,e=None):
@@ -333,7 +332,7 @@ class devede_project:
             minvrate = 0
             maxvrate = 8000
 
-        size*=0.90  # a safe margin of 10% to ensure that it never will be bigger
+        size *= 0.90  # a safe margin of 10% to ensure that it never will be bigger
                     # (it's important to have in mind the space needed by disk structures like
                     # directories, file entries, and so on)
 

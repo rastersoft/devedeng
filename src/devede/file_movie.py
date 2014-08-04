@@ -405,6 +405,9 @@ class file_movie(devede.interface_manager.interface_manager):
         self.wtreview_subtitles = self.builder.get_object("treeview_subtitles")
         self.wdel_subtitles = self.builder.get_object("del_subtitles")
 
+        selection = self.wsubtitles_list.get_selection()
+        selection.set_mode(Gtk.SelectionMode.BROWSE)
+
         # elements in page VIDEO OPTIONS
         self.wsize_1920x1080 = self.builder.get_object("size_1920x1080")
         self.wsize_1280x720 = self.builder.get_object("size_1280x720")
