@@ -18,6 +18,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import os
+import subprocess
+
 import devede.configuration_data
 import devede.executor
 
@@ -28,13 +30,14 @@ class subtitles_mux(devede.executor.executor):
         devede.executor.executor.__init__(self)
         self.config = devede.configuration_data.configuration.get_config()
 
-    def multiplex_subtitles(self,file_path_input, file_path_output, subtitles_path,subt_codepage, subt_lang,
-                            subt_upper,font_size, pal, force_subtitles, aspect, duration):
+    def multiplex_subtitles(self, file_path, subtitles_path,subt_codepage, subt_lang,
+                            subt_upper,font_size, pal, force_subtitles, aspect, duration, stream_id):
 
+        self.subt_path = file_path
         self.duration = duration
-        self.text = _("Adding %(L)s subtitles to %(X)s") % {"X": os.path.basename(file_path_output), "L": subt_lang}
+        self.text = _("Adding %(L)s subtitles to %(X)s") % {"X": os.path.basename(file_path), "L": subt_lang}
 
-        out_xml = open(file_path_input+".xml","w")
+        out_xml = open(file_path+".xml","w")
         out_xml.write('<subpictures format="')
         if pal:
             out_xml.write('PAL')
@@ -69,9 +72,19 @@ class subtitles_mux(devede.executor.executor):
             mode = "svcd"
         self.command_var.append("-m")
         self.command_var.append(mode)
-        self.command_var.append(file_path_input+".xml")
-        self.stdin_file = file_path_input
-        self.stdout_file = file_path_output
+        self.command_var.append("-s")
+        self.command_var.append(str(stream_id))
+        self.command_var.append(file_path+".xml")
+        self.stdin_file = file_path+".tmp"
+        self.stdout_file = file_path
+
+
+    def pre_function(self):
+
+        final_path = self.subt_path+".tmp"
+        if os.path.exists(final_path):
+            os.remove(final_path)
+        os.rename(self.subt_path, final_path)
 
 
     def process_stderr(self,data):

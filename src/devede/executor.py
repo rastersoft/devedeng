@@ -52,7 +52,6 @@ class executor(GObject.GObject):
         self.handle = None
 
 
-
     def add_dependency(self, dep):
 
         self.add_dependency2(dep)
@@ -73,6 +72,7 @@ class executor(GObject.GObject):
         for child in self.childs:
             child.add_dependency(dep)
 
+
     def remove_dependency(self,process):
         # dependencies are removed only in the parent because the running class have all the processes, parents and childs, and calls
         # this method on all of them
@@ -86,6 +86,7 @@ class executor(GObject.GObject):
             else:
                 self.dependencies = None
 
+
     def add_child_process(self,child):
 
         # the childs have the same dependencies than the parent process because, from outside, it is viewed as a single process
@@ -96,15 +97,22 @@ class executor(GObject.GObject):
         if (self.childs.count(child) == 0):
             self.childs.append(child)
 
+
     def run(self, progress_bar):
 
         self.progress_bar = progress_bar
         self.progress_bar[0].set_label(self.text)
         self.progress_bar[1].set_fraction(0.0)
         self.progress_bar[0].show_all()
+        # call, if it exists, the pre-function
+        try:
+            self.pre_function()
+        except:
+            pass
         self.launch_process(self.command_var)
         if self.use_pulse_mode != self.pulse_mode:
             self.set_pulse_mode(self.use_pulse_mode)
+
 
     def remove_ansi(self,line):
 
@@ -221,6 +229,7 @@ class executor(GObject.GObject):
             self.file_out.write(line_data)
             return True
 
+
     def read_stdin_from_file(self,source,condition):
 
         line_data = self.file_in.read1(4096)
@@ -265,7 +274,7 @@ class executor(GObject.GObject):
 
         if (condition != GLib.IO_IN):
             self.channel_stderr = None
-            if ((self.channel_stdout == None) and (self.channel_stdin == None)):
+            if (((self.channel_stdout == None) or (self.stdout_file != None)) and ((self.channel_stdin == None) or (self.stdin_file != None))):
                 self.wait_end()
             return False
         else:
@@ -286,6 +295,7 @@ class executor(GObject.GObject):
                 self.process_stderr(final_data)
             return True
 
+
     def cancel(self):
 
         """ Called to kill this process. """
@@ -305,6 +315,12 @@ class executor(GObject.GObject):
             retval = -1
 
         self.set_pulse_mode(False)
+
+        # call, if it exists, the post-function
+        try:
+            self.post_function(retval,self.killed)
+        except:
+            pass
 
         if self.killed:
             retval = 0
