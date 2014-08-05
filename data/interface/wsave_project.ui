@@ -9,7 +9,6 @@
     <property name="icon">devede.svg</property>
     <property name="type_hint">normal</property>
     <property name="action">save</property>
-    <property name="do_overwrite_confirmation">True</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="filechooserdialog-vbox1">
         <property name="can_focus">False</property>

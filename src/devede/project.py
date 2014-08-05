@@ -547,11 +547,20 @@ class devede_project:
 
     def on_save_as_activate(self,b):
 
-        w = devede.opensave.opensave_window(True)
-        retval = w.run(self.project_file)
-        if retval != None:
+        while True:
+            w = devede.opensave.opensave_window(True)
+            retval = w.run(self.project_file)
+            if retval == None:
+                return
+            if not retval.endswith(".devedeng"):
+                retval += ".devedeng"
+            if os.path.isfile(retval):
+                w = devede.ask.ask_window()
+                if not w.run(_("The file already exists. Overwrite it?"), _("The file already exists")):
+                    continue
             self.project_file = retval
             self.save_current_project()
+            return
 
 
     def on_load_activate(self,b):
@@ -564,9 +573,6 @@ class devede_project:
     def save_current_project(self):
 
         project = {}
-
-        if not self.project_file.endswith(".devedeng"):
-            self.project_file += ".devedeng"
 
         project["PAL"] = self.wuse_pal.get_active()
         project["create_menu"] = self.wcreate_menu.get_active()
