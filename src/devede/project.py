@@ -266,11 +266,11 @@ class devede_project:
         fixed_size = 0
         to_adjust = []
         for f in self.get_all_files():
-            estimated_size, videorate_fixed_size, audio_rate, sub_rate, width, height, time_length = f.get_size_data()
+            estimated_size, videorate_fixed_size, audio_rate, sub_rate, width, height, time_length, n_audio_streams = f.get_size_data()
             if videorate_fixed_size:
                 fixed_size += estimated_size
             else:
-                fixed_size += ((audio_rate + sub_rate) * time_length) / 8
+                fixed_size += (((audio_rate * n_audio_streams) + sub_rate) * time_length) / 8
                 # 76800 = 320x240, which is the smallest resolution
                 surface = ((width * height) / 76800.0) * time_length
                 to_adjust.append( (f, surface, time_length) )

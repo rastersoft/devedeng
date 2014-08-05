@@ -135,9 +135,18 @@ class file_movie(devede.interface_manager.interface_manager):
             self.original_aspect_ratio = film_analizer.original_aspect_ratio
             self.original_videorate = film_analizer.original_videorate
             self.original_audiorate = film_analizer.original_audiorate
+
             self.original_audiorate_uncompressed = film_analizer.original_audiorate_uncompressed
             self.original_fps = film_analizer.original_fps
             self.original_file_size = film_analizer.original_file_size
+
+            if self.original_audiorate <= 0:
+                # just a guess, but usually correct
+                self.original_audiorate = 224
+            if self.original_videorate <= 0:
+                # presume that there are only video and audio streams
+                self.original_videorate = ((8 * self.original_file_size) / self.original_length) - (self.original_audiorate * self.audio_streams)
+
             self.error = False
 
         self.width_midle = -1
@@ -163,8 +172,7 @@ class file_movie(devede.interface_manager.interface_manager):
         else:
             # let's asume 8kbps for each subtitle
             sub_rate = 8 * len(self.subtitles_list)
-            estimated_size = ((self.video_rate_final + self.audio_rate_final + sub_rate) * self.original_length) / 8
-
+            estimated_size = ((self.video_rate_final + (self.audio_rate_final * self.audio_streams) + sub_rate) * self.original_length) / 8
 
         return estimated_size
 
@@ -180,7 +188,7 @@ class file_movie(devede.interface_manager.interface_manager):
         # let's asume 8kbps for each subtitle
         sub_rate = 8 * len(self.subtitles_list)
 
-        return estimated_size, videorate_fixed_size, self.audio_rate_final, sub_rate, self.width_final, self.height_final, self.original_length
+        return estimated_size, videorate_fixed_size, self.audio_rate_final, sub_rate, self.width_final, self.height_final, self.original_length, self.audio_streams
 
 
     def set_auto_video_rate(self, new_video_rate):
