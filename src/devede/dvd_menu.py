@@ -48,6 +48,8 @@ class dvd_menu(devede.interface_manager.interface_manager):
         self.add_group("position_horizontal", ["left", "center", "right"], "center", self.update_preview)
         self.add_group("at_startup", ["menu_show_at_startup", "play_first_title_at_startup"], "menu_show_at_startup")
 
+        self.add_integer_adjustment("sound_length", 30)
+
         self.add_float_adjustment("margin_left", 10.0, self.update_preview)
         self.add_float_adjustment("margin_top", 12.5, self.update_preview)
         self.add_float_adjustment("margin_right", 10.0, self.update_preview)
@@ -63,7 +65,6 @@ class dvd_menu(devede.interface_manager.interface_manager):
 
         self.cached_menu_font = None
         self.cached_menu_size = 0
-        self.sound_length = 30
         self.video_rate = 2500
         self.audio_rate = 224
 
@@ -89,17 +90,20 @@ class dvd_menu(devede.interface_manager.interface_manager):
         else:
             self.sound_length = length
 
+
     def update_preview(self,b=None):
 
         self.store_ui(self.builder)
         self.sf = None # force to repaint the menu
         self.wdrawing_area.queue_draw()
 
+
     def on_default_background_clicked(self,b):
 
         self.background_picture = self.default_background
         self.update_ui(self.builder)
         self.update_preview()
+
 
     def on_no_sound_clicked(self,b):
 
@@ -167,6 +171,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
         self.store_ui(self.builder)
         self.wmenu.destroy()
 
+
     def on_cancel_clicked(self,b):
 
         self.restore_ui()
@@ -204,6 +209,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
             fontsize=12
 
         return fontname,fontstyle,fontslant,fontsize
+
 
     def paint_arrow(self,xl,xr,y,arrow_type,left):
 
@@ -300,7 +306,6 @@ class dvd_menu(devede.interface_manager.interface_manager):
             fo.set_antialias(cairo.ANTIALIAS_DEFAULT)
             self.cr.set_font_options(fo)
             self.cr.set_antialias(cairo.ANTIALIAS_DEFAULT)
-
 
 
     def refresh_static_data(self):
@@ -433,6 +438,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
                     self.paint_arrow(xl, med, y, "menu_entry_activated", True)
         return coordinates
 
+
     def paint_base(self,xl, xr, y, type_b):
 
         height = self.cached_menu_size + self.entry_vertical_margin
@@ -462,12 +468,14 @@ class dvd_menu(devede.interface_manager.interface_manager):
             self.current_shown_page -= 1
         self.update_preview()
 
+
     def on_previous_page_clicked(self,b):
 
         self.current_shown_page -= 1
         if (self.current_shown_page < 0):
             self.current_shown_page = 0
         self.update_preview()
+
 
     def on_drawingarea_preview_draw(self,widget,cr):
 
@@ -481,6 +489,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
 
         cr.set_source_surface(self.sf)
         cr.paint()
+
 
     def create_menu_stream(self,path,n_page,coordinates):
 

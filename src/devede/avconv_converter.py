@@ -22,6 +22,7 @@ import os
 import devede.configuration_data
 import devede.executor
 import devede.mux_dvd_menu
+import devede.avconv_converter
 
 class avconv_converter(devede.executor.executor):
 
@@ -47,7 +48,7 @@ class avconv_converter(devede.executor.executor):
                 divx = False
                 h264 = False
                 for line in stdout.decode("latin-1").split("\n"):
-                    parts = line.split(" ")
+                    parts = line.strip().split(" ")
                     if len(parts) < 2:
                         continue
                     if len(parts[0]) != 6:

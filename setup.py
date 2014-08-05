@@ -29,7 +29,7 @@ def get_data_files():
     for pofile in [f for f in os.listdir('po') if f.endswith('.po')]:
         pofile = os.path.join('po', pofile) # po/fr.po
         modir, mofile = get_mopath(pofile)
-        # translations must be always in /usr/share because Gtk.builder only search there
+        # translations must be always in /usr/share because Gtk.builder only search there. If someone knows how to fix this...
         target = os.path.join('/usr','share', modir) # share/locale/fr/LC_MESSAGES/
         data_files.append((target, [mofile]))
 

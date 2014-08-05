@@ -185,26 +185,30 @@ class interface_manager(GObject.GObject):
 
         for element in self.interface_labels:
             value = eval('self.'+element)
-            if (value != None):
-                builder.get_object(element).set_text(str(value))
-            else:
-                builder.get_object(element).set_text("")
+            obj = builder.get_object(element)
+            if obj != None:
+                if (value != None):
+                    obj.set_text(str(value))
+                else:
+                    obj.set_text("")
 
         for element in self.interface_integer_adjustments:
-            value = eval('self.'+element[0])
             obj = builder.get_object(element[0])
-            obj.set_value(float(value))
-            callback = element[1]
-            if (callback != None):
-                obj.connect("value_changed",callback)
+            if obj != None:
+                value = eval('self.'+element[0])
+                obj.set_value(float(value))
+                callback = element[1]
+                if (callback != None):
+                    obj.connect("value_changed",callback)
 
         for element in self.interface_float_adjustments:
-            value = eval('self.'+element[0])
             obj = builder.get_object(element[0])
-            obj.set_value(value)
-            callback = element[1]
-            if (callback != None):
-                obj.connect("value_changed",callback)
+            if obj != None:
+                value = eval('self.'+element[0])
+                obj.set_value(value)
+                callback = element[1]
+                if (callback != None):
+                    obj.connect("value_changed",callback)
 
         for element in self.interface_lists:
             obj = eval('self.'+element[0])
@@ -290,6 +294,7 @@ class interface_manager(GObject.GObject):
             obj.connect('toggled',self.toggled_element2)
             self.toggled_element2(obj)
 
+
     def toggled_element(self,element):
         """ Wenever an element with 'hide' or 'show' needs is toggled, this callback is called """
 
@@ -357,6 +362,7 @@ class interface_manager(GObject.GObject):
                 for item in to_disable:
                     item.set_sensitive(False)
 
+
     def store_ui(self,builder):
         """ Takes the values of the widgets and stores them in the internal variables """
 
@@ -380,11 +386,13 @@ class interface_manager(GObject.GObject):
 
         for element in self.interface_integer_adjustments:
             obj = builder.get_object(element[0])
-            exec('self.'+element[0]+' = int(obj.get_value())')
+            if obj != None:
+                exec('self.'+element[0]+' = int(obj.get_value())')
 
         for element in self.interface_float_adjustments:
             obj = builder.get_object(element[0])
-            exec('self.'+element[0]+' = obj.get_value()')
+            if obj != None:
+                exec('self.'+element[0]+' = obj.get_value()')
 
         for element in self.interface_colorbuttons:
             obj = builder.get_object(element[0])
