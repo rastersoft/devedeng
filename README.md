@@ -18,7 +18,8 @@ Just type:
 
 The first alpha version of Devede NG is very similar to the old devede, with the
 exception that, when creating a DVD disc, there are no more "titles" and
-"files". Instead, you just add files to the disc.
+"files". Instead, you just add files to the disc. It also lacks support for Mencoder,
+and can use only FFMpeg or AVConv for video conversion.
 
 The current visible changes are quite small in number:
 
