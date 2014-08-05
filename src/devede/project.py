@@ -20,6 +20,7 @@ import os
 import time
 import shutil
 import urllib.parse
+import pickle
 
 import devede.file_movie
 import devede.ask
@@ -35,6 +36,7 @@ import devede.end_job
 import devede.vcdimager_converter
 import devede.shutdown
 import devede.about
+import devede.opensave
 
 class devede_project:
 
@@ -46,6 +48,7 @@ class devede_project:
         self.menu = devede.dvd_menu.dvd_menu()
 
         self.current_title = None
+        self.project_file = None
 
         builder = Gtk.Builder()
         builder.set_translation_domain(self.config.gettext_domain)
@@ -240,6 +243,8 @@ class devede_project:
             element.delete_file()
             model.remove(treeiter)
             self.set_interface_status(None)
+            self.refresh_disc_usage()
+
 
     def on_up_file_clicked(self,b):
 
@@ -250,6 +255,7 @@ class devede_project:
         last_element = self.wfiles.get_model()[position-1]
         self.wfiles.get_model().swap(last_element.iter,treeiter)
         self.set_interface_status(None)
+
 
     def on_down_file_clicked(self,b):
 
@@ -482,9 +488,11 @@ class devede_project:
 
         self.wmain_window.show()
 
+
     def disc_done2(self,object, value):
 
         self.wmain_window.show()
+
 
     def on_preview_file_clicked(self,b):
 
@@ -493,31 +501,115 @@ class devede_project:
             return
         element.do_preview()
 
+
     def on_settings_activate(self,b):
 
         w = devede.settings.settings_window()
+
 
     def on_about_activate(self,b):
 
         w = devede.about.about_window()
 
+
     def on_new_activate(self,b):
 
         w = devede.ask.ask_window()
-        if w.run(_("Delete current project and start a fresh one?"), _("New project")):
+        if w.run(_("Close current project and start a fresh one?"), _("New project")):
             self.wliststore_files.clear()
+            self.project_file = None
             self.wmain_window.hide()
             devede.choose_disc_type.choose_disc_type()
+
 
     def on_wmain_window_drag_motion(self,wid, context, x, y, time):
         Gdk.drag_status(context, Gdk.DragAction.COPY, time)
         return True
 
+
     def on_wmain_window_drag_drop(self, wid, context, x, y, time):
         # Used with windows drag and drop
         return True
+
 
     def on_wmain_window_drag_data_received(self, widget, drag_context, x,y, data, info, time):
         uris = data.get_uris()
         self.add_several_files(uris)
         Gtk.drag_finish (drag_context, True, Gdk.DragAction.COPY, time);
+
+
+    def on_save_activate(self,b):
+        if self.project_file != None:
+            self.save_current_project()
+        else:
+            self.on_save_as_activate(None)
+
+
+    def on_save_as_activate(self,b):
+
+        w = devede.opensave.opensave_window(True)
+        retval = w.run(self.project_file)
+        if retval != None:
+            self.project_file = retval
+            self.save_current_project()
+
+
+    def on_load_activate(self,b):
+        w = devede.opensave.opensave_window(False)
+        retval = w.run()
+        if retval != None:
+            self.load_project(retval)
+
+
+    def save_current_project(self):
+
+        project = {}
+
+        if not self.project_file.endswith(".devedeng"):
+            self.project_file += ".devedeng"
+
+        project["PAL"] = self.wuse_pal.get_active()
+        project["create_menu"] = self.wcreate_menu.get_active()
+        project["disc_type"] = self.config.disc_type
+        project["disc_size"] = self.wdisc_size.get_active()
+        project["files"] = []
+        f = self.get_all_files()
+        for i in f:
+            project["files"].append(i.store_file())
+        if self.disc_type == "dvd":
+            project["menu"] = self.menu.store_menu()
+
+        with open(self.project_file, 'wb') as f:
+            pickle.dump(project, f, 3)
+
+
+    def load_project(self,project_file):
+
+        self.wliststore_files.clear()
+        self.project_file = project_file
+        with open(project_file, 'rb') as f:
+            project = pickle.load(f)
+        if "disc_type" in project:
+            self.config.set_disc_type(project["disc_type"])
+        if "PAL" in project:
+            self.wuse_pal.set_active(project["PAL"])
+        if "create_menu" in project:
+            self.wcreate_menu.set_active(project["create_menu"])
+        if "disc_size" in project:
+            self.wdisc_size.set_active(project["disc_size"])
+        if "menu" in project:
+            self.menu.restore_menu(project["menu"])
+        if "files" in project:
+            error_list = []
+            for efile in project["files"]:
+                new_file = devede.file_movie.file_movie(efile["file_name"])
+                if (new_file.error):
+                    error_list.append(os.path.basename(efile["file_name"]))
+                else:
+                    new_file.restore_file(efile)
+                    new_file.connect('title_changed',self.title_changed)
+                    self.wliststore_files.append([new_file, new_file.title_name])
+            if (len(error_list)!=0):
+                devede.message.message_window(_("The following files in the project could not be added again:"),_("Error while adding files"),error_list)
+        self.set_interface_status(None)
+        self.refresh_disc_usage()

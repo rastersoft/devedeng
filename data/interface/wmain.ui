@@ -83,6 +83,7 @@
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_load_activate" swapped="no"/>
                       </object>
                     </child>
                     <child>
@@ -92,6 +93,7 @@
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_save_activate" swapped="no"/>
                       </object>
                     </child>
                     <child>
@@ -101,6 +103,7 @@
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_save_as_activate" swapped="no"/>
                       </object>
                     </child>
                     <child>

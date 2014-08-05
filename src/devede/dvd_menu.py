@@ -600,3 +600,13 @@ class dvd_menu(devede.interface_manager.interface_manager):
             n_page += 1
 
         return processes,menu_entries
+
+
+    def store_menu(self):
+
+        return self.serialize()
+
+
+    def restore_menu(self,data):
+
+        self.unserialize(data)

@@ -635,3 +635,13 @@ class file_movie(devede.interface_manager.interface_manager):
             cv = devede.converter.converter.get_converter()
             disc_player = (cv.get_film_player())()
             disc_player.play_film(os.path.join(self.config.tmp_folder,"movie_preview.mpg"))
+
+
+    def store_file(self):
+
+        return self.serialize()
+
+
+    def restore_file(self,data):
+
+        self.unserialize(data)

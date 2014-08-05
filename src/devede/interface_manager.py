@@ -462,3 +462,69 @@ class interface_manager(GObject.GObject):
             exec('self.'+element[0]+' = self.'+element[0]+'_backup')
         for element in self.interface_comboboxes:
             exec('self.'+element[0]+' = self.'+element[0]+'_backup')
+
+
+    def serialize(self):
+        """ Returns a dictionary with both the variables of the interface and its values,
+            which can be restored with unserialize
+            """
+
+        output = {}
+        for element in self.interface_groups:
+            output[element] = eval('self.'+element)
+        for element in self.interface_toggles:
+            output[element[0]] = eval('self.'+element[0])
+        for element in self.interface_text:
+            output[element[0]] = eval('self.'+element[0])
+        for element in self.interface_integer_adjustments:
+            output[element[0]] = eval('self.'+element[0])
+        for element in self.interface_float_adjustments:
+            output[element[0]] = eval('self.'+element[0])
+        for element in self.interface_colorbuttons:
+            output[element[0]] = eval('self.'+element[0])
+        for element in self.interface_fontbuttons:
+            output[element[0]] = eval('self.'+element[0])
+        for element in self.interface_filebuttons:
+            output[element[0]] = eval('self.'+element[0])
+        for element in self.interface_lists:
+            output[element[0]] = eval('self.'+element[0])
+        for element in self.interface_comboboxes:
+            output[element[0]] = eval('self.'+element[0])
+        return output
+
+
+    def unserialize(self,data_list):
+        """ Takes a dictionary with the variables of the interface and its values,
+            and restores them into their variables
+            """
+
+        for element in self.interface_groups:
+            if element in data_list:
+                exec('self.'+element+' = data_list["'+element+'"]')
+        for element in self.interface_toggles:
+            if element[0] in data_list:
+                exec('self.'+element[0]+' = data_list["'+element[0]+'"]')
+        for element in self.interface_text:
+            if element[0] in data_list:
+                exec('self.'+element[0]+' = data_list["'+element[0]+'"]')
+        for element in self.interface_integer_adjustments:
+            if element[0] in data_list:
+                exec('self.'+element[0]+' = data_list["'+element[0]+'"]')
+        for element in self.interface_float_adjustments:
+            if element[0] in data_list:
+                exec('self.'+element[0]+' = data_list["'+element[0]+'"]')
+        for element in self.interface_colorbuttons:
+            if element[0] in data_list:
+                exec('self.'+element[0]+' = data_list["'+element[0]+'"]')
+        for element in self.interface_fontbuttons:
+            if element[0] in data_list:
+                exec('self.'+element[0]+' = data_list["'+element[0]+'"]')
+        for element in self.interface_filebuttons:
+            if element[0] in data_list:
+                exec('self.'+element[0]+' = data_list["'+element[0]+'"]')
+        for element in self.interface_lists:
+            if element[0] in data_list:
+                exec('self.'+element[0]+' = data_list["'+element[0]+'"]')
+        for element in self.interface_comboboxes:
+            if element[0] in data_list:
+                exec('self.'+element[0]+' = data_list["'+element[0]+'"]')
