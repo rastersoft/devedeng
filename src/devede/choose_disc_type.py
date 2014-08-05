@@ -206,6 +206,6 @@ class choose_disc_type(GObject.GObject):
         window.destroy()
 
 
-    def on_wselect_disk_destroy_event(self,w):
+    def on_wselect_disk_destroy_event(self,w,b):
 
         Gtk.main_quit()
