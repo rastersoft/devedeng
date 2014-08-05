@@ -204,3 +204,8 @@ class choose_disc_type(GObject.GObject):
         textbuf.insert_at_cursor(final_text,len(final_text))
         window.run()
         window.destroy()
+
+
+    def on_wselect_disk_destroy_event(self,w):
+
+        Gtk.main_quit()

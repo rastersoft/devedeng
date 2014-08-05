@@ -9,8 +9,8 @@
     <property name="modal">True</property>
     <property name="window_position">center</property>
     <property name="icon">devede.svg</property>
-    <property name="deletable">False</property>
     <property name="has_resize_grip">False</property>
+    <signal name="destroy" handler="on_wselect_disk_destroy_event" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
