@@ -15,10 +15,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from gi.repository import Gtk
+from gi.repository import Gtk, Gdk
 import os
 import time
 import shutil
+import urllib.parse
 
 import devede.file_movie
 import devede.ask
@@ -92,6 +93,11 @@ class devede_project:
         if (self.disc_type != None):
             self.set_type(None, self.disc_type)
 
+        self.wmain_window.drag_dest_set(Gtk.DestDefaults.ALL,[],Gdk.DragAction.COPY)
+        targets = Gtk.TargetList.new([])
+        targets.add(Gdk.Atom.intern("text/uri-list", False),0,0)
+        self.wmain_window.drag_dest_set_target_list(targets)
+
 
     def set_type(self,obj=None,disc_type=None):
         """ this method sets the disk type to the specified one and adapts the interface
@@ -111,8 +117,10 @@ class devede_project:
 
         if (self.disc_type == "dvd"):
             self.wframe_menu.show_all()
+            self.wcreate_menu.set_active(True)
         else:
             self.wframe_menu.hide()
+            self.wcreate_menu.set_active(False)
 
 
     def get_current_file(self):
@@ -199,16 +207,22 @@ class devede_project:
 
     def on_add_file_clicked(self,b):
 
-        error_list = []
         ask_files = devede.add_files.add_files()
         if (ask_files.run()):
-            for efile in ask_files.files:
-                new_file = devede.file_movie.file_movie(efile)
-                if (new_file.error):
-                    error_list.append(os.path.basename(efile))
-                else:
-                    new_file.connect('title_changed',self.title_changed)
-                    self.wliststore_files.append([new_file, new_file.title_name])
+            self.add_several_files(ask_files.files)
+
+
+    def add_several_files(self,file_list):
+        error_list = []
+        for efile in file_list:
+            if efile.startswith("file://"):
+                efile = urllib.parse.unquote(efile[7:])
+            new_file = devede.file_movie.file_movie(efile)
+            if (new_file.error):
+                error_list.append(os.path.basename(efile))
+            else:
+                new_file.connect('title_changed',self.title_changed)
+                self.wliststore_files.append([new_file, new_file.title_name])
         if (len(error_list)!=0):
             devede.message.message_window(_("The following files could not be added:"),_("Error while adding files"),error_list)
         self.set_interface_status(None)
@@ -266,28 +280,55 @@ class devede_project:
         fixed_size = 0
         to_adjust = []
         for f in self.get_all_files():
-            estimated_size, videorate_fixed_size, audio_rate, sub_rate, width, height, time_length, n_audio_streams = f.get_size_data()
+            estimated_size, videorate_fixed_size, audio_rate, sub_rate, width, height, time_length = f.get_size_data()
             if videorate_fixed_size:
                 fixed_size += estimated_size
             else:
-                fixed_size += (((audio_rate * n_audio_streams) + sub_rate) * time_length) / 8
+                fixed_size += ((audio_rate + sub_rate) * time_length)
                 # 76800 = 320x240, which is the smallest resolution
-                surface = ((width * height) / 76800.0) * time_length
-                to_adjust.append( (f, surface, time_length) )
+                surface = ((float(width) * float(height)) / 76800.0) * float(time_length)
+                to_adjust.append( (f, surface, time_length, audio_rate) )
                 total_resolution += surface
 
         if (self.disc_type == "dvd") and (self.wcreate_menu.get_active()):
-            fixed_size += self.menu.get_estimated_size()
+            fixed_size += self.menu.get_estimated_size() * 8.0
 
         if (total_resolution != 0):
-            remaining_disc_size = ((1000 * self.get_dvd_size()[0]) - fixed_size) * 8 # in kbits
+            remaining_disc_size = ((8000.0 * self.get_dvd_size()[0]) - fixed_size) # in kbits
             for l in to_adjust:
                 f = l[0]
                 surface = l[1]
                 length = l[2]
-                f.set_auto_video_rate((remaining_disc_size * surface) / (total_resolution * length))
+                audio_rate = l[3]
+                f.set_auto_video_audio_rate((remaining_disc_size * surface) / ( length * total_resolution), audio_rate)
 
         self.refresh_disc_usage()
+
+
+    def refresh_disc_usage(self):
+
+        used = 0.0
+
+        for f in self.get_all_files():
+            estimated_size = f.get_estimated_size()
+            used += float(estimated_size)
+
+        if self.wcreate_menu.get_active():
+            used += float(self.menu.get_estimated_size())
+
+        used /= 1000.0
+
+        disc_size,minvrate,maxvrate = self.get_dvd_size()
+
+        if used > disc_size:
+            self.wdisc_fill_level.set_fraction(1.0)
+            addv=1
+        else:
+            self.wdisc_fill_level.set_fraction(used / disc_size)
+            addv=0
+
+        self.wdisc_fill_level.set_text(str(addv+int((used / disc_size)*100))+"%")
+        self.wdisc_fill_level.set_show_text(True)
 
 
     def on_menu_options_clicked(self,b):
@@ -337,31 +378,6 @@ class devede_project:
                     # directories, file entries, and so on)
 
         return size,minvrate,maxvrate
-
-
-    def refresh_disc_usage(self):
-
-        used = 0.0
-
-        for f in self.get_all_files():
-            estimated_size = f.get_estimated_size()
-            used += float(estimated_size)
-
-        if self.wcreate_menu.get_active():
-            used += float(self.menu.get_estimated_size())
-
-        used /= 1000.0
-
-        disc_size,minvrate,maxvrate = self.get_dvd_size()
-
-        if used > disc_size:
-            self.wdisc_fill_level.set_fraction(1.0)
-            addv=1
-        else:
-            self.wdisc_fill_level.set_fraction(used / disc_size)
-            addv=0
-        self.wdisc_fill_level.set_text(str(addv+int((used / disc_size)*100))+"%")
-        self.wdisc_fill_level.set_show_text(True)
 
 
     def on_disc_size_changed(self,c):
@@ -484,3 +500,24 @@ class devede_project:
     def on_about_activate(self,b):
 
         w = devede.about.about_window()
+
+    def on_new_activate(self,b):
+
+        w = devede.ask.ask_window()
+        if w.run(_("Delete current project and start a fresh one?"), _("New project")):
+            self.wliststore_files.clear()
+            self.wmain_window.hide()
+            devede.choose_disc_type.choose_disc_type()
+
+    def on_wmain_window_drag_motion(self,wid, context, x, y, time):
+        Gdk.drag_status(context, Gdk.DragAction.COPY, time)
+        return True
+
+    def on_wmain_window_drag_drop(self, wid, context, x, y, time):
+        # Used with windows drag and drop
+        return True
+
+    def on_wmain_window_drag_data_received(self, widget, drag_context, x,y, data, info, time):
+        uris = data.get_uris()
+        self.add_several_files(uris)
+        Gtk.drag_finish (drag_context, True, Gdk.DragAction.COPY, time);

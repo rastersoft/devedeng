@@ -45,6 +45,8 @@ class file_movie(devede.interface_manager.interface_manager):
         self.add_text("title_name", os.path.splitext(os.path.basename(file_name))[0])
         self.add_label("original_size",None)
         self.add_label("original_length",None)
+        self.add_label("original_videorate",None)
+        self.add_label("original_audiorate",None)
         self.add_label("original_aspect_ratio",None)
         self.add_label("original_fps",None)
 
@@ -188,12 +190,13 @@ class file_movie(devede.interface_manager.interface_manager):
         # let's asume 8kbps for each subtitle
         sub_rate = 8 * len(self.subtitles_list)
 
-        return estimated_size, videorate_fixed_size, self.audio_rate_final, sub_rate, self.width_final, self.height_final, self.original_length, self.audio_streams
+        return estimated_size, videorate_fixed_size, self.audio_rate_final * self.audio_streams, sub_rate, self.width_final, self.height_final, self.original_length
 
 
-    def set_auto_video_rate(self, new_video_rate):
+    def set_auto_video_audio_rate(self, new_video_rate, new_audio_rate):
 
-        self.video_rate_auto = new_video_rate
+        self.video_rate_auto = int(new_video_rate)
+        self.audio_rate_auto = int(new_audio_rate)
 
 
     def get_max_resolution(self,rx,ry,aspect):
@@ -376,7 +379,8 @@ class file_movie(devede.interface_manager.interface_manager):
 
     def delete_file(self):
 
-        print("Deleted file "+self.file_name)
+        return
+
 
     def properties(self):
 
@@ -488,8 +492,8 @@ class file_movie(devede.interface_manager.interface_manager):
         self.on_aspect_classic_toggled(None)
         self.on_treeview_subtitles_cursor_changed(None)
 
-    def on_aspect_classic_toggled(self,b):
 
+    def on_aspect_classic_toggled(self,b):
 
         status1 = self.waspect_classic.get_active()
         status2 = self.waspect_wide.get_active()
