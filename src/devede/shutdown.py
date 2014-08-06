@@ -15,28 +15,28 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import dbus
+from gi.repository import Gio, GLib
 
 class shutdown:
-    
+
     def __init__(self):
 
         # First, try with logind
         try:
-            bus = dbus.SystemBus()
-            bus_object = bus.get_object("org.freedesktop.login1", "/org/freedesktop/login1")
-            bus_object.PowerOff(False, dbus_interface="org.freedesktop.login1.Manager")
+            bus = Gio.bus_get_sync(Gio.BusType.SYSTEM, None)
+            bus.call_sync("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager",
+                          "PowerOff", GLib.Variant_boolean('(bb)', ( False , False) ), None, Gio.DBusCallFlags.NONE, -1, None)
         except:
             failure=True
 
         if (failure):
             failure=False
-            
+
             # If it fails, try with ConsoleKit
             try:
-                bus = dbus.SystemBus()
-                bus_object = bus.get_object("org.freedesktop.ConsoleKit", "/org/freedesktop/ConsoleKit/Manager")
-                bus_object.Stop(dbus_interface="org.freedesktop.ConsoleKit.Manager")
+                bus = Gio.bus_get_sync(Gio.BusType.SYSTEM, None)
+                bus.call_sync("org.freedesktop.ConsoleKit", "/org/freedesktop/ConsoleKit/Manager", "org.freedesktop.ConsoleKit.Manager",
+                              "Stop", None, None, Gio.DBusCallFlags.NONE, -1, None)
             except:
                 failure=True
 
@@ -45,8 +45,8 @@ class shutdown:
 
             # If it fails, try with HAL
             try:
-                bus = dbus.SystemBus()
-                bus_object = bus.get_object("org.freedesktop.Hal", "/org/freedesktop/Hal/devices/computer")
-                bus_object.Shutdown(dbus_interface="org.freedesktop.Hal.Device.SystemPowerManagement")
+                bus = Gio.bus_get_sync(Gio.BusType.SYSTEM, None)
+                bus.call_sync("org.freedesktop.Hal", "/org/freedesktop/Hal/devices/computer","org.freedesktop.Hal.Device.SystemPowerManagement",
+                              "Shutdown", None, None, Gio.DBusCallFlags.NONE, -1, None)
             except:
                 failure=True

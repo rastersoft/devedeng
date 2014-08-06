@@ -36,12 +36,13 @@ class message_window:
         wmessage_text.set_markup(text)
         wmessage_list = builder.get_object("list_message")
         wmessage_liststore = builder.get_object("liststore_elements")
+        wmessage_window.show_all()
+
         if (list_data == None):
             wmessage_list.hide()
         else:
             for element in list_data:
                 wmessage_liststore.append([element])
 
-        wmessage_window.show_all()
         wmessage_window.run()
         wmessage_window.destroy()

@@ -25,7 +25,6 @@ from gi.repository import Gtk
 import devede.project
 import devede.configuration_data
 import devede.choose_disc_type
-import devede.converter
 
 config_data = devede.configuration_data.configuration.get_config()
 

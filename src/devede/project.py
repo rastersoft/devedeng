@@ -393,6 +393,17 @@ class devede_project:
 
     def on_create_disc_clicked(self,b):
 
+        if self.disc_type == "dvd":
+            max_files = 62
+        else:
+            max_files = -1
+
+        file_movies = self.get_all_files()
+        t = len(file_movies)
+        if (max_files != -1) and (t > max_files):
+            devede.message.message_window(_("The limit for this format is %(l)d files, but your project has %(h)d.") % {"l": max_files, "h" : t}, _("Too many files in the project"))
+            return
+
         data = devede.create_disk_window.create_disk_window()
         if (not data.run()):
             return
@@ -408,7 +419,6 @@ class devede_project:
         self.shutdown = data.shutdown
 
         run_window = devede.runner.runner()
-        file_movies = self.get_all_files()
 
         final_dependencies = []
 
