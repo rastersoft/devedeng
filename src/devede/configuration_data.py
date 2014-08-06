@@ -141,22 +141,27 @@ class configuration(GObject.GObject):
                 if linea[:15]=="menu_converter:":
                     self.menu_converter = linea[15:].strip()
                     continue
+                if linea[:7]=="burner:":
+                    self.burner = linea[7:].strip()
+                    continue
+                if linea[:6]=="mkiso:":
+                    self.mkiso = linea[6:].strip()
+                    continue
                 if linea[:19]=="subtitle_font_size:":
                     self.subtitles_font_size = int(linea[19:].strip())
-                if linea[:7]=="burner:":
-                    self.burner = int(linea[7:].strip())
-                if linea[:6]=="mkiso:":
-                    self.mkiso = int(linea[6:].strip())
+                    continue
             config_data.close()
         except:
             pass
 
         return False
 
+
     def set_disc_type(self,disc_type):
 
         self.disc_type = disc_type
         self.emit('disc_type',disc_type)
+
 
     def save_config(self):
 
@@ -198,15 +203,18 @@ class configuration(GObject.GObject):
         except:
             pass
 
+
     def append_log(self,data,cr = True):
 
         self.log+=data
         if (cr):
             self.log += "\n"
 
+
     def clear_log(self):
 
         self.log = ""
+
 
     def get_log(self):
 

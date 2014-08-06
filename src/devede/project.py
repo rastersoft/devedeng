@@ -453,7 +453,9 @@ class devede_project:
             for element in final_dependencies:
                 dvdauthor.add_dependency(element)
             run_window.add_process(dvdauthor)
-            isocreator = devede.mkisofs.mkisofs()
+
+            cv = devede.converter.converter.get_converter()
+            isocreator = cv.get_mkiso()()
             isocreator.create_iso(data.path, data.name)
             isocreator.add_dependency(dvdauthor)
             run_window.add_process(isocreator)
