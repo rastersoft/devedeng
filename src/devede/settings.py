@@ -68,12 +68,13 @@ class settings_window(devede.interface_manager.interface_manager):
         self.add_filebutton("tempo_path", self.config.tmp_folder)
 
         c = devede.converter.converter.get_converter()
-        (analizers, players, menuers, converters, burners) = c.get_available_programs()
+        (analizers, players, menuers, converters, burners, mkiso) = c.get_available_programs()
 
         self.add_combobox("analizer", analizers,self.config.film_analizer)
         self.add_combobox("player", players,self.config.film_player)
         self.add_combobox("converter", converters,self.config.film_converter,self.set_data_converter)
         self.add_combobox("menuer", menuers,self.config.menu_converter)
+        self.add_combobox("mkiso", mkiso, self.config.mkiso)
         self.add_combobox("burner", burners, self.config.burner)
 
         self.builder = Gtk.Builder()
@@ -101,6 +102,7 @@ class settings_window(devede.interface_manager.interface_manager):
             self.config.film_converter = self.converter
             self.config.menu_converter = self.menuer
             self.config.burner = self.burner
+            self.config.mkiso = self.mkiso
             self.config.save_config()
 
     def set_data_converter(self,b):

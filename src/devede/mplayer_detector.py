@@ -28,6 +28,7 @@ class mplayer_detector(devede.executor.executor):
     supports_play = True
     supports_convert = False
     supports_menu = False
+    supports_mkiso = False
     supports_burn = False
     display_name = "MPLAYER"
 

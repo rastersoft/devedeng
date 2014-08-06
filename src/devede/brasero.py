@@ -25,6 +25,7 @@ class brasero(devede.executor.executor):
     supports_play = False
     supports_convert = False
     supports_menu = False
+    supports_mkiso = False
     supports_burn = True
     display_name = "BRASERO"
 

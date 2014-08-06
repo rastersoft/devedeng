@@ -41,7 +41,7 @@ class choose_disc_type(GObject.GObject):
         svcd = True
         divx = True
         mkv = True
-        analizers, players, converters, menuers, burners = self.cv.get_needed_programs()
+        analizers, players, converters, menuers, burners, mkiso = self.cv.get_needed_programs()
 
         if (analizers != None) or (converters != None):
             dvd = False
@@ -54,9 +54,10 @@ class choose_disc_type(GObject.GObject):
         if menuers != None:
             dvd = False
 
-        if self.check_program(["dvdauthor","--help"]) == False:
+        if mkiso != None:
             dvd = False
-        if self.check_program(["mkisofs","--help"]) == False:
+
+        if self.check_program(["dvdauthor","--help"]) == False:
             dvd = False
         if self.check_program(["vcdimager","--help"]) == False:
             vcd = False
@@ -140,8 +141,8 @@ class choose_disc_type(GObject.GObject):
 
         window.show_all()
 
-        analizers, players, menuers, converters, burners = self.cv.get_supported_programs()
-        analizers_i, players_i, menuers_i, converters_i, burners_i = self.cv.get_available_programs()
+        analizers, players, menuers, converters, burners, mkiso = self.cv.get_supported_programs()
+        analizers_i, players_i, menuers_i, converters_i, burners_i, mkiso_i = self.cv.get_available_programs()
 
         text = ""
         for e in analizers:
@@ -181,14 +182,18 @@ class choose_disc_type(GObject.GObject):
         text4 = _("CD/DVD burners (install at least one of these):\n\n%(program_list)s\n") % {"program_list" : text}
 
         text = ""
+        for e in mkiso:
+            if mkiso_i.count(e.display_name) == 0:
+                text += _("\t%(program_name)s (not installed)\n") % {"program_name": e.display_name}
+            else:
+                text += _("\t%(program_name)s (installed)\n") % {"program_name": e.display_name}
+        text5 = _("ISO creators (install at least one of these):\n\n%(program_list)s\n") % {"program_list" : text}
+
+        text = ""
         if self.check_program(["dvdauthor","--help"]) == False:
             text += _("\t%(program_name)s (not installed)\n") % {"program_name": "DVDAUTHOR (dvd)"}
         else:
             text += _("\t%(program_name)s (installed)\n") % {"program_name":  "DVDAUTHOR (dvd)"}
-        if self.check_program(["mkisofs","--help"]) == False:
-            text += _("\t%(program_name)s (not installed)\n") % {"program_name": "MKISOFS/GENISOIMAGE (dvd)"}
-        else:
-            text += _("\t%(program_name)s (installed)\n") % {"program_name":  "MKISOFS/GENISOIMAGE (dvd)"}
         if self.check_program(["vcdimager","--help"]) == False:
             text += _("\t%(program_name)s (not installed)\n") % {"program_name": "VCDIMAGER (vcd, svcd, cvd)"}
         else:
@@ -198,9 +203,9 @@ class choose_disc_type(GObject.GObject):
         else:
             text += _("\t%(program_name)s (installed)\n") % {"program_name":  "SPUMUX (dvd, vcd, svcd, cvd)"}
 
-        text5 = _("Other programs:\n\n%(program_list)s\n") % {"program_list" : text}
+        text6 = _("Other programs:\n\n%(program_list)s\n") % {"program_list" : text}
 
-        final_text = text1+text2+text3+text4+text5
+        final_text = text1+text2+text3+text4+text5+text6
         textbuf.insert_at_cursor(final_text,len(final_text))
         window.run()
         window.destroy()

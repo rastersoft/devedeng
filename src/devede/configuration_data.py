@@ -97,6 +97,7 @@ class configuration(GObject.GObject):
         self.sub_language = None
         self.sub_codepage = None
         self.burner = None
+        self.mkiso = None
 
         config_path = os.path.join(os.environ.get("HOME"),".devede")
         try:
@@ -144,6 +145,8 @@ class configuration(GObject.GObject):
                     self.subtitles_font_size = int(linea[19:].strip())
                 if linea[:7]=="burner:":
                     self.burner = int(linea[7:].strip())
+                if linea[:6]=="mkiso:":
+                    self.mkiso = int(linea[6:].strip())
             config_data.close()
         except:
             pass
@@ -182,6 +185,10 @@ class configuration(GObject.GObject):
                 config_data.write("film_converter:"+str(self.film_converter)+"\n")
             if (self.menu_converter != None):
                 config_data.write("menu_converter:"+str(self.menu_converter)+"\n")
+            if self.burner != None:
+                config_data.write("burner:"+str(self.burner)+"\n")
+            if self.mkiso != None:
+                config_data.write("mkiso:"+str(self.mkiso)+"\n")
             if (self.sub_codepage != None):
                 config_data.write("sub_codepage:"+str(self.sub_codepage)+"\n")
             if (self.sub_language != None):

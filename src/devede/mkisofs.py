@@ -19,9 +19,30 @@
 
 import os
 import devede.configuration_data
+import subprocess
 import devede.executor
 
 class mkisofs(devede.executor.executor):
+
+    supports_analize = False
+    supports_play = False
+    supports_convert = False
+    supports_menu = False
+    supports_mkiso = True
+    supports_burn = False
+    display_name = "MKISOFS"
+
+    @staticmethod
+    def check_is_installed():
+        try:
+            handle = subprocess.Popen(["mkisofs","--help"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            (stdout, stderr) = handle.communicate()
+            if 0==handle.wait():
+                return True
+            else:
+                return False
+        except:
+            return False
 
     def __init__(self):
 

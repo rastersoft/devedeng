@@ -30,6 +30,7 @@ class ffmpeg_converter(devede.executor.executor):
     supports_play = False
     supports_convert = True
     supports_menu = True
+    supports_mkiso = False
     supports_burn = False
     display_name = "FFMPEG"
     disc_types = []

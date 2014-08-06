@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Copyright 2014 (C) Raster Software Vigo (Sergio Costas)
 #
 # This file is part of DeVeDe-NG
@@ -15,24 +17,25 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import subprocess
+import os
 import devede.configuration_data
+import subprocess
 import devede.executor
 
-class vlc_player(devede.executor.executor):
+class genisoimage(devede.executor.executor):
 
     supports_analize = False
-    supports_play = True
+    supports_play = False
     supports_convert = False
     supports_menu = False
-    supports_mkiso = False
+    supports_mkiso = True
     supports_burn = False
-    display_name = "VLC"
+    display_name = "GENISOIMAGE"
 
     @staticmethod
     def check_is_installed():
         try:
-            handle = subprocess.Popen(["vlc","-h"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            handle = subprocess.Popen(["genisoimage","--help"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
             (stdout, stderr) = handle.communicate()
             if 0==handle.wait():
                 return True
@@ -46,13 +49,35 @@ class vlc_player(devede.executor.executor):
         devede.executor.executor.__init__(self)
         self.config = devede.configuration_data.configuration.get_config()
 
-    def play_film(self,file_name):
+    def create_iso (self, path, name):
 
-        command_line = ["vlc", "--play-and-exit",file_name]
-        self.launch_process(command_line)
+        filesystem_path = os.path.join(path,name)
+        final_path = os.path.join(path,name+".iso")
+
+        self.command_var=[]
+        self.command_var.append("genisoimage")
+        self.command_var.append("-dvd-video")
+        self.command_var.append("-V")
+        self.command_var.append("DVDVIDEO")
+        self.command_var.append("-v")
+        self.command_var.append("-udf")
+        self.command_var.append("-o")
+        self.command_var.append(final_path)
+        self.command_var.append(filesystem_path)
+        self.text = _("Creating ISO image")
+
 
     def process_stdout(self,data):
         return
 
     def process_stderr(self,data):
+
+        if (data[0].find("% done") == -1):
+            return
+
+        l = data[0].split("%")
+        p = float(l[0])
+        self.progress_bar[1].set_fraction(p/100.0)
+        self.progress_bar[1].set_text("%.1f%%" % (p))
+
         return

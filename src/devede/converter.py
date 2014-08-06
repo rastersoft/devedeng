@@ -22,6 +22,8 @@ import devede.ffmpeg_converter
 import devede.vlc
 import devede.brasero
 import devede.k3b
+import devede.mkisofs
+import devede.genisoimage
 
 class converter:
 
@@ -39,7 +41,7 @@ class converter:
         self.config = devede.configuration_data.configuration.get_config()
         # List of classes with conversion capabilities, in order of preference
         self.c = [devede.vlc.vlc_player, devede.mplayer_detector.mplayer_detector, devede.ffmpeg_converter.ffmpeg_converter, devede.avconv_converter.avconv_converter,
-                  devede.brasero.brasero, devede.k3b.k3b]
+                  devede.brasero.brasero, devede.k3b.k3b, devede.mkisofs.mkisofs, devede.genisoimage.genisoimage]
 
         self.analizers = {}
         self.default_analizer = None
@@ -49,6 +51,8 @@ class converter:
         self.default_converter = None
         self.menuers = {}
         self.default_menuer = None
+        self.mkiso = {}
+        self.default_mkiso = None
         self.burners = {}
         self.default_burner = None
         self.discs = []
@@ -76,10 +80,15 @@ class converter:
                 self.menuers[name] = element
                 if (self.default_menuer == None):
                     self.default_menuer = element
+            if (element.supports_mkiso):
+                self.mkiso[name] = element
+                if (self.default_mkiso == None):
+                    self.default_mkiso = element
             if (element.supports_burn):
                 self.burners[name] = element
                 if (self.default_burner == None):
                     self.default_burner = element
+
 
     def get_supported_programs(self):
 
@@ -87,6 +96,7 @@ class converter:
         players = []
         converters = []
         menuers = []
+        mkiso = []
         burners = []
 
         for element in self.c:
@@ -98,10 +108,13 @@ class converter:
                 converters.append(element)
             if (element.supports_menu):
                 menuers.append(element)
+            if (element.supports_mkiso):
+                mkiso.append(element)
             if (element.supports_burn):
                 burners.append(element)
 
-        return (analizers, players, menuers, converters, burners)
+        return (analizers, players, menuers, converters, burners, mkiso)
+
 
     def get_available_programs(self):
 
@@ -110,6 +123,7 @@ class converter:
         converters = []
         analizers = []
         burners = []
+        mkiso = []
 
         for e in self.analizers:
             analizers.append(e)
@@ -121,14 +135,17 @@ class converter:
             converters.append(e)
         for e in self.burners:
             burners.append(e)
+        for e in self.mkiso:
+            mkiso.append(e)
 
-        return (analizers, players, menuers, converters, burners)
+        return (analizers, players, menuers, converters, burners, mkiso)
+
 
     def get_needed_programs(self):
-        """ returns a tupla with four lists. When a list is NONE, there are installed in the system
+        """ returns a tupla with six lists. When a list is NONE, there are installed in the system
             programs that covers the needs for that group; when not, it contains the programs valid
             to cover the needs for that group.
-            The groups are, in this order: ANALIZERS, PLAYERS, CONVERTERS, MENUERS, BURNERS
+            The groups are, in this order: ANALIZERS, PLAYERS, CONVERTERS, MENUERS, BURNERS, MKISO
             (menuers are the programs that creates the mpeg files for menus) """
 
         if (self.default_analizer != None):
@@ -151,6 +168,10 @@ class converter:
             burners = None
         else:
             burners = []
+        if (self.default_mkiso != None):
+            mkiso = None
+        else:
+            mkiso = []
 
         for element in self.c:
             e = element()
@@ -165,8 +186,10 @@ class converter:
                 menuers.append(name)
             if (e.supports_burn) and (burners != None):
                 burners.append(name)
+            if (e.supports_mkiso) and (mkiso != None):
+                mkiso.append(name)
 
-        return ( analizers, players, converters, menuers, burners )
+        return ( analizers, players, converters, menuers, burners, mkiso )
 
     def get_film_player(self):
         """ returns a class for the desired film player, or the most priviledged if the desired is not installed """
@@ -219,3 +242,11 @@ class converter:
             return self.default_burner
         else:
             return self.burners[self.config.burner]
+
+    def get_mkiso(self):
+        """ returns a class for the desired mkiso, or the most priviledged if the desired is not installed """
+
+        if (self.config.mkiso == None) or (self.config.mkiso not in self.mkiso):
+            return self.default_mkiso
+        else:
+            return self.mkiso[self.config.mkiso]
