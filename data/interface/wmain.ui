@@ -137,6 +137,15 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
+                      <object class="GtkMenuItem" id="multiproperties">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Set multiproperties</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_multiproperties_activate" swapped="no"/>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkImageMenuItem" id="settings">
                         <property name="label">gtk-preferences</property>
                         <property name="visible">True</property>

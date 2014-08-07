@@ -30,7 +30,9 @@ class file_movie(devede.interface_manager.interface_manager):
 
     __gsignals__ = {'title_changed': (GObject.SIGNAL_RUN_FIRST, None,(str,))}
 
-    def __init__(self,file_name):
+    def __init__(self,file_name, list_files = None):
+
+        self.list_files = list_files
 
         devede.interface_manager.interface_manager.__init__(self)
 
@@ -41,16 +43,19 @@ class file_movie(devede.interface_manager.interface_manager):
         self.set_type(None, self.config.disc_type)
         self.config.connect('disc_type',self.set_type)
 
-        self.add_text("file_name", file_name)
-        self.add_text("title_name", os.path.splitext(os.path.basename(file_name))[0])
-        self.add_label("original_size",None)
-        self.add_label("original_length",None)
-        self.add_label("original_videorate",None)
-        self.add_label("original_audiorate",None)
-        self.add_label("original_aspect_ratio",None)
-        self.add_label("original_fps",None)
+        if list_files == None:
+            self.add_text("file_name", file_name)
+            self.add_text("title_name", os.path.splitext(os.path.basename(file_name))[0])
+            self.add_label("original_size",None)
+            self.add_label("original_length",None)
+            self.add_label("original_videorate",None)
+            self.add_label("original_audiorate",None)
+            self.add_label("original_aspect_ratio",None)
+            self.add_label("original_fps",None)
+            self.add_toggle("show_in_menu", True)
+        else:
+            self.original_aspect_ratio = 1.777 # dummy value
 
-        self.add_toggle("show_in_menu", True)
         self.add_toggle("format_pal",self.config.PAL)
         self.add_toggle("video_rate_automatic", True)
         self.add_toggle("audio_rate_automatic", True)
@@ -89,7 +94,12 @@ class file_movie(devede.interface_manager.interface_manager):
         self.add_float_adjustment("audio_delay", 0.0)
         self.add_integer_adjustment("chapter_size", 5)
 
-        self.add_list("subtitles_list")
+        if list_files == None:
+            self.add_list("subtitles_list")
+        else:
+            self.add_list("files_to_set")
+            for e in list_files:
+                self.files_to_set.append([e.title_name, e])
 
         self.add_show_hide("format_pal", ["size_pal"], ["size_ntsc"])
 
@@ -122,45 +132,46 @@ class file_movie(devede.interface_manager.interface_manager):
         self.add_enable_disable("is_mpeg_ps", [], is_mpeg_ps_list)
         self.add_enable_disable("no_reencode_audio_video", [], no_reencode_audio_video_list)
 
-        cv = devede.converter.converter.get_converter()
-        film_analizer = (cv.get_film_analizer())()
-        if (film_analizer.get_film_data(self.file_name)):
-            self.error = True
-        else:
-            self.audio_list = film_analizer.audio_list
-            self.audio_streams = film_analizer.audio_streams
-            self.video_streams = film_analizer.video_streams
-            self.original_width = film_analizer.original_width
-            self.original_height = film_analizer.original_height
-            self.original_length = film_analizer.original_length
-            self.original_size = film_analizer.original_size
-            self.original_aspect_ratio = film_analizer.original_aspect_ratio
-            self.original_videorate = film_analizer.original_videorate
-            self.original_audiorate = film_analizer.original_audiorate
+        if list_files == None:
+            cv = devede.converter.converter.get_converter()
+            film_analizer = (cv.get_film_analizer())()
+            if (film_analizer.get_film_data(self.file_name)):
+                self.error = True
+            else:
+                self.audio_list = film_analizer.audio_list
+                self.audio_streams = film_analizer.audio_streams
+                self.video_streams = film_analizer.video_streams
+                self.original_width = film_analizer.original_width
+                self.original_height = film_analizer.original_height
+                self.original_length = film_analizer.original_length
+                self.original_size = film_analizer.original_size
+                self.original_aspect_ratio = film_analizer.original_aspect_ratio
+                self.original_videorate = film_analizer.original_videorate
+                self.original_audiorate = film_analizer.original_audiorate
 
-            self.original_audiorate_uncompressed = film_analizer.original_audiorate_uncompressed
-            self.original_fps = film_analizer.original_fps
-            self.original_file_size = film_analizer.original_file_size
+                self.original_audiorate_uncompressed = film_analizer.original_audiorate_uncompressed
+                self.original_fps = film_analizer.original_fps
+                self.original_file_size = film_analizer.original_file_size
 
-            if self.original_audiorate <= 0:
-                # just a guess, but usually correct
-                self.original_audiorate = 224
-            if self.original_videorate <= 0:
-                # presume that there are only video and audio streams
-                self.original_videorate = ((8 * self.original_file_size) / self.original_length) - (self.original_audiorate * self.audio_streams)
+                if self.original_audiorate <= 0:
+                    # just a guess, but usually correct
+                    self.original_audiorate = 224
+                if self.original_videorate <= 0:
+                    # presume that there are only video and audio streams
+                    self.original_videorate = ((8 * self.original_file_size) / self.original_length) - (self.original_audiorate * self.audio_streams)
 
-            self.error = False
+            self.width_midle = -1
+            self.height_midle = -1
+            self.width_final = -1
+            self.height_final = -1
+            self.video_rate_auto = self.video_rate
+            self.audio_rate_auto = self.audio_rate
+            self.video_rate_final = self.video_rate
+            self.audio_rate_final = self.audio_rate
+            self.aspect_ratio_final = None
+            self.converted_filename = None
 
-        self.width_midle = -1
-        self.height_midle = -1
-        self.width_final = -1
-        self.height_final = -1
-        self.video_rate_auto = self.video_rate
-        self.audio_rate_auto = self.audio_rate
-        self.video_rate_final = self.video_rate
-        self.audio_rate_final = self.audio_rate
-        self.aspect_ratio_final = None
-        self.converted_filename = None
+        self.error = False
 
 
     def get_estimated_size(self):
@@ -371,6 +382,7 @@ class file_movie(devede.interface_manager.interface_manager):
                 self.width_midle = int(self.original_width)
                 self.height_midle = int(self.original_height * midle_aspect_ratio / self.aspect_ratio_final)
 
+
     def set_type(self,obj = None,disc_type = None):
 
         if (disc_type != None):
@@ -396,11 +408,19 @@ class file_movie(devede.interface_manager.interface_manager):
         self.wfile_properties = self.builder.get_object("file_properties")
         self.wfile_properties.show_all()
 
+        self.wframe_title = self.builder.get_object("frame_title")
+        self.wframe_fileinfo = self.builder.get_object("frame_fileinfo")
+        self.wframe_multiproperties = self.builder.get_object("frame_multiproperties")
+        self.wtreeview_multiproperties = self.builder.get_object("treeview_multiproperties")
+        self.wbutton_preview = self.builder.get_object("button_preview")
+
         self.wshow_in_menu = self.builder.get_object("show_in_menu")
 
         self.wnotebook = self.builder.get_object("notebook")
 
         # elements in page GENERAL
+        self.wformat_pal = self.builder.get_object("format_pal")
+        self.wformat_ntsc = self.builder.get_object("format_ntsc")
         self.wframe_video_rate = self.builder.get_object("frame_video_rate")
         self.wframe_audio_rate = self.builder.get_object("frame_audio_rate")
         self.waudio_rate = self.builder.get_object("audio_rate")
@@ -414,6 +434,8 @@ class file_movie(devede.interface_manager.interface_manager):
         # elements in page SUBTITLES
         self.wsubtitles_list = self.builder.get_object("subtitles_list")
         self.wtreview_subtitles = self.builder.get_object("treeview_subtitles")
+        self.wscrolledwindow_subtitles = self.builder.get_object("scrolledwindow_subtitles")
+        self.wadd_subtitles = self.builder.get_object("add_subtitles")
         self.wdel_subtitles = self.builder.get_object("del_subtitles")
 
         selection = self.wtreview_subtitles.get_selection()
@@ -487,10 +509,31 @@ class file_movie(devede.interface_manager.interface_manager):
             self.wframe_division_chapters.hide()
             self.wnotebook.remove_page(5)
 
+        if self.list_files == None:
+            self.wframe_title.show()
+            self.wframe_fileinfo.show()
+            self.wframe_multiproperties.hide()
+        else:
+            self.wframe_title.hide()
+            self.wframe_fileinfo.hide()
+            self.wframe_multiproperties.show()
+            self.wscrolledwindow_subtitles.hide()
+            self.wbutton_preview.hide()
+            self.wadd_subtitles.hide()
+            self.wdel_subtitles.hide()
+            sel = self.wtreeview_multiproperties.get_selection()
+            sel.set_mode(Gtk.SelectionMode.MULTIPLE)
+            self.wtreeview_multiproperties.set_rubber_banding(True)
+
+
         self.save_ui()
         self.update_ui(self.builder)
         self.on_aspect_classic_toggled(None)
         self.on_treeview_subtitles_cursor_changed(None)
+        if self.format_pal:
+            self.wformat_pal.set_active(True)
+        else:
+            self.wformat_ntsc.set_active(True)
 
 
     def on_aspect_classic_toggled(self,b):
@@ -519,9 +562,18 @@ class file_movie(devede.interface_manager.interface_manager):
     def on_button_accept_clicked(self,b):
 
         self.store_ui(self.builder)
-        self.set_final_rates()
-        self.set_final_size_aspect()
-        self.emit('title_changed',self.title_name)
+        if self.list_files == None:
+            self.set_final_rates()
+            self.set_final_size_aspect()
+            self.emit('title_changed',self.title_name)
+        else:
+            data = self.store_file()
+            sel = self.wtreeview_multiproperties.get_selection()
+            model, pathlist = sel.get_selected_rows()
+            for file_path in pathlist:
+                obj = model[file_path][1]
+                obj.restore_file(data)
+
         self.wfile_properties.destroy()
         self.wfile_properties = None
         self.builder = None
@@ -529,7 +581,9 @@ class file_movie(devede.interface_manager.interface_manager):
 
     def on_button_cancel_clicked(self,b):
 
-        self.restore_ui()
+        if self.list_files == None:
+            self.restore_ui()
+
         self.wfile_properties.destroy()
         self.wfile_properties = None
         self.builder = None
@@ -639,9 +693,25 @@ class file_movie(devede.interface_manager.interface_manager):
 
     def store_file(self):
 
-        return self.serialize()
+        data = self.serialize()
+        if "files_to_set" in data:
+            del data["files_to_set"]
+
+        return data
 
 
     def restore_file(self,data):
 
         self.unserialize(data)
+
+
+    def on_select_all_clicked(self,b):
+
+        sel = self.wtreeview_multiproperties.get_selection()
+        sel.select_all()
+
+
+    def on_unselect_all_clicked(self,b):
+
+        sel = self.wtreeview_multiproperties.get_selection()
+        sel.unselect_all()

@@ -30,20 +30,24 @@ The current visible changes are quite small in number:
 * Allows to create Matroska files with H.264 video and MP3 audio
 * Allows to use VLC or MPlayer for preview
 * Allows to choose between Brasero or K3B for burning the discs
+* allows to set properties for several files in one step
 
 
 ## THINGS TO DO ##
 
 Some of the future ideas to add to Devede NG are, without an specific order:
 
-* allow to set properties for several files in one step
 * add more backends
 * add more output formats
 * allow to replace the movie's audio track with one or several MP3 or OGG audio files
+* widescreen menus for DVDs
+* choose between MP2 and AC3 audio for menus
 
 
 ## History of versions ##
-* version XXXXX
+* version in GIT
+    * allow to set properties for several files in one step
+    * Fixed bug whe setting PAL or NTSC toggle in file properties
     * Added two-pass conversion
     * Now detects separately MKISOFS and GENISOIMAGE, allowing to have only one of them installed in the system
     * Now checks that the number of files is smaller than the limit for DVD projects

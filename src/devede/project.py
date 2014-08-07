@@ -631,3 +631,9 @@ class devede_project:
                 devede.message.message_window(_("The following files in the project could not be added again:"),_("Error while adding files"),error_list)
         self.set_interface_status(None)
         self.refresh_disc_usage()
+
+
+    def on_multiproperties_activate(self,b):
+
+        e = devede.file_movie.file_movie(None,self.get_all_files())
+        e.properties()
