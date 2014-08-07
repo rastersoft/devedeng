@@ -56,7 +56,7 @@ class file_movie(devede.interface_manager.interface_manager):
         else:
             self.original_aspect_ratio = 1.777 # dummy value
 
-        self.add_toggle("format_pal",self.config.PAL)
+        self.add_dualtoggle("format_pal","format_ntsc",self.config.PAL)
         self.add_toggle("video_rate_automatic", True)
         self.add_toggle("audio_rate_automatic", True)
         self.add_toggle("divide_in_chapters", True)
@@ -530,10 +530,6 @@ class file_movie(devede.interface_manager.interface_manager):
         self.update_ui(self.builder)
         self.on_aspect_classic_toggled(None)
         self.on_treeview_subtitles_cursor_changed(None)
-        if self.format_pal:
-            self.wformat_pal.set_active(True)
-        else:
-            self.wformat_ntsc.set_active(True)
 
 
     def on_aspect_classic_toggled(self,b):

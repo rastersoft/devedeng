@@ -27,6 +27,7 @@ class interface_manager(GObject.GObject):
         GObject.GObject.__init__(self)
         self.interface_groups = {}
         self.interface_toggles = []
+        self.interface_dualtoggles = []
         self.interface_labels = []
         self.interface_text = []
         self.interface_show_hide = []
@@ -58,6 +59,15 @@ class interface_manager(GObject.GObject):
 
         exec('self.'+toggle_name+' = '+str(default_value))
         self.interface_toggles.append( (toggle_name, callback) )
+
+    def add_dualtoggle(self,toggle_name,toggle2,default_value,callback = None):
+        """ Adds an internal variable with the name toggle_name, linked to widget
+            elements with names toggle_nane and toggle2 (must be or inherint from Gtk.ToogleButton).
+            The default value can be True of False, with True being toggle_name active, and False
+            being toggle2 active """
+
+        exec('self.'+toggle_name+' = '+str(default_value))
+        self.interface_dualtoggles.append( (toggle_name, toggle2, callback) )
 
     def add_text(self,text_name,default_value,callback = None):
         """ Adds an internal variable with the name text_name, linked to an
@@ -169,6 +179,18 @@ class interface_manager(GObject.GObject):
             obj = builder.get_object(element[0])
             obj.set_active(value)
             callback = element[1]
+            if (callback != None):
+                obj.connect("toggled",callback)
+
+        for element in self.interface_dualtoggles:
+            value = eval('self.'+element[0])
+            obj = builder.get_object(element[0])
+            obj2 = builder.get_object(element[1])
+            if value:
+                obj.set_active(True)
+            else:
+                obj2.set_active(True)
+            callback = element[2]
             if (callback != None):
                 obj.connect("toggled",callback)
 
@@ -380,6 +402,13 @@ class interface_manager(GObject.GObject):
             else:
                 exec('self.'+element[0]+' = False')
 
+        for element in self.interface_dualtoggles:
+            obj = builder.get_object(element[0])
+            if obj.get_active():
+                exec('self.'+element[0]+' = True')
+            else:
+                exec('self.'+element[0]+' = False')
+
         for element in self.interface_text:
             obj = builder.get_object(element[0])
             exec('self.'+element[0]+' = obj.get_text()')
@@ -430,6 +459,8 @@ class interface_manager(GObject.GObject):
             exec('self.'+element+'_backup = self.'+element)
         for element in self.interface_toggles:
             exec('self.'+element[0]+'_backup = self.'+element[0])
+        for element in self.interface_dualtoggles:
+            exec('self.'+element[0]+'_backup = self.'+element[0])
         for element in self.interface_text:
             exec('self.'+element[0]+'_backup = self.'+element[0])
         for element in self.interface_integer_adjustments:
@@ -453,6 +484,8 @@ class interface_manager(GObject.GObject):
         for element in self.interface_groups:
             exec('self.'+element+' = self.'+element+'_backup')
         for element in self.interface_toggles:
+            exec('self.'+element[0]+' = self.'+element[0]+'_backup')
+        for element in self.interface_dualtoggles:
             exec('self.'+element[0]+' = self.'+element[0]+'_backup')
         for element in self.interface_text:
             exec('self.'+element[0]+' = self.'+element[0]+'_backup')
@@ -482,6 +515,8 @@ class interface_manager(GObject.GObject):
             output[element] = eval('self.'+element)
         for element in self.interface_toggles:
             output[element[0]] = eval('self.'+element[0])
+        for element in self.interface_dualtoggles:
+            output[element[0]] = eval('self.'+element[0])
         for element in self.interface_text:
             output[element[0]] = eval('self.'+element[0])
         for element in self.interface_integer_adjustments:
@@ -510,6 +545,9 @@ class interface_manager(GObject.GObject):
             if element in data_list:
                 exec('self.'+element+' = data_list["'+element+'"]')
         for element in self.interface_toggles:
+            if element[0] in data_list:
+                exec('self.'+element[0]+' = data_list["'+element[0]+'"]')
+        for element in self.interface_dualtoggles:
             if element[0] in data_list:
                 exec('self.'+element[0]+' = data_list["'+element[0]+'"]')
         for element in self.interface_text:
