@@ -58,7 +58,7 @@ class file_movie(devede.interface_manager.interface_manager):
         self.add_toggle("force_subtitles", False)
         self.add_toggle("mirror_horizontal", False)
         self.add_toggle("mirror_vertical", False)
-        self.add_toggle("two_pass_encoding", True)
+        self.add_toggle("two_pass_encoding", False)
         self.add_toggle("sound5_1", False)
         self.add_toggle("copy_sound", False)
         self.add_toggle("is_mpeg_ps", False)

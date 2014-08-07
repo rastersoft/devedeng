@@ -105,9 +105,30 @@ class ffmpeg_converter(devede.executor.executor):
         devede.executor.executor.__init__(self)
         self.config = devede.configuration_data.configuration.get_config()
 
-    def convert_file(self,file_project,output_file,video_length):
+    def convert_file(self,file_project,output_file,video_length,pass2 = False):
 
-        self.text = _("Converting %(X)s") % {"X" : file_project.title_name}
+        if file_project.two_pass_encoding:
+            if pass2:
+                self.text = _("Converting %(X)s (pass 2)") % {"X" : file_project.title_name}
+            else:
+                self.text = _("Converting %(X)s (pass 1)") % {"X" : file_project.title_name}
+                # Prepare the converting process for the second pass
+                tmp = devede.avconv_converter.avconv_converter()
+                tmp.convert_file(file_project, output_file, video_length, True)
+                # it deppends of this process
+                tmp.add_dependency(self)
+                # add it as a child process of this one
+                self.add_child_process(tmp)
+        else:
+            self.text = _("Converting %(X)s") % {"X" : file_project.title_name}
+
+        if (pass2 == False) and (file_project.two_pass_encoding == True):
+            # this is the first pass in a 2-pass codification
+            second_pass = False
+        else:
+            # second_pass is TRUE in the second pass of a 2-pass codification, and also when not doing 2-pass codification
+            # It is used to remove unnecessary steps during the first pass, but that are needed on the second pass, or when not using 2-pass codification 
+            second_pass = True
 
         if (video_length == 0):
             self.final_length = file_project.original_length
@@ -118,11 +139,11 @@ class ffmpeg_converter(devede.executor.executor):
         self.command_var.append("-i")
         self.command_var.append(file_project.file_name)
 
-        if (file_project.volume!=100):
+        if (file_project.volume!=100) and second_pass:
             self.command_var.append("-vol")
             self.command_var.append(str((256*file_project.volume)/100))
 
-        if (file_project.audio_delay != 0.0) and (file_project.copy_sound==False) and (file_project.no_reencode_audio_video==False):
+        if (file_project.audio_delay != 0.0) and (file_project.copy_sound==False) and (file_project.no_reencode_audio_video==False) and second_pass:
             self.command_var.append("-itsoffset")
             self.command_var.append(str(file_project.audio_delay))
 
@@ -135,7 +156,7 @@ class ffmpeg_converter(devede.executor.executor):
                 self.command_var.append("-map")
                 self.command_var.append("0"+":"+str(l+1))
 
-        if (file_project.no_reencode_audio_video==False):
+        if (file_project.no_reencode_audio_video==False) and second_pass:
             cmd_line=""
 
             if file_project.deinterlace=="deinterlace_yadif":
@@ -218,8 +239,9 @@ class ffmpeg_converter(devede.executor.executor):
                 else:
                     self.command_var.append("pal-dvd")
                 if (not file_project.copy_sound):
-                    self.command_var.append("-acodec")
-                    self.command_var.append("ac3")
+                    if file_project.sound5_1:
+                        self.command_var.append("-acodec")
+                        self.command_var.append("ac3")
             elif (self.config.disc_type=="vcd"):
                 vcd=True
                 if not file_project.format_pal:
@@ -290,18 +312,23 @@ class ffmpeg_converter(devede.executor.executor):
             self.command_var.append("-vtag")
             self.command_var.append("DX50")
 
-        if (file_project.deinterlace == "deinterlace_ffmpeg") and (file_project.no_reencode_audio_video==False):
+        if (file_project.deinterlace == "deinterlace_ffmpeg") and (file_project.no_reencode_audio_video==False) and second_pass:
             self.command_var.append("-deinterlace")
 
-        if (file_project.no_reencode_audio_video==False) and (vcd==False):
+        if (file_project.no_reencode_audio_video==False) and (vcd==False) and second_pass:
             self.command_var.append("-s")
             self.command_var.append(str(file_project.width_final)+"x"+str(file_project.height_final))
 
-        self.command_var.append("-trellis")
-        self.command_var.append("1")
-
-        self.command_var.append("-mbd")
-        self.command_var.append("2")
+        if second_pass:
+            self.command_var.append("-trellis")
+            self.command_var.append("1")
+            self.command_var.append("-mbd")
+            self.command_var.append("2")
+        else:
+            self.command_var.append("-trellis")
+            self.command_var.append("0")
+            self.command_var.append("-mbd")
+            self.command_var.append("0")
 
         if (vcd == False) and (file_project.no_reencode_audio_video == False):
             self.command_var.append("-b:a")
@@ -310,8 +337,16 @@ class ffmpeg_converter(devede.executor.executor):
             self.command_var.append("-b:v")
             self.command_var.append(str(file_project.video_rate_final)+"k")
 
-        self.command_var.append(output_file)
+        if file_project.two_pass_encoding == True:
+            self.command_var.append("-passlogfile")
+            self.command_var.append(output_file)
+            self.command_var.append("-pass")
+            if pass2:
+                self.command_var.append("2")
+            else:
+                self.command_var.append("1")
 
+        self.command_var.append(output_file)
 
 
     def create_menu_mpeg(self,n_page,background_music,sound_length,pal,video_rate, audio_rate,output_path):

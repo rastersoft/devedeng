@@ -24,7 +24,7 @@ and can use only FFMpeg or AVConv for video conversion.
 The current visible changes are quite small in number:
 
 * Now allows to add several files at once
-* Now make better use of multicore systems by parallelizing the conversion of several movie files
+* Now makes better use of multicore systems by parallelizing the conversion of several movie files
 * The menu edition is interactive
 * Has a new "cut" resizing method, to allow to store as widescreen movies with black bars
 * Allows to create Matroska files with H.264 video and MP3 audio
@@ -37,15 +37,20 @@ The current visible changes are quite small in number:
 Some of the future ideas to add to Devede NG are, without an specific order:
 
 * allow to set properties for several files in one step
-* add support for two-pass encoding
 * add more backends
 * add more output formats
 * allow to replace the movie's audio track with one or several MP3 or OGG audio files
 
 
 ## History of versions ##
+* version XXXXX
+    * Added two-pass conversion
+    * Now detects separately MKISOFS and GENISOIMAGE, allowing to have only one of them installed in the system
+    * Now checks that the number of files is smaller than the limit for DVD projects
+    * Now uses GLib for DBus instead of python-dbus
+    * Fixed the DESKTOP file to ensure that an icon is shown in the applications menu
 * version 0.1 alpha 1 (2014-08-06)
-
+    * First public version
 
 ## CONTACTING THE AUTHOR ##
 
