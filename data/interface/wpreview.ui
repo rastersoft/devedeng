@@ -100,6 +100,7 @@ Devede will create a preview with the selected parameters, so you will be able t
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="adjustment">length</property>
+                    <property name="value">60</property>
                   </object>
                   <packing>
                     <property name="expand">True</property>

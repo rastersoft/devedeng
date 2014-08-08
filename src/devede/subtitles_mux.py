@@ -30,8 +30,13 @@ class subtitles_mux(devede.executor.executor):
         devede.executor.executor.__init__(self)
         self.config = devede.configuration_data.configuration.get_config()
 
-    def multiplex_subtitles(self, file_path, subtitles_path,subt_codepage, subt_lang,
-                            subt_upper,font_size, pal, force_subtitles, aspect, duration, stream_id):
+    def multiplex_subtitles(self, file_path, subtitles_path, subt_codepage, subt_lang,
+                            subt_upper, font_size, pal, force_subtitles, aspect, duration, stream_id, fill_color, outline_color, outline_thick):
+
+        if len(fill_color) == 4:
+            fill_color = fill_color[:3]
+        if len(outline_color) == 4:
+            outline_color = outline_color[:3]
 
         self.subt_path = file_path
         self.duration = duration
@@ -53,7 +58,10 @@ class subtitles_mux(devede.executor.executor):
         out_xml.write(str(font_size))
         if subt_upper:
             out_xml.write('" bottom-margin="50')
-        out_xml.write('" font="arial" horizontal-alignment="center" vertical-alignment="bottom" aspect="')
+        out_xml.write('" fill-color="#%02X%02X%02X"' % fill_color)
+        out_xml.write(' outline-color="#%02X%02X%02X"' % outline_color)
+        out_xml.write(' outline-thickness="%d"' % outline_thick)
+        out_xml.write(' font="arial" horizontal-alignment="center" vertical-alignment="bottom" aspect="')
         out_xml.write(str(aspect))
         out_xml.write('" force="')
         if force_subtitles:

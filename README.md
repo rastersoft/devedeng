@@ -31,7 +31,7 @@ The current visible changes are quite small in number:
 * Allows to use VLC or MPlayer for preview
 * Allows to choose between Brasero or K3B for burning the discs
 * Allows to set properties for several files in one step
-
+* Allow to choose the subtitle colors
 
 ## THINGS TO DO ##
 
@@ -42,12 +42,15 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 * allow to replace the movie's audio track with one or several MP3 or OGG audio files
 * widescreen menus for DVDs
 * choose between MP2 and AC3 audio for menus
-* allow to choose the subtitle colors
+* preview of a converted menu
 
 
 ## History of versions ##
 * version in GIT
-    * allow to set properties for several files in one step
+    * Now shows a default value for preview duration
+    * Fixed progress bar for subtitle creation
+    * Allows to choose the subtitle colors
+    * Allows to set properties for several files in one step
     * Fixed bug whe setting PAL or NTSC toggle in file properties
     * Added two-pass conversion
     * Now detects separately MKISOFS and GENISOIMAGE, allowing to have only one of them installed in the system

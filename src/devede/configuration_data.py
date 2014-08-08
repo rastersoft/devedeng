@@ -98,6 +98,9 @@ class configuration(GObject.GObject):
         self.sub_codepage = None
         self.burner = None
         self.mkiso = None
+        self.subt_fill_color = (1,1,1,1)
+        self.subt_outline_color = (0,0,0,1)
+        self.subt_outline_thickness = 0.0
 
         config_path = os.path.join(os.environ.get("HOME"),".devede")
         try:
@@ -150,6 +153,14 @@ class configuration(GObject.GObject):
                 if linea[:19]=="subtitle_font_size:":
                     self.subtitles_font_size = int(linea[19:].strip())
                     continue
+                if linea[:20] == "subtitle_fill_color:":
+                    c = linea[20:].strip().split(",")
+                    self.subt_fill_color = (float(c[0]), float(c[1]), float(c[2]), 1.0)
+                if linea[:23] == "subtitle_outline_color:":
+                    c = linea[23:].strip().split(",")
+                    self.subt_outline_color = (float(c[0]), float(c[1]), float(c[2]), 1.0)
+                if linea[:27] == "subtitle_outilne_thickness:":
+                    self.subt_outline_thickness = float(linea[27:].strip())
             config_data.close()
         except:
             pass
@@ -199,6 +210,10 @@ class configuration(GObject.GObject):
             if (self.sub_language != None):
                 config_data.write("sub_language:"+str(self.sub_language)+"\n")
             config_data.write("subtitle_font_size:"+str(self.subtitles_font_size)+"\n")
+            config_data.write("subtitle_fill_color:"+str(self.subt_fill_color[0])+","+str(self.subt_fill_color[1])+","+str(self.subt_fill_color[2])+"\n")
+            config_data.write("subtitle_outline_color:"+str(self.subt_outline_color[0])+","+str(self.subt_outline_color[1])+","+str(self.subt_outline_color[2])+"\n")
+            config_data.write("subtitle_outilne_thickness:"+str(self.subt_outline_thickness))
+
             config_data.close()
         except:
             pass

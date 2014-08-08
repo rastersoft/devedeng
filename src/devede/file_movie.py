@@ -94,6 +94,10 @@ class file_movie(devede.interface_manager.interface_manager):
         self.add_float_adjustment("audio_delay", 0.0)
         self.add_integer_adjustment("chapter_size", 5)
 
+        self.add_colorbutton("subt_fill_color", self.config.subt_fill_color)
+        self.add_colorbutton("subt_outline_color", self.config.subt_outline_color)
+        self.add_float_adjustment("subt_thickness", self.config.subt_outline_thickness)
+
         if list_files == None:
             self.add_list("subtitles_list")
         else:
@@ -558,11 +562,16 @@ class file_movie(devede.interface_manager.interface_manager):
     def on_button_accept_clicked(self,b):
 
         self.store_ui(self.builder)
+        self.config.subt_fill_color = self.subt_fill_color
+        self.config.subt_outline_color = self.subt_outline_color
+        self.config.subt_outline_thickness = self.subt_thickness
         if self.list_files == None:
+            # editing file properties
             self.set_final_rates()
             self.set_final_size_aspect()
             self.emit('title_changed',self.title_name)
         else:
+            # editing properties for a group of files
             data = self.store_file()
             sel = self.wtreeview_multiproperties.get_selection()
             model, pathlist = sel.get_selected_rows()
@@ -635,10 +644,11 @@ class file_movie(devede.interface_manager.interface_manager):
 
         if len(self.subtitles_list) != 0:
             last_process = converter
-            if duration == 0:
-                duration2 = self.original_length
-            else:
-                duration2 = duration
+            #if duration == 0:
+            # it seems that SPUMUX always fills the entire subtitles
+            duration2 = self.original_length
+            #else:
+            #    duration2 = duration
             stream_id = 0
             for subt in self.subtitles_list:
                 subt_file = subt[0]
@@ -652,7 +662,8 @@ class file_movie(devede.interface_manager.interface_manager):
                 subt_mux = devede.subtitles_mux.subtitles_mux()
                 subt_mux.multiplex_subtitles( output_path, subt_file, subt_codepage, subt_lang, subt_upper,
                                                               self.subt_font_size,self.format_pal,self.force_subtitles,
-                                                              final_aspect, duration2, stream_id)
+                                                              final_aspect, duration2, stream_id,
+                                                              self.subt_fill_color, self.subt_outline_color, self.subt_thickness)
                 subt_mux.add_dependency(last_process)
                 converter.add_child_process(subt_mux)
                 last_process = subt_mux
