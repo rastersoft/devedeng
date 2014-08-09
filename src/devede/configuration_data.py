@@ -102,7 +102,7 @@ class configuration(GObject.GObject):
         self.subt_outline_color = (0,0,0,1)
         self.subt_outline_thickness = 0.0
 
-        config_path = os.path.join(os.environ.get("HOME"),".devede")
+        config_path = os.path.join(os.environ.get("HOME"),".devedeng")
         try:
             config_data = open(config_path,"r")
             for linea in config_data:
@@ -176,7 +176,7 @@ class configuration(GObject.GObject):
 
     def save_config(self):
 
-        config_path = os.path.join(os.environ.get("HOME"),".devede")
+        config_path = os.path.join(os.environ.get("HOME"),".devedeng")
         try:
             config_data = open(config_path,"w")
             config_data.write("video_format:")

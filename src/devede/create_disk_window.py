@@ -47,10 +47,13 @@ class create_disk_window:
         self.name = self.wname.get_text()
         self.path = os.path.join(self.wpath.get_current_folder(),self.name)
         self.shutdown = wshutdown.get_active()
+
+        if (retval == 1):
+            self.config.final_folder = self.wpath.get_current_folder()
+            self.config.save_config()
+
         wcreate_window.destroy()
         if (retval == 1):
-            self.config.final_folder = self.path
-            self.config.save_config()
             return True
         else:
             return False
