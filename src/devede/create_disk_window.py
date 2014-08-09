@@ -44,8 +44,8 @@ class create_disk_window:
         wcreate_window.show_all()
         self.on_iface_changed(None)
         retval = wcreate_window.run()
-        self.path = self.wpath.get_current_folder()
         self.name = self.wname.get_text()
+        self.path = os.path.join(self.wpath.get_current_folder(),self.name)
         self.shutdown = wshutdown.get_active()
         wcreate_window.destroy()
         if (retval == 1):
