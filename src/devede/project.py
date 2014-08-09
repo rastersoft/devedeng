@@ -410,7 +410,7 @@ class devede_project:
 
         if os.path.exists(data.path):
             ask_w = devede.ask.ask_window()
-            retval = ask_w.run(_("The selected folder already exists. If you continue, it will be deleted. Continue?"),_("Delete folder"))
+            retval = ask_w.run(_("The selected folder already exists. To create the project, Devede must delete it.\nIf you continue, the folder\n\n <b>%s</b>\n\n and all its contents <b>will be deleted</b>. Continue?") % data.path,_("Delete folder"))
             if retval:
                 shutil.rmtree(data.path,True)
             else:
