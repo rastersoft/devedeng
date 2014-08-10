@@ -414,11 +414,9 @@ class devede_project:
             if retval:
                 # delete only the bare minimun needed
                 shutil.rmtree(os.path.join(data.path,"dvd_tree"),True)
-                print("Delete "+str(os.path.join(data.path,"dvd_tree")))
                 shutil.rmtree(os.path.join(data.path,"menu"),True)
                 shutil.rmtree(os.path.join(data.path,"movies"),True)
                 shutil.rmtree(os.path.join(data.path,"xml_data"),True)
-                shutil.rmtree(os.path.join(data.path,data.name),True)
                 if self.config.disc_type == "dvd":
                     try:
                         os.unlink(os.path.join(data.path,data.name+".iso"))

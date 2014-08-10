@@ -28,15 +28,17 @@ class dvdauthor_converter(devede.executor.executor):
         devede.executor.executor.__init__(self)
         self.config = devede.configuration_data.configuration.get_config()
 
+
     def create_dvd_project (self, path, name, file_movies, menu_entries, start_with_menu):
 
-        xml_file = self.create_dvdauthor_xml(path, file_movies, menu_entries, start_with_menu)
-
-        movie_path = os.path.join(path,name)
+        movie_path = os.path.join(path,"dvd_tree")
         try:
             os.makedirs(movie_path)
         except:
             pass
+
+        xml_file = self.create_dvdauthor_xml(path, file_movies, menu_entries, start_with_menu)
+
         self.command_var=[]
         self.command_var.append("dvdauthor")
         self.command_var.append("-o")
@@ -49,6 +51,7 @@ class dvdauthor_converter(devede.executor.executor):
 
     def process_stdout(self,data):
         return
+
 
     def process_stderr(self,data):
         if (data != None) and (data[0] != ""):
@@ -63,10 +66,6 @@ class dvdauthor_converter(devede.executor.executor):
         datapath = os.path.join(movie_folder,"dvd_tree")
         try:
             os.makedirs(xmlpath)
-        except:
-            pass
-        try:
-            os.makedirs(datapath)
         except:
             pass
 
@@ -423,6 +422,7 @@ class dvdauthor_converter(devede.executor.executor):
         xml_file.close()
 
         return xml_file_path
+
 
     def return_time(self,seconds,empty):
 

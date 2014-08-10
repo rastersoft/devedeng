@@ -51,7 +51,7 @@ class mkisofs(devede.executor.executor):
 
     def create_iso (self, path, name):
 
-        filesystem_path = os.path.join(path,name)
+        filesystem_path = os.path.join(path,"dvd_tree")
         final_path = os.path.join(path,name+".iso")
 
         self.command_var=[]
