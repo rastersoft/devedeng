@@ -412,7 +412,27 @@ class devede_project:
             ask_w = devede.ask.ask_window()
             retval = ask_w.run(_("The selected folder already exists. To create the project, Devede must delete it.\nIf you continue, the folder\n\n <b>%s</b>\n\n and all its contents <b>will be deleted</b>. Continue?") % data.path,_("Delete folder"))
             if retval:
-                shutil.rmtree(data.path,True)
+                # delete only the bare minimun needed
+                shutil.rmtree(os.path.join(data.path,"dvd_tree"),True)
+                print("Delete "+str(os.path.join(data.path,"dvd_tree")))
+                shutil.rmtree(os.path.join(data.path,"menu"),True)
+                shutil.rmtree(os.path.join(data.path,"movies"),True)
+                shutil.rmtree(os.path.join(data.path,"xml_data"),True)
+                shutil.rmtree(os.path.join(data.path,data.name),True)
+                if self.config.disc_type == "dvd":
+                    try:
+                        os.unlink(os.path.join(data.path,data.name+".iso"))
+                    except:
+                        pass
+                if (self.config.disc_type == "vcd") or (self.config.disc_type == "svcd") or (self.config.disc_type == "cvd"):
+                    try:
+                        os.unlink(os.path.join(data.path,data.name+".bin"))
+                    except:
+                        pass
+                    try:
+                        os.unlink(os.path.join(data.path,data.name+".cue"))
+                    except:
+                        pass
             else:
                 return
 

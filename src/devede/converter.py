@@ -226,8 +226,8 @@ class converter:
                 return self.converters[self.config.film_converter]
         # if not, return the first available converter that supports the current disc type
         for converter in self.converters:
-            if converter.disc_types.count(self.config.disc_type) != 0:
-                return converter
+            if self.converters[converter].disc_types.count(self.config.disc_type) != 0:
+                return self.converters[converter]
         return None
 
     def get_disc_converter_by_name(self,name):
