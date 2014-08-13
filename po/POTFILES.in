@@ -1,0 +1,57 @@
+src/copy_files_verbose.py
+src/devede_ng.py
+src/devede/about.py
+src/devede/add_files.py
+src/devede/ask.py
+src/devede/ask_subtitles.py
+src/devede/avconv_converter.py
+src/devede/brasero.py
+src/devede/choose_disc_type.py
+src/devede/configuration_data.py
+src/devede/converter.py
+src/devede/create_disk_window.py
+src/devede/dvdauthor_converter.py
+src/devede/dvd_menu.py
+src/devede/end_job.py
+src/devede/error.py
+src/devede/executor.py
+src/devede/ffmpeg_converter.py
+src/devede/file_copy.py
+src/devede/file_movie.py
+src/devede/genisoimage.py
+src/devede/__init__.py
+src/devede/interface_manager.py
+src/devede/k3b.py
+src/devede/message.py
+src/devede/mkisofs.py
+src/devede/mplayer_detector.py
+src/devede/mux_dvd_menu.py
+src/devede/opensave.py
+src/devede/preview.py
+src/devede/project.py
+src/devede/runner.py
+src/devede/settings.py
+src/devede/shutdown.py
+src/devede/subtitles_mux.py
+src/devede/title.py
+src/devede/vcdimager_converter.py
+src/devede/vlc.py
+[type: gettext/glade]data/interface/wabout.ui
+[type: gettext/glade]data/interface/wadd_files.ui
+[type: gettext/glade]data/interface/wask_subtitles.ui
+[type: gettext/glade]data/interface/wask.ui
+[type: gettext/glade]data/interface/wcreate.ui
+[type: gettext/glade]data/interface/wdone.ui
+[type: gettext/glade]data/interface/werror.ui
+[type: gettext/glade]data/interface/wfile_properties.ui
+[type: gettext/glade]data/interface/wmain.ui
+[type: gettext/glade]data/interface/wmenu.ui
+[type: gettext/glade]data/interface/wmessage.ui
+[type: gettext/glade]data/interface/wneeded.ui
+[type: gettext/glade]data/interface/wopen_project.ui
+[type: gettext/glade]data/interface/wpreview.ui
+[type: gettext/glade]data/interface/wprogress.ui
+[type: gettext/glade]data/interface/wsave_project.ui
+[type: gettext/glade]data/interface/wselect_disk.ui
+[type: gettext/glade]data/interface/wsettings.ui
+[type: gettext/glade]data/interface/wtitle_properties.ui

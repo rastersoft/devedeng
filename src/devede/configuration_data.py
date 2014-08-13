@@ -35,7 +35,7 @@ class configuration(GObject.GObject):
 
     def __init__(self):
         GObject.GObject.__init__(self)
-        self.version = "0.1 Alpha 1"
+        self.version = "0.1 Alpha 2"
 
     def fill_config(self):
 

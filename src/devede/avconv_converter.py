@@ -349,7 +349,7 @@ class avconv_converter(devede.executor.executor):
         self.command_var.append(output_file)
 
 
-    def create_menu_mpeg(self,n_page,background_music,sound_length,pal,video_rate, audio_rate,output_path):
+    def create_menu_mpeg(self,n_page,background_music,sound_length,pal,video_rate, audio_rate,output_path, use_mp2):
 
         self.n_page = n_page
         self.final_length = float(sound_length)
@@ -375,7 +375,10 @@ class avconv_converter(devede.executor.executor):
         else:
             self.command_var.append("ntsc-dvd")
         self.command_var.append("-acodec")
-        self.command_var.append("mp2")
+        if (use_mp2):
+            self.command_var.append("mp2")
+        else:
+            self.command_var.append("ac3")
         self.command_var.append("-s")
         if pal:
             self.command_var.append("720x576")

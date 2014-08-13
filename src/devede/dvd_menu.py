@@ -50,6 +50,8 @@ class dvd_menu(devede.interface_manager.interface_manager):
 
         self.add_integer_adjustment("sound_length", 30)
 
+        self.add_dualtoggle("audio_mp2", "audio_ac3", True)
+
         self.add_float_adjustment("margin_left", 10.0, self.update_preview)
         self.add_float_adjustment("margin_top", 12.5, self.update_preview)
         self.add_float_adjustment("margin_right", 10.0, self.update_preview)
@@ -601,7 +603,7 @@ class dvd_menu(devede.interface_manager.interface_manager):
             self.sf.write_to_png(os.path.join(menu_folder,"menu_"+str(n_page)+"_active_bg.png"))
             entry_data = self.create_menu_stream(menu_folder, n_page, coordinates)
             converter = menu_converter()
-            final_path = converter.create_menu_mpeg(n_page,self.background_music,self.sound_length,self.config.PAL,self.video_rate,self.audio_rate,menu_folder)
+            final_path = converter.create_menu_mpeg(n_page,self.background_music,self.sound_length,self.config.PAL,self.video_rate,self.audio_rate,menu_folder, self.audio_mp2)
             entry_data["filename"] = final_path
             menu_entries.append(entry_data)
             # add this process without dependencies

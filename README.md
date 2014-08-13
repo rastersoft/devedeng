@@ -16,7 +16,7 @@ Just type:
 
 ## USING DEVEDE NG ##
 
-The first alpha version of Devede NG is very similar to the old devede, with the
+The second alpha version of Devede NG is very similar to the old devede, with the
 exception that, when creating a DVD disc, there are no more "titles" and
 "files". Instead, you just add files to the disc. It also lacks support for Mencoder,
 and can use only FFMpeg or AVConv for video conversion.
@@ -31,7 +31,9 @@ The current visible changes are quite small in number:
 * Allows to use VLC or MPlayer for preview
 * Allows to choose between Brasero or K3B for burning the discs
 * Allows to set properties for several files in one step
-* Allow to choose the subtitle colors
+* Allows to choose the subtitle colors
+* Allows to choose between MP2 and AC3 audio for menus
+
 
 ## THINGS TO DO ##
 
@@ -41,24 +43,31 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 * add more output formats
 * allow to replace the movie's audio track with one or several MP3 or OGG audio files
 * widescreen menus for DVDs
-* choose between MP2 and AC3 audio for menus
 * preview of a converted menu
 
 
 ## History of versions ##
-* version in GIT
-    * Now shows a default value for preview duration
-    * Fixed progress bar for subtitle creation
-    * Allows to choose the subtitle colors
-    * Allows to set properties for several files in one step
-    * Fixed bug whe setting PAL or NTSC toggle in file properties
-    * Added two-pass conversion
-    * Now detects separately MKISOFS and GENISOIMAGE, allowing to have only one of them installed in the system
-    * Now checks that the number of files is smaller than the limit for DVD projects
-    * Now uses GLib for DBus instead of python-dbus
-    * Fixed the DESKTOP file to ensure that an icon is shown in the applications menu
+
+* version 0.1 alpha 2 (2014-08-13)
+  * Updated spanish translation and added POTFILES.in file
+  * Allows to choose between MP2 and AC3 audio for menus
+  * Now only deletes the bare minimum files and folders to be able to create a disk in the specified final folder
+  * Better message text to specify which folder will be deleted when the final folder already exists
+  * It failed when the selected backend was not installed in the system. Fixed.
+  * Now shows a default value for preview duration
+  * Fixed progress bar for subtitle creation
+  * Allows to choose the subtitle colors
+  * Allows to set properties for several files in one step
+  * Fixed bug whe setting PAL or NTSC toggle in file properties
+  * Added two-pass conversion
+  * Now detects separately MKISOFS and GENISOIMAGE, allowing to have only one of them installed in the system
+  * Now checks that the number of files is smaller than the limit for DVD projects
+  * Now uses GLib for DBus instead of python-dbus
+  * Fixed the DESKTOP file to ensure that an icon is shown in the applications menu
+
 * version 0.1 alpha 1 (2014-08-06)
-    * First public version
+  * First public version
+
 
 ## CONTACTING THE AUTHOR ##
 
