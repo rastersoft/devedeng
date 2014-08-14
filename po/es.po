@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DeVeDe 3.12\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-13 20:46+0200\n"
-"PO-Revision-Date: 2014-08-13 21:08+0200\n"
+"POT-Creation-Date: 2014-08-14 10:45+0200\n"
+"PO-Revision-Date: 2014-08-14 10:46+0200\n"
 "Last-Translator: Sergio Costas <rastersoft@gmail.com>\n"
 "Language-Team: Español; Castellano <>\n"
 "Language: \n"
@@ -756,11 +756,11 @@ msgid "Devede"
 msgstr "Devede"
 
 #: ../data/interface/wmain.ui.h:2
-msgid "_Archivo"
+msgid "_File"
 msgstr "_Archivo"
 
 #: ../data/interface/wmain.ui.h:3
-msgid "_Editar"
+msgid "_Edit"
 msgstr "_Editar"
 
 #: ../data/interface/wmain.ui.h:4
@@ -768,8 +768,8 @@ msgid "Set multiproperties"
 msgstr "Cambio múltiple de propiedades"
 
 #: ../data/interface/wmain.ui.h:5
-msgid "Ay_uda"
-msgstr "Ay_uda"
+msgid "_Help"
+msgstr "A_yuda"
 
 #: ../data/interface/wmain.ui.h:8
 msgid "<b>Files</b>"
@@ -1074,6 +1074,12 @@ msgstr "Propiedades del título"
 #: ../data/interface/wtitle_properties.ui.h:2
 msgid "<b>Title's name</b>"
 msgstr "<b>Nombre del título</b>"
+
+#~ msgid "_Archivo"
+#~ msgstr "_Archivo"
+
+#~ msgid "Ay_uda"
+#~ msgstr "Ay_uda"
 
 #~ msgid "Creating BIN/CUE files"
 #~ msgstr "Creando los ficheros BIN/CUE"
@@ -1530,14 +1536,8 @@ msgstr "<b>Nombre del título</b>"
 #~ msgid "DeVeDe"
 #~ msgstr "DeVeDe"
 
-#~ msgid "_File"
-#~ msgstr "_Archivo"
-
 #~ msgid "_Preferences"
 #~ msgstr "_Preferencias"
-
-#~ msgid "_Help"
-#~ msgstr "A_yuda"
 
 #~ msgid "Length (seconds):"
 #~ msgstr "Longitud (segundos):"
