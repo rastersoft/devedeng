@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.16.1 -->
+<!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
   <object class="GtkDialog" id="dialog_create">
@@ -78,6 +78,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="action">select-folder</property>
+                <property name="preview_widget_active">False</property>
                 <signal name="file-set" handler="on_iface_changed" swapped="no"/>
               </object>
               <packing>
