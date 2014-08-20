@@ -45,11 +45,11 @@ class create_disk_window:
         self.on_iface_changed(None)
         retval = wcreate_window.run()
         self.name = self.wname.get_text()
-        self.path = os.path.join(self.wpath.get_current_folder(),self.name)
+        self.path = os.path.join(self.wpath.get_filename(),self.name)
         self.shutdown = wshutdown.get_active()
 
         if (retval == 1):
-            self.config.final_folder = self.wpath.get_current_folder()
+            self.config.final_folder = self.wpath.get_filename()
             self.config.save_config()
 
         wcreate_window.destroy()
@@ -60,7 +60,7 @@ class create_disk_window:
     
     def on_iface_changed(self,b):
         
-        path = self.wpath.get_current_folder()
+        path = self.wpath.get_filename()
         name = self.wname.get_text()
         
         if ((path == None) or (path == "") or (name == None) or (name == "")):
