@@ -235,9 +235,9 @@ class dvdauthor_converter(devede.executor.executor):
                 xml_file.write('\t\t\t\t</pre>\n')
                 xml_file.write('\t\t\t\t<vob file="')
                 if self.config.PAL:
-                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path,"base_pal.mpg")))+'"')
+                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path,"base_pal.mpg"))))
                 else:
-                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path,"base_ntsc.mpg")))+'"')
+                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path,"base_ntsc.mpg"))))
                 xml_file.write('"></vob>\n')
 
                 xml_file.write('\t\t\t\t<post>\n')
