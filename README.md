@@ -48,6 +48,11 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 
 ## History of versions ##
 
+* version 0.1 beta 1 (2014-09-22)
+  * Fixed several strings in the menu
+  * Fixed the bug that prevented to choose the final folder
+  * Removed single quotes that triggered an exception when creating a DVD without menu
+
 * version 0.1 alpha 2 (2014-08-13)
   * Updated spanish translation and added POTFILES.in file
   * Allows to choose between MP2 and AC3 audio for menus
