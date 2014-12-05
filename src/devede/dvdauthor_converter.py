@@ -199,14 +199,14 @@ class dvdauthor_converter(devede.executor.executor):
                         button_counter+=1
 
                     if (menu_page["left"] != None):
-                        xml_file.write('\t\t\t\t<button name="'+menu_page["left"]+'p"> g1=')
+                        xml_file.write('\t\t\t\t<button name="'+menu_page["left"]+'"> g1=')
                         xml_file.write(str(menu_number-1))
                         xml_file.write('; g2=1024; jump menu ')
                         xml_file.write(str(menu_number))
                         xml_file.write('; </button>\n')
 
                     if (menu_page["right"] != None):
-                        xml_file.write('\t\t\t\t<button name="'+menu_page["right"]+'n"> g1=')
+                        xml_file.write('\t\t\t\t<button name="'+menu_page["right"]+'"> g1=')
                         xml_file.write(str(menu_number+1))
                         xml_file.write('; g2=1024; jump menu ')
                         xml_file.write(str(menu_number+2))
