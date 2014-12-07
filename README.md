@@ -48,6 +48,13 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 
 ## History of versions ##
 
+* version 0.1 beta 2 (2014-12-07)
+  * Fixed a bug when jumping to a video not visible in the main menu
+  * Fixed a bug when the main menu has two or more pages
+  * Default size for main window bigger
+  * Allows to change the title by double-clicking on it
+  * Shows the duration of each title
+
 * version 0.1 beta 1 (2014-09-22)
   * Fixed several strings in the menu
   * Fixed the bug that prevented to choose the final folder
