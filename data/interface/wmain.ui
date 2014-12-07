@@ -34,6 +34,8 @@
       <column type="GObject"/>
       <!-- column-name files -->
       <column type="gchararray"/>
+      <!-- column-name toedit -->
+      <column type="gboolean"/>
     </columns>
   </object>
   <object class="GtkWindow" id="wmain_window">
@@ -229,8 +231,11 @@
                               <object class="GtkTreeViewColumn" id="treeviewcolumn2">
                                 <property name="title" translatable="yes">column</property>
                                 <child>
-                                  <object class="GtkCellRendererText" id="cellrenderertext3"/>
+                                  <object class="GtkCellRendererText" id="cellrenderertext3">
+                                    <signal name="edited" handler="on_cellrenderertext3_edited" swapped="no"/>
+                                  </object>
                                   <attributes>
+                                    <attribute name="editable">2</attribute>
                                     <attribute name="text">1</attribute>
                                   </attributes>
                                 </child>

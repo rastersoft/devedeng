@@ -186,6 +186,10 @@ class devede_project:
                 self.wdown_file.set_sensitive(False)
 
 
+    def on_cellrenderertext3_edited(self, widget, path, text):
+        self.wliststore_files[path][0].set_title(text)
+
+
     def on_use_pal_toggled(self,b):
 
         self.config.PAL = self.wuse_pal.get_active()
@@ -225,7 +229,7 @@ class devede_project:
                 error_list.append(os.path.basename(efile))
             else:
                 new_file.connect('title_changed',self.title_changed)
-                self.wliststore_files.append([new_file, new_file.title_name])
+                self.wliststore_files.append([new_file, new_file.title_name,True])
         if (len(error_list)!=0):
             devede.message.message_window(_("The following files could not be added:"),_("Error while adding files"),error_list)
         self.set_interface_status(None)
@@ -644,7 +648,7 @@ class devede_project:
                 else:
                     new_file.restore_file(efile)
                     new_file.connect('title_changed',self.title_changed)
-                    self.wliststore_files.append([new_file, new_file.title_name])
+                    self.wliststore_files.append([new_file, new_file.title_name,True])
             if (len(error_list)!=0):
                 devede.message.message_window(_("The following files in the project could not be added again:"),_("Error while adding files"),error_list)
         self.set_interface_status(None)
