@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 10:45+0200\n"
+"POT-Creation-Date: 2014-12-07 19:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -163,41 +163,41 @@ msgstr ""
 msgid "DevedeNG projects"
 msgstr ""
 
-#: ../src/devede/project.py:198
+#: ../src/devede/project.py:203
 msgid "Abort the current DVD and exit?"
 msgstr ""
 
-#: ../src/devede/project.py:198
+#: ../src/devede/project.py:203
 msgid "Exit DeVeDe"
 msgstr ""
 
-#: ../src/devede/project.py:230
+#: ../src/devede/project.py:249
 msgid "The following files could not be added:"
 msgstr ""
 
-#: ../src/devede/project.py:230 ../src/devede/project.py:649
+#: ../src/devede/project.py:249 ../src/devede/project.py:668
 msgid "Error while adding files"
 msgstr ""
 
-#: ../src/devede/project.py:242
+#: ../src/devede/project.py:261
 #, python-format
 msgid "The file <b>%(X)s</b> <i>(%(Y)s)</i> will be removed."
 msgstr ""
 
-#: ../src/devede/project.py:242
+#: ../src/devede/project.py:261
 msgid "Delete file"
 msgstr ""
 
-#: ../src/devede/project.py:404
+#: ../src/devede/project.py:423
 #, python-format
 msgid "The limit for this format is %(l)d files, but your project has %(h)d."
 msgstr ""
 
-#: ../src/devede/project.py:404
+#: ../src/devede/project.py:423
 msgid "Too many files in the project"
 msgstr ""
 
-#: ../src/devede/project.py:413
+#: ../src/devede/project.py:432
 #, python-format
 msgid ""
 "The selected folder already exists. To create the project, Devede must "
@@ -209,27 +209,27 @@ msgid ""
 " and all its contents <b>will be deleted</b>. Continue?"
 msgstr ""
 
-#: ../src/devede/project.py:413
+#: ../src/devede/project.py:432
 msgid "Delete folder"
 msgstr ""
 
-#: ../src/devede/project.py:548
+#: ../src/devede/project.py:567
 msgid "Close current project and start a fresh one?"
 msgstr ""
 
-#: ../src/devede/project.py:548
+#: ../src/devede/project.py:567
 msgid "New project"
 msgstr ""
 
-#: ../src/devede/project.py:589
+#: ../src/devede/project.py:608
 msgid "The file already exists. Overwrite it?"
 msgstr ""
 
-#: ../src/devede/project.py:589
+#: ../src/devede/project.py:608
 msgid "The file already exists"
 msgstr ""
 
-#: ../src/devede/project.py:649
+#: ../src/devede/project.py:668
 msgid "The following files in the project could not be added again:"
 msgstr ""
 
@@ -368,7 +368,7 @@ msgstr ""
 msgid "<b>File info</b>"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:11 ../data/interface/wmain.ui.h:6
+#: ../data/interface/wfile_properties.ui.h:11
 #: ../data/interface/wmessage.ui.h:1
 msgid "column"
 msgstr ""
@@ -389,7 +389,7 @@ msgstr ""
 msgid "PAL/SECAM"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:16 ../data/interface/wmain.ui.h:13
+#: ../data/interface/wfile_properties.ui.h:16 ../data/interface/wmain.ui.h:14
 msgid "NTSC"
 msgstr ""
 
@@ -710,7 +710,7 @@ msgstr ""
 msgid "<b>Options</b>"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:95 ../data/interface/wmain.ui.h:7
+#: ../data/interface/wfile_properties.ui.h:95 ../data/interface/wmain.ui.h:8
 msgid "Preview"
 msgstr ""
 
@@ -734,39 +734,47 @@ msgstr ""
 msgid "_Help"
 msgstr ""
 
-#: ../data/interface/wmain.ui.h:8
-msgid "<b>Files</b>"
+#: ../data/interface/wmain.ui.h:6
+msgid "Title"
+msgstr ""
+
+#: ../data/interface/wmain.ui.h:7
+msgid "Duration"
 msgstr ""
 
 #: ../data/interface/wmain.ui.h:9
-msgid "Media size:"
+msgid "<b>Files</b>"
 msgstr ""
 
 #: ../data/interface/wmain.ui.h:10
-msgid "Adjust disc usage"
+msgid "Media size:"
 msgstr ""
 
 #: ../data/interface/wmain.ui.h:11
-msgid "<b>Disc usage</b>"
+msgid "Adjust disc usage"
 msgstr ""
 
 #: ../data/interface/wmain.ui.h:12
+msgid "<b>Disc usage</b>"
+msgstr ""
+
+#: ../data/interface/wmain.ui.h:13
 msgid "PAL"
 msgstr ""
 
-#: ../data/interface/wmain.ui.h:14
+#: ../data/interface/wmain.ui.h:15
 msgid "<b>Default format</b>"
 msgstr ""
 
-#: ../data/interface/wmain.ui.h:15
+#: ../data/interface/wmain.ui.h:16
 msgid "Create a menu with the titles"
 msgstr ""
 
-#: ../data/interface/wmain.ui.h:16
+#: ../data/interface/wmain.ui.h:17
 msgid "Menu options"
 msgstr ""
 
-#: ../data/interface/wmain.ui.h:17
+#: ../data/interface/wmain.ui.h:18
 msgid "<b>Menus</b>"
 msgstr ""
 

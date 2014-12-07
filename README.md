@@ -70,7 +70,7 @@ Some of the future ideas to add to Devede NG are, without an specific order:
   * Fixed progress bar for subtitle creation
   * Allows to choose the subtitle colors
   * Allows to set properties for several files in one step
-  * Fixed bug whe setting PAL or NTSC toggle in file properties
+  * Fixed bug when setting PAL or NTSC toggle in file properties
   * Added two-pass conversion
   * Now detects separately MKISOFS and GENISOIMAGE, allowing to have only one of them installed in the system
   * Now checks that the number of files is smaller than the limit for DVD projects
