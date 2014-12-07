@@ -183,6 +183,10 @@ class file_movie(devede.interface_manager.interface_manager):
         self.emit('title_changed',self.title_name)
 
 
+    def get_duration(self):
+        return self.original_length
+
+
     def get_estimated_size(self):
         """ Returns the estimated final file size, in kBytes, based on the final audio and video rate, and the subtitles """
 

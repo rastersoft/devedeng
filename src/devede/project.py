@@ -21,6 +21,7 @@ import time
 import shutil
 import urllib.parse
 import pickle
+import math
 
 import devede.file_movie
 import devede.ask
@@ -219,6 +220,20 @@ class devede_project:
             self.add_several_files(ask_files.files)
 
 
+    def duration_to_string(self,duration):
+
+        seconds = math.floor(duration%60)
+        minutes = math.floor((duration/60)%60)
+        hours = math.floor(duration/3600)
+
+        output = str(seconds)+"s"
+        if ((hours != 0) or (minutes != 0)):
+            output = str(minutes)+"m "+output
+        if (hours != 0):
+            output = str(hours)+"h "+output
+        return output
+
+
     def add_several_files(self,file_list):
         error_list = []
         for efile in file_list:
@@ -229,7 +244,7 @@ class devede_project:
                 error_list.append(os.path.basename(efile))
             else:
                 new_file.connect('title_changed',self.title_changed)
-                self.wliststore_files.append([new_file, new_file.title_name,True])
+                self.wliststore_files.append([new_file, new_file.title_name,True,self.duration_to_string(new_file.get_duration())])
         if (len(error_list)!=0):
             devede.message.message_window(_("The following files could not be added:"),_("Error while adding files"),error_list)
         self.set_interface_status(None)
@@ -648,7 +663,7 @@ class devede_project:
                 else:
                     new_file.restore_file(efile)
                     new_file.connect('title_changed',self.title_changed)
-                    self.wliststore_files.append([new_file, new_file.title_name,True])
+                    self.wliststore_files.append([new_file, new_file.title_name,True,self.duration_to_string(new_file.get_duration())])
             if (len(error_list)!=0):
                 devede.message.message_window(_("The following files in the project could not be added again:"),_("Error while adding files"),error_list)
         self.set_interface_status(None)
