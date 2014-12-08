@@ -2,23 +2,23 @@
 # Copyright (C) 2006 THE DeVeDe'S Raster Software Vigo
 # This file is distributed under the same license as the DeVeDe package.
 # , fuzzy
-# Miguel Anxo Bouzada <mbouzada@gmail.com>, 2011.
+# Miguel Anxo Bouzada <mbouzada@gmail.com>, 2011, 2014.
 # Sergio Costas <raster@rastersoft.com>, 2006, 2008, 2012.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: DeVeDe 3.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-07 19:30+0100\n"
-"PO-Revision-Date: 2012-05-20 12:59+0200\n"
-"Last-Translator: Sergio Costas <raster@rastersoft.com>\n"
-"Language-Team: Español; Castellano <raster@rastersoft.com>\n"
+"PO-Revision-Date: 2014-12-08 10:14+0200\n"
+"Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bits\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.0\n"
 "X-Poedit-Language: Galician\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #: ../src/devede/add_files.py:44
 msgid "Video files"
@@ -31,29 +31,28 @@ msgid "All files"
 msgstr "Todos os ficheiros"
 
 #: ../src/devede/ask_subtitles.py:79
-#, fuzzy
 msgid "Subtitle files"
-msgstr "Subtítulo"
+msgstr "Ficheiros de subtitulos"
 
 #: ../src/devede/avconv_converter.py:112 ../src/devede/ffmpeg_converter.py:112
 #, python-format
 msgid "Converting %(X)s (pass 2)"
-msgstr ""
+msgstr "Convertendo %(X)s (paso 2)"
 
 #: ../src/devede/avconv_converter.py:114 ../src/devede/ffmpeg_converter.py:114
 #, python-format
 msgid "Converting %(X)s (pass 1)"
-msgstr ""
+msgstr "Convertendo %(X)s (paso 1)"
 
 #: ../src/devede/avconv_converter.py:123 ../src/devede/ffmpeg_converter.py:123
 #, python-format
 msgid "Converting %(X)s"
-msgstr ""
+msgstr "Convertendo %(X)s"
 
 #: ../src/devede/avconv_converter.py:356 ../src/devede/ffmpeg_converter.py:356
-#, fuzzy, python-format
+#, python-format
 msgid "Creating menu %(X)d"
-msgstr "Creando o menú %(menu_number)d"
+msgstr "Creando o menú %(X)d"
 
 #: ../src/devede/choose_disc_type.py:150 ../src/devede/choose_disc_type.py:158
 #: ../src/devede/choose_disc_type.py:171 ../src/devede/choose_disc_type.py:179
@@ -61,7 +60,7 @@ msgstr "Creando o menú %(menu_number)d"
 #: ../src/devede/choose_disc_type.py:198 ../src/devede/choose_disc_type.py:202
 #, python-format
 msgid "\t%(program_name)s (not installed)\n"
-msgstr ""
+msgstr "\t%(program_name)s (non instalado)\n"
 
 #: ../src/devede/choose_disc_type.py:152 ../src/devede/choose_disc_type.py:160
 #: ../src/devede/choose_disc_type.py:173 ../src/devede/choose_disc_type.py:181
@@ -69,7 +68,7 @@ msgstr ""
 #: ../src/devede/choose_disc_type.py:200 ../src/devede/choose_disc_type.py:204
 #, python-format
 msgid "\t%(program_name)s (installed)\n"
-msgstr ""
+msgstr "\t%(program_name)s (instalado)\n"
 
 #: ../src/devede/choose_disc_type.py:153
 #, python-format
@@ -78,6 +77,9 @@ msgid ""
 "\n"
 "%(program_list)s\n"
 msgstr ""
+"Identificadores de filmes (instalar polo menos un destes):\n"
+"\n"
+"%(program_list)s\n"
 
 #: ../src/devede/choose_disc_type.py:161
 #, python-format
@@ -86,6 +88,9 @@ msgid ""
 "\n"
 "%(program_list)s\n"
 msgstr ""
+"Reprodutores de filmes (instalar polo menos un destes):\n"
+"\n"
+"%(program_list)s\n"
 
 #: ../src/devede/choose_disc_type.py:174
 #, python-format
@@ -94,6 +99,9 @@ msgid ""
 "\n"
 "%(program_list)s\n"
 msgstr ""
+"Convertedores de filmes (instalar polo menos un destes):\n"
+"\n"
+"%(program_list)s\n"
 
 #: ../src/devede/choose_disc_type.py:182
 #, python-format
@@ -102,6 +110,9 @@ msgid ""
 "\n"
 "%(program_list)s\n"
 msgstr ""
+"Gravadores de CD/DVD (instalar polo menos un destes):\n"
+"\n"
+"%(program_list)s\n"
 
 #: ../src/devede/choose_disc_type.py:190
 #, python-format
@@ -110,6 +121,9 @@ msgid ""
 "\n"
 "%(program_list)s\n"
 msgstr ""
+"Creadores de ISO (instalar polo menos un destes):\n"
+"\n"
+"%(program_list)s\n"
 
 #: ../src/devede/choose_disc_type.py:206
 #, python-format
@@ -118,58 +132,56 @@ msgid ""
 "\n"
 "%(program_list)s\n"
 msgstr ""
+"Outros programas:\n"
+"\n"
+"%(program_list)s\n"
 
 #: ../src/devede/dvdauthor_converter.py:49
-#, fuzzy
 msgid "Creating DVD structure"
-msgstr "Xerando a estrutura do DVD"
+msgstr "Creando a estrutura do DVD"
 
 #: ../src/devede/dvd_menu.py:87
 msgid "The selected file is a video, not an audio file"
-msgstr ""
+msgstr "O ficheiro seleccionado é de vídeo, non é un ficheiro de son"
 
 #: ../src/devede/dvd_menu.py:87 ../src/devede/dvd_menu.py:90
 msgid "Error"
 msgstr "Erro"
 
 #: ../src/devede/dvd_menu.py:90
-#, fuzzy
 msgid "The selected file is not an audio file"
-msgstr "Semella ser un ficheiro de son."
+msgstr "O ficheiro seleccionado é un ficheiro de son"
 
 #: ../src/devede/dvd_menu.py:141
-#, fuzzy
 msgid "Picture files"
-msgstr "Ficheiros de vídeo"
+msgstr "Ficheiros de imaxe"
 
 #: ../src/devede/dvd_menu.py:153
-#, fuzzy
 msgid "Sound files"
-msgstr "Ficheiros de vídeo"
+msgstr "Ficheiros de son"
 
 #: ../src/devede/dvd_menu.py:390
 #, python-format
 msgid "Page %(X)d of %(Y)d"
-msgstr ""
+msgstr "Páxina %(X)d de %(Y)d"
 
 #: ../src/devede/file_copy.py:31
-#, fuzzy, python-format
+#, python-format
 msgid "Copying file %(X)s"
-msgstr "Copiando o ficheiro"
+msgstr "Copiando o ficheiro %(X)s"
 
 #: ../src/devede/genisoimage.py:67 ../src/devede/mkisofs.py:67
-#, fuzzy
 msgid "Creating ISO image"
 msgstr "Creando a imaxe ISO"
 
 #: ../src/devede/mux_dvd_menu.py:34
 #, python-format
 msgid "Mixing menu %(X)d"
-msgstr ""
+msgstr "Mesturando o menú %(X)d"
 
 #: ../src/devede/opensave.py:45
 msgid "DevedeNG projects"
-msgstr ""
+msgstr "Proxectos DevedeNG"
 
 #: ../src/devede/project.py:203
 msgid "Abort the current DVD and exit?"
@@ -181,30 +193,31 @@ msgstr "Saír de DeVeDe"
 
 #: ../src/devede/project.py:249
 msgid "The following files could not be added:"
-msgstr ""
+msgstr "Non é posíbel engadir os seguintes ficheiros:"
 
 #: ../src/devede/project.py:249 ../src/devede/project.py:668
 msgid "Error while adding files"
-msgstr ""
+msgstr "Produciuse un erro ao engadir ficheiros"
 
 #: ../src/devede/project.py:261
 #, python-format
 msgid "The file <b>%(X)s</b> <i>(%(Y)s)</i> will be removed."
-msgstr ""
+msgstr "O ficheiro <b>%(X)s</b> <i>(%(Y)s)</i> vai seren retirado."
 
 #: ../src/devede/project.py:261
-#, fuzzy
 msgid "Delete file"
-msgstr "Borrar título"
+msgstr "Eliminar o ficheiro"
 
 #: ../src/devede/project.py:423
 #, python-format
 msgid "The limit for this format is %(l)d files, but your project has %(h)d."
 msgstr ""
+"O limite para este formato é de %(l)d ficheiros, mais o seu proxecto ten %"
+"(h)d."
 
 #: ../src/devede/project.py:423
 msgid "Too many files in the project"
-msgstr ""
+msgstr "Hai ficheiros de máis no proxecto"
 
 #: ../src/devede/project.py:432
 #, python-format
@@ -217,63 +230,68 @@ msgid ""
 "\n"
 " and all its contents <b>will be deleted</b>. Continue?"
 msgstr ""
+"Xa existe o cartafol seleccionado. Para crear o proxecto, Devede necesita "
+"eliminala.\n"
+"Se continúa, o cartafol\n"
+"\n"
+" <b>%s</b>\n"
+"\n"
+" e todo o seu contido <b>vai seren eliminado</b>. Quere continuar?"
 
 #: ../src/devede/project.py:432
-#, fuzzy
 msgid "Delete folder"
-msgstr "Borrar título"
+msgstr "Eliminar o cartafol"
 
 #: ../src/devede/project.py:567
 msgid "Close current project and start a fresh one?"
-msgstr ""
+msgstr "Pechar o proxecto actual e comezar un novo?"
 
 #: ../src/devede/project.py:567
 msgid "New project"
-msgstr ""
+msgstr "Novo proxecto"
 
 #: ../src/devede/project.py:608
 msgid "The file already exists. Overwrite it?"
-msgstr ""
+msgstr "Xa existe o ficheiro. Quere sobrescribilo?"
 
 #: ../src/devede/project.py:608
 msgid "The file already exists"
-msgstr ""
+msgstr "Xa existe o ficheiro"
 
 #: ../src/devede/project.py:668
 msgid "The following files in the project could not be added again:"
-msgstr ""
+msgstr "Non poderán volver engadirse ao proxecto os seguintes ficheiros:"
 
 #: ../src/devede/runner.py:91
-#, fuzzy
 msgid "Cancel the current job?"
-msgstr "Cancelar o traballo?"
+msgstr "Cancelar o traballo actual?"
 
 #: ../src/devede/settings.py:45 ../src/devede/settings.py:61
 msgid "Use all cores"
-msgstr ""
+msgstr "Usar todos os núcleos"
 
 #: ../src/devede/settings.py:49
 #, python-format
 msgid "Use %(X)d core"
 msgid_plural "Use %(X)d cores"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Usar %(X)d núcleo"
+msgstr[1] "Usar %(X)d núcleos"
 
 #: ../src/devede/settings.py:55
 #, python-format
 msgid "Use all except %(X)d core"
 msgid_plural "Use all except %(X)d cores"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Usar todos agás %(X) núcleo"
+msgstr[1] "Usar todos agás %(X) núcleos"
 
 #: ../src/devede/settings.py:121
 msgid "No discs supported"
-msgstr ""
+msgstr "Non hai discos admitidos"
 
 #: ../src/devede/subtitles_mux.py:43
-#, fuzzy, python-format
+#, python-format
 msgid "Adding %(L)s subtitles to %(X)s"
-msgstr "Engadindo subtítulos a"
+msgstr "Engadindo %(L)s subtítulos a %(X)s"
 
 #: ../src/devede/title.py:32
 #, python-format
@@ -281,18 +299,16 @@ msgid "Title %(X)d"
 msgstr "Título %(X)d"
 
 #: ../src/devede/vcdimager_converter.py:46
-#, fuzzy
 msgid "Creating CD image"
-msgstr "Creando a imaxe ISO"
+msgstr "Creando a imaxe de CD"
 
 #: ../data/interface/wabout.ui.h:1
 msgid "2014 Raster Software Vigo"
-msgstr ""
+msgstr "2014 Raster Software Vigo"
 
 #: ../data/interface/wadd_files.ui.h:1
-#, fuzzy
 msgid "Add new file(s)"
-msgstr "Ficheiros de vídeo"
+msgstr "Engadir novo(s) ficheiro(s)"
 
 #: ../data/interface/wask_subtitles.ui.h:1
 msgid "File:"
@@ -312,53 +328,49 @@ msgstr "Poñer os subtítulos máis arriba"
 
 #: ../data/interface/wcreate.ui.h:1
 msgid "devede"
-msgstr ""
+msgstr "devede"
 
 #: ../data/interface/wcreate.ui.h:2
-#, fuzzy
 msgid ""
 "Choose the folder where Devede will create the files and a name for it. Do "
 "not use a folder in a VFAT/FAT32 drive. Characters /, | and \\ are not "
 "accepted and will be replaced by underscores."
 msgstr ""
-"Escolla o directorio no que DeVeDe creará a imaxe do DVD, así como un nome "
-"para esta. Non use un directorio que estea nunha unidade VFAT/FAT32. O "
-"caracteres /, | e \\, non están permitidos e serán reemprazados por guións "
-"baixos."
+"Escolla o directorio no que DeVeDe creará os ficheiros, así como un nome "
+"para el. Non use un directorio que estea nunha unidade VFAT/FAT32. Non se "
+"admiten os caracteres /, | e \\, serán substituídos por guións baixos."
 
 #: ../data/interface/wcreate.ui.h:3
 msgid "Shutdown computer when disc is done"
 msgstr "Apagar a computadora cando o disco esté feito"
 
 #: ../data/interface/wdone.ui.h:1
-#, fuzzy
 msgid "Burn"
-msgstr "Grabar"
+msgstr "Gravar"
 
 #: ../data/interface/wdone.ui.h:2
 msgid "Job done!"
-msgstr "Rematado."
+msgstr "Rematado!"
 
 #: ../data/interface/wdone.ui.h:3 ../data/interface/werror.ui.h:2
 msgid "Debugging data"
-msgstr ""
+msgstr "Datos de depuración"
 
 #: ../data/interface/werror.ui.h:1
 msgid "There was an error while creating the disc."
-msgstr ""
+msgstr "Produciuse un erro ao crear o disco."
 
 #: ../data/interface/wfile_properties.ui.h:1
 msgid "Show this title in the menu"
-msgstr ""
+msgstr "Amosar este título no menú"
 
 #: ../data/interface/wfile_properties.ui.h:2
-#, fuzzy
 msgid "<b>Title</b>"
-msgstr "<b>Títulos</b>"
+msgstr "<b>Título</b>"
 
 #: ../data/interface/wfile_properties.ui.h:3
 msgid "Path:"
-msgstr ""
+msgstr "Ruta:"
 
 #: ../data/interface/wfile_properties.ui.h:4
 msgid "Original size (pixels):"
@@ -369,9 +381,8 @@ msgid "Original length (seconds):"
 msgstr "Lonxitude orixinal(segundos):"
 
 #: ../data/interface/wfile_properties.ui.h:6
-#, fuzzy
 msgid "Original aspect ratio:"
-msgstr "Relación de aspeto (saída):"
+msgstr "Relación de aspecto orixinal:"
 
 #: ../data/interface/wfile_properties.ui.h:7
 msgid "Frames per second:"
@@ -392,19 +403,19 @@ msgstr "<b>Información do ficheiro</b>"
 #: ../data/interface/wfile_properties.ui.h:11
 #: ../data/interface/wmessage.ui.h:1
 msgid "column"
-msgstr ""
+msgstr "columna"
 
 #: ../data/interface/wfile_properties.ui.h:12
 msgid "Select all"
-msgstr ""
+msgstr "Seleccionar todo"
 
 #: ../data/interface/wfile_properties.ui.h:13
 msgid "Unselect all"
-msgstr ""
+msgstr "Desmarcar todo"
 
 #: ../data/interface/wfile_properties.ui.h:14
 msgid "<b>Set properties to these files</b>"
-msgstr ""
+msgstr "<b>Estabelecer as propiedades para estes ficheiros</b>"
 
 #: ../data/interface/wfile_properties.ui.h:15
 msgid "PAL/SECAM"
@@ -420,7 +431,7 @@ msgstr "<b>Formato do vídeo</b>"
 
 #: ../data/interface/wfile_properties.ui.h:18
 msgid "300"
-msgstr ""
+msgstr "300"
 
 #: ../data/interface/wfile_properties.ui.h:19
 msgid "Reset"
@@ -433,26 +444,23 @@ msgstr "<b>Volume (%)</b>"
 
 #: ../data/interface/wfile_properties.ui.h:22
 msgid "Automatic"
-msgstr ""
+msgstr "Automático"
 
 #: ../data/interface/wfile_properties.ui.h:23
 msgid "5000"
-msgstr ""
+msgstr "5000"
 
 #: ../data/interface/wfile_properties.ui.h:24
-#, fuzzy
 msgid "<b>Video rate (KBits/sec)</b>"
-msgstr "<b>Taxa de vídeo (Kbits/seg</b>"
+msgstr "<b>Taxa de vídeo (KBits/seg</b>"
 
 #: ../data/interface/wfile_properties.ui.h:25
-#, fuzzy
 msgid "224"
-msgstr "352x240"
+msgstr "224"
 
 #: ../data/interface/wfile_properties.ui.h:26
-#, fuzzy
 msgid "<b>Audio rate (KBits/sec)</b>"
-msgstr "<b>Taxa de son(Kbits/seg)</b>"
+msgstr "<b>Taxa de son(KBits/seg)</b>"
 
 #: ../data/interface/wfile_properties.ui.h:27
 msgid "Split the file in chapters (for easy seeking)"
@@ -460,7 +468,7 @@ msgstr "Dividir o ficheiro en capítulos (para facilitar a súa busca)"
 
 #: ../data/interface/wfile_properties.ui.h:28
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ../data/interface/wfile_properties.ui.h:29
 msgid "Size (in minutes) for each chapter:"
@@ -491,23 +499,20 @@ msgid "Force subtitles"
 msgstr "Forzar subtítulos"
 
 #: ../data/interface/wfile_properties.ui.h:36
-#, fuzzy
 msgid "Fill color:"
-msgstr "Cor do texto:"
+msgstr "Cor de recheo:"
 
 #: ../data/interface/wfile_properties.ui.h:37
-#, fuzzy
 msgid "Outline color:"
-msgstr "Cor do texto:"
+msgstr "Cor do bordo:"
 
 #: ../data/interface/wfile_properties.ui.h:38
 msgid "Outline thickness:"
-msgstr ""
+msgstr "Grosor do bordo:"
 
 #: ../data/interface/wfile_properties.ui.h:39
-#, fuzzy
 msgid "Subtitles"
-msgstr "Subtítulo"
+msgstr "Subtítulos"
 
 #: ../data/interface/wfile_properties.ui.h:40
 msgid "1920x1080"
@@ -539,24 +544,23 @@ msgstr "352x240"
 
 #: ../data/interface/wfile_properties.ui.h:47
 msgid "720x576"
-msgstr ""
+msgstr "720x576"
 
 #: ../data/interface/wfile_properties.ui.h:48
 msgid "704x576"
-msgstr ""
+msgstr "704x576"
 
 #: ../data/interface/wfile_properties.ui.h:49
 msgid "480x576"
-msgstr ""
+msgstr "480x576"
 
 #: ../data/interface/wfile_properties.ui.h:50
 msgid "352x576"
-msgstr ""
+msgstr "352x576"
 
 #: ../data/interface/wfile_properties.ui.h:51
-#, fuzzy
 msgid "352x288"
-msgstr "352x240"
+msgstr "352x288"
 
 #: ../data/interface/wfile_properties.ui.h:52
 msgid "<b>Final size</b>"
@@ -591,19 +595,16 @@ msgid "No rotation"
 msgstr "Non rotar"
 
 #: ../data/interface/wfile_properties.ui.h:60
-#, fuzzy
 msgid "90 degrees (clockwise)"
-msgstr "Rotar 90 graos en sentido horario"
+msgstr "90 graos (sentido horario)"
 
 #: ../data/interface/wfile_properties.ui.h:61
-#, fuzzy
 msgid "180 degrees"
-msgstr "Rotar 180 graos"
+msgstr "180 graos"
 
 #: ../data/interface/wfile_properties.ui.h:62
-#, fuzzy
 msgid "90 degrees (counter-clockwise)"
-msgstr "Rotar 90 graos en sentido antihorario"
+msgstr "90 graos (sentido antihorario)"
 
 #: ../data/interface/wfile_properties.ui.h:63
 msgid "<b>Rotation</b>"
@@ -618,9 +619,8 @@ msgid "Scale picture"
 msgstr "Escalar a imaxe"
 
 #: ../data/interface/wfile_properties.ui.h:66
-#, fuzzy
 msgid "Cut picture"
-msgstr "Escalar a imaxe"
+msgstr "Cortar a imaxe"
 
 #: ../data/interface/wfile_properties.ui.h:67
 msgid "<b>Scaling mode</b>"
@@ -686,7 +686,7 @@ msgstr "Son"
 #: ../data/interface/wfile_properties.ui.h:81
 #: ../data/interface/wtitle_properties.ui.h:3
 msgid "Stop reproduction/show disc menu"
-msgstr "Parar a reprodución/mostrar o menú"
+msgstr "Parar a reprodución/amosar o menú"
 
 #: ../data/interface/wfile_properties.ui.h:82
 #: ../data/interface/wtitle_properties.ui.h:4
@@ -716,12 +716,11 @@ msgstr "Reproducir o último título"
 #: ../data/interface/wfile_properties.ui.h:87
 #: ../data/interface/wtitle_properties.ui.h:9
 msgid "<b>Action to perform when this title ends</b>"
-msgstr "<b>Acción a facer cando este título remate</b>"
+msgstr "<b>Acción que facer cando este título remate</b>"
 
 #: ../data/interface/wfile_properties.ui.h:88
-#, fuzzy
 msgid "Actions"
-msgstr "Opcións avanzadas"
+msgstr "Accións"
 
 #: ../data/interface/wfile_properties.ui.h:89
 msgid "This file is already a DVD/xCD-suitable MPEG-PS file"
@@ -729,7 +728,7 @@ msgstr "Este ficheiro xa está nun formato MPEG-PS válido para un disco DVD/xCD
 
 #: ../data/interface/wfile_properties.ui.h:90
 msgid "Repack audio and video without reencoding (useful for VOB files)"
-msgstr "Empaquetar son e imaxe sen recodificar (útil para ficheiros VOB)"
+msgstr "Empaquetar son e vídeo sen recodificar (útil para ficheiros VOB)"
 
 #: ../data/interface/wfile_properties.ui.h:91
 msgid "Use a GOP of 12 frames (improves compatibility)"
@@ -753,7 +752,7 @@ msgstr "Previsualizar"
 
 #: ../data/interface/wmain.ui.h:1
 msgid "Devede"
-msgstr ""
+msgstr "Devede"
 
 #: ../data/interface/wmain.ui.h:2
 msgid "_File"
@@ -764,27 +763,24 @@ msgid "_Edit"
 msgstr "_Editar"
 
 #: ../data/interface/wmain.ui.h:4
-#, fuzzy
 msgid "Set multiproperties"
-msgstr "Propiedades do ficheiro"
+msgstr "Estabelecer múltiplas propiedades"
 
 #: ../data/interface/wmain.ui.h:5
 msgid "_Help"
 msgstr "_Axuda"
 
 #: ../data/interface/wmain.ui.h:6
-#, fuzzy
 msgid "Title"
-msgstr "Título %(X)d"
+msgstr "Título"
 
 #: ../data/interface/wmain.ui.h:7
-#, fuzzy
 msgid "Duration"
-msgstr "Non rotar"
+msgstr "Duración"
 
 #: ../data/interface/wmain.ui.h:9
 msgid "<b>Files</b>"
-msgstr "<b>Ficheiro</b>"
+msgstr "<b>Ficheiros</b>"
 
 #: ../data/interface/wmain.ui.h:10
 msgid "Media size:"
@@ -836,43 +832,39 @@ msgstr "Cor da sombra:"
 
 #: ../data/interface/wmenu.ui.h:5
 msgid "Vertical position (percent):"
-msgstr ""
+msgstr "Posición vertical (porcentaxe)"
 
 #: ../data/interface/wmenu.ui.h:6
 msgid "Horizontal position (percent):"
-msgstr ""
+msgstr "Posición horizontal (porcentaxe)"
 
 #: ../data/interface/wmenu.ui.h:7
 msgid "<b>Menu title</b>"
 msgstr "<b>Título do menú</b>"
 
 #: ../data/interface/wmenu.ui.h:8
-#, fuzzy
 msgid "Default background"
 msgstr "Fondo predeterminado"
 
 #: ../data/interface/wmenu.ui.h:9
-#, fuzzy
 msgid "<b>Menu background</b>"
-msgstr "<b>Imaxe de fondo para o menú (só PNG)</b>"
+msgstr "<b>Fondo do menú</b>"
 
 #: ../data/interface/wmenu.ui.h:10
-#, fuzzy
 msgid "Menu without sound"
-msgstr "Facer menú sen música"
+msgstr "Menú sen son"
 
 #: ../data/interface/wmenu.ui.h:11
-#, fuzzy
 msgid "Audio format:"
-msgstr "Formato do vídeo"
+msgstr "Formato do son:"
 
 #: ../data/interface/wmenu.ui.h:12
 msgid "MP2"
-msgstr ""
+msgstr "MP2"
 
 #: ../data/interface/wmenu.ui.h:13
 msgid "AC3"
-msgstr ""
+msgstr "AC3"
 
 #: ../data/interface/wmenu.ui.h:14
 msgid "<b>Menu music</b>"
@@ -883,9 +875,8 @@ msgid "<b>Horizontal</b>"
 msgstr "<b>Horizontal</b>"
 
 #: ../data/interface/wmenu.ui.h:16
-#, fuzzy
 msgid "<b>Margins (percent)</b>"
-msgstr "<b>Marxes</b>"
+msgstr "<b>Marxes (porcentaxe)</b>"
 
 #: ../data/interface/wmenu.ui.h:17
 msgid "Left"
@@ -904,33 +895,28 @@ msgid "<b>Menu position</b>"
 msgstr "<b>Posición do menú</b>"
 
 #: ../data/interface/wmenu.ui.h:21
-#, fuzzy
 msgid "Unselected titles:"
-msgstr "Cor para os títulos non seleccionados:"
+msgstr "Títulos non seleccionados:"
 
 #: ../data/interface/wmenu.ui.h:22
-#, fuzzy
 msgid "Shadows:"
-msgstr "Cor da sombra:"
+msgstr "Sombras:"
 
 #: ../data/interface/wmenu.ui.h:23
-#, fuzzy
 msgid "Selected title:"
-msgstr "Borrar título"
+msgstr "Título seleccionado"
 
 #: ../data/interface/wmenu.ui.h:24
-#, fuzzy
 msgid "Background color:"
-msgstr "Cor de fondo para os títulos:"
+msgstr "Cor do fondo:"
 
 #: ../data/interface/wmenu.ui.h:25
 msgid "<b>Menu font and colors</b>"
 msgstr "<b>Cores e tipo de letra do menú</b>"
 
 #: ../data/interface/wmenu.ui.h:26
-#, fuzzy
 msgid "Show menu at disk startup"
-msgstr "Mostrar o menú ao iniciar o disco"
+msgstr "Amosar o menú ao iniciar o disco"
 
 #: ../data/interface/wmenu.ui.h:27
 msgid "Jump to the first title at startup"
@@ -942,32 +928,31 @@ msgstr "<b>Opcións de inicio do disco</b>"
 
 #: ../data/interface/wmenu.ui.h:29
 msgid "Show titles as selected"
-msgstr ""
+msgstr "Amosar os títulos como seleccionados"
 
 #: ../data/interface/wmenu.ui.h:30
-#, fuzzy
 msgid "<b>Preview</b>"
-msgstr "<b>Previsualizar vídeo</b>"
+msgstr "<b>Vista previa do vídeo</b>"
 
 #: ../data/interface/wmenu.ui.h:31
-#, fuzzy
 msgid "<b>Menu preview</b>"
-msgstr "<b>Título do menú</b>"
+msgstr "<b>Vista previa do menú</b>"
 
 #: ../data/interface/wneeded.ui.h:1
 msgid "Programs needed for Devede NG"
-msgstr ""
+msgstr "Programas necesarios para Devede NG"
 
 #: ../data/interface/wpreview.ui.h:1
-#, fuzzy
 msgid ""
 "<b>Preview video</b>\n"
 "\n"
 "Devede will create a preview with the selected parameters, so you will be "
 "able to check the video quality, audio sync and so on."
 msgstr ""
-"DeVeDe fará unha vista previa cos parámetros actuais, para que poida "
-"comprobar a calidade da imaxe, etc."
+"<b>Vista previa do vídeo</b>\n"
+"\n"
+"DeVeDe creara unha vista previa cos parámetros seleccionados, para que poida "
+"comprobar a calidade do vídeo, a sincronización do son, etc."
 
 #: ../data/interface/wpreview.ui.h:4
 msgid "Preview length:"
@@ -978,17 +963,16 @@ msgid "Creating..."
 msgstr "Creando..."
 
 #: ../data/interface/wprogress.ui.h:2
-#, fuzzy
 msgid "Creating disc"
-msgstr "Creando previsualización"
+msgstr "Creando o disco"
 
 #: ../data/interface/wprogress.ui.h:3
 msgid "Project progress"
-msgstr ""
+msgstr "Progreso do proxecto"
 
 #: ../data/interface/wselect_disk.ui.h:1
 msgid "Devede NG"
-msgstr ""
+msgstr "Devede NG"
 
 #: ../data/interface/wselect_disk.ui.h:2
 msgid "<b>Choose the disc type you want to create with DeVeDe</b>"
@@ -999,7 +983,7 @@ msgid ""
 "<b>Video DVD</b>\n"
 "Creates a video DVD suitable for all DVD home players"
 msgstr ""
-"<b>Video DVD</b>\n"
+"<b>Vídeo DVD</b>\n"
 "Crea un DVD de vídeo válido para calquera reprodutor doméstico de DVD"
 
 #: ../data/interface/wselect_disk.ui.h:5
@@ -1039,15 +1023,16 @@ msgid ""
 "<b>Matroska / H.264</b>\n"
 "Creates H.264 files in a MKV container"
 msgstr ""
+"<b>Matroska / H.264</b>\n"
+"Crea ficheiros H.264 nun contedor MKV"
 
 #: ../data/interface/wselect_disk.ui.h:15
 msgid "Programs needed by Devede NG"
-msgstr ""
+msgstr "Programas necesarios para Devede NG"
 
 #: ../data/interface/wsettings.ui.h:1
-#, fuzzy
 msgid "<b>Multicore CPUs</b>"
-msgstr "<b>Subtítulos</b>"
+msgstr "<b>CPU multinúcleo</b>"
 
 #: ../data/interface/wsettings.ui.h:2
 msgid "Temporary files folder:"
@@ -1058,40 +1043,36 @@ msgid "<b>Folders</b>"
 msgstr "<b>Cartafoles</b>"
 
 #: ../data/interface/wsettings.ui.h:4
-#, fuzzy
 msgid "Play preview:"
-msgstr "Previsualizar"
+msgstr "Reproducir a vista previa"
 
 #: ../data/interface/wsettings.ui.h:5
 msgid "Get video info:"
-msgstr ""
+msgstr "Obter información do vídeo:"
 
 #: ../data/interface/wsettings.ui.h:6
 msgid "Convert menus:"
-msgstr ""
+msgstr "Converter menús:"
 
 #: ../data/interface/wsettings.ui.h:7
 msgid "Convert videos:"
-msgstr ""
+msgstr "Converter vídeos:"
 
 #: ../data/interface/wsettings.ui.h:8
 msgid "Burn ISOs:"
-msgstr ""
+msgstr "Gravar ISO:"
 
 #: ../data/interface/wsettings.ui.h:9
-#, fuzzy
 msgid "Disc types supported:"
-msgstr "Selección do tipo de disco"
+msgstr "Tipos de disco admitidos:"
 
 #: ../data/interface/wsettings.ui.h:10
-#, fuzzy
 msgid "Create ISOs:"
-msgstr "Creando a imaxe ISO"
+msgstr "Crear as ISO:"
 
 #: ../data/interface/wsettings.ui.h:11
-#, fuzzy
 msgid "<b>Backends</b>"
-msgstr "<b>Menús</b>"
+msgstr "<b>Infraestruturas</b>"
 
 #: ../data/interface/wtitle_properties.ui.h:1
 msgid "Title properties"
