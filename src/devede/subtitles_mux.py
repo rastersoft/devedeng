@@ -58,8 +58,9 @@ class subtitles_mux(devede.executor.executor):
         out_xml.write(str(font_size))
         if subt_upper:
             out_xml.write('" bottom-margin="50')
-        out_xml.write('" fill-color="#%02X%02X%02X"' % fill_color)
-        out_xml.write(' outline-color="#%02X%02X%02X"' % outline_color)
+        
+        out_xml.write('" fill-color="#%02X%02X%02X"' % tuple([fill_color[i] * 255 for i in range(len(fill_color))]))
+        out_xml.write(' outline-color="#%02X%02X%02X"' % tuple([outline_color[i] * 255 for i in range(len(outline_color))]))
         out_xml.write(' outline-thickness="%d"' % outline_thick)
         out_xml.write(' font="arial" horizontal-alignment="center" vertical-alignment="bottom" aspect="')
         out_xml.write(str(aspect))
