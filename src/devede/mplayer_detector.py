@@ -84,9 +84,12 @@ class mplayer_detector(devede.executor.executor):
 
         (stdout, stderr) = self.launch_process(command_line, False)
 
+        stream_number = 0
         minimum_audio=-1
         self.audio_list=[]
         self.audio_streams = 0
+        minimum_video=-1
+        self.video_list=[]
         self.video_streams = 0
         self.original_width = 0
         self.original_height = 0
@@ -111,38 +114,51 @@ class mplayer_detector(devede.executor.executor):
                 continue
             line=line[position:]
 
-            if line[:16]=="ID_VIDEO_BITRATE":
-                self.original_videorate=int(int(line[17:])/1000)
-            if line[:14]=="ID_VIDEO_WIDTH":
-                self.original_width=int(line[15:])
-            if line[:15]=="ID_VIDEO_HEIGHT":
-                self.original_height=int(line[16:])
-            if line[:15]=="ID_VIDEO_ASPECT":
-                self.original_aspect_ratio=float(line[16:])
-            if line[:12]=="ID_VIDEO_FPS":
-                self.original_fps=float(line[13:])
-            if line[:16]=="ID_AUDIO_BITRATE":
-                self.original_audiorate=int(int(line[17:])/1000)
-            if line[:13]=="ID_AUDIO_RATE":
-                self.original_audiorate_uncompressed=int(line[14:])
-            if line[:9]=="ID_LENGTH":
-                self.original_length=int(float(line[10:]))
+            pos2 = line.find("=")
+            if (pos2 != -1):
+                command = line[0:pos2]
+                parameter = line[pos2+1:]
+            else:
+                continue
 
-            if line[:11]=="ID_VIDEO_ID":
+            if command=="ID_VIDEO_BITRATE":
+                self.original_videorate=int(int(parameter)/1000)
+            if command=="ID_VIDEO_WIDTH":
+                self.original_width=int(parameter)
+            if command=="ID_VIDEO_HEIGHT":
+                self.original_height=int(parameter)
+            if command=="ID_VIDEO_ASPECT":
+                self.original_aspect_ratio=float(parameter)
+            if command=="ID_VIDEO_FPS":
+                self.original_fps=float(parameter)
+            if command=="ID_AUDIO_BITRATE":
+                self.original_audiorate=int(int(parameter)/1000)
+            if command=="ID_AUDIO_RATE":
+                self.original_audiorate_uncompressed=int(parameter)
+            if command=="ID_LENGTH":
+                self.original_length=int(float(parameter))
+
+            if command=="ID_VIDEO_ID":
                 self.video_streams+=1
-            if line[:11]=="ID_AUDIO_ID":
+                video_track=int(parameter)
+                if (minimum_video == -1) or (minimum_video>video_track):
+                    minimum_video=video_track
+                self.video_list.append(stream_number)
+            if command=="ID_AUDIO_ID":
                 self.audio_streams+=1
-                audio_track=int(line[12:])
+                audio_track=int(parameter)
                 if (minimum_audio == -1) or (minimum_audio>audio_track):
                     minimum_audio=audio_track
-                self.audio_list.append(audio_track)
+                self.audio_list.append(stream_number)
+
+            # increment the stream_number counter in this case to also count
+            # subtitles and other stream types
+            if (command[-3:] == "_ID"):
+                stream_number += 1
 
         if (check_audio):
-
             return (self.video_streams, self.audio_streams, self.original_length)
-
         else:
-
             self.original_size = str(self.original_width)+"x"+str(self.original_height)
             if (self.original_aspect_ratio == None) or (self.original_aspect_ratio <= 1.0):
                 if (self.original_height != 0):

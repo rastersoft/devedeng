@@ -150,11 +150,11 @@ class ffmpeg_converter(devede.executor.executor):
         self.command_var.append("-i")
         self.command_var.append(file_project.file_name)
         self.command_var.append("-map")
-        self.command_var.append("1:0")
+        self.command_var.append("1:"+str(file_project.video_list[0]))
         if (not file_project.copy_sound) and (not file_project.no_reencode_audio_video):
-            for l in range (file_project.audio_streams):
+            for l in file_project.audio_list:
                 self.command_var.append("-map")
-                self.command_var.append("0"+":"+str(l+1))
+                self.command_var.append("0:"+str(l))
 
         if (file_project.no_reencode_audio_video==False) and second_pass:
             cmd_line=""
