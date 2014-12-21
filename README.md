@@ -47,6 +47,9 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 
 
 ## History of versions ##
+* version 0.1 beta 3 (2014-12-21)
+  * Fixed the subtitle colors
+  * Now puts the video and audio streams in the right order
 
 * version 0.1 beta 2 (2014-12-07)
   * Fixed a bug when jumping to a video not visible in the main menu
