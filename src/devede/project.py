@@ -318,6 +318,19 @@ class devede_project:
         if (self.disc_type == "dvd") and (self.wcreate_menu.get_active()):
             fixed_size += self.menu.get_estimated_size() * 8.0
 
+        if (self.disc_type == "dvd"):
+            max_bps = 9000
+            min_bps = 300
+            max_total = 10000
+        elif (self.disc_type == "svcd") or (self.disc_type == "cvd"):
+            max_bps = 2700
+            min_bps = 300
+            max_total = 2700
+        else:
+            max_bps = -1
+            min_bps = -1
+            max_total = -1
+
         if (total_resolution != 0):
             remaining_disc_size = ((8000.0 * self.get_dvd_size()[0]) - fixed_size) # in kbits
             for l in to_adjust:
@@ -325,7 +338,16 @@ class devede_project:
                 surface = l[1]
                 length = l[2]
                 audio_rate = l[3]
-                f.set_auto_video_audio_rate((remaining_disc_size * surface) / ( length * total_resolution), audio_rate)
+                video_rate = (remaining_disc_size * surface) / ( length * total_resolution)
+                if (max_total != -1):
+                    max2 = max_total - audio_rate
+                    if (max2 > max_bps):
+                        max2 = max_bps
+                    if (video_rate > max2):
+                        video_rate = max2
+                    if (video_rate < min_bps):
+                        video_rate = min_bps
+                f.set_auto_video_audio_rate(video_rate, audio_rate)
 
         self.refresh_disc_usage()
 
