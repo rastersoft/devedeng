@@ -327,8 +327,8 @@ class devede_project:
             min_bps = 300
             max_total = 2700
         else:
-            max_bps = -1
-            min_bps = -1
+            max_bps = 9000
+            min_bps = 300
             max_total = -1
 
         if (total_resolution != 0):
@@ -339,14 +339,16 @@ class devede_project:
                 length = l[2]
                 audio_rate = l[3]
                 video_rate = (remaining_disc_size * surface) / ( length * total_resolution)
-                if (max_total != -1):
+                if max_total != -1:
                     max2 = max_total - audio_rate
                     if (max2 > max_bps):
                         max2 = max_bps
-                    if (video_rate > max2):
-                        video_rate = max2
-                    if (video_rate < min_bps):
-                        video_rate = min_bps
+                else:
+                    max2 = max_bps
+                if (video_rate > max2):
+                    video_rate = max2
+                if (video_rate < min_bps):
+                    video_rate = min_bps
                 f.set_auto_video_audio_rate(video_rate, audio_rate)
 
         self.refresh_disc_usage()
