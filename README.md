@@ -49,6 +49,7 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 ## History of versions ##
 * version 0.1 beta 4 (2014-12-25)
   * Now ensures that the maximum bitrate is honored
+  * Added the maximum bitrates for each available format
 
 * version 0.1 beta 3 (2014-12-21)
   * Fixed the subtitle colors

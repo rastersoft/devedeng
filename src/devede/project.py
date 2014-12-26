@@ -312,22 +312,30 @@ class devede_project:
                 fixed_size += ((audio_rate + sub_rate) * time_length)
                 # 76800 = 320x240, which is the smallest resolution
                 surface = ((float(width) * float(height)) / 76800.0) * float(time_length)
-                to_adjust.append( (f, surface, time_length, audio_rate) )
+                to_adjust.append( (f, surface, time_length, audio_rate, height) )
                 total_resolution += surface
 
         if (self.disc_type == "dvd") and (self.wcreate_menu.get_active()):
             fixed_size += self.menu.get_estimated_size() * 8.0
 
         if (self.disc_type == "dvd"):
-            max_bps = 9000
+            max_bps_base = {0: 9000}
             min_bps = 300
             max_total = 10000
         elif (self.disc_type == "svcd") or (self.disc_type == "cvd"):
-            max_bps = 2700
-            min_bps = 300
+            max_bps_base = {0: 2700}
+            min_bps = 200
             max_total = 2700
+        elif (self.disc_type == "divx"):
+            max_bps_base = {0: 4854, 720: 9708, 1080: 20000}
+            min_bps = 300
+            max_total = -1
+        elif (self.disc_type == "mkv"):
+            max_bps_base = {0: 192, 240: 2000, 480: 14000,  720: 50000, 1080: 240000}
+            min_bps = 192
+            max_total = -1
         else:
-            max_bps = 9000
+            max_bps_base = {0: 9000}
             min_bps = 300
             max_total = -1
 
@@ -338,6 +346,15 @@ class devede_project:
                 surface = l[1]
                 length = l[2]
                 audio_rate = l[3]
+                height = l[4]
+
+                max_bps = max_bps_base[0]
+                resy = 0
+                for bitrates in max_bps_base:
+                    if (height >= bitrates) and (resy < bitrates):
+                        resy = bitrates
+                        max_bps = max_bps_base[bitrates]
+
                 video_rate = (remaining_disc_size * surface) / ( length * total_resolution)
                 if max_total != -1:
                     max2 = max_total - audio_rate
