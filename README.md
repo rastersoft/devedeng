@@ -47,6 +47,9 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 
 
 ## History of versions ##
+* version 0.1 beta 6 (2014-12-27)
+  * Fixed AVPROBE command line
+
 * version 0.1 beta 5 (2014-12-27)
   * Added support for MPV as movie player
   * Added support for ffprobe and avprobe as movie info detector
