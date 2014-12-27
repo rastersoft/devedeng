@@ -22,9 +22,9 @@ import os
 import devede.configuration_data
 import devede.executor
 import devede.mux_dvd_menu
-import devede.ffmpeg_converter
+import devede.avconv_converter
 
-class ffmpeg_converter(devede.executor.executor):
+class avconv(devede.executor.executor):
 
     supports_analize = False
     supports_play = False
@@ -32,13 +32,13 @@ class ffmpeg_converter(devede.executor.executor):
     supports_menu = True
     supports_mkiso = False
     supports_burn = False
-    display_name = "FFMPEG"
+    display_name = "AVCONV"
     disc_types = []
 
     @staticmethod
     def check_is_installed():
         try:
-            handle = subprocess.Popen(["ffmpeg","-codecs"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            handle = subprocess.Popen(["avconv","-codecs"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
             (stdout, stderr) = handle.communicate()
             if 0==handle.wait():
                 mp2 = False
@@ -83,16 +83,16 @@ class ffmpeg_converter(devede.executor.executor):
                         continue
 
                 if (mpeg1 and mp2):
-                    devede.ffmpeg_converter.ffmpeg_converter.disc_types.append("vcd")
+                    devede.avconv_converter.avconv_converter.disc_types.append("vcd")
                 if (mpeg2 and mp2):
-                    devede.ffmpeg_converter.ffmpeg_converter.disc_types.append("svcd")
-                    devede.ffmpeg_converter.ffmpeg_converter.disc_types.append("cvd")
+                    devede.avconv_converter.avconv_converter.disc_types.append("svcd")
+                    devede.avconv_converter.avconv_converter.disc_types.append("cvd")
                 if (mpeg2 and mp2 and ac3):
-                    devede.ffmpeg_converter.ffmpeg_converter.disc_types.append("dvd")
+                    devede.avconv_converter.avconv_converter.disc_types.append("dvd")
                 if (divx and mp3):
-                    devede.ffmpeg_converter.ffmpeg_converter.disc_types.append("divx")
+                    devede.avconv_converter.avconv_converter.disc_types.append("divx")
                 if (h264 and mp3):
-                    devede.ffmpeg_converter.ffmpeg_converter.disc_types.append("mkv")
+                    devede.avconv_converter.avconv_converter.disc_types.append("mkv")
 
                 return True
             else:
@@ -113,7 +113,7 @@ class ffmpeg_converter(devede.executor.executor):
             else:
                 self.text = _("Converting %(X)s (pass 1)") % {"X" : file_project.title_name}
                 # Prepare the converting process for the second pass
-                tmp = devede.avconv_converter.avconv_converter()
+                tmp = devede.avconv.avconv()
                 tmp.convert_file(file_project, output_file, video_length, True)
                 # it deppends of this process
                 tmp.add_dependency(self)
@@ -135,7 +135,7 @@ class ffmpeg_converter(devede.executor.executor):
         else:
             self.final_length = video_length
         self.command_var=[]
-        self.command_var.append("ffmpeg")
+        self.command_var.append("avconv")
         self.command_var.append("-i")
         self.command_var.append(file_project.file_name)
 
@@ -356,7 +356,7 @@ class ffmpeg_converter(devede.executor.executor):
         self.text = _("Creating menu %(X)d") % {"X": self.n_page}
 
         self.command_var=[]
-        self.command_var.append("ffmpeg")
+        self.command_var.append("avconv")
 
         self.command_var.append("-loop")
         self.command_var.append("1")
@@ -375,7 +375,7 @@ class ffmpeg_converter(devede.executor.executor):
         else:
             self.command_var.append("ntsc-dvd")
         self.command_var.append("-acodec")
-        if use_mp2:
+        if (use_mp2):
             self.command_var.append("mp2")
         else:
             self.command_var.append("ac3")

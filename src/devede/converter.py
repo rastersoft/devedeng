@@ -16,9 +16,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import devede.configuration_data
-import devede.mplayer_detector
-import devede.avconv_converter
-import devede.ffmpeg_converter
+import devede.mplayer
+import devede.avconv
+import devede.ffmpeg
 import devede.vlc
 import devede.brasero
 import devede.k3b
@@ -40,8 +40,8 @@ class converter:
 
         self.config = devede.configuration_data.configuration.get_config()
         # List of classes with conversion capabilities, in order of preference
-        self.c = [devede.vlc.vlc_player, devede.mplayer_detector.mplayer_detector, devede.ffmpeg_converter.ffmpeg_converter, devede.avconv_converter.avconv_converter,
-                  devede.brasero.brasero, devede.k3b.k3b, devede.mkisofs.mkisofs, devede.genisoimage.genisoimage]
+        self.c = [devede.vlc.vlc, devede.ffmpeg.ffmpeg, devede.avconv.avconv,
+                  devede.brasero.brasero, devede.k3b.k3b, devede.mkisofs.mkisofs, devede.genisoimage.genisoimage, devede.mplayer.mplayer]
 
         self.analizers = {}
         self.default_analizer = None

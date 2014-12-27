@@ -19,7 +19,7 @@ import subprocess
 import devede.configuration_data
 import devede.executor
 
-class vlc_player(devede.executor.executor):
+class vlc(devede.executor.executor):
 
     supports_analize = False
     supports_play = True

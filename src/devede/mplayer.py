@@ -22,7 +22,7 @@ import devede.configuration_data
 import devede.executor
 import os
 
-class mplayer_detector(devede.executor.executor):
+class mplayer(devede.executor.executor):
 
     supports_analize = True
     supports_play = True
