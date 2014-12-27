@@ -113,14 +113,24 @@ class avprobe(devede.executor.executor):
                     self.original_width = int(float(element["width"]))
                     self.original_height = int(float(element["height"]))
                     self.original_length = int(float(element["duration"]))
-                    self.original_videorate = int(float(element["bit_rate"]))/1000
+                    if ("bit_rate" in element):
+                        self.original_videorate = int(float(element["bit_rate"]))/1000
+                    else:
+                        self.original_videorate = 0
                     self.original_fps = self.get_division(element["avg_frame_rate"])
-                    self.original_aspect_ratio = self.get_division(element["display_aspect_ratio"])
+                    if ("display_aspect_ratio" in element):
+                        self.original_aspect_ratio = self.get_division(element["display_aspect_ratio"])
+                    else:
+                        self.original_aspect_ratio = 0
+
             elif (element["codec_type"]=="audio"):
                 self.audio_streams += 1
                 self.audio_list.append(element["index"])
                 if (self.audio_streams == 1):
-                    self.original_audiorate = int(float(element["bit_rate"]))/1000
+                    if ("bit_rate" in element):
+                        self.original_audiorate = int(float(element["bit_rate"]))/1000
+                    else:
+                        self.original_audiorate = 0
                     self.original_audiorate_uncompressed = int(float(element["sample_rate"]))
 
         self.original_size = str(self.original_width)+"x"+str(self.original_height)
