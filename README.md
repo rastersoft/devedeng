@@ -47,6 +47,10 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 
 
 ## History of versions ##
+* version 0.1 beta 5 (2014-12-27)
+  * Added support for MPV as movie player
+  * Added support for ffprobe and avprobe as movie info detector
+
 * version 0.1 beta 4 (2014-12-25)
   * Now ensures that the maximum bitrate is honored
   * Added the maximum bitrates for each available format
