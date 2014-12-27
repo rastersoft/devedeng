@@ -22,7 +22,6 @@ import os
 import devede.configuration_data
 import devede.executor
 import devede.mux_dvd_menu
-import devede.ffmpeg_converter
 
 class ffmpeg(devede.executor.executor):
 
@@ -83,16 +82,16 @@ class ffmpeg(devede.executor.executor):
                         continue
 
                 if (mpeg1 and mp2):
-                    devede.ffmpeg_converter.ffmpeg_converter.disc_types.append("vcd")
+                    devede.ffmpeg.ffmpeg.disc_types.append("vcd")
                 if (mpeg2 and mp2):
-                    devede.ffmpeg_converter.ffmpeg_converter.disc_types.append("svcd")
-                    devede.ffmpeg_converter.ffmpeg_converter.disc_types.append("cvd")
+                    devede.ffmpeg.ffmpeg.disc_types.append("svcd")
+                    devede.ffmpeg.ffmpeg.disc_types.append("cvd")
                 if (mpeg2 and mp2 and ac3):
-                    devede.ffmpeg_converter.ffmpeg_converter.disc_types.append("dvd")
+                    devede.ffmpeg.ffmpeg.disc_types.append("dvd")
                 if (divx and mp3):
-                    devede.ffmpeg_converter.ffmpeg_converter.disc_types.append("divx")
+                    devede.ffmpeg.ffmpeg.disc_types.append("divx")
                 if (h264 and mp3):
-                    devede.ffmpeg_converter.ffmpeg_converter.disc_types.append("mkv")
+                    devede.ffmpeg.ffmpeg.disc_types.append("mkv")
 
                 return True
             else:

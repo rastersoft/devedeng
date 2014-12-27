@@ -24,6 +24,7 @@ import devede.brasero
 import devede.k3b
 import devede.mkisofs
 import devede.genisoimage
+import devede.mpv
 
 class converter:
 
@@ -40,7 +41,7 @@ class converter:
 
         self.config = devede.configuration_data.configuration.get_config()
         # List of classes with conversion capabilities, in order of preference
-        self.c = [devede.vlc.vlc, devede.ffmpeg.ffmpeg, devede.avconv.avconv,
+        self.c = [devede.vlc.vlc, devede.mpv.mpv, devede.ffmpeg.ffmpeg, devede.avconv.avconv,
                   devede.brasero.brasero, devede.k3b.k3b, devede.mkisofs.mkisofs, devede.genisoimage.genisoimage, devede.mplayer.mplayer]
 
         self.analizers = {}
