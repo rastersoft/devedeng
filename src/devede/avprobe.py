@@ -92,7 +92,7 @@ class avprobe(devede.executor.executor):
 
         self.original_file_size = os.path.getsize(file_name)
 
-        command_line = ["avprobe",file_name,"-print_format","json","-show_streams", "-loglevel", "quiet"]
+        command_line = ["avprobe",file_name,"-of","json","-show_streams", "-loglevel", "quiet"]
 
         (stdout, stderr) = self.launch_process(command_line, False)
         try:
