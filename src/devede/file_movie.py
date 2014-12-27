@@ -142,6 +142,7 @@ class file_movie(devede.interface_manager.interface_manager):
             if (film_analizer.get_film_data(self.file_name)):
                 self.error = True
             else:
+                self.error = False
                 self.audio_list = film_analizer.audio_list
                 self.video_list = film_analizer.video_list
                 self.audio_streams = film_analizer.audio_streams
@@ -175,8 +176,6 @@ class file_movie(devede.interface_manager.interface_manager):
             self.audio_rate_final = self.audio_rate
             self.aspect_ratio_final = None
             self.converted_filename = None
-
-        self.error = False
 
 
     def set_title(self,new_title):

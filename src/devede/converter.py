@@ -18,7 +18,9 @@
 import devede.configuration_data
 import devede.mplayer
 import devede.avconv
+import devede.avprobe
 import devede.ffmpeg
+import devede.ffprobe
 import devede.vlc
 import devede.brasero
 import devede.k3b
@@ -41,7 +43,7 @@ class converter:
 
         self.config = devede.configuration_data.configuration.get_config()
         # List of classes with conversion capabilities, in order of preference
-        self.c = [devede.vlc.vlc, devede.mpv.mpv, devede.ffmpeg.ffmpeg, devede.avconv.avconv,
+        self.c = [devede.vlc.vlc, devede.mpv.mpv, devede.ffmpeg.ffmpeg, devede.ffprobe.ffprobe, devede.avconv.avconv, devede.avprobe.avprobe,
                   devede.brasero.brasero, devede.k3b.k3b, devede.mkisofs.mkisofs, devede.genisoimage.genisoimage, devede.mplayer.mplayer]
 
         self.analizers = {}
