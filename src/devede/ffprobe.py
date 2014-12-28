@@ -56,30 +56,6 @@ class ffprobe(devede.executor.executor):
     def process_stderr(self,data):
         return
 
-    def get_division(self,data):
-
-        pos = data.find("/")
-        pos2 = data.find(":")
-
-        if (pos == -1):
-            pos = pos2
-
-        if (pos == -1):
-            try:
-                return float(data)
-            except:
-                return 0
-        else:
-            try:
-                data1 = float(data[:pos])
-                data2 = float(data[pos+1:])
-            except:
-                return 0
-            if (data2 == 0):
-                return 0
-            else:
-                return (float(int((data1 / data2)*1000.0)))/1000.0
-
     def get_film_data(self, file_name):
         """ processes a file, refered by the FILE_MOVIE movie object, and fills its
             main data (resolution, FPS, length...) """
@@ -128,13 +104,9 @@ class ffprobe(devede.executor.executor):
                     self.original_height = int(float(element["height"]))
                     if ("bit_rate" in element):
                         self.original_videorate = int(float(element["bit_rate"]))/1000
-                    else:
-                        self.original_videorate = 0
                     self.original_fps = self.get_division(element["avg_frame_rate"])
                     if ("display_aspect_ratio" in element):
                         self.original_aspect_ratio = self.get_division(element["display_aspect_ratio"])
-                    else:
-                        self.original_aspect_ratio = 0
 
             elif (element["codec_type"]=="audio"):
                 self.audio_streams += 1
@@ -142,8 +114,6 @@ class ffprobe(devede.executor.executor):
                 if (self.audio_streams == 1):
                     if ("bit_rate" in element):
                         self.original_audiorate = int(float(element["bit_rate"]))/1000
-                    else:
-                        self.original_audiorate = 0
                     self.original_audiorate_uncompressed = int(float(element["sample_rate"]))
 
         self.original_size = str(self.original_width)+"x"+str(self.original_height)
@@ -168,12 +138,7 @@ class ffprobe(devede.executor.executor):
             for line in stdout2.split("\n"):
                 line = line.strip()
                 if line.startswith("Duration: "):
-                    pos = line.find(",")
-                    elements = line[10:pos].strip().split(":")
-                    self.original_length = 0
-                    for element in elements:
-                        self.original_length *= 60
-                        self.original_length += int(float(element)+0.99)
+                    self.original_length = self.get_time(line[10:])
                     break
 
         return False # no error

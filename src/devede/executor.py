@@ -339,3 +339,52 @@ class executor(GObject.GObject):
         text=text.replace('"','&quot;')
         text=text.replace("'",'&apos;')
         return text
+
+
+    def get_division(self,data):
+
+        pos = data.find("/")
+        pos2 = data.find(":")
+
+        if (pos == -1):
+            pos = pos2
+
+        if (pos == -1):
+            try:
+                return float(data)
+            except:
+                return 0
+        else:
+            try:
+                data1 = float(data[:pos])
+                data2 = float(data[pos+1:])
+            except:
+                return 0
+            if (data2 == 0):
+                return 0
+            else:
+                return (float(int((data1 / data2)*1000.0)))/1000.0
+
+
+    def get_time(self,line):
+
+        time_string = ""
+
+        for letter in line.strip():
+            if (letter == ':') or (letter == '.') or (letter.isdigit()):
+                time_string += letter
+            else:
+                break
+
+        elements = time_string.split(":")
+
+        if (len(elements) == 0):
+            return -1
+
+        value = 0
+        for element in elements:
+            if (element == ''):
+                continue
+            value *= 60
+            value += int(0.5 + float(element))
+        return value
