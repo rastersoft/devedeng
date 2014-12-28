@@ -47,6 +47,9 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 
 
 ## History of versions ##
+* version 0.1 beta 7 (2014-12-28)
+  * Moved the priority of MPLAYER over AVPROBE and FFPROBE until I discover what is happening with some data fields
+
 * version 0.1 beta 6 (2014-12-27)
   * Fixed AVPROBE and FFPROBE command line
 
