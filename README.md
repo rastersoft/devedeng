@@ -47,6 +47,12 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 
 
 ## History of versions ##
+* version 0.1 beta 8 (2014-12-28)
+  * Added an extra fix for AVPROBE and FFPROBE, using the human readable strings to get the duration
+  * Cleaner code for AVPROBE and FFPROBE
+  * Removed devedesans.ttf file
+  * Updated the setup.py file
+
 * version 0.1 beta 7 (2014-12-28)
   * Moved the priority of MPLAYER over AVPROBE and FFPROBE until I discover what is happening with some data fields
 
