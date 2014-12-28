@@ -28,7 +28,7 @@ The current visible changes are quite small in number:
 * The menu edition is interactive
 * Has a new "cut" resizing method, to allow to store as widescreen movies with black bars
 * Allows to create Matroska files with H.264 video and MP3 audio
-* Allows to use VLC or MPlayer for preview
+* Allows to use VLC, MPV or MPlayer for preview
 * Allows to choose between Brasero or K3B for burning the discs
 * Allows to set properties for several files in one step
 * Allows to choose the subtitle colors
@@ -48,7 +48,7 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 
 ## History of versions ##
 * version 0.1 beta 6 (2014-12-27)
-  * Fixed AVPROBE command line
+  * Fixed AVPROBE and FFPROBE command line
 
 * version 0.1 beta 5 (2014-12-27)
   * Added support for MPV as movie player
