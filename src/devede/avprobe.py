@@ -57,6 +57,7 @@ class avprobe(devede.executor.executor):
         return
 
     def get_division(self,data):
+
         pos = data.find("/")
         pos2 = data.find(":")
 
@@ -64,14 +65,20 @@ class avprobe(devede.executor.executor):
             pos = pos2
 
         if (pos == -1):
-            return float(data)
+            try:
+                return float(data)
+            except:
+                return 0
         else:
-            data1 = float(data[:pos])
-            data2 = float(data[pos+1:])
+            try:
+                data1 = float(data[:pos])
+                data2 = float(data[pos+1:])
+            except:
+                return 0
             if (data2 == 0):
                 return 0
             else:
-                return data1 / data2
+                return (float(int((data1 / data2)*1000.0)))/1000.0
 
     def get_film_data(self, file_name):
         """ processes a file, refered by the FILE_MOVIE movie object, and fills its
@@ -83,7 +90,7 @@ class avprobe(devede.executor.executor):
         self.video_streams = 0
         self.original_width = 0
         self.original_height = 0
-        self.original_length = 0
+        self.original_length = -1
         self.original_videorate = 0
         self.original_audiorate = 0
         self.original_audiorate_uncompressed = 0
@@ -106,13 +113,19 @@ class avprobe(devede.executor.executor):
             return True # There was an error reading the JSON data
 
         for element in video_data["streams"]:
+
+            if (self.original_length == -1) and ("duration" in element):
+                try:
+                    self.original_length = int(float(element["duration"]))
+                except:
+                    self.original_length = -1
+
             if (element["codec_type"]=="video"):
                 self.video_streams += 1
                 self.video_list.append(element["index"])
                 if (self.video_streams == 1):
                     self.original_width = int(float(element["width"]))
                     self.original_height = int(float(element["height"]))
-                    self.original_length = int(float(element["duration"]))
                     if ("bit_rate" in element):
                         self.original_videorate = int(float(element["bit_rate"]))/1000
                     else:
@@ -143,5 +156,24 @@ class avprobe(devede.executor.executor):
 
         if (len(self.video_list) == 0):
             return True # the file is not a video file; maybe an audio-only file or another thing
+
+        if self.original_length == -1: # if it was unable to detect the duration, try to use the human readable format
+            command_line = ["avprobe",file_name]
+            (stdout, stderr) = self.launch_process(command_line, False)
+            try:
+                stdout2 = stdout.decode("utf-8") + "\n" + stderr.decode("utf-8")
+            except:
+                stdout2 = stdout.decode("latin1") + "\n" + stderr.decode("latin1")
+
+            for line in stdout2.split("\n"):
+                line = line.strip()
+                if line.startswith("Duration: "):
+                    pos = line.find(",")
+                    elements = line[10:pos].strip().split(":")
+                    self.original_length = 0
+                    for element in elements:
+                        self.original_length *= 60
+                        self.original_length += int(float(element)+0.99)
+                    break
 
         return False # no error
