@@ -21,7 +21,6 @@ def get_data_files():
         (os.path.join('share', 'devede_ng'), ['data/devede.svg']),
         (os.path.join('share', 'devede_ng'), ['data/codepages.lst']),
         (os.path.join('share', 'devede_ng'), ['data/languages.lst']),
-        (os.path.join('share', 'devede_ng'), ['data/devedesans.ttf']),
         (os.path.join('share', 'devede_ng', 'backgrounds'), glob('data/pixmaps/backgrounds/*')),
         (os.path.join('share', 'doc', 'devede_ng', 'html'), glob('docs/html/*'))
     ]
@@ -60,7 +59,7 @@ compile_translations()
 setup(
     name='devedeng',
 
-    version='0.1.0.dev1',
+    version='0.1.0.beta7',
 
     description='A video DVD creator',
     long_description = "A program that allows to create video DVDs",
@@ -80,7 +79,7 @@ setup(
         # 3 - Alpha
         # 4 - Beta
         # 5 - Production/Stable
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: X11 Applications :: GTK',
         'Intended Audience :: End Users/Desktop',
         'Topic :: Multimedia :: Video :: Conversion',
