@@ -47,6 +47,9 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 
 
 ## History of versions ##
+* version 0.1 beta 9 (2015-01-16)
+  * Now doesn't fail with AVPROBE or FFPROBE if a file doesn't have streams
+
 * version 0.1 beta 8 (2014-12-28)
   * Added an extra fix for AVPROBE and FFPROBE, using the human readable strings to get the duration
   * Cleaner code for AVPROBE and FFPROBE

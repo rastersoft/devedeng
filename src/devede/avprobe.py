@@ -88,6 +88,9 @@ class avprobe(devede.executor.executor):
         except:
             return True # There was an error reading the JSON data
 
+        if not("streams" in video_data):
+            return True # There are no streams!!!!!
+
         for element in video_data["streams"]:
 
             if (self.original_length == -1) and ("duration" in element):
