@@ -394,17 +394,17 @@ class dvdauthor_converter(devede.executor.executor):
                             prev_t = total_t - 1
                         else:
                             prev_t = titles - 1
-                        xml_file.write(str(prev_t))
+                        xml_file.write(str(prev_t + 1))
                     elif action=="action_play_again":
-                        xml_file.write(str(titles))
+                        xml_file.write(str(titles + 1))
                     elif action=="action_play_next":
                         if titles==total_t-1:
                             next_t=0
                         else:
-                            next_t=titles+1
-                        xml_file.write(str(next_t))
+                            next_t=titles + 1
+                        xml_file.write(str(next_t + 1))
                     elif action=="action_play_last":
-                        xml_file.write(str(total_t-1))
+                        xml_file.write(str(total_t))
                     else:
                         xml_file.write('1') # first
 

@@ -47,6 +47,9 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 
 
 ## History of versions ##
+* version 0.1 beta 10 (2015-01-22)
+  * Now jumps to the desired next video when the current movie ends and the creator set it to jump to another menu entry
+
 * version 0.1 beta 9 (2015-01-16)
   * Now doesn't fail with AVPROBE or FFPROBE if a file doesn't have streams
 
