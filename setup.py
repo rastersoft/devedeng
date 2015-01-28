@@ -25,15 +25,11 @@ def get_data_files():
         (os.path.join('share', 'doc', 'devede_ng', 'html'), glob('docs/html/*'))
     ]
 
-    try:
-        for pofile in [f for f in os.listdir('po') if f.endswith('.po')]:
-            pofile = os.path.join('po', pofile) # po/fr.po
-            modir, mofile = get_mopath(pofile)
-            # translations must be always in /usr/share because Gtk.builder only search there. If someone knows how to fix this...
-            target = os.path.join('/usr','share', modir) # share/locale/fr/LC_MESSAGES/
-            data_files.append((target, [mofile]))
-    except:
-        pass
+    for lang_name in [f for f in os.listdir('locale')]:
+        mofile = os.path.join('locale', lang_name,'LC_MESSAGES','devede_ng.mo')
+        # translations must be always in /usr/share because Gtk.builder only search there. If someone knows how to fix this...
+        target = os.path.join('/usr','share', 'locale', lang_name, 'LC_MESSAGES') # share/locale/fr/LC_MESSAGES/
+        data_files.append((target, [mofile]))
 
     return data_files
 
@@ -97,9 +93,9 @@ setup(
 
     keywords='dvd video',
 
-    packages=['devede'],
+    packages=['devedeng'],
 
-    package_dir={"devede" : "src/devede"},
+    package_dir={"devedeng" : "src/devedeng"},
 
     #package_data={'devede': ['data/*.ui']},
 

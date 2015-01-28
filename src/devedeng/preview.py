@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 # Copyright 2014 (C) Raster Software Vigo (Sergio Costas)
 #
 # This file is part of DeVeDe-NG
@@ -17,35 +15,32 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import sys
-import gettext
-import locale
 from gi.repository import Gtk
-
-import devedeng.project
+import os
 import devedeng.configuration_data
-import devedeng.choose_disc_type
 
-config_data = devedeng.configuration_data.configuration.get_config()
+class preview_window:
 
-if config_data == None:
-    print ("Can't locate extra files. Aborting.")
-    sys.exit(1)
+    def __init__(self):
 
-gettext.bindtextdomain(config_data.gettext_domain,config_data.share_locale)
-try:
-    locale.setlocale(locale.LC_ALL,"")
-except locale.Error:
-    pass
-gettext.textdomain(config_data.gettext_domain)
-gettext.install(config_data.gettext_domain,localedir=config_data.share_locale)
+        self.config = devedeng.configuration_data.configuration.get_config()
 
-_ = gettext.gettext
+    def run(self):
 
-Gtk.init(sys.argv)
+        builder = Gtk.Builder()
+        builder.set_translation_domain(self.config.gettext_domain)
 
-mwindow = devedeng.project.devede_project()
-ask_type = devedeng.choose_disc_type.choose_disc_type()
+        builder.add_from_file(os.path.join(self.config.glade,"wpreview.ui"))
+        builder.connect_signals(self)
+        wpreview_window = builder.get_object("dialog_preview")
+        wlength = builder.get_object("length")
 
-Gtk.main()
-config_data.save_config()
+        wpreview_window.show_all()
+        wlength.set_value(60.0)
+        retval = wpreview_window.run()
+        self.lvalue = int(wlength.get_value())
+        wpreview_window.destroy()
+        if (retval == 1):
+            return True
+        else:
+            return False

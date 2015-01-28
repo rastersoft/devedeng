@@ -17,35 +17,32 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import sys
-import gettext
-import locale
-from gi.repository import Gtk
-
-import devedeng.project
+import os
 import devedeng.configuration_data
-import devedeng.choose_disc_type
+import devedeng.executor
 
-config_data = devedeng.configuration_data.configuration.get_config()
+class mux_dvd_menu(devedeng.executor.executor):
 
-if config_data == None:
-    print ("Can't locate extra files. Aborting.")
-    sys.exit(1)
+    def __init__(self):
 
-gettext.bindtextdomain(config_data.gettext_domain,config_data.share_locale)
-try:
-    locale.setlocale(locale.LC_ALL,"")
-except locale.Error:
-    pass
-gettext.textdomain(config_data.gettext_domain)
-gettext.install(config_data.gettext_domain,localedir=config_data.share_locale)
+        devedeng.executor.executor.__init__(self)
+        self.config = devedeng.configuration_data.configuration.get_config()
 
-_ = gettext.gettext
+    def create_mpg(self,n_page,output_path,movie_path):
 
-Gtk.init(sys.argv)
+        self.n_page = n_page
+        self.text = _("Mixing menu %(X)d") % {"X": self.n_page}
 
-mwindow = devedeng.project.devede_project()
-ask_type = devedeng.choose_disc_type.choose_disc_type()
+        final_path = os.path.join(output_path,"menu_"+str(n_page)+"B.mpg")
 
-Gtk.main()
-config_data.save_config()
+        self.command_var=[]
+        self.command_var.append("spumux")
+        self.command_var.append(os.path.join(output_path,"menu_"+str(n_page)+".xml"))
+        self.stdin_file = movie_path
+        self.stdout_file = final_path
+
+        return final_path
+
+    def process_stderr(self,data):
+
+        return
