@@ -47,6 +47,11 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 
 
 ## History of versions ##
+* version 0.1 beta 11 (2015-01-29)
+  * Now allows to automatically generate a debian package
+  * Renamed the module from 'devede' to 'devedeng'
+  * Renamed some files to avoid clashing with the 'classic devede' debian package.
+
 * version 0.1 beta 10 (2015-01-22)
   * Now jumps to the desired next video when the current movie ends and the creator set it to jump to another menu entry
 
