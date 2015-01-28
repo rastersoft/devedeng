@@ -8,7 +8,7 @@
     <property name="can_focus">False</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
-    <property name="icon">devede.svg</property>
+    <property name="icon">devedeng.svg</property>
     <property name="type_hint">normal</property>
     <property name="create_folders">False</property>
     <child internal-child="vbox">

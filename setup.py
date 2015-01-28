@@ -25,31 +25,38 @@ def get_data_files():
         (os.path.join('share', 'doc', 'devede_ng', 'html'), glob('docs/html/*'))
     ]
 
-    for pofile in [f for f in os.listdir('po') if f.endswith('.po')]:
-        pofile = os.path.join('po', pofile) # po/fr.po
-        modir, mofile = get_mopath(pofile)
-        # translations must be always in /usr/share because Gtk.builder only search there. If someone knows how to fix this...
-        target = os.path.join('/usr','share', modir) # share/locale/fr/LC_MESSAGES/
-        data_files.append((target, [mofile]))
+    try:
+        for pofile in [f for f in os.listdir('po') if f.endswith('.po')]:
+            pofile = os.path.join('po', pofile) # po/fr.po
+            modir, mofile = get_mopath(pofile)
+            # translations must be always in /usr/share because Gtk.builder only search there. If someone knows how to fix this...
+            target = os.path.join('/usr','share', modir) # share/locale/fr/LC_MESSAGES/
+            data_files.append((target, [mofile]))
+    except:
+        pass
 
     return data_files
 
 
 def compile_translations():
-    for pofile in [f for f in os.listdir('po') if f.endswith('.po')]:
-        pofile = os.path.join('po', pofile)
-        modir, mofile = get_mopath(pofile)
-
-        # create an architecture for these locales
-        if not os.path.isdir(modir):
-            os.makedirs(modir)
-
-        if not os.path.isfile(mofile) or dep_util.newer(pofile, mofile):
-            print('compiling %s' % mofile)
-            # msgfmt.make(pofile, mofile)
-            os.system("msgfmt \"" + pofile + "\" -o \"" + mofile + "\"")
-        else:
-            print('skipping %s - up to date' % mofile)
+    
+    try:
+        for pofile in [f for f in os.listdir('po') if f.endswith('.po')]:
+            pofile = os.path.join('po', pofile)
+            modir, mofile = get_mopath(pofile)
+    
+            # create an architecture for these locales
+            if not os.path.isdir(modir):
+                os.makedirs(modir)
+    
+            if not os.path.isfile(mofile) or dep_util.newer(pofile, mofile):
+                print('compiling %s' % mofile)
+                # msgfmt.make(pofile, mofile)
+                os.system("msgfmt \"" + pofile + "\" -o \"" + mofile + "\"")
+            else:
+                print('skipping %s - up to date' % mofile)
+    except:
+        pass
 
 compile_translations()
 
