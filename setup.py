@@ -15,10 +15,10 @@ def get_mopath(pofile):
 def get_data_files():
     data_files = [
         (os.path.join('share', 'applications'), ['data/devede_ng.desktop']),
-        (os.path.join('share', 'pixmaps'), ['data/devede.svg']),
+        (os.path.join('share', 'pixmaps'), ['data/devedeng.svg']),
         (os.path.join('share', 'devede_ng'), glob("data/interface/*")),
         (os.path.join('share', 'devede_ng'), glob('data/pixmaps/*g')),
-        (os.path.join('share', 'devede_ng'), ['data/devede.svg']),
+        (os.path.join('share', 'devede_ng'), ['data/devedeng.svg']),
         (os.path.join('share', 'devede_ng'), ['data/codepages.lst']),
         (os.path.join('share', 'devede_ng'), ['data/languages.lst']),
         (os.path.join('share', 'devede_ng', 'backgrounds'), glob('data/pixmaps/backgrounds/*')),
