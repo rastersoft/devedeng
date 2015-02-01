@@ -47,6 +47,10 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 
 
 ## History of versions ##
+* version 0.1.0 beta 12 (2015-02-01)
+  * Now uses the version number available in the CONFIGURATION_DATA file for the setup process
+  * Fixed the icon name in the .desktop file
+
 * version 0.1 beta 11 (2015-01-29)
   * Now allows to automatically generate a debian package
   * Renamed the module from 'devede' to 'devedeng'
