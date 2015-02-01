@@ -5,13 +5,6 @@ from glob import glob
 from distutils.core import setup
 from distutils import dep_util
 
-def get_mopath(pofile):
-    # Function to determine right locale path for a .po file
-    lang = os.path.basename(pofile)[:-3] # len('.po') == 3
-    modir = os.path.join('locale', lang, 'LC_MESSAGES') # e.g. locale/fr/LC_MESSAGES/
-    mofile = os.path.join(modir, 'devede_ng.mo') # e.g. locale/fr/LC_MESSAGES/devede_ng.mo
-    return modir, mofile
-
 def get_data_files():
     data_files = [
         (os.path.join('share', 'applications'), ['data/devede_ng.desktop']),
@@ -39,7 +32,10 @@ def compile_translations():
     try:
         for pofile in [f for f in os.listdir('po') if f.endswith('.po')]:
             pofile = os.path.join('po', pofile)
-            modir, mofile = get_mopath(pofile)
+
+            lang = os.path.basename(pofile)[:-3] # len('.po') == 3
+            modir = os.path.join('locale', lang, 'LC_MESSAGES') # e.g. locale/fr/LC_MESSAGES/
+            mofile = os.path.join(modir, 'devede_ng.mo') # e.g. locale/fr/LC_MESSAGES/devede_ng.mo
     
             # create an architecture for these locales
             if not os.path.isdir(modir):
@@ -56,13 +52,25 @@ def compile_translations():
 
 compile_translations()
 
+current_version = "1.0.0"
+
+config_data = open("src/devedeng/configuration_data.py","r")
+for line in config_data:
+    line = line.strip()
+    if (line.startswith("self.version")):
+        pos = line.find('"')
+        if pos == -1:
+            continue
+        current_version = line[pos+1:-1].replace(" ","").lower().replace("beta",".beta")
+        break
+config_data.close()
 
 #here = os.path.abspath(os.path.dirname(__file__))
 
 setup(
     name='devedeng',
 
-    version='0.1.0.beta11',
+    version=current_version,
 
     description='A video DVD creator',
     long_description = "A program that allows to create video DVDs",

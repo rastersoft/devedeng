@@ -17,4 +17,4 @@ Comment[pl]=Pozwala stworzyć wideo na płytach CD lub DVD, do otwarzania w domo
 TryExec=devede_ng.py
 Exec=devede_ng.py
 Categories=AudioVideo;
-Icon=devede
+Icon=devedeng
