@@ -19,6 +19,7 @@
 
 from gi.repository import GObject
 import os
+import pkg_resources
 
 class configuration(GObject.GObject):
 
@@ -35,7 +36,8 @@ class configuration(GObject.GObject):
 
     def __init__(self):
         GObject.GObject.__init__(self)
-        self.version = "0.1.0 Beta 12"
+        self.version = str(pkg_resources.require("devedeng")[0].version)
+        print("Version: "+self.version)
 
     def fill_config(self):
 

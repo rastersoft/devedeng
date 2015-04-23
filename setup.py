@@ -52,25 +52,12 @@ def compile_translations():
 
 compile_translations()
 
-current_version = "1.0.0"
-
-config_data = open("src/devedeng/configuration_data.py","r")
-for line in config_data:
-    line = line.strip()
-    if (line.startswith("self.version")):
-        pos = line.find('"')
-        if pos == -1:
-            continue
-        current_version = line[pos+1:-1].replace(" ","").lower().replace("beta",".beta")
-        break
-config_data.close()
-
 #here = os.path.abspath(os.path.dirname(__file__))
 
 setup(
     name='devedeng',
 
-    version=current_version,
+    version='1.0',
 
     description='A video DVD creator',
     long_description = "A program that allows to create video DVDs",
