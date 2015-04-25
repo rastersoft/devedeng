@@ -77,7 +77,7 @@ setup(
         # 3 - Alpha
         # 4 - Beta
         # 5 - Production/Stable
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: X11 Applications :: GTK',
         'Intended Audience :: End Users/Desktop',
         'Topic :: Multimedia :: Video :: Conversion',
