@@ -29,7 +29,7 @@ class dvdauthor_converter(devedeng.executor.executor):
         self.config = devedeng.configuration_data.configuration.get_config()
 
 
-    def create_dvd_project (self, path, name, file_movies, menu_entries, start_with_menu):
+    def create_dvd_project (self, path, name, file_movies, menu_entries, start_with_menu, play_all_opt):
 
         movie_path = os.path.join(path,"dvd_tree")
         try:
