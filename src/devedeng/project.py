@@ -525,7 +525,7 @@ class devede_project:
                 start_with_menu = True
             else:
                 start_with_menu = False
-            if (self.menu.play_all == "menu_show_at_startup"):
+            if (self.menu.play_all == "menu_play_all"):
                 play_all_opt = True
             else:
                 play_all_opt = False

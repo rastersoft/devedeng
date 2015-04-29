@@ -37,7 +37,7 @@ class dvdauthor_converter(devedeng.executor.executor):
         except:
             pass
 
-        xml_file = self.create_dvdauthor_xml(path, file_movies, menu_entries, start_with_menu)
+        xml_file = self.create_dvdauthor_xml(path, file_movies, menu_entries, start_with_menu, play_all_opt)
 
         self.command_var=[]
         self.command_var.append("dvdauthor")
@@ -59,7 +59,7 @@ class dvdauthor_converter(devedeng.executor.executor):
         return
 
 
-    def create_dvdauthor_xml(self,movie_folder, file_movies, menu_entries, start_with_menu):
+    def create_dvdauthor_xml(self,movie_folder, file_movies, menu_entries, start_with_menu, play_all_opt):
 
         xmlpath = os.path.join(movie_folder,"xml_data")
         xml_file_path = os.path.join(xmlpath,"dvdauthor.xml")
