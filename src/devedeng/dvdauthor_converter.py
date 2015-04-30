@@ -94,11 +94,13 @@ class dvdauthor_converter(devedeng.executor.executor):
 
             xml_file.write('\t\t<fpc>\n')
             xml_file.write('\t\t\tg0=100;\n')
+            xml_file.write('\t\t\tg1=') #start with menu variable, although since this would be static is it needed?
             if (menu_entries != None) and (start_with_menu):
-                xml_file.write('\t\t\tg1=0;\n')
+                xml_file.write('0;\n') #show menu
             else:
-                xml_file.write('\t\t\tg1=100;\n')
-            xml_file.write('\t\t\tg2=1024;\n')
+                xml_file.write('100;\n') #auto play
+            xml_file.write('\t\t\tg2=1024;\n') #highlight?
+            xml_file.write('\t\t\tg3=0;\n') #play all variable
             xml_file.write('\t\t\tjump menu 1;\n')
             xml_file.write('\t\t</fpc>\n')
 
@@ -173,8 +175,8 @@ class dvdauthor_converter(devedeng.executor.executor):
                 for menu_page in menu_entries:
                     xml_file.write('\t\t\t<pgc>\n')
                     xml_file.write('\t\t\t\t<pre>\n')
-                    # first we recover the currently selected button
-                    xml_file.write('\t\t\t\t\ts8=g2;\n')
+                    xml_file.write('\t\t\t\t\ts8=g2;\n') # first we recover the currently selected button
+                    xml_file.write('\t\t\t\t\tg3=0;\n') #turnoff play all
 
                     if first_entry: # here we add some code to jump to each menu
                         for menu2 in range(nmenues-1):
@@ -195,8 +197,15 @@ class dvdauthor_converter(devedeng.executor.executor):
                     xml_file.write('"></vob>\n')
 
                     for nbutton in menu_page["chapters"]:
-                        xml_file.write('\t\t\t\t<button name="'+nbutton+'"> g0='+str(title_list[button_counter])+'; jump vmgm menu; </button>\n')
-                        button_counter+=1
+                        #xml_file.write('\t\t\t\t<button name="'+nbutton+'"> g0='+str(title_list[button_counter])+'; jump vmgm menu; </button>\n')
+                        xml_file.write('\t\t\t\t<button name="'+nbutton+'">\n')
+                        xml_file.write('\t\t\t\t\tg0='+str(title_list[button_counter])+';\n')
+                        if play_all_opt and nbutton == "boton0x0":
+                            xml_file.write('\t\t\t\t\tg3=1;\n')
+                        xml_file.write('\t\t\t\t\tjump vmgm menu;\n')
+                        xml_file.write('\t\t\t\t</button>\n')
+                        if not play_all_opt:
+                            button_counter+=1
 
                     if (menu_page["left"] != None):
                         xml_file.write('\t\t\t\t<button name="'+menu_page["left"]+'"> g1=')
@@ -384,6 +393,15 @@ class dvdauthor_converter(devedeng.executor.executor):
                 xml_file.write('\t\t\t\t<post>\n')
                 files+=1
                 xml_file.write('\t\t\t\t\tg1='+str(int(titles/elements_per_menu))+';\n')
+                
+                xml_file.write('\t\t\t\t\tif (g3 eq 1) {\n') #if play all:
+                if titles==total_t-1: #return to menu if last title
+                    xml_file.write('\t\t\t\t\t\tg0=100;\n')
+                    xml_file.write('\t\t\t\t\t\tcall vmgm menu entry title;\n')
+                else: #play next title
+                    xml_file.write('\t\t\t\t\tg0='+str(titles + 2))
+                xml_file.write('\t\t\t\t\t}\n')
+                
                 if (action=="action_stop"):
                     xml_file.write('\t\t\t\t\tg0=100;\n')
                     xml_file.write('\t\t\t\t\tcall vmgm menu entry title;\n')

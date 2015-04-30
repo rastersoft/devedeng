@@ -47,7 +47,7 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
 
         self.add_group("position_horizontal", ["left", "center", "right"], "center", self.update_preview)
         self.add_group("at_startup", ["menu_show_at_startup", "play_first_title_at_startup"], "menu_show_at_startup")
-        self.add_group("play_all", ["menu_play_all", "menu_no_play_all"], "menu_play_all", self.update_preview)
+        self.add_group("play_all", ["menu_play_all", "menu_no_play_all"], "menu_no_play_all", self.update_preview)
 
         self.add_integer_adjustment("sound_length", 30)
 
