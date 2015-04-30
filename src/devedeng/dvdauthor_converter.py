@@ -100,7 +100,11 @@ class dvdauthor_converter(devedeng.executor.executor):
             else:
                 xml_file.write('100;\n') #auto play
             xml_file.write('\t\t\tg2=1024;\n') #highlight?
-            xml_file.write('\t\t\tg3=0;\n') #play all variable
+            xml_file.write('\t\t\tg3=') #play all variable
+            if play_all_opt and (menu_entries != None) and (start_with_menu):
+                xml_file.write('1;\n') #auto play all
+            else:
+                xml_file.write('0;\n') #do not play all
             xml_file.write('\t\t\tjump menu 1;\n')
             xml_file.write('\t\t</fpc>\n')
 
