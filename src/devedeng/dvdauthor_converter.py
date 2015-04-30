@@ -394,40 +394,41 @@ class dvdauthor_converter(devedeng.executor.executor):
                 files+=1
                 xml_file.write('\t\t\t\t\tg1='+str(int(titles/elements_per_menu))+';\n')
                 
+                #play all
                 xml_file.write('\t\t\t\t\tif (g3 eq 1) {\n') #if play all:
                 if titles==total_t-1: #return to menu if last title
                     xml_file.write('\t\t\t\t\t\tg0=100;\n')
-                    xml_file.write('\t\t\t\t\t\tcall vmgm menu entry title;\n')
                 else: #play next title
-                    xml_file.write('\t\t\t\t\tg0='+str(titles + 2))
+                    xml_file.write('\t\t\t\t\t\tg0='+str(titles + 2)+';\n')
+                xml_file.write('\t\t\t\t\t} else {\n')
+                
+                #end of play opt
+                xml_file.write('\t\t\t\t\t\tg0=')
+                if action=="action_stop":
+                    xml_file.write('100')
+                elif action=="action_play_previous":
+                    if titles == 0:
+                        prev_t = total_t - 1
+                    else:
+                        prev_t = titles - 1
+                    xml_file.write(str(prev_t + 1))
+                elif action=="action_play_again":
+                    xml_file.write(str(titles + 1))
+                elif action=="action_play_next":
+                    if titles==total_t-1:
+                        next_t=0
+                    else:
+                        next_t=titles + 1
+                    xml_file.write(str(next_t + 1))
+                elif action=="action_play_last":
+                    xml_file.write(str(total_t))
+                else:
+                    xml_file.write('1') # first
+
+                xml_file.write(';\n')
                 xml_file.write('\t\t\t\t\t}\n')
                 
-                if (action=="action_stop"):
-                    xml_file.write('\t\t\t\t\tg0=100;\n')
-                    xml_file.write('\t\t\t\t\tcall vmgm menu entry title;\n')
-                else:
-                    xml_file.write('\t\t\t\t\tg0=')
-                    if action=="action_play_previous":
-                        if titles == 0:
-                            prev_t = total_t - 1
-                        else:
-                            prev_t = titles - 1
-                        xml_file.write(str(prev_t + 1))
-                    elif action=="action_play_again":
-                        xml_file.write(str(titles + 1))
-                    elif action=="action_play_next":
-                        if titles==total_t-1:
-                            next_t=0
-                        else:
-                            next_t=titles + 1
-                        xml_file.write(str(next_t + 1))
-                    elif action=="action_play_last":
-                        xml_file.write(str(total_t))
-                    else:
-                        xml_file.write('1') # first
-
-                    xml_file.write(';\n')
-                    xml_file.write('\t\t\t\t\tcall vmgm menu entry title;\n')
+                xml_file.write('\t\t\t\t\tcall vmgm menu entry title;\n') #preform action
                 xml_file.write('\t\t\t\t</post>\n')
             xml_file.write("\t\t\t</pgc>\n")
             xml_file.write("\t\t</titles>\n")
