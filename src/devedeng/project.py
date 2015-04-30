@@ -525,8 +525,12 @@ class devede_project:
                 start_with_menu = True
             else:
                 start_with_menu = False
+            if (self.menu.play_all == "menu_play_all"):
+                play_all_opt = True
+            else:
+                play_all_opt = False
             dvdauthor = devedeng.dvdauthor_converter.dvdauthor_converter()
-            dvdauthor.create_dvd_project(data.path, data.name, file_movies, menu_entries, start_with_menu)
+            dvdauthor.create_dvd_project(data.path, data.name, file_movies, menu_entries, start_with_menu, play_all_opt)
             # dvdauthor must wait until all the files have been converted
             for element in final_dependencies:
                 dvdauthor.add_dependency(element)
