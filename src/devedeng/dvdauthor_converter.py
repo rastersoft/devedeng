@@ -94,7 +94,7 @@ class dvdauthor_converter(devedeng.executor.executor):
 
             xml_file.write('\t\t<fpc>\n')
             xml_file.write('\t\t\tg0=100;\n')
-            xml_file.write('\t\t\tg1=') #start with menu variable, although since this would be static is it needed?
+            xml_file.write('\t\t\tg1=') #goto variable
             if (menu_entries != None) and (start_with_menu):
                 xml_file.write('0;\n') #show menu
             else:
