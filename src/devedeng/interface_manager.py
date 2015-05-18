@@ -17,6 +17,8 @@
 
 from gi.repository import GObject,Gdk
 
+import re
+
 class interface_manager(GObject.GObject):
     """ This class allows to automatically generate variables for a GLADE interface,
         set the widgets in the interface to their values, and copy the current values
@@ -75,7 +77,7 @@ class interface_manager(GObject.GObject):
             The default value can be a text or None """
 
         if (default_value != None):
-            exec('self.'+text_name+' = "'+str(default_value)+'"')
+            exec('self.'+text_name+' = "'+re.sub('\"','\\\"', str(default_value))+'"')
         else:
             exec('self.'+text_name+' = None')
         self.interface_text.append( (text_name, callback) )
