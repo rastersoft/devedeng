@@ -47,6 +47,7 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
 
         self.add_group("position_horizontal", ["left", "center", "right"], "center", self.update_preview)
         self.add_group("at_startup", ["menu_show_at_startup", "play_first_title_at_startup"], "menu_show_at_startup")
+        self.add_group("play_all", ["menu_play_all", "menu_no_play_all"], "menu_no_play_all", self.update_preview)
 
         self.add_integer_adjustment("sound_length", 30)
 
@@ -373,6 +374,8 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
 
         entry_height = self.cached_menu_size + self.entry_vertical_margin * 2.0 + self.entry_separation
         entries_per_page = int((self.y - top_margin_p - bottom_margin_p) / entry_height)
+        if (self.play_all == "menu_play_all"):
+            entries_per_page -= 1
         n_entries = len(self.title_list)
         if (n_entries > entries_per_page):
             paint_arrows = True
@@ -392,6 +395,18 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
         xr = 720.0 - right_margin_p
         y = top_margin_p + entry_height/2.0
         height = (self.cached_menu_size + self.entry_vertical_margin) / 2.0
+        
+        if (self.play_all == "menu_play_all"):
+            coordinates.append([xl, y-height, xr, y+height, "play_all"])
+            if paint_background:
+                self.paint_base(xl, xr, y, 0)
+                self.write_text("Play All", "menu_entry", xl, xr, y, self.position_horizontal)
+            if paint_selected:
+                self.write_text("Play All", "menu_entry_selected", xl, xr, y, self.position_horizontal)
+            if paint_activated:
+                self.write_text("Play All", "menu_entry_activated", xl, xr, y, self.position_horizontal)
+            y += entry_height
+        
         for entry in self.title_list[page_number*entries_per_page:(page_number+1)*entries_per_page]:
             coordinates.append([xl, y-height, xr, y+height, "entry"])
             text = entry[0].title_name
