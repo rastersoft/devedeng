@@ -3,7 +3,11 @@
 import os
 from glob import glob
 from distutils.core import setup
-from distutils import dep_util
+
+try:
+    from distutils import dep_util
+except:
+    pass
 
 def get_data_files():
     data_files = [
@@ -42,11 +46,8 @@ def compile_translations():
                 os.makedirs(modir)
     
             if not os.path.isfile(mofile) or dep_util.newer(pofile, mofile):
-                print('compiling %s' % mofile)
                 # msgfmt.make(pofile, mofile)
                 os.system("msgfmt \"" + pofile + "\" -o \"" + mofile + "\"")
-            else:
-                print('skipping %s - up to date' % mofile)
     except:
         pass
 
@@ -57,7 +58,7 @@ compile_translations()
 setup(
     name='devedeng',
 
-    version='4.0',
+    version='4.1',
 
     description='A video DVD creator',
     long_description = "A program that allows to create video DVDs",

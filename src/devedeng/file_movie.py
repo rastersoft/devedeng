@@ -143,8 +143,8 @@ class file_movie(devedeng.interface_manager.interface_manager):
                 self.error = True
             else:
                 self.error = False
-                self.audio_list = film_analizer.audio_list
-                self.video_list = film_analizer.video_list
+                self.audio_list = film_analizer.audio_list[:]
+                self.video_list = film_analizer.video_list[:]
                 self.audio_streams = film_analizer.audio_streams
                 self.video_streams = film_analizer.video_streams
                 self.original_width = film_analizer.original_width

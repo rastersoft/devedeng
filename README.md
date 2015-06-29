@@ -47,6 +47,14 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 
 
 ## History of versions ##
+
+* version 4.1 (2015-06-30)
+  * Fixed dependencies in package
+  * Trying to fix a bug with MKV files (incorrect stream assign)
+
+* version 4.0 (2015-04-26)
+  * First stable version of DevedeNG
+
 * version 0.1.0 beta 12 (2015-02-01)
   * Now uses the version number available in the CONFIGURATION_DATA file for the setup process
   * Fixed the icon name in the .desktop file
