@@ -203,7 +203,7 @@ class avconv(devedeng.executor.executor):
             if (file_project.width_final != file_project.width_midle) or (file_project.height_final != file_project.height_midle):
                 if (cmd_line!=""):
                     cmd_line+=",fifo,"
-                cmd_line+="scale="+str(file_project.width_final)+":"+str(file_project.height_final)
+                cmd_line+="scale=w="+str(file_project.width_final)+":h="+str(file_project.height_final)
 
             if cmd_line!="":
                 self.command_var.append("-vf")
@@ -376,6 +376,8 @@ class avconv(devedeng.executor.executor):
         self.command_var.append("-acodec")
         if (use_mp2):
             self.command_var.append("mp2")
+            if (audio_rate > 384):
+                audio_rate = 384 #max bitrate for mp2
         else:
             self.command_var.append("ac3")
         self.command_var.append("-s")
