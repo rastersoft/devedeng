@@ -384,6 +384,7 @@ class dvdauthor_converter(devedeng.executor.executor):
             xml_file.write('chapters="0')
             if (element.original_length > 5):
                 if (element.divide_in_chapters): # add chapters
+                    manual_chapter_list = [];
                     if (element.chapter_list_entry):
                         manual_chapter_list = element.chapter_list_entry.split(",")
                     toadd = element.chapter_size
