@@ -384,9 +384,19 @@ class dvdauthor_converter(devedeng.executor.executor):
             xml_file.write('chapters="0')
             if (element.original_length > 5):
                 if (element.divide_in_chapters): # add chapters
+                    manual_chapter_list = [];
+                    if (element.chapter_list_entry):
+                        manual_chapter_list = element.chapter_list_entry.split(",")
                     toadd = element.chapter_size
                     seconds = toadd*60
                     while seconds < (element.original_length - 4):
+                        # Check manual_chapter_list for manual entries before set next chapter
+                        for idx, m_chapter in enumerate(manual_chapter_list):
+                            m_chapter = m_chapter.split(":")
+                            m_chapter = int(m_chapter[0])*60+int(m_chapter[1]) # Change from mm:ss to seconds
+                            if (m_chapter < seconds):
+                                seconds = m_chapter
+                                del manual_chapter_list[idx]
                         thetime = self.return_time(seconds,False)
                         xml_file.write(","+thetime)
                         seconds += (toadd*60)
