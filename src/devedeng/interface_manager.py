@@ -75,7 +75,7 @@ class interface_manager(GObject.GObject):
             The default value can be a text or None """
 
         if (default_value != None):
-            exec('self.'+text_name+' = "'+str(default_value)+'"')
+            exec('self.'+text_name+' = "'+str(default_value).replace('\"','\\"')+'"')
         else:
             exec('self.'+text_name+' = None')
         self.interface_text.append( (text_name, callback) )
