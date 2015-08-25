@@ -32,7 +32,7 @@ def get_data_files():
 
 
 def compile_translations():
-    
+
     try:
         for pofile in [f for f in os.listdir('po') if f.endswith('.po')]:
             pofile = os.path.join('po', pofile)
@@ -40,11 +40,11 @@ def compile_translations():
             lang = os.path.basename(pofile)[:-3] # len('.po') == 3
             modir = os.path.join('locale', lang, 'LC_MESSAGES') # e.g. locale/fr/LC_MESSAGES/
             mofile = os.path.join(modir, 'devede_ng.mo') # e.g. locale/fr/LC_MESSAGES/devede_ng.mo
-    
+
             # create an architecture for these locales
             if not os.path.isdir(modir):
                 os.makedirs(modir)
-    
+
             if not os.path.isfile(mofile) or dep_util.newer(pofile, mofile):
                 # msgfmt.make(pofile, mofile)
                 os.system("msgfmt \"" + pofile + "\" -o \"" + mofile + "\"")
