@@ -23,7 +23,7 @@ import devedeng.executor
 import os
 import json
 
-class avprobe(devedeng.executor.executor):
+class avprobe(devedeng.avbase.avbase):
 
     supports_analize = True
     supports_play = False

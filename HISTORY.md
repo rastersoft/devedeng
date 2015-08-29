@@ -1,5 +1,8 @@
 ## History of versions ##
 
+* version 4.2 (2015-08-30)
+  * Now can work with old and new versions of AVConv
+
 * version 4.1 (2015-06-30)
   * Fixed dependencies in package
   * Trying to fix a bug with MKV files (incorrect stream assign)

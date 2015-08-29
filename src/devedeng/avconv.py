@@ -20,10 +20,10 @@
 import subprocess
 import os
 import devedeng.configuration_data
-import devedeng.executor
+import devedeng.avbase
 import devedeng.mux_dvd_menu
 
-class avconv(devedeng.executor.executor):
+class avconv(devedeng.avbase.avbase):
 
     supports_analize = False
     supports_play = False
@@ -33,6 +33,7 @@ class avconv(devedeng.executor.executor):
     supports_burn = False
     display_name = "AVCONV"
     disc_types = []
+
 
     @staticmethod
     def check_is_installed():
@@ -99,10 +100,13 @@ class avconv(devedeng.executor.executor):
         except:
             return False
 
+
     def __init__(self):
 
         devedeng.executor.executor.__init__(self)
         self.config = devedeng.configuration_data.configuration.get_config()
+        self.check_version(["avconv","-version"])
+
 
     def convert_file(self,file_project,output_file,video_length,pass2 = False):
 
@@ -203,7 +207,10 @@ class avconv(devedeng.executor.executor):
             if (file_project.width_final != file_project.width_midle) or (file_project.height_final != file_project.height_midle):
                 if (cmd_line!=""):
                     cmd_line+=",fifo,"
-                cmd_line+="scale=w="+str(file_project.width_final)+":h="+str(file_project.height_final)
+                if self.major_version < 11:
+                    cmd_line+="scale="+str(file_project.width_final)+":"+str(file_project.height_final)
+                else:
+                    cmd_line+="scale=w="+str(file_project.width_final)+":h="+str(file_project.height_final)
 
             if cmd_line!="":
                 self.command_var.append("-vf")
