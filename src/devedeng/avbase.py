@@ -40,6 +40,8 @@ class avbase(devedeng.executor.executor):
         self.minor_version = 0
        
         for line in vtext:
+            if not isinstance(line, str):
+                continue
             if (line.startswith("avconv version")):
                 pos1 = line.find('.',15)
                 pos2 = line.find('-',15)
