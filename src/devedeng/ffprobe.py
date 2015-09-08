@@ -60,6 +60,22 @@ class ffprobe(devedeng.executor.executor):
         """ processes a file, refered by the FILE_MOVIE movie object, and fills its
             main data (resolution, FPS, length...) """
 
+        self.original_file_size = os.path.getsize(file_name)
+
+        command_line = ["ffprobe",file_name,"-of","json","-show_streams", "-loglevel", "quiet"]
+
+        (stdout, stderr) = self.launch_process(command_line, False)
+        try:
+            stdout2 = stdout.decode("utf-8")
+        except:
+            stdout2 = stdout.decode("latin1")
+
+        self.config.append_log("FFProbe JSON data: "+str(stdout2))
+        return self.process_json(file_name,stdout2)
+
+
+    def process_json(self,file_name,stdout2):
+
         self.audio_list=[]
         self.audio_streams = 0
         self.video_list=[]
@@ -72,16 +88,6 @@ class ffprobe(devedeng.executor.executor):
         self.original_audiorate_uncompressed = 0
         self.original_fps = 0
         self.original_aspect_ratio = 0
-
-        self.original_file_size = os.path.getsize(file_name)
-
-        command_line = ["ffprobe",file_name,"-of","json","-show_streams", "-loglevel", "quiet"]
-
-        (stdout, stderr) = self.launch_process(command_line, False)
-        try:
-            stdout2 = stdout.decode("utf-8")
-        except:
-            stdout2 = stdout.decode("latin1")
 
         try:
             video_data = json.loads(stdout2)
@@ -137,7 +143,7 @@ class ffprobe(devedeng.executor.executor):
                 stdout2 = stdout.decode("utf-8") + "\n" + stderr.decode("utf-8")
             except:
                 stdout2 = stdout.decode("latin1") + "\n" + stderr.decode("latin1")
-
+            self.config.append_log("Using ffprobe human readable format: "+str(stdout2))
             for line in stdout2.split("\n"):
                 line = line.strip()
                 if line.startswith("Duration: "):

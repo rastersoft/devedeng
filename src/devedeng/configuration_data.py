@@ -46,6 +46,7 @@ class configuration(GObject.GObject):
         for line in proc_file:
             if (line.startswith("processor")):
                 self.cores += 1
+        proc_file.close()
 
         is_local = None
         self.log = ""
