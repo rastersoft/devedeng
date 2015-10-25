@@ -83,7 +83,17 @@ class dvdauthor_converter(devedeng.executor.executor):
         xml_file.write('<dvdauthor dest="'+datapath+'">\n')
 
         if onlyone:
-            xml_file.write('\t<vmgm />\n')
+            xml_file.write('\t<vmgm>\n')
+            xml_file.write("\t\t<menus>\n")
+
+            xml_file.write('\t\t\t<video format="')
+            if self.config.PAL:
+                xml_file.write("pal")
+            else:
+                xml_file.write("ntsc")
+            xml_file.write('" aspect="4:3"> </video>\n')
+            xml_file.write("\t\t</menus>\n")
+            xml_file.write('\t</vmgm>\n')
         else:
             xml_file.write('\t<vmgm>\n')
 
@@ -407,7 +417,7 @@ class dvdauthor_converter(devedeng.executor.executor):
                 xml_file.write('\t\t\t\t<post>\n')
                 files+=1
                 xml_file.write('\t\t\t\t\tg1='+str(int(titles/elements_per_menu))+';\n')
-                
+
                 #play all
                 xml_file.write('\t\t\t\t\tif (g3 eq 1) {\n') #if play all:
                 if titles==total_t-1: #return to menu if last title
@@ -415,7 +425,7 @@ class dvdauthor_converter(devedeng.executor.executor):
                 else: #play next title
                     xml_file.write('\t\t\t\t\t\tg0='+str(titles + 2)+';\n')
                 xml_file.write('\t\t\t\t\t} else {\n')
-                
+
                 #end of play opt
                 xml_file.write('\t\t\t\t\t\tg0=')
                 if action=="action_stop":
@@ -441,7 +451,7 @@ class dvdauthor_converter(devedeng.executor.executor):
 
                 xml_file.write(';\n')
                 xml_file.write('\t\t\t\t\t}\n')
-                
+
                 xml_file.write('\t\t\t\t\tcall vmgm menu entry title;\n') #preform action
                 xml_file.write('\t\t\t\t</post>\n')
             xml_file.write("\t\t\t</pgc>\n")

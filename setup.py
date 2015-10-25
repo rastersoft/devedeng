@@ -58,7 +58,7 @@ compile_translations()
 setup(
     name='devedeng',
 
-    version='4.2',
+    version='4.3',
 
     description='A video DVD creator',
     long_description = "A program that allows to create video DVDs",
