@@ -1,5 +1,9 @@
 ## History of versions ##
 
+* version 4.3 (2015-10-26)
+  * Now doesn't fail when creating a DVD without menu
+  * Added help in html format
+
 * version 4.2 (2015-09-08)
   * Now can work with old and new versions of AVConv
   * Added extra debug code to be able to track problems with MKV files
@@ -81,4 +85,3 @@
 
 * version 0.1 alpha 1 (2014-08-06)
   * First public version
-
