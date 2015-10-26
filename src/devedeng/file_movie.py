@@ -408,6 +408,10 @@ class file_movie(devedeng.interface_manager.interface_manager):
 
         return
 
+    def on_help_clicked(self,b):
+    
+        help_file = devedeng.help.help("file.html")
+
 
     def properties(self):
 

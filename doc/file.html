@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="devede.css">
+<title>Devede, a video DVD creator</title>
+</head>
+<body>
+<p class="title">Devede, a video DVD creator</p>
+
+<p class="golink"><a href="index.html">Up: help index</a></p>
+<p class="golink"><a href="menu.html">Next: Creating the DVD menu</a></p>
+
+<p class="section">Adding movie files to a title</section>
+
+<p>To add a new file you have two options: first, you can drag and drop one or more files into the main
+window, so Devede will give them some fine default values; or you can choose the "Add" button, so you will see
+a file chooser that will allow you to add several files</p>
+
+<p class="section">Setting file properties</p>
+
+<p>By clicking in the <b>Properties</b> button, you will get the properties window, which allows to set several
+properties in the specified movie:</p>
+
+<div class="picture"><img src="movie1.png" /></div>
+
+<p>First you choose the title that will be used in the menu. By default it is the file's name (without the extension),
+but you can change it to whatever you prefer. Also you can choose if you want this file to be displayed in the menu or not.
+In the later case, the user won't be able to manually select it, being displayed only if specified in a sequence (more on this later).</p>
+
+<p>After that comes the <i>properties</i> zone, where you can see specific data about the video, like original size, bit rate, and so on.</p>
+
+<p>In the bottom you have a <b>Preview</b> button, which allows you to check the quality of the output video whenever you want.</p>
+
+<p>Now, there is a panel with several tabs that groups options. In the first tab, <b>General</b>, you can choose the format (PAL or
+NTSC). Maybe you ask why is here another PAL/NTSC option, when we already have chosen it in the main window.
+The answer is: because this way you can create hybrid DVDs, with some films in PAL/SECAM format and
+others in NTSC. What is the utility of this? Modern TV sets and DVD players can play both formats,
+so if you manually choose the one that fits better the original framerate of the file, you will have an
+smoother video. This is: if the original file has 25 fps, select PAL, and if it has 24 or 30 fps, select
+NTSC (the telecine option seems to work better with NTSC). Of course you can
+force one of them and Devede will adjust the framerate to 25 or 30 fps, ensuring that the DVD will have
+the rigth framerate and will play fine in all TV sets, but maybe the motion won't be not as smooth as it could
+be.</p>
+
+<p>You can also set the audio and video bit rate. If you check the <b>Automatic</b> buttons, the bitrate will be calculated by Devede everytime you
+click the <b>Adjust disk usage</b> button in the main window. But if you uncheck them, you can manually choose an specific bitrate, and the <b>Adjust disk usage</b> button
+will honour them. Of course, you can have some files with automatic bitrate, and others with manual bitrate, in the same DVD.</p>
+
+<p>You can also divide a file in blocks, to allow easy seeking. If you don't do this, you will be unable to jump inside a file (which is the nearest thing to <i>fast forward</i> that you
+have in a DVD player). You can divide it in homogeneus blocks with the upper option, or put the marks in specific points (like, in a concert, put them at the start of each song).</p>
+
+<p>Finally, you can modify the volume. This is useful when you have several files with diferent audio levels.</p>
+
+<div class="picture"><img src="movie2.png" /></div>
+
+<p>In the <b>Subtitles</b> tab you can add text subtitles to the current file. You can set the color, size, and if they must be shown always, or only when the user enables them.</p>
+
+<div class="picture"><img src="movie2b.png" /></div>
+
+<p>This is the window shown when you add a subtitle. Here you choose the file with the subtitles and its encoding (ussually UTF-8, but for some European languages, it could also be latinX).</p>
+
+<p>You must choose the language too. This allows the DVD player to show the language code when you enable
+the subtitles, and also to add several subtitles, one for each language.</p>
+
+<p>Finally, the option "Put subtitles upper" makes Devede to render the subtitles a little upper that normally.
+This is fine when you have a 16:9 film in 3:4 format (with black bars up and down) and want to use the ZOOM
+option in your TV without loosing the subtitles, or when your TV is old and misses too many lines in bottom and
+cuts the ordinary subtitles.</p>
+
+<p>Have in mind that if you preview a video from Devede with subtitles, they will be shown in order to allow
+you to ensure that the sincronization is fine (needs MPlayer 1.0rc1 or later, and not always works :( ).</p>
+
+<div class="picture"><img src="movie3.png" /></div>
+
+<p>In the <b>Video options</b> you have several options. Here you can set the final resolution, rotate or mirror a video (useful for phone-recorded videos), set the output aspect ratio,
+and decide what to do when the original aspect ratio doesn't coincide with the final one. Here you can choose to add black bars (which keeps the relationship in the movie), scale the
+picture (which stretches them, like in the old cinemascope), or cut the picture (very useful when you have a video with black bars embedded).</p>
+
+<div class="picture"><img src="movie4.png" /></div>
+
+<p>The <b>Quality</b> tab allows to use double-pass conversion. This converts the file twice, the first one to take some metrics about bitrate usage, and the second one to
+really convert the file using the optimum bitrate in each part. Here you can also select if you want to apply a deinterlace filter (useful when converting some old TV programs).</p>
+
+<div class="picture"><img src="movie5.png" /></div>
+
+<p>In the <b>Audio</b> tab you can set a delay in the audio. This is useful when you have a movie with the audio delayed from the video. Also you can set the 5.1 option. If you enable it, you
+can also select the next option: <b>This file already has AC3 sound</b>. If you check them, Devede won't convert the audio, but will keep it as-is, allowing to preserve the 5.1 audio.</p>
+
+<div class="picture"><img src="movie6.png" /></div>
+
+<p>The <b>Actions</b> tab allows to choose what should the player do when this file ends. You can choose to just jump to the main menu (the default option), to jump to the next file, to the
+previous one, to the first one, to the last one, or to play this file again.</p>
+
+<div class="picture"><img src="movie7.png" /></div>
+
+<p>Finally, the <b>Misc</b> tab allows to specify that this file is already an MPEG1/2 file, ready to be inserted in a DVD directly, without conversion. Also allows to specify that this file
+is encoded with the right codecs, but not the container, so Devede will just repack them in a new container without recompressing them. These options allows to keep the maximum quality and
+speeds up the creation time, because those videos doesn't have to be converted.</p>
+
+<p class="section">Setting properties for several files at once</p>
+
+<p>It is possible to set some properties in one single step for several files. To do so, choose the option <b>Set multiproperties</b> in the <b>Edit</b> option of the top menu. There you will
+see this window:</p>
+
+<div class="picture"><img src="movie1b.png" /></div>
+
+<p>In the top list you should select the movies whose properties you want to set, and keep unselected the ones you don't want to modify. Then change what you need like in the previous case,
+and click <b>Aply</b> to set those changes. Until you click it, no change will be made.</p>
+
+
+<p class="golink"><a href="index.html">Up: help index</a></p>
+<p class="golink"><a href="menu.html">Next: Creating the DVD menu</a></p>
+
+</body>
+</html>

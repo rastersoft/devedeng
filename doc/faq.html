@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="devede.css">
+<title>Devede, a video DVD creator</title>
+</head>
+<body>
+<p class="title">Devede, a video DVD creator</p>
+<p class="subtitle">FAQ</p>
+
+<p class="golink"><a href="index.html">Up: help index</a></p>
+
+<p class="section">Generic</p>
+
+<ol>
+
+<li>
+<b>I installed Devede using the DEB package, but it doesn't work fine. I miss some features explained in
+the instructions.</b>
+<p>To install the DEB version you must remove first any version installed from a TAR.BZ2 package, or they will
+interfere. You can do it just running <b>sudo ./uninstall.sh</b> (from the TAR.BZ2 package) and then installing
+the DEB package.</li>
+
+<li>
+<b>I created a PAL disc, and the final movie is played slightly faster, but older versions of Devede
+converts them at the right speed, but with a little jump each second. Why?</b>
+<p>This happens only when the original file has 24 frames per second (like classic films), and you create a
+PAL disc, which needs 25 frames per second. In older versions Devede converted the original 24 fps to
+25 just by repeating one after 24. Unfortunately that produces a noticeable "jump" each second, because the
+picture, literally, stops during 1/25 of a second.</p>
+<p>To avoid this, in this version Devede does the same that does a TV station: plays the movie at 25 fps instead
+of 24fps. That means that it's played about a 4&#37; faster. That means that the pitch will be higher. Usually
+you won't be able to notice it, unless you compare the original and the new sound.</p>
+</li>
+
+<li>
+<b>I added a VOB file and marked the option "This is already a DVD/xCD-suitable MPEG file", but Devede fails.</b>
+<p>The VOB files aren't fully suitable for DVDAuthor. In order to get the right file you can repackage it
+(without recompressing, so you will not loose quality) just marking the option <b>Repack audio and video without reencoding</b>.</p>
+</li>
+
+<li><b>Why can't I use a VFAT/FAT32 partition to create my DVDs?</b>
+<p>VFAT and FAT32 file systems doesn't understand uppercase/lowercase letters, and shows everything in
+lowercase. Unfortunately, the creation of a DVD tree is case sensitive.</p>
+</li>
+
+<li>
+<b>I adjust the bitrate to use the 100%, but the final size is smaller.</b>
+<p>Unfortunately is impossible to accurately predict the disk's final size, because you specify a bitrate, but
+Mencoder can decide to use an smaller value in certain parts if it can compress it more without quality loss
+(like in very static scenes). That means that the final size can be smaller than the estimation made by Devede,
+but never bigger.</p>
+</li>
+
+<li>
+<b>What about using VRC_MINRATE to ensure that the final size is mucho more acurate?</b>
+<p>I added that option in Devede 3.7; unfortunately the result was that, in a lot of cases, the final size was
+bigger than the predicted size, so I removed it in version 3.9.</p>
+</li>
+
+<li>
+<b>When I add empty titles, the disk usage grows. Why?</b>
+<p>Each menu can hold up to 10 titles. If you create more titles Devede will need more menus, and
+each one needs some disk space.</p>
+</li>
+
+<li>
+<b>What kind of disk is CVD?</b>
+<p>It stands for China Video Disk. It's an alternative format to SuperVCD, using a resolution of 352x480 (or
+352x576 in PAL), which can result in better image quality in some players, because the widht and height are
+compatible with DVD standard (SuperVCD uses a width of 480 pixels, which can result in some picture artifacts
+in some players).</p>
+</li>
+
+<li>
+<b>In some fast scenes the picture is jerky. I use bigger bitrates but it doesn't work. How can I fix it?</b>
+<p>Try to deinterlace your video. You can find the deinterlace options in the <b>Properties</b> window for
+that file, choosing the <b>Quality</b> tab.</p>
+</li>
+
+<li>
+<b>Fine, but... what is the better deinterlacing filter?</b>
+<p>That's a good question. In <a href="http://guru.multimedia.cx/deinterlacing-filters/">guru-multimedia</a>
+you can find a comparison. The YADIF in Devede is "yadif=0", without adding "mcdeint".</p>
+</li>
+
+<li>
+<b>Why I can't add more than 61 files in a DVD?</b>
+<p>Because the DVD standard allows to put up to 128 commands in each menu. The current menu system needs two
+commands for each file, and six extra commands, which leaves only 61 files.</p>
+<p>The limit for VCDs, sVCDs and CVDs is 99 files.</p>
+</li>
+
+</ol>
+
+<p class="section">Subtitles</p>
+
+<ol>
+
+<li><b>I preview a video with subtitles and the text looks bad (text colors are inverted)</b>
+<p>Don't worry, it's a bug of MPlayer when showing DVD subtitles from a file instead of a true DVD.
+In the final disk they will look fine.</p>
+</li>
+
+<li><b>I preview a video with subtitles, but it doesn't show the subtitles...</b>
+<p>Some Mplayer/Mencoder versions seems to fail to show the subtitles when you watch an MPEG file from
+hard disk, but they are there. SVN versions seems to have this fixed.</p></li>
+
+<li><b>I dislike the font used to render the subtitles. How can I change it?</b>
+<p>Just choose a TrueType font you like and copy it in $HOME/.spumux directory, renaming it to
+<b>devedesans.ttf</b>.</p>
+</li>
+
+<li><b>I tried to create a DivX file with subtitles, but in the tab it says it's not possible. How can
+I add subtitles to a DivX?</b>
+<p>DivX format doesn't allow embedded subtitles, but nearly all software players (MPlayer, VLC...) and a
+lot of hardware players can render them on-demand if you put the file with the subtitles in the same
+directory than the movie, and rename the former with the same name than the later (this is, if your movie
+file is MYMOVIE.AVI and your subtitles are in .SRT format, just put the subtitles file in the same directory
+and rename it to MYMOVIE.SRT). The player should allow you to enable/disable them with the
+same button used for DVD subtitles.</p>
+</li>
+
+</ol>
+
+<p class="section">Menus</p>
+
+<ol>
+
+<li><b>How can I add a menu to a VCD/SVCD/CVD?</b>
+<p>Currently you can't with Devede.</p>
+</li>
+
+<li><b>The menus created by Devede are simplistic. Will you add a menu editor to allow to create more
+complex menues?</b>
+<p>Probably not. My intention is to maintain Devede as an easy-to-use tool. If you want to create complex
+menues you have excellent tools like <a href="http://dvdstyler.sourceforge.net/">DVD Styler</a>,
+<a href="http://qdvdauthor.sourceforge.net/">Q DVD Author</a> or
+<a href="http://polidori.sourceforge.net/">PoliDori</a>.</p>
+</li>
+
+</ol>
+
+<p class="section">Bugs</p>
+
+<ol>
+
+<li>
+<b>When I try to create a DVD, it fails at the very start.</b>
+<p>Try to change the audio codec used for the menus. Some AVconv and FFmpeg versions have trouble with that, so if you was using MP2, change to AC3, or vice-versa.</p>
+</li>
+
+<li><b>I created a DVD and my DVD player is unable to play it, but other players can.</b>
+<p>Go to <b>Advanced options->Misc</b>, and be sure that you have marked the option <b>Use a GOP of 12
+frames</b>.</p>
+</li>
+
+<li><b>I created a 5.1 DVD marking the <b>Create DVD with 5.1 channel sound</b> option, but the channels are
+out of order.</b>
+<p>If your source video file has AC3 audio, use the <b>This file already has AC3 sound</b> instead.</p>
+</li>
+
+<li><b>Devede still fails. How can I report a bug?</b>
+<p>You can ask everything you need in the Devede Forum, at http://groups.google.com/group/devede-forum/</p>
+<p>If asked for a dump of Devede's output, just copy the text in the <b>debugging data</b> part of the error window.</p>
+</li>
+</ol>
+
+<p class="golink"><a href="index.html">Up: help index</a></p>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.16.1 -->
+<!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
   <object class="GtkWindow" id="wselect_disk">
@@ -9,7 +9,6 @@
     <property name="modal">True</property>
     <property name="window_position">center</property>
     <property name="icon">devedeng.svg</property>
-    <property name="has_resize_grip">False</property>
     <signal name="delete-event" handler="on_wselect_disk_destroy_event" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
@@ -20,7 +19,7 @@
           <object class="GtkLabel" id="label6">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">&lt;b&gt;Choose the disc type you want to create with DeVeDe&lt;/b&gt;</property>
+            <property name="label" translatable="yes">&lt;b&gt;Choose the disc type you want to create with Devede&lt;/b&gt;</property>
             <property name="use_markup">True</property>
           </object>
           <packing>
@@ -56,10 +55,10 @@
                   <object class="GtkLabel" id="label1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">&lt;b&gt;Video DVD&lt;/b&gt;
 Creates a video DVD suitable for all DVD home players</property>
                     <property name="use_markup">True</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -103,10 +102,10 @@ Creates a video DVD suitable for all DVD home players</property>
                   <object class="GtkLabel" id="label2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">&lt;b&gt;VideoCD&lt;/b&gt;
 Creates a VideoCD, with a picture quality equivalent to VHS</property>
                     <property name="use_markup">True</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -150,10 +149,10 @@ Creates a VideoCD, with a picture quality equivalent to VHS</property>
                   <object class="GtkLabel" id="label3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">&lt;b&gt;Super VideoCD&lt;/b&gt;
 Creates a VideoCD with better picture quality</property>
                     <property name="use_markup">True</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -197,10 +196,10 @@ Creates a VideoCD with better picture quality</property>
                   <object class="GtkLabel" id="label4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">&lt;b&gt;China VideoDisc&lt;/b&gt;
 Another kind of Super VideoCD</property>
                     <property name="use_markup">True</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -244,10 +243,10 @@ Another kind of Super VideoCD</property>
                   <object class="GtkLabel" id="label5">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">&lt;b&gt;DivX / MPEG-4&lt;/b&gt;
 Creates files compliant with DivX home players</property>
                     <property name="use_markup">True</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -291,10 +290,10 @@ Creates files compliant with DivX home players</property>
                   <object class="GtkLabel" id="label7">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">&lt;b&gt;Matroska / H.264&lt;/b&gt;
 Creates H.264 files in a MKV container</property>
                     <property name="use_markup">True</property>
+                    <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -316,11 +315,10 @@ Creates H.264 files in a MKV container</property>
           <object class="GtkButtonBox" id="buttonbox1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="orientation">vertical</property>
-            <property name="layout_style">start</property>
+            <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="programs_needed">
-                <property name="label" translatable="yes">Programs needed by Devede NG</property>
+                <property name="label" translatable="yes">Programs needed by Devede</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -330,6 +328,22 @@ Creates H.264 files in a MKV container</property>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button1">
+                <property name="label">gtk-help</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="on_help_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+                <property name="secondary">True</property>
               </packing>
             </child>
           </object>

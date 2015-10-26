@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="devede.css">
+<title>DeVeDe, a video DVD creator</title>
+</head>
+<body>
+<p class="title">Devede, a video DVD creator</p>
+<p class="golink"><a href="index.html">Up: help index</a></p>
+<p class="golink"><a href="preferences.html">Next: preferences window</a></p>
+
+<p class="section">The main interface</p>
+
+<p>After choosing the kind of disk you want, you will see the main interface:</p>
+
+<div class="picture"><img class="window" src="main.png" /><p class="foot">Main interface for DVD discs</p></div>
+
+<p>A DVD is divided in <b>Files</b>. Each file is a film on its own, and,
+when played, you have to choose the one you want to see from the menu. Clicking on the buttons below the list of files
+you can add or delete them, change its position in the menu, or <a href="file.html">modify the properties</a> of each one. It is also
+possible to set the properties of several files by using the option <b>Set multiproperties</b>, which is available in the <b>Edit</b> option,
+in the top menu.</p>
+
+<p class="section">Main window properties</p>
+
+<p>In the DVD window screenshot we can see that there are two files. By default, after playing a file the DVD player
+will return to the DVD menu (this can be changed).</p>
+
+<p>The <b>Disk usage</b> bar shows the percentage of the disk currently used. You can occupy more than the
+100% because it's based in an estimation, so the final size can (and probably will) be lower than the
+espected, but never higher (see the <a href="faq.html">FAQ</a> for details). You can choose the CD/DVD size too.
+Have in mind another thing: a 700MB CD can contain 80 minutes of compressed audio/video, which, at 1152 kbps are
+about 800MB. This means that, when the media is a CD, you MUST use the bar to know how many disc space you are
+using, and not the estimated size of the files, because you can put up to 800MB of compressed video in a 700MB
+CD, or about 720MB in a 650MB CD.</p>
+
+<p>Near the bar is the <b>Adjust disk usage</b> button. Clicking on it will adjust the video rate in each video
+in order to use the 100% of the disk. To do so, Devede takes in account the final resolution and the length,
+giving more bits per second to the videos with a higher resolution, but always in a proportional way. Remember
+that you should always click again the <b>Adjust disk usage</b> button after changing the final resolution,
+adding or removing subtitles, adding or removing titles, or, in general, before creating your disk,
+in order to assign a good video bit rate to each film. Also remember that changing the soundtrack used in the menus
+will change the disk usage too.</p>
+
+<p>It is important to note that is very probable that the final size will be smaller than the estimated. This is
+because, usually, the codec can compress a lot of scenes with less than the specified bitrate but keeping the quality.</p>
+
+<p>The <b>Default format</b> sets the format used by default in your disk. It's used to create the menus
+and each time you add a video file. But, as we will see in a moment, you can use a different format in some
+videos if you want, having PAL and NTSC videos mixed in the same disk.</p>
+
+<p>In the <b>Menus</b> part you have, first, the <b>create a menú with the titles</b> chooser. By enabling this, the
+disc will have a DVD menu, allowing the user to select which file to watch. It also has the <b>Menu options</b> button,
+which allows you to see how will be the DVD menus and modify them, changing their properties (background picture, text
+colors, title...). This will be
+explained with more detail in the section <a href="menu.html">Creating the DVD menu</a>.
+
+<p>Finally, the button <b>Forward</b> starts the creation process itself, after the disc have been fully defined.</p>
+
+<p>In the top you have the main menu, with several options. In the <b>File</b> part you can load and save your project, or start
+a fresh one. Keep in mind that the format used in 4.x versions is different than the one used in versions up to 3.x, so you can't
+open an old project with newer versions.</p>
+
+<p>Also in the menu is the <b>Edit</b> option. Inside it you have two options. The first one is the <b>Set multiproperties</b> options,
+and the second one shows the <b>Preferences</b> window, which
+allows you to choose global options for all projects, like which backend use for each part, or how many cores use to compress video.</p>
+
+<p><a href="index.html">Up: help index</a></p>
+<p><a href="preferences.html">Next: preferences window</a></p>
+
+</body>
+</html>

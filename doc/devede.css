@@ -1,0 +1,37 @@
+body {
+	background-color: #F0F0FF;
+	width: 1280px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+p,li {
+	font-size: 120%;
+}
+
+p.title {
+	text-align: center;
+	font-size: 200%;
+	font-weight: bold;
+}
+
+p.subtitle {
+	text-align: center;
+	font-size: 150%;
+}
+
+p.section {
+	text-align: left;
+	font-size: 140%;
+	font-weight: bold;
+}
+
+div.picture {
+	text-align: center;
+	width: 100%;
+}
+p.foot {
+	text-align: center;
+	font-size: 100%;
+	font-weight: bold;
+}

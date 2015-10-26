@@ -131,6 +131,10 @@ class choose_disc_type(GObject.GObject):
 
         self.set_type("mkv")
 
+    def on_help_clicked(self,b):
+        
+        help_file = devedeng.help.help("select.html")
+
     def on_programs_needed_clicked(self,b):
 
         builder = Gtk.Builder()

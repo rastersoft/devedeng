@@ -71,6 +71,9 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
         self.video_rate = 2500
         self.audio_rate = 224
 
+    def on_help_clicked(self,b):
+
+        help_file = devedeng.help.help("menu.html")
 
     def get_estimated_size(self):
 

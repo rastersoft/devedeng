@@ -19,7 +19,7 @@ def get_data_files():
         (os.path.join('share', 'devede_ng'), ['data/codepages.lst']),
         (os.path.join('share', 'devede_ng'), ['data/languages.lst']),
         (os.path.join('share', 'devede_ng', 'backgrounds'), glob('data/pixmaps/backgrounds/*')),
-        (os.path.join('share', 'doc', 'devede_ng', 'html'), glob('docs/html/*'))
+        (os.path.join('share', 'doc', 'devede_ng', 'html'), glob('doc/*'))
     ]
 
     for lang_name in [f for f in os.listdir('locale')]:

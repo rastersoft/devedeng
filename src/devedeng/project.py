@@ -38,6 +38,7 @@ import devedeng.vcdimager_converter
 import devedeng.shutdown
 import devedeng.about
 import devedeng.opensave
+import devedeng.help
 
 class devede_project:
 
@@ -211,6 +212,15 @@ class devede_project:
             if element == obj:
                 item.model.set_value(item.iter,1,new_title)
         self.refresh_disc_usage()
+
+
+    def on_help_clicked(self,b):
+        
+        help_file = devedeng.help.help("main.html")
+
+    def on_help_index_activate(self,b):
+        
+        help_file = devedeng.help.help("index.html")
 
 
     def on_add_file_clicked(self,b):
