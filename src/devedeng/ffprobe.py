@@ -69,8 +69,7 @@ class ffprobe(devedeng.executor.executor):
             stdout2 = stdout.decode("utf-8")
         except:
             stdout2 = stdout.decode("latin1")
-
-        self.config.append_log("FFProbe JSON data: "+str(stdout2))
+        self.config.append_static_log("FFProbe JSON data: "+str(stdout2))
         return self.process_json(file_name,stdout2)
 
 
@@ -143,7 +142,7 @@ class ffprobe(devedeng.executor.executor):
                 stdout2 = stdout.decode("utf-8") + "\n" + stderr.decode("utf-8")
             except:
                 stdout2 = stdout.decode("latin1") + "\n" + stderr.decode("latin1")
-            self.config.append_log("Using ffprobe human readable format: "+str(stdout2))
+            self.config.append_static_log("Using ffprobe human readable format: "+str(stdout2))
             for line in stdout2.split("\n"):
                 line = line.strip()
                 if line.startswith("Duration: "):

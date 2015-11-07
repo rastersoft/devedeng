@@ -1,5 +1,11 @@
 ## History of versions ##
 
+* version 4.3.2 (2015-11-07)
+  * Added extra debug info in the log
+
+* version 4.3.1 (2015-11-07)
+  * Added manpage (thanks to Alession Treglia)
+
 * version 4.3 (2015-10-26)
   * Now doesn't fail when creating a DVD without menu
   * Added help in html format

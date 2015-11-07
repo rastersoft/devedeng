@@ -70,7 +70,7 @@ class avprobe(devedeng.avbase.avbase):
             stdout2 = stdout.decode("utf-8")
         except:
             stdout2 = stdout.decode("latin1")
-        self.config.append_log("AVProbe JSON data: "+str(stdout2))
+        self.config.append_static_log("AVProbe JSON data: "+str(stdout2))
         return self.process_json(stdout2, file_name)
 
 
@@ -143,7 +143,7 @@ class avprobe(devedeng.avbase.avbase):
                 stdout2 = stdout.decode("utf-8") + "\n" + stderr.decode("utf-8")
             except:
                 stdout2 = stdout.decode("latin1") + "\n" + stderr.decode("latin1")
-            self.config.append_log("Using avprobe human readable format: "+str(stdout2))
+            self.config.append_static_log("Using avprobe human readable format: "+str(stdout2))
             for line in stdout2.split("\n"):
                 line = line.strip()
                 if line.startswith("Duration: "):

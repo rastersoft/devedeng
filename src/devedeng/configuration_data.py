@@ -50,6 +50,7 @@ class configuration(GObject.GObject):
 
         is_local = None
         self.log = ""
+        self.static_log = ""
         self.disc_type = None
 
         try:
@@ -174,6 +175,8 @@ class configuration(GObject.GObject):
     def set_disc_type(self,disc_type):
 
         self.disc_type = disc_type
+        self.clear_static_log()
+        self.clear_log()
         self.emit('disc_type',disc_type)
 
 
@@ -228,12 +231,20 @@ class configuration(GObject.GObject):
         if (cr):
             self.log += "\n"
 
+    def append_static_log(self,data,cr = True):
+        
+        self.static_log += data
+        if (cr):
+            self.static_log += "\n"
 
     def clear_log(self):
 
         self.log = ""
 
+    def clear_static_log(self):
+        
+        self.static_log = ""
 
     def get_log(self):
 
-        return self.log
+        return self.static_log + "\n" + self.log

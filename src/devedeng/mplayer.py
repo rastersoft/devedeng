@@ -123,20 +123,28 @@ class mplayer(devedeng.executor.executor):
 
             if command=="ID_VIDEO_BITRATE":
                 self.original_videorate=int(int(parameter)/1000)
+                self.config.append_static_log("ID_VIDEO_BITRATE: "+str(self.original_videorate))
             if command=="ID_VIDEO_WIDTH":
                 self.original_width=int(parameter)
+                self.config.append_static_log("ID_VIDEO_WIDTH: "+str(self.original_width))
             if command=="ID_VIDEO_HEIGHT":
                 self.original_height=int(parameter)
+                self.config.append_static_log("ID_VIDEO_HEIGHT: "+str(self.original_height))
             if command=="ID_VIDEO_ASPECT":
                 self.original_aspect_ratio=float(parameter)
+                self.config.append_static_log("ID_VIDEO_ASPECT: "+str(self.original_aspect_ratio))
             if command=="ID_VIDEO_FPS":
                 self.original_fps=float(parameter)
+                self.config.append_static_log("ID_VIDEO_FPS: "+str(self.original_fps))
             if command=="ID_AUDIO_BITRATE":
                 self.original_audiorate=int(int(parameter)/1000)
+                self.config.append_static_log("ID_AUDIO_BITRATE: "+str(self.original_audiorate))
             if command=="ID_AUDIO_RATE":
                 self.original_audiorate_uncompressed=int(parameter)
+                self.config.append_static_log("ID_AUDIO_RATE: "+str(self.original_audiorate_uncompressed))
             if command=="ID_LENGTH":
                 self.original_length=int(float(parameter))
+                self.config.append_static_log("ID_LENGTH: "+str(self.original_length))
 
             if command=="ID_VIDEO_ID":
                 self.video_streams+=1
@@ -144,16 +152,18 @@ class mplayer(devedeng.executor.executor):
                 if (minimum_video == -1) or (minimum_video>video_track):
                     minimum_video=video_track
                 self.video_list.append(stream_number)
+                self.config.append_static_log("ID_VIDEO_ID: "+str(stream_number))
             if command=="ID_AUDIO_ID":
                 self.audio_streams+=1
                 audio_track=int(parameter)
                 if (minimum_audio == -1) or (minimum_audio>audio_track):
                     minimum_audio=audio_track
                 self.audio_list.append(stream_number)
+                self.config.append_static_log("ID_AUDIO_ID: "+str(stream_number))
 
             # increment the stream_number counter in this case to also count
             # subtitles and other stream types
-            if (command[-3:] == "_ID"):
+            if (command == "ID_VIDEO_ID") or (command == "ID_AUDIO_ID") or (command == "ID_SUBTITLE_ID"):
                 stream_number += 1
 
         if (check_audio):
