@@ -20,7 +20,7 @@ def get_data_files():
         (os.path.join('share', 'devede_ng'), ['data/languages.lst']),
         (os.path.join('share', 'devede_ng', 'backgrounds'), glob('data/pixmaps/backgrounds/*')),
         (os.path.join('share', 'doc', 'devede_ng', 'html'), glob('doc/*')),
-        (os.path.join('share','man','man1'), ['data/devede.1'])
+        (os.path.join('share','man','man1'), ['data/devede.1.gz'])
     ]
 
     for lang_name in [f for f in os.listdir('locale')]:
@@ -53,6 +53,10 @@ def compile_translations():
         pass
 
 compile_translations()
+try:
+    os.system("gzip -c data/devede.1 > data/devede.1.gz")
+except:
+    pass
 
 #here = os.path.abspath(os.path.dirname(__file__))
 
