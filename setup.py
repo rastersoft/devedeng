@@ -54,7 +54,8 @@ def compile_translations():
 
 compile_translations()
 try:
-    os.system("gzip -c data/devede.1 > data/devede.1.gz")
+    if os.path.isfile('data/devede.1'):
+        os.system("gzip -c data/devede.1 > data/devede.1.gz")
 except:
     pass
 
