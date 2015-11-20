@@ -1,5 +1,8 @@
 ## History of versions ##
 
+* version 4.4.0 (2015-11-07)
+  * Removed MPlayer as an option for getting movie information
+
 * version 4.3.2 (2015-11-07)
   * Added extra debug info in the log
 
