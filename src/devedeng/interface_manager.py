@@ -62,7 +62,7 @@ class interface_manager(GObject.GObject):
 
     def add_dualtoggle(self,toggle_name,toggle2,default_value,callback = None):
         """ Adds an internal variable with the name toggle_name, linked to widget
-            elements with names toggle_nane and toggle2 (must be or inherint from Gtk.ToogleButton).
+            elements with names toggle_name and toggle2 (must be or inherint from Gtk.ToogleButton).
             The default value can be True of False, with True being toggle_name active, and False
             being toggle2 active """
 
