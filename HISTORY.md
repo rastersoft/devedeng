@@ -1,4 +1,7 @@
 ## History of versions ##
+* version 4.5.0 (2016-01-02)
+  * Reduced the height of the MENU window
+  * Now the menu works fine when enabling the "Play all" option
 
 * version 4.4.0 (2015-11-07)
   * Removed MPlayer as an option for getting movie information
