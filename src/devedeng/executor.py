@@ -62,7 +62,7 @@ class executor(GObject.GObject):
 
     def add_dependency2(self, dep):
 
-        if (self.dependencies == None):
+        if (self.dependencies is None):
             self.dependencies = []
 
         if (self.dependencies.count(dep) == 0):
@@ -76,7 +76,7 @@ class executor(GObject.GObject):
     def remove_dependency(self,process):
         # dependencies are removed only in the parent because the running class have all the processes, parents and childs, and calls
         # this method on all of them
-        if (self.dependencies != None):
+        if (self.dependencies is not None):
             tmp2 = []
             for dep in self.dependencies:
                 if dep != process:
@@ -90,7 +90,7 @@ class executor(GObject.GObject):
     def add_child_process(self,child):
 
         # the childs have the same dependencies than the parent process because, from outside, it is viewed as a single process
-        if self.dependencies != None:
+        if self.dependencies is not None:
             for dep in self.dependencies:
                 child.add_dependency(dep)
 
@@ -143,18 +143,18 @@ class executor(GObject.GObject):
 
     def launch_process(self,command,redirect_output = True):
 
-        if command != None:
+        if command is not None:
             self.launch_command = "\n\nLaunching:"
             for e in command:
                 self.launch_command += (" "+e)
             self.launch_command += "\n"
 
         self.config.append_log(self.text)
-        if command != None:
+        if command is not None:
             self.config.append_log(self.launch_command)
 
         try:
-            if (self.stdin_file != None):
+            if (self.stdin_file is not None):
                 self.handle = subprocess.Popen(command,stdin = subprocess.PIPE, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
                 self.channel_stdin = GLib.IOChannel(self.handle.stdin.fileno())
                 self.channel_stdin.add_watch(GLib.IO_OUT | GLib.IO_HUP, self.read_stdin_from_file)
@@ -172,7 +172,7 @@ class executor(GObject.GObject):
             self.stderr_buf = ""
             self.channel_stdout = GLib.IOChannel(self.handle.stdout.fileno())
             self.channel_stderr = GLib.IOChannel(self.handle.stderr.fileno())
-            if (self.stdout_file != None):
+            if (self.stdout_file is not None):
                 self.channel_stdout.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stdout_to_file)
                 self.file_out = open(self.stdout_file,"wb")
             else:
@@ -208,10 +208,10 @@ class executor(GObject.GObject):
 
     def run_pulse(self,v = None):
 
-        if self.progress_bar == None:
+        if self.progress_bar is None:
             return
 
-        if self.pulse_text != None:
+        if self.pulse_text is not None:
             self.progress_bar[1].set_text(self.pulse_text)
         self.progress_bar[1].pulse()
         return True
@@ -221,7 +221,7 @@ class executor(GObject.GObject):
 
         if (condition != GLib.IO_IN):
             self.channel_stdout = None
-            if ((self.channel_stderr == None) and (self.channel_stdin == None)):
+            if ((self.channel_stderr is None) and (self.channel_stdin is None)):
                 self.wait_end()
             return False
         else:
@@ -236,7 +236,7 @@ class executor(GObject.GObject):
         if (len(line_data) == 0):
             self.channel_stdin = None
             self.handle.stdin.close()
-            if ((self.channel_stderr == None) and (self.channel_stdout == None)):
+            if ((self.channel_stderr is None) and (self.channel_stdout is None)):
                 self.wait_end()
             return False
         else:
@@ -248,7 +248,7 @@ class executor(GObject.GObject):
 
         if (condition != GLib.IO_IN):
             self.channel_stdout = None
-            if ((self.channel_stderr == None) and (self.channel_stdin == None)):
+            if ((self.channel_stderr is None) and (self.channel_stdin is None)):
                 self.wait_end()
             return False
         else:
@@ -274,7 +274,7 @@ class executor(GObject.GObject):
 
         if (condition != GLib.IO_IN):
             self.channel_stderr = None
-            if (((self.channel_stdout == None) or (self.stdout_file != None)) and ((self.channel_stdin == None) or (self.stdin_file != None))):
+            if (((self.channel_stdout is None) or (self.stdout_file is not None)) and ((self.channel_stdin is None) or (self.stdin_file is not None))):
                 self.wait_end()
             return False
         else:
@@ -300,15 +300,16 @@ class executor(GObject.GObject):
 
         """ Called to kill this process. """
 
-        if self.handle==None:
+        if self.handle is None:
             return
+
         self.killed = True
         os.kill(self.handle.pid,signal.SIGKILL)
 
 
     def wait_end(self):
 
-        if self.handle != None:
+        if self.handle is not None:
             retval = self.handle.wait()
             self.handle = None
         else:

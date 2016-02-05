@@ -27,7 +27,7 @@ class title(GObject.GObject):
         GObject.GObject.__init__(self)
         self.config = config
         self.file_treeview = file_treeview
-        if (title_name == None):
+        if (title_name is None):
             title.counter += 1
             self.title_name = _("Title %(X)d") % {"X":title.counter}
         else:

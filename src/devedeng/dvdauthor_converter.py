@@ -54,7 +54,7 @@ class dvdauthor_converter(devedeng.executor.executor):
 
 
     def process_stderr(self,data):
-        if (data != None) and (data[0] != ""):
+        if (data is not None) and (data[0] != ""):
             self.progress_bar[1].set_text(data[0])
         return
 
@@ -69,12 +69,12 @@ class dvdauthor_converter(devedeng.executor.executor):
         except:
             pass
 
-        if (len(file_movies) == 1) and (menu_entries == None):
+        if (len(file_movies) == 1) and (menu_entries is None):
             onlyone = True
         else:
             onlyone = False
 
-        if (menu_entries == None):
+        if (menu_entries is None):
             elements_per_menu = 1000
         else:
             elements_per_menu = len(menu_entries[0]["chapters"])
@@ -105,13 +105,13 @@ class dvdauthor_converter(devedeng.executor.executor):
             xml_file.write('\t\t<fpc>\n')
             xml_file.write('\t\t\tg0=100;\n')
             xml_file.write('\t\t\tg1=') #goto variable
-            if (menu_entries != None) and (start_with_menu):
+            if (menu_entries is not None) and (start_with_menu):
                 xml_file.write('0;\n') #show menu
             else:
                 xml_file.write('100;\n') #auto play
             xml_file.write('\t\t\tg2=1024;\n') #highlight?
             xml_file.write('\t\t\tg3=') #play all variable
-            if play_all_opt and (menu_entries != None) and (start_with_menu):
+            if play_all_opt and (menu_entries is not None) and (start_with_menu):
                 xml_file.write('1;\n') #auto play all
             else:
                 xml_file.write('0;\n') #do not play all
@@ -183,7 +183,7 @@ class dvdauthor_converter(devedeng.executor.executor):
                     title_list.append(counter)
                 counter += 1
 
-            if (menu_entries != None):
+            if (menu_entries is not None):
                 nmenues = len(menu_entries)
                 button_counter = 0
                 for menu_page in menu_entries:
@@ -223,14 +223,14 @@ class dvdauthor_converter(devedeng.executor.executor):
                             button_counter+=1
                         xml_file.write('\t\t\t\t</button>\n')
 
-                    if (menu_page["left"] != None):
+                    if (menu_page["left"] is not None):
                         xml_file.write('\t\t\t\t<button name="'+menu_page["left"]+'"> g1=')
                         xml_file.write(str(menu_number-1))
                         xml_file.write('; g2=1024; jump menu ')
                         xml_file.write(str(menu_number))
                         xml_file.write('; </button>\n')
 
-                    if (menu_page["right"] != None):
+                    if (menu_page["right"] is not None):
                         xml_file.write('\t\t\t\t<button name="'+menu_page["right"]+'"> g1=')
                         xml_file.write(str(menu_number+1))
                         xml_file.write('; g2=1024; jump menu ')

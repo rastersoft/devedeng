@@ -38,7 +38,7 @@ class opensave_window:
             builder.add_from_file(os.path.join(self.config.glade,"wopen_project.ui"))
         builder.connect_signals(self)
         w_window = builder.get_object("data_project")
-        if current_file != None:
+        if current_file is not None:
             w_window.set_filename(current_file)
 
         file_filter_projects=Gtk.FileFilter()

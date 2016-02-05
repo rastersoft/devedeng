@@ -107,7 +107,7 @@ class runner(GObject.GObject):
             # * the process object
             # * the list of dependencies, or None if there are no more dependencies
             # * the progress bar being used by this process
-            if (element.dependencies == None) and (element.progress_bar == None):
+            if (element.dependencies is None) and (element.progress_bar is None):
                 element.connect("ended",self.process_ended)
                 element.run(self.progress_bars[0])
                 element.progress_bar = self.progress_bars[0]

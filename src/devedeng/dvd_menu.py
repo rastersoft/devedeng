@@ -254,7 +254,7 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
     def write_text(self,text,text_type,xl,xr,y,alignment):
         """ Renders a line of text, in the rectangle delimited by xl,y-h;xr,y+h, with the specified alignment """
 
-        if text == None:
+        if text is None:
             return
 
         if text_type == "title":
@@ -298,7 +298,7 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
         elif alignment == "center":
             x = ((xl + xr) / 2.0) - (extents[2] / 2.0)
 
-        if (bgcolor != None):
+        if (bgcolor is not None):
             self.cr.move_to(x+extents[0]+2,y-(extents[3]/2.0)-extents[1]+2)
             self.cr.set_source_rgba(bgcolor[0],bgcolor[1],bgcolor[2],bgcolor[3])
             self.cr.show_text(text)
@@ -339,7 +339,7 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
 
         coordinates = []
 
-        if self.sf == None:
+        if self.sf is None:
             self.sf=cairo.ImageSurface(cairo.FORMAT_ARGB32,720,int(self.y))
             self.cr=cairo.Context(self.sf)
 
@@ -392,7 +392,7 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
         if (page_number >= self.pages) and (page_number > 0):
             page_number -= 1
 
-        if self.wcurrent_page != None:
+        if self.wcurrent_page is not None:
             self.wcurrent_page.set_text(_("Page %(X)d of %(Y)d") % {"X":page_number+1 , "Y":self.pages})
         xl = left_margin_p
         xr = 720.0 - right_margin_p
@@ -502,7 +502,7 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
         """ Callback to repaint the menu preview window when it
             sends the EXPOSE event """
 
-        if (self.sf == None):
+        if (self.sf is None):
             self.paint_menu(True, self.wshow_as_selected.get_active(), False, self.current_shown_page)
             if (self.current_shown_page >= self.pages):
                 self.current_shown_page = self.pages

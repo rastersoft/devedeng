@@ -34,7 +34,7 @@ class converter:
 
     @staticmethod
     def get_converter():
-        if converter.current_converter == None:
+        if converter.current_converter is None:
             converter.current_converter = converter()
         return converter.current_converter
 
@@ -66,30 +66,30 @@ class converter:
             name = element.display_name
             if (element.supports_analize):
                 self.analizers[name] = element
-                if (self.default_analizer == None):
+                if (self.default_analizer is None):
                     self.default_analizer = element
             if (element.supports_play):
                 self.players[name] = element
-                if (self.default_player == None):
+                if (self.default_player is None):
                     self.default_player = element
             if (element.supports_convert):
                 self.converters[name] = element
-                if (self.default_converter == None):
+                if (self.default_converter is None):
                     self.default_converter = element
                 for types in element.disc_types:
                     if self.discs.count(types) == 0:
                         self.discs.append(types)
             if (element.supports_menu):
                 self.menuers[name] = element
-                if (self.default_menuer == None):
+                if (self.default_menuer is None):
                     self.default_menuer = element
             if (element.supports_mkiso):
                 self.mkiso[name] = element
-                if (self.default_mkiso == None):
+                if (self.default_mkiso is None):
                     self.default_mkiso = element
             if (element.supports_burn):
                 self.burners[name] = element
-                if (self.default_burner == None):
+                if (self.default_burner is None):
                     self.default_burner = element
 
 
@@ -151,27 +151,27 @@ class converter:
             The groups are, in this order: ANALIZERS, PLAYERS, CONVERTERS, MENUERS, BURNERS, MKISO
             (menuers are the programs that creates the mpeg files for menus) """
 
-        if (self.default_analizer != None):
+        if (self.default_analizer is not None):
             analizers = None
         else:
             analizers = []
-        if (self.default_player != None):
+        if (self.default_player is not None):
             players = None
         else:
             players = []
-        if (self.default_converter != None):
+        if (self.default_converter is not None):
             converters = None
         else:
             converters = []
-        if (self.default_menuer != None):
+        if (self.default_menuer is not None):
             menuers = None
         else:
             menuers = []
-        if (self.default_burner != None):
+        if (self.default_burner is not None):
             burners = None
         else:
             burners = []
-        if (self.default_mkiso != None):
+        if (self.default_mkiso is not None):
             mkiso = None
         else:
             mkiso = []
@@ -179,17 +179,17 @@ class converter:
         for element in self.c:
             e = element()
             name = e.display_name
-            if (e.supports_analize) and (analizers != None):
+            if (e.supports_analize) and (analizers is not None):
                 analizers.append(name)
-            if (e.supports_play) and (players != None):
+            if (e.supports_play) and (players is not None):
                 players.append(name)
-            if (e.supports_convert) and (converters != None):
+            if (e.supports_convert) and (converters is not None):
                 converters.append(name)
-            if (e.supports_menu) and (menuers != None):
+            if (e.supports_menu) and (menuers is not None):
                 menuers.append(name)
-            if (e.supports_burn) and (burners != None):
+            if (e.supports_burn) and (burners is not None):
                 burners.append(name)
-            if (e.supports_mkiso) and (mkiso != None):
+            if (e.supports_mkiso) and (mkiso is not None):
                 mkiso.append(name)
 
         return ( analizers, players, converters, menuers, burners, mkiso )
@@ -197,7 +197,7 @@ class converter:
     def get_film_player(self):
         """ returns a class for the desired film player, or the most priviledged if the desired is not installed """
 
-        if (self.config.film_player == None) or (self.config.film_player not in self.players):
+        if (self.config.film_player is None) or (self.config.film_player not in self.players):
             return self.default_player
         else:
             return self.players[self.config.film_player]
@@ -205,7 +205,7 @@ class converter:
     def get_film_analizer(self):
         """ returns a class for the desired film analizer, or the most priviledged if the desired is not installed """
 
-        if (self.config.film_analizer == None) or (self.config.film_analizer not in self.analizers):
+        if (self.config.film_analizer is None) or (self.config.film_analizer not in self.analizers):
             return self.default_analizer
         else:
             return self.analizers[self.config.film_analizer]
@@ -213,7 +213,7 @@ class converter:
     def get_menu_converter(self):
         """ returns a class for the desired menu converter, or the most priviledged if the desired is not installed """
 
-        if (self.config.menu_converter == None) or (self.config.menu_converter not in self.menuers):
+        if (self.config.menu_converter is None) or (self.config.menu_converter not in self.menuers):
             return self.default_menuer
         else:
             return self.menuers[self.config.menu_converter]
@@ -222,7 +222,7 @@ class converter:
         """ returns a class for the desired disc converter, or the most priviledged if the desired is not installed """
 
         # if there is a film converter chosen by the user, and it is installed in the system
-        if (self.config.film_converter != None) and (self.config.film_converter in self.converters):
+        if (self.config.film_converter is not None) and (self.config.film_converter in self.converters):
             # and that converter supports the current disc type
             if self.converters[self.config.film_converter].disc_types.count(self.config.disc_type) != 0:
                 # return that converter
@@ -241,7 +241,7 @@ class converter:
     def get_burner(self):
         """ returns a class for the desired burner, or the most priviledged if the desired is not installed """
 
-        if (self.config.burner == None) or (self.config.burner not in self.burners):
+        if (self.config.burner is None) or (self.config.burner not in self.burners):
             return self.default_burner
         else:
             return self.burners[self.config.burner]
@@ -249,7 +249,7 @@ class converter:
     def get_mkiso(self):
         """ returns a class for the desired mkiso, or the most priviledged if the desired is not installed """
 
-        if (self.config.mkiso == None) or (self.config.mkiso not in self.mkiso):
+        if (self.config.mkiso is None) or (self.config.mkiso not in self.mkiso):
             return self.default_mkiso
         else:
             return self.mkiso[self.config.mkiso]

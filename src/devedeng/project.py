@@ -95,7 +95,7 @@ class devede_project:
         self.wcreate_menu.set_active(True)
 
         self.config.connect('disc_type',self.set_type)
-        if (self.disc_type != None):
+        if (self.disc_type is not None):
             self.set_type(None, self.disc_type)
 
         self.wmain_window.drag_dest_set(Gtk.DestDefaults.ALL,[],Gdk.DragAction.COPY)
@@ -109,7 +109,7 @@ class devede_project:
             in the main window to it. Also leaves everything ready to start creating a
             new disc """
 
-        if (disc_type != None):
+        if (disc_type is not None):
             self.disc_type = disc_type
         self.wmain_window.show_all()
         self.set_interface_status(None)
@@ -135,7 +135,7 @@ class devede_project:
         selection = self.wfiles.get_selection()
         model, treeiter = selection.get_selected()
 
-        if treeiter != None:
+        if treeiter is not None:
             element = model[treeiter][0]
             position = 0
             for row in self.wfiles.get_model():
@@ -172,7 +172,7 @@ class devede_project:
         self.pal = self.wuse_pal.get_active()
 
         (element, position, model, treeiter) = self.get_current_file()
-        if (element == None):
+        if (element is None):
             self.wdelete_file.set_sensitive(False)
             self.wup_file.set_sensitive(False)
             self.wdown_file.set_sensitive(False)
@@ -264,7 +264,7 @@ class devede_project:
     def on_delete_file_clicked(self,b):
 
         (element, position, model, treeiter) = self.get_current_file()
-        if (element == None):
+        if (element is None):
             return
 
         ask_w = devedeng.ask.ask_window()
@@ -278,7 +278,7 @@ class devede_project:
     def on_up_file_clicked(self,b):
 
         (element, position, model, treeiter) = self.get_current_file()
-        if (element == None) or (position == 0):
+        if (element is None) or (position == 0):
             return
 
         last_element = self.wfiles.get_model()[position-1]
@@ -289,7 +289,7 @@ class devede_project:
     def on_down_file_clicked(self,b):
 
         (element, position, model, treeiter) = self.get_current_file()
-        if (element == None) or (position == (len(self.wfiles.get_model())-1)):
+        if (element is None) or (position == (len(self.wfiles.get_model())-1)):
             return
 
         last_element = self.wfiles.get_model()[position+1]
@@ -299,7 +299,7 @@ class devede_project:
 
     def on_properties_file_clicked(self,b):
         (element, position, model, treeiter) = self.get_current_file()
-        if (element == None):
+        if (element is None):
             return
         element.properties()
 
@@ -572,7 +572,7 @@ class devede_project:
 
         if value == 0:
             ended = devedeng.end_job.end_window()
-            if self.disc_image_name == None:
+            if self.disc_image_name is None:
                 do_burn = False
             else:
                 do_burn = True
@@ -597,7 +597,7 @@ class devede_project:
     def on_preview_file_clicked(self,b):
 
         (element, position, model, treeiter) = self.get_current_file()
-        if (element == None):
+        if (element is None):
             return
         element.do_preview()
 
@@ -639,7 +639,7 @@ class devede_project:
 
 
     def on_save_activate(self,b):
-        if self.project_file != None:
+        if self.project_file is not None:
             self.save_current_project()
         else:
             self.on_save_as_activate(None)
@@ -650,7 +650,7 @@ class devede_project:
         while True:
             w = devedeng.opensave.opensave_window(True)
             retval = w.run(self.project_file)
-            if retval == None:
+            if retval is None:
                 return
             if not retval.endswith(".devedeng"):
                 retval += ".devedeng"
@@ -666,7 +666,7 @@ class devede_project:
     def on_load_activate(self,b):
         w = devedeng.opensave.opensave_window(False)
         retval = w.run()
-        if retval != None:
+        if retval is not None:
             self.load_project(retval)
 
 

@@ -36,7 +36,7 @@ class add_files:
         builder.connect_signals(self)
         wadd_files = builder.get_object("add_files")
         self.wfile_chooser = builder.get_object("filechooserwidget1")
-        if (add_files.last_path != None):
+        if (add_files.last_path is not None):
             self.wfile_chooser.set_current_folder(add_files.last_path)
         self.wbutton_accept = builder.get_object("button_accept")
 

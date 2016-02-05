@@ -41,7 +41,7 @@ class ask_subtitles:
         wencoding = builder.get_object("encoding_l")
         wlanguage = builder.get_object("language_l")
 
-        if (devedeng.add_files.add_files.last_path != None):
+        if (devedeng.add_files.add_files.last_path is not None):
             self.wfilename.set_current_folder(devedeng.add_files.add_files.last_path)
 
         lang_selection = 0
@@ -114,7 +114,7 @@ class ask_subtitles:
     def on_subtitle_file_set(self,b):
         
         f = self.wfilename.get_filename()
-        if (f == None) or (f == ""):
+        if (f is None) or (f == ""):
             self.waccept.set_sensitive(False)
         else:
             self.waccept.set_sensitive(True)

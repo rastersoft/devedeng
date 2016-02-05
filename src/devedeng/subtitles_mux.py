@@ -98,7 +98,7 @@ class subtitles_mux(devedeng.executor.executor):
 
     def process_stderr(self,data):
 
-        if (data == None) or (len(data) == 0):
+        if (data is None) or (len(data) == 0):
             return
 
         if self.duration == 0:

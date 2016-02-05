@@ -46,7 +46,7 @@ class interface_manager(GObject.GObject):
             value for the variable will be the name of the active
             radiobutton """
 
-        if (default_value != None):
+        if (default_value is not None):
             exec('self.'+group_name+' = "'+str(default_value)+'"')
         else:
             exec('self.'+group_name+' = None')
@@ -74,7 +74,7 @@ class interface_manager(GObject.GObject):
             element with the same name (must be a Gtk.TextEntry or a Gtk.Label).
             The default value can be a text or None """
 
-        if (default_value != None):
+        if (default_value is not None):
             exec('self.'+text_name+' = "'+str(default_value).replace('\"','\\"')+'"')
         else:
             exec('self.'+text_name+' = None')
@@ -169,7 +169,7 @@ class interface_manager(GObject.GObject):
             obj = eval('self.'+key)
             builder.get_object(obj).set_active(True)
             callback = self.interface_groups[key][1]
-            if (callback != None):
+            if (callback is not None):
                 for element in self.interface_groups[key][0]:
                     obj = builder.get_object(element)
                     obj.connect("toggled",callback)
@@ -179,7 +179,7 @@ class interface_manager(GObject.GObject):
             obj = builder.get_object(element[0])
             obj.set_active(value)
             callback = element[1]
-            if (callback != None):
+            if (callback is not None):
                 obj.connect("toggled",callback)
 
         for element in self.interface_dualtoggles:
@@ -191,45 +191,45 @@ class interface_manager(GObject.GObject):
             else:
                 obj2.set_active(True)
             callback = element[2]
-            if (callback != None):
+            if (callback is not None):
                 obj.connect("toggled",callback)
 
         for element in self.interface_text:
             value = eval('self.'+element[0])
             obj = builder.get_object(element[0])
-            if (value != None):
+            if (value is not None):
                 obj.set_text(value)
             else:
                 obj.set_text("")
             callback = element[1]
-            if (callback != None):
+            if (callback is not None):
                 obj.connect("changed",callback)
 
         for element in self.interface_labels:
             value = eval('self.'+element)
             obj = builder.get_object(element)
-            if obj != None:
-                if (value != None):
+            if obj is not None:
+                if (value is not None):
                     obj.set_text(str(value))
                 else:
                     obj.set_text("")
 
         for element in self.interface_integer_adjustments:
             obj = builder.get_object(element[0])
-            if obj != None:
+            if obj is not None:
                 value = eval('self.'+element[0])
                 obj.set_value(float(value))
                 callback = element[1]
-                if (callback != None):
+                if (callback is not None):
                     obj.connect("value_changed",callback)
 
         for element in self.interface_float_adjustments:
             obj = builder.get_object(element[0])
-            if obj != None:
+            if obj is not None:
                 value = eval('self.'+element[0])
                 obj.set_value(value)
                 callback = element[1]
-                if (callback != None):
+                if (callback is not None):
                     obj.connect("value_changed",callback)
 
         for element in self.interface_lists:
@@ -239,7 +239,7 @@ class interface_manager(GObject.GObject):
             for item in obj:
                 the_liststore.append(item)
             callback = element[1]
-            if (callback != None):
+            if (callback is not None):
                 the_liststore.connect("row_changed",callback)
                 the_liststore.connect("row_deleted",callback)
                 the_liststore.connect("row_inserted",callback)
@@ -252,25 +252,25 @@ class interface_manager(GObject.GObject):
             obj.set_color(objcolor)
             obj.set_alpha(int(value[3]*65535.0))
             callback = element[1]
-            if (callback != None):
+            if (callback is not None):
                 obj.connect("color_set",callback)
 
         for element in self.interface_fontbuttons:
             value = eval('self.'+element[0])
             obj = builder.get_object(element[0])
-            if (value != None):
+            if (value is not None):
                 obj.set_font(value)
             callback = element[1]
-            if (callback != None):
+            if (callback is not None):
                 obj.connect("font_set",callback)
 
         for element in self.interface_filebuttons:
             value = eval('self.'+element[0])
             obj = builder.get_object(element[0])
-            if (value != None):
+            if (value is not None):
                 obj.set_filename(value)
             callback = element[1]
-            if (callback != None):
+            if (callback is not None):
                 obj.connect("file_set",callback)
 
         for element in self.interface_comboboxes:
@@ -287,7 +287,7 @@ class interface_manager(GObject.GObject):
                 counter += 1
             the_combo.set_active(dv)
             callback = element[2]
-            if (callback != None):
+            if (callback is not None):
                 the_combo.connect("changed",callback)
 
         self.interface_show_hide_obj = {}
@@ -415,12 +415,12 @@ class interface_manager(GObject.GObject):
 
         for element in self.interface_integer_adjustments:
             obj = builder.get_object(element[0])
-            if obj != None:
+            if obj is not None:
                 exec('self.'+element[0]+' = int(obj.get_value())')
 
         for element in self.interface_float_adjustments:
             obj = builder.get_object(element[0])
-            if obj != None:
+            if obj is not None:
                 exec('self.'+element[0]+' = obj.get_value()')
 
         for element in self.interface_colorbuttons:

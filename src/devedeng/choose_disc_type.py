@@ -43,7 +43,7 @@ class choose_disc_type(GObject.GObject):
         mkv = True
         analizers, players, converters, menuers, burners, mkiso = self.cv.get_needed_programs()
 
-        if (analizers != None) or (converters != None):
+        if (analizers is not None) or (converters is not None):
             dvd = False
             vcd = False
             cvd = False
@@ -51,10 +51,10 @@ class choose_disc_type(GObject.GObject):
             divx = False
             mkv = False
 
-        if menuers != None:
+        if menuers is not None:
             dvd = False
 
-        if mkiso != None:
+        if mkiso is not None:
             dvd = False
 
         if self.check_program(["dvdauthor","--help"]) == False:

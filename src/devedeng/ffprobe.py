@@ -125,11 +125,11 @@ class ffprobe(devedeng.executor.executor):
                     self.original_audiorate_uncompressed = int(float(element["sample_rate"]))
 
         self.original_size = str(self.original_width)+"x"+str(self.original_height)
-        if (self.original_aspect_ratio == None) or (self.original_aspect_ratio <= 1.0):
+        if (self.original_aspect_ratio is None) or (self.original_aspect_ratio <= 1.0):
             if (self.original_height != 0):
                 self.original_aspect_ratio = (float(self.original_width))/(float(self.original_height))
 
-        if (self.original_aspect_ratio != None):
+        if (self.original_aspect_ratio is not None):
             self.original_aspect_ratio = (float(int(self.original_aspect_ratio*1000.0)))/1000.0
 
         if (len(self.video_list) == 0):

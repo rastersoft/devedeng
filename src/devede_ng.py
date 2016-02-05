@@ -30,7 +30,7 @@ import devedeng.choose_disc_type
 
 config_data = devedeng.configuration_data.configuration.get_config()
 
-if config_data == None:
+if config_data is None:
     print ("Can't locate extra files. Aborting.")
     sys.exit(1)
 

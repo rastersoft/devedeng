@@ -43,7 +43,7 @@ class file_movie(devedeng.interface_manager.interface_manager):
         self.set_type(None, self.config.disc_type)
         self.config.connect('disc_type',self.set_type)
 
-        if list_files == None:
+        if list_files is None:
             self.add_text("file_name", file_name)
             self.add_text("title_name", os.path.splitext(os.path.basename(file_name))[0])
             self.add_label("original_size",None)
@@ -100,7 +100,7 @@ class file_movie(devedeng.interface_manager.interface_manager):
         self.add_colorbutton("subt_outline_color", self.config.subt_outline_color)
         self.add_float_adjustment("subt_thickness", self.config.subt_outline_thickness)
 
-        if list_files == None:
+        if list_files is None:
             self.add_list("subtitles_list")
         else:
             self.add_list("files_to_set")
@@ -138,7 +138,7 @@ class file_movie(devedeng.interface_manager.interface_manager):
         self.add_enable_disable("is_mpeg_ps", [], is_mpeg_ps_list)
         self.add_enable_disable("no_reencode_audio_video", [], no_reencode_audio_video_list)
 
-        if list_files == None:
+        if list_files is None:
             cv = devedeng.converter.converter.get_converter()
             film_analizer = (cv.get_film_analizer())()
             if (film_analizer.get_film_data(self.file_name)):
@@ -400,7 +400,7 @@ class file_movie(devedeng.interface_manager.interface_manager):
 
     def set_type(self,obj = None,disc_type = None):
 
-        if (disc_type != None):
+        if (disc_type is not None):
             self.disc_type = disc_type
 
 
@@ -415,7 +415,7 @@ class file_movie(devedeng.interface_manager.interface_manager):
 
     def properties(self):
 
-        if (self.wfile_properties != None):
+        if (self.wfile_properties is not None):
             self.wfile_properties.present()
             return
 
@@ -528,7 +528,7 @@ class file_movie(devedeng.interface_manager.interface_manager):
             self.wframe_division_chapters.hide()
             self.wnotebook.remove_page(5)
 
-        if self.list_files == None:
+        if self.list_files is None:
             self.wframe_title.show()
             self.wframe_fileinfo.show()
             self.wframe_multiproperties.hide()
@@ -580,7 +580,7 @@ class file_movie(devedeng.interface_manager.interface_manager):
         self.config.subt_fill_color = self.subt_fill_color
         self.config.subt_outline_color = self.subt_outline_color
         self.config.subt_outline_thickness = self.subt_thickness
-        if self.list_files == None:
+        if self.list_files is None:
             # editing file properties
             self.set_final_rates()
             self.set_final_size_aspect()
@@ -601,7 +601,7 @@ class file_movie(devedeng.interface_manager.interface_manager):
 
     def on_button_cancel_clicked(self,b):
 
-        if self.list_files == None:
+        if self.list_files is None:
             self.restore_ui()
 
         self.wfile_properties.destroy()
@@ -621,7 +621,7 @@ class file_movie(devedeng.interface_manager.interface_manager):
         selection = self.wtreview_subtitles.get_selection()
         model, treeiter = selection.get_selected()
 
-        if treeiter != None:
+        if treeiter is not None:
             return ( (model, treeiter) )
         else:
             return ( (None, None) )
@@ -630,14 +630,14 @@ class file_movie(devedeng.interface_manager.interface_manager):
     def on_del_subtitles_clicked(self,b):
 
         model, treeiter = self.get_selected_subtitle()
-        if (model != None):
+        if (model is not None):
             model.remove(treeiter)
 
 
     def on_treeview_subtitles_cursor_changed(self,b):
 
         model, treeiter = self.get_selected_subtitle()
-        if (model == None):
+        if (model is None):
             self.wdel_subtitles.set_sensitive(False)
         else:
             self.wdel_subtitles.set_sensitive(True)

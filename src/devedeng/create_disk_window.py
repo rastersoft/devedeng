@@ -63,7 +63,7 @@ class create_disk_window:
         path = self.wpath.get_filename()
         name = self.wname.get_text()
         
-        if ((path == None) or (path == "") or (name == None) or (name == "")):
+        if ((path is None) or (path == "") or (name is None) or (name == "")):
             self.waccept.set_sensitive(False)
         else:
             self.waccept.set_sensitive(True)

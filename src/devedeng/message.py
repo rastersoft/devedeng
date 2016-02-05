@@ -38,7 +38,7 @@ class message_window:
         wmessage_liststore = builder.get_object("liststore_elements")
         wmessage_window.show_all()
 
-        if (list_data == None):
+        if (list_data is None):
             wmessage_list.hide()
         else:
             for element in list_data:

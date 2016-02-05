@@ -38,7 +38,7 @@ class file_copy(devedeng.executor.executor):
 
     def process_stdout(self,data):
 
-        if (data == None) or (len(data) == 0):
+        if (data is None) or (len(data) == 0):
             return
         if (data[0].startswith("Copied ")):
             pos = data[0].find("%")

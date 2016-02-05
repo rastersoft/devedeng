@@ -28,7 +28,7 @@ class configuration(GObject.GObject):
 
     @staticmethod
     def get_config():
-        if configuration.current_configuration == None:
+        if configuration.current_configuration is None:
             configuration.current_configuration = configuration()
             if (configuration.current_configuration.fill_config()):
                 configuration.current_configuration = None
@@ -59,14 +59,14 @@ class configuration(GObject.GObject):
         except:
             pass
 
-        if is_local == None:
+        if is_local is None:
             try:
                 os.stat("/usr/local/share/devede_ng/wselect_disk.ui")
                 is_local = True
             except:
                 pass
 
-        if is_local == None:
+        if is_local is None:
             return True
         else:
             if (is_local):
@@ -190,30 +190,30 @@ class configuration(GObject.GObject):
                 config_data.write("pal\n")
             else:
                 config_data.write("ntsc\n")
-            if (self.tmp_folder != None):
+            if (self.tmp_folder is not None):
                 config_data.write("temp_folder:"+str(self.tmp_folder)+"\n")
             config_data.write("multicore:"+str(self.multicore)+"\n")
-            if (self.final_folder != None):
+            if (self.final_folder is not None):
                 config_data.write("final_folder:"+str(self.final_folder)+"\n")
-            if (self.sub_language != None):
+            if (self.sub_language is not None):
                 config_data.write("sub_language:"+str(self.sub_language)+"\n")
-            if (self.sub_codepage != None):
+            if (self.sub_codepage is not None):
                 config_data.write("sub_codepage:"+str(self.sub_codepage)+"\n")
-            if (self.film_analizer != None):
+            if (self.film_analizer is not None):
                 config_data.write("film_analizer:"+str(self.film_analizer)+"\n")
-            if (self.film_player != None):
+            if (self.film_player is not None):
                 config_data.write("film_player:"+str(self.film_player)+"\n")
-            if (self.film_converter != None):
+            if (self.film_converter is not None):
                 config_data.write("film_converter:"+str(self.film_converter)+"\n")
-            if (self.menu_converter != None):
+            if (self.menu_converter is not None):
                 config_data.write("menu_converter:"+str(self.menu_converter)+"\n")
-            if self.burner != None:
+            if self.burner is not None:
                 config_data.write("burner:"+str(self.burner)+"\n")
-            if self.mkiso != None:
+            if self.mkiso is not None:
                 config_data.write("mkiso:"+str(self.mkiso)+"\n")
-            if (self.sub_codepage != None):
+            if (self.sub_codepage is not None):
                 config_data.write("sub_codepage:"+str(self.sub_codepage)+"\n")
-            if (self.sub_language != None):
+            if (self.sub_language is not None):
                 config_data.write("sub_language:"+str(self.sub_language)+"\n")
             config_data.write("subtitle_font_size:"+str(self.subtitles_font_size)+"\n")
             config_data.write("subtitle_fill_color:"+str(self.subt_fill_color[0])+","+str(self.subt_fill_color[1])+","+str(self.subt_fill_color[2])+"\n")
