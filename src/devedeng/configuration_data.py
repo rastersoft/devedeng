@@ -54,14 +54,14 @@ class configuration(GObject.GObject):
         self.disc_type = None
 
         try:
-            os.stat("/usr/share/devede_ng/wselect_disk.ui")
+            os.stat("/usr/share/devedeng/wselect_disk.ui")
             is_local = False
         except:
             pass
 
         if is_local is None:
             try:
-                os.stat("/usr/local/share/devede_ng/wselect_disk.ui")
+                os.stat("/usr/local/share/devedeng/wselect_disk.ui")
                 is_local = True
             except:
                 pass
@@ -72,20 +72,20 @@ class configuration(GObject.GObject):
             if (is_local):
                 # locales must be always at /usr/share/locale because Gtk.Builder always search there
                 self.share_locale="/usr/share/locale"
-                self.glade="/usr/local/share/devede_ng"
-                self.font_path="/usr/local/share/devede_ng"
-                self.pic_path="/usr/local/share/devede_ng"
-                self.other_path="/usr/local/share/devede_ng"
-                self.help_path="/usr/local/share/doc/devede_ng"
+                self.glade="/usr/local/share/devedeng"
+                self.font_path="/usr/local/share/devedeng"
+                self.pic_path="/usr/local/share/devedeng"
+                self.other_path="/usr/local/share/devedeng"
+                self.help_path="/usr/local/share/doc/devedeng"
             else:
                 self.share_locale="/usr/share/locale"
-                self.glade="/usr/share/devede_ng"
-                self.font_path="/usr/share/devede_ng"
-                self.pic_path="/usr/share/devede_ng"
-                self.other_path="/usr/share/devede_ng"
-                self.help_path="/usr/share/doc/devede_ng"
+                self.glade="/usr/share/devedeng"
+                self.font_path="/usr/share/devedeng"
+                self.pic_path="/usr/share/devedeng"
+                self.other_path="/usr/share/devedeng"
+                self.help_path="/usr/share/doc/devedeng"
 
-        self.gettext_domain = "devede_ng"
+        self.gettext_domain = "devedeng"
 
         self.PAL = True
         self.tmp_folder = "/var/tmp"

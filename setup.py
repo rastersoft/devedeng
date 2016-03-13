@@ -11,20 +11,20 @@ except:
 
 def get_data_files():
     data_files = [
-        (os.path.join('share', 'applications'), ['data/devede_ng.desktop']),
+        (os.path.join('share', 'applications'), ['data/devedeng.desktop']),
         (os.path.join('share', 'pixmaps'), ['data/devedeng.svg']),
-        (os.path.join('share', 'devede_ng'), glob("data/interface/*")),
-        (os.path.join('share', 'devede_ng'), glob('data/pixmaps/*g')),
-        (os.path.join('share', 'devede_ng'), ['data/devedeng.svg']),
-        (os.path.join('share', 'devede_ng'), ['data/codepages.lst']),
-        (os.path.join('share', 'devede_ng'), ['data/languages.lst']),
-        (os.path.join('share', 'devede_ng', 'backgrounds'), glob('data/pixmaps/backgrounds/*')),
-        (os.path.join('share', 'doc', 'devede_ng', 'html'), glob('doc/*')),
+        (os.path.join('share', 'devedeng'), glob("data/interface/*")),
+        (os.path.join('share', 'devedeng'), glob('data/pixmaps/*g')),
+        (os.path.join('share', 'devedeng'), ['data/devedeng.svg']),
+        (os.path.join('share', 'devedeng'), ['data/codepages.lst']),
+        (os.path.join('share', 'devedeng'), ['data/languages.lst']),
+        (os.path.join('share', 'devedeng', 'backgrounds'), glob('data/pixmaps/backgrounds/*')),
+        (os.path.join('share', 'doc', 'devedeng', 'html'), glob('doc/*')),
         (os.path.join('share','man','man1'), ['data/devede.1.gz'])
     ]
 
     for lang_name in [f for f in os.listdir('locale')]:
-        mofile = os.path.join('locale', lang_name,'LC_MESSAGES','devede_ng.mo')
+        mofile = os.path.join('locale', lang_name,'LC_MESSAGES','devedeng.mo')
         # translations must be always in /usr/share because Gtk.builder only search there. If someone knows how to fix this...
         target = os.path.join('/usr','share', 'locale', lang_name, 'LC_MESSAGES') # share/locale/fr/LC_MESSAGES/
         data_files.append((target, [mofile]))
@@ -40,7 +40,7 @@ def compile_translations():
 
             lang = os.path.basename(pofile)[:-3] # len('.po') == 3
             modir = os.path.join('locale', lang, 'LC_MESSAGES') # e.g. locale/fr/LC_MESSAGES/
-            mofile = os.path.join(modir, 'devede_ng.mo') # e.g. locale/fr/LC_MESSAGES/devede_ng.mo
+            mofile = os.path.join(modir, 'devedeng.mo') # e.g. locale/fr/LC_MESSAGES/devedeng.mo
 
             # create an architecture for these locales
             if not os.path.isdir(modir):
