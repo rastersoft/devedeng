@@ -14,6 +14,7 @@ Comment[ca]=Permet crear CDs i DVDs de vídeo, que poden reproduir-se en reprodu
 Comment[es]=Permite crear video CDs y DVDs, que pueden reproducirse en reproductores domésticos
 Comment[gl]=Permite crear video CDs e DVDs, que poden reproducirse en reproductores domésticos
 Comment[pl]=Pozwala stworzyć wideo na płytach CD lub DVD, do otwarzania w domowych odtwarzaczach DVD
+Comment[it]=Permette di creare video CD e DVD che possono essere riprodotti con lettori DVD
 TryExec=devede_ng.py
 Exec=devede_ng.py
 Categories=AudioVideo;
