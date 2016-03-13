@@ -1,4 +1,8 @@
 ## History of versions ##
+* version 4.6.0 (2016-03-13)
+  * Fixed a bug when using the Play all option on menus with several pages
+  * Updated italian translation
+
 * version 4.5.0 (2016-01-02)
   * Reduced the height of the MENU window
   * Now the menu works fine when enabling the "Play all" option
