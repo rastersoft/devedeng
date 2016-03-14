@@ -938,10 +938,6 @@ msgstr "<b>Náhľad</b>"
 msgid "<b>Menu preview</b>"
 msgstr "<b>Náhľad ponuky</b>"
 
-#: ../data/interface/wneeded.ui.h:1
-msgid "Programs needed by Devede NG"
-msgstr "Programy potrebné pre správne fungovanie aplikácie Devede NG"
-
 #: ../data/interface/wpreview.ui.h:1
 msgid ""
 "<b>Preview video</b>\n"

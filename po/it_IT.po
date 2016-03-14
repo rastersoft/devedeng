@@ -936,9 +936,6 @@ msgstr "<b>Anteprima</b>"
 msgid "<b>Menu preview</b>"
 msgstr "<b>Anteprima menu</b>"
 
-#: ../data/interface/wneeded.ui.h:1
-msgid "Programs needed by Devede NG"
-msgstr "Programmi necessari a Devede NG"
 
 #: ../data/interface/wpreview.ui.h:1
 msgid ""
