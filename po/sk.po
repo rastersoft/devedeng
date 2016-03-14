@@ -3,74 +3,82 @@
 # This file is distributed under the same license as the DeVeDe package.
 # Jozef Riha <jose1711@gmail.com>, 2007, 2008, 2009, 2010.
 # Dušan Kazik <prescott66@gmail.com>, 2015.
-#
+# Sergio Costas <rastersoft@gmail.com>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: devede 3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-16 11:18+0200\n"
-"PO-Revision-Date: 2015-09-16 12:31+0200\n"
-"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2016-03-14 15:57+0100\n"
+"PO-Revision-Date: 2016-03-14 15:58+0100\n"
+"Last-Translator: Sergio Costas <rastersoft@gmail.com>\n"
+"Language-Team: Español; Castellano <rastersoft@gmail.com>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.4\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Gtranslator 2.91.7\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../src/devede/add_files.py:44
+#: ../src/devedeng/add_files.py:44
 msgid "Video files"
 msgstr "Súbory videí"
 
-#: ../src/devede/add_files.py:49 ../src/devede/ask_subtitles.py:90
-#: ../src/devede/dvd_menu.py:146 ../src/devede/dvd_menu.py:158
-#: ../src/devede/opensave.py:49
+#: ../src/devedeng/add_files.py:49 ../src/devedeng/ask_subtitles.py:90
+#: ../src/devedeng/dvd_menu.py:150 ../src/devedeng/dvd_menu.py:162
+#: ../src/devedeng/opensave.py:49
 msgid "All files"
 msgstr "Všetky súbory"
 
-#: ../src/devede/ask_subtitles.py:79
+#: ../src/devedeng/ask_subtitles.py:79
 msgid "Subtitle files"
 msgstr "Súbory s titulkami"
 
-#: ../src/devede/avconv_converter.py:112 ../src/devede/ffmpeg_converter.py:112
+#: ../src/devedeng/avconv.py:115 ../src/devedeng/ffmpeg.py:111
 #, python-format
 msgid "Converting %(X)s (pass 2)"
 msgstr "Konvertuje sa %(X)s (prechod 2)"
 
-#: ../src/devede/avconv_converter.py:114 ../src/devede/ffmpeg_converter.py:114
+#: ../src/devedeng/avconv.py:117 ../src/devedeng/ffmpeg.py:113
 #, python-format
 msgid "Converting %(X)s (pass 1)"
 msgstr "Konvertuje sa %(X)s (prechod 1)"
 
-#: ../src/devede/avconv_converter.py:123 ../src/devede/ffmpeg_converter.py:123
+#: ../src/devedeng/avconv.py:126 ../src/devedeng/ffmpeg.py:122
 #, python-format
 msgid "Converting %(X)s"
 msgstr "Konvertuje sa %(X)s"
 
-#: ../src/devede/avconv_converter.py:356 ../src/devede/ffmpeg_converter.py:356
+#: ../src/devedeng/avconv.py:362 ../src/devedeng/ffmpeg.py:355
 #, python-format
 msgid "Creating menu %(X)d"
 msgstr "Vytvára sa ponuka %(X)d"
 
-#: ../src/devede/choose_disc_type.py:150 ../src/devede/choose_disc_type.py:158
-#: ../src/devede/choose_disc_type.py:171 ../src/devede/choose_disc_type.py:179
-#: ../src/devede/choose_disc_type.py:187 ../src/devede/choose_disc_type.py:194
-#: ../src/devede/choose_disc_type.py:198 ../src/devede/choose_disc_type.py:202
+#: ../src/devedeng/choose_disc_type.py:154
+#: ../src/devedeng/choose_disc_type.py:162
+#: ../src/devedeng/choose_disc_type.py:175
+#: ../src/devedeng/choose_disc_type.py:183
+#: ../src/devedeng/choose_disc_type.py:191
+#: ../src/devedeng/choose_disc_type.py:198
+#: ../src/devedeng/choose_disc_type.py:202
+#: ../src/devedeng/choose_disc_type.py:206
 #, python-format
 msgid "\t%(program_name)s (not installed)\n"
 msgstr "\t%(program_name)s (not installed)\n"
 
-#: ../src/devede/choose_disc_type.py:152 ../src/devede/choose_disc_type.py:160
-#: ../src/devede/choose_disc_type.py:173 ../src/devede/choose_disc_type.py:181
-#: ../src/devede/choose_disc_type.py:189 ../src/devede/choose_disc_type.py:196
-#: ../src/devede/choose_disc_type.py:200 ../src/devede/choose_disc_type.py:204
+#: ../src/devedeng/choose_disc_type.py:156
+#: ../src/devedeng/choose_disc_type.py:164
+#: ../src/devedeng/choose_disc_type.py:177
+#: ../src/devedeng/choose_disc_type.py:185
+#: ../src/devedeng/choose_disc_type.py:193
+#: ../src/devedeng/choose_disc_type.py:200
+#: ../src/devedeng/choose_disc_type.py:204
+#: ../src/devedeng/choose_disc_type.py:208
 #, python-format
 msgid "\t%(program_name)s (installed)\n"
 msgstr "\t%(program_name)s (nainštalovaný)\n"
 
-#: ../src/devede/choose_disc_type.py:153
+#: ../src/devedeng/choose_disc_type.py:157
 #, python-format
 msgid ""
 "Movie identifiers (install at least one of these):\n"
@@ -81,7 +89,7 @@ msgstr ""
 "\n"
 "%(program_list)s\n"
 
-#: ../src/devede/choose_disc_type.py:161
+#: ../src/devedeng/choose_disc_type.py:165
 #, python-format
 msgid ""
 "Movie players (install at least one of these):\n"
@@ -92,7 +100,7 @@ msgstr ""
 "\n"
 "%(program_list)s\n"
 
-#: ../src/devede/choose_disc_type.py:174
+#: ../src/devedeng/choose_disc_type.py:178
 #, python-format
 msgid ""
 "Movie Converters (install at least one of these):\n"
@@ -103,7 +111,7 @@ msgstr ""
 "\n"
 "%(program_list)s\n"
 
-#: ../src/devede/choose_disc_type.py:182
+#: ../src/devedeng/choose_disc_type.py:186
 #, python-format
 msgid ""
 "CD/DVD burners (install at least one of these):\n"
@@ -114,7 +122,7 @@ msgstr ""
 "\n"
 "%(program_list)s\n"
 
-#: ../src/devede/choose_disc_type.py:190
+#: ../src/devedeng/choose_disc_type.py:194
 #, python-format
 msgid ""
 "ISO creators (install at least one of these):\n"
@@ -125,7 +133,7 @@ msgstr ""
 "\n"
 "%(program_list)s\n"
 
-#: ../src/devede/choose_disc_type.py:206
+#: ../src/devedeng/choose_disc_type.py:210
 #, python-format
 msgid ""
 "Other programs:\n"
@@ -136,90 +144,90 @@ msgstr ""
 "\n"
 "%(program_list)s\n"
 
-#: ../src/devede/dvdauthor_converter.py:49
+#: ../src/devedeng/dvdauthor_converter.py:49
 msgid "Creating DVD structure"
 msgstr "Vytvára sa štruktúra disku DVD"
 
-#: ../src/devede/dvd_menu.py:87
+#: ../src/devedeng/dvd_menu.py:91
 msgid "The selected file is a video, not an audio file"
 msgstr "Vybratý súbor je súborom videa a nie zvuku"
 
-#: ../src/devede/dvd_menu.py:87 ../src/devede/dvd_menu.py:90
+#: ../src/devedeng/dvd_menu.py:91 ../src/devedeng/dvd_menu.py:94
 msgid "Error"
 msgstr "Chyba"
 
-#: ../src/devede/dvd_menu.py:90
+#: ../src/devedeng/dvd_menu.py:94
 msgid "The selected file is not an audio file"
 msgstr "Vybratý súbor nie je zvukovým súborom"
 
-#: ../src/devede/dvd_menu.py:141
+#: ../src/devedeng/dvd_menu.py:145
 msgid "Picture files"
 msgstr "Súbory obrázkov"
 
-#: ../src/devede/dvd_menu.py:153
+#: ../src/devedeng/dvd_menu.py:157
 msgid "Sound files"
 msgstr "Zvukové súbory"
 
-#: ../src/devede/dvd_menu.py:390
+#: ../src/devedeng/dvd_menu.py:396
 #, python-format
 msgid "Page %(X)d of %(Y)d"
 msgstr "Stránka %(X)d z %(Y)d"
 
-#: ../src/devede/file_copy.py:31
+#: ../src/devedeng/file_copy.py:31
 #, python-format
 msgid "Copying file %(X)s"
 msgstr "Kopíruje sa súbor %(X)s"
 
-#: ../src/devede/genisoimage.py:67 ../src/devede/mkisofs.py:67
+#: ../src/devedeng/genisoimage.py:67 ../src/devedeng/mkisofs.py:67
 msgid "Creating ISO image"
 msgstr "Vytvára sa obraz ISO"
 
-#: ../src/devede/mux_dvd_menu.py:34
+#: ../src/devedeng/mux_dvd_menu.py:34
 #, python-format
 msgid "Mixing menu %(X)d"
 msgstr "Mieša sa ponuka %(X)d"
 
-#: ../src/devede/opensave.py:45
+#: ../src/devedeng/opensave.py:45
 msgid "DevedeNG projects"
 msgstr "Projekty DevedeNG"
 
-#: ../src/devede/project.py:203
+#: ../src/devedeng/project.py:204
 msgid "Abort the current DVD and exit?"
 msgstr "Prerušiť tvorbu aktuálneho DVD a skončiť?"
 
-#: ../src/devede/project.py:203
+#: ../src/devedeng/project.py:204
 msgid "Exit DeVeDe"
 msgstr "Ukončenie programu DeVeDe"
 
-#: ../src/devede/project.py:249
+#: ../src/devedeng/project.py:259
 msgid "The following files could not be added:"
 msgstr "Nasledovné súbory sa nepodarilo pridať:"
 
-#: ../src/devede/project.py:249 ../src/devede/project.py:668
+#: ../src/devedeng/project.py:259 ../src/devedeng/project.py:719
 msgid "Error while adding files"
 msgstr "Chyba počas pridávania súborov"
 
-#: ../src/devede/project.py:261
+#: ../src/devedeng/project.py:271
 #, python-format
 msgid "The file <b>%(X)s</b> <i>(%(Y)s)</i> will be removed."
 msgstr "Súbor <b>%(X)s</b> <i>(%(Y)s)</i> bude odstránený."
 
-#: ../src/devede/project.py:261
+#: ../src/devedeng/project.py:271
 msgid "Delete file"
 msgstr "Odstránenie súboru"
 
-#: ../src/devede/project.py:423
+#: ../src/devedeng/project.py:474
 #, python-format
 msgid "The limit for this format is %(l)d files, but your project has %(h)d."
 msgstr ""
 "Tento formát ma obmedzený počet súborov na %(l)d, ale váš projekt obsahuje "
 "%(h)d súborov."
 
-#: ../src/devede/project.py:423
+#: ../src/devedeng/project.py:474
 msgid "Too many files in the project"
 msgstr "Príliš veľa súborov v projekte"
 
-#: ../src/devede/project.py:432
+#: ../src/devedeng/project.py:483
 #, python-format
 msgid ""
 "The selected folder already exists. To create the project, Devede must "
@@ -238,39 +246,39 @@ msgstr ""
 "\n"
 " a všetok jeho obsah <b>bude ostránený</b>. Chcete pokračovať?"
 
-#: ../src/devede/project.py:432
+#: ../src/devedeng/project.py:483
 msgid "Delete folder"
 msgstr "Odstránenie priečinka"
 
-#: ../src/devede/project.py:567
+#: ../src/devedeng/project.py:618
 msgid "Close current project and start a fresh one?"
 msgstr "Zavrieť aktuálny projekt a začať nový?"
 
-#: ../src/devede/project.py:567
+#: ../src/devedeng/project.py:618
 msgid "New project"
 msgstr "Nový projekt"
 
-#: ../src/devede/project.py:608
+#: ../src/devedeng/project.py:659
 msgid "The file already exists. Overwrite it?"
 msgstr "Súbor už existuje. Chcete ho prepísať?"
 
-#: ../src/devede/project.py:608
+#: ../src/devedeng/project.py:659
 msgid "The file already exists"
 msgstr "Súbor už existuje"
 
-#: ../src/devede/project.py:668
+#: ../src/devedeng/project.py:719
 msgid "The following files in the project could not be added again:"
 msgstr "Nasledovné súbory v projekte sa nepodarilo znovu pridať:"
 
-#: ../src/devede/runner.py:91
+#: ../src/devedeng/runner.py:91
 msgid "Cancel the current job?"
 msgstr "Zrušiť aktuálnu úlohu?"
 
-#: ../src/devede/settings.py:45 ../src/devede/settings.py:61
+#: ../src/devedeng/settings.py:45 ../src/devedeng/settings.py:61
 msgid "Use all cores"
 msgstr "Použiť všetky jadrá"
 
-#: ../src/devede/settings.py:49
+#: ../src/devedeng/settings.py:49
 #, python-format
 msgid "Use %(X)d core"
 msgid_plural "Use %(X)d cores"
@@ -278,7 +286,7 @@ msgstr[0] "Použiť %(X)d jadro"
 msgstr[1] "Použiť %(X)d jadrá"
 msgstr[2] "Použiť %(X)d jadier"
 
-#: ../src/devede/settings.py:55
+#: ../src/devedeng/settings.py:55
 #, python-format
 msgid "Use all except %(X)d core"
 msgid_plural "Use all except %(X)d cores"
@@ -286,21 +294,21 @@ msgstr[0] "Použiť všetky okrem %(X)d jadra"
 msgstr[1] "Použiť všetky okrem %(X)d jadier"
 msgstr[2] "Použiť všetky okrem %(X)d jadier"
 
-#: ../src/devede/settings.py:121
+#: ../src/devedeng/settings.py:121
 msgid "No discs supported"
 msgstr "Žiadne podporované disky"
 
-#: ../src/devede/subtitles_mux.py:43
+#: ../src/devedeng/subtitles_mux.py:43
 #, python-format
 msgid "Adding %(L)s subtitles to %(X)s"
 msgstr "Pridávajú sa titulky jazyka %(L)s do %(X)s"
 
-#: ../src/devede/title.py:32
+#: ../src/devedeng/title.py:32
 #, python-format
 msgid "Title %(X)d"
 msgstr "Titul %(X)d"
 
-#: ../src/devede/vcdimager_converter.py:46
+#: ../src/devedeng/vcdimager_converter.py:46
 msgid "Creating CD image"
 msgstr "Vytvára sa obraz disku CD"
 
@@ -422,7 +430,7 @@ msgstr "<b>Nastaviť vlastnosti týmto súborom</b>"
 msgid "PAL/SECAM"
 msgstr "PAL/SECAM"
 
-#: ../data/interface/wfile_properties.ui.h:16 ../data/interface/wmain.ui.h:14
+#: ../data/interface/wfile_properties.ui.h:16 ../data/interface/wmain.ui.h:15
 msgid "NTSC"
 msgstr "NTSC"
 
@@ -464,289 +472,293 @@ msgid "<b>Audio rate (KBits/sec)</b>"
 msgstr "<b>Dátový tok zvuku (Kb/s)</b>"
 
 #: ../data/interface/wfile_properties.ui.h:27
-msgid "Split the file in chapters (for easy seeking)"
-msgstr "Rozdeliť súbor na kapitoly (pre uľahčenie posunu)"
-
-#: ../data/interface/wfile_properties.ui.h:28
 msgid "5"
 msgstr "5"
 
-#: ../data/interface/wfile_properties.ui.h:29
+#: ../data/interface/wfile_properties.ui.h:28
 msgid "Size (in minutes) for each chapter:"
 msgstr "Dĺžka (v minútach) pre každú kapitolu:"
 
+#: ../data/interface/wfile_properties.ui.h:29
+msgid "Split the file in chapters (for easy seeking)"
+msgstr "Rozdeliť súbor na kapitoly (pre uľahčenie posunu)"
+
 #: ../data/interface/wfile_properties.ui.h:30
+msgid "Manual chapter list (split by comma in mm:ss format):"
+msgstr ""
+
+#: ../data/interface/wfile_properties.ui.h:31
 msgid "<b>Division in chapters</b>"
 msgstr "<b>Rozdelenie na kapitoly</b>"
 
-#: ../data/interface/wfile_properties.ui.h:31
+#: ../data/interface/wfile_properties.ui.h:32
 msgid "General"
 msgstr "Všeobecné"
 
-#: ../data/interface/wfile_properties.ui.h:32
+#: ../data/interface/wfile_properties.ui.h:33
 msgid "Language"
 msgstr "Jazyk"
 
-#: ../data/interface/wfile_properties.ui.h:33
+#: ../data/interface/wfile_properties.ui.h:34
 msgid "Subtitle"
 msgstr "Titulky"
 
-#: ../data/interface/wfile_properties.ui.h:34
+#: ../data/interface/wfile_properties.ui.h:35
 msgid "Font size:"
 msgstr "Veľkosť písma:"
 
-#: ../data/interface/wfile_properties.ui.h:35
+#: ../data/interface/wfile_properties.ui.h:36
 msgid "Force subtitles"
 msgstr "Vynútiť titulky"
 
-#: ../data/interface/wfile_properties.ui.h:36
+#: ../data/interface/wfile_properties.ui.h:37
 msgid "Fill color:"
 msgstr "Farba výplne:"
 
-#: ../data/interface/wfile_properties.ui.h:37
+#: ../data/interface/wfile_properties.ui.h:38
 msgid "Outline color:"
 msgstr "Farba obrysu:"
 
-#: ../data/interface/wfile_properties.ui.h:38
+#: ../data/interface/wfile_properties.ui.h:39
 msgid "Outline thickness:"
 msgstr "Hrúbka obrysu:"
 
-#: ../data/interface/wfile_properties.ui.h:39
+#: ../data/interface/wfile_properties.ui.h:40
 msgid "Subtitles"
 msgstr "Titulky"
 
-#: ../data/interface/wfile_properties.ui.h:40
+#: ../data/interface/wfile_properties.ui.h:41
 msgid "1920x1080"
 msgstr "1920x1080"
 
-#: ../data/interface/wfile_properties.ui.h:41
+#: ../data/interface/wfile_properties.ui.h:42
 msgid "1280x720"
 msgstr "1280x720"
 
-#: ../data/interface/wfile_properties.ui.h:42
+#: ../data/interface/wfile_properties.ui.h:43
 msgid "720x480"
 msgstr "720x480"
 
-#: ../data/interface/wfile_properties.ui.h:43
+#: ../data/interface/wfile_properties.ui.h:44
 msgid "704x480"
 msgstr "704x480"
 
-#: ../data/interface/wfile_properties.ui.h:44
+#: ../data/interface/wfile_properties.ui.h:45
 msgid "480x480"
 msgstr "480x480"
 
-#: ../data/interface/wfile_properties.ui.h:45
+#: ../data/interface/wfile_properties.ui.h:46
 msgid "352x480"
 msgstr "352x480"
 
-#: ../data/interface/wfile_properties.ui.h:46
+#: ../data/interface/wfile_properties.ui.h:47
 msgid "352x240"
 msgstr "352x240"
 
-#: ../data/interface/wfile_properties.ui.h:47
+#: ../data/interface/wfile_properties.ui.h:48
 msgid "720x576"
 msgstr "720x576"
 
-#: ../data/interface/wfile_properties.ui.h:48
+#: ../data/interface/wfile_properties.ui.h:49
 msgid "704x576"
 msgstr "704x576"
 
-#: ../data/interface/wfile_properties.ui.h:49
+#: ../data/interface/wfile_properties.ui.h:50
 msgid "480x576"
 msgstr "480x576"
 
-#: ../data/interface/wfile_properties.ui.h:50
+#: ../data/interface/wfile_properties.ui.h:51
 msgid "352x576"
 msgstr "352x576"
 
-#: ../data/interface/wfile_properties.ui.h:51
+#: ../data/interface/wfile_properties.ui.h:52
 msgid "352x288"
 msgstr "352x288"
 
-#: ../data/interface/wfile_properties.ui.h:52
+#: ../data/interface/wfile_properties.ui.h:53
 msgid "<b>Final size</b>"
 msgstr "<b>Výsledná veľkosť</b>"
 
-#: ../data/interface/wfile_properties.ui.h:53
+#: ../data/interface/wfile_properties.ui.h:54
 msgid "4:3"
 msgstr "4:3"
 
-#: ../data/interface/wfile_properties.ui.h:54
+#: ../data/interface/wfile_properties.ui.h:55
 msgid "16:9"
 msgstr "16:9"
 
-#: ../data/interface/wfile_properties.ui.h:55
+#: ../data/interface/wfile_properties.ui.h:56
 msgid "<b>Aspect ratio</b>"
 msgstr "<b>Pomer strán</b>"
 
-#: ../data/interface/wfile_properties.ui.h:56
+#: ../data/interface/wfile_properties.ui.h:57
 msgid "Horizontal mirror"
 msgstr "Zrkadliť vodorovne"
 
-#: ../data/interface/wfile_properties.ui.h:57
+#: ../data/interface/wfile_properties.ui.h:58
 msgid "Vertical mirror"
 msgstr "Zrkadliť zvislo"
 
-#: ../data/interface/wfile_properties.ui.h:58
+#: ../data/interface/wfile_properties.ui.h:59
 msgid "<b>Mirror</b>"
 msgstr "<b>Zrkadlenie</b>"
 
-#: ../data/interface/wfile_properties.ui.h:59
+#: ../data/interface/wfile_properties.ui.h:60
 msgid "No rotation"
 msgstr "Bez otočenia"
 
-#: ../data/interface/wfile_properties.ui.h:60
+#: ../data/interface/wfile_properties.ui.h:61
 msgid "90 degrees (clockwise)"
 msgstr "O 90 stupňov (doprava)"
 
-#: ../data/interface/wfile_properties.ui.h:61
+#: ../data/interface/wfile_properties.ui.h:62
 msgid "180 degrees"
 msgstr "O 180 stupňov"
 
-#: ../data/interface/wfile_properties.ui.h:62
+#: ../data/interface/wfile_properties.ui.h:63
 msgid "90 degrees (counter-clockwise)"
 msgstr "O 90 stupňov (doľava)"
 
-#: ../data/interface/wfile_properties.ui.h:63
+#: ../data/interface/wfile_properties.ui.h:64
 msgid "<b>Rotation</b>"
 msgstr "<b>Otočenie</b>"
 
-#: ../data/interface/wfile_properties.ui.h:64
+#: ../data/interface/wfile_properties.ui.h:65
 msgid "Add black bars"
 msgstr "Pridať čierne pruhy"
 
-#: ../data/interface/wfile_properties.ui.h:65
+#: ../data/interface/wfile_properties.ui.h:66
 msgid "Scale picture"
 msgstr "Zmeniť mierku obrazu"
 
-#: ../data/interface/wfile_properties.ui.h:66
+#: ../data/interface/wfile_properties.ui.h:67
 msgid "Cut picture"
 msgstr "Orezať obraz"
 
-#: ../data/interface/wfile_properties.ui.h:67
+#: ../data/interface/wfile_properties.ui.h:68
 msgid "<b>Scaling mode</b>"
 msgstr "<b>Režim zmeny mierky</b>"
 
-#: ../data/interface/wfile_properties.ui.h:68
+#: ../data/interface/wfile_properties.ui.h:69
 msgid "Video options"
 msgstr "Voľby obrazu"
 
-#: ../data/interface/wfile_properties.ui.h:69
+#: ../data/interface/wfile_properties.ui.h:70
 msgid "Use dual pass encoding (better quality, much slower conversion)"
 msgstr ""
 "Použiť dvojprechodové kódovanie (lepšia kvalita, oveľa pomalšia konverzia)"
 
-#: ../data/interface/wfile_properties.ui.h:70
+#: ../data/interface/wfile_properties.ui.h:71
 msgid "<b>Two pass encoding</b>"
 msgstr "<b>Dvojprechodové  kódovanie</b>"
 
-#: ../data/interface/wfile_properties.ui.h:71
+#: ../data/interface/wfile_properties.ui.h:72
 msgid "Don't deinterlace"
 msgstr "Neodstraňovať prekladanie"
 
-#: ../data/interface/wfile_properties.ui.h:72
+#: ../data/interface/wfile_properties.ui.h:73
 msgid "FFMpeg deinterlacing filter"
 msgstr "Filter FFMpeg pre odstránenie prekladania"
 
-#: ../data/interface/wfile_properties.ui.h:73
+#: ../data/interface/wfile_properties.ui.h:74
 msgid "YADIF deinterlacing filter"
 msgstr "Filter YADIF pre odstránenie prekladania"
 
-#: ../data/interface/wfile_properties.ui.h:74
+#: ../data/interface/wfile_properties.ui.h:75
 msgid "<b>Deinterlacing</b>"
 msgstr "<b>Odstránenie prekladania</b>"
 
-#: ../data/interface/wfile_properties.ui.h:75
+#: ../data/interface/wfile_properties.ui.h:76
 msgid "Quality"
 msgstr "Kvalita"
 
-#: ../data/interface/wfile_properties.ui.h:76
+#: ../data/interface/wfile_properties.ui.h:77
 msgid "Audio delay (in seconds):"
 msgstr "Oneskorenie zvuku (v sekundách):"
 
-#: ../data/interface/wfile_properties.ui.h:77
+#: ../data/interface/wfile_properties.ui.h:78
 msgid "Create DVD with 5.1 channel sound"
 msgstr "Vytvoriť DVD s 5.1 kanálovým zvukom"
 
-#: ../data/interface/wfile_properties.ui.h:78
+#: ../data/interface/wfile_properties.ui.h:79
 msgid ""
 "This file already has AC3 sound (copy audio data instead of recompress it)"
 msgstr ""
 "Tento súbor už má zvuk vo formáte AC3 (skopíruje zvukové údaje namiesto ich "
 "opätovnej kompresie)"
 
-#: ../data/interface/wfile_properties.ui.h:79
+#: ../data/interface/wfile_properties.ui.h:80
 msgid "<b>Audio</b>"
 msgstr "<b>Zvuk</b>"
 
-#: ../data/interface/wfile_properties.ui.h:80
+#: ../data/interface/wfile_properties.ui.h:81
 msgid "Audio"
 msgstr "Zvuk"
 
-#: ../data/interface/wfile_properties.ui.h:81
+#: ../data/interface/wfile_properties.ui.h:82
 #: ../data/interface/wtitle_properties.ui.h:3
 msgid "Stop reproduction/show disc menu"
 msgstr "Zastaviť prehrávanie/zobraziť ponuku disku"
 
-#: ../data/interface/wfile_properties.ui.h:82
+#: ../data/interface/wfile_properties.ui.h:83
 #: ../data/interface/wtitle_properties.ui.h:4
 msgid "Play the first title"
 msgstr "Prehrať prvý titul"
 
-#: ../data/interface/wfile_properties.ui.h:83
+#: ../data/interface/wfile_properties.ui.h:84
 #: ../data/interface/wtitle_properties.ui.h:5
 msgid "Play the previous title"
 msgstr "Prehrať predchádzajúci titul"
 
-#: ../data/interface/wfile_properties.ui.h:84
+#: ../data/interface/wfile_properties.ui.h:85
 #: ../data/interface/wtitle_properties.ui.h:6
 msgid "Play this title again (loop)"
 msgstr "Prehrať tento titul ešte raz (slučka)"
 
-#: ../data/interface/wfile_properties.ui.h:85
+#: ../data/interface/wfile_properties.ui.h:86
 #: ../data/interface/wtitle_properties.ui.h:7
 msgid "Play the next title"
 msgstr "Prehrať nasledujúci titul"
 
-#: ../data/interface/wfile_properties.ui.h:86
+#: ../data/interface/wfile_properties.ui.h:87
 #: ../data/interface/wtitle_properties.ui.h:8
 msgid "Play the last title"
 msgstr "Prehrať posledný titul"
 
-#: ../data/interface/wfile_properties.ui.h:87
+#: ../data/interface/wfile_properties.ui.h:88
 #: ../data/interface/wtitle_properties.ui.h:9
 msgid "<b>Action to perform when this title ends</b>"
 msgstr "<b>Akcia, ktorá sa má vykonať, keď titul skončí</b>"
 
-#: ../data/interface/wfile_properties.ui.h:88
+#: ../data/interface/wfile_properties.ui.h:89
 msgid "Actions"
 msgstr "Akcie"
 
-#: ../data/interface/wfile_properties.ui.h:89
+#: ../data/interface/wfile_properties.ui.h:90
 msgid "This file is already a DVD/xCD-suitable MPEG-PS file"
 msgstr "Súbor je už vo formáte MPEG-PS vhodnom pre DVD/xCD"
 
-#: ../data/interface/wfile_properties.ui.h:90
+#: ../data/interface/wfile_properties.ui.h:91
 msgid "Repack audio and video without reencoding (useful for VOB files)"
 msgstr "Znovu zabalí zvuk a video bez prekódovania (užitočné pri súboroch VOB)"
 
-#: ../data/interface/wfile_properties.ui.h:91
+#: ../data/interface/wfile_properties.ui.h:92
 msgid "Use a GOP of 12 frames (improves compatibility)"
 msgstr "Použiť GOP o 12 snímkoch (zvyšuje kompatibilitu)"
 
-#: ../data/interface/wfile_properties.ui.h:92
+#: ../data/interface/wfile_properties.ui.h:93
 msgid "<b>Special</b>"
 msgstr "<b>Špeciálne</b>"
 
-#: ../data/interface/wfile_properties.ui.h:93
+#: ../data/interface/wfile_properties.ui.h:94
 msgid "Misc"
 msgstr "Rôzne"
 
-#: ../data/interface/wfile_properties.ui.h:94
+#: ../data/interface/wfile_properties.ui.h:95
 msgid "<b>Options</b>"
 msgstr "<b>Voľby</b>"
 
-#: ../data/interface/wfile_properties.ui.h:95 ../data/interface/wmain.ui.h:8
+#: ../data/interface/wfile_properties.ui.h:96 ../data/interface/wmain.ui.h:9
 msgid "Preview"
 msgstr "Náhľad"
 
@@ -771,46 +783,50 @@ msgid "_Help"
 msgstr "_Pomoc"
 
 #: ../data/interface/wmain.ui.h:6
+msgid "Show documentation"
+msgstr ""
+
+#: ../data/interface/wmain.ui.h:7
 msgid "Title"
 msgstr "Titul"
 
-#: ../data/interface/wmain.ui.h:7
+#: ../data/interface/wmain.ui.h:8
 msgid "Duration"
 msgstr "Trvanie"
 
-#: ../data/interface/wmain.ui.h:9
+#: ../data/interface/wmain.ui.h:10
 msgid "<b>Files</b>"
 msgstr "<b>Súbory</b>"
 
-#: ../data/interface/wmain.ui.h:10
+#: ../data/interface/wmain.ui.h:11
 msgid "Media size:"
 msgstr "Veľkosť média:"
 
-#: ../data/interface/wmain.ui.h:11
+#: ../data/interface/wmain.ui.h:12
 msgid "Adjust disc usage"
 msgstr "Prispôsobiť využitie disku"
 
-#: ../data/interface/wmain.ui.h:12
+#: ../data/interface/wmain.ui.h:13
 msgid "<b>Disc usage</b>"
 msgstr "<b>Využitie disku</b>"
 
-#: ../data/interface/wmain.ui.h:13
+#: ../data/interface/wmain.ui.h:14
 msgid "PAL"
 msgstr "PAL"
 
-#: ../data/interface/wmain.ui.h:15
+#: ../data/interface/wmain.ui.h:16
 msgid "<b>Default format</b>"
 msgstr "<b>Predvolený formát</b>"
 
-#: ../data/interface/wmain.ui.h:16
+#: ../data/interface/wmain.ui.h:17
 msgid "Create a menu with the titles"
 msgstr "Vytvoriť ponuku s titulmi"
 
-#: ../data/interface/wmain.ui.h:17
+#: ../data/interface/wmain.ui.h:18
 msgid "Menu options"
 msgstr "Voľby ponuky"
 
-#: ../data/interface/wmain.ui.h:18
+#: ../data/interface/wmain.ui.h:19
 msgid "<b>Menus</b>"
 msgstr "<b>Ponuky</b>"
 
@@ -923,20 +939,28 @@ msgid "Jump to the first title at startup"
 msgstr "Pri spustení skočiť na prvý titul"
 
 #: ../data/interface/wmenu.ui.h:28
+msgid "Provide \"Play All\" option"
+msgstr ""
+
+#: ../data/interface/wmenu.ui.h:29
 msgid "<b>Disc startup options</b>"
 msgstr "<b>Voľby pre spustenie disku</b>"
 
-#: ../data/interface/wmenu.ui.h:29
+#: ../data/interface/wmenu.ui.h:30
 msgid "Show titles as selected"
 msgstr "Zobraziť tituly ako vybraté"
 
-#: ../data/interface/wmenu.ui.h:30
+#: ../data/interface/wmenu.ui.h:31
 msgid "<b>Preview</b>"
 msgstr "<b>Náhľad</b>"
 
-#: ../data/interface/wmenu.ui.h:31
+#: ../data/interface/wmenu.ui.h:32
 msgid "<b>Menu preview</b>"
 msgstr "<b>Náhľad ponuky</b>"
+
+#: ../data/interface/wneeded.ui.h:1
+msgid "Programs needed by Devede NG"
+msgstr "Programy vyžadované aplikáciou Devede NG"
 
 #: ../data/interface/wpreview.ui.h:1
 msgid ""
@@ -971,7 +995,7 @@ msgid "Devede NG"
 msgstr "Devede NG"
 
 #: ../data/interface/wselect_disk.ui.h:2
-msgid "<b>Choose the disc type you want to create with DeVeDe</b>"
+msgid "<b>Choose the disc type you want to create with Devede</b>"
 msgstr "<b>Vyberte druh disku, ktorý chcete vytvoriť pomocou DeVeDe</b>"
 
 #: ../data/interface/wselect_disk.ui.h:3
@@ -1023,8 +1047,8 @@ msgstr ""
 "Vytvorí súbory vo formáte H.264 v kontajneri MKV"
 
 #: ../data/interface/wselect_disk.ui.h:15
-msgid "Programs needed by Devede NG"
-msgstr "Programy vyžadované aplikáciou Devede NG"
+msgid "Programs needed by Devede"
+msgstr "Programy vyžadované aplikáciou Devede"
 
 #: ../data/interface/wsettings.ui.h:1
 msgid "<b>Multicore CPUs</b>"

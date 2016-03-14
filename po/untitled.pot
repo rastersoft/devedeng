@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-07 19:30+0100\n"
+"POT-Creation-Date: 2016-03-14 16:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,57 +18,65 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../src/devede/add_files.py:44
+#: ../src/devedeng/add_files.py:44
 msgid "Video files"
 msgstr ""
 
-#: ../src/devede/add_files.py:49 ../src/devede/ask_subtitles.py:90
-#: ../src/devede/dvd_menu.py:146 ../src/devede/dvd_menu.py:158
-#: ../src/devede/opensave.py:49
+#: ../src/devedeng/add_files.py:49 ../src/devedeng/ask_subtitles.py:90
+#: ../src/devedeng/dvd_menu.py:150 ../src/devedeng/dvd_menu.py:162
+#: ../src/devedeng/opensave.py:49
 msgid "All files"
 msgstr ""
 
-#: ../src/devede/ask_subtitles.py:79
+#: ../src/devedeng/ask_subtitles.py:79
 msgid "Subtitle files"
 msgstr ""
 
-#: ../src/devede/avconv_converter.py:112 ../src/devede/ffmpeg_converter.py:112
+#: ../src/devedeng/avconv.py:115 ../src/devedeng/ffmpeg.py:111
 #, python-format
 msgid "Converting %(X)s (pass 2)"
 msgstr ""
 
-#: ../src/devede/avconv_converter.py:114 ../src/devede/ffmpeg_converter.py:114
+#: ../src/devedeng/avconv.py:117 ../src/devedeng/ffmpeg.py:113
 #, python-format
 msgid "Converting %(X)s (pass 1)"
 msgstr ""
 
-#: ../src/devede/avconv_converter.py:123 ../src/devede/ffmpeg_converter.py:123
+#: ../src/devedeng/avconv.py:126 ../src/devedeng/ffmpeg.py:122
 #, python-format
 msgid "Converting %(X)s"
 msgstr ""
 
-#: ../src/devede/avconv_converter.py:356 ../src/devede/ffmpeg_converter.py:356
+#: ../src/devedeng/avconv.py:362 ../src/devedeng/ffmpeg.py:355
 #, python-format
 msgid "Creating menu %(X)d"
 msgstr ""
 
-#: ../src/devede/choose_disc_type.py:150 ../src/devede/choose_disc_type.py:158
-#: ../src/devede/choose_disc_type.py:171 ../src/devede/choose_disc_type.py:179
-#: ../src/devede/choose_disc_type.py:187 ../src/devede/choose_disc_type.py:194
-#: ../src/devede/choose_disc_type.py:198 ../src/devede/choose_disc_type.py:202
+#: ../src/devedeng/choose_disc_type.py:154
+#: ../src/devedeng/choose_disc_type.py:162
+#: ../src/devedeng/choose_disc_type.py:175
+#: ../src/devedeng/choose_disc_type.py:183
+#: ../src/devedeng/choose_disc_type.py:191
+#: ../src/devedeng/choose_disc_type.py:198
+#: ../src/devedeng/choose_disc_type.py:202
+#: ../src/devedeng/choose_disc_type.py:206
 #, python-format
 msgid "\t%(program_name)s (not installed)\n"
 msgstr ""
 
-#: ../src/devede/choose_disc_type.py:152 ../src/devede/choose_disc_type.py:160
-#: ../src/devede/choose_disc_type.py:173 ../src/devede/choose_disc_type.py:181
-#: ../src/devede/choose_disc_type.py:189 ../src/devede/choose_disc_type.py:196
-#: ../src/devede/choose_disc_type.py:200 ../src/devede/choose_disc_type.py:204
+#: ../src/devedeng/choose_disc_type.py:156
+#: ../src/devedeng/choose_disc_type.py:164
+#: ../src/devedeng/choose_disc_type.py:177
+#: ../src/devedeng/choose_disc_type.py:185
+#: ../src/devedeng/choose_disc_type.py:193
+#: ../src/devedeng/choose_disc_type.py:200
+#: ../src/devedeng/choose_disc_type.py:204
+#: ../src/devedeng/choose_disc_type.py:208
 #, python-format
 msgid "\t%(program_name)s (installed)\n"
 msgstr ""
 
-#: ../src/devede/choose_disc_type.py:153
+#: ../src/devedeng/choose_disc_type.py:157
 #, python-format
 msgid ""
 "Movie identifiers (install at least one of these):\n"
@@ -76,7 +84,7 @@ msgid ""
 "%(program_list)s\n"
 msgstr ""
 
-#: ../src/devede/choose_disc_type.py:161
+#: ../src/devedeng/choose_disc_type.py:165
 #, python-format
 msgid ""
 "Movie players (install at least one of these):\n"
@@ -84,7 +92,7 @@ msgid ""
 "%(program_list)s\n"
 msgstr ""
 
-#: ../src/devede/choose_disc_type.py:174
+#: ../src/devedeng/choose_disc_type.py:178
 #, python-format
 msgid ""
 "Movie Converters (install at least one of these):\n"
@@ -92,7 +100,7 @@ msgid ""
 "%(program_list)s\n"
 msgstr ""
 
-#: ../src/devede/choose_disc_type.py:182
+#: ../src/devedeng/choose_disc_type.py:186
 #, python-format
 msgid ""
 "CD/DVD burners (install at least one of these):\n"
@@ -100,7 +108,7 @@ msgid ""
 "%(program_list)s\n"
 msgstr ""
 
-#: ../src/devede/choose_disc_type.py:190
+#: ../src/devedeng/choose_disc_type.py:194
 #, python-format
 msgid ""
 "ISO creators (install at least one of these):\n"
@@ -108,7 +116,7 @@ msgid ""
 "%(program_list)s\n"
 msgstr ""
 
-#: ../src/devede/choose_disc_type.py:206
+#: ../src/devedeng/choose_disc_type.py:210
 #, python-format
 msgid ""
 "Other programs:\n"
@@ -116,88 +124,92 @@ msgid ""
 "%(program_list)s\n"
 msgstr ""
 
-#: ../src/devede/dvdauthor_converter.py:49
+#: ../src/devedeng/dvdauthor_converter.py:49
 msgid "Creating DVD structure"
 msgstr ""
 
-#: ../src/devede/dvd_menu.py:87
+#: ../src/devedeng/dvd_menu.py:91
 msgid "The selected file is a video, not an audio file"
 msgstr ""
 
-#: ../src/devede/dvd_menu.py:87 ../src/devede/dvd_menu.py:90
+#: ../src/devedeng/dvd_menu.py:91 ../src/devedeng/dvd_menu.py:94
 msgid "Error"
 msgstr ""
 
-#: ../src/devede/dvd_menu.py:90
+#: ../src/devedeng/dvd_menu.py:94
 msgid "The selected file is not an audio file"
 msgstr ""
 
-#: ../src/devede/dvd_menu.py:141
+#: ../src/devedeng/dvd_menu.py:145
 msgid "Picture files"
 msgstr ""
 
-#: ../src/devede/dvd_menu.py:153
+#: ../src/devedeng/dvd_menu.py:157
 msgid "Sound files"
 msgstr ""
 
-#: ../src/devede/dvd_menu.py:390
+#: ../src/devedeng/dvd_menu.py:396
 #, python-format
 msgid "Page %(X)d of %(Y)d"
 msgstr ""
 
-#: ../src/devede/file_copy.py:31
+#: ../src/devedeng/file_copy.py:31
 #, python-format
 msgid "Copying file %(X)s"
 msgstr ""
 
-#: ../src/devede/genisoimage.py:67 ../src/devede/mkisofs.py:67
+#: ../src/devedeng/genisoimage.py:67 ../src/devedeng/mkisofs.py:67
 msgid "Creating ISO image"
 msgstr ""
 
-#: ../src/devede/mux_dvd_menu.py:34
+#: ../src/devedeng/help.py:17
+msgid "Can't open the help files."
+msgstr ""
+
+#: ../src/devedeng/mux_dvd_menu.py:34
 #, python-format
 msgid "Mixing menu %(X)d"
 msgstr ""
 
-#: ../src/devede/opensave.py:45
+#: ../src/devedeng/opensave.py:45
 msgid "DevedeNG projects"
 msgstr ""
 
-#: ../src/devede/project.py:203
+#: ../src/devedeng/project.py:204
 msgid "Abort the current DVD and exit?"
 msgstr ""
 
-#: ../src/devede/project.py:203
+#: ../src/devedeng/project.py:204
 msgid "Exit DeVeDe"
 msgstr ""
 
-#: ../src/devede/project.py:249
+#: ../src/devedeng/project.py:259
 msgid "The following files could not be added:"
 msgstr ""
 
-#: ../src/devede/project.py:249 ../src/devede/project.py:668
+#: ../src/devedeng/project.py:259 ../src/devedeng/project.py:719
 msgid "Error while adding files"
 msgstr ""
 
-#: ../src/devede/project.py:261
+#: ../src/devedeng/project.py:271
 #, python-format
 msgid "The file <b>%(X)s</b> <i>(%(Y)s)</i> will be removed."
 msgstr ""
 
-#: ../src/devede/project.py:261
+#: ../src/devedeng/project.py:271
 msgid "Delete file"
 msgstr ""
 
-#: ../src/devede/project.py:423
+#: ../src/devedeng/project.py:474
 #, python-format
 msgid "The limit for this format is %(l)d files, but your project has %(h)d."
 msgstr ""
 
-#: ../src/devede/project.py:423
+#: ../src/devedeng/project.py:474
 msgid "Too many files in the project"
 msgstr ""
 
-#: ../src/devede/project.py:432
+#: ../src/devedeng/project.py:483
 #, python-format
 msgid ""
 "The selected folder already exists. To create the project, Devede must "
@@ -209,67 +221,67 @@ msgid ""
 " and all its contents <b>will be deleted</b>. Continue?"
 msgstr ""
 
-#: ../src/devede/project.py:432
+#: ../src/devedeng/project.py:483
 msgid "Delete folder"
 msgstr ""
 
-#: ../src/devede/project.py:567
+#: ../src/devedeng/project.py:618
 msgid "Close current project and start a fresh one?"
 msgstr ""
 
-#: ../src/devede/project.py:567
+#: ../src/devedeng/project.py:618
 msgid "New project"
 msgstr ""
 
-#: ../src/devede/project.py:608
+#: ../src/devedeng/project.py:659
 msgid "The file already exists. Overwrite it?"
 msgstr ""
 
-#: ../src/devede/project.py:608
+#: ../src/devedeng/project.py:659
 msgid "The file already exists"
 msgstr ""
 
-#: ../src/devede/project.py:668
+#: ../src/devedeng/project.py:719
 msgid "The following files in the project could not be added again:"
 msgstr ""
 
-#: ../src/devede/runner.py:91
+#: ../src/devedeng/runner.py:91
 msgid "Cancel the current job?"
 msgstr ""
 
-#: ../src/devede/settings.py:45 ../src/devede/settings.py:61
+#: ../src/devedeng/settings.py:45 ../src/devedeng/settings.py:61
 msgid "Use all cores"
 msgstr ""
 
-#: ../src/devede/settings.py:49
+#: ../src/devedeng/settings.py:49
 #, python-format
 msgid "Use %(X)d core"
 msgid_plural "Use %(X)d cores"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/devede/settings.py:55
+#: ../src/devedeng/settings.py:55
 #, python-format
 msgid "Use all except %(X)d core"
 msgid_plural "Use all except %(X)d cores"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/devede/settings.py:121
+#: ../src/devedeng/settings.py:121
 msgid "No discs supported"
 msgstr ""
 
-#: ../src/devede/subtitles_mux.py:43
+#: ../src/devedeng/subtitles_mux.py:43
 #, python-format
 msgid "Adding %(L)s subtitles to %(X)s"
 msgstr ""
 
-#: ../src/devede/title.py:32
+#: ../src/devedeng/title.py:32
 #, python-format
 msgid "Title %(X)d"
 msgstr ""
 
-#: ../src/devede/vcdimager_converter.py:46
+#: ../src/devedeng/vcdimager_converter.py:46
 msgid "Creating CD image"
 msgstr ""
 
@@ -368,8 +380,7 @@ msgstr ""
 msgid "<b>File info</b>"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:11
-#: ../data/interface/wmessage.ui.h:1
+#: ../data/interface/wfile_properties.ui.h:11 ../data/interface/wmessage.ui.h:1
 msgid "column"
 msgstr ""
 
@@ -389,7 +400,7 @@ msgstr ""
 msgid "PAL/SECAM"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:16 ../data/interface/wmain.ui.h:14
+#: ../data/interface/wfile_properties.ui.h:16 ../data/interface/wmain.ui.h:15
 msgid "NTSC"
 msgstr ""
 
@@ -431,286 +442,290 @@ msgid "<b>Audio rate (KBits/sec)</b>"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:27
-msgid "Split the file in chapters (for easy seeking)"
-msgstr ""
-
-#: ../data/interface/wfile_properties.ui.h:28
 msgid "5"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:29
+#: ../data/interface/wfile_properties.ui.h:28
 msgid "Size (in minutes) for each chapter:"
 msgstr ""
 
+#: ../data/interface/wfile_properties.ui.h:29
+msgid "Split the file in chapters (for easy seeking)"
+msgstr ""
+
 #: ../data/interface/wfile_properties.ui.h:30
-msgid "<b>Division in chapters</b>"
+msgid "Manual chapter list (split by comma in mm:ss format):"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:31
-msgid "General"
+msgid "<b>Division in chapters</b>"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:32
-msgid "Language"
+msgid "General"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:33
-msgid "Subtitle"
+msgid "Language"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:34
-msgid "Font size:"
+msgid "Subtitle"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:35
-msgid "Force subtitles"
+msgid "Font size:"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:36
-msgid "Fill color:"
+msgid "Force subtitles"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:37
-msgid "Outline color:"
+msgid "Fill color:"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:38
-msgid "Outline thickness:"
+msgid "Outline color:"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:39
-msgid "Subtitles"
+msgid "Outline thickness:"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:40
-msgid "1920x1080"
+msgid "Subtitles"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:41
-msgid "1280x720"
+msgid "1920x1080"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:42
-msgid "720x480"
+msgid "1280x720"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:43
-msgid "704x480"
+msgid "720x480"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:44
-msgid "480x480"
+msgid "704x480"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:45
-msgid "352x480"
+msgid "480x480"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:46
-msgid "352x240"
+msgid "352x480"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:47
-msgid "720x576"
+msgid "352x240"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:48
-msgid "704x576"
+msgid "720x576"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:49
-msgid "480x576"
+msgid "704x576"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:50
-msgid "352x576"
+msgid "480x576"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:51
-msgid "352x288"
+msgid "352x576"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:52
-msgid "<b>Final size</b>"
+msgid "352x288"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:53
-msgid "4:3"
+msgid "<b>Final size</b>"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:54
-msgid "16:9"
+msgid "4:3"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:55
-msgid "<b>Aspect ratio</b>"
+msgid "16:9"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:56
-msgid "Horizontal mirror"
+msgid "<b>Aspect ratio</b>"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:57
-msgid "Vertical mirror"
+msgid "Horizontal mirror"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:58
-msgid "<b>Mirror</b>"
+msgid "Vertical mirror"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:59
-msgid "No rotation"
+msgid "<b>Mirror</b>"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:60
-msgid "90 degrees (clockwise)"
+msgid "No rotation"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:61
-msgid "180 degrees"
+msgid "90 degrees (clockwise)"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:62
-msgid "90 degrees (counter-clockwise)"
+msgid "180 degrees"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:63
-msgid "<b>Rotation</b>"
+msgid "90 degrees (counter-clockwise)"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:64
-msgid "Add black bars"
+msgid "<b>Rotation</b>"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:65
-msgid "Scale picture"
+msgid "Add black bars"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:66
-msgid "Cut picture"
+msgid "Scale picture"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:67
-msgid "<b>Scaling mode</b>"
+msgid "Cut picture"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:68
-msgid "Video options"
+msgid "<b>Scaling mode</b>"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:69
-msgid "Use dual pass encoding (better quality, much slower conversion)"
+msgid "Video options"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:70
-msgid "<b>Two pass encoding</b>"
+msgid "Use dual pass encoding (better quality, much slower conversion)"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:71
-msgid "Don't deinterlace"
+msgid "<b>Two pass encoding</b>"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:72
-msgid "FFMpeg deinterlacing filter"
+msgid "Don't deinterlace"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:73
-msgid "YADIF deinterlacing filter"
+msgid "FFMpeg deinterlacing filter"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:74
-msgid "<b>Deinterlacing</b>"
+msgid "YADIF deinterlacing filter"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:75
-msgid "Quality"
+msgid "<b>Deinterlacing</b>"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:76
-msgid "Audio delay (in seconds):"
+msgid "Quality"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:77
-msgid "Create DVD with 5.1 channel sound"
+msgid "Audio delay (in seconds):"
 msgstr ""
 
 #: ../data/interface/wfile_properties.ui.h:78
+msgid "Create DVD with 5.1 channel sound"
+msgstr ""
+
+#: ../data/interface/wfile_properties.ui.h:79
 msgid ""
 "This file already has AC3 sound (copy audio data instead of recompress it)"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:79
+#: ../data/interface/wfile_properties.ui.h:80
 msgid "<b>Audio</b>"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:80
+#: ../data/interface/wfile_properties.ui.h:81
 msgid "Audio"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:81
+#: ../data/interface/wfile_properties.ui.h:82
 #: ../data/interface/wtitle_properties.ui.h:3
 msgid "Stop reproduction/show disc menu"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:82
+#: ../data/interface/wfile_properties.ui.h:83
 #: ../data/interface/wtitle_properties.ui.h:4
 msgid "Play the first title"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:83
+#: ../data/interface/wfile_properties.ui.h:84
 #: ../data/interface/wtitle_properties.ui.h:5
 msgid "Play the previous title"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:84
+#: ../data/interface/wfile_properties.ui.h:85
 #: ../data/interface/wtitle_properties.ui.h:6
 msgid "Play this title again (loop)"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:85
+#: ../data/interface/wfile_properties.ui.h:86
 #: ../data/interface/wtitle_properties.ui.h:7
 msgid "Play the next title"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:86
+#: ../data/interface/wfile_properties.ui.h:87
 #: ../data/interface/wtitle_properties.ui.h:8
 msgid "Play the last title"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:87
+#: ../data/interface/wfile_properties.ui.h:88
 #: ../data/interface/wtitle_properties.ui.h:9
 msgid "<b>Action to perform when this title ends</b>"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:88
+#: ../data/interface/wfile_properties.ui.h:89
 msgid "Actions"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:89
+#: ../data/interface/wfile_properties.ui.h:90
 msgid "This file is already a DVD/xCD-suitable MPEG-PS file"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:90
+#: ../data/interface/wfile_properties.ui.h:91
 msgid "Repack audio and video without reencoding (useful for VOB files)"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:91
+#: ../data/interface/wfile_properties.ui.h:92
 msgid "Use a GOP of 12 frames (improves compatibility)"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:92
+#: ../data/interface/wfile_properties.ui.h:93
 msgid "<b>Special</b>"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:93
+#: ../data/interface/wfile_properties.ui.h:94
 msgid "Misc"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:94
+#: ../data/interface/wfile_properties.ui.h:95
 msgid "<b>Options</b>"
 msgstr ""
 
-#: ../data/interface/wfile_properties.ui.h:95 ../data/interface/wmain.ui.h:8
+#: ../data/interface/wfile_properties.ui.h:96 ../data/interface/wmain.ui.h:9
 msgid "Preview"
 msgstr ""
 
@@ -735,46 +750,50 @@ msgid "_Help"
 msgstr ""
 
 #: ../data/interface/wmain.ui.h:6
-msgid "Title"
+msgid "Show documentation"
 msgstr ""
 
 #: ../data/interface/wmain.ui.h:7
+msgid "Title"
+msgstr ""
+
+#: ../data/interface/wmain.ui.h:8
 msgid "Duration"
 msgstr ""
 
-#: ../data/interface/wmain.ui.h:9
+#: ../data/interface/wmain.ui.h:10
 msgid "<b>Files</b>"
 msgstr ""
 
-#: ../data/interface/wmain.ui.h:10
+#: ../data/interface/wmain.ui.h:11
 msgid "Media size:"
 msgstr ""
 
-#: ../data/interface/wmain.ui.h:11
+#: ../data/interface/wmain.ui.h:12
 msgid "Adjust disc usage"
 msgstr ""
 
-#: ../data/interface/wmain.ui.h:12
+#: ../data/interface/wmain.ui.h:13
 msgid "<b>Disc usage</b>"
 msgstr ""
 
-#: ../data/interface/wmain.ui.h:13
+#: ../data/interface/wmain.ui.h:14
 msgid "PAL"
 msgstr ""
 
-#: ../data/interface/wmain.ui.h:15
+#: ../data/interface/wmain.ui.h:16
 msgid "<b>Default format</b>"
 msgstr ""
 
-#: ../data/interface/wmain.ui.h:16
+#: ../data/interface/wmain.ui.h:17
 msgid "Create a menu with the titles"
 msgstr ""
 
-#: ../data/interface/wmain.ui.h:17
+#: ../data/interface/wmain.ui.h:18
 msgid "Menu options"
 msgstr ""
 
-#: ../data/interface/wmain.ui.h:18
+#: ../data/interface/wmain.ui.h:19
 msgid "<b>Menus</b>"
 msgstr ""
 
@@ -887,18 +906,22 @@ msgid "Jump to the first title at startup"
 msgstr ""
 
 #: ../data/interface/wmenu.ui.h:28
-msgid "<b>Disc startup options</b>"
+msgid "Provide \"Play All\" option"
 msgstr ""
 
 #: ../data/interface/wmenu.ui.h:29
-msgid "Show titles as selected"
+msgid "<b>Disc startup options</b>"
 msgstr ""
 
 #: ../data/interface/wmenu.ui.h:30
-msgid "<b>Preview</b>"
+msgid "Show titles as selected"
 msgstr ""
 
 #: ../data/interface/wmenu.ui.h:31
+msgid "<b>Preview</b>"
+msgstr ""
+
+#: ../data/interface/wmenu.ui.h:32
 msgid "<b>Menu preview</b>"
 msgstr ""
 
@@ -935,7 +958,7 @@ msgid "Devede NG"
 msgstr ""
 
 #: ../data/interface/wselect_disk.ui.h:2
-msgid "<b>Choose the disc type you want to create with DeVeDe</b>"
+msgid "<b>Choose the disc type you want to create with Devede</b>"
 msgstr ""
 
 #: ../data/interface/wselect_disk.ui.h:3
@@ -975,7 +998,7 @@ msgid ""
 msgstr ""
 
 #: ../data/interface/wselect_disk.ui.h:15
-msgid "Programs needed by Devede NG"
+msgid "Programs needed by Devede"
 msgstr ""
 
 #: ../data/interface/wsettings.ui.h:1
