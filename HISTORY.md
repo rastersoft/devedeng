@@ -1,4 +1,7 @@
 ## History of versions ##
+* version 4.6.1 (2016-03-14)
+  * Fixed translations
+
 * version 4.6.0 (2016-03-13)
   * Fixed a bug when using the Play all option on menus with several pages
   * Updated italian translation
