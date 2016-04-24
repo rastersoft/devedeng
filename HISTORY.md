@@ -1,4 +1,7 @@
 ## History of versions ##
+* version 4.7.0 (2016-04-24)
+  * Fixed a bug when creating the subtitles'XML: now ensures that an integer value is passed
+
 * version 4.6.1 (2016-03-14)
   * Fixed translations
 
