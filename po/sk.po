@@ -2,22 +2,22 @@
 # Copyright (C) 2006 THE devede'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the DeVeDe package.
 # Jozef Riha <jose1711@gmail.com>, 2007, 2008, 2009, 2010.
-# Dušan Kazik <prescott66@gmail.com>, 2015.
+# Dušan Kazik <prescott66@gmail.com>, 2015, 2016.
 # Sergio Costas <rastersoft@gmail.com>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: devede 3.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-14 15:57+0100\n"
-"PO-Revision-Date: 2016-03-14 15:58+0100\n"
-"Last-Translator: Sergio Costas <rastersoft@gmail.com>\n"
+"POT-Creation-Date: 2016-04-30 11:38+0200\n"
+"PO-Revision-Date: 2016-04-30 11:42+0200\n"
+"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Español; Castellano <rastersoft@gmail.com>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/devedeng/add_files.py:44
@@ -182,6 +182,10 @@ msgstr "Kopíruje sa súbor %(X)s"
 msgid "Creating ISO image"
 msgstr "Vytvára sa obraz ISO"
 
+#: ../src/devedeng/help.py:17
+msgid "Can't open the help files."
+msgstr "Nedajú sa otvoriť súbory pomocníka."
+
 #: ../src/devedeng/mux_dvd_menu.py:34
 #, python-format
 msgid "Mixing menu %(X)d"
@@ -284,7 +288,6 @@ msgid "Use %(X)d core"
 msgid_plural "Use %(X)d cores"
 msgstr[0] "Použiť %(X)d jadro"
 msgstr[1] "Použiť %(X)d jadrá"
-msgstr[2] "Použiť %(X)d jadier"
 
 #: ../src/devedeng/settings.py:55
 #, python-format
@@ -292,7 +295,6 @@ msgid "Use all except %(X)d core"
 msgid_plural "Use all except %(X)d cores"
 msgstr[0] "Použiť všetky okrem %(X)d jadra"
 msgstr[1] "Použiť všetky okrem %(X)d jadier"
-msgstr[2] "Použiť všetky okrem %(X)d jadier"
 
 #: ../src/devedeng/settings.py:121
 msgid "No discs supported"
@@ -485,7 +487,7 @@ msgstr "Rozdeliť súbor na kapitoly (pre uľahčenie posunu)"
 
 #: ../data/interface/wfile_properties.ui.h:30
 msgid "Manual chapter list (split by comma in mm:ss format):"
-msgstr ""
+msgstr "Ručný zoznam kapitol (rozdelené čiarkami vo formáte mm:ss):"
 
 #: ../data/interface/wfile_properties.ui.h:31
 msgid "<b>Division in chapters</b>"
@@ -784,7 +786,7 @@ msgstr "_Pomoc"
 
 #: ../data/interface/wmain.ui.h:6
 msgid "Show documentation"
-msgstr ""
+msgstr "Zobraziť dokumentáciu"
 
 #: ../data/interface/wmain.ui.h:7
 msgid "Title"
@@ -940,7 +942,7 @@ msgstr "Pri spustení skočiť na prvý titul"
 
 #: ../data/interface/wmenu.ui.h:28
 msgid "Provide \"Play All\" option"
-msgstr ""
+msgstr "Poskytnúť voľbu „Prehrať všetko“"
 
 #: ../data/interface/wmenu.ui.h:29
 msgid "<b>Disc startup options</b>"
