@@ -88,6 +88,7 @@ class ffprobe(devedeng.executor.executor):
         self.original_fps = 0
         self.original_aspect_ratio = 0
 
+        self.config.append_static_log("Getting data for {:s} with ffprobe".format(file_name))
         try:
             video_data = json.loads(stdout2)
         except:
@@ -149,4 +150,5 @@ class ffprobe(devedeng.executor.executor):
                     self.original_length = self.get_time(line[10:])
                     break
 
+        self.config.append_static_log("Estimated length: {:d}; Resolution: {:s}".format(self.original_length,self.original_size))
         return False # no error

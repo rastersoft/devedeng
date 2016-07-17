@@ -247,4 +247,4 @@ class configuration(GObject.GObject):
 
     def get_log(self):
 
-        return self.static_log + "\n" + self.log
+        return "Static data:\n\n" + self.static_log + "\n\nDynamic data:\n\n" + self.log
