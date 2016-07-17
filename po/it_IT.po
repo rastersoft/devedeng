@@ -4,23 +4,22 @@
 #
 #
 # Maurizio Daniele <hayabusa@hayabusa.it>, 2006, 2009.
-# Andrea Musuruane <musuruan@gmail.com>, 2011.
-# Sergio Costas <rastersoft@gmail.com>, 2016.
+# Andrea Musuruane <musuruan@gmail.com>, 2011-2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: DeVeDe 4.5.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-14 15:59+0100\n"
-"PO-Revision-Date: 2016-03-14 15:59+0100\n"
-"Last-Translator: Sergio Costas <rastersoft@gmail.com>\n"
-"Language-Team: Español; Castellano <rastersoft@gmail.com>\n"
+"PO-Revision-Date: 2016-03-15 15:27+0100\n"
+"Last-Translator: Andrea Musuruane <musuruan@gmail.com>\n"
+"Language-Team: Andrea Musuruane <musuruan@gmail.com>\n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../src/devedeng/add_files.py:44
 msgid "Video files"
@@ -183,6 +182,10 @@ msgstr "Copia del file %(X)s in corso"
 #: ../src/devedeng/genisoimage.py:67 ../src/devedeng/mkisofs.py:67
 msgid "Creating ISO image"
 msgstr "Creazione immagine ISO in corso"
+
+#: ../src/devedeng/help.py:17
+msgid "Can't open the help files."
+msgstr "Impossibile aprire i file di aiuto."
 
 #: ../src/devedeng/mux_dvd_menu.py:34
 #, python-format
@@ -371,7 +374,7 @@ msgstr "Si è verificato un errore durante la creazione del disco."
 
 #: ../data/interface/wfile_properties.ui.h:1
 msgid "Show this title in the menu"
-msgstr "Mostra questo titolo nel menu"
+msgstr "Visualizza questo titolo nel menu"
 
 #: ../data/interface/wfile_properties.ui.h:2
 msgid "<b>Title</b>"
@@ -409,7 +412,8 @@ msgstr "Velocità video originale (Kbit/sec):"
 msgid "<b>File info</b>"
 msgstr "<b>Informazioni file</b>"
 
-#: ../data/interface/wfile_properties.ui.h:11 ../data/interface/wmessage.ui.h:1
+#: ../data/interface/wfile_properties.ui.h:11
+#: ../data/interface/wmessage.ui.h:1
 msgid "column"
 msgstr "colonna"
 
@@ -484,7 +488,7 @@ msgstr "Taglia il file in capitoli (per una ricerca più semplice)"
 
 #: ../data/interface/wfile_properties.ui.h:30
 msgid "Manual chapter list (split by comma in mm:ss format):"
-msgstr ""
+msgstr "Elenco dei capitoli manuale (separato da virgola nel formato mm:ss):"
 
 #: ../data/interface/wfile_properties.ui.h:31
 msgid "<b>Division in chapters</b>"
@@ -697,7 +701,7 @@ msgstr "Audio"
 #: ../data/interface/wfile_properties.ui.h:82
 #: ../data/interface/wtitle_properties.ui.h:3
 msgid "Stop reproduction/show disc menu"
-msgstr "Arresta riproduzione e mostra il menu del disco"
+msgstr "Arresta riproduzione e visualizza il menu del disco"
 
 #: ../data/interface/wfile_properties.ui.h:83
 #: ../data/interface/wtitle_properties.ui.h:4
@@ -783,7 +787,7 @@ msgstr "_Aiuto"
 
 #: ../data/interface/wmain.ui.h:6
 msgid "Show documentation"
-msgstr ""
+msgstr "Visualizza documentazione"
 
 #: ../data/interface/wmain.ui.h:7
 msgid "Title"
@@ -931,7 +935,7 @@ msgstr "<b>Carattere e colori del menu</b>"
 
 #: ../data/interface/wmenu.ui.h:26
 msgid "Show menu at disk startup"
-msgstr "Mostra il menu all'avvio del disco"
+msgstr "Visualizza il menu all'avvio del disco"
 
 #: ../data/interface/wmenu.ui.h:27
 msgid "Jump to the first title at startup"
@@ -939,7 +943,7 @@ msgstr "Vai al primo titolo all'avvio"
 
 #: ../data/interface/wmenu.ui.h:28
 msgid "Provide \"Play All\" option"
-msgstr ""
+msgstr "Fornisci l'opzione \"Riproduci tutti\""
 
 #: ../data/interface/wmenu.ui.h:29
 msgid "<b>Disc startup options</b>"
@@ -947,7 +951,7 @@ msgstr "<b>Opzioni di avvio del disco</b>"
 
 #: ../data/interface/wmenu.ui.h:30
 msgid "Show titles as selected"
-msgstr "Mostra titoli come selezionati"
+msgstr "Visualizza titoli come selezionati"
 
 #: ../data/interface/wmenu.ui.h:31
 msgid "<b>Preview</b>"
@@ -995,7 +999,7 @@ msgstr "Devede NG"
 
 #: ../data/interface/wselect_disk.ui.h:2
 msgid "<b>Choose the disc type you want to create with Devede</b>"
-msgstr "<b>Seleziona il tipo di disco che vuoi creare con DeVeDe</b>"
+msgstr "<b>Seleziona il tipo di disco che vuoi creare con Devede</b>"
 
 #: ../data/interface/wselect_disk.ui.h:3
 msgid ""
@@ -1167,9 +1171,6 @@ msgstr "<b>Nome del titolo</b>"
 #~ msgstr ""
 #~ "Impossibile trovare lo sfondo del menu.\n"
 #~ "Controllare le opzioni del menu."
-
-#~ msgid "Can't open the file."
-#~ msgstr "Impossibile aprire il file."
 
 #~ msgid "That file doesn't contain a disc structure."
 #~ msgstr "Questo file non contiene la struttura di un disco."
