@@ -1,4 +1,7 @@
 ## History of versions ##
+* version 4.8.0 (2016-08-12)
+  * Fixed a division by zero when a clip has a duration of less than one second
+
 * version 4.7.1 (2016-07-17)
   * Updated translations
 
