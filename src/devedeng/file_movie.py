@@ -167,6 +167,9 @@ class file_movie(devedeng.interface_manager.interface_manager):
                 if self.original_videorate <= 0:
                     # presume that there are only video and audio streams
                     self.original_videorate = ((8 * self.original_file_size) / self.original_length) - (self.original_audiorate * self.audio_streams)
+                # to avoid division by zero when a clip is very short
+                if self.original_length <= 0:
+                    self.original_length = 1
 
             self.width_midle = -1
             self.height_midle = -1
