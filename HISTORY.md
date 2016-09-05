@@ -1,4 +1,7 @@
 ## History of versions ##
+* version 4.8.1 (2016-09-05)
+  * Fixed a float value used for volume where it expected an integer
+
 * version 4.8.0 (2016-08-12)
   * Fixed a division by zero when a clip has a duration of less than one second
 

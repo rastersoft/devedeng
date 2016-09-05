@@ -126,7 +126,7 @@ class ffmpeg(devedeng.executor.executor):
             second_pass = False
         else:
             # second_pass is TRUE in the second pass of a 2-pass codification, and also when not doing 2-pass codification
-            # It is used to remove unnecessary steps during the first pass, but that are needed on the second pass, or when not using 2-pass codification 
+            # It is used to remove unnecessary steps during the first pass, but that are needed on the second pass, or when not using 2-pass codification
             second_pass = True
 
         if (video_length == 0):
@@ -140,7 +140,7 @@ class ffmpeg(devedeng.executor.executor):
 
         if (file_project.volume!=100) and second_pass:
             self.command_var.append("-vol")
-            self.command_var.append(str((256*file_project.volume)/100))
+            self.command_var.append(str(int((256*file_project.volume)/100)))
 
         if (file_project.audio_delay != 0.0) and (file_project.copy_sound==False) and (file_project.no_reencode_audio_video==False) and second_pass:
             self.command_var.append("-itsoffset")
