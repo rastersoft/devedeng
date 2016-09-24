@@ -42,7 +42,7 @@ class subtitles_mux(devedeng.executor.executor):
         self.duration = duration
         self.text = _("Adding %(L)s subtitles to %(X)s") % {"X": os.path.basename(file_path), "L": subt_lang}
 
-        out_xml = open(file_path+".xml","w")
+        out_xml = open(file_path+"_s"+str(stream_id)+".xml","w")
         out_xml.write('<subpictures format="')
         if pal:
             out_xml.write('PAL')
@@ -83,7 +83,7 @@ class subtitles_mux(devedeng.executor.executor):
         self.command_var.append(mode)
         self.command_var.append("-s")
         self.command_var.append(str(stream_id))
-        self.command_var.append(file_path+".xml")
+        self.command_var.append(file_path+"_s"+str(stream_id)+".xml")
         self.stdin_file = file_path+".tmp"
         self.stdout_file = file_path
 

@@ -1,4 +1,7 @@
 ## History of versions ##
+* version 4.8.2 (2016-09-24)
+  * Fixed a problem when adding several subtitles to the same movie (thanks to Rocco Barisci)
+
 * version 4.8.1 (2016-09-05)
   * Fixed a float value used for volume where it expected an integer
 
