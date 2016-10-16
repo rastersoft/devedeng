@@ -227,9 +227,10 @@ class configuration(GObject.GObject):
 
     def append_log(self,data,cr = True):
 
-        self.log+=data
+        self.log += data
         if (cr):
             self.log += "\n"
+            
 
     def append_static_log(self,data,cr = True):
         

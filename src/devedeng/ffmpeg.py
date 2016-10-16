@@ -275,6 +275,10 @@ class ffmpeg(devedeng.executor.executor):
                     if not file_project.copy_sound:
                         self.command_var.append("-c:a")
                         self.command_var.append("mp2")
+                self.command_var.append("-b:v")
+                self.command_var.append("1150000")
+                self.command_var.append("-b:a")
+                self.command_var.append("224000")
                 self.command_var.append("-f")
                 self.command_var.append("vcd")
                 self.command_var.append("-r")
