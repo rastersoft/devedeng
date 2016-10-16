@@ -212,7 +212,7 @@ class ffmpeg(devedeng.executor.executor):
 
         self.command_var.append("-y")
 
-        vcd=False
+        vcd = False
 
         if (self.config.disc_type == "divx"):
             self.command_var.append("-vcodec")
@@ -229,47 +229,144 @@ class ffmpeg(devedeng.executor.executor):
             self.command_var.append("-f")
             self.command_var.append("matroska")
         else:
-            self.command_var.append("-target")
             if (self.config.disc_type=="dvd"):
-                if not file_project.format_pal:
-                    self.command_var.append("ntsc-dvd")
-                elif (file_project.original_fps==24):
-                    self.command_var.append("film-dvd")
+                if not file_project.no_reencode_audio_video:
+                    self.command_var.append("-c:v")
+                    self.command_var.append("mpeg2video")
+                    if not file_project.copy_sound:
+                        if file_project.sound5_1:
+                            self.command_var.append("-c:a")
+                            self.command_var.append("ac3")
+                        else:
+                            self.command_var.append("-c:a")
+                            if file_project.format_pal:
+                                self.command_var.append("ac3")
+                            else:
+                                self.command_var.append("mp2")
+                self.command_var.append("-f")
+                self.command_var.append("dvd")
+                self.command_var.append("-r")
+                if file_project.format_pal:
+                    self.command_var.append("25")
                 else:
-                    self.command_var.append("pal-dvd")
-                if (not file_project.copy_sound):
-                    if file_project.sound5_1:
-                        self.command_var.append("-acodec")
-                        self.command_var.append("ac3")
+                    if (file_project.original_fps == 24):
+                        self.command_var.append("24000/1001")
+                    else:
+                        self.command_var.append("30000/1001")
+                self.command_var.append("-pix_fmt")
+                self.command_var.append("yuv420p")
+                self.command_var.append("-maxrate")
+                self.command_var.append("9000000")
+                self.command_var.append("-minrate")
+                self.command_var.append("1500000")
+                self.command_var.append("-bufsize")
+                self.command_var.append("1835008")
+                self.command_var.append("-packetsize")
+                self.command_var.append("2048")
+                self.command_var.append("-muxrate")
+                self.command_var.append("10080000")
+                self.command_var.append("-ar")
+                self.command_var.append("48000")
             elif (self.config.disc_type=="vcd"):
-                vcd=True
-                if not file_project.format_pal:
-                    self.command_var.append("ntsc-vcd")
+                vcd = True
+                if not file_project.no_reencode_audio_video:
+                    self.command_var.append("-c:v")
+                    self.command_var.append("mpeg1video")
+                    if not file_project.copy_sound:
+                        self.command_var.append("-c:a")
+                        self.command_var.append("mp2")
+                self.command_var.append("-f")
+                self.command_var.append("vcd")
+                self.command_var.append("-r")
+                if file_project.format_pal:
+                    self.command_var.append("25")
                 else:
-                    self.command_var.append("pal-vcd")
-            elif (self.config.disc_type=="svcd"):
-                if not file_project.format_pal:
-                    self.command_var.append("ntsc-svcd")
+                    if (file_project.original_fps == 24):
+                        self.command_var.append("24000/1001")
+                    else:
+                        self.command_var.append("30000/1001")
+                self.command_var.append("-g")
+                if file_project.format_pal:
+                    self.command_var.append("15")
                 else:
-                    self.command_var.append("pal-svcd")
-            elif (self.config.disc_type=="cvd"):
-                if not file_project.format_pal:
-                    self.command_var.append("ntsc-svcd")
+                    self.command_var.append("18")
+                self.command_var.append("-s")
+                if file_project.format_pal:
+                    self.command_var.append("352x288")
                 else:
-                    self.command_var.append("pal-svcd")
+                    self.command_var.append("352x240")
+                self.command_var.append("-maxrate:v")
+                self.command_var.append("1150000")
+                self.command_var.append("-minrate:v")
+                self.command_var.append("1150000")
+                self.command_var.append("-bufsize")
+                self.command_var.append("327680")
+                self.command_var.append("-packetsize")
+                self.command_var.append("2324")
+                self.command_var.append("-muxrate")
+                self.command_var.append("1411200")
+                self.command_var.append("-ar")
+                self.command_var.append("44100")
+            elif (self.config.disc_type=="svcd") or (self.config.disc_type=="cvd"):
+                if not file_project.no_reencode_audio_video:
+                    self.command_var.append("-c:v")
+                    self.command_var.append("mpeg2video")
+                    if not file_project.copy_sound:
+                        self.command_var.append("-c:a")
+                        self.command_var.append("mp2")
+                self.command_var.append("-f")
+                self.command_var.append("svcd")
+                self.command_var.append("-r")
+                if file_project.format_pal:
+                    self.command_var.append("25")
+                else:
+                    if (file_project.original_fps == 24):
+                        self.command_var.append("24000/1001")
+                    else:
+                        self.command_var.append("30000/1001")
+                self.command_var.append("-g")
+                if file_project.format_pal:
+                    self.command_var.append("12")
+                else:
+                    self.command_var.append("15")
+                self.command_var.append("-s")
+                if self.config.disc_type == "cvd":
+                    if file_project.format_pal:
+                        self.command_var.append("352x576")
+                    else:
+                        self.command_var.append("352x480")
+                else:
+                    if file_project.format_pal:
+                        self.command_var.append("480x576")
+                    else:
+                        self.command_var.append("480x480")
+                self.command_var.append("-pix_fmt")
+                self.command_var.append("yuv420p")
+                self.command_var.append("-maxrate:v")
+                self.command_var.append("2516000")
+                self.command_var.append("-minrate:v")
+                self.command_var.append("1145000")
+                self.command_var.append("-bufsize")
+                self.command_var.append("1835008")
+                self.command_var.append("-packetsize")
+                self.command_var.append("2324")
+                self.command_var.append("-ar")
+                self.command_var.append("44100")
+                self.command_var.append("-scan_offset")
+                self.command_var.append("1")
 
         if  (not file_project.no_reencode_audio_video):
             self.command_var.append("-sn") # no subtitles
 
         if file_project.copy_sound or file_project.no_reencode_audio_video:
-            self.command_var.append("-acodec")
+            self.command_var.append("-c:a")
             self.command_var.append("copy")
 
         if file_project.no_reencode_audio_video:
-            self.command_var.append("-vcodec")
+            self.command_var.append("-c:v")
             self.command_var.append("copy")
 
-        if (vcd==False):
+        if (not vcd):
             if not file_project.format_pal:
                 if (file_project.original_fps==24) and ((self.config.disc_type=="dvd")):
                     keyintv=15
@@ -278,16 +375,16 @@ class ffmpeg(devedeng.executor.executor):
             else:
                 keyintv=15
 
-            if not file_project.gop12:
+            if (not file_project.gop12) and (not(self.config.disc_type == "divx")) and (not(self.config.disc_type == "mkv")):
                 self.command_var.append("-g")
                 self.command_var.append(str(keyintv))
 
-        if (self.config.disc_type=="divx") or (self.config.disc_type=="mkv"):
-            self.command_var.append("-g")
-            self.command_var.append("300")
-        elif file_project.gop12 and (file_project.no_reencode_audio_video==False):
-            self.command_var.append("-g")
-            self.command_var.append("12")
+            if (self.config.disc_type=="divx") or (self.config.disc_type=="mkv"):
+                self.command_var.append("-g")
+                self.command_var.append("300")
+            elif file_project.gop12 and (not file_project.no_reencode_audio_video):
+                self.command_var.append("-g")
+                self.command_var.append("12")
 
         self.command_var.append("-bf")
         self.command_var.append("2")

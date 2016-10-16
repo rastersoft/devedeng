@@ -1,4 +1,7 @@
 ## History of versions ##
+* version 4.8.3 (2016-10-16)
+  * Fixed the problem fixed bitrate problem with FFMpeg and AVConv (thanks to Juniorsnet)
+
 * version 4.8.2 (2016-09-24)
   * Fixed a problem when adding several subtitles to the same movie (thanks to Rocco Barisci)
 
