@@ -263,8 +263,8 @@ class ffmpeg(devedeng.executor.executor):
                     maxrate = 9000000
                 self.command_var.append(str(maxrate))
                 self.command_var.append("-minrate:v")
-                if minrate < 15000000:
-                    minrate = 15000000
+                if minrate < 1500000:
+                    minrate = 1500000
                 self.command_var.append(str(minrate))
                 self.command_var.append("-bufsize")
                 self.command_var.append("1835008")
