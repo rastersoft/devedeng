@@ -214,6 +214,10 @@ class ffmpeg(devedeng.executor.executor):
 
         vcd = False
 
+        maxrate = int(file_project.video_rate_final * 1500)
+        minrate = int(file_project.video_rate_final * 666.66)
+
+
         if (self.config.disc_type == "divx"):
             self.command_var.append("-vcodec")
             self.command_var.append("mpeg4")
@@ -255,10 +259,14 @@ class ffmpeg(devedeng.executor.executor):
                         self.command_var.append("30000/1001")
                 self.command_var.append("-pix_fmt")
                 self.command_var.append("yuv420p")
-                self.command_var.append("-maxrate")
-                self.command_var.append("9000000")
-                self.command_var.append("-minrate")
-                self.command_var.append("1500000")
+                self.command_var.append("-maxrate:v")
+                if maxrate > 9000000:
+                    maxrate = 9000000
+                self.command_var.append(str(maxrate))
+                self.command_var.append("-minrate:v")
+                if minrate < 15000000:
+                    minrate = 15000000
+                self.command_var.append(str(minrate))
                 self.command_var.append("-bufsize")
                 self.command_var.append("1835008")
                 self.command_var.append("-packetsize")
@@ -346,6 +354,13 @@ class ffmpeg(devedeng.executor.executor):
                         self.command_var.append("480x480")
                 self.command_var.append("-pix_fmt")
                 self.command_var.append("yuv420p")
+                if maxrate > 2516000:
+                    maxrate = 2516000
+                self.command_var.append(str(maxrate))
+                self.command_var.append("-minrate")
+                if minrate < 1145000:
+                    minrate = 1145000
+                self.command_var.append(str(minrate))
                 self.command_var.append("-maxrate:v")
                 self.command_var.append("2516000")
                 self.command_var.append("-minrate:v")
