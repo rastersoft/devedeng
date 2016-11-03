@@ -64,7 +64,7 @@ except:
 setup(
     name='devedeng',
 
-    version='4.8.3',
+    version='4.8.4',
 
     description='A video DVD creator',
     long_description = "A program that allows to create video DVDs",

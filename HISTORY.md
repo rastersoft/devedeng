@@ -1,4 +1,7 @@
 ## History of versions ##
+* version 4.8.4 (2016-11-03)
+  * Allows to set if a movie is shown or not in the DVD menu from the main window
+
 * version 4.8.3 (2016-10-16)
   * Fixed the problem fixed bitrate problem with FFMpeg and AVConv (thanks to Juniorsnet)
 

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DeVeDe 3.12\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-14 16:01+0100\n"
-"PO-Revision-Date: 2016-03-14 16:01+0100\n"
+"POT-Creation-Date: 2016-11-03 23:59+0100\n"
+"PO-Revision-Date: 2016-11-03 23:59+0100\n"
 "Last-Translator: Sergio Costas <rastersoft@gmail.com>\n"
 "Language-Team: Español; Castellano <rastersoft@gmail.com>\n"
 "Language: \n"
@@ -49,7 +49,7 @@ msgstr "Convirtiendo %(X)s (pasada 1)"
 msgid "Converting %(X)s"
 msgstr "Convirtiendo %(X)s"
 
-#: ../src/devedeng/avconv.py:362 ../src/devedeng/ffmpeg.py:355
+#: ../src/devedeng/avconv.py:474 ../src/devedeng/ffmpeg.py:467
 #, python-format
 msgid "Creating menu %(X)d"
 msgstr "Creando el menú %(X)d"
@@ -195,43 +195,43 @@ msgstr "Mezclando menú %(X)d"
 msgid "DevedeNG projects"
 msgstr "Proyectos DevedeNG"
 
-#: ../src/devedeng/project.py:204
+#: ../src/devedeng/project.py:206
 msgid "Abort the current DVD and exit?"
 msgstr "¿Interrumpir el DVD y salir?"
 
-#: ../src/devedeng/project.py:204
+#: ../src/devedeng/project.py:206
 msgid "Exit DeVeDe"
 msgstr "Salir de DeVeDe"
 
-#: ../src/devedeng/project.py:259
+#: ../src/devedeng/project.py:270
 msgid "The following files could not be added:"
 msgstr "No se han podido añadir los siguientes ficheros:"
 
-#: ../src/devedeng/project.py:259 ../src/devedeng/project.py:719
+#: ../src/devedeng/project.py:270 ../src/devedeng/project.py:730
 msgid "Error while adding files"
 msgstr "Error al añadir ficheros"
 
-#: ../src/devedeng/project.py:271
+#: ../src/devedeng/project.py:282
 #, python-format
 msgid "The file <b>%(X)s</b> <i>(%(Y)s)</i> will be removed."
 msgstr "El fichero <b>%(X)s</b> <i>(%(Y)s)</i> será borrado."
 
-#: ../src/devedeng/project.py:271
+#: ../src/devedeng/project.py:282
 msgid "Delete file"
 msgstr "Borrar archivo"
 
-#: ../src/devedeng/project.py:474
+#: ../src/devedeng/project.py:485
 #, python-format
 msgid "The limit for this format is %(l)d files, but your project has %(h)d."
 msgstr ""
 "El límite para este formato es de %(l)d ficheros, pero este proyecto tiene "
 "%(h)d."
 
-#: ../src/devedeng/project.py:474
+#: ../src/devedeng/project.py:485
 msgid "Too many files in the project"
 msgstr "Demasiados ficheros en el proyecto"
 
-#: ../src/devedeng/project.py:483
+#: ../src/devedeng/project.py:494
 #, python-format
 msgid ""
 "The selected folder already exists. To create the project, Devede must "
@@ -250,27 +250,27 @@ msgstr ""
 "\n"
 " y todo su contenido <b>será borrado</b>. ¿Continuar?"
 
-#: ../src/devedeng/project.py:483
+#: ../src/devedeng/project.py:494
 msgid "Delete folder"
 msgstr "Borrar carpeta"
 
-#: ../src/devedeng/project.py:618
+#: ../src/devedeng/project.py:629
 msgid "Close current project and start a fresh one?"
 msgstr "¿Cerrar este proyecto y comenzar uno nuevo?"
 
-#: ../src/devedeng/project.py:618
+#: ../src/devedeng/project.py:629
 msgid "New project"
 msgstr "Nuevo proyecto"
 
-#: ../src/devedeng/project.py:659
+#: ../src/devedeng/project.py:670
 msgid "The file already exists. Overwrite it?"
 msgstr "El fichero ya existe. ¿Sobreescribirlo?"
 
-#: ../src/devedeng/project.py:659
+#: ../src/devedeng/project.py:670
 msgid "The file already exists"
 msgstr "El fichero ya existe"
 
-#: ../src/devedeng/project.py:719
+#: ../src/devedeng/project.py:730
 msgid "The following files in the project could not be added again:"
 msgstr "Los siguientes ficheros del proyecto no se pudieron añadir de nuevo:"
 
@@ -433,7 +433,7 @@ msgstr "<b>Cambiar las propiedades de estos ficheros</b>"
 msgid "PAL/SECAM"
 msgstr "PAL/SECAM"
 
-#: ../data/interface/wfile_properties.ui.h:16 ../data/interface/wmain.ui.h:15
+#: ../data/interface/wfile_properties.ui.h:16 ../data/interface/wmain.ui.h:16
 msgid "NTSC"
 msgstr "NTSC"
 
@@ -762,7 +762,7 @@ msgstr "Misc"
 msgid "<b>Options</b>"
 msgstr "<b>Opciones</b>"
 
-#: ../data/interface/wfile_properties.ui.h:96 ../data/interface/wmain.ui.h:9
+#: ../data/interface/wfile_properties.ui.h:96 ../data/interface/wmain.ui.h:10
 msgid "Preview"
 msgstr "Previsualizar"
 
@@ -798,39 +798,43 @@ msgstr "Título"
 msgid "Duration"
 msgstr "Duración"
 
-#: ../data/interface/wmain.ui.h:10
+#: ../data/interface/wmain.ui.h:9
+msgid "In menu"
+msgstr "En el menú"
+
+#: ../data/interface/wmain.ui.h:11
 msgid "<b>Files</b>"
 msgstr "<b>Archivos</b>"
 
-#: ../data/interface/wmain.ui.h:11
+#: ../data/interface/wmain.ui.h:12
 msgid "Media size:"
 msgstr "Tamaño del disco:"
 
-#: ../data/interface/wmain.ui.h:12
+#: ../data/interface/wmain.ui.h:13
 msgid "Adjust disc usage"
 msgstr "Ajustar el espacio ocupado en disco"
 
-#: ../data/interface/wmain.ui.h:13
+#: ../data/interface/wmain.ui.h:14
 msgid "<b>Disc usage</b>"
 msgstr "<b>Ocupación del disco</b>"
 
-#: ../data/interface/wmain.ui.h:14
+#: ../data/interface/wmain.ui.h:15
 msgid "PAL"
 msgstr "PAL"
 
-#: ../data/interface/wmain.ui.h:16
+#: ../data/interface/wmain.ui.h:17
 msgid "<b>Default format</b>"
 msgstr "<b>Formato por defecto</b>"
 
-#: ../data/interface/wmain.ui.h:17
+#: ../data/interface/wmain.ui.h:18
 msgid "Create a menu with the titles"
 msgstr "Crear un menú con los títulos"
 
-#: ../data/interface/wmain.ui.h:18
+#: ../data/interface/wmain.ui.h:19
 msgid "Menu options"
 msgstr "Opciones del menú"
 
-#: ../data/interface/wmain.ui.h:19
+#: ../data/interface/wmain.ui.h:20
 msgid "<b>Menus</b>"
 msgstr "<b>Menús</b>"
 
