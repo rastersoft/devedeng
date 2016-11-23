@@ -729,7 +729,7 @@ class devede_project:
 				else:
 					new_file.restore_file(efile)
 					new_file.connect('title_changed',self.title_changed)
-					self.wliststore_files.append([new_file, new_file.title_name,True,self.duration_to_string(new_file.get_duration())])
+					self.wliststore_files.append([new_file, new_file.title_name,True,self.duration_to_string(new_file.get_duration()),new_file.show_in_menu])
 			if (len(error_list)!=0):
 				devedeng.message.message_window(_("The following files in the project could not be added again:"),_("Error while adding files"),error_list)
 		self.set_interface_status(None)

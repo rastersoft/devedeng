@@ -1,4 +1,7 @@
 ## History of versions ##
+* version 4.8.5 (2016-11-24)
+  * Fixed a bug when loading a project file (thanks to RecursiveProgrammer)
+
 * version 4.8.4 (2016-11-03)
   * Allows to set if a movie is shown or not in the DVD menu from the main window
 
