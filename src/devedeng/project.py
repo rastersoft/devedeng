@@ -42,6 +42,26 @@ import devedeng.help
 
 class devede_project:
 
+	dvd_max_bps_base = {0: 9000}
+	dvd_min_bps = 300
+	dvd_max_total = 10000
+
+	svcd_max_bps_base = {0: 2700}
+	svcd_min_bps = 200
+	svcd_max_total = 2700
+
+	divx_max_bps_base = {0: 4854, 720: 9708, 1080: 20000}
+	divx_min_bps = 300
+	divx_max_total = -1
+	
+	mkv_max_bps_base = {0: 192, 240: 2000, 480: 14000,  720: 50000, 1080: 240000}
+	mkv_min_bps = 192
+	mkv_max_total = -1
+	
+	def_max_bps_base = {0: 9000}
+	def_min_bps = 300
+	def_max_total = -1
+
 	def __init__(self):
 
 		self.config  = devedeng.configuration_data.configuration.get_config()
@@ -344,25 +364,25 @@ class devede_project:
 			fixed_size += self.menu.get_estimated_size() * 8.0
 
 		if (self.disc_type == "dvd"):
-			max_bps_base = {0: 9000}
-			min_bps = 300
-			max_total = 10000
+			max_bps_base = devede_project.dvd_max_bps_base.copy()
+			min_bps = devede_project.dvd_min_bps
+			max_total = devede_project.dvd_max_total
 		elif (self.disc_type == "svcd") or (self.disc_type == "cvd"):
-			max_bps_base = {0: 2700}
-			min_bps = 200
-			max_total = 2700
+			max_bps_base = devede_project.svcd_max_bps_base.copy()
+			min_bps = devede_project.svcd_min_bps
+			max_total = devede_project.svcd_max_total
 		elif (self.disc_type == "divx"):
-			max_bps_base = {0: 4854, 720: 9708, 1080: 20000}
-			min_bps = 300
-			max_total = -1
+			max_bps_base = devede_project.divx_max_bps_base.copy()
+			min_bps = devede_project.divx_min_bps
+			max_total = devede_project.divx_max_total
 		elif (self.disc_type == "mkv"):
-			max_bps_base = {0: 192, 240: 2000, 480: 14000,  720: 50000, 1080: 240000}
-			min_bps = 192
-			max_total = -1
+			max_bps_base = devede_project.mkv_max_bps_base.copy()
+			min_bps = devede_project.mkv_min_bps
+			max_total = devede_project.mkv_max_total
 		else:
-			max_bps_base = {0: 9000}
-			min_bps = 300
-			max_total = -1
+			max_bps_base = devede_project.def_max_bps_base.copy()
+			min_bps = devede_project.def_min_bps
+			max_total = devede_project.def_max_total
 
 		if (total_resolution != 0):
 			remaining_disc_size = ((8000.0 * self.get_dvd_size()[0]) - fixed_size) # in kbits
@@ -539,8 +559,14 @@ class devede_project:
 		except:
 			pass
 		counter = 0
+		if self.disc_type == "divx":
+			extension = "avi"
+		elif self.disc_type == "mkv":
+			extension = "mkv"
+		else:
+			extension = "mpg"
 		for movie in file_movies:
-			p = movie.do_conversion(os.path.join(movie_folder,"movie_"+str(counter)+".mpg"))
+			p = movie.do_conversion(os.path.join(movie_folder,"movie_{:d}.{:s}".format(counter,extension)))
 			run_window.add_process(p)
 			final_dependencies.append(p)
 			counter += 1

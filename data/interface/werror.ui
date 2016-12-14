@@ -6,6 +6,7 @@
   <object class="GtkDialog" id="dialog_error">
     <property name="width_request">640</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
     <property name="type_hint">dialog</property>

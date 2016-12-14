@@ -1,4 +1,8 @@
 ## History of versions ##
+* version 4.8.6 (2016-12-14)
+  * Now ensures that the average bitrate is never smaller than the minimum bitrate
+  * Now the matroska and divx files have the right extension
+
 * version 4.8.5 (2016-11-24)
   * Fixed a bug when loading a project file (thanks to RecursiveProgrammer)
   * Updated the german translation
