@@ -15,21 +15,22 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from gi.repository import Gtk,GObject
+from gi.repository import Gtk, GObject
 import os
+
 
 class title(GObject.GObject):
 
     counter = 0
 
-    def __init__(self,config,file_treeview,original_liststore,title_name = None):
+    def __init__(self, config, file_treeview, original_liststore, title_name=None):
 
         GObject.GObject.__init__(self)
         self.config = config
         self.file_treeview = file_treeview
         if (title_name is None):
             title.counter += 1
-            self.title_name = _("Title %(X)d") % {"X":title.counter}
+            self.title_name = _("Title %(X)d") % {"X": title.counter}
         else:
             self.title_name = title_name
         self.post_action = "stop"
@@ -39,7 +40,7 @@ class title(GObject.GObject):
         self.files = Gtk.ListStore()
         self.files.set_column_types(columns)
 
-    def set_type(self,disc_type):
+    def set_type(self, disc_type):
 
         self.disc_type = disc_type
 
@@ -48,7 +49,8 @@ class title(GObject.GObject):
         builder = Gtk.Builder()
         builder.set_translation_domain(self.config.gettext_domain)
 
-        builder.add_from_file(os.path.join(self.config.glade,"wtitle_properties.ui"))
+        builder.add_from_file(os.path.join(
+            self.config.glade, "wtitle_properties.ui"))
         builder.connect_signals(self)
 
         # Interface widgets
@@ -82,15 +84,14 @@ class title(GObject.GObject):
 
         wtitle_properties.destroy()
 
-
     def delete_title(self):
 
-        print("Deleted title "+self.title_name)
+        print("Deleted title " + self.title_name)
 
     def refresh(self):
 
         self.file_treeview.set_model(self.files)
 
-    def add_file(self,new_file):
+    def add_file(self, new_file):
 
         self.files.append([new_file.file_name, new_file])

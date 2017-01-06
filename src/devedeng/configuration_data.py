@@ -21,10 +21,11 @@ from gi.repository import GObject
 import os
 import pkg_resources
 
+
 class configuration(GObject.GObject):
 
     current_configuration = None
-    __gsignals__ = {'disc_type': (GObject.SIGNAL_RUN_FIRST, None,(str,))}
+    __gsignals__ = {'disc_type': (GObject.SIGNAL_RUN_FIRST, None, (str,))}
 
     @staticmethod
     def get_config():
@@ -37,12 +38,12 @@ class configuration(GObject.GObject):
     def __init__(self):
         GObject.GObject.__init__(self)
         self.version = str(pkg_resources.require("devedeng")[0].version)
-        print("Version: "+self.version)
+        print("Version: " + self.version)
 
     def fill_config(self):
 
         self.cores = 0
-        proc_file = open("/proc/cpuinfo","r")
+        proc_file = open("/proc/cpuinfo", "r")
         for line in proc_file:
             if (line.startswith("processor")):
                 self.cores += 1
@@ -70,20 +71,21 @@ class configuration(GObject.GObject):
             return True
         else:
             if (is_local):
-                # locales must be always at /usr/share/locale because Gtk.Builder always search there
-                self.share_locale="/usr/share/locale"
-                self.glade="/usr/local/share/devedeng"
-                self.font_path="/usr/local/share/devedeng"
-                self.pic_path="/usr/local/share/devedeng"
-                self.other_path="/usr/local/share/devedeng"
-                self.help_path="/usr/local/share/doc/devedeng"
+                # locales must be always at /usr/share/locale because
+                # Gtk.Builder always search there
+                self.share_locale = "/usr/share/locale"
+                self.glade = "/usr/local/share/devedeng"
+                self.font_path = "/usr/local/share/devedeng"
+                self.pic_path = "/usr/local/share/devedeng"
+                self.other_path = "/usr/local/share/devedeng"
+                self.help_path = "/usr/local/share/doc/devedeng"
             else:
-                self.share_locale="/usr/share/locale"
-                self.glade="/usr/share/devedeng"
-                self.font_path="/usr/share/devedeng"
-                self.pic_path="/usr/share/devedeng"
-                self.other_path="/usr/share/devedeng"
-                self.help_path="/usr/share/doc/devedeng"
+                self.share_locale = "/usr/share/locale"
+                self.glade = "/usr/share/devedeng"
+                self.font_path = "/usr/share/devedeng"
+                self.pic_path = "/usr/share/devedeng"
+                self.other_path = "/usr/share/devedeng"
+                self.help_path = "/usr/share/doc/devedeng"
 
         self.gettext_domain = "devedeng"
 
@@ -102,67 +104,69 @@ class configuration(GObject.GObject):
         self.sub_codepage = None
         self.burner = None
         self.mkiso = None
-        self.subt_fill_color = (1,1,1,1)
-        self.subt_outline_color = (0,0,0,1)
+        self.subt_fill_color = (1, 1, 1, 1)
+        self.subt_outline_color = (0, 0, 0, 1)
         self.subt_outline_thickness = 0.0
 
-        config_path = os.path.join(os.environ.get("HOME"),".devedeng")
+        config_path = os.path.join(os.environ.get("HOME"), ".devedeng")
         try:
-            config_data = open(config_path,"r")
+            config_data = open(config_path, "r")
             for linea in config_data:
                 linea = linea.strip()
                 if linea == "":
                     continue
                 if linea[0] == "#":
                     continue
-                if linea[:13]=="video_format:":
-                    if linea[13:].strip() =="pal":
-                        self.PAL=True
-                    elif linea[13:].strip()=="ntsc":
-                        self.PAL=False
+                if linea[:13] == "video_format:":
+                    if linea[13:].strip() == "pal":
+                        self.PAL = True
+                    elif linea[13:].strip() == "ntsc":
+                        self.PAL = False
                     continue
-                if linea[:12]=="temp_folder:":
-                    self.tmp_folder=linea[12:].strip()
+                if linea[:12] == "temp_folder:":
+                    self.tmp_folder = linea[12:].strip()
                     continue
-                if linea[:10]=="multicore:":
+                if linea[:10] == "multicore:":
                     self.multicore = int(linea[10:].strip())
                     continue
-                if linea[:13]=="final_folder:":
-                    self.final_folder=linea[13:].strip()
+                if linea[:13] == "final_folder:":
+                    self.final_folder = linea[13:].strip()
                     continue
-                if linea[:13]=="sub_language:":
-                    self.sub_language=linea[13:].strip()
+                if linea[:13] == "sub_language:":
+                    self.sub_language = linea[13:].strip()
                     continue
-                if linea[:13]=="sub_codepage:":
-                    self.sub_codepage=linea[13:].strip()
+                if linea[:13] == "sub_codepage:":
+                    self.sub_codepage = linea[13:].strip()
                     continue
-                if linea[:14]=="film_analizer:":
+                if linea[:14] == "film_analizer:":
                     self.film_analizer = linea[14:].strip()
                     continue
-                if linea[:12]=="film_player:":
+                if linea[:12] == "film_player:":
                     self.film_player = linea[12:].strip()
                     continue
-                if linea[:15]=="film_converter:":
+                if linea[:15] == "film_converter:":
                     self.film_converter = linea[15:].strip()
                     continue
-                if linea[:15]=="menu_converter:":
+                if linea[:15] == "menu_converter:":
                     self.menu_converter = linea[15:].strip()
                     continue
-                if linea[:7]=="burner:":
+                if linea[:7] == "burner:":
                     self.burner = linea[7:].strip()
                     continue
-                if linea[:6]=="mkiso:":
+                if linea[:6] == "mkiso:":
                     self.mkiso = linea[6:].strip()
                     continue
-                if linea[:19]=="subtitle_font_size:":
+                if linea[:19] == "subtitle_font_size:":
                     self.subtitles_font_size = int(linea[19:].strip())
                     continue
                 if linea[:20] == "subtitle_fill_color:":
                     c = linea[20:].strip().split(",")
-                    self.subt_fill_color = (float(c[0]), float(c[1]), float(c[2]), 1.0)
+                    self.subt_fill_color = (
+                        float(c[0]), float(c[1]), float(c[2]), 1.0)
                 if linea[:23] == "subtitle_outline_color:":
                     c = linea[23:].strip().split(",")
-                    self.subt_outline_color = (float(c[0]), float(c[1]), float(c[2]), 1.0)
+                    self.subt_outline_color = (
+                        float(c[0]), float(c[1]), float(c[2]), 1.0)
                 if linea[:27] == "subtitle_outilne_thickness:":
                     self.subt_outline_thickness = float(linea[27:].strip())
             config_data.close()
@@ -171,69 +175,78 @@ class configuration(GObject.GObject):
 
         return False
 
-
-    def set_disc_type(self,disc_type):
+    def set_disc_type(self, disc_type):
 
         self.disc_type = disc_type
         self.clear_static_log()
         self.clear_log()
-        self.emit('disc_type',disc_type)
-
+        self.emit('disc_type', disc_type)
 
     def save_config(self):
 
-        config_path = os.path.join(os.environ.get("HOME"),".devedeng")
+        config_path = os.path.join(os.environ.get("HOME"), ".devedeng")
         try:
-            config_data = open(config_path,"w")
+            config_data = open(config_path, "w")
             config_data.write("video_format:")
             if (self.PAL):
                 config_data.write("pal\n")
             else:
                 config_data.write("ntsc\n")
             if (self.tmp_folder is not None):
-                config_data.write("temp_folder:"+str(self.tmp_folder)+"\n")
-            config_data.write("multicore:"+str(self.multicore)+"\n")
+                config_data.write("temp_folder:" + str(self.tmp_folder) + "\n")
+            config_data.write("multicore:" + str(self.multicore) + "\n")
             if (self.final_folder is not None):
-                config_data.write("final_folder:"+str(self.final_folder)+"\n")
+                config_data.write("final_folder:" +
+                                  str(self.final_folder) + "\n")
             if (self.sub_language is not None):
-                config_data.write("sub_language:"+str(self.sub_language)+"\n")
+                config_data.write("sub_language:" +
+                                  str(self.sub_language) + "\n")
             if (self.sub_codepage is not None):
-                config_data.write("sub_codepage:"+str(self.sub_codepage)+"\n")
+                config_data.write("sub_codepage:" +
+                                  str(self.sub_codepage) + "\n")
             if (self.film_analizer is not None):
-                config_data.write("film_analizer:"+str(self.film_analizer)+"\n")
+                config_data.write("film_analizer:" +
+                                  str(self.film_analizer) + "\n")
             if (self.film_player is not None):
-                config_data.write("film_player:"+str(self.film_player)+"\n")
+                config_data.write(
+                    "film_player:" + str(self.film_player) + "\n")
             if (self.film_converter is not None):
-                config_data.write("film_converter:"+str(self.film_converter)+"\n")
+                config_data.write("film_converter:" +
+                                  str(self.film_converter) + "\n")
             if (self.menu_converter is not None):
-                config_data.write("menu_converter:"+str(self.menu_converter)+"\n")
+                config_data.write("menu_converter:" +
+                                  str(self.menu_converter) + "\n")
             if self.burner is not None:
-                config_data.write("burner:"+str(self.burner)+"\n")
+                config_data.write("burner:" + str(self.burner) + "\n")
             if self.mkiso is not None:
-                config_data.write("mkiso:"+str(self.mkiso)+"\n")
+                config_data.write("mkiso:" + str(self.mkiso) + "\n")
             if (self.sub_codepage is not None):
-                config_data.write("sub_codepage:"+str(self.sub_codepage)+"\n")
+                config_data.write("sub_codepage:" +
+                                  str(self.sub_codepage) + "\n")
             if (self.sub_language is not None):
-                config_data.write("sub_language:"+str(self.sub_language)+"\n")
-            config_data.write("subtitle_font_size:"+str(self.subtitles_font_size)+"\n")
-            config_data.write("subtitle_fill_color:"+str(self.subt_fill_color[0])+","+str(self.subt_fill_color[1])+","+str(self.subt_fill_color[2])+"\n")
-            config_data.write("subtitle_outline_color:"+str(self.subt_outline_color[0])+","+str(self.subt_outline_color[1])+","+str(self.subt_outline_color[2])+"\n")
-            config_data.write("subtitle_outilne_thickness:"+str(self.subt_outline_thickness))
+                config_data.write("sub_language:" +
+                                  str(self.sub_language) + "\n")
+            config_data.write("subtitle_font_size:" +
+                              str(self.subtitles_font_size) + "\n")
+            config_data.write("subtitle_fill_color:" + str(self.subt_fill_color[0]) + "," + str(
+                self.subt_fill_color[1]) + "," + str(self.subt_fill_color[2]) + "\n")
+            config_data.write("subtitle_outline_color:" + str(self.subt_outline_color[0]) + "," + str(
+                self.subt_outline_color[1]) + "," + str(self.subt_outline_color[2]) + "\n")
+            config_data.write("subtitle_outilne_thickness:" +
+                              str(self.subt_outline_thickness))
 
             config_data.close()
         except:
             pass
 
-
-    def append_log(self,data,cr = True):
+    def append_log(self, data, cr=True):
 
         self.log += data
         if (cr):
             self.log += "\n"
-            
 
-    def append_static_log(self,data,cr = True):
-        
+    def append_static_log(self, data, cr=True):
+
         self.static_log += data
         if (cr):
             self.static_log += "\n"
@@ -243,7 +256,7 @@ class configuration(GObject.GObject):
         self.log = ""
 
     def clear_static_log(self):
-        
+
         self.static_log = ""
 
     def get_log(self):

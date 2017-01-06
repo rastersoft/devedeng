@@ -23,6 +23,7 @@ import devedeng.executor
 import os
 import json
 
+
 class avprobe(devedeng.avbase.avbase):
 
     supports_analize = True
@@ -36,9 +37,10 @@ class avprobe(devedeng.avbase.avbase):
     @staticmethod
     def check_is_installed():
         try:
-            handle = subprocess.Popen(["avprobe","-h"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            handle = subprocess.Popen(
+                ["avprobe", "-h"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             (stdout, stderr) = handle.communicate()
-            if 0==handle.wait():
+            if 0 == handle.wait():
                 return True
             else:
                 return False
@@ -50,10 +52,10 @@ class avprobe(devedeng.avbase.avbase):
         devedeng.executor.executor.__init__(self)
         self.config = devedeng.configuration_data.configuration.get_config()
 
-    def process_stdout(self,data):
+    def process_stdout(self, data):
         return
 
-    def process_stderr(self,data):
+    def process_stderr(self, data):
         return
 
     def get_film_data(self, file_name):
@@ -62,23 +64,23 @@ class avprobe(devedeng.avbase.avbase):
 
         self.original_file_size = os.path.getsize(file_name)
 
-        command_line = ["avprobe",file_name,"-of","json","-show_streams", "-loglevel", "quiet"]
+        command_line = ["avprobe", file_name, "-of",
+                        "json", "-show_streams", "-loglevel", "quiet"]
 
         (stdout, stderr) = self.launch_process(command_line, False)
-        
+
         try:
             stdout2 = stdout.decode("utf-8")
         except:
             stdout2 = stdout.decode("latin1")
-        self.config.append_static_log("AVProbe JSON data: "+str(stdout2))
+        self.config.append_static_log("AVProbe JSON data: " + str(stdout2))
         return self.process_json(stdout2, file_name)
 
+    def process_json(self, stdout2, file_name):
 
-    def process_json(self,stdout2,file_name):
-
-        self.audio_list=[]
+        self.audio_list = []
         self.audio_streams = 0
-        self.video_list=[]
+        self.video_list = []
         self.video_streams = 0
         self.original_width = 0
         self.original_height = 0
@@ -89,14 +91,15 @@ class avprobe(devedeng.avbase.avbase):
         self.original_fps = 0
         self.original_aspect_ratio = 0
 
-        self.config.append_static_log("Getting data for {:s} with avprobe".format(file_name))
+        self.config.append_static_log(
+            "Getting data for {:s} with avprobe".format(file_name))
         try:
             video_data = json.loads(stdout2)
         except:
-            return True # There was an error reading the JSON data
+            return True  # There was an error reading the JSON data
 
         if not("streams" in video_data):
-            return True # There are no streams!!!!!
+            return True  # There are no streams!!!!!
 
         for element in video_data["streams"]:
 
@@ -106,50 +109,62 @@ class avprobe(devedeng.avbase.avbase):
                 except:
                     self.original_length = -1
 
-            if (element["codec_type"]=="video"):
+            if (element["codec_type"] == "video"):
                 self.video_streams += 1
                 self.video_list.append(element["index"])
                 if (self.video_streams == 1):
                     self.original_width = int(float(element["width"]))
                     self.original_height = int(float(element["height"]))
                     if ("bit_rate" in element):
-                        self.original_videorate = int(float(element["bit_rate"]))/1000
-                    self.original_fps = self.get_division(element["avg_frame_rate"])
+                        self.original_videorate = int(
+                            float(element["bit_rate"])) / 1000
+                    self.original_fps = self.get_division(
+                        element["avg_frame_rate"])
                     if ("display_aspect_ratio" in element):
-                        self.original_aspect_ratio = self.get_division(element["display_aspect_ratio"])
+                        self.original_aspect_ratio = self.get_division(
+                            element["display_aspect_ratio"])
 
-            elif (element["codec_type"]=="audio"):
+            elif (element["codec_type"] == "audio"):
                 self.audio_streams += 1
                 self.audio_list.append(element["index"])
                 if (self.audio_streams == 1):
                     if ("bit_rate" in element):
-                        self.original_audiorate = int(float(element["bit_rate"]))/1000
-                    self.original_audiorate_uncompressed = int(float(element["sample_rate"]))
+                        self.original_audiorate = int(
+                            float(element["bit_rate"])) / 1000
+                    self.original_audiorate_uncompressed = int(
+                        float(element["sample_rate"]))
 
-        self.original_size = str(self.original_width)+"x"+str(self.original_height)
+        self.original_size = str(self.original_width) + \
+            "x" + str(self.original_height)
         if (self.original_aspect_ratio is None) or (self.original_aspect_ratio <= 1.0):
             if (self.original_height != 0):
-                self.original_aspect_ratio = (float(self.original_width))/(float(self.original_height))
+                self.original_aspect_ratio = (
+                    float(self.original_width)) / (float(self.original_height))
 
         if (self.original_aspect_ratio is not None):
-            self.original_aspect_ratio = (float(int(self.original_aspect_ratio*1000.0)))/1000.0
+            self.original_aspect_ratio = (
+                float(int(self.original_aspect_ratio * 1000.0))) / 1000.0
 
         if (len(self.video_list) == 0):
-            return True # the file is not a video file; maybe an audio-only file or another thing
+            return True  # the file is not a video file; maybe an audio-only file or another thing
 
-        if self.original_length == -1: # if it was unable to detect the duration, try to use the human readable format
-            command_line = ["avprobe",file_name]
+        if self.original_length == -1:  # if it was unable to detect the duration, try to use the human readable format
+            command_line = ["avprobe", file_name]
             (stdout, stderr) = self.launch_process(command_line, False)
             try:
-                stdout2 = stdout.decode("utf-8") + "\n" + stderr.decode("utf-8")
+                stdout2 = stdout.decode("utf-8") + \
+                    "\n" + stderr.decode("utf-8")
             except:
-                stdout2 = stdout.decode("latin1") + "\n" + stderr.decode("latin1")
-            self.config.append_static_log("Using avprobe human readable format: "+str(stdout2))
+                stdout2 = stdout.decode("latin1") + \
+                    "\n" + stderr.decode("latin1")
+            self.config.append_static_log(
+                "Using avprobe human readable format: " + str(stdout2))
             for line in stdout2.split("\n"):
                 line = line.strip()
                 if line.startswith("Duration: "):
                     self.original_length = self.get_time(line[10:])
                     break
 
-        self.config.append_static_log("Estimated length: {:d}; Resolution: {:s}".format(self.original_length,self.original_size))
-        return False # no error
+        self.config.append_static_log("Estimated length: {:d}; Resolution: {:s}".format(
+            self.original_length, self.original_size))
+        return False  # no error

@@ -2,6 +2,7 @@ import unittest
 import devedeng.avbase
 import devedeng.avprobe
 
+
 class TestAVConv(unittest.TestCase):
 
     def test_ubuntu_14_04(self):
@@ -19,9 +20,10 @@ libswscale     2.  1. 1 /  2.  1. 1""".split("\n")
         text.append(9)
         c.check_version_txt(text)
 
-        self.assertEqual(c.major_version, 9, "Detecting major version for Ubuntu 14.04's AVConv version")
-        self.assertEqual(c.minor_version, 18, "Detecting minor version for Ubuntu 14.04's AVConv version")
-
+        self.assertEqual(
+            c.major_version, 9, "Detecting major version for Ubuntu 14.04's AVConv version")
+        self.assertEqual(
+            c.minor_version, 18, "Detecting minor version for Ubuntu 14.04's AVConv version")
 
     def test_ubuntu_14_10(self):
         c = devedeng.avbase.avbase()
@@ -38,9 +40,10 @@ libswscale     3.  0. 0 /  3.  0. 0""".split("\n")
         text.append(9)
         c.check_version_txt(text)
 
-        self.assertEqual(c.major_version, 11, "Detecting major version for Ubuntu 14.10's AVConv version")
-        self.assertEqual(c.minor_version, 0, "Detecting minor version for Ubuntu 14.10's AVConv version")
-
+        self.assertEqual(
+            c.major_version, 11, "Detecting major version for Ubuntu 14.10's AVConv version")
+        self.assertEqual(
+            c.minor_version, 0, "Detecting minor version for Ubuntu 14.10's AVConv version")
 
     def test_ubuntu_15_04(self):
         c = devedeng.avbase.avbase()
@@ -57,12 +60,12 @@ libswscale     3.  0. 0 /  3.  0. 0""".split("\n")
         text.append(9)
         c.check_version_txt(text)
 
-        self.assertEqual(c.major_version, 11, "Detecting major version for Ubuntu 15.04's AVConv version")
-        self.assertEqual(c.minor_version, 2, "Detecting minor version for Ubuntu 15.04's AVConv version")
-
+        self.assertEqual(
+            c.major_version, 11, "Detecting major version for Ubuntu 15.04's AVConv version")
+        self.assertEqual(
+            c.minor_version, 2, "Detecting minor version for Ubuntu 15.04's AVConv version")
 
     def test_mkv1(self):
-
 
         c = devedeng.avprobe.avprobe()
         json_test = """{
@@ -163,11 +166,13 @@ libswscale     3.  0. 0 /  3.  0. 0""".split("\n")
         }
     ]
 }"""
-        retval = c.process_json(json_test,"filename.mkv")
+        retval = c.process_json(json_test, "filename.mkv")
         self.assertFalse(retval)
-        self.assertEqual(c.audio_streams, 1, "Checking number of audio streams")
+        self.assertEqual(c.audio_streams, 1,
+                         "Checking number of audio streams")
         self.assertEqual(c.audio_list[0], 0, "Checking audio stream 1")
-        self.assertEqual(c.video_streams, 1, "Checking number of video streams")
+        self.assertEqual(c.video_streams, 1,
+                         "Checking number of video streams")
         self.assertEqual(c.video_list[0], 1, "Checking video stream 1")
 
 if __name__ == '__main__':

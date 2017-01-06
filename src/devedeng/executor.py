@@ -17,16 +17,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from gi.repository import GLib,GObject
+from gi.repository import GLib, GObject
 import subprocess
 import os
 import signal
 import devedeng.configuration_data
 
+
 class executor(GObject.GObject):
     """ This class encapsulates everything needed for launching processes """
 
-    __gsignals__ = {'ended': (GObject.SIGNAL_RUN_FIRST, None,(int,))}
+    __gsignals__ = {'ended': (GObject.SIGNAL_RUN_FIRST, None, (int,))}
 
     def __init__(self):
 
@@ -51,14 +52,12 @@ class executor(GObject.GObject):
         self.pulse_text = None
         self.handle = None
 
-
     def add_dependency(self, dep):
 
         self.add_dependency2(dep)
 
         for child in dep.childs:
             self.add_dependency2(child)
-
 
     def add_dependency2(self, dep):
 
@@ -68,12 +67,12 @@ class executor(GObject.GObject):
         if (self.dependencies.count(dep) == 0):
             self.dependencies.append(dep)
 
-        # the childs have the same dependencies than the parent process because, from outside, it is viewed as a single process
+        # the childs have the same dependencies than the parent process
+        # because, from outside, it is viewed as a single process
         for child in self.childs:
             child.add_dependency(dep)
 
-
-    def remove_dependency(self,process):
+    def remove_dependency(self, process):
         # dependencies are removed only in the parent because the running class have all the processes, parents and childs, and calls
         # this method on all of them
         if (self.dependencies is not None):
@@ -86,17 +85,16 @@ class executor(GObject.GObject):
             else:
                 self.dependencies = None
 
+    def add_child_process(self, child):
 
-    def add_child_process(self,child):
-
-        # the childs have the same dependencies than the parent process because, from outside, it is viewed as a single process
+        # the childs have the same dependencies than the parent process
+        # because, from outside, it is viewed as a single process
         if self.dependencies is not None:
             for dep in self.dependencies:
                 child.add_dependency(dep)
 
         if (self.childs.count(child) == 0):
             self.childs.append(child)
-
 
     def run(self, progress_bar):
 
@@ -113,40 +111,38 @@ class executor(GObject.GObject):
         if self.use_pulse_mode != self.pulse_mode:
             self.set_pulse_mode(self.use_pulse_mode)
 
+    def remove_ansi(self, line):
 
-    def remove_ansi(self,line):
-
-        output=""
+        output = ""
         while True:
-            pos=line.find("\033[") # try with double-byte ESC
-            jump=2
-            if pos==-1:
-                pos=line.find("\233") # if not, try with single-byte ESC
-                jump=1
-            if pos==-1: # no ANSI characters; we ended
-                output+=line
+            pos = line.find("\033[")  # try with double-byte ESC
+            jump = 2
+            if pos == -1:
+                pos = line.find("\233")  # if not, try with single-byte ESC
+                jump = 1
+            if pos == -1:  # no ANSI characters; we ended
+                output += line
                 break
 
-            output+=line[:pos]
-            line=line[pos+jump:]
+            output += line[:pos]
+            line = line[pos + jump:]
 
             while True:
-                if len(line)==0:
+                if len(line) == 0:
                     break
-                if (ord(line[0])<64) or (ord(line[0])>126):
-                    line=line[1:]
+                if (ord(line[0]) < 64) or (ord(line[0]) > 126):
+                    line = line[1:]
                 else:
-                    line=line[1:]
+                    line = line[1:]
                     break
         return output
 
-
-    def launch_process(self,command,redirect_output = True):
+    def launch_process(self, command, redirect_output=True):
 
         if command is not None:
             self.launch_command = "\n\nLaunching:"
             for e in command:
-                self.launch_command += (" "+e)
+                self.launch_command += (" " + e)
             self.launch_command += "\n"
 
         self.config.append_log(self.text)
@@ -155,12 +151,15 @@ class executor(GObject.GObject):
 
         try:
             if (self.stdin_file is not None):
-                self.handle = subprocess.Popen(command,stdin = subprocess.PIPE, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+                self.handle = subprocess.Popen(
+                    command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                 self.channel_stdin = GLib.IOChannel(self.handle.stdin.fileno())
-                self.channel_stdin.add_watch(GLib.IO_OUT | GLib.IO_HUP, self.read_stdin_from_file)
-                self.file_in = open(self.stdin_file,"rb")
+                self.channel_stdin.add_watch(
+                    GLib.IO_OUT | GLib.IO_HUP, self.read_stdin_from_file)
+                self.file_in = open(self.stdin_file, "rb")
             else:
-                self.handle = subprocess.Popen(command,stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+                self.handle = subprocess.Popen(
+                    command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         except Exception as error_launch:
             self.handle = None
             self.stderr_data += str(error_launch)
@@ -173,11 +172,14 @@ class executor(GObject.GObject):
             self.channel_stdout = GLib.IOChannel(self.handle.stdout.fileno())
             self.channel_stderr = GLib.IOChannel(self.handle.stderr.fileno())
             if (self.stdout_file is not None):
-                self.channel_stdout.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stdout_to_file)
-                self.file_out = open(self.stdout_file,"wb")
+                self.channel_stdout.add_watch(
+                    GLib.IO_IN | GLib.IO_HUP, self.read_stdout_to_file)
+                self.file_out = open(self.stdout_file, "wb")
             else:
-                self.channel_stdout.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stdout)
-            self.channel_stderr.add_watch(GLib.IO_IN | GLib.IO_HUP,self.read_stderr)
+                self.channel_stdout.add_watch(
+                    GLib.IO_IN | GLib.IO_HUP, self.read_stdout)
+            self.channel_stderr.add_watch(
+                GLib.IO_IN | GLib.IO_HUP, self.read_stderr)
         else:
             (stdout_r, stderr_r) = self.handle.communicate()
             self.handle = None
@@ -192,8 +194,7 @@ class executor(GObject.GObject):
                 self.config.append_log(stderr_r.decode("latin-1"))
             return (stdout_r, stderr_r)
 
-
-    def set_pulse_mode(self,pulse_mode):
+    def set_pulse_mode(self, pulse_mode):
 
         if pulse_mode == self.pulse_mode:
             return
@@ -205,8 +206,7 @@ class executor(GObject.GObject):
         else:
             GLib.source_remove(self.timer_pulse)
 
-
-    def run_pulse(self,v = None):
+    def run_pulse(self, v=None):
 
         if self.progress_bar is None:
             return
@@ -216,8 +216,7 @@ class executor(GObject.GObject):
         self.progress_bar[1].pulse()
         return True
 
-
-    def read_stdout_to_file(self,source,condition):
+    def read_stdout_to_file(self, source, condition):
 
         if (condition != GLib.IO_IN):
             self.channel_stdout = None
@@ -229,8 +228,7 @@ class executor(GObject.GObject):
             self.file_out.write(line_data)
             return True
 
-
-    def read_stdin_from_file(self,source,condition):
+    def read_stdin_from_file(self, source, condition):
 
         line_data = self.file_in.read1(4096)
         if (len(line_data) == 0):
@@ -243,8 +241,7 @@ class executor(GObject.GObject):
             self.handle.stdin.write(line_data)
             return True
 
-
-    def read_stdout(self,source,condition):
+    def read_stdout(self, source, condition):
 
         if (condition != GLib.IO_IN):
             self.channel_stdout = None
@@ -254,11 +251,11 @@ class executor(GObject.GObject):
         else:
             read_data = self.handle.stdout.read1(4096)
             try:
-                line_data = self.stdout_buf+(read_data.decode("utf-8"))
+                line_data = self.stdout_buf + (read_data.decode("utf-8"))
             except:
-                line_data = self.stdout_buf+(read_data.decode("latin-1"))
+                line_data = self.stdout_buf + (read_data.decode("latin-1"))
             self.stdout_data += line_data
-            data = (line_data).replace("\r","\n").split("\n")
+            data = (line_data).replace("\r", "\n").split("\n")
             if (len(data) == 1):
                 final_data = []
                 self.stdout_buf = data[0]
@@ -269,8 +266,7 @@ class executor(GObject.GObject):
                 self.process_stdout(final_data)
             return True
 
-
-    def read_stderr(self,source,condition):
+    def read_stderr(self, source, condition):
 
         if (condition != GLib.IO_IN):
             self.channel_stderr = None
@@ -280,11 +276,11 @@ class executor(GObject.GObject):
         else:
             read_data = self.handle.stderr.read1(4096)
             try:
-                line_data = self.stderr_buf+(read_data.decode("utf-8"))
+                line_data = self.stderr_buf + (read_data.decode("utf-8"))
             except:
-                line_data = self.stderr_buf+(read_data.decode("latin-1"))
+                line_data = self.stderr_buf + (read_data.decode("latin-1"))
             self.stderr_data += line_data
-            data = (line_data).replace("\r","\n").split("\n")
+            data = (line_data).replace("\r", "\n").split("\n")
             if (len(data) == 1):
                 final_data = []
                 self.stderr_buf = data[0]
@@ -295,17 +291,14 @@ class executor(GObject.GObject):
                 self.process_stderr(final_data)
             return True
 
-
     def cancel(self):
-
         """ Called to kill this process. """
 
         if self.handle is None:
             return
 
         self.killed = True
-        os.kill(self.handle.pid,signal.SIGKILL)
-
+        os.kill(self.handle.pid, signal.SIGKILL)
 
     def wait_end(self):
 
@@ -319,7 +312,7 @@ class executor(GObject.GObject):
 
         # call, if it exists, the post-function
         try:
-            self.post_function(retval,self.killed)
+            self.post_function(retval, self.killed)
         except:
             pass
 
@@ -329,20 +322,18 @@ class executor(GObject.GObject):
             self.config.append_log(self.stdout_data)
             self.config.append_log(self.stderr_data)
 
-        self.emit("ended",retval)
+        self.emit("ended", retval)
 
+    def expand_xml(self, text):
 
-    def expand_xml(self,text):
-
-        text=text.replace('&','&amp;')
-        text=text.replace('<','&lt;')
-        text=text.replace('>','&gt;')
-        text=text.replace('"','&quot;')
-        text=text.replace("'",'&apos;')
+        text = text.replace('&', '&amp;')
+        text = text.replace('<', '&lt;')
+        text = text.replace('>', '&gt;')
+        text = text.replace('"', '&quot;')
+        text = text.replace("'", '&apos;')
         return text
 
-
-    def get_division(self,data):
+    def get_division(self, data):
 
         pos = data.find("/")
         pos2 = data.find(":")
@@ -358,16 +349,15 @@ class executor(GObject.GObject):
         else:
             try:
                 data1 = float(data[:pos])
-                data2 = float(data[pos+1:])
+                data2 = float(data[pos + 1:])
             except:
                 return 0
             if (data2 == 0):
                 return 0
             else:
-                return (float(int((data1 / data2)*1000.0)))/1000.0
+                return (float(int((data1 / data2) * 1000.0))) / 1000.0
 
-
-    def get_time(self,line):
+    def get_time(self, line):
 
         time_string = ""
 

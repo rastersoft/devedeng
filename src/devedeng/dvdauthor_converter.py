@@ -21,6 +21,7 @@ import os
 import devedeng.configuration_data
 import devedeng.executor
 
+
 class dvdauthor_converter(devedeng.executor.executor):
 
     def __init__(self):
@@ -28,18 +29,18 @@ class dvdauthor_converter(devedeng.executor.executor):
         devedeng.executor.executor.__init__(self)
         self.config = devedeng.configuration_data.configuration.get_config()
 
+    def create_dvd_project(self, path, name, file_movies, menu_entries, start_with_menu, play_all_opt):
 
-    def create_dvd_project (self, path, name, file_movies, menu_entries, start_with_menu, play_all_opt):
-
-        movie_path = os.path.join(path,"dvd_tree")
+        movie_path = os.path.join(path, "dvd_tree")
         try:
             os.makedirs(movie_path)
         except:
             pass
 
-        xml_file = self.create_dvdauthor_xml(path, file_movies, menu_entries, start_with_menu, play_all_opt)
+        xml_file = self.create_dvdauthor_xml(
+            path, file_movies, menu_entries, start_with_menu, play_all_opt)
 
-        self.command_var=[]
+        self.command_var = []
         self.command_var.append("dvdauthor")
         self.command_var.append("-o")
         self.command_var.append(movie_path)
@@ -48,22 +49,19 @@ class dvdauthor_converter(devedeng.executor.executor):
         self.use_pulse_mode = True
         self.text = _("Creating DVD structure")
 
-
-    def process_stdout(self,data):
+    def process_stdout(self, data):
         return
 
-
-    def process_stderr(self,data):
+    def process_stderr(self, data):
         if (data is not None) and (data[0] != ""):
             self.progress_bar[1].set_text(data[0])
         return
 
+    def create_dvdauthor_xml(self, movie_folder, file_movies, menu_entries, start_with_menu, play_all_opt):
 
-    def create_dvdauthor_xml(self,movie_folder, file_movies, menu_entries, start_with_menu, play_all_opt):
-
-        xmlpath = os.path.join(movie_folder,"xml_data")
-        xml_file_path = os.path.join(xmlpath,"dvdauthor.xml")
-        datapath = os.path.join(movie_folder,"dvd_tree")
+        xmlpath = os.path.join(movie_folder, "xml_data")
+        xml_file_path = os.path.join(xmlpath, "dvdauthor.xml")
+        datapath = os.path.join(movie_folder, "dvd_tree")
         try:
             os.makedirs(xmlpath)
         except:
@@ -79,8 +77,8 @@ class dvdauthor_converter(devedeng.executor.executor):
         else:
             elements_per_menu = len(menu_entries[0]["chapters"])
 
-        xml_file=open(xml_file_path,"w")
-        xml_file.write('<dvdauthor dest="'+datapath+'">\n')
+        xml_file = open(xml_file_path, "w")
+        xml_file.write('<dvdauthor dest="' + datapath + '">\n')
 
         if onlyone:
             xml_file.write('\t<vmgm>\n')
@@ -100,24 +98,24 @@ class dvdauthor_converter(devedeng.executor.executor):
             # MENU
 
             # in the FPC we do a jump to the first menu in the first titleset if we wanted MENU
-            # or we jump to the second titleset if we didn't want MENU at startup
+            # or we jump to the second titleset if we didn't want MENU at
+            # startup
 
             xml_file.write('\t\t<fpc>\n')
             xml_file.write('\t\t\tg0=100;\n')
-            xml_file.write('\t\t\tg1=') #goto variable
+            xml_file.write('\t\t\tg1=')  # goto variable
             if (menu_entries is not None) and (start_with_menu):
-                xml_file.write('0;\n') #show menu
+                xml_file.write('0;\n')  # show menu
             else:
-                xml_file.write('100;\n') #auto play
-            xml_file.write('\t\t\tg2=1024;\n') #highlight?
-            xml_file.write('\t\t\tg3=') #play all variable
+                xml_file.write('100;\n')  # auto play
+            xml_file.write('\t\t\tg2=1024;\n')  # highlight?
+            xml_file.write('\t\t\tg3=')  # play all variable
             if play_all_opt and (menu_entries is not None) and (start_with_menu):
-                xml_file.write('1;\n') #auto play all
+                xml_file.write('1;\n')  # auto play all
             else:
-                xml_file.write('0;\n') #do not play all
+                xml_file.write('0;\n')  # do not play all
             xml_file.write('\t\t\tjump menu 1;\n')
             xml_file.write('\t\t</fpc>\n')
-
 
             # in the VMGM menu we create a code to jump to the title specified in G0
             # but if the title is 100, we jump to the menus. There we show the menu number
@@ -135,24 +133,28 @@ class dvdauthor_converter(devedeng.executor.executor):
             xml_file.write('\t\t\t<pgc>\n')
             xml_file.write('\t\t\t\t<pre>\n')
 
-            counter=1
+            counter = 1
             for element in file_movies:
-                xml_file.write('\t\t\t\t\tif (g0 eq '+str(counter)+') {\n')
-                xml_file.write('\t\t\t\t\t\tjump titleset '+str(1+counter)+' menu;\n')
+                xml_file.write('\t\t\t\t\tif (g0 eq ' + str(counter) + ') {\n')
+                xml_file.write('\t\t\t\t\t\tjump titleset ' +
+                               str(1 + counter) + ' menu;\n')
                 xml_file.write('\t\t\t\t\t}\n')
-                counter+=1
+                counter += 1
             xml_file.write('\t\t\t\t\tif (g0 eq 100) {\n')
             xml_file.write('\t\t\t\t\t\tg2=1024;\n')
             xml_file.write('\t\t\t\t\t\tjump titleset 1 menu;\n')
             xml_file.write('\t\t\t\t\t}\n')
             xml_file.write('\t\t\t\t</pre>\n')
-            # fake video (one black picture with one second of sound) to ensure 100% compatibility
+            # fake video (one black picture with one second of sound) to ensure
+            # 100% compatibility
             xml_file.write('\t\t\t\t<vob file="')
 
             if self.config.PAL:
-                xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path,"base_pal.mpg"))))
+                xml_file.write(self.expand_xml(
+                    str(os.path.join(self.config.other_path, "base_pal.mpg"))))
             else:
-                xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path,"base_ntsc.mpg"))))
+                xml_file.write(self.expand_xml(
+                    str(os.path.join(self.config.other_path, "base_ntsc.mpg"))))
 
             xml_file.write('"></vob>\n')
             xml_file.write('\t\t\t</pgc>\n')
@@ -161,8 +163,8 @@ class dvdauthor_converter(devedeng.executor.executor):
 
             xml_file.write("\n")
 
-
-            # the first titleset contains all the menus. G1 allows us to jump to the desired menu
+            # the first titleset contains all the menus. G1 allows us to jump
+            # to the desired menu
 
             xml_file.write('\t<titleset>\n')
             xml_file.write('\t\t<menus>\n')
@@ -185,23 +187,27 @@ class dvdauthor_converter(devedeng.executor.executor):
 
             if (menu_entries is not None):
                 nmenues = len(menu_entries)
-                title_counter = 0 # A counter for all titles
+                title_counter = 0  # A counter for all titles
                 for menu_page in menu_entries:
-                    button_counter = 0 # A counter for all buttons on the actual page
+                    button_counter = 0  # A counter for all buttons on the actual page
                     xml_file.write('\t\t\t<pgc>\n')
                     xml_file.write('\t\t\t\t<pre>\n')
-                    xml_file.write('\t\t\t\t\ts8=g2;\n') # first we recover the currently selected button
-                    xml_file.write('\t\t\t\t\tg3=0;\n') #turnoff play all
+                    # first we recover the currently selected button
+                    xml_file.write('\t\t\t\t\ts8=g2;\n')
+                    xml_file.write('\t\t\t\t\tg3=0;\n')  # turnoff play all
 
-                    if first_entry: # here we add some code to jump to each menu
-                        for menu2 in range(nmenues-1):
-                            xml_file.write('\t\t\t\t\tif (g1 eq '+str(menu2+1)+') {\n')
-                            xml_file.write('\t\t\t\t\t\tjump menu '+str(menu2+2)+';\n')
+                    if first_entry:  # here we add some code to jump to each menu
+                        for menu2 in range(nmenues - 1):
+                            xml_file.write(
+                                '\t\t\t\t\tif (g1 eq ' + str(menu2 + 1) + ') {\n')
+                            xml_file.write(
+                                '\t\t\t\t\t\tjump menu ' + str(menu2 + 2) + ';\n')
                             xml_file.write('\t\t\t\t\t}\n')
 
                         # this code is to fix a bug in some players
                         xml_file.write('\t\t\t\t\tif (g1 eq 100) {\n')
-                        xml_file.write('\t\t\t\t\t\tjump title 1;\n') #menu '+str(self.nmenues+1)+';\n')
+                        # menu '+str(self.nmenues+1)+';\n')
+                        xml_file.write('\t\t\t\t\t\tjump title 1;\n')
                         xml_file.write('\t\t\t\t\t}\n')
                     first_entry = False
 
@@ -213,38 +219,43 @@ class dvdauthor_converter(devedeng.executor.executor):
 
                     for nbutton in menu_page["chapters"]:
                         #xml_file.write('\t\t\t\t<button name="'+nbutton+'"> g0='+str(title_list[button_counter])+'; jump vmgm menu; </button>\n')
-                        xml_file.write('\t\t\t\t<button name="'+nbutton+'">\n')
+                        xml_file.write(
+                            '\t\t\t\t<button name="' + nbutton + '">\n')
                         # If PlayAll option is set, the first button on each page
                         # will be the PlayAll button
-                        if play_all_opt and button_counter==0:
+                        if play_all_opt and button_counter == 0:
                             xml_file.write('\t\t\t\t\tg3=1;\n')
                             xml_file.write('\t\t\t\t\tg0=1;\n')
                             xml_file.write('\t\t\t\t\tjump vmgm menu;\n')
                         else:
-                            xml_file.write('\t\t\t\t\tg0='+str(title_list[title_counter])+';\n')
+                            xml_file.write(
+                                '\t\t\t\t\tg0=' + str(title_list[title_counter]) + ';\n')
                             xml_file.write('\t\t\t\t\tjump vmgm menu;\n')
-                            title_counter+=1
-                        button_counter+=1
+                            title_counter += 1
+                        button_counter += 1
                         xml_file.write('\t\t\t\t</button>\n')
 
                     if (menu_page["left"] is not None):
-                        xml_file.write('\t\t\t\t<button name="'+menu_page["left"]+'"> g1=')
-                        xml_file.write(str(menu_number-1))
+                        xml_file.write('\t\t\t\t<button name="' +
+                                       menu_page["left"] + '"> g1=')
+                        xml_file.write(str(menu_number - 1))
                         xml_file.write('; g2=1024; jump menu ')
                         xml_file.write(str(menu_number))
                         xml_file.write('; </button>\n')
 
                     if (menu_page["right"] is not None):
-                        xml_file.write('\t\t\t\t<button name="'+menu_page["right"]+'"> g1=')
-                        xml_file.write(str(menu_number+1))
+                        xml_file.write('\t\t\t\t<button name="' +
+                                       menu_page["right"] + '"> g1=')
+                        xml_file.write(str(menu_number + 1))
                         xml_file.write('; g2=1024; jump menu ')
-                        xml_file.write(str(menu_number+2))
+                        xml_file.write(str(menu_number + 2))
                         xml_file.write('; </button>\n')
 
                     xml_file.write('\t\t\t\t<post>\n')
                     xml_file.write('\t\t\t\t\tg2=s8;\n')
-                    xml_file.write('\t\t\t\t\tg1='+str(menu_number)+';\n')
-                    xml_file.write('\t\t\t\t\tjump menu '+str(menu_number+1)+';\n')
+                    xml_file.write('\t\t\t\t\tg1=' + str(menu_number) + ';\n')
+                    xml_file.write('\t\t\t\t\tjump menu ' +
+                                   str(menu_number + 1) + ';\n')
                     xml_file.write('\t\t\t\t</post>\n')
                     xml_file.write('\t\t\t</pgc>\n')
                     menu_number += 1
@@ -258,15 +269,18 @@ class dvdauthor_converter(devedeng.executor.executor):
 
                 # this code is to fix a bug in some players
                 xml_file.write('\t\t\t\t\tif (g1 eq 100) {\n')
-                xml_file.write('\t\t\t\t\t\tjump title 1;\n') #menu '+str(self.nmenues+1)+';\n')
+                # menu '+str(self.nmenues+1)+';\n')
+                xml_file.write('\t\t\t\t\t\tjump title 1;\n')
                 xml_file.write('\t\t\t\t\t}\n')
 
                 xml_file.write('\t\t\t\t</pre>\n')
                 xml_file.write('\t\t\t\t<vob file="')
                 if self.config.PAL:
-                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path,"base_pal.mpg"))))
+                    xml_file.write(self.expand_xml(
+                        str(os.path.join(self.config.other_path, "base_pal.mpg"))))
                 else:
-                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path,"base_ntsc.mpg"))))
+                    xml_file.write(self.expand_xml(
+                        str(os.path.join(self.config.other_path, "base_ntsc.mpg"))))
                 xml_file.write('"></vob>\n')
 
                 xml_file.write('\t\t\t\t<post>\n')
@@ -288,9 +302,11 @@ class dvdauthor_converter(devedeng.executor.executor):
             xml_file.write('\t\t\t<pgc>\n')
             xml_file.write('\t\t\t\t<vob file="')
             if self.config.PAL:
-                xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path,"base_pal.mpg"))))
+                xml_file.write(self.expand_xml(
+                    str(os.path.join(self.config.other_path, "base_pal.mpg"))))
             else:
-                xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path,"base_ntsc.mpg"))))
+                xml_file.write(self.expand_xml(
+                    str(os.path.join(self.config.other_path, "base_ntsc.mpg"))))
             xml_file.write('"></vob>\n')
             xml_file.write('\t\t\t\t<post>\n')
             xml_file.write('\t\t\t\t\tg0=1;\n')
@@ -304,57 +320,58 @@ class dvdauthor_converter(devedeng.executor.executor):
 
             xml_file.write("\n")
 
-
         # Now, create the titleset for each video
 
-        total_t=len(file_movies)
-        titleset=1
-        titles=0
-        counter=0
+        total_t = len(file_movies)
+        titleset = 1
+        titles = 0
+        counter = 0
         for element in file_movies:
-            files=0
-            action=element.actions
+            files = 0
+            action = element.actions
 
             xml_file.write("\n")
 
             if element.is_mpeg_ps:
 
-                # if it's already an MPEG-2 compliant file, we use the original values
+                # if it's already an MPEG-2 compliant file, we use the original
+                # values
                 if element.original_fps == 25:
-                    pal_ntsc="pal"
-                    ispal=True
+                    pal_ntsc = "pal"
+                    ispal = True
                 else:
-                    pal_ntsc="ntsc"
-                    ispal=False
+                    pal_ntsc = "ntsc"
+                    ispal = False
 
                 if element.original_aspect_ratio > 1.6:
-                    faspect='16:9'
-                    fwide=True
+                    faspect = '16:9'
+                    fwide = True
                 else:
-                    faspect='4:3'
-                    fwide=False
+                    faspect = '4:3'
+                    fwide = False
 
             else:
                 # but if we are converting it, we use the desired values
                 if element.format_pal:
-                    pal_ntsc="pal"
-                    ispal=True
+                    pal_ntsc = "pal"
+                    ispal = True
                 else:
-                    pal_ntsc="ntsc"
-                    ispal=False
+                    pal_ntsc = "ntsc"
+                    ispal = False
 
                 if element.aspect_ratio_final > 1.6:
-                    faspect='16:9'
-                    fwide=True
+                    faspect = '16:9'
+                    fwide = True
                 else:
-                    faspect='4:3'
-                    fwide=False
+                    faspect = '4:3'
+                    fwide = False
 
             xml_file.write("\t<titleset>\n")
 
             if not onlyone:
                 xml_file.write("\t\t<menus>\n")
-                xml_file.write('\t\t\t<video format="'+pal_ntsc+'" aspect="'+faspect+'"')
+                xml_file.write('\t\t\t<video format="' +
+                               pal_ntsc + '" aspect="' + faspect + '"')
                 if fwide:
                     xml_file.write(' widescreen="nopanscan"')
                 xml_file.write('> </video>\n')
@@ -365,15 +382,18 @@ class dvdauthor_converter(devedeng.executor.executor):
                 xml_file.write('\t\t\t\t\t\tjump vmgm menu entry title;\n')
                 xml_file.write('\t\t\t\t\t}\n')
                 xml_file.write('\t\t\t\t\tg0=100;\n')
-                xml_file.write('\t\t\t\t\tg1='+str(int(titles/elements_per_menu))+';\n')
+                xml_file.write('\t\t\t\t\tg1=' +
+                               str(int(titles / elements_per_menu)) + ';\n')
                 xml_file.write('\t\t\t\t\tjump title 1;\n')
                 xml_file.write('\t\t\t\t</pre>\n')
                 # fake video to ensure compatibility
                 xml_file.write('\t\t\t\t<vob file="')
                 if ispal:
-                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path,"base_pal"))))
+                    xml_file.write(self.expand_xml(
+                        str(os.path.join(self.config.other_path, "base_pal"))))
                 else:
-                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path,"base_ntsc"))))
+                    xml_file.write(self.expand_xml(
+                        str(os.path.join(self.config.other_path, "base_ntsc"))))
                 if fwide:
                     xml_file.write("_wide")
                 xml_file.write('.mpg"></vob>\n')
@@ -381,7 +401,8 @@ class dvdauthor_converter(devedeng.executor.executor):
                 xml_file.write("\t\t</menus>\n")
 
             xml_file.write("\t\t<titles>\n")
-            xml_file.write('\t\t\t<video format="'+pal_ntsc+'" aspect="'+faspect+'"')
+            xml_file.write('\t\t\t<video format="' +
+                           pal_ntsc + '" aspect="' + faspect + '"')
             if fwide:
                 xml_file.write(' widescreen="nopanscan"')
             xml_file.write('> </video>\n')
@@ -396,75 +417,83 @@ class dvdauthor_converter(devedeng.executor.executor):
 #                 xml_file.write('\t\t\t\t\tsubtitle=64;\n')
 #                 xml_file.write('\t\t\t\t</pre>\n')
 
-            xml_file.write('\t\t\t\t<vob file="'+self.expand_xml(element.converted_filename)+'" ')
+            xml_file.write('\t\t\t\t<vob file="' +
+                           self.expand_xml(element.converted_filename) + '" ')
             xml_file.write('chapters="0')
             if (element.original_length > 5):
-                if (element.divide_in_chapters): # add chapters
-                    manual_chapter_list = [];
+                if (element.divide_in_chapters):  # add chapters
+                    manual_chapter_list = []
                     if (element.chapter_list_entry):
-                        manual_chapter_list = element.chapter_list_entry.split(",")
+                        manual_chapter_list = element.chapter_list_entry.split(
+                            ",")
                     toadd = element.chapter_size
-                    seconds = toadd*60
+                    seconds = toadd * 60
                     while seconds < (element.original_length - 4):
-                        # Check manual_chapter_list for manual entries before set next chapter
+                        # Check manual_chapter_list for manual entries before
+                        # set next chapter
                         for idx, m_chapter in enumerate(manual_chapter_list):
                             m_chapter = m_chapter.split(":")
-                            m_chapter = int(m_chapter[0])*60+int(m_chapter[1]) # Change from mm:ss to seconds
+                            # Change from mm:ss to seconds
+                            m_chapter = int(
+                                m_chapter[0]) * 60 + int(m_chapter[1])
                             if (m_chapter < seconds):
                                 seconds = m_chapter
                                 del manual_chapter_list[idx]
-                        thetime = self.return_time(seconds,False)
-                        xml_file.write(","+thetime)
-                        seconds += (toadd*60)
-                xml_file.write(',' + self.return_time((element.original_length -2 ),False))
+                        thetime = self.return_time(seconds, False)
+                        xml_file.write("," + thetime)
+                        seconds += (toadd * 60)
+                xml_file.write(
+                    ',' + self.return_time((element.original_length - 2), False))
             xml_file.write('" />\n')
 
             if not onlyone:
                 xml_file.write('\t\t\t\t<post>\n')
-                files+=1
-                xml_file.write('\t\t\t\t\tg1='+str(int(titles/elements_per_menu))+';\n')
+                files += 1
+                xml_file.write('\t\t\t\t\tg1=' +
+                               str(int(titles / elements_per_menu)) + ';\n')
 
-                #play all
-                xml_file.write('\t\t\t\t\tif (g3 eq 1) {\n') #if play all:
-                if titles==total_t-1: #return to menu if last title
+                # play all
+                xml_file.write('\t\t\t\t\tif (g3 eq 1) {\n')  # if play all:
+                if titles == total_t - 1:  # return to menu if last title
                     xml_file.write('\t\t\t\t\t\tg0=100;\n')
-                else: #play next title
-                    xml_file.write('\t\t\t\t\t\tg0='+str(titles + 2)+';\n')
+                else:  # play next title
+                    xml_file.write('\t\t\t\t\t\tg0=' + str(titles + 2) + ';\n')
                 xml_file.write('\t\t\t\t\t} else {\n')
 
-                #end of play opt
+                # end of play opt
                 xml_file.write('\t\t\t\t\t\tg0=')
-                if action=="action_stop":
+                if action == "action_stop":
                     xml_file.write('100')
-                elif action=="action_play_previous":
+                elif action == "action_play_previous":
                     if titles == 0:
                         prev_t = total_t - 1
                     else:
                         prev_t = titles - 1
                     xml_file.write(str(prev_t + 1))
-                elif action=="action_play_again":
+                elif action == "action_play_again":
                     xml_file.write(str(titles + 1))
-                elif action=="action_play_next":
-                    if titles==total_t-1:
-                        next_t=0
+                elif action == "action_play_next":
+                    if titles == total_t - 1:
+                        next_t = 0
                     else:
-                        next_t=titles + 1
+                        next_t = titles + 1
                     xml_file.write(str(next_t + 1))
-                elif action=="action_play_last":
+                elif action == "action_play_last":
                     xml_file.write(str(total_t))
                 else:
-                    xml_file.write('1') # first
+                    xml_file.write('1')  # first
 
                 xml_file.write(';\n')
                 xml_file.write('\t\t\t\t\t}\n')
 
-                xml_file.write('\t\t\t\t\tcall vmgm menu entry title;\n') #preform action
+                # preform action
+                xml_file.write('\t\t\t\t\tcall vmgm menu entry title;\n')
                 xml_file.write('\t\t\t\t</post>\n')
             xml_file.write("\t\t\t</pgc>\n")
             xml_file.write("\t\t</titles>\n")
             xml_file.write("\t</titleset>\n")
-            counter+=1
-            titles+=1
+            counter += 1
+            titles += 1
 
         xml_file.write("</dvdauthor>")
 
@@ -472,34 +501,32 @@ class dvdauthor_converter(devedeng.executor.executor):
 
         return xml_file_path
 
-
-    def return_time(self,seconds,empty):
-
+    def return_time(self, seconds, empty):
         """ cuts a time in seconds into seconds, minutes and hours """
 
-        seconds2=int(seconds)
+        seconds2 = int(seconds)
 
-        hours=str(int(seconds2/3600))
+        hours = str(int(seconds2 / 3600))
         if empty:
-            if len(hours)==1:
-                hours="0"+hours
+            if len(hours) == 1:
+                hours = "0" + hours
         else:
-            if hours=="0":
-                hours=""
-        if hours!="":
-            hours+=":"
+            if hours == "0":
+                hours = ""
+        if hours != "":
+            hours += ":"
 
-        minutes=str(int((seconds2/60)%60))
-        if empty or (hours!=""):
-            if len(minutes)==1:
-                minutes="0"+minutes
-        elif (minutes=="0") and (hours==""):
-                minutes=""
-        if minutes!="":
-            minutes+=":"
+        minutes = str(int((seconds2 / 60) % 60))
+        if empty or (hours != ""):
+            if len(minutes) == 1:
+                minutes = "0" + minutes
+        elif (minutes == "0") and (hours == ""):
+            minutes = ""
+        if minutes != "":
+            minutes += ":"
 
-        secs=str(int(seconds2%60))
-        if (len(secs)==1) and (minutes!=""):
-            secs="0"+secs
+        secs = str(int(seconds2 % 60))
+        if (len(secs) == 1) and (minutes != ""):
+            secs = "0" + secs
 
-        return hours+minutes+secs
+        return hours + minutes + secs

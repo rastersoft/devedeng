@@ -28,6 +28,7 @@ import devedeng.mkisofs
 import devedeng.genisoimage
 import devedeng.mpv
 
+
 class converter:
 
     current_converter = None
@@ -37,7 +38,6 @@ class converter:
         if converter.current_converter is None:
             converter.current_converter = converter()
         return converter.current_converter
-
 
     def __init__(self):
 
@@ -92,7 +92,6 @@ class converter:
                 if (self.default_burner is None):
                     self.default_burner = element
 
-
     def get_supported_programs(self):
 
         analizers = []
@@ -118,7 +117,6 @@ class converter:
 
         return (analizers, players, menuers, converters, burners, mkiso)
 
-
     def get_available_programs(self):
 
         players = []
@@ -142,7 +140,6 @@ class converter:
             mkiso.append(e)
 
         return (analizers, players, menuers, converters, burners, mkiso)
-
 
     def get_needed_programs(self):
         """ returns a tupla with six lists. When a list is NONE, there are installed in the system
@@ -192,7 +189,7 @@ class converter:
             if (e.supports_mkiso) and (mkiso is not None):
                 mkiso.append(name)
 
-        return ( analizers, players, converters, menuers, burners, mkiso )
+        return (analizers, players, converters, menuers, burners, mkiso)
 
     def get_film_player(self):
         """ returns a class for the desired film player, or the most priviledged if the desired is not installed """
@@ -221,19 +218,21 @@ class converter:
     def get_disc_converter(self):
         """ returns a class for the desired disc converter, or the most priviledged if the desired is not installed """
 
-        # if there is a film converter chosen by the user, and it is installed in the system
+        # if there is a film converter chosen by the user, and it is installed
+        # in the system
         if (self.config.film_converter is not None) and (self.config.film_converter in self.converters):
             # and that converter supports the current disc type
             if self.converters[self.config.film_converter].disc_types.count(self.config.disc_type) != 0:
                 # return that converter
                 return self.converters[self.config.film_converter]
-        # if not, return the first available converter that supports the current disc type
+        # if not, return the first available converter that supports the
+        # current disc type
         for converter in self.converters:
             if self.converters[converter].disc_types.count(self.config.disc_type) != 0:
                 return self.converters[converter]
         return None
 
-    def get_disc_converter_by_name(self,name):
+    def get_disc_converter_by_name(self, name):
         if name in self.converters:
             return self.converters[name]
         return None

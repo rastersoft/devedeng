@@ -19,18 +19,19 @@ from gi.repository import Gtk
 import os
 import devedeng.configuration_data
 
+
 class ask_window:
 
     def __init__(self):
 
         self.config = devedeng.configuration_data.configuration.get_config()
 
-    def run(self,text,title):
+    def run(self, text, title):
 
         builder = Gtk.Builder()
         builder.set_translation_domain(self.config.gettext_domain)
 
-        builder.add_from_file(os.path.join(self.config.glade,"wask.ui"))
+        builder.add_from_file(os.path.join(self.config.glade, "wask.ui"))
         builder.connect_signals(self)
         wask_window = builder.get_object("dialog_ask")
         wask_window.set_title(title)

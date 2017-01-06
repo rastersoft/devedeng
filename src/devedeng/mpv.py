@@ -21,6 +21,7 @@ import subprocess
 import devedeng.configuration_data
 import devedeng.executor
 
+
 class mpv(devedeng.executor.executor):
 
     supports_analize = False
@@ -34,9 +35,10 @@ class mpv(devedeng.executor.executor):
     @staticmethod
     def check_is_installed():
         try:
-            handle = subprocess.Popen(["mpv","-v"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            handle = subprocess.Popen(
+                ["mpv", "-v"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             (stdout, stderr) = handle.communicate()
-            if 0==handle.wait():
+            if 0 == handle.wait():
                 return True
             else:
                 return False
@@ -48,13 +50,13 @@ class mpv(devedeng.executor.executor):
         devedeng.executor.executor.__init__(self)
         self.config = devedeng.configuration_data.configuration.get_config()
 
-    def play_film(self,file_name):
+    def play_film(self, file_name):
 
         command_line = ["mpv", file_name]
         self.launch_process(command_line)
 
-    def process_stdout(self,data):
+    def process_stdout(self, data):
         return
 
-    def process_stderr(self,data):
+    def process_stderr(self, data):
         return

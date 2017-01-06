@@ -19,6 +19,7 @@ from gi.repository import Gtk
 import os
 import devedeng.configuration_data
 
+
 class opensave_window:
 
     def __init__(self, save):
@@ -26,26 +27,27 @@ class opensave_window:
         self.config = devedeng.configuration_data.configuration.get_config()
         self.save = save
 
-
-    def run(self,current_file = None):
+    def run(self, current_file=None):
 
         builder = Gtk.Builder()
         builder.set_translation_domain(self.config.gettext_domain)
 
         if self.save:
-            builder.add_from_file(os.path.join(self.config.glade,"wsave_project.ui"))
+            builder.add_from_file(os.path.join(
+                self.config.glade, "wsave_project.ui"))
         else:
-            builder.add_from_file(os.path.join(self.config.glade,"wopen_project.ui"))
+            builder.add_from_file(os.path.join(
+                self.config.glade, "wopen_project.ui"))
         builder.connect_signals(self)
         w_window = builder.get_object("data_project")
         if current_file is not None:
             w_window.set_filename(current_file)
 
-        file_filter_projects=Gtk.FileFilter()
+        file_filter_projects = Gtk.FileFilter()
         file_filter_projects.set_name(_("DevedeNG projects"))
         file_filter_projects.add_pattern("*.devedeng")
 
-        file_filter_all=Gtk.FileFilter()
+        file_filter_all = Gtk.FileFilter()
         file_filter_all.set_name(_("All files"))
         file_filter_all.add_pattern("*")
 

@@ -15,17 +15,18 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from gi.repository import Gtk,GObject
+from gi.repository import Gtk, GObject
 import os
 import devedeng.configuration_data
 import devedeng.error
 import devedeng.ask
 
+
 class runner(GObject.GObject):
 
-    __gsignals__ = {'done': (GObject.SIGNAL_RUN_FIRST, None,(int,))}
+    __gsignals__ = {'done': (GObject.SIGNAL_RUN_FIRST, None, (int,))}
 
-    def __init__(self, show_window = True):
+    def __init__(self, show_window=True):
 
         GObject.GObject.__init__(self)
 
@@ -47,7 +48,8 @@ class runner(GObject.GObject):
         self.builder = Gtk.Builder()
         self.builder.set_translation_domain(self.config.gettext_domain)
 
-        self.builder.add_from_file(os.path.join(self.config.glade,"wprogress.ui"))
+        self.builder.add_from_file(os.path.join(
+            self.config.glade, "wprogress.ui"))
         self.builder.connect_signals(self)
         self.wprogress = self.builder.get_object("progress")
         if show_window:
@@ -60,7 +62,7 @@ class runner(GObject.GObject):
         box.show()
         self.progress_bars = []
         self.used_progress_bars = []
-        for c in range(0,self.cores):
+        for c in range(0, self.cores):
             f = Gtk.Frame()
             p = Gtk.ProgressBar()
             p.set_orientation(Gtk.Orientation.HORIZONTAL)
@@ -68,13 +70,12 @@ class runner(GObject.GObject):
             f.add(p)
             # A frame, a progress bar, and the process running in that bar
             self.progress_bars.append([f, p, None])
-            box.pack_start(f,True,True,0)
+            box.pack_start(f, True, True, 0)
         box.set_orientation(Gtk.Orientation.VERTICAL)
         self.total_processes = 0
         self.error = False
 
-
-    def add_process(self,process):
+    def add_process(self, process):
 
         if (self.proc_list.count(process) == 0):
             self.proc_list.append(process)
@@ -84,20 +85,20 @@ class runner(GObject.GObject):
 
         self.total_processes = len(self.proc_list)
 
-
-    def on_cancel_clicked(self,b):
+    def on_cancel_clicked(self, b):
 
         ask_w = devedeng.ask.ask_window()
-        retval = ask_w.run(_("Cancel the current job?"),_("Cancel the current job?"))
+        retval = ask_w.run(_("Cancel the current job?"),
+                           _("Cancel the current job?"))
         if retval:
             self.error = True
             for element in self.proc_list:
                 element.cancel()
             self.wprogress.destroy()
-            self.emit("done",1) # there was an error
+            self.emit("done", 1)  # there was an error
             return
 
-    def run(self, clear_log = True):
+    def run(self, clear_log=True):
 
         if clear_log:
             self.config.clear_log()
@@ -108,7 +109,7 @@ class runner(GObject.GObject):
             # * the list of dependencies, or None if there are no more dependencies
             # * the progress bar being used by this process
             if (element.dependencies is None) and (element.progress_bar is None):
-                element.connect("ended",self.process_ended)
+                element.connect("ended", self.process_ended)
                 element.run(self.progress_bars[0])
                 element.progress_bar = self.progress_bars[0]
                 self.used_progress_bars.append(self.progress_bars[0])
@@ -117,11 +118,12 @@ class runner(GObject.GObject):
                 else:
                     self.progress_bars = []
                     break
-        self.wtotal.set_text(str(self.total_processes - len(self.proc_list))+"/"+str(self.total_processes))
-        self.wtotal.set_fraction((float(self.total_processes - len(self.proc_list)))/(float(self.total_processes)))
+        self.wtotal.set_text(
+            str(self.total_processes - len(self.proc_list)) + "/" + str(self.total_processes))
+        self.wtotal.set_fraction(
+            (float(self.total_processes - len(self.proc_list))) / (float(self.total_processes)))
 
-
-    def process_ended(self,process, retval):
+    def process_ended(self, process, retval):
 
         if self.error:
             return
@@ -132,10 +134,11 @@ class runner(GObject.GObject):
                 element.cancel()
             self.wprogress.destroy()
             devedeng.error.error_window()
-            self.emit("done",1) # there was an error
+            self.emit("done", 1)  # there was an error
             return
 
-        # move the progress bar used by this process to the list of available progress bars
+        # move the progress bar used by this process to the list of available
+        # progress bars
         tmp = []
         for e in self.used_progress_bars:
             if (process.progress_bar == e):
@@ -145,7 +148,8 @@ class runner(GObject.GObject):
                 tmp.append(e)
         self.used_progress_bars = tmp
 
-        # remove this process from the list of processes, and remove it from the dependencies in other processes
+        # remove this process from the list of processes, and remove it from
+        # the dependencies in other processes
         tmp = []
         for e in self.proc_list:
             if (e != process):
@@ -158,4 +162,4 @@ class runner(GObject.GObject):
             self.run(False)
         else:
             self.wprogress.destroy()
-            self.emit("done",0) # no error
+            self.emit("done", 0)  # no error

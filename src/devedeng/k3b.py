@@ -19,6 +19,7 @@ import subprocess
 import devedeng.configuration_data
 import devedeng.executor
 
+
 class k3b(devedeng.executor.executor):
 
     supports_analize = False
@@ -32,9 +33,10 @@ class k3b(devedeng.executor.executor):
     @staticmethod
     def check_is_installed():
         try:
-            handle = subprocess.Popen(["k3b","--help"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            handle = subprocess.Popen(
+                ["k3b", "--help"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             (stdout, stderr) = handle.communicate()
-            if 0==handle.wait():
+            if 0 == handle.wait():
                 return True
             else:
                 return False
@@ -46,12 +48,12 @@ class k3b(devedeng.executor.executor):
         devedeng.executor.executor.__init__(self)
         self.config = devedeng.configuration_data.configuration.get_config()
 
-    def burn(self,file_name):
+    def burn(self, file_name):
 
         self.command_var = ["k3b", file_name]
 
-    def process_stdout(self,data):
+    def process_stdout(self, data):
         return
 
-    def process_stderr(self,data):
+    def process_stderr(self, data):
         return

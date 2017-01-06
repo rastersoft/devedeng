@@ -21,22 +21,23 @@ import os
 import devedeng.configuration_data
 import devedeng.executor
 
+
 class file_copy(devedeng.executor.executor):
 
-    def __init__(self,input_path, output_path):
+    def __init__(self, input_path, output_path):
 
         devedeng.executor.executor.__init__(self)
         self.config = devedeng.configuration_data.configuration.get_config()
 
-        self.text = _("Copying file %(X)s") % {"X": os.path.basename(input_path)}
+        self.text = _("Copying file %(X)s") % {
+            "X": os.path.basename(input_path)}
 
-        self.command_var=[]
+        self.command_var = []
         self.command_var.append("copy_files_verbose.py")
         self.command_var.append(input_path)
         self.command_var.append(output_path)
 
-
-    def process_stdout(self,data):
+    def process_stdout(self, data):
 
         if (data is None) or (len(data) == 0):
             return
@@ -45,10 +46,10 @@ class file_copy(devedeng.executor.executor):
             if (pos == -1):
                 return
             p = float(data[0][7:pos])
-            self.progress_bar[1].set_fraction(p/ 100.0)
+            self.progress_bar[1].set_fraction(p / 100.0)
             self.progress_bar[1].set_text("%.1f%%" % (p))
         return
 
-    def process_stderr(self,data):
+    def process_stderr(self, data):
 
         return

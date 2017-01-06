@@ -21,6 +21,7 @@ import os
 import devedeng.configuration_data
 import devedeng.executor
 
+
 class mux_dvd_menu(devedeng.executor.executor):
 
     def __init__(self):
@@ -28,21 +29,22 @@ class mux_dvd_menu(devedeng.executor.executor):
         devedeng.executor.executor.__init__(self)
         self.config = devedeng.configuration_data.configuration.get_config()
 
-    def create_mpg(self,n_page,output_path,movie_path):
+    def create_mpg(self, n_page, output_path, movie_path):
 
         self.n_page = n_page
         self.text = _("Mixing menu %(X)d") % {"X": self.n_page}
 
-        final_path = os.path.join(output_path,"menu_"+str(n_page)+"B.mpg")
+        final_path = os.path.join(output_path, "menu_" + str(n_page) + "B.mpg")
 
-        self.command_var=[]
+        self.command_var = []
         self.command_var.append("spumux")
-        self.command_var.append(os.path.join(output_path,"menu_"+str(n_page)+".xml"))
+        self.command_var.append(os.path.join(
+            output_path, "menu_" + str(n_page) + ".xml"))
         self.stdin_file = movie_path
         self.stdout_file = final_path
 
         return final_path
 
-    def process_stderr(self,data):
+    def process_stderr(self, data):
 
         return

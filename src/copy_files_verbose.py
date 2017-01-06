@@ -26,11 +26,11 @@ if len(sys.argv) != 3:
 
 filesize = os.path.getsize(sys.argv[1])
 done = 0.0
-f1 = open(sys.argv[1],"rb")
-f2 = open(sys.argv[2],"wb")
+f1 = open(sys.argv[1], "rb")
+f2 = open(sys.argv[2], "wb")
 
 while (done < filesize):
     data = f1.read(65536)
     f2.write(data)
     done += len(data)
-    print("Copied %.1f%%" % (100.0 * float(done)/float(filesize)))
+    print("Copied %.1f%%" % (100.0 * float(done) / float(filesize)))

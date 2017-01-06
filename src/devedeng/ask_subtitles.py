@@ -20,6 +20,7 @@ import os
 import devedeng.configuration_data
 import devedeng.add_files
 
+
 class ask_subtitles:
 
     def __init__(self):
@@ -31,7 +32,8 @@ class ask_subtitles:
         builder = Gtk.Builder()
         builder.set_translation_domain(self.config.gettext_domain)
 
-        builder.add_from_file(os.path.join(self.config.glade,"wask_subtitles.ui"))
+        builder.add_from_file(os.path.join(
+            self.config.glade, "wask_subtitles.ui"))
         builder.connect_signals(self)
         wask_window = builder.get_object("ask_subtitles")
         self.wfilename = builder.get_object("subtitle_file")
@@ -42,7 +44,8 @@ class ask_subtitles:
         wlanguage = builder.get_object("language_l")
 
         if (devedeng.add_files.add_files.last_path is not None):
-            self.wfilename.set_current_folder(devedeng.add_files.add_files.last_path)
+            self.wfilename.set_current_folder(
+                devedeng.add_files.add_files.last_path)
 
         lang_selection = 0
         enc_selection = 0
@@ -51,9 +54,9 @@ class ask_subtitles:
         self.encoding = None
         self.put_upper = False
         self.filename = None
-        
+
         counter = 0
-        encodings = open(os.path.join(self.config.other_path,"codepages.lst"))
+        encodings = open(os.path.join(self.config.other_path, "codepages.lst"))
         for element in encodings:
             element = element.strip()
             if (element == self.config.sub_codepage):
@@ -61,9 +64,9 @@ class ask_subtitles:
             wlist_encodings.append([element])
             counter += 1
         encodings.close()
-        
+
         counter = 0
-        languages = open(os.path.join(self.config.other_path,"languages.lst"))
+        languages = open(os.path.join(self.config.other_path, "languages.lst"))
         for element in languages:
             element = element.strip()
             if (element == self.config.sub_language):
@@ -71,11 +74,11 @@ class ask_subtitles:
             wlist_languages.append([element])
             counter += 1
         languages.close()
-        
+
         wencoding.set_active(enc_selection)
         wlanguage.set_active(lang_selection)
 
-        file_filter_subt=Gtk.FileFilter()
+        file_filter_subt = Gtk.FileFilter()
         file_filter_subt.set_name(_("Subtitle files"))
 
         file_filter_subt.add_pattern("*.sub")
@@ -86,7 +89,7 @@ class ask_subtitles:
         file_filter_subt.add_pattern("*.txt")
         file_filter_subt.add_pattern("*.aqt")
 
-        file_filter_all=Gtk.FileFilter()
+        file_filter_all = Gtk.FileFilter()
         file_filter_all.set_name(_("All files"))
         file_filter_all.add_pattern("*")
 
@@ -96,8 +99,9 @@ class ask_subtitles:
         wask_window.show_all()
         self.on_subtitle_file_set(None)
         retval = wask_window.run()
-        if (retval == 2): # accept
-            self.put_upper = builder.get_object("put_subtitles_upper").get_active()
+        if (retval == 2):  # accept
+            self.put_upper = builder.get_object(
+                "put_subtitles_upper").get_active()
             self.config.sub_codepage = wencoding.get_active_id()
             self.config.sub_language = wlanguage.get_active_id()
             self.encoding = wencoding.get_active_id()
@@ -110,9 +114,8 @@ class ask_subtitles:
         else:
             return False
 
-    
-    def on_subtitle_file_set(self,b):
-        
+    def on_subtitle_file_set(self, b):
+
         f = self.wfilename.get_filename()
         if (f is None) or (f == ""):
             self.waccept.set_sensitive(False)

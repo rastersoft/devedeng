@@ -19,6 +19,7 @@ from gi.repository import Gtk
 import os
 import devedeng.configuration_data
 
+
 class add_files:
 
     last_path = None
@@ -32,7 +33,7 @@ class add_files:
         builder = Gtk.Builder()
         builder.set_translation_domain(self.config.gettext_domain)
 
-        builder.add_from_file(os.path.join(self.config.glade,"wadd_files.ui"))
+        builder.add_from_file(os.path.join(self.config.glade, "wadd_files.ui"))
         builder.connect_signals(self)
         wadd_files = builder.get_object("add_files")
         self.wfile_chooser = builder.get_object("filechooserwidget1")
@@ -40,12 +41,12 @@ class add_files:
             self.wfile_chooser.set_current_folder(add_files.last_path)
         self.wbutton_accept = builder.get_object("button_accept")
 
-        file_filter_videos=Gtk.FileFilter()
+        file_filter_videos = Gtk.FileFilter()
         file_filter_videos.set_name(_("Video files"))
         file_filter_videos.add_mime_type("video/*")
         file_filter_videos.add_pattern("*.rmvb")
 
-        file_filter_all=Gtk.FileFilter()
+        file_filter_all = Gtk.FileFilter()
         file_filter_all.set_name(_("All files"))
         file_filter_all.add_pattern("*")
 
@@ -77,7 +78,7 @@ class add_files:
             files_out.append(element)
         return files_out
 
-    def on_filechooserwidget1_selection_changed(self,b):
+    def on_filechooserwidget1_selection_changed(self, b):
 
         files = self.get_files()
         if (len(files) == 0):

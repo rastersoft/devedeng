@@ -31,16 +31,16 @@ import devedeng.choose_disc_type
 config_data = devedeng.configuration_data.configuration.get_config()
 
 if config_data is None:
-    print ("Can't locate extra files. Aborting.")
+    print("Can't locate extra files. Aborting.")
     sys.exit(1)
 
-gettext.bindtextdomain(config_data.gettext_domain,config_data.share_locale)
+gettext.bindtextdomain(config_data.gettext_domain, config_data.share_locale)
 try:
-    locale.setlocale(locale.LC_ALL,"")
+    locale.setlocale(locale.LC_ALL, "")
 except locale.Error:
     pass
 gettext.textdomain(config_data.gettext_domain)
-gettext.install(config_data.gettext_domain,localedir=config_data.share_locale)
+gettext.install(config_data.gettext_domain, localedir=config_data.share_locale)
 
 _ = gettext.gettext
 

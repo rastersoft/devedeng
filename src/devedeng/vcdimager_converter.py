@@ -21,6 +21,7 @@ import os
 import devedeng.configuration_data
 import devedeng.executor
 
+
 class vcdimager_converter(devedeng.executor.executor):
 
     def __init__(self):
@@ -28,14 +29,14 @@ class vcdimager_converter(devedeng.executor.executor):
         devedeng.executor.executor.__init__(self)
         self.config = devedeng.configuration_data.configuration.get_config()
 
-    def create_cd_project (self, path, name, file_movies):
+    def create_cd_project(self, path, name, file_movies):
 
-        self.command_var=[]
+        self.command_var = []
         self.command_var.append("vcdimager")
         self.command_var.append("-c")
-        self.command_var.append(os.path.join(path,name+".cue"))
+        self.command_var.append(os.path.join(path, name + ".cue"))
         self.command_var.append("-b")
-        self.command_var.append(os.path.join(path,name+".bin"))
+        self.command_var.append(os.path.join(path, name + ".bin"))
         self.command_var.append("-t")
         if self.config.disc_type == "vcd":
             self.command_var.append("vcd2")
@@ -45,11 +46,10 @@ class vcdimager_converter(devedeng.executor.executor):
             self.command_var.append(element.converted_filename)
         self.text = _("Creating CD image")
 
-
-    def process_stdout(self,data):
-        print("Stdout: "+str(data))
+    def process_stdout(self, data):
+        print("Stdout: " + str(data))
         return
 
-    def process_stderr(self,data):
-        print("Stderr: "+str(data))
+    def process_stderr(self, data):
+        print("Stderr: " + str(data))
         return

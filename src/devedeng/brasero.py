@@ -19,6 +19,7 @@ import subprocess
 import devedeng.configuration_data
 import devedeng.executor
 
+
 class brasero(devedeng.executor.executor):
 
     supports_analize = False
@@ -32,9 +33,10 @@ class brasero(devedeng.executor.executor):
     @staticmethod
     def check_is_installed():
         try:
-            handle = subprocess.Popen(["brasero","-h"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            handle = subprocess.Popen(
+                ["brasero", "-h"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             (stdout, stderr) = handle.communicate()
-            if 0==handle.wait():
+            if 0 == handle.wait():
                 return True
             else:
                 return False
@@ -46,12 +48,12 @@ class brasero(devedeng.executor.executor):
         devedeng.executor.executor.__init__(self)
         self.config = devedeng.configuration_data.configuration.get_config()
 
-    def burn(self,file_name):
+    def burn(self, file_name):
 
         self.command_var = ["brasero", file_name]
 
-    def process_stdout(self,data):
+    def process_stdout(self, data):
         return
 
-    def process_stderr(self,data):
+    def process_stderr(self, data):
         return

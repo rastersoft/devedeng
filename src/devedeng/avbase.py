@@ -20,12 +20,14 @@
 import devedeng.executor
 import subprocess
 
+
 class avbase(devedeng.executor.executor):
 
-    def check_version(self,cmd):
+    def check_version(self, cmd):
 
         try:
-            handle = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            handle = subprocess.Popen(
+                cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             (stdout, stderr) = handle.communicate()
             if 0 != handle.wait():
                 return False
@@ -33,18 +35,17 @@ class avbase(devedeng.executor.executor):
             return False
         self.check_version_txt(stdout)
 
-
-    def check_version_txt(self,vtext):
+    def check_version_txt(self, vtext):
 
         self.major_version = 0
         self.minor_version = 0
-       
+
         for line in vtext:
             if not isinstance(line, str):
                 continue
             if (line.startswith("avconv version")):
-                pos1 = line.find('.',15)
-                pos2 = line.find('-',15)
+                pos1 = line.find('.', 15)
+                pos2 = line.find('-', 15)
                 if (pos2 == -1):
                     return False
                 try:
@@ -53,12 +54,10 @@ class avbase(devedeng.executor.executor):
                         minor = 0
                     else:
                         major = int(line[15:pos1].strip())
-                        minor = int(line[pos1+1:pos2].strip())
+                        minor = int(line[pos1 + 1:pos2].strip())
                 except:
                     return False
                 self.major_version = major
                 self.minor_version = minor
                 return True
         return False
-
-        

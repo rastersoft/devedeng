@@ -19,16 +19,17 @@ from gi.repository import Gtk
 import os
 import devedeng.configuration_data
 
+
 class message_window:
 
-    def __init__(self,text,title,list_data = None):
+    def __init__(self, text, title, list_data=None):
 
         self.config = devedeng.configuration_data.configuration.get_config()
 
         builder = Gtk.Builder()
         builder.set_translation_domain(self.config.gettext_domain)
 
-        builder.add_from_file(os.path.join(self.config.glade,"wmessage.ui"))
+        builder.add_from_file(os.path.join(self.config.glade, "wmessage.ui"))
         builder.connect_signals(self)
         wmessage_window = builder.get_object("dialog_message")
         wmessage_window.set_title(title)

@@ -22,6 +22,7 @@ import devedeng.configuration_data
 import subprocess
 import devedeng.executor
 
+
 class genisoimage(devedeng.executor.executor):
 
     supports_analize = False
@@ -35,9 +36,10 @@ class genisoimage(devedeng.executor.executor):
     @staticmethod
     def check_is_installed():
         try:
-            handle = subprocess.Popen(["genisoimage","--help"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            handle = subprocess.Popen(
+                ["genisoimage", "--help"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             (stdout, stderr) = handle.communicate()
-            if 0==handle.wait():
+            if 0 == handle.wait():
                 return True
             else:
                 return False
@@ -49,12 +51,12 @@ class genisoimage(devedeng.executor.executor):
         devedeng.executor.executor.__init__(self)
         self.config = devedeng.configuration_data.configuration.get_config()
 
-    def create_iso (self, path, name):
+    def create_iso(self, path, name):
 
-        filesystem_path = os.path.join(path,"dvd_tree")
-        final_path = os.path.join(path,name+".iso")
+        filesystem_path = os.path.join(path, "dvd_tree")
+        final_path = os.path.join(path, name + ".iso")
 
-        self.command_var=[]
+        self.command_var = []
         self.command_var.append("genisoimage")
         self.command_var.append("-dvd-video")
         self.command_var.append("-V")
@@ -66,18 +68,17 @@ class genisoimage(devedeng.executor.executor):
         self.command_var.append(filesystem_path)
         self.text = _("Creating ISO image")
 
-
-    def process_stdout(self,data):
+    def process_stdout(self, data):
         return
 
-    def process_stderr(self,data):
+    def process_stderr(self, data):
 
         if (data[0].find("% done") == -1):
             return
 
         l = data[0].split("%")
         p = float(l[0])
-        self.progress_bar[1].set_fraction(p/100.0)
+        self.progress_bar[1].set_fraction(p / 100.0)
         self.progress_bar[1].set_text("%.1f%%" % (p))
 
         return
