@@ -50,6 +50,8 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
 
         self.add_text("title_text", None, self.update_preview)
 
+        self.add_text("playall_text", _("Play all"), self.update_preview)
+
         self.add_group("position_horizontal", [
                        "left", "center", "right"], "center", self.update_preview)
         self.add_group("at_startup", [
@@ -415,15 +417,19 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
 
         if (self.play_all_c):
             coordinates.append([xl, y - height, xr, y + height, "play_all"])
+            if self.playall_text == "":
+                playalltext = "Play all"
+            else:
+                playalltext = self.playall_text
             if paint_background:
                 self.paint_base(xl, xr, y, 0)
-                self.write_text("Play All", "menu_entry", xl,
+                self.write_text(playalltext, "menu_entry", xl,
                                 xr, y, self.position_horizontal)
             if paint_selected:
-                self.write_text("Play All", "menu_entry_selected",
+                self.write_text(playalltext, "menu_entry_selected",
                                 xl, xr, y, self.position_horizontal)
             if paint_activated:
-                self.write_text("Play All", "menu_entry_activated",
+                self.write_text(playalltext, "menu_entry_activated",
                                 xl, xr, y, self.position_horizontal)
             y += entry_height
 

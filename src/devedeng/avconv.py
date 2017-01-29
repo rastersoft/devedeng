@@ -482,7 +482,7 @@ class avconv(devedeng.avbase.avbase):
 
         if file_project.two_pass_encoding == True:
             self.command_var.append("-passlogfile")
-            self.command_var.append(output_file)
+            self.command_var.append(output_file + ".passlog")
             self.command_var.append("-pass")
             if pass2:
                 self.command_var.append("2")
