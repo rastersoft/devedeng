@@ -1,6 +1,7 @@
 ## History of versions ##
 * version 4.8.7 (2017-01-29)
   * Allows to translate the "Play all" text in the DVD menu
+  * Fixed mkisofs bug with some locales
 * version 4.8.6 (2016-12-14)
   * Now ensures that the average bitrate is never smaller than the minimum bitrate
   * Now the matroska and divx files have the right extension
