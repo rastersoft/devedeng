@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-03 23:59+0100\n"
+"POT-Creation-Date: 2017-01-29 21:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,65 +18,65 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../src/devedeng/add_files.py:44
+#: ../src/devedeng/add_files.py:45
 msgid "Video files"
 msgstr ""
 
-#: ../src/devedeng/add_files.py:49 ../src/devedeng/ask_subtitles.py:90
-#: ../src/devedeng/dvd_menu.py:150 ../src/devedeng/dvd_menu.py:162
-#: ../src/devedeng/opensave.py:49
+#: ../src/devedeng/add_files.py:50 ../src/devedeng/ask_subtitles.py:93
+#: ../src/devedeng/dvd_menu.py:162 ../src/devedeng/dvd_menu.py:174
+#: ../src/devedeng/opensave.py:51
 msgid "All files"
 msgstr ""
 
-#: ../src/devedeng/ask_subtitles.py:79
+#: ../src/devedeng/ask_subtitles.py:82
 msgid "Subtitle files"
 msgstr ""
 
-#: ../src/devedeng/avconv.py:115 ../src/devedeng/ffmpeg.py:111
+#: ../src/devedeng/avconv.py:114 ../src/devedeng/ffmpeg.py:114
 #, python-format
 msgid "Converting %(X)s (pass 2)"
 msgstr ""
 
-#: ../src/devedeng/avconv.py:117 ../src/devedeng/ffmpeg.py:113
+#: ../src/devedeng/avconv.py:117 ../src/devedeng/ffmpeg.py:117
 #, python-format
 msgid "Converting %(X)s (pass 1)"
 msgstr ""
 
-#: ../src/devedeng/avconv.py:126 ../src/devedeng/ffmpeg.py:122
+#: ../src/devedeng/avconv.py:127 ../src/devedeng/ffmpeg.py:127
 #, python-format
 msgid "Converting %(X)s"
 msgstr ""
 
-#: ../src/devedeng/avconv.py:474 ../src/devedeng/ffmpeg.py:467
+#: ../src/devedeng/avconv.py:498 ../src/devedeng/ffmpeg.py:493
 #, python-format
 msgid "Creating menu %(X)d"
 msgstr ""
 
-#: ../src/devedeng/choose_disc_type.py:154
-#: ../src/devedeng/choose_disc_type.py:162
-#: ../src/devedeng/choose_disc_type.py:175
-#: ../src/devedeng/choose_disc_type.py:183
-#: ../src/devedeng/choose_disc_type.py:191
-#: ../src/devedeng/choose_disc_type.py:198
-#: ../src/devedeng/choose_disc_type.py:202
+#: ../src/devedeng/choose_disc_type.py:157
+#: ../src/devedeng/choose_disc_type.py:168
+#: ../src/devedeng/choose_disc_type.py:184
+#: ../src/devedeng/choose_disc_type.py:195
 #: ../src/devedeng/choose_disc_type.py:206
+#: ../src/devedeng/choose_disc_type.py:216
+#: ../src/devedeng/choose_disc_type.py:222
+#: ../src/devedeng/choose_disc_type.py:228
 #, python-format
 msgid "\t%(program_name)s (not installed)\n"
 msgstr ""
 
-#: ../src/devedeng/choose_disc_type.py:156
-#: ../src/devedeng/choose_disc_type.py:164
-#: ../src/devedeng/choose_disc_type.py:177
-#: ../src/devedeng/choose_disc_type.py:185
-#: ../src/devedeng/choose_disc_type.py:193
-#: ../src/devedeng/choose_disc_type.py:200
-#: ../src/devedeng/choose_disc_type.py:204
-#: ../src/devedeng/choose_disc_type.py:208
+#: ../src/devedeng/choose_disc_type.py:160
+#: ../src/devedeng/choose_disc_type.py:171
+#: ../src/devedeng/choose_disc_type.py:187
+#: ../src/devedeng/choose_disc_type.py:198
+#: ../src/devedeng/choose_disc_type.py:209
+#: ../src/devedeng/choose_disc_type.py:219
+#: ../src/devedeng/choose_disc_type.py:225
+#: ../src/devedeng/choose_disc_type.py:231
 #, python-format
 msgid "\t%(program_name)s (installed)\n"
 msgstr ""
 
-#: ../src/devedeng/choose_disc_type.py:157
+#: ../src/devedeng/choose_disc_type.py:162
 #, python-format
 msgid ""
 "Movie identifiers (install at least one of these):\n"
@@ -84,7 +84,7 @@ msgid ""
 "%(program_list)s\n"
 msgstr ""
 
-#: ../src/devedeng/choose_disc_type.py:165
+#: ../src/devedeng/choose_disc_type.py:173
 #, python-format
 msgid ""
 "Movie players (install at least one of these):\n"
@@ -92,7 +92,7 @@ msgid ""
 "%(program_list)s\n"
 msgstr ""
 
-#: ../src/devedeng/choose_disc_type.py:178
+#: ../src/devedeng/choose_disc_type.py:189
 #, python-format
 msgid ""
 "Movie Converters (install at least one of these):\n"
@@ -100,7 +100,7 @@ msgid ""
 "%(program_list)s\n"
 msgstr ""
 
-#: ../src/devedeng/choose_disc_type.py:186
+#: ../src/devedeng/choose_disc_type.py:201
 #, python-format
 msgid ""
 "CD/DVD burners (install at least one of these):\n"
@@ -108,7 +108,7 @@ msgid ""
 "%(program_list)s\n"
 msgstr ""
 
-#: ../src/devedeng/choose_disc_type.py:194
+#: ../src/devedeng/choose_disc_type.py:211
 #, python-format
 msgid ""
 "ISO creators (install at least one of these):\n"
@@ -116,7 +116,7 @@ msgid ""
 "%(program_list)s\n"
 msgstr ""
 
-#: ../src/devedeng/choose_disc_type.py:210
+#: ../src/devedeng/choose_disc_type.py:234
 #, python-format
 msgid ""
 "Other programs:\n"
@@ -124,92 +124,96 @@ msgid ""
 "%(program_list)s\n"
 msgstr ""
 
-#: ../src/devedeng/dvdauthor_converter.py:49
+#: ../src/devedeng/dvdauthor_converter.py:50
 msgid "Creating DVD structure"
 msgstr ""
 
-#: ../src/devedeng/dvd_menu.py:91
+#: ../src/devedeng/dvd_menu.py:53
+msgid "Play all"
+msgstr ""
+
+#: ../src/devedeng/dvd_menu.py:104
 msgid "The selected file is a video, not an audio file"
 msgstr ""
 
-#: ../src/devedeng/dvd_menu.py:91 ../src/devedeng/dvd_menu.py:94
+#: ../src/devedeng/dvd_menu.py:104 ../src/devedeng/dvd_menu.py:108
 msgid "Error"
 msgstr ""
 
-#: ../src/devedeng/dvd_menu.py:94
+#: ../src/devedeng/dvd_menu.py:108
 msgid "The selected file is not an audio file"
 msgstr ""
 
-#: ../src/devedeng/dvd_menu.py:145
+#: ../src/devedeng/dvd_menu.py:157
 msgid "Picture files"
 msgstr ""
 
-#: ../src/devedeng/dvd_menu.py:157
+#: ../src/devedeng/dvd_menu.py:169
 msgid "Sound files"
 msgstr ""
 
-#: ../src/devedeng/dvd_menu.py:396
+#: ../src/devedeng/dvd_menu.py:411
 #, python-format
 msgid "Page %(X)d of %(Y)d"
 msgstr ""
 
-#: ../src/devedeng/file_copy.py:31
+#: ../src/devedeng/file_copy.py:32
 #, python-format
 msgid "Copying file %(X)s"
 msgstr ""
 
-#: ../src/devedeng/genisoimage.py:67 ../src/devedeng/mkisofs.py:67
+#: ../src/devedeng/genisoimage.py:69 ../src/devedeng/mkisofs.py:69
 msgid "Creating ISO image"
 msgstr ""
 
-#: ../src/devedeng/help.py:17
+#: ../src/devedeng/help.py:20
 msgid "Can't open the help files."
 msgstr ""
 
-#: ../src/devedeng/mux_dvd_menu.py:34
+#: ../src/devedeng/mux_dvd_menu.py:35
 #, python-format
 msgid "Mixing menu %(X)d"
 msgstr ""
 
-#: ../src/devedeng/opensave.py:45
+#: ../src/devedeng/opensave.py:47
 msgid "DevedeNG projects"
 msgstr ""
 
-#: ../src/devedeng/project.py:206
+#: ../src/devedeng/project.py:226
 msgid "Abort the current DVD and exit?"
 msgstr ""
 
-#: ../src/devedeng/project.py:206
+#: ../src/devedeng/project.py:226
 msgid "Exit DeVeDe"
 msgstr ""
 
-#: ../src/devedeng/project.py:270
+#: ../src/devedeng/project.py:286
 msgid "The following files could not be added:"
 msgstr ""
 
-#: ../src/devedeng/project.py:270 ../src/devedeng/project.py:730
+#: ../src/devedeng/project.py:287 ../src/devedeng/project.py:737
 msgid "Error while adding files"
 msgstr ""
 
-#: ../src/devedeng/project.py:282
+#: ../src/devedeng/project.py:298
 #, python-format
 msgid "The file <b>%(X)s</b> <i>(%(Y)s)</i> will be removed."
 msgstr ""
 
-#: ../src/devedeng/project.py:282
+#: ../src/devedeng/project.py:298
 msgid "Delete file"
 msgstr ""
 
-#: ../src/devedeng/project.py:485
+#: ../src/devedeng/project.py:494
 #, python-format
 msgid "The limit for this format is %(l)d files, but your project has %(h)d."
 msgstr ""
 
-#: ../src/devedeng/project.py:485
+#: ../src/devedeng/project.py:495
 msgid "Too many files in the project"
 msgstr ""
 
-#: ../src/devedeng/project.py:494
+#: ../src/devedeng/project.py:504
 #, python-format
 msgid ""
 "The selected folder already exists. To create the project, Devede must "
@@ -221,67 +225,67 @@ msgid ""
 " and all its contents <b>will be deleted</b>. Continue?"
 msgstr ""
 
-#: ../src/devedeng/project.py:494
+#: ../src/devedeng/project.py:504
 msgid "Delete folder"
 msgstr ""
 
-#: ../src/devedeng/project.py:629
+#: ../src/devedeng/project.py:642
 msgid "Close current project and start a fresh one?"
 msgstr ""
 
-#: ../src/devedeng/project.py:629
+#: ../src/devedeng/project.py:642
 msgid "New project"
 msgstr ""
 
-#: ../src/devedeng/project.py:670
+#: ../src/devedeng/project.py:678
 msgid "The file already exists. Overwrite it?"
 msgstr ""
 
-#: ../src/devedeng/project.py:670
+#: ../src/devedeng/project.py:678
 msgid "The file already exists"
 msgstr ""
 
-#: ../src/devedeng/project.py:730
+#: ../src/devedeng/project.py:736
 msgid "The following files in the project could not be added again:"
 msgstr ""
 
-#: ../src/devedeng/runner.py:91
+#: ../src/devedeng/runner.py:91 ../src/devedeng/runner.py:92
 msgid "Cancel the current job?"
 msgstr ""
 
-#: ../src/devedeng/settings.py:45 ../src/devedeng/settings.py:61
+#: ../src/devedeng/settings.py:46 ../src/devedeng/settings.py:64
 msgid "Use all cores"
 msgstr ""
 
-#: ../src/devedeng/settings.py:49
+#: ../src/devedeng/settings.py:51
 #, python-format
 msgid "Use %(X)d core"
 msgid_plural "Use %(X)d cores"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/devedeng/settings.py:55
+#: ../src/devedeng/settings.py:58
 #, python-format
 msgid "Use all except %(X)d core"
 msgid_plural "Use all except %(X)d cores"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/devedeng/settings.py:121
+#: ../src/devedeng/settings.py:127
 msgid "No discs supported"
 msgstr ""
 
-#: ../src/devedeng/subtitles_mux.py:43
+#: ../src/devedeng/subtitles_mux.py:44
 #, python-format
 msgid "Adding %(L)s subtitles to %(X)s"
 msgstr ""
 
-#: ../src/devedeng/title.py:32
+#: ../src/devedeng/title.py:33
 #, python-format
 msgid "Title %(X)d"
 msgstr ""
 
-#: ../src/devedeng/vcdimager_converter.py:46
+#: ../src/devedeng/vcdimager_converter.py:47
 msgid "Creating CD image"
 msgstr ""
 
