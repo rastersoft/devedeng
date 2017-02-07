@@ -77,7 +77,9 @@ class genisoimage(devedeng.executor.executor):
             return
 
         l = data[0].split("%")
-        p = float(l[0])
+        l0a = l[0]
+        l0b = l0a.replace(",", ".")
+        p = float(l0b)
         self.progress_bar[1].set_fraction(p / 100.0)
         self.progress_bar[1].set_text("%.1f%%" % (p))
 
