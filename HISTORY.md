@@ -1,4 +1,7 @@
 ## History of versions ##
+* version 4.8.8 (2017-02-07)
+  * Fixed genisoimage bug with some locales
+
 * version 4.8.7 (2017-01-29)
   * Allows to translate the "Play all" text in the DVD menu
   * Fixed mkisofs bug with some locales
