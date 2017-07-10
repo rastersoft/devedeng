@@ -453,7 +453,10 @@ class interface_manager(GObject.GObject):
 
         for element in self.interface_comboboxes:
             obj = builder.get_object(element[0])
-            exec('self.' + element[0] + ' = element[1][obj.get_active()]')
+            if (len(element[1]) != 0):
+                exec('self.' + element[0] + ' = element[1][obj.get_active()]')
+            else:
+                exec('self.' + element[0] + ' = ""')
 
     def save_ui(self):
         """ Makes a copy of all the UI variables """

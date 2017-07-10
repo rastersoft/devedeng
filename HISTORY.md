@@ -1,4 +1,7 @@
 ## History of versions ##
+* version 4.8.9 (2017-07-10)
+  * Fixed bug when there are no CD burner installed
+
 * version 4.8.8 (2017-02-07)
   * Fixed genisoimage bug with some locales
 
