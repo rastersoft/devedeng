@@ -107,6 +107,7 @@ class ffmpeg(devedeng.executor.executor):
         devedeng.executor.executor.__init__(self)
         self.config = devedeng.configuration_data.configuration.get_config()
 
+
     def convert_file(self, file_project, output_file, video_length, pass2=False):
 
         if file_project.two_pass_encoding:
@@ -237,12 +238,13 @@ class ffmpeg(devedeng.executor.executor):
             self.command_var.append("libmp3lame")
             self.command_var.append("-f")
             self.command_var.append("avi")
-            self.command_var.append("-maxrate:v")
-            self.command_var.append(str(maxrate))
-            self.command_var.append("-minrate:v")
-            if minrate < (devedeng.project.devede_project.divx_min_bps * 1000):
-                minrate = devedeng.project.devede_project.divx_min_bps * 1000
-            self.command_var.append(str(minrate))
+            if not pass2:
+                self.command_var.append("-maxrate:v")
+                self.command_var.append(str(maxrate))
+                self.command_var.append("-minrate:v")
+                if minrate < (devedeng.project.devede_project.divx_min_bps * 1000):
+                    minrate = devedeng.project.devede_project.divx_min_bps * 1000
+                self.command_var.append(str(minrate))
         elif (self.config.disc_type == "mkv"):
             self.command_var.append("-vcodec")
             self.command_var.append("h264")
@@ -250,12 +252,13 @@ class ffmpeg(devedeng.executor.executor):
             self.command_var.append("libmp3lame")
             self.command_var.append("-f")
             self.command_var.append("matroska")
-            self.command_var.append("-maxrate:v")
-            self.command_var.append(str(maxrate))
-            self.command_var.append("-minrate:v")
-            if minrate < (devedeng.project.devede_project.mkv_min_bps * 1000):
-                minrate = devedeng.project.devede_project.mkv_min_bps * 1000
-            self.command_var.append(str(minrate))
+            if not pass2:
+                self.command_var.append("-maxrate:v")
+                self.command_var.append(str(maxrate))
+                self.command_var.append("-minrate:v")
+                if minrate < (devedeng.project.devede_project.mkv_min_bps * 1000):
+                    minrate = devedeng.project.devede_project.mkv_min_bps * 1000
+                self.command_var.append(str(minrate))
         elif (self.config.disc_type == "dvd"):
             if not file_project.no_reencode_audio_video:
                 self.command_var.append("-c:v")
@@ -284,13 +287,13 @@ class ffmpeg(devedeng.executor.executor):
             self.command_var.append("yuv420p")
             self.command_var.append("-maxrate:v")
             if maxrate > (devedeng.project.devede_project.dvd_max_bps_base[0] * 1000):
-                maxrate = devedeng.project.devede_project.dvd_max_bps_base[
-                    0] * 1000
+                maxrate = devedeng.project.devede_project.dvd_max_bps_base[0] * 1000
             self.command_var.append(str(maxrate))
-            self.command_var.append("-minrate:v")
-            if minrate < (devedeng.project.devede_project.dvd_min_bps * 1000):
-                minrate = devedeng.project.devede_project.dvd_min_bps * 1000
-            self.command_var.append(str(minrate))
+            if not pass2:
+                self.command_var.append("-minrate:v")
+                if minrate < (devedeng.project.devede_project.dvd_min_bps * 1000):
+                    minrate = devedeng.project.devede_project.dvd_min_bps * 1000
+                self.command_var.append(str(minrate))
             self.command_var.append("-bufsize")
             self.command_var.append("1835008")
             self.command_var.append("-packetsize")
@@ -380,13 +383,13 @@ class ffmpeg(devedeng.executor.executor):
             self.command_var.append("yuv420p")
             self.command_var.append("-maxrate:v")
             if maxrate > (devedeng.project.devede_project.svcd_max_bps_base[0] * 1000):
-                maxrate = devedeng.project.devede_project.svcd_max_bps_base[
-                    0] * 1000
+                maxrate = devedeng.project.devede_project.svcd_max_bps_base[0] * 1000
             self.command_var.append(str(maxrate))
-            self.command_var.append("-minrate:v")
-            if minrate < (devedeng.project.devede_project.svcd_min_bps * 1000):
-                minrate = (devedeng.project.devede_project.svcd_min_bps * 1000)
-            self.command_var.append(str(minrate))
+            if not pass2:
+                self.command_var.append("-minrate:v")
+                if minrate < (devedeng.project.devede_project.svcd_min_bps * 1000):
+                    minrate = (devedeng.project.devede_project.svcd_min_bps * 1000)
+                self.command_var.append(str(minrate))
             self.command_var.append("-bufsize")
             self.command_var.append("1835008")
             self.command_var.append("-packetsize")
@@ -470,14 +473,14 @@ class ffmpeg(devedeng.executor.executor):
 
         if (vcd == False) and (file_project.no_reencode_audio_video == False):
             self.command_var.append("-b:a")
-            self.command_var.append(str(file_project.audio_rate_final) + "k")
+            self.command_var.append(str(file_project.audio_rate_final*1000))
 
             self.command_var.append("-b:v")
-            self.command_var.append(str(file_project.video_rate_final) + "k")
+            self.command_var.append(str(file_project.video_rate_final*1000))
 
         if file_project.two_pass_encoding == True:
             self.command_var.append("-passlogfile")
-            self.command_var.append(output_file)
+            self.command_var.append(output_file + ".passlog")
             self.command_var.append("-pass")
             if pass2:
                 self.command_var.append("2")
@@ -515,6 +518,8 @@ class ffmpeg(devedeng.executor.executor):
         self.command_var.append("-acodec")
         if use_mp2:
             self.command_var.append("mp2")
+            if (audio_rate > 384):
+                audio_rate = 384  # max bitrate for mp2
         else:
             self.command_var.append("ac3")
         self.command_var.append("-s")

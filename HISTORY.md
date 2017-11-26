@@ -1,4 +1,7 @@
 ## History of versions ##
+* version 4.8.10 (2017-11-26)
+  * Removed minrate during second pass when using two-pass encoding because it fails with ffmpeg
+
 * version 4.8.9 (2017-07-10)
   * Fixed bug when there are no CD burner installed
 
