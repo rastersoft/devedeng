@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 -->
+<!-- Generated with glade 3.20.1 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
   <object class="GtkWindow" id="wselect_disk">
@@ -8,7 +8,7 @@
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
-    <property name="icon">devedeng.svg</property>
+    <property name="icon">icon_mkv.png</property>
     <signal name="delete-event" handler="on_wselect_disk_destroy_event" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
@@ -43,7 +43,7 @@
                   <object class="GtkImage" id="image1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="pixbuf">icon_dvd.png</property>
+                    <property name="pixbuf">icon_mkv.png</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -90,7 +90,7 @@ Creates a video DVD suitable for all DVD home players</property>
                   <object class="GtkImage" id="image2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="pixbuf">icon_vcd.png</property>
+                    <property name="pixbuf">icon_mkv.png</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -137,7 +137,7 @@ Creates a VideoCD, with a picture quality equivalent to VHS</property>
                   <object class="GtkImage" id="image3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="pixbuf">icon_svcd.png</property>
+                    <property name="pixbuf">icon_mkv.png</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -184,7 +184,7 @@ Creates a VideoCD with better picture quality</property>
                   <object class="GtkImage" id="image4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="pixbuf">icon_cvd.png</property>
+                    <property name="pixbuf">icon_mkv.png</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -231,7 +231,7 @@ Another kind of Super VideoCD</property>
                   <object class="GtkImage" id="image5">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="pixbuf">icon_divx.png</property>
+                    <property name="pixbuf">icon_mkv.png</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -354,6 +354,9 @@ Creates H.264 files in a MKV container</property>
           </packing>
         </child>
       </object>
+    </child>
+    <child type="titlebar">
+      <placeholder/>
     </child>
   </object>
 </interface>

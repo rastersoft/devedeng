@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import sys
 from glob import glob
 from distutils.core import setup
 
@@ -12,11 +13,13 @@ except:
 
 def get_data_files():
     data_files = [
-        (os.path.join('share', 'applications'), ['data/devedeng.desktop']),
+        (os.path.join('share', 'applications'), ['data/devede_ng.py.desktop']),
         (os.path.join('share', 'pixmaps'), ['data/devedeng.svg']),
+        (os.path.join('share', 'icons', 'hicolor', 'scalable', 'apps'), ['data/devedeng_icon.svg']),
         (os.path.join('share', 'devedeng'), glob("data/interface/*")),
         (os.path.join('share', 'devedeng'), glob('data/pixmaps/*g')),
         (os.path.join('share', 'devedeng'), ['data/devedeng.svg']),
+        (os.path.join('share', 'devedeng'), ['data/devedeng_icon.svg']),
         (os.path.join('share', 'devedeng'), ['data/codepages.lst']),
         (os.path.join('share', 'devedeng'), ['data/languages.lst']),
         (os.path.join('share', 'devedeng', 'backgrounds'),
@@ -118,3 +121,6 @@ setup(
     data_files=get_data_files(),
     scripts=['src/devede_ng.py', 'src/copy_files_verbose.py'],
 )
+
+if (len(sys.argv) == 2) and (sys.argv[1] == "install"):
+    os.system("gtk-update-icon-cache")
