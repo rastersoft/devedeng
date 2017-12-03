@@ -630,7 +630,7 @@ class devede_project:
 
     def on_settings_activate(self, b):
 
-        w = devedeng.settings.settings_window()
+        w = devedeng.settings.settings_window(self.wmain_window)
 
     def on_about_activate(self, b):
 

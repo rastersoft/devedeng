@@ -1,4 +1,8 @@
 ## History of versions ##
+* version 4.8.11 (2017-12-03)
+  * Now shows the icon in wayland
+  * Now sets transient for settings window
+
 * version 4.8.10 (2017-11-26)
   * Removed minrate during second pass when using two-pass encoding because it fails with ffmpeg
 

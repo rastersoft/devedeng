@@ -25,7 +25,7 @@ import devedeng.converter
 
 class settings_window(devedeng.interface_manager.interface_manager):
 
-    def __init__(self):
+    def __init__(self, parent):
 
         devedeng.interface_manager.interface_manager.__init__(self)
         self.config = devedeng.configuration_data.configuration.get_config()
@@ -91,6 +91,8 @@ class settings_window(devedeng.interface_manager.interface_manager):
         wsettings_window = self.builder.get_object("settings")
         self.wconverter = self.builder.get_object("converter")
         self.wtypes = self.builder.get_object("disc_types_supported")
+
+        wsettings_window.set_transient_for(parent)
 
         wsettings_window.show_all()
         self.update_ui(self.builder)
