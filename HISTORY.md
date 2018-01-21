@@ -1,4 +1,7 @@
 ## History of versions ##
+* version 4.8.12 (2018-01-21)
+  * Fixed the icons in the main window
+
 * version 4.8.11 (2017-12-03)
   * Now shows the icon in wayland
   * Now sets transient for settings window
