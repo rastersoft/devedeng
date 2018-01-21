@@ -43,7 +43,7 @@
                   <object class="GtkImage" id="image1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="pixbuf">icon_mkv.png</property>
+                    <property name="pixbuf">icon_dvd.png</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -90,7 +90,7 @@ Creates a video DVD suitable for all DVD home players</property>
                   <object class="GtkImage" id="image2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="pixbuf">icon_mkv.png</property>
+                    <property name="pixbuf">icon_vcd.png</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -137,7 +137,7 @@ Creates a VideoCD, with a picture quality equivalent to VHS</property>
                   <object class="GtkImage" id="image3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="pixbuf">icon_mkv.png</property>
+                    <property name="pixbuf">icon_svcd.png</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -184,7 +184,7 @@ Creates a VideoCD with better picture quality</property>
                   <object class="GtkImage" id="image4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="pixbuf">icon_mkv.png</property>
+                    <property name="pixbuf">icon_cvd.png</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -231,7 +231,7 @@ Another kind of Super VideoCD</property>
                   <object class="GtkImage" id="image5">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="pixbuf">icon_mkv.png</property>
+                    <property name="pixbuf">icon_divx.png</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
