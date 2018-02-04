@@ -248,6 +248,8 @@ class file_movie(devedeng.interface_manager.interface_manager):
 
     def get_max_resolution(self, rx, ry, aspect):
 
+        if aspect == 0:
+            aspect = 1
         tmpx = ry * aspect
         tmpy = rx / aspect
         if (tmpx > rx):
@@ -364,8 +366,7 @@ class file_movie(devedeng.interface_manager.interface_manager):
                         else:
                             self.height_final = 480
                     else:
-                        tx, ty = self.get_max_resolution(
-                            self.original_width, self.original_height, self.original_aspect_ratio)
+                        tx, ty = self.get_max_resolution(self.original_width, self.original_height, self.original_aspect_ratio)
                         if (self.format_pal):
                             th = 576
                             th2 = 288
@@ -385,8 +386,7 @@ class file_movie(devedeng.interface_manager.interface_manager):
                             self.width_final = 720
                             self.height_final = th
                 else:
-                    self.width_final, self.height_final = self.get_max_resolution(
-                        self.original_width, self.original_height, self.original_aspect_ratio)
+                    self.width_final, self.height_final = self.get_max_resolution(self.original_width, self.original_height, self.original_aspect_ratio)
             else:
                 values = final_size[5:].split("x")
                 self.width_final = int(values[0])
