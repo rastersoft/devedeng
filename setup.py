@@ -43,6 +43,10 @@ def get_data_files():
 
 def compile_translations():
 
+    if (os.system("msgfmt -V") != 0):
+        print('You need the binary "msgfmt" (from "gettext") to compile the translations. Aborting')
+        sys.exit(-1)
+
     try:
         for pofile in [f for f in os.listdir('po') if f.endswith('.po')]:
             pofile = os.path.join('po', pofile)
