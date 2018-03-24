@@ -15,7 +15,8 @@ def get_data_files():
     data_files = [
         (os.path.join('share', 'applications'), ['data/devede_ng.py.desktop']),
         (os.path.join('share', 'pixmaps'), ['data/devedeng.svg']),
-        (os.path.join('share', 'icons', 'hicolor', 'scalable', 'apps'), ['data/devedeng_icon.svg']),
+        (os.path.join('share', 'icons', 'hicolor',
+                      'scalable', 'apps'), ['data/devedeng_icon.svg']),
         (os.path.join('share', 'devedeng'), glob("data/interface/*")),
         (os.path.join('share', 'devedeng'), glob('data/pixmaps/*g')),
         (os.path.join('share', 'devedeng'), ['data/devedeng.svg']),
@@ -66,6 +67,7 @@ def compile_translations():
                 os.system("msgfmt \"" + pofile + "\" -o \"" + mofile + "\"")
     except:
         pass
+
 
 compile_translations()
 try:

@@ -402,6 +402,9 @@ class file_movie(devedeng.interface_manager.interface_manager):
         else:
             midle_aspect_ratio = self.original_aspect_ratio
 
+        if midle_aspect_ratio == 0:
+            midle_aspect_ratio = 1
+
         if self.scaling == "scale_picture":
             self.width_midle = int(self.original_width)
             self.height_midle = int(self.original_height)
