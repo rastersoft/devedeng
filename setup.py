@@ -44,7 +44,7 @@ def get_data_files():
 
 def compile_translations():
 
-    if (os.system("msgfmt -V") != 0):
+    if (os.system("msgfmt -V > /dev/null") != 0):
         print('You need the binary "msgfmt" (from "gettext") to compile the translations. Aborting')
         sys.exit(-1)
 
@@ -81,7 +81,7 @@ except:
 setup(
     name='devedeng',
 
-    version='4.8.12',
+    version='4.9.0',
 
     description='A video DVD creator',
     long_description="A program that allows to create video DVDs",
