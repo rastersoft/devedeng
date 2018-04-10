@@ -3,7 +3,7 @@
 ## WHAT IS IT? ##
 
 Devede NG is a rewrite of the Devede DVD disc authoring program. This new
-code has been writen from scratch, and uses Python3 and Gtk3. It is also
+code has been written from scratch, and uses Python3 and Gtk3. It is also
 cleaner, which will allow to add new features in the future.
 
 
