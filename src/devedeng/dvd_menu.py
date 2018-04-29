@@ -97,18 +97,15 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
         self.store_ui(self.builder)
         cv = devedeng.converter.converter.get_converter()
         film_analizer = (cv.get_film_analizer())()
-        (video, audio, length) = film_analizer.analize_film_data(
-            self.background_music, True)
-        if (video != 0):
-            devedeng.message.message_window(
-                _("The selected file is a video, not an audio file"), _("Error"))
+        film_analizer.get_film_data(self.background_music)
+        if (film_analizer.video_streams != 0):
+            devedeng.message.message_window(_("The selected file is a video, not an audio file"), _("Error"))
             self.on_no_sound_clicked(None)
-        elif (audio == 0):
-            devedeng.message.message_window(
-                _("The selected file is not an audio file"), _("Error"))
+        elif (film_analizer.audio_streams == 0):
+            devedeng.message.message_window(_("The selected file is not an audio file"), _("Error"))
             self.on_no_sound_clicked(None)
         else:
-            self.sound_length = length
+            self.sound_length = film_analizer.original_length
 
     def update_preview(self, b=None):
 

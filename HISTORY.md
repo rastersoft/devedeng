@@ -1,5 +1,8 @@
 # History of versions #
 
+* version 4.10.0 (2018-04-29)
+      * Now, when using a custom audio in the menu, it will last the whole audio duration, not 30 seconds
+
 * version 4.9.0 (2018-04-08)
       * Fixed a division by 0 when it is not possible to get the original aspect ratio
       * Added extra check for MSGFMT binary, needed to install Devede
