@@ -24,6 +24,7 @@ import devedeng.ffprobe
 import devedeng.vlc
 import devedeng.brasero
 import devedeng.k3b
+import devedeng.xfburn
 import devedeng.mkisofs
 import devedeng.genisoimage
 import devedeng.mpv
@@ -44,7 +45,7 @@ class converter:
         self.config = devedeng.configuration_data.configuration.get_config()
         # List of classes with conversion capabilities, in order of preference
         self.c = [devedeng.vlc.vlc, devedeng.mpv.mpv, devedeng.mplayer.mplayer, devedeng.ffmpeg.ffmpeg, devedeng.ffprobe.ffprobe, devedeng.avconv.avconv, devedeng.avprobe.avprobe,
-                  devedeng.brasero.brasero, devedeng.k3b.k3b, devedeng.mkisofs.mkisofs, devedeng.genisoimage.genisoimage]
+                  devedeng.brasero.brasero, devedeng.k3b.k3b, devedeng.mkisofs.mkisofs, devedeng.genisoimage.genisoimage, devedeng.xfburn.xfburn]
 
         self.analizers = {}
         self.default_analizer = None
