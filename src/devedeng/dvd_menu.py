@@ -34,8 +34,7 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
         devedeng.interface_manager.interface_manager.__init__(self)
         self.config = devedeng.configuration_data.configuration.get_config()
 
-        self.default_background = os.path.join(
-            self.config.pic_path, "backgrounds", "default_bg.png")
+        self.default_background = os.path.join(self.config.pic_path, "backgrounds", "default_bg.png")
         self.default_sound = os.path.join(self.config.pic_path, "silence.ogg")
 
         self.add_colorbutton("title_color", (0, 0, 0, 1), self.update_preview)
@@ -52,10 +51,9 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
 
         self.add_text("playall_text", _("Play all"), self.update_preview)
 
-        self.add_group("position_horizontal", [
-                       "left", "center", "right"], "center", self.update_preview)
-        self.add_group("at_startup", [
-                       "menu_show_at_startup", "play_first_title_at_startup"], "menu_show_at_startup")
+        self.add_group("position_horizontal", ["left", "center", "right"], "center", self.update_preview)
+        self.add_group("at_startup", ["menu_show_at_startup", "play_first_title_at_startup"], "menu_show_at_startup")
+        self.add_group("menu_aspect_ratio", ["menu_aspect_4_3", "menu_aspect_16_9"], "menu_aspect_4_3", self.on_menu_aspect_changed)
         self.add_toggle("play_all_c", False, self.update_preview)
 
         self.add_integer_adjustment("sound_length", 30)
@@ -72,10 +70,8 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
         self.add_fontbutton("title_font", "Sans 28", self.update_preview)
         self.add_fontbutton("entry_font", "Sans 28", self.update_preview)
 
-        self.add_filebutton("background_picture",
-                            self.default_background, self.update_preview)
-        self.add_filebutton("background_music",
-                            self.default_sound, self.update_music)
+        self.add_filebutton("background_picture", self.default_background, self.update_preview)
+        self.add_filebutton("background_music", self.default_sound, self.update_music)
 
         self.cached_menu_font = None
         self.cached_menu_size = 0
@@ -346,13 +342,20 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
         coordinates = []
 
         if self.sf is None:
-            self.sf = cairo.ImageSurface(cairo.FORMAT_ARGB32, 720, int(self.y))
+            if self.to_png:
+                self.sf = cairo.ImageSurface(cairo.FORMAT_ARGB32, 720, int(self.y))
+            else:
+                self.sf = cairo.ImageSurface(cairo.FORMAT_ARGB32, 720, 540)
             self.cr = cairo.Context(self.sf)
+        if not self.to_png:
+            if self.menu_aspect_ratio == "menu_aspect_16_9":
+                self.cr.scale(1.0,405.0 / self.y)
+            else:
+                self.cr.scale(1.0,540.0 / self.y)
 
         if self.cached_menu_font != self.entry_font:
             # memorize the font sizes
-            (fontname, fontstyle, fontslant,
-             fontsize) = self.get_font_params(self.entry_font)
+            (fontname, fontstyle, fontslant, fontsize) = self.get_font_params(self.entry_font)
             self.cr.select_font_face(fontname, fontslant, fontstyle)
             self.cr.set_font_size(fontsize)
             extents = self.cr.font_extents()
@@ -360,35 +363,27 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
             self.cached_menu_font = self.entry_font
 
         if paint_background:
-            extra_pixbuf = GdkPixbuf.Pixbuf.new_from_file(
-                self.background_picture)
+            extra_pixbuf = GdkPixbuf.Pixbuf.new_from_file(self.background_picture)
             extra_x = float(extra_pixbuf.get_width())
             extra_y = float(extra_pixbuf.get_height())
 
             self.cr.save()
             self.cr.scale(720.0 / extra_x, self.y / extra_y)
 
-            surface = Gdk.cairo_surface_create_from_pixbuf(
-                extra_pixbuf, 1, None)
+            surface = Gdk.cairo_surface_create_from_pixbuf(extra_pixbuf, 1, None)
             self.cr.set_source_surface(surface, 0, 0)
             self.cr.paint()
             self.cr.restore()
             hmargin = self.title_horizontal * 720.0 / 100.0
-            self.write_text(self.title_text, "title", 0 + hmargin, 720 +
-                            hmargin, self.title_vertical * self.y / 100.0, "center")
-#         else:
-#             self.cr.set_source_rgb(1.0,1.0,1.0)
-#             self.cr.paint()
+            self.write_text(self.title_text, "title", 0 + hmargin, 720 + hmargin, self.title_vertical * self.y / 100.0, "center")
 
         top_margin_p = self.y * self.margin_top / 100.0
         bottom_margin_p = self.y * self.margin_bottom / 100.0
         left_margin_p = 720.0 * self.margin_left / 100.0
         right_margin_p = 720.0 * self.margin_right / 100.0
 
-        entry_height = self.cached_menu_size + \
-            self.entry_vertical_margin * 2.0 + self.entry_separation
-        entries_per_page = int(
-            (self.y - top_margin_p - bottom_margin_p) / entry_height)
+        entry_height = self.cached_menu_size + self.entry_vertical_margin * 2.0 + self.entry_separation
+        entries_per_page = int((self.y - top_margin_p - bottom_margin_p) / entry_height)
         if (self.play_all_c):
             entries_per_page -= 1
         n_entries = len(self.title_list)
@@ -518,13 +513,16 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
             self.current_shown_page = 0
         self.update_preview()
 
+    def on_menu_aspect_changed(self, b=None):
+        self.update_preview()
+
     def on_drawingarea_preview_draw(self, widget, cr):
         """ Callback to repaint the menu preview window when it
             sends the EXPOSE event """
 
         if (self.sf is None):
-            self.paint_menu(True, self.wshow_as_selected.get_active(
-            ), False, self.current_shown_page)
+            self.to_png = False
+            self.paint_menu(True, self.wshow_as_selected.get_active(), False, self.current_shown_page)
             if (self.current_shown_page >= self.pages):
                 self.current_shown_page = self.pages
 
@@ -544,12 +542,9 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
         # transparent="000000"')
         xml_file.write(
             '<subpictures>\n\t<stream>\n\t\t<spu force="yes" start="00:00:00.00"')
-        xml_file.write(' image="' + os.path.join(path, "menu_" +
-                                                 str(n_page) + '_unselected_bg.png"'))
-        xml_file.write(' highlight="' + os.path.join(path,
-                                                     "menu_" + str(n_page) + '_selected_bg.png"'))
-        xml_file.write(' select="' + os.path.join(path,
-                                                  "menu_" + str(n_page) + '_active_bg.png"'))
+        xml_file.write(' image="' + os.path.join(path, "menu_" + str(n_page) + '_unselected_bg.png"'))
+        xml_file.write(' highlight="' + os.path.join(path, "menu_" + str(n_page) + '_selected_bg.png"'))
+        xml_file.write(' select="' + os.path.join(path, "menu_" + str(n_page) + '_active_bg.png"'))
         xml_file.write(' >\n')
         n_elements = 0
         has_next = False
@@ -637,26 +632,21 @@ class dvd_menu(devedeng.interface_manager.interface_manager):
         menu_converter = cv.get_menu_converter()
         while n_page < self.pages:
             self.sf = None
+            self.to_png = True
             coordinates = self.paint_menu(True, False, False, n_page)
-            self.sf.write_to_png(os.path.join(
-                menu_folder, "menu_" + str(n_page) + "_bg.png"))
+            self.sf.write_to_png(os.path.join(menu_folder, "menu_" + str(n_page) + "_bg.png"))
             self.sf = None
             self.paint_menu(False, False, False, n_page)
-            self.sf.write_to_png(os.path.join(
-                menu_folder, "menu_" + str(n_page) + "_unselected_bg.png"))
+            self.sf.write_to_png(os.path.join(menu_folder, "menu_" + str(n_page) + "_unselected_bg.png"))
             self.sf = None
             self.paint_menu(False, True, False, n_page)
-            self.sf.write_to_png(os.path.join(
-                menu_folder, "menu_" + str(n_page) + "_selected_bg.png"))
+            self.sf.write_to_png(os.path.join(menu_folder, "menu_" + str(n_page) + "_selected_bg.png"))
             self.sf = None
             self.paint_menu(False, False, True, n_page)
-            self.sf.write_to_png(os.path.join(
-                menu_folder, "menu_" + str(n_page) + "_active_bg.png"))
-            entry_data = self.create_menu_stream(
-                menu_folder, n_page, coordinates)
+            self.sf.write_to_png(os.path.join(menu_folder, "menu_" + str(n_page) + "_active_bg.png"))
+            entry_data = self.create_menu_stream(menu_folder, n_page, coordinates)
             converter = menu_converter()
-            final_path = converter.create_menu_mpeg(
-                n_page, self.background_music, self.sound_length, self.config.PAL, self.video_rate, self.audio_rate, menu_folder, self.audio_mp2)
+            final_path = converter.create_menu_mpeg(n_page, self.background_music, self.sound_length, self.config.PAL, self.video_rate, self.audio_rate, menu_folder, self.audio_mp2, self.menu_aspect_ratio == "menu_aspect_16_9")
             entry_data["filename"] = final_path
             menu_entries.append(entry_data)
             # add this process without dependencies

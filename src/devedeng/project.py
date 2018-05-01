@@ -491,8 +491,7 @@ class devede_project:
         file_movies = self.get_all_files()
         t = len(file_movies)
         if (max_files != -1) and (t > max_files):
-            devedeng.message.message_window(_("The limit for this format is %(l)d files, but your project has %(h)d.") % {
-                                            "l": max_files, "h": t}, _("Too many files in the project"))
+            devedeng.message.message_window(_("The limit for this format is %(l)d files, but your project has %(h)d.") % {"l": max_files, "h": t}, _("Too many files in the project"))
             return
 
         data = devedeng.create_disk_window.create_disk_window()
@@ -532,8 +531,7 @@ class devede_project:
         final_dependencies = []
 
         if (self.disc_type == "dvd") and (self.wcreate_menu.get_active()):
-            processes, menu_entries = self.menu.create_dvd_menus(
-                file_movies, data.path)
+            processes, menu_entries = self.menu.create_dvd_menus(file_movies, data.path)
             for p in processes:
                 run_window.add_process(p)
                 final_dependencies.append(p)
@@ -565,8 +563,7 @@ class devede_project:
             else:
                 start_with_menu = False
             dvdauthor = devedeng.dvdauthor_converter.dvdauthor_converter()
-            dvdauthor.create_dvd_project(
-                data.path, data.name, file_movies, menu_entries, start_with_menu, self.menu.play_all_c)
+            dvdauthor.create_dvd_project(data.path, data.name, file_movies, menu_entries, start_with_menu, self.menu.play_all_c, self.menu.menu_aspect_ratio == "menu_aspect_16_9")
             # dvdauthor must wait until all the files have been converted
             for element in final_dependencies:
                 dvdauthor.add_dependency(element)

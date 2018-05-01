@@ -489,7 +489,7 @@ class ffmpeg(devedeng.executor.executor):
 
         self.command_var.append(output_file)
 
-    def create_menu_mpeg(self, n_page, background_music, sound_length, pal, video_rate, audio_rate, output_path, use_mp2):
+    def create_menu_mpeg(self, n_page, background_music, sound_length, pal, video_rate, audio_rate, output_path, use_mp2, widescreen):
 
         self.n_page = n_page
         self.final_length = float(sound_length)
@@ -534,7 +534,10 @@ class ffmpeg(devedeng.executor.executor):
         self.command_var.append("-b:a")
         self.command_var.append(str(audio_rate) + "k")
         self.command_var.append("-aspect")
-        self.command_var.append("4:3")
+        if widescreen:
+            self.command_var.append("16:9")
+        else:
+            self.command_var.append("4:3")
 
         self.command_var.append("-t")
         self.command_var.append(str(1 + sound_length))

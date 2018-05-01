@@ -29,7 +29,7 @@ class dvdauthor_converter(devedeng.executor.executor):
         devedeng.executor.executor.__init__(self)
         self.config = devedeng.configuration_data.configuration.get_config()
 
-    def create_dvd_project(self, path, name, file_movies, menu_entries, start_with_menu, play_all_opt):
+    def create_dvd_project(self, path, name, file_movies, menu_entries, start_with_menu, play_all_opt, menuWide):
 
         movie_path = os.path.join(path, "dvd_tree")
         try:
@@ -37,8 +37,7 @@ class dvdauthor_converter(devedeng.executor.executor):
         except:
             pass
 
-        xml_file = self.create_dvdauthor_xml(
-            path, file_movies, menu_entries, start_with_menu, play_all_opt)
+        xml_file = self.create_dvdauthor_xml(path, file_movies, menu_entries, start_with_menu, play_all_opt, menuWide)
 
         self.command_var = []
         self.command_var.append("dvdauthor")
@@ -57,7 +56,7 @@ class dvdauthor_converter(devedeng.executor.executor):
             self.progress_bar[1].set_text(data[0])
         return
 
-    def create_dvdauthor_xml(self, movie_folder, file_movies, menu_entries, start_with_menu, play_all_opt):
+    def create_dvdauthor_xml(self, movie_folder, file_movies, menu_entries, start_with_menu, play_all_opt, menuWide):
 
         xmlpath = os.path.join(movie_folder, "xml_data")
         xml_file_path = os.path.join(xmlpath, "dvdauthor.xml")
@@ -89,7 +88,11 @@ class dvdauthor_converter(devedeng.executor.executor):
                 xml_file.write("pal")
             else:
                 xml_file.write("ntsc")
-            xml_file.write('" aspect="4:3"> </video>\n')
+            if menuWide:
+                xml_file.write('" aspect="16:9"> ')
+            else:
+                xml_file.write('" aspect="4:3"> ')
+            xml_file.write('</video>\n')
             xml_file.write("\t\t</menus>\n")
             xml_file.write('\t</vmgm>\n')
         else:
@@ -128,7 +131,11 @@ class dvdauthor_converter(devedeng.executor.executor):
                 xml_file.write("pal")
             else:
                 xml_file.write("ntsc")
-            xml_file.write('" aspect="4:3"> </video>\n')
+            if menuWide:
+                xml_file.write('" aspect="16:9"> ')
+            else:
+                xml_file.write('" aspect="4:3"> ')
+            xml_file.write('</video>\n')
 
             xml_file.write('\t\t\t<pgc>\n')
             xml_file.write('\t\t\t\t<pre>\n')
@@ -149,12 +156,16 @@ class dvdauthor_converter(devedeng.executor.executor):
             # 100% compatibility
             xml_file.write('\t\t\t\t<vob file="')
 
-            if self.config.PAL:
-                xml_file.write(self.expand_xml(
-                    str(os.path.join(self.config.other_path, "base_pal.mpg"))))
+            if menuWide:
+                if self.config.PAL:
+                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path, "base_pal_wide.mpg"))))
+                else:
+                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path, "base_ntsc_wide.mpg"))))
             else:
-                xml_file.write(self.expand_xml(
-                    str(os.path.join(self.config.other_path, "base_ntsc.mpg"))))
+                if self.config.PAL:
+                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path, "base_pal.mpg"))))
+                else:
+                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path, "base_ntsc.mpg"))))
 
             xml_file.write('"></vob>\n')
             xml_file.write('\t\t\t</pgc>\n')
@@ -173,7 +184,11 @@ class dvdauthor_converter(devedeng.executor.executor):
                 xml_file.write("pal")
             else:
                 xml_file.write("ntsc")
-            xml_file.write('" aspect="4:3"> </video>\n')
+            if menuWide:
+                xml_file.write('" aspect="16:9"> ')
+            else:
+                xml_file.write('" aspect="4:3"> ')
+            xml_file.write('</video>\n')
 
             first_entry = True
             menu_number = 0
@@ -275,12 +290,16 @@ class dvdauthor_converter(devedeng.executor.executor):
 
                 xml_file.write('\t\t\t\t</pre>\n')
                 xml_file.write('\t\t\t\t<vob file="')
-                if self.config.PAL:
-                    xml_file.write(self.expand_xml(
-                        str(os.path.join(self.config.other_path, "base_pal.mpg"))))
+                if menuWide:
+                    if self.config.PAL:
+                        xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path, "base_pal_wide.mpg"))))
+                    else:
+                        xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path, "base_ntsc_wide.mpg"))))
                 else:
-                    xml_file.write(self.expand_xml(
-                        str(os.path.join(self.config.other_path, "base_ntsc.mpg"))))
+                    if self.config.PAL:
+                        xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path, "base_pal.mpg"))))
+                    else:
+                        xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path, "base_ntsc.mpg"))))
                 xml_file.write('"></vob>\n')
 
                 xml_file.write('\t\t\t\t<post>\n')
@@ -298,15 +317,23 @@ class dvdauthor_converter(devedeng.executor.executor):
                 xml_file.write("pal")
             else:
                 xml_file.write("ntsc")
-            xml_file.write('" aspect="4:3"> </video>\n')
+            if menuWide:
+                xml_file.write('" aspect="16:9"> ')
+            else:
+                xml_file.write('" aspect="4:3"> ')
+            xml_file.write('</video>\n')
             xml_file.write('\t\t\t<pgc>\n')
             xml_file.write('\t\t\t\t<vob file="')
-            if self.config.PAL:
-                xml_file.write(self.expand_xml(
-                    str(os.path.join(self.config.other_path, "base_pal.mpg"))))
+            if menuWide:
+                if self.config.PAL:
+                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path, "base_pal_wide.mpg"))))
+                else:
+                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path, "base_ntsc_wide.mpg"))))
             else:
-                xml_file.write(self.expand_xml(
-                    str(os.path.join(self.config.other_path, "base_ntsc.mpg"))))
+                if self.config.PAL:
+                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path, "base_pal.mpg"))))
+                else:
+                    xml_file.write(self.expand_xml(str(os.path.join(self.config.other_path, "base_ntsc.mpg"))))
             xml_file.write('"></vob>\n')
             xml_file.write('\t\t\t\t<post>\n')
             xml_file.write('\t\t\t\t\tg0=1;\n')

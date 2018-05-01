@@ -38,8 +38,7 @@ class mux_dvd_menu(devedeng.executor.executor):
 
         self.command_var = []
         self.command_var.append("spumux")
-        self.command_var.append(os.path.join(
-            output_path, "menu_" + str(n_page) + ".xml"))
+        self.command_var.append(os.path.join(output_path, "menu_" + str(n_page) + ".xml"))
         self.stdin_file = movie_path
         self.stdout_file = final_path
 
