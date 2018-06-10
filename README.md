@@ -16,7 +16,7 @@ Just type:
 
 ## USING DEVEDE NG ##
 
-The second alpha version of Devede NG is very similar to the old devede, with the
+Devede NG is very similar to the old devede, with the
 exception that, when creating a DVD disc, there are no more "titles" and
 "files". Instead, you just add files to the disc. It also lacks support for Mencoder,
 and can use only FFMpeg or AVConv for video conversion.
@@ -42,17 +42,12 @@ Some of the future ideas to add to Devede NG are, without an specific order:
 * add more backends
 * add more output formats
 * allow to replace the movie's audio track with one or several MP3 or OGG audio files
-* widescreen menus for DVDs
 * preview of a converted menu
 
 
 ## CONTACTING THE AUTHOR ##
 
-Sergio Costas Rodriguez
-(Raster Software Vigo)
-
-raster@rastersoft.com
-
-http://www.rastersoft.com
-
-GIT: git://github.com/rastersoft/devedeng.git
+Sergio Costas Rodriguez  
+rastersoft@gmail.com  
+http://www.rastersoft.com  
+https://gitlab.com/rastersoft/devedeng.git
