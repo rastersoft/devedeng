@@ -1,5 +1,9 @@
 # DEVEDE NG #
 
+**IMPORTANT: Devede has been migrated to Gitlab**
+
+https://gitlab.com/rastersoft/devedeng
+
 ## WHAT IS IT? ##
 
 Devede NG is a rewrite of the Devede DVD disc authoring program. This new
